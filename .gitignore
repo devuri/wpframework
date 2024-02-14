@@ -6,6 +6,7 @@ composer.lock
 /tmp
 /wordpress
 /wp
+/public/wp
 /.github
 /.idea
 /.phpdoc/cache

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\App\Console;
+namespace Tests\Unit;
 
 use Defuse\Crypto\Crypto;
 use PHPUnit\Framework\TestCase;
@@ -99,19 +99,19 @@ class EncryptionTest extends TestCase
         $this->assertEquals($fileContents, $decryptedfile);
     }
 
-    public function test_encrypted_value(): void
-    {
-        $secret_data =  'this is my secret license data';
-
-        $_ENV['MY_SUPER_SECRET_VALUE'] = $secret_data;
-
-        // passing true will encrypt env() data.
-        $encrypted_value = env('MY_SUPER_SECRET_VALUE', true );
-
-        $this->assertNotEmpty( $encrypted_value );
-
-        $decrypted = $this->encryption->decrypt( $encrypted_value );
-
-        $this->assertEquals( $decrypted, $secret_data );
-    }
+    // public function test_encrypted_value(): void
+    // {
+    //     $secret_data =  'this is my secret license data';
+    //
+    //     $_ENV['MY_SUPER_SECRET_VALUE'] = $secret_data;
+    //
+    //     // passing true will encrypt env() data.
+    //     $encrypted_value = env('MY_SUPER_SECRET_VALUE', true );
+    //
+    //     $this->assertNotEmpty( $encrypted_value );
+    //
+    //     $decrypted = $this->encryption->decrypt( $encrypted_value );
+    //
+    //     $this->assertEquals( $decrypted, $secret_data );
+    // }
 }

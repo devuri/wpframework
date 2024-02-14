@@ -1,12 +1,12 @@
 <?php
 
 use Defuse\Crypto\Key;
-use Urisoft\App\Core\Plugin;
-use Urisoft\App\Http\AppFramework;
-use Urisoft\App\Http\Asset;
-use Urisoft\App\Http\Tenancy;
 use Urisoft\DotAccess;
 use Urisoft\Encryption;
+use Urisoft\Framework\Core\Plugin;
+use Urisoft\Framework\Http\App;
+use Urisoft\Framework\Http\Asset;
+use Urisoft\Framework\Http\Tenancy;
 
 // @codingStandardsIgnoreFile.
 
@@ -129,7 +129,7 @@ if ( ! \function_exists( 'get_http_env' ) ) {
 
 if ( ! \function_exists( 'wpc_app' ) ) {
     /**
-     * Initializes the AppFramework Kernel with optional multi-tenant support.
+     * Initializes the App Kernel with optional multi-tenant support.
      *
      * Sets up the application kernel based on the provided application directory path.
      * In multi-tenant configurations, it dynamically adjusts the environment based on
@@ -141,12 +141,12 @@ if ( ! \function_exists( 'wpc_app' ) ) {
      * @param string $app_path The base directory path of the application (e.g., __DIR__).
      * @param string $options  Optional. The configuration filename, defaults to 'app'.
      *
-     * @throws Exception If there are issues loading environment variables or initializing the AppFramework.
+     * @throws Exception If there are issues loading environment variables or initializing the App.
      * @throws Exception If required multi-tenant environment variables are missing or if the tenant's domain is not recognized.
      *
-     * @return Urisoft\App\Http\BaseKernel The initialized application kernel.
+     * @return Urisoft\Framework\Http\BaseKernel The initialized application kernel.
      */
-    function wpc_app( string $app_path, string $options = 'app' ): Urisoft\App\Http\BaseKernel
+    function wpc_app( string $app_path, string $options = 'app' ): Urisoft\Framework\Http\BaseKernel
     {
         if ( ! \defined('SITE_CONFIG_DIR') ) {
             \define( 'SITE_CONFIG_DIR', 'config');
@@ -161,7 +161,7 @@ if ( ! \function_exists( 'wpc_app' ) ) {
         $tenancy->initialize();
 
         try {
-            $app = new AppFramework( $app_path, SITE_CONFIG_DIR, $options );
+            $app = new App( $app_path, SITE_CONFIG_DIR, $options );
         } catch ( Exception $e ) {
             wp_terminate('Framework Initialization Error: ' );
         }

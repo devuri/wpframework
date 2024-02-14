@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Urisoft\App\Setup;
+use Urisoft\Framework\Setup;
 
 /**
  * @internal
