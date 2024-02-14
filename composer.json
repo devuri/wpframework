@@ -141,7 +141,7 @@
         ],
         "no-dev": "composer install --no-dev"
     },
-	"extra": {
+    "extra": {
         "wordpress-install-dir": "public/wp"
     },
     "config": {
