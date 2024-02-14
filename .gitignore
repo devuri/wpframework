@@ -4,6 +4,9 @@ composer.lock
 /vendor
 /coverage-report
 /tmp
+/wordpress
+/wp
+/public/wp
 /.github
 /.idea
 /.phpdoc/cache

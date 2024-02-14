@@ -1,167 +1,359 @@
-# DotAccess - Convenient Access to Nested Data Using Dot Notation
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/4777400/225331174-d5ae1c0e-5ec0-493b-aabc-91c4cc6a14c4.png" />
+</p>
 
-The `DotAccess` class provides a user-friendly wrapper around the functionality of the `Dflydev\DotAccessData\Data` package, allowing easy access to nested data using dot notation in PHP.
+## WordPress Environment Configuration
 
-## Installation
+[![Unit Tests](https://github.com/devuri/wp-framework/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/devuri/wp-framework/actions/workflows/unit-tests.yml)
 
-1. Ensure you have [Composer](https://getcomposer.org/) installed on your system.
-2. Run the following command to install the package:
+### Introduction
 
-```bash
-composer require devuri/dot-access
+`wp-framework` is a small yet powerful package that simplifies the process of defining configuration constants in WordPress. By leveraging PHP dotenv, this package enables you to securely store sensitive configuration data in environment variables, which is a best practice for building and deploying software according to the twelve-factor app methodology.
+
+> **Note**
+> This repository houses the fundamental components of wp-framework. If you are developing an application, please utilize wptenancy located in this repository: [wptenancy](https://github.com/devuri/wptenancy).
+
+### Installation
+
+To use `wp-framework`, you can install it via Composer. Run the following command in your terminal:
+
+```shell
+composer create-project devuri/wptenancy blog
 ```
+> or for existing projects
+```shell
+composer require devuri/wp-framework
+```
+Alternatively, you can add `devuri/wp-framework` to your project's `composer.json` file:
+```shell
+"require": {
+    "devuri/wp-framework": "^0.5"
+}
+```
+Once installed, you can begin using the package in your WordPress project.
 
-## Getting Started
+```shell
+# This is how the structure might look.
 
-1. Include the `DotAccess` class in your PHP script:
-
-```php
-
-use Urisoft\DotAccess;
+├── .env
+├── wp-config.php
+├── composer.json
+├── composer.lock
+├── LICENSE
+├── public/
+│   ├── index.php
+│   ├── wp-admin/
+│   ├── wp-content/
+│   ├── wp-includes/
+│   ├── .htaccess
+│   ├── robots.txt
+│   └── ...
+└── vendor/
 
 ```
-
-2. Create an instance of the `DotAccess` class and pass the nested data (array or object) to the constructor:
-
-```php
-$data = [
-    'user' => [
-        'name' => 'John Doe',
-        'email' => 'john.doe@example.com',
-        'address' => [
-            'city' => 'New York',
-            'country' => 'USA',
-        ],
-    ],
-];
-
-$dotdata = new DotAccess($data);
-```
-
-## Accessing Data
-
-The `DotAccess` class provides the following methods to access the nested data using dot notation:
-
-### Get the Value
-
-Use the `get()` method to retrieve the value associated with a dot notation key:
-
-```php
-$name = $dotdata->get('user.name');
-$email = $dotdata->get('user.email');
-$city = $dotdata->get('user.address.city');
-```
-
-### Set the Value
-
-Use the `set()` method to set a value for a dot notation key:
-
-```php
-$dotdata->set('user.age', 30);
-```
-
-### Checking for Key Existence
-
-Use the `has()` method to check if a dot notation key exists in the data:
-
-```php
-$emailExists = $dotdata->has('user.email');
-```
-
-### Removing a Key
-
-Use the `remove()` method to unset the value associated with a dot notation key:
-
-```php
-$dotdata->remove('user.address.country');
-```
-
-## Example
-
-```php
-$data = [
-    'user' => [
-        'name' => 'John Doe',
-        'email' => 'john.doe@example.com',
-        'address' => [
-            'city' => 'New York',
-            'country' => 'USA',
-        ],
-    ],
-];
-
-$dotdata = new DotAccess($data);
-
-$name = $dotdata->get('user.name'); // Output: "John Doe"
-$dotdata->set('user.age', 30);
-$emailExists = $dotdata->has('user.email'); // Output: true
-$dotdata->remove('user.address.country');
-
-echo "Name: $name\n";
-echo "Age: " . $dotdata->get('user.age') . "\n";
-echo "Email exists: " . ($emailExists ? 'Yes' : 'No') . "\n";
-```
-
-## Wrapper Function - DataKey:get()
-
-In addition to the `DotAccess` class, we also provide a standalone wrapper function `DataKey` that simplifies accessing nested data using dot notation.
 
 ### Usage
 
-The `DataKey:get()` function allows you to quickly access nested data without having to create an instance of the `DotAccess` class. It takes three parameters:
+To get started, create a `.env` file in the root directory of your project.
+In this file, define the environment variables you wish to use as configuration constants, update the database credentials and other settings as needed.
 
-1. The data array or object to access.
-2. The dot notation key to access the data.
-3. An optional default value to return if the key is not found.
+```shell
+WP_HOME='https://example.com'
+WP_SITEURL="${WP_HOME}"
 
-Here's how you can use the `DataKey:get()` function:
+WP_ENVIRONMENT_TYPE='production'
+DEVELOPER_ADMIN='0'
 
-```php
-$data = [
-    'user' => [
-        'name' => 'John Doe',
-        'email' => 'john.doe@example.com',
-        'address' => [
-            'city' => 'New York',
-            'country' => 'USA',
-        ],
-    ],
-];
+MEMORY_LIMIT='256M'
+MAX_MEMORY_LIMIT='256M'
 
-// Using the wrapper function
-$name = DataKey:get($data, 'user.name');
-$email = DataKey:get($data, 'user.email');
-$city = DataKey:get($data, 'user.address.city');
-$zipCode = DataKey:get($data, 'user.address.zip_code', 'N/A'); // Provide a default value if the key doesn't exist
-
-echo "Name: $name\n";
-echo "Email: $email\n";
-echo "City: $city\n";
-echo "Zip Code: $zipCode\n";
+DB_NAME=wp_dbName
+DB_USER=root
+DB_PASSWORD=
+DB_HOST=localhost
+DB_PREFIX=wp_
 ```
 
-### When to Use `DataKey:get()` vs. `DotAccess`
+> Full list of [Environment Variables](https://devuri.github.io/wp-framework/env/)
 
-Both the `DataKey:get()` function and the `DotAccess` class serve the same purpose: accessing nested data using dot notation. The choice between them depends on your specific use case and coding preferences.
 
-Use `DataKey:get()` when:
+Then, in your **wp-config.php** file, add the following code:
+```php
 
-- You prefer a simple function call over creating an instance of the `DotAccess` class.
-- You only need to access nested data at a few specific points in your code.
-- You don't need to perform multiple operations (e.g., setting, checking, or removing keys).
+<?php
 
-Use `DotAccess` class when:
+use Urisoft\App\Setup;
 
-- You need to perform multiple operations on the same nested data within your code.
-- You prefer an object-oriented approach for handling nested data.
-- You need better encapsulation and separation of concerns in your code.
+require_once __FILE__ . '/vendor/autoload.php';
 
-Both approaches provide a convenient and user-friendly way to work with nested data using dot notation. Choose the one that best fits your coding style and requirements.
+/**
+ * The base configuration for WordPress
+ *
+ * @link https://codex.wordpress.org/Editing_wp-config.php
+ *
+ * @package WordPress
+ */
+Setup::init(__DIR__)->config(); // production
 
-## License
+/**
+ * WordPress Database Table prefix.
+ *
+ * You can have multiple installations in one database if you give each
+ * a unique prefix. Only numbers, letters, and underscores please!
+ */
+$table_prefix = env('DB_PREFIX');
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
+}
 
-The `DotAccess` class is a simple wrapper around the `Dflydev\DotAccessData\Data` package, which provides the core functionality for accessing nested data using dot notation. Special thanks to the authors of the `Dflydev\DotAccessData` package for their excellent work.
+// Sets up WordPress.
+require_once ABSPATH . 'wp-settings.php';
+
+```
+This will load the environment variables from the `.env` file and define them as configuration constants.
+
+```shell
+# the following files are supported (in that order)
+
+env
+.env
+.env.secure
+.env.prod
+.env.staging
+.env.dev
+.env.debug
+.env.local
+
+# By default, Dotenv will stop looking for files as soon as it finds one.
+
+```
+
+You can define as many constants as you need using this approach.
+
+### Setup Options and Environment
+
+```php
+
+Setup::init(__DIR__)->config(); // production
+
+```
+
+```php
+Setup::init(__DIR__)->config('development'); // development
+
+```
+
+```php
+Setup::init(__DIR__)->config('staging'); // staging
+
+```
+
+```php
+Setup::init(__DIR__)->config('production'); // production
+
+```
+
+```php
+Setup::init(__DIR__)->config('secure'); // secure
+
+```
+
+```php
+Setup::init(__DIR__)->config('development', false )->environment()->database()->salts()->apply();
+
+```
+
+
+
+```php
+dump( Setup::init(__DIR__)->getEnvironment() ); // Get the current Environment setup.
+
+```
+
+
+### Environment Constants.
+
+Debug must be on and 'development' set as WP_ENVIRONMENT_TYPE in the .env file.
+
+```php
+dump( Setup::init(__DIR__)->get_constant_map() ); // Display a list of constants defined by Setup.
+```
+
+This will output the following:
+
+```shell
+"WP_ENVIRONMENT_TYPE" => "development"
+"WP_DEBUG" => true
+"SAVEQUERIES" => true
+"WP_DEBUG_DISPLAY" => true
+"WP_DISABLE_FATAL_ERROR_HANDLER" => true
+"SCRIPT_DEBUG" => true
+"WP_DEBUG_LOG" => true
+"DB_NAME" => ""
+"DB_USER" => ""
+"DB_PASSWORD" => ""
+"DB_HOST" => "localhost"
+"DB_CHARSET" => "utf8mb4"
+"DB_COLLATE" => ""
+"WP_HOME" => ""
+"ASSET_URL" => ""
+"WP_SITEURL" => ""
+"UPLOADS" => "wp-content/uploads"
+"WP_MEMORY_LIMIT" => "256M"
+"WP_MAX_MEMORY_LIMIT" => "256M"
+"CONCATENATE_SCRIPTS" => true
+"FORCE_SSL_ADMIN" => true
+"FORCE_SSL_LOGIN" => true
+"AUTOSAVE_INTERVAL" => 180
+"WP_POST_REVISIONS" => 10
+"AUTH_KEY" => ""
+"SECURE_AUTH_KEY" => ""
+"LOGGED_IN_KEY" => ""
+"NONCE_KEY" => ""
+"AUTH_SALT" => ""
+"SECURE_AUTH_SALT" => ""
+"LOGGED_IN_SALT" => ""
+"NONCE_SALT" => ""
+"DEVELOPERADMIN" => null
+```
+
+### Global helper functions.
+
+> `asset()`
+
+The ***asset()*** function will generate a URL for an asset.
+
+* We can configure the asset URL by setting the `ASSET_URL` in your .env `ASSET_URL="${WP_HOME}/assets"`
+* Or optionally in the main config file.
+
+```php
+
+asset( "/bootstrap/css/bootstrap-grid.css" ); // https://example.com/assets/dist/bootstrap/css/bootstrap-grid.css
+
+asset( "/images/thing.png" ); // https://example.com/assets/dist/images/thing.png
+
+asset( "/images/thing.png", "/static" ); // https://example.com/static/images/thing.png
+
+```
+
+> `asset_url()`
+
+The ***asset_url()*** URL for the asset directory.
+
+* **Note:** The `ASSET_URL` constant is optional.
+* We can configure the asset URL by setting the `ASSET_URL` in your .env `ASSET_URL="${WP_HOME}/assets"`
+* Or optionally in the main config file.
+
+
+```php
+
+asset_url(); // https://example.com/assets/dist/
+
+asset_url() . "images/thing.png" // https://example.com/assets/dist/images/thing.png
+
+asset_url( "/static" ); // https://example.com/static
+
+```
+
+> `env()`
+
+The ***env()*** function can be used to get the value of an environment variable.
+
+```php
+
+env('FOO');
+
+```
+
+
+### Kernel.
+
+> `Kernel` ***$args***
+
+We can use the **Kernel** `$args` to setup a custom directory structure.
+
+```php
+
+$args = [
+        'web_root'        => 'public',
+        'wp_dir_path'     => 'wp',
+        'asset_dir'       => 'assets',
+        'content_dir'     => 'content',
+        'plugin_dir'      => 'plugins',
+        'mu_plugin_dir'   => 'mu-plugins',
+        'disable_updates' => true,
+    ];
+
+$http_app = new Kernel(__DIR__, $args);
+
+// or
+
+$http_app = new Kernel(__DIR__, ['content_dir' => 'content']);
+
+```
+
+### CI/CD
+We can use a GitHub Actions workflow to automate the deployment process.
+
+```yaml
+name: remote ssh command
+on: [push]
+jobs:
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: whoami
+```
+
+https://github.com/marketplace/actions/ssh-remote-commands
+
+### Headless Mode
+**Corcel**
+Corcel is a collection of PHP classes built on top of Eloquent ORM (from Laravel framework), that provides a fluent interface to connect and get data directly from a WordPress database.
+https://github.com/corcel/corcel
+
+**Headless Mode**
+A helper plugin for putting WordPress in "headless mode". Designed for when WordPress is the CMS for a headless/ decoupled WordPress site.
+``` php
+// Activate the plugin and In wp-config.php, add a line defining the constant:
+define( 'HEADLESS_MODE_CLIENT_URL', 'https://example.com' );
+```
+https://github.com/Shelob9/headless-mode
+
+### Redis Object Cache
+
+> [!WARNING]
+>
+> Please note that configuring Redis Object Cache can be a complex process, as it relies on an external Redis server to function properly.
+> If you have little or no experience with setting up Redis servers, or configuring applications that use Redis, it is recommended that you seek assistance or consult with an expert before attempting to use this plugin.
+
+The **Redis Object Cache:** https://wordpress.org/plugins/redis-cache/ paired with https://github.com/phpredis/phpredis/blob/develop/INSTALL.md will supercharge web application.
+- We will need to install and setup the redis server, this varies widely based on your current server setup: https://redis.io/docs/getting-started/
+- Install and setup phpredis https://github.com/phpredis/phpredis/blob/develop/INSTALL.md
+- Install and configure the plugin: Installing Redis Object Cache: https://github.com/rhubarbgroup/redis-cache/blob/develop/INSTALL.md
+
+> Its best to use phpredis we have had issues in the past while testing where the cron jobs start failing, also if you decide to go for Redis Object Cache pro, phpredis is required. 
+
+
+### Why
+
+The aim of this package is to simplify the definition of WordPress configuration constants by leveraging PHP dotenv to access environment variables stored in a .env file. By utilizing environment variables in this way, we can enhance the security of our WordPress installation by avoiding the storage of sensitive credentials in our code.
+
+This approach adheres to the **twelve-factor app methodology** for building and deploying software, specifically principle three, which emphasizes the importance of storing configuration data in the environment. By implementing this package, we can follow this best practice and ensure that our WordPress instance is both secure and maintainable.
+
+### Development and Support Status (in-Beta)
+> ⚠️ This project is currently in active development. If you're considering using it for production, please feel free to get in touch, and we'll gladly offer additional guidance and support. We also encourage and welcome any issues and pull requests related to this framework.
+> 
+> We are still in the beta testing phase. While it's actively under development, we are actively seeking user feedback and making improvements.
+> You're welcome to join our Slack community, where we have ongoing and active discussions.
