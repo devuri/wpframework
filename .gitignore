@@ -1,0 +1,9 @@
+composer.phar
+composer.lock
+.phpunit.result.cache
+/vendor
+/coverage-report
+/tmp
+/.github
+/.idea
+/.phpdoc/cache
