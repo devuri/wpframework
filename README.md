@@ -105,7 +105,7 @@ Your contributions are highly valued! Whether it's through feature suggestions, 
 
 ## Support
 
-Should you encounter any issues or have questions about WP-Framework, don't hesitate to open an issue on our GitHub repository.
+Should you encounter any issues or have questions about the framework, don't hesitate to open an issue on our GitHub repository.
 
 ## License
 
