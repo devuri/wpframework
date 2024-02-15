@@ -1,6 +1,6 @@
 <?php
 
-namespace Urisoft\Framework;
+namespace WPframework\Component;
 
 use Exception;
 use Symfony\Component\Filesystem\Filesystem;

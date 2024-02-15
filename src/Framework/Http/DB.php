@@ -1,6 +1,6 @@
 <?php
 
-namespace Urisoft\Framework\Http;
+namespace WPframework\Component\Http;
 
 use PDO;
 use PDOException;

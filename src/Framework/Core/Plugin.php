@@ -8,11 +8,11 @@
  * for full copyright and license information.
  */
 
-namespace Urisoft\Framework\Core;
+namespace WPframework\Component\Core;
 
-use Urisoft\Framework\Core\Settings\AdminSettingsPage;
-use Urisoft\Framework\Core\Traits\ActivateElementorTrait;
-use Urisoft\Framework\Core\Traits\AdminBarMenuTrait;
+use WPframework\Component\Core\Settings\AdminSettingsPage;
+use WPframework\Component\Core\Traits\ActivateElementorTrait;
+use WPframework\Component\Core\Traits\AdminBarMenuTrait;
 use WP_User;
 
 class Plugin

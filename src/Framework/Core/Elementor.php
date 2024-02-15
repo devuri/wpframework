@@ -1,6 +1,6 @@
 <?php
 
-namespace Urisoft\Framework\Core;
+namespace WPframework\Component\Core;
 
 use Exception;
 use InvalidArgumentException;

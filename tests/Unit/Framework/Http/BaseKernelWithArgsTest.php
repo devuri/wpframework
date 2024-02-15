@@ -3,7 +3,7 @@
 namespace Tests\Unit\Framework\Http;
 
 use Tests\BaseTest;
-use Urisoft\Framework\Http\BaseKernel;
+use WPframework\Component\Http\BaseKernel;
 
 /**
  * Test the Kernel.

@@ -1,8 +1,8 @@
 <?php
 
-namespace Urisoft\Framework\Traits;
+namespace WPframework\Component\Traits;
 
-use Urisoft\Framework\Exceptions\ConstantAlreadyDefinedException;
+use WPframework\Component\Exceptions\ConstantAlreadyDefinedException;
 
 /**
  * Trait ConstantBuilderTrait.

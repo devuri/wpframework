@@ -8,7 +8,7 @@
  * for full copyright and license information.
  */
 
-namespace Urisoft\Framework\Core;
+namespace WPframework\Component\Core;
 
 /**
  * Retrieve information about available updates

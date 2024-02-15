@@ -8,10 +8,10 @@
  * for full copyright and license information.
  */
 
-namespace Urisoft\Framework\Core\Traits;
+namespace WPframework\Component\Core\Traits;
 
 use Exception;
-use Urisoft\Framework\Core\Elementor;
+use WPframework\Component\Core\Elementor;
 
 trait ActivateElementorTrait
 {

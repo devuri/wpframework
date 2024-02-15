@@ -1,8 +1,8 @@
 <?php
 
-namespace Urisoft\Framework\Traits;
+namespace WPframework\Component\Traits;
 
-use Urisoft\Framework\ConfigInterface;
+use WPframework\Component\ConfigInterface;
 
 trait ConfigTrait
 {

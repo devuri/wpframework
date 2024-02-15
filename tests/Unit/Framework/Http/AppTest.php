@@ -15,6 +15,6 @@ class AppTest extends BaseTest
 {
     public function test_class_exists_is_true(): void
     {
-        $this->assertTrue( class_exists('Urisoft\Framework\Http\App') );
+        $this->assertTrue( class_exists('WPframework\Component\Http\App') );
     }
 }

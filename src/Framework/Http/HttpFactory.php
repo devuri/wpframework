@@ -1,6 +1,6 @@
 <?php
 
-namespace Urisoft\Framework\Http;
+namespace WPframework\Component\Http;
 
 class HttpFactory
 {

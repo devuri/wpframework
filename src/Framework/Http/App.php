@@ -1,10 +1,10 @@
 <?php
 
-namespace Urisoft\Framework\Http;
+namespace WPframework\Component\Http;
 
 use Exception;
 use Symfony\Component\ErrorHandler\Debug;
-use Urisoft\Framework\Setup;
+use WPframework\Component\Setup;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 

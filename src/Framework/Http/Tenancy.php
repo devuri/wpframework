@@ -1,11 +1,11 @@
 <?php
 
-namespace Urisoft\Framework\Http;
+namespace WPframework\Component\Http;
 
 use Dotenv\Dotenv;
 use Exception;
 use Symfony\Component\Filesystem\Filesystem;
-use Urisoft\Framework\EnvGenerator;
+use WPframework\Component\EnvGenerator;
 
 class Tenancy
 {

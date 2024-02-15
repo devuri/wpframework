@@ -1,15 +1,15 @@
 <?php
 
-namespace Urisoft\Framework\Http;
+namespace WPframework\Component\Http;
 
 use function defined;
 
 use Exception;
 use InvalidArgumentException;
-use Urisoft\Framework\EnvTypes;
-use Urisoft\Framework\Setup;
-use Urisoft\Framework\Traits\ConstantBuilderTrait;
-use Urisoft\Framework\Traits\ConstantTrait;
+use WPframework\Component\EnvTypes;
+use WPframework\Component\Setup;
+use WPframework\Component\Traits\ConstantBuilderTrait;
+use WPframework\Component\Traits\ConstantTrait;
 
 /**
  * Setup common elements.

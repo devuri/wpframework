@@ -1,6 +1,6 @@
 <?php
 
-namespace Urisoft\Framework\Core\Settings;
+namespace WPframework\Component\Core\Settings;
 
 /**
  * Custom Admin Page class for WordPress.

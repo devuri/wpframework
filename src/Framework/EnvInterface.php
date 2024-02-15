@@ -1,6 +1,6 @@
 <?php
 
-namespace Urisoft\Framework;
+namespace WPframework\Component;
 
 /**
  * Interface for managing different environment settings.

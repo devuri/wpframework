@@ -1,6 +1,6 @@
 <?php
 
-namespace Urisoft\Framework\Core\Plugins;
+namespace WPframework\Component\Core\Plugins;
 
 /**
  * Typically used in mu context to load plugins.

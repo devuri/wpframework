@@ -3,10 +3,10 @@
 use Defuse\Crypto\Key;
 use Urisoft\DotAccess;
 use Urisoft\Encryption;
-use Urisoft\Framework\Core\Plugin;
-use Urisoft\Framework\Http\App;
-use Urisoft\Framework\Http\Asset;
-use Urisoft\Framework\Http\Tenancy;
+use WPframework\Component\Core\Plugin;
+use WPframework\Component\Http\App;
+use WPframework\Component\Http\Asset;
+use WPframework\Component\Http\Tenancy;
 
 // @codingStandardsIgnoreFile.
 
@@ -138,9 +138,9 @@ if ( ! \function_exists( 'wpFramework' ) ) {
      * @throws Exception If there are issues loading environment variables or initializing the App.
      * @throws Exception If required multi-tenant environment variables are missing or if the tenant's domain is not recognized.
      *
-     * @return Urisoft\Framework\Http\BaseKernel The initialized application kernel.
+     * @return WPframework\Component\Http\BaseKernel The initialized application kernel.
      */
-    function wpFramework( string $app_path, string $options = 'app' ): Urisoft\Framework\Http\BaseKernel
+    function wpFramework( string $app_path, string $options = 'app' ): WPframework\Component\Http\BaseKernel
     {
         if ( ! \defined('SITE_CONFIG_DIR') ) {
             \define( 'SITE_CONFIG_DIR', 'config');

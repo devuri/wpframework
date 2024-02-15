@@ -8,9 +8,9 @@
  * for full copyright and license information.
  */
 
-namespace Urisoft\Framework\Core\Traits;
+namespace WPframework\Component\Core\Traits;
 
-use Urisoft\Framework\Core\Updates;
+use WPframework\Component\Core\Updates;
 
 trait AdminBarMenuTrait
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace Urisoft\Framework;
+namespace WPframework\Component;
 
 use Dotenv\Dotenv;
 use Exception;
 use Symfony\Component\ErrorHandler\Debug;
-use Urisoft\Framework\Traits\ConfigTrait;
-use Urisoft\Framework\Traits\ConstantBuilderTrait;
-use Urisoft\Framework\Traits\EnvironmentSwitch;
-use Urisoft\Framework\Traits\TenantTrait;
+use WPframework\Component\Traits\ConfigTrait;
+use WPframework\Component\Traits\ConstantBuilderTrait;
+use WPframework\Component\Traits\EnvironmentSwitch;
+use WPframework\Component\Traits\TenantTrait;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 

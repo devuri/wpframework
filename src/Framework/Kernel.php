@@ -1,9 +1,9 @@
 <?php
 
-namespace Urisoft\Framework;
+namespace WPframework\Component;
 
 use Exception;
-use Urisoft\Framework\Http\BaseKernel;
+use WPframework\Component\Http\BaseKernel;
 
 class Kernel extends BaseKernel
 {

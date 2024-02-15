@@ -1,6 +1,6 @@
 <?php
 
-namespace Urisoft\Framework\Traits;
+namespace WPframework\Component\Traits;
 
 /**
  * Trait EnvironmentSwitch.
