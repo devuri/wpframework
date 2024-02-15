@@ -78,16 +78,16 @@ DB_PREFIX=wp_
    ```php
    // Include Composer's autoload file to load WP-Framework and its dependencies.
    require_once __DIR__ . '/vendor/autoload.php';
-
+   
    // Initialize WP-Framework with the base directory as a parameter.
    $http_app = wpframework(__DIR__);
-
+   
    // Apply any necessary overrides provided by WP-Framework.
    $http_app->overrides();
-
+   
    // Initialize WP-Framework to hook into WordPress with its configurations and tools.
    $http_app->init();
-
+   
    // Set the table prefix using an environment variable, or default to 'wp_' if not set.
    $table_prefix = env('DB_PREFIX', 'wp_');
    ```

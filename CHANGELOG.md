@@ -1,5 +1,21 @@
 # Changelog
 
+## [4.0.0](https://github.com/devuri/wp-framework/compare/v3.3.0...v4.0.0) (2024-02-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* rebrand moved `wp-env-config` is now `wp-framework` and `wp-env-app` is now `wptenancy`
+
+### Features
+
+* rebrand moved `wp-env-config` is now `wp-framework` and `wp-env-app` is now `wptenancy` ([7363ada](https://github.com/devuri/wp-framework/commit/7363ada192f176ccf91b81f97779ee83f5315d67))
+
+
+### Miscellaneous Chores
+
+* build ([b350065](https://github.com/devuri/wp-framework/commit/b350065a3997be3c134a6692a7c507d240daafae))
+
 ## [3.3.0](https://github.com/devuri/wp-env-config/compare/v3.2.0...v3.3.0) (2024-02-14)
 
 
