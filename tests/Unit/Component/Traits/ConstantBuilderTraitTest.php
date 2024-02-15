@@ -9,6 +9,7 @@ use WPframework\Component\Traits\ConstantBuilderTrait;
 /**
  * @internal
  *
+ * @coversNothing
  */
 class ConstantBuilderTraitTest extends TestCase
 {

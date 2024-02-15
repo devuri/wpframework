@@ -55,16 +55,16 @@ class ScheduledEvent
     /**
      * Adds an action hook to schedule the event on WordPress initialization.
      */
-    public function add_app_event(): void
+    public function add_wpframework_event(): void
     {
-        add_action( 'init', [ $this, 'schedule_app_event' ] );
+        add_action( 'init', [ $this, 'schedule_wpframework_event' ] );
     }
 
     /**
      * Schedules the custom event if it's not already scheduled.
      * Adds an action hook for the event callback.
      */
-    public function schedule_app_event(): void
+    public function schedule_wpframework_event(): void
     {
         if ( ! wp_next_scheduled( $this->event_name ) ) {
             wp_schedule_event( time(), $this->recurrence, $this->event_name );

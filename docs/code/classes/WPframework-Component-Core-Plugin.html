@@ -109,7 +109,7 @@
     
             <span class="phpdocumentor-element__extends">
             Uses
-                            <a href="classes/WPframework-Component-Core-Traits-ActivateElementorTrait.html"><abbr title="\WPframework\Component\Core\Traits\ActivateElementorTrait">ActivateElementorTrait</abbr></a>,                             <a href="classes/WPframework-Component-Core-Traits-AdminBarMenuTrait.html"><abbr title="\WPframework\Component\Core\Traits\AdminBarMenuTrait">AdminBarMenuTrait</abbr></a>                    </span>
+                            <a href="classes/WPframework-Component-Core-Traits-AdminBarMenuTrait.html"><abbr title="\WPframework\Component\Core\Traits\AdminBarMenuTrait">AdminBarMenuTrait</abbr></a>                    </span>
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
@@ -192,6 +192,13 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/WPframework-Component-Core-Plugin.html#method_framework_footer_label">framework_footer_label()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Custom admin footer text.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Core-Plugin.html#method_init">init()</a>
     <span>
                                 &nbsp;: self    </span>
@@ -208,26 +215,19 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Core-Plugin.html#method_set_upload_directory">set_upload_directory()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
+<dd>Sets the upload directory to a tenant-specific location.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/WPframework-Component-Core-Plugin.html#method_add_core_app_events">add_core_app_events()</a>
+    <a href="classes/WPframework-Component-Core-Plugin.html#method_add_wpframework_events">add_wpframework_events()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>Schedules custom WP Framework events.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/WPframework-Component-Core-Traits-ActivateElementorTrait.html#method_auto_activate_elementor">auto_activate_elementor()</a>
-    <span>
-                                &nbsp;: bool|null    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/WPframework-Component-Core-Plugin.html#method_define_basic_app_init">define_basic_app_init()</a>
+    <a href="classes/WPframework-Component-Core-Plugin.html#method_define_wpframework_init">define_wpframework_init()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
@@ -238,7 +238,7 @@
     <span>
                                 &nbsp;: null|string    </span>
 </dt>
-<dd>Extracts the domain from a URL.</dd>
+<dd>Extracts the domain from a URL using an optional list of public suffixes.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/WPframework-Component-Core-Plugin.html#method_security_headers">security_headers()</a>
@@ -266,7 +266,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">21</span>
 
     </aside>
 
@@ -310,7 +310,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">26</span>
 
     </aside>
 
@@ -344,7 +344,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
@@ -378,7 +378,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 
     </aside>
 
@@ -412,7 +412,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
@@ -446,7 +446,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
@@ -484,7 +484,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
@@ -552,6 +552,41 @@
         class="phpdocumentor-element
             -method
             -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_framework_footer_label">
+        framework_footer_label()
+        <a href="classes/WPframework-Component-Core-Plugin.html#method_framework_footer_label" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">222</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Custom admin footer text.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">framework_footer_label</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>The formatted footer text with dynamic content.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
                                     -static                    "
 >
     <h4 class="phpdocumentor-element__name" id="method_init">
@@ -561,7 +596,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">174</span>
+    <span class="phpdocumentor-element-found-in__line">163</span>
 
     </aside>
 
@@ -594,7 +629,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">204</span>
+    <span class="phpdocumentor-element-found-in__line">208</span>
 
     </aside>
 
@@ -676,21 +711,26 @@ allows them to install plugins by modifying the <code class="prettyprint">$allca
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Sets the upload directory to a tenant-specific location.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">set_upload_directory</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$dir</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">set_upload_directory</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$dir</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>This function modifies the default WordPress upload directory paths
+to store tenant-specific uploads in a separate folder based on the tenant ID.
+It ensures that each tenant's uploads are organized and stored in an isolated directory.</p>
+</section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$dir</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>The array containing the current upload directory's path and URL.</p>
+</section>
 
             </dd>
             </dl>
@@ -698,9 +738,11 @@ allows them to install plugins by modifying the <code class="prettyprint">$allca
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>The modified array with the new upload directory's path and URL for the tenant.</p>
+</section>
+
     
 </article>
                     <article
@@ -709,23 +751,26 @@ allows them to install plugins by modifying the <code class="prettyprint">$allca
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_add_core_app_events">
-        add_core_app_events()
-        <a href="classes/WPframework-Component-Core-Plugin.html#method_add_core_app_events" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_add_wpframework_events">
+        add_wpframework_events()
+        <a href="classes/WPframework-Component-Core-Plugin.html#method_add_wpframework_events" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">213</span>
+    <span class="phpdocumentor-element-found-in__line">239</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Schedules custom WP Framework events.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">add_core_app_events</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">add_wpframework_events</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>Initializes a new ScheduledEvent instance for the WP Framework app event,
+setting it to trigger on an hourly basis. The event triggers a custom action 'wpframework_events'.</p>
+</section>
 
     
     
@@ -742,54 +787,21 @@ allows them to install plugins by modifying the <code class="prettyprint">$allca
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_auto_activate_elementor">
-        auto_activate_elementor()
-        <a href="classes/WPframework-Component-Core-Traits-ActivateElementorTrait.html#method_auto_activate_elementor" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Traits/ActivateElementorTrait.php"><a href="files/src-component-core-traits-activateelementortrait.html"><abbr title="src/Component/Core/Traits/ActivateElementorTrait.php">ActivateElementorTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">18</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">auto_activate_elementor</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|null</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">bool|null</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_define_basic_app_init">
-        define_basic_app_init()
-        <a href="classes/WPframework-Component-Core-Plugin.html#method_define_basic_app_init" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_define_wpframework_init">
+        define_wpframework_init()
+        <a href="classes/WPframework-Component-Core-Plugin.html#method_define_wpframework_init" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">272</span>
+    <span class="phpdocumentor-element-found-in__line">333</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">define_basic_app_init</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">define_wpframework_init</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -815,17 +827,23 @@ allows them to install plugins by modifying the <code class="prettyprint">$allca
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">255</span>
+    <span class="phpdocumentor-element-found-in__line">289</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Extracts the domain from a URL.</p>
+        <p class="phpdocumentor-summary">Extracts the domain from a URL using an optional list of public suffixes.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">extract_domain</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$url</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">null|string</span></code>
+                    <span class="phpdocumentor-signature__name">extract_domain</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$url</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$suffixList</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">null|string</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>If a suffix list is provided, the function attempts to match the longest possible suffix in the domain,
+which helps in accurately determining the registrable part of the domain. If the suffix list is empty,
+the function defaults to extracting the last two parts of the hostname, which may not be accurate for
+domains with multiple subdomains or certain country-code top-level domains (ccTLDs).</p>
+<p>The function now accepts a second parameter $suffixList, which is an array of domain suffixes (e.g., ['co.uk', 'com', 'org']).</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -834,6 +852,15 @@ allows them to install plugins by modifying the <code class="prettyprint">$allca
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"><p>The URL to extract the domain from.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$suffixList</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>An optional array of public suffixes to improve domain extraction accuracy.</p>
 </section>
 
             </dd>
@@ -862,7 +889,7 @@ allows them to install plugins by modifying the <code class="prettyprint">$allca
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">230</span>
+    <span class="phpdocumentor-element-found-in__line">252</span>
 
     </aside>
 

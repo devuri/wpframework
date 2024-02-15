@@ -5,12 +5,12 @@ namespace WPframework\Component;
 use Dotenv\Dotenv;
 use Exception;
 use Symfony\Component\ErrorHandler\Debug;
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Run;
 use WPframework\Component\Traits\ConfigTrait;
 use WPframework\Component\Traits\ConstantBuilderTrait;
 use WPframework\Component\Traits\EnvironmentSwitch;
 use WPframework\Component\Traits\TenantTrait;
-use Whoops\Handler\PrettyPageHandler;
-use Whoops\Run;
 
 /**
  * Setup WP Config.

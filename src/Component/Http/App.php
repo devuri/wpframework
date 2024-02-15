@@ -4,15 +4,15 @@ namespace WPframework\Component\Http;
 
 use Exception;
 use Symfony\Component\ErrorHandler\Debug;
-use WPframework\Component\Setup;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
+use WPframework\Component\Setup;
 
 class App
 {
-    protected $app_path = null;
-    protected $setup    = null;
-    protected $config   = null;
+    protected $app_path;
+    protected $setup;
+    protected $config;
     protected $config_dir;
 
     /**
@@ -32,7 +32,7 @@ class App
         /*
          * We need setup to get access to our env values.
          *
-         * @var Setup
+         * @var Set	    // Define the custom directory path using the tenant ID.up
          */
         $this->setup = self::define_setup( $this->app_path );
 

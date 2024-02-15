@@ -58,7 +58,7 @@ trait AdminBarMenuTrait
                 'href'   => '#',
                 'meta'   => [
                     'title' => __( 'Updates Available' ),
-                    'class' => 'wpc-warning',
+                    'class' => 'wpfw-warning',
                 ],
             ]
         );
@@ -67,11 +67,11 @@ trait AdminBarMenuTrait
         $admin_bar->add_menu(
             [
                 'parent' => $this->env_menu_id,
-                'id'     => 'wptenancy-app',
+                'id'     => 'wpframework-app',
                 'title'  => __( 'Integrated Version Control (vcs build)' ),
                 'href'   => '#',
                 'meta'   => [
-                    'title' => __( 'Built with WPTenancy (wptenancy.com)' ),
+                    'title' => __( 'Built with WPframework (wpframework.com)' ),
                     'class' => 'wpc-warning',
                 ],
             ]

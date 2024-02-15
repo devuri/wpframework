@@ -121,7 +121,7 @@ if ( ! \function_exists( 'getHttpEnv' ) ) {
     }
 }
 
-if ( ! \function_exists( 'wpFramework' ) ) {
+if ( ! \function_exists( 'wpframework' ) ) {
     /**
      * Initializes the App Kernel with optional multi-tenant support.
      *
@@ -140,7 +140,7 @@ if ( ! \function_exists( 'wpFramework' ) ) {
      *
      * @return WPframework\Component\Http\BaseKernel The initialized application kernel.
      */
-    function wpFramework( string $app_path, string $options = 'app' ): WPframework\Component\Http\BaseKernel
+    function wpframework( string $app_path, string $options = 'app' ): WPframework\Component\Http\BaseKernel
     {
         if ( ! \defined('SITE_CONFIG_DIR') ) {
             \define( 'SITE_CONFIG_DIR', 'config');

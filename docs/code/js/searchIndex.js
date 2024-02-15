@@ -51,10 +51,10 @@ Search.appendIndex(
             "summary": "Get\u0020the\u0020current\u0020set\u0020wp\u0020app\u0020env.",
             "url": "namespaces/default.html#function_getHttpEnv"
         },                {
-            "fqsen": "\\wpFramework\u0028\u0029",
-            "name": "wpFramework",
+            "fqsen": "\\wpframework\u0028\u0029",
+            "name": "wpframework",
             "summary": "Initializes\u0020the\u0020App\u0020Kernel\u0020with\u0020optional\u0020multi\u002Dtenant\u0020support.",
-            "url": "namespaces/default.html#function_wpFramework"
+            "url": "namespaces/default.html#function_wpframework"
         },                {
             "fqsen": "\\wpframeworkCore\u0028\u0029",
             "name": "wpframeworkCore",
@@ -231,191 +231,6 @@ Search.appendIndex(
             "summary": "The\u0020URL\u0020of\u0020the\u0020user\u0027s\u0020admin\u0020area\u0020\u0028dashboard\u0029.",
             "url": "classes/WPframework-Component-Core-AutoLogin.html#property_user_admin_url"
         },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor",
-            "name": "Elementor",
-            "summary": "Easier\u0020setup\u0020for\u0020Elementor\u0020Pro\u0020activation.",
-            "url": "classes/WPframework-Component-Core-Elementor.html"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Initializes\u0020the\u0020Elementor\u0020pro\u0020class.",
-            "url": "classes/WPframework-Component-Core-Elementor.html#method___construct"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003Ais_activation_locked\u0028\u0029",
-            "name": "is_activation_locked",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#method_is_activation_locked"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003Aactivate\u0028\u0029",
-            "name": "activate",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#method_activate"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003Aget_status\u0028\u0029",
-            "name": "get_status",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#method_get_status"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003Adeactivate\u0028\u0029",
-            "name": "deactivate",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#method_deactivate"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003Aset_transient\u0028\u0029",
-            "name": "set_transient",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#method_set_transient"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003Apost_request\u0028\u0029",
-            "name": "post_request",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#method_post_request"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003Alicense_data\u0028\u0029",
-            "name": "license_data",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#method_license_data"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003APRODUCT_NAME",
-            "name": "PRODUCT_NAME",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_PRODUCT_NAME"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003ASTORE_URL",
-            "name": "STORE_URL",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_STORE_URL"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003ARENEW_URL",
-            "name": "RENEW_URL",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_RENEW_URL"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003ASTATUS_VALID",
-            "name": "STATUS_VALID",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_STATUS_VALID"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003ASTATUS_INVALID",
-            "name": "STATUS_INVALID",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_STATUS_INVALID"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003ASTATUS_EXPIRED",
-            "name": "STATUS_EXPIRED",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_STATUS_EXPIRED"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003ASTATUS_INACTIVE",
-            "name": "STATUS_INACTIVE",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_STATUS_INACTIVE"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003ASTATUS_DISABLED",
-            "name": "STATUS_DISABLED",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_STATUS_DISABLED"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003AREQUEST_LOCK_TTL",
-            "name": "REQUEST_LOCK_TTL",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_REQUEST_LOCK_TTL"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003AREQUEST_LOCK_OPTION",
-            "name": "REQUEST_LOCK_OPTION",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_REQUEST_LOCK_OPTION"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003AACTIVATION_LOCK_ID",
-            "name": "ACTIVATION_LOCK_ID",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_ACTIVATION_LOCK_ID"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003ALICENSE_KEY_OPTION",
-            "name": "LICENSE_KEY_OPTION",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_LICENSE_KEY_OPTION"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003ALICENSE_DATA_OPTION",
-            "name": "LICENSE_DATA_OPTION",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_LICENSE_DATA_OPTION"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003ALICENSE_DATA_FALLBACK_OPTION",
-            "name": "LICENSE_DATA_FALLBACK_OPTION",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#constant_LICENSE_DATA_FALLBACK_OPTION"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003A\u0024api_version",
-            "name": "api_version",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#property_api_version"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Elementor\u003A\u003A\u0024license_key",
-            "name": "license_key",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Elementor.html#property_license_key"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Label",
-            "name": "Label",
-            "summary": "white\u0020label\u0020class.",
-            "url": "classes/WPframework-Component-Core-Label.html"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Label\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Label.html#method___construct"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Label\u003A\u003Aremove_dashboard_widgets\u0028\u0029",
-            "name": "remove_dashboard_widgets",
-            "summary": "Remove\u0020the\u0020Widgets\u0020\u0028\u0020do\u0020a\u0020check\u0020if\u0020the\u0020user\u0020can\u0020manage_options\u0020\u0029\nwe\u0020should\u0020add\u0020an\u0020option\u0020for\u0020this\u0020to\u0020allow\u0020admins\u0020to\u0020choose\u0020who\u0020can\u0020view\u0020the\u0020lowest\u0020level\u0020etc.",
-            "url": "classes/WPframework-Component-Core-Label.html#method_remove_dashboard_widgets"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Label\u003A\u003Alogout_link\u0028\u0029",
-            "name": "logout_link",
-            "summary": "logout_link.",
-            "url": "classes/WPframework-Component-Core-Label.html#method_logout_link"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Label\u003A\u003Aremove_admin_wp_logo\u0028\u0029",
-            "name": "remove_admin_wp_logo",
-            "summary": "remove_wp_logo.",
-            "url": "classes/WPframework-Component-Core-Label.html#method_remove_admin_wp_logo"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Label\u003A\u003Achange_footer_text\u0028\u0029",
-            "name": "change_footer_text",
-            "summary": "change_footer_text.",
-            "url": "classes/WPframework-Component-Core-Label.html#method_change_footer_text"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Label\u003A\u003A\u0024apt9_url",
-            "name": "apt9_url",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Label.html#property_apt9_url"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Label\u003A\u003A\u0024home_url",
-            "name": "home_url",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Label.html#property_home_url"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Label\u003A\u003A\u0024date_year",
-            "name": "date_year",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Label.html#property_date_year"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Label\u003A\u003A\u0024site_name",
-            "name": "site_name",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Label.html#property_site_name"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Label\u003A\u003A\u0024powered_by",
-            "name": "powered_by",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Label.html#property_powered_by"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Label\u003A\u003A\u0024tenant_id",
-            "name": "tenant_id",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Label.html#property_tenant_id"
-        },                {
             "fqsen": "\\WPframework\\Component\\Core\\Plugin",
             "name": "Plugin",
             "summary": "",
@@ -433,7 +248,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Aset_upload_directory\u0028\u0029",
             "name": "set_upload_directory",
-            "summary": "",
+            "summary": "Sets\u0020the\u0020upload\u0020directory\u0020to\u0020a\u0020tenant\u002Dspecific\u0020location.",
             "url": "classes/WPframework-Component-Core-Plugin.html#method_set_upload_directory"
         },                {
             "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Amanage_tenant_install_plugins\u0028\u0029",
@@ -441,10 +256,15 @@ Search.appendIndex(
             "summary": "Modifies\u0020user\u0020capabilities\u0020to\u0020allow\u0020users\u0020with\u0020\u0027manage_tenant\u0027\u0020capability\u0020to\u0020install\u0020plugins.",
             "url": "classes/WPframework-Component-Core-Plugin.html#method_manage_tenant_install_plugins"
         },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Aadd_core_app_events\u0028\u0029",
-            "name": "add_core_app_events",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Plugin.html#method_add_core_app_events"
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Aframework_footer_label\u0028\u0029",
+            "name": "framework_footer_label",
+            "summary": "Custom\u0020admin\u0020footer\u0020text.",
+            "url": "classes/WPframework-Component-Core-Plugin.html#method_framework_footer_label"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Aadd_wpframework_events\u0028\u0029",
+            "name": "add_wpframework_events",
+            "summary": "Schedules\u0020custom\u0020WP\u0020Framework\u0020events.",
+            "url": "classes/WPframework-Component-Core-Plugin.html#method_add_wpframework_events"
         },                {
             "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Asecurity_headers\u0028\u0029",
             "name": "security_headers",
@@ -453,13 +273,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Aextract_domain\u0028\u0029",
             "name": "extract_domain",
-            "summary": "Extracts\u0020the\u0020domain\u0020from\u0020a\u0020URL.",
+            "summary": "Extracts\u0020the\u0020domain\u0020from\u0020a\u0020URL\u0020using\u0020an\u0020optional\u0020list\u0020of\u0020public\u0020suffixes.",
             "url": "classes/WPframework-Component-Core-Plugin.html#method_extract_domain"
         },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Adefine_basic_app_init\u0028\u0029",
-            "name": "define_basic_app_init",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Adefine_wpframework_init\u0028\u0029",
+            "name": "define_wpframework_init",
             "summary": "",
-            "url": "classes/WPframework-Component-Core-Plugin.html#method_define_basic_app_init"
+            "url": "classes/WPframework-Component-Core-Plugin.html#method_define_wpframework_init"
         },                {
             "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003AADMIN_BAR_MENU_ID",
             "name": "ADMIN_BAR_MENU_ID",
@@ -556,15 +376,15 @@ Search.appendIndex(
             "summary": "Constructor\u0020for\u0020the\u0020ScheduledEvent\u0020class.",
             "url": "classes/WPframework-Component-Core-ScheduledEvent.html#method___construct"
         },                {
-            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003Aadd_app_event\u0028\u0029",
-            "name": "add_app_event",
+            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003Aadd_wpframework_event\u0028\u0029",
+            "name": "add_wpframework_event",
             "summary": "Adds\u0020an\u0020action\u0020hook\u0020to\u0020schedule\u0020the\u0020event\u0020on\u0020WordPress\u0020initialization.",
-            "url": "classes/WPframework-Component-Core-ScheduledEvent.html#method_add_app_event"
+            "url": "classes/WPframework-Component-Core-ScheduledEvent.html#method_add_wpframework_event"
         },                {
-            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003Aschedule_app_event\u0028\u0029",
-            "name": "schedule_app_event",
+            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003Aschedule_wpframework_event\u0028\u0029",
+            "name": "schedule_wpframework_event",
             "summary": "Schedules\u0020the\u0020custom\u0020event\u0020if\u0020it\u0027s\u0020not\u0020already\u0020scheduled.",
-            "url": "classes/WPframework-Component-Core-ScheduledEvent.html#method_schedule_app_event"
+            "url": "classes/WPframework-Component-Core-ScheduledEvent.html#method_schedule_wpframework_event"
         },                {
             "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003Aevent_callback\u0028\u0029",
             "name": "event_callback",
@@ -620,16 +440,6 @@ Search.appendIndex(
             "name": "is_submenu",
             "summary": "",
             "url": "classes/WPframework-Component-Core-Settings-AdminSettingsPage.html#property_is_submenu"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Traits\\ActivateElementorTrait",
-            "name": "ActivateElementorTrait",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Traits-ActivateElementorTrait.html"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Core\\Traits\\ActivateElementorTrait\u003A\u003Aauto_activate_elementor\u0028\u0029",
-            "name": "auto_activate_elementor",
-            "summary": "",
-            "url": "classes/WPframework-Component-Core-Traits-ActivateElementorTrait.html#method_auto_activate_elementor"
         },                {
             "fqsen": "\\WPframework\\Component\\Core\\Traits\\AdminBarMenuTrait",
             "name": "AdminBarMenuTrait",

@@ -10,14 +10,13 @@
 
 namespace WPframework\Component\Core;
 
+use WP_User;
 use WPframework\Component\Core\Settings\AdminSettingsPage;
 use WPframework\Component\Core\Traits\ActivateElementorTrait;
 use WPframework\Component\Core\Traits\AdminBarMenuTrait;
-use WP_User;
 
 class Plugin
 {
-    use ActivateElementorTrait;
     use AdminBarMenuTrait;
     public const ADMIN_BAR_MENU_ID = 'wp-app-environment';
 
@@ -30,7 +29,7 @@ class Plugin
     public function __construct()
     {
         // define basic app settings
-        $this->define_basic_app_init();
+        $this->define_wpframework_init();
 
         /*
          * The tenant ID for the application.
@@ -43,12 +42,10 @@ class Plugin
          */
         $this->tenant_id = envTenantId();
 
-        add_action(
-            'send_headers',
-            function(): void {
-                $this->security_headers();
-            }
-        );
+        // Adds security headers if the SET_SECURITY_HEADERS constant is set and true.
+        if ( \defined( 'SET_SECURITY_HEADERS' ) && SET_SECURITY_HEADERS === true ) {
+            add_action( 'send_headers', [ $this, 'security_headers' ] );
+        }
 
         // Disable User Notification of Password Change Confirmation
         apply_filters(
@@ -118,14 +115,6 @@ class Plugin
             register_theme_directory( APP_THEME_DIR );
         }
 
-        // Disable login screen language switcher.
-        add_filter(
-            'login_display_language_dropdown',
-            function() {
-                return false;
-            }
-        );
-
         /*
          * Prevent Admin users from deactivating plugins.
          *
@@ -154,7 +143,7 @@ class Plugin
             4
         );
 
-        $this->add_core_app_events();
+        $this->add_wpframework_events();
 
         // Add some special admin pages.
         new AdminSettingsPage(
@@ -176,13 +165,28 @@ class Plugin
         return new self();
     }
 
+    /**
+     * Sets the upload directory to a tenant-specific location.
+     *
+     * This function modifies the default WordPress upload directory paths
+     * to store tenant-specific uploads in a separate folder based on the tenant ID.
+     * It ensures that each tenant's uploads are organized and stored in an isolated directory.
+     *
+     * @param array $dir The array containing the current upload directory's path and URL.
+     *
+     * @return array The modified array with the new upload directory's path and URL for the tenant.
+     */
     public function set_upload_directory( $dir )
     {
-        $custom_dir     = '/tenant/' . $this->tenant_id . '/uploads';
+        $custom_dir = '/tenant/' . $this->tenant_id . '/uploads';
+
+        // Set the base directory and URL for the uploads.
         $dir['basedir'] = WP_CONTENT_DIR . $custom_dir;
         $dir['baseurl'] = content_url() . $custom_dir;
-        $dir['path']    = $dir['basedir'] . $dir['subdir'];
-        $dir['url']     = $dir['baseurl'] . $dir['subdir'];
+
+        // Append the subdirectory to the base path and URL, if any.
+        $dir['path'] = $dir['basedir'] . $dir['subdir'];
+        $dir['url']  = $dir['baseurl'] . $dir['subdir'];
 
         return $dir;
     }
@@ -210,66 +214,123 @@ class Plugin
         return $allcaps;
     }
 
-    protected function add_core_app_events(): void
+    /**
+     * Custom admin footer text.
+     *
+     * @return string The formatted footer text with dynamic content.
+     */
+    public function framework_footer_label(): string
+    {
+        $home_url   = esc_url( home_url() );
+        $date_year  = gmdate( 'Y' );
+        $site_name  = esc_html( get_bloginfo( 'name' ) );
+        $tenant_id  = esc_html( envTenantId() );
+        $powered_by = esc_html( apply_filters( 'wpframework_powered_by', __( 'Powered by WPframework.', 'wp-framework' ) ) );
+
+        return wp_kses_post( "&copy; $date_year <a href=\"$home_url\" target=\"_blank\">$site_name</a> " . __( 'All Rights Reserved.', 'wp-framework' ) . " $powered_by $tenant_id" );
+    }
+
+    /**
+     * Schedules custom WP Framework events.
+     *
+     * Initializes a new ScheduledEvent instance for the WP Framework app event,
+     * setting it to trigger on an hourly basis. The event triggers a custom action 'wpframework_events'.
+     */
+    protected function add_wpframework_events(): void
     {
         $app_events = new ScheduledEvent(
-            'core_app_events',
+            'wpframework_app_event',
             function(): void {
-                $this->auto_activate_elementor();
-
-                do_action( 'env_app_events' );
-
-                // error_log('Custom App event executed at ' . current_time('mysql'));
+                do_action( 'wpframework_events' );
             },
             'hourly'
         );
 
-        $app_events->add_app_event();
+        $app_events->add_wpframework_event();
     }
 
     protected function security_headers(): void
     {
-        if ( ! \defined( 'SET_SECURITY_HEADERS' ) ) {
-            return;
-        }
-
         $home_domain = $this->extract_domain( WP_HOME );
 
-        header( 'Access-Control-Allow-Origin: www.google-analytics.com' );
-        header( 'Strict-Transport-Security: max-age=31536000' );
-        header( 'Content-Security-Policy: script-src \'self\' *.' . $home_domain . ' www.google-analytics.com *.google-analytics.com *.googlesyndication.com *.google.com *.google.com *.quantcount.com *.facebook.net *.gubagoo.io .hotjar.com *.inspectlet.com *.pingdom.net *.twitter.com *.quantserve.com *.googletagservices.com *.googleapis.com *.gubagoo.io \'unsafe-inline\';' );
+        header( 'Access-Control-Allow-Origin: https://www.google-analytics.com' );
+        header( 'Strict-Transport-Security: max-age=31536000; includeSubDomains; preload' );
         header( 'X-Frame-Options: SAMEORIGIN' );
         header( 'X-Content-Type-Options: nosniff' );
-        header( 'Content-Security-Policy: frame-ancestors \'self\' https://' . $home_domain );
-        header( 'X-XSS-Protection: 1; mode=block;' );
+        header( 'X-XSS-Protection: 1; mode=block' );
         header( 'Referrer-Policy: same-origin' );
+
+        // Consolidated Content-Security-Policy
+        $csp = "script-src 'self' *.$home_domain https://www.google-analytics.com https://*.google-analytics.com https://*.googlesyndication.com https://*.google.com https://*.quantcount.com https://*.facebook.net https://*.gubagoo.io https://*.hotjar.com https://*.inspectlet.com https://*.pingdom.net https://*.twitter.com https://*.quantserve.com https://*.googletagservices.com https://*.googleapis.com; " .
+               "frame-ancestors 'self' https://$home_domain; " .
+               "default-src 'self'; " .
+        // Consider adding a default-src directive for a fallback
+               "object-src 'none';";
+        // Disallow plugins (Flash, Silverlight, etc.)
+
+        header( "Content-Security-Policy: $csp" );
     }
 
     /**
-     * Extracts the domain from a URL.
+     * Extracts the domain from a URL using an optional list of public suffixes.
      *
-     * @param string $url The URL to extract the domain from.
+     * If a suffix list is provided, the function attempts to match the longest possible suffix in the domain,
+     * which helps in accurately determining the registrable part of the domain. If the suffix list is empty,
+     * the function defaults to extracting the last two parts of the hostname, which may not be accurate for
+     * domains with multiple subdomains or certain country-code top-level domains (ccTLDs).
+     *
+     * The function now accepts a second parameter $suffixList, which is an array of domain suffixes (e.g., ['co.uk', 'com', 'org']).
+     *
+     * @param string $url        The URL to extract the domain from.
+     * @param array  $suffixList An optional array of public suffixes to improve domain extraction accuracy.
      *
      * @return null|string The extracted domain or null if extraction fails.
      */
-    protected function extract_domain( string $url ): ?string
+    protected function extract_domain( string $url, array $suffixList = [] ): ?string
     {
-        $parsed_url = wp_parse_url( $url );
+        $parsedUrl = wp_parse_url( $url );
 
-        if ( isset( $parsed_url['host'] ) ) {
-            $host_parts = explode( '.', $parsed_url['host'] );
-            $num_parts  = \count( $host_parts );
+        if ( ! isset( $parsedUrl['host'] ) ) {
+            return null;
+        }
 
-            // Check if the host has at least two parts (e.g., 'example.com').
-            if ( $num_parts >= 2 ) {
-                return $host_parts[ $num_parts - 2 ] . '.' . $host_parts[ $num_parts - 1 ];
-            }
+        // Reverse the host parts for easier comparison to the suffix list.
+        $hostParts = array_reverse( explode( '.', $parsedUrl['host'] ) );
+
+        if ( ! empty( $suffixList ) ) {
+            foreach ( $suffixList as $suffix ) {
+                $suffixParts = array_reverse( explode( '.', $suffix ) );
+                $match       = true;
+
+                foreach ( $suffixParts as $index => $part ) {
+                    if ( ! isset( $hostParts[ $index ] ) || $hostParts[ $index ] !== $part ) {
+                        $match = false;
+
+                        break;
+                    }
+                }
+
+                if ( $match ) {
+                    // Add one to the suffix parts count for the domain part.
+                    $domainPartsCount = \count( $suffixParts ) + 1;
+                    if ( isset( $hostParts[ $domainPartsCount ] ) ) {
+                        // Reconstruct the domain from the matched parts.
+                        return implode( '.', array_reverse( \array_slice( $hostParts, 0, $domainPartsCount ) ) );
+                    }
+                }
+            }//end foreach
+        }// end if
+
+        // Fallback to the simpler method if no match is found in the suffix list or if the list is empty.
+        $numParts = \count( $hostParts );
+        if ( $numParts >= 2 ) {
+            return implode( '.', array_reverse( \array_slice( $hostParts, 0, 2 ) ) );
         }
 
         return null;
     }
 
-    protected function define_basic_app_init(): void
+    protected function define_wpframework_init(): void
     {
         if ( \defined( 'WP_SUDO_ADMIN' ) && WP_SUDO_ADMIN ) {
             $this->wp_sudo_admin = (int) WP_SUDO_ADMIN;
@@ -300,5 +361,13 @@ class Plugin
         if ( env( 'DISABLE_WP_APPLICATION_PASSWORDS' ) ) {
             add_filter( 'wp_is_application_passwords_available', '__return_false' );
         }
+
+        /*
+         * Adds a custom label to the WordPress admin footer.
+         *
+         * Utilizes the 'admin_footer_text' filter to append a custom label, including the site name,
+         * current year, and a custom message, to the admin footer area.
+         */
+        add_filter( 'admin_footer_text', [ $this, 'framework_footer_label' ] );
     }
 }
