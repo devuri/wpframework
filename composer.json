@@ -65,7 +65,7 @@
             "src/inc/helpers.php"
         ],
         "psr-4": {
-            "Urisoft\\": "src/"
+            "WPframework\\": "src/"
         }
     },
     "autoload-dev": {

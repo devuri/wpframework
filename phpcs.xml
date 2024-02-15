@@ -20,10 +20,10 @@
 	</rule>
 
 	<rule ref="WordPress.Security.ValidatedSanitizedInput.MissingUnslash">
-	    <exclude-pattern>src/Framework/Http/HostManager.php</exclude-pattern>
+	    <exclude-pattern>src/Component/Http/HostManager.php</exclude-pattern>
 	</rule>
 	<rule ref="WordPress.Security.ValidatedSanitizedInput.InputNotSanitized">
-	    <exclude-pattern>src/Framework/Http/HostManager.php</exclude-pattern>
+	    <exclude-pattern>src/Component/Http/HostManager.php</exclude-pattern>
 	</rule>
 
 	<!-- Ignore mixed line-endings warnings -->

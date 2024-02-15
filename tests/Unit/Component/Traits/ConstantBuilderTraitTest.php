@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Framework\Traits;
+namespace Tests\Unit\Component\Traits;
 
 use PHPUnit\Framework\TestCase;
 use WPframework\Component\Exceptions\ConstantAlreadyDefinedException;
@@ -9,7 +9,6 @@ use WPframework\Component\Traits\ConstantBuilderTrait;
 /**
  * @internal
  *
- * @coversNothing
  */
 class ConstantBuilderTraitTest extends TestCase
 {

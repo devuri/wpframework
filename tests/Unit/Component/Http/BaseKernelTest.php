@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Framework\Http;
+namespace Tests\Unit\Component\Http;
 
 use Tests\BaseTest;
 use WPframework\Component\Http\BaseKernel;
