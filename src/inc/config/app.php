@@ -196,8 +196,8 @@ return [
      * - asset($asset): Returns the full URL of the asset. The $asset parameter is the path to the asset, e.g., "/images/thing.png".
      *   Example: asset("/images/thing.png") returns "https://example.com/assets/dist/images/thing.png".
      *
-     * - asset_url($path): Returns the asset URL without the filename. The $path parameter is the path to the asset.
-     *   Example: asset_url("/dist") returns "https://example.com/assets/dist/".
+     * - assetUrl($path): Returns the asset URL without the filename. The $path parameter is the path to the asset.
+     *   Example: assetUrl("/dist") returns "https://example.com/assets/dist/".
      */
     'asset_dir'        => 'assets',
 

@@ -39,17 +39,9 @@ class Plugin
          * can be configured in the `.env` file. Setting `APP_TENANT_ID` to false will disable the
          * custom uploads directory behavior that is typically used in a multi-tenant setup. In a
          * multi-tenant environment, `APP_TENANT_ID` is required and must always be set. The method
-         * uses `env_tenant_id()` function to retrieve the tenant ID from the environment settings.
+         * uses `envTenantId()` function to retrieve the tenant ID from the environment settings.
          */
-        $this->tenant_id = env_tenant_id();
-
-        new WhiteLabel();
-
-        // Custom Sucuri settings.
-        new Sucuri( $this->wp_sudo_admin, $this->admin_group );
-
-        // basic auth
-        BasicAuth::init();
+        $this->tenant_id = envTenantId();
 
         add_action(
             'send_headers',
@@ -171,7 +163,7 @@ class Plugin
                 ?><div class="wrap">
 					<h2>Composer Plugins List</h2>
 					<?php
-                    dump( app_packagist_plugins_list() );
+                    dump( packagistPluginsList() );
 					?>
 				</div>
 				<?php

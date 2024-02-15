@@ -83,14 +83,14 @@ class Tenancy
             $_dotenv->required( 'LANDLORD_DB_PASSWORD' )->notEmpty();
             $_dotenv->required( 'LANDLORD_DB_PREFIX' )->notEmpty();
         } catch ( Exception $e ) {
-            wp_terminate( 'Landlord info is required for multi-tenant', 403 );
+            wpTerminate( 'Landlord info is required for multi-tenant', 403 );
         }
 
         $landlord = new DB( 'tenant', env( 'LANDLORD_DB_HOST' ), env( 'LANDLORD_DB_NAME' ), env( 'LANDLORD_DB_USER' ), env( 'LANDLORD_DB_PASSWORD' ), env( 'LANDLORD_DB_PREFIX' ) );
         $hostd    = $landlord->where( 'domain', $_app_http_host );
 
         if ( ! $hostd ) {
-            wp_terminate( 'The website is not defined. Please review the URL and try again.', 403 );
+            wpTerminate( 'The website is not defined. Please review the URL and try again.', 403 );
         } else {
             $this->tenant = $hostd[0];
             $this->define_tenant_constants();
@@ -98,7 +98,7 @@ class Tenancy
         }
 
         // Clean up sensitive environment variables
-        sclean_sensitive_env( [ 'LANDLORD_DB_HOST', 'LANDLORD_DB_NAME', 'LANDLORD_DB_USER', 'LANDLORD_DB_PASSWORD', 'LANDLORD_DB_PREFIX' ] );
+        cleanSensitiveEnv( [ 'LANDLORD_DB_HOST', 'LANDLORD_DB_NAME', 'LANDLORD_DB_USER', 'LANDLORD_DB_PASSWORD', 'LANDLORD_DB_PREFIX' ] );
 
         unset( $_dotenv );
     }

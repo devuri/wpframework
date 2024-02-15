@@ -238,9 +238,9 @@ asset( "/images/thing.png", "/static" ); // https://example.com/static/images/th
 
 ```
 
-> `asset_url()`
+> `assetUrl()`
 
-The ***asset_url()*** URL for the asset directory.
+The ***assetUrl()*** URL for the asset directory.
 
 * **Note:** The `ASSET_URL` constant is optional.
 * We can configure the asset URL by setting the `ASSET_URL` in your .env `ASSET_URL="${WP_HOME}/assets"`
@@ -249,11 +249,11 @@ The ***asset_url()*** URL for the asset directory.
 
 ```php
 
-asset_url(); // https://example.com/assets/dist/
+assetUrl(); // https://example.com/assets/dist/
 
-asset_url() . "images/thing.png" // https://example.com/assets/dist/images/thing.png
+assetUrl() . "images/thing.png" // https://example.com/assets/dist/images/thing.png
 
-asset_url( "/static" ); // https://example.com/static
+assetUrl( "/static" ); // https://example.com/static
 
 ```
 
@@ -343,7 +343,7 @@ The **Redis Object Cache:** https://wordpress.org/plugins/redis-cache/ paired wi
 - Install and setup phpredis https://github.com/phpredis/phpredis/blob/develop/INSTALL.md
 - Install and configure the plugin: Installing Redis Object Cache: https://github.com/rhubarbgroup/redis-cache/blob/develop/INSTALL.md
 
-> Its best to use phpredis we have had issues in the past while testing where the cron jobs start failing, also if you decide to go for Redis Object Cache pro, phpredis is required. 
+> Its best to use phpredis we have had issues in the past while testing where the cron jobs start failing, also if you decide to go for Redis Object Cache pro, phpredis is required.
 
 
 ### Why
@@ -354,6 +354,6 @@ This approach adheres to the **twelve-factor app methodology** for building and 
 
 ### Development and Support Status (in-Beta)
 > ⚠️ This project is currently in active development. If you're considering using it for production, please feel free to get in touch, and we'll gladly offer additional guidance and support. We also encourage and welcome any issues and pull requests related to this framework.
-> 
+>
 > We are still in the beta testing phase. While it's actively under development, we are actively seeking user feedback and making improvements.
 > You're welcome to join our Slack community, where we have ongoing and active discussions.

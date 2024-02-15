@@ -24,7 +24,7 @@ trait ConfigTrait
      *
      * @return static
      */
-    public function asset_url(): ConfigInterface
+    public function assetUrl(): ConfigInterface
     {
         $this->define( 'ASSET_URL', env( 'ASSET_URL' ) );
 

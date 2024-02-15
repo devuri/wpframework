@@ -173,7 +173,7 @@ class Setup implements ConfigInterface
                 ->set_error_handler()
                 ->database()
                 ->site_url()
-                ->asset_url()
+                ->assetUrl()
                 ->memory()
                 ->optimize()
                 ->force_ssl()
@@ -379,7 +379,7 @@ class Setup implements ConfigInterface
 
     /**
      * Initializes Dotenv with the set path and environment files.
-     * Handles exceptions by using the`wp_terminate` function to exit.
+     * Handles exceptions by using the`wpTerminate` function to exit.
      */
     protected function initialize_dotenv(): void
     {
@@ -388,7 +388,7 @@ class Setup implements ConfigInterface
         try {
             $this->dotenv->load();
         } catch ( Exception $e ) {
-            wp_terminate( $e->getMessage() );
+            wpTerminate( $e->getMessage() );
         }
     }
 
@@ -503,7 +503,7 @@ class Setup implements ConfigInterface
             $this->dotenv->required( 'LOGGED_IN_SALT' )->notEmpty();
             $this->dotenv->required( 'NONCE_SALT' )->notEmpty();
         } catch ( Exception $e ) {
-            wp_terminate( $e->getMessage() );
+            wpTerminate( $e->getMessage() );
         }// end try
     }
 

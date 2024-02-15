@@ -63,7 +63,7 @@ class BaseKernel
 
         $this->args = array_merge( $this->args, $args );
 
-        $this->tenant_id = env_tenant_id();
+        $this->tenant_id = envTenantId();
 
         /*
          * By default, Dotenv will stop looking for files as soon as it finds one.
@@ -214,15 +214,15 @@ class BaseKernel
         }
 
         if ( file_exists( PUBLIC_WEB_DIR . '/.maintenance' ) ) {
-            wp_terminate( self::get_maintenance_message(), 503 );
+            wpTerminate( self::get_maintenance_message(), 503 );
         }
 
         if ( file_exists( $this->app_setup->get_current_path() . '/.maintenance' ) ) {
-            wp_terminate( self::get_maintenance_message(), 503 );
+            wpTerminate( self::get_maintenance_message(), 503 );
         }
 
         if ( $this->wp_is_not_installed() && \in_array( env( 'WP_ENVIRONMENT_TYPE' ), [ 'secure', 'sec', 'production', 'prod' ], true ) ) {
-            wp_terminate( 'wp is not installed change enviroment to run installer' );
+            wpTerminate( 'wp is not installed change enviroment to run installer' );
         }
     }
 

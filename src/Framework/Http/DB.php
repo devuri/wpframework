@@ -38,7 +38,7 @@ class DB
 
             return $stmt->fetchAll( PDO::FETCH_OBJ );
         } catch ( PDOException $e ) {
-            wp_terminate( 'Read error: ' );
+            wpTerminate( 'Read error: ' );
         }
     }
 
@@ -54,7 +54,7 @@ class DB
 
             return $stmt->fetch( PDO::FETCH_ASSOC );
         } catch ( PDOException $e ) {
-            wp_terminate( 'record error: ' );
+            wpTerminate( 'record error: ' );
         }
     }
 
@@ -70,7 +70,7 @@ class DB
 
             return $stmt->fetchAll( PDO::FETCH_OBJ );
         } catch ( PDOException $e ) {
-            wp_terminate( 'Query error: ' );
+            wpTerminate( 'Query error: ' );
         }
     }
 
@@ -82,7 +82,7 @@ class DB
             $this->conn = new PDO( 'mysql:host=' . $this->host . ';dbname=' . $this->dbName, $this->username, $this->password );
             $this->conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
         } catch ( PDOException $e ) {
-            wp_terminate( 'Connection error: ' );
+            wpTerminate( 'Connection error: ' );
         }
 
         return $this->conn;

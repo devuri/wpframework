@@ -67,11 +67,11 @@ trait AdminBarMenuTrait
         $admin_bar->add_menu(
             [
                 'parent' => $this->env_menu_id,
-                'id'     => 'wp-app-ivc',
+                'id'     => 'wptenancy-app',
                 'title'  => __( 'Integrated Version Control (vcs build)' ),
                 'href'   => '#',
                 'meta'   => [
-                    'title' => __( 'Built with Integrated Version Control and Deployment Pipeline (wpenv.io)' ),
+                    'title' => __( 'Built with WPTenancy (wptenancy.com)' ),
                     'class' => 'wpc-warning',
                 ],
             ]

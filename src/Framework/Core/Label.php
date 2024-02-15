@@ -13,7 +13,7 @@ namespace Urisoft\Framework\Core;
 /**
  * white label class.
  */
-class WhiteLabel
+class Label
 {
     protected $apt9_url;
     protected $home_url;
@@ -28,7 +28,7 @@ class WhiteLabel
         $this->home_url   = home_url();
         $this->date_year  = gmdate( 'Y' );
         $this->site_name  = get_bloginfo( 'name' );
-        $this->tenant_id  = env_tenant_id();
+        $this->tenant_id  = envTenantId();
         $this->powered_by = apply_filters( 'wpenv_powered_by', 'Powered by WPTenancy.' );
 
         // add_action( 'wp_before_admin_bar_render', [ $this, 'logout_link' ] );

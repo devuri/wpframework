@@ -70,7 +70,7 @@ class App
     public function kernel(): BaseKernel
     {
         if ( ! \is_array( $this->config ) ) {
-            wp_terminate( 'Uncaught TypeError: BaseKernel($args) must be of type array' );
+            wpTerminate( 'Uncaught TypeError: BaseKernel($args) must be of type array' );
         }
 
         return new BaseKernel( $this->app_path, $this->config, $this->setup );

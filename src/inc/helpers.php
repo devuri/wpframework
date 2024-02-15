@@ -28,7 +28,7 @@ if ( ! \function_exists( 'asset' ) ) {
     }
 }
 
-if ( ! \function_exists( 'asset_url' ) ) {
+if ( ! \function_exists( 'assetUrl' ) ) {
     /**
      * The Asset url only.
      *
@@ -36,32 +36,30 @@ if ( ! \function_exists( 'asset_url' ) ) {
      *
      * @return string
      */
-    function asset_url( ?string $path = null ): string
+    function assetUrl( ?string $path = null ): string
     {
         return Asset::url( '/', $path );
     }
 }
 
 /**
- * Get the value of an environment variable.
+ * Get the value of an environment variable with support for default values and optional encryption.
  *
- * @param string     $name               the environment variable name.
- * @param null|mixed $default_or_encrypt provides a default value or bool `true` which indicates the output should be encrypted
- * @param bool       $strtolower
- *
- * @throws InvalidArgumentException
- *
- * @return mixed
+ * @param string $name Name of the environment variable.
+ * @param mixed $default_or_encrypt Default value to return if the environment variable is not set. If true, the value is encrypted.
+ * @param bool $strtolower Whether to convert the value to lowercase.
+ * @return mixed The environment variable value, optionally encrypted, or the default value.
+ * @throws InvalidArgumentException If encryption is requested but APP_PATH is not defined.
  */
 function env( string $name, $default_or_encrypt = null, bool $strtolower = false )
 {
     if ( isset( $_ENV[ $name ] ) ) {
-        $env_data = $_ENV[ $name ];
+        $value = $_ENV[ $name ];
     } else {
-        $env_data = $default_or_encrypt;
+        $value = $default_or_encrypt;
     }
 
-    if ( \is_bool( $default_or_encrypt ) && true === $default_or_encrypt ) {
+    if ( true === $default_or_encrypt ) {
         if ( ! \defined('APP_PATH') ) {
             throw new InvalidArgumentException( 'Error: APP_PATH is not defined', 1 );
         }
@@ -69,33 +67,27 @@ function env( string $name, $default_or_encrypt = null, bool $strtolower = false
         $encryption = new Encryption( APP_PATH );
 
         // returns encrypted and base64 encoded.
-        return $encryption->encrypt( $env_data );
+        return $encryption->encrypt( $value );
     }
 
-    if ( is_int_val( $env_data ) ) {
-        return (int) $env_data;
+    if ( isIntVal( $value ) ) {
+        return (int) $value;
     }
 
-    if ( \in_array( $env_data, [ 'True', 'true', 'TRUE' ], true ) ) {
-        return true;
+	switch (strtolower($value)) {
+        case 'true': return true;
+        case 'false': return false;
     }
 
-    if ( \in_array( $env_data, [ 'False', 'false', 'FALSE' ], true ) ) {
-        return false;
-    }
-
-    if ( \in_array( $env_data, [ 'Null', 'null', 'NULL' ], true ) ) {
+    if ( \in_array( $value, [ 'Null', 'null', 'NULL' ], true ) ) {
+		// empty string is a required return type for null.
         return '';
     }
 
-    if ( $strtolower ) {
-        return strtolower( $env_data );
-    }
-
-    return $env_data;
+    return $strtolower ? strtolower($value) : $value;
 }
 
-if ( ! \function_exists( 'is_int_val' ) ) {
+if ( ! \function_exists( 'isIntVal' ) ) {
     /**
      * Check if a string is an integer value.
      *
@@ -103,13 +95,13 @@ if ( ! \function_exists( 'is_int_val' ) ) {
      *
      * @return bool Returns true if the string is an integer value, and false otherwise.
      */
-    function is_int_val( $str )
+    function isIntVal( $str )
     {
         return is_numeric( $str ) && \intval( $str ) == $str;
     }
 }
 
-if ( ! \function_exists( 'get_http_env' ) ) {
+if ( ! \function_exists( 'getHttpEnv' ) ) {
     /**
      * Get the current set wp app env.
      *
@@ -117,7 +109,7 @@ if ( ! \function_exists( 'get_http_env' ) ) {
      *
      * @return null|string the current app env set, or null if not defined
      */
-    function get_http_env(): ?string
+    function getHttpEnv(): ?string
     {
         if ( ! \defined( 'HTTP_ENV_CONFIG' ) ) {
             return null;
@@ -127,7 +119,7 @@ if ( ! \function_exists( 'get_http_env' ) ) {
     }
 }
 
-if ( ! \function_exists( 'wpc_app' ) ) {
+if ( ! \function_exists( 'wpFramework' ) ) {
     /**
      * Initializes the App Kernel with optional multi-tenant support.
      *
@@ -146,7 +138,7 @@ if ( ! \function_exists( 'wpc_app' ) ) {
      *
      * @return Urisoft\Framework\Http\BaseKernel The initialized application kernel.
      */
-    function wpc_app( string $app_path, string $options = 'app' ): Urisoft\Framework\Http\BaseKernel
+    function wpFramework( string $app_path, string $options = 'app' ): Urisoft\Framework\Http\BaseKernel
     {
         if ( ! \defined('SITE_CONFIG_DIR') ) {
             \define( 'SITE_CONFIG_DIR', 'config');
@@ -163,7 +155,7 @@ if ( ! \function_exists( 'wpc_app' ) ) {
         try {
             $app = new App( $app_path, SITE_CONFIG_DIR, $options );
         } catch ( Exception $e ) {
-            wp_terminate('Framework Initialization Error: ' );
+            wpTerminate('Framework Initialization Error: ' );
         }
 
         // @phpstan-ignore-next-line
@@ -171,13 +163,13 @@ if ( ! \function_exists( 'wpc_app' ) ) {
     }
 }
 
-if ( ! \function_exists( 'wpc_app_config_core' ) ) {
+if ( ! \function_exists( 'wpframeworkCore' ) ) {
     /**
      * Start and load core plugin.
      *
      * @return void
      */
-    function wpc_app_config_core(): void
+    function wpframeworkCore(): void
     {
         if ( ! \defined( 'ABSPATH' ) ) {
             exit;
@@ -187,7 +179,7 @@ if ( ! \function_exists( 'wpc_app_config_core' ) ) {
     }
 }
 
-if ( ! \function_exists( 'wpc_installed_plugins' ) ) {
+if ( ! \function_exists( 'wpInstalledPlugins' ) ) {
     /**
      * Get installed plugins.
      *
@@ -195,7 +187,7 @@ if ( ! \function_exists( 'wpc_installed_plugins' ) ) {
      *
      * @psalm-return list<string>
      */
-    function wpc_installed_plugins(): array
+    function wpInstalledPlugins(): array
     {
         $plugins = get_plugins();
 
@@ -212,7 +204,7 @@ if ( ! \function_exists( 'wpc_installed_plugins' ) ) {
     }
 }// end if
 
-if ( ! \function_exists( 'app_config_default' ) ) {
+if ( ! \function_exists( 'appConfig' ) ) {
     /**
      * Get default app config values.
      *
@@ -220,7 +212,7 @@ if ( ! \function_exists( 'app_config_default' ) ) {
      *
      * @psalm-return array{security: array{'brute-force': true, 'two-factor': true, 'no-pwned-passwords': true, 'admin-ips': array<empty, empty>}, mailer: array{brevo: array{apikey: mixed}, postmark: array{token: mixed}, sendgrid: array{apikey: mixed}, mailerlite: array{apikey: mixed}, mailgun: array{domain: mixed, secret: mixed, endpoint: mixed, scheme: 'https'}, ses: array{key: mixed, secret: mixed, region: mixed}}, sudo_admin: mixed, sudo_admin_group: null, web_root: 'public', s3uploads: array{bucket: mixed, key: mixed, secret: mixed, region: mixed, 'bucket-url': mixed, 'object-acl': mixed, expires: mixed, 'http-cache': mixed}, asset_dir: 'assets', content_dir: 'app', plugin_dir: 'plugins', mu_plugin_dir: 'mu-plugins', sqlite_dir: 'sqlitedb', sqlite_file: '.sqlite-wpdatabase', default_theme: 'brisko', disable_updates: true, can_deactivate: false, theme_dir: 'templates', error_handler: null, redis: array{disabled: mixed, host: mixed, port: mixed, password: mixed, adminbar: mixed, 'disable-metrics': mixed, 'disable-banners': mixed, prefix: mixed, database: mixed, timeout: mixed, 'read-timeout': mixed}, publickey: array{'app-key': mixed}}
      */
-    function app_config_default(): array
+    function appConfig(): array
     {
         return require_once __DIR__ . '/config/app.php';
     }
@@ -273,7 +265,7 @@ function config( ?string $key = null, $default = null, $data_access = false )
  *
  * @see https://www.php.net/manual/en/function.hash-hmac.php
  */
-function evhash( $data, ?string $secretkey = null, string $algo = 'sha256' ): string
+function envHash( $data, ?string $secretkey = null, string $algo = 'sha256' ): string
 {
     if ( \is_null( $secretkey ) ) {
         return hash_hmac( $algo, $data, env( 'SECURE_AUTH_KEY' ) );
@@ -287,8 +279,8 @@ function evhash( $data, ?string $secretkey = null, string $algo = 'sha256' ): st
  *
  * @return array An associative array of Composer package names and their version constraints.
  */
-if ( ! \function_exists( 'app_packagist_plugins_list' ) ) {
-    function app_packagist_plugins_list()
+if ( ! \function_exists( 'packagistPluginsList' ) ) {
+    function packagistPluginsList()
     {
         if ( ! \function_exists( 'get_plugins' ) ) {
             require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -323,7 +315,7 @@ if ( ! \function_exists( 'app_packagist_plugins_list' ) ) {
  *
  * @return string The sanitized input ready for safe usage within the application.
  */
-function app_sanitizer( string $input ): string
+function wpSanitize( string $input ): string
 {
     $input = trim($input);
     $input = strip_tags($input);
@@ -333,7 +325,7 @@ function app_sanitizer( string $input ): string
     return filter_var($input, FILTER_UNSAFE_RAW, FILTER_FLAG_NO_ENCODE_QUOTES);
 }
 
-function env_tenant_id(): ?string
+function envTenantId(): ?string
 {
     if ( \defined( 'APP_TENANT_ID' ) ) {
         return APP_TENANT_ID;
@@ -351,7 +343,7 @@ function env_tenant_id(): ?string
  * @param string $message     The message to display.
  * @param int    $status_code The HTTP status code to send.
  */
-function wp_terminate($message, int $status_code = 500): void
+function wpTerminate($message, int $status_code = 500): void
 {
     http_response_code($status_code);
     ?><!DOCTYPE html><html lang='en'>
@@ -432,10 +424,11 @@ function wp_terminate($message, int $status_code = 500): void
  *
  * @param array $sensitives An array of environment variable names to be cleaned up.
  */
-function sclean_sensitive_env(array $sensitives): void
+function cleanSensitiveEnv(array $sensitives): void
 {
     foreach ($sensitives as $var) {
         unset($_ENV[$var]);
-        putenv($var . '='); // Ensure to concatenate '=' to effectively unset it
+		// Ensure to concatenate '=' to effectively unset it
+        putenv($var . '=');
     }
 }
