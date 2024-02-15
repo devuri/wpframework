@@ -13,12 +13,12 @@ class ConfigDefaultTest extends TestCase
 {
     public function setUp(): void
     {
-        sclean_sensitive_env(['SUDO_ADMIN', 'SENDGRID_API_KEY']);
+        cleanSensitiveEnv(['SUDO_ADMIN', 'SENDGRID_API_KEY']);
     }
 
-    public function test_app_config_default_returns_expected_structure_and_values(): void
+    public function test_app_config_returns_expected_structure_and_values(): void
     {
-        $config = app_config_default();
+        $config = appConfig();
 
         // Assert overall structure
         $this->assertIsArray($config);

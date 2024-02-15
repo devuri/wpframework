@@ -31,1634 +31,1259 @@ Search.appendIndex(
             "summary": "The\u0020Asset\u0020url.",
             "url": "namespaces/default.html#function_asset"
         },                {
-            "fqsen": "\\asset_url\u0028\u0029",
-            "name": "asset_url",
+            "fqsen": "\\assetUrl\u0028\u0029",
+            "name": "assetUrl",
             "summary": "The\u0020Asset\u0020url\u0020only.",
-            "url": "namespaces/default.html#function_asset_url"
+            "url": "namespaces/default.html#function_assetUrl"
         },                {
             "fqsen": "\\env\u0028\u0029",
             "name": "env",
-            "summary": "Get\u0020the\u0020value\u0020of\u0020an\u0020environment\u0020variable.",
+            "summary": "Get\u0020the\u0020value\u0020of\u0020an\u0020environment\u0020variable\u0020with\u0020support\u0020for\u0020default\u0020values\u0020and\u0020optional\u0020encryption.",
             "url": "namespaces/default.html#function_env"
         },                {
-            "fqsen": "\\is_int_val\u0028\u0029",
-            "name": "is_int_val",
+            "fqsen": "\\isIntVal\u0028\u0029",
+            "name": "isIntVal",
             "summary": "Check\u0020if\u0020a\u0020string\u0020is\u0020an\u0020integer\u0020value.",
-            "url": "namespaces/default.html#function_is_int_val"
+            "url": "namespaces/default.html#function_isIntVal"
         },                {
-            "fqsen": "\\get_http_env\u0028\u0029",
-            "name": "get_http_env",
+            "fqsen": "\\getHttpEnv\u0028\u0029",
+            "name": "getHttpEnv",
             "summary": "Get\u0020the\u0020current\u0020set\u0020wp\u0020app\u0020env.",
-            "url": "namespaces/default.html#function_get_http_env"
+            "url": "namespaces/default.html#function_getHttpEnv"
         },                {
-            "fqsen": "\\wpc_app\u0028\u0029",
-            "name": "wpc_app",
+            "fqsen": "\\wpframework\u0028\u0029",
+            "name": "wpframework",
             "summary": "Initializes\u0020the\u0020App\u0020Kernel\u0020with\u0020optional\u0020multi\u002Dtenant\u0020support.",
-            "url": "namespaces/default.html#function_wpc_app"
+            "url": "namespaces/default.html#function_wpframework"
         },                {
-            "fqsen": "\\wpc_app_config_core\u0028\u0029",
-            "name": "wpc_app_config_core",
+            "fqsen": "\\wpframeworkCore\u0028\u0029",
+            "name": "wpframeworkCore",
             "summary": "Start\u0020and\u0020load\u0020core\u0020plugin.",
-            "url": "namespaces/default.html#function_wpc_app_config_core"
+            "url": "namespaces/default.html#function_wpframeworkCore"
         },                {
-            "fqsen": "\\wpc_installed_plugins\u0028\u0029",
-            "name": "wpc_installed_plugins",
+            "fqsen": "\\wpInstalledPlugins\u0028\u0029",
+            "name": "wpInstalledPlugins",
             "summary": "Get\u0020installed\u0020plugins.",
-            "url": "namespaces/default.html#function_wpc_installed_plugins"
+            "url": "namespaces/default.html#function_wpInstalledPlugins"
         },                {
-            "fqsen": "\\app_config_default\u0028\u0029",
-            "name": "app_config_default",
+            "fqsen": "\\appConfig\u0028\u0029",
+            "name": "appConfig",
             "summary": "Get\u0020default\u0020app\u0020config\u0020values.",
-            "url": "namespaces/default.html#function_app_config_default"
+            "url": "namespaces/default.html#function_appConfig"
         },                {
             "fqsen": "\\config\u0028\u0029",
             "name": "config",
             "summary": "Retrieve\u0020configuration\u0020data\u0020using\u0020dot\u0020notation.",
             "url": "namespaces/default.html#function_config"
         },                {
-            "fqsen": "\\evhash\u0028\u0029",
-            "name": "evhash",
+            "fqsen": "\\envHash\u0028\u0029",
+            "name": "envHash",
             "summary": "Gets\u0020hash\u0020of\u0020given\u0020string.",
-            "url": "namespaces/default.html#function_evhash"
+            "url": "namespaces/default.html#function_envHash"
         },                {
-            "fqsen": "\\app_packagist_plugins_list\u0028\u0029",
-            "name": "app_packagist_plugins_list",
+            "fqsen": "\\packagistPluginsList\u0028\u0029",
+            "name": "packagistPluginsList",
             "summary": "",
-            "url": "namespaces/default.html#function_app_packagist_plugins_list"
+            "url": "namespaces/default.html#function_packagistPluginsList"
         },                {
-            "fqsen": "\\app_sanitizer\u0028\u0029",
-            "name": "app_sanitizer",
+            "fqsen": "\\wpSanitize\u0028\u0029",
+            "name": "wpSanitize",
             "summary": "Basic\u0020Sanitize\u0020and\u0020prepare\u0020for\u0020a\u0020string\u0020input\u0020for\u0020safe\u0020usage\u0020in\u0020the\u0020application.",
-            "url": "namespaces/default.html#function_app_sanitizer"
+            "url": "namespaces/default.html#function_wpSanitize"
         },                {
-            "fqsen": "\\env_tenant_id\u0028\u0029",
-            "name": "env_tenant_id",
+            "fqsen": "\\envTenantId\u0028\u0029",
+            "name": "envTenantId",
             "summary": "",
-            "url": "namespaces/default.html#function_env_tenant_id"
+            "url": "namespaces/default.html#function_envTenantId"
         },                {
-            "fqsen": "\\wp_terminate\u0028\u0029",
-            "name": "wp_terminate",
+            "fqsen": "\\wpTerminate\u0028\u0029",
+            "name": "wpTerminate",
             "summary": "Custom\u0020function\u0020to\u0020terminate\u0020script\u0020execution,\u0020display\u0020a\u0020message,\u0020and\u0020set\u0020an\u0020HTTP\u0020status\u0020code.",
-            "url": "namespaces/default.html#function_wp_terminate"
+            "url": "namespaces/default.html#function_wpTerminate"
         },                {
-            "fqsen": "\\sclean_sensitive_env\u0028\u0029",
-            "name": "sclean_sensitive_env",
+            "fqsen": "\\cleanSensitiveEnv\u0028\u0029",
+            "name": "cleanSensitiveEnv",
             "summary": "Cleans\u0020up\u0020sensitive\u0020environment\u0020variables.",
-            "url": "namespaces/default.html#function_sclean_sensitive_env"
+            "url": "namespaces/default.html#function_cleanSensitiveEnv"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\ConfigInterface",
+            "fqsen": "\\WPframework\\Component\\ConfigInterface",
             "name": "ConfigInterface",
             "summary": "",
-            "url": "classes/Urisoft-Framework-ConfigInterface.html"
+            "url": "classes/WPframework-Component-ConfigInterface.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\ConfigInterface\u003A\u003Aconfig\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\ConfigInterface\u003A\u003Aconfig\u0028\u0029",
             "name": "config",
             "summary": "Runs\u0020config\u0020setup.",
-            "url": "classes/Urisoft-Framework-ConfigInterface.html#method_config"
+            "url": "classes/WPframework-Component-ConfigInterface.html#method_config"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\ConfigInterface\u003A\u003Adebug\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\ConfigInterface\u003A\u003Adebug\u0028\u0029",
             "name": "debug",
             "summary": "Debug\u0020Settings.",
-            "url": "classes/Urisoft-Framework-ConfigInterface.html#method_debug"
+            "url": "classes/WPframework-Component-ConfigInterface.html#method_debug"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\ConfigInterface\u003A\u003Aset_error_handler\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\ConfigInterface\u003A\u003Aset_error_handler\u0028\u0029",
             "name": "set_error_handler",
             "summary": "Symfony\u0020Debug.",
-            "url": "classes/Urisoft-Framework-ConfigInterface.html#method_set_error_handler"
+            "url": "classes/WPframework-Component-ConfigInterface.html#method_set_error_handler"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\ConfigInterface\u003A\u003Asite_url\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\ConfigInterface\u003A\u003Asite_url\u0028\u0029",
             "name": "site_url",
             "summary": "Site\u0020Url\u0020Settings.",
-            "url": "classes/Urisoft-Framework-ConfigInterface.html#method_site_url"
+            "url": "classes/WPframework-Component-ConfigInterface.html#method_site_url"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\ConfigInterface\u003A\u003Adatabase\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\ConfigInterface\u003A\u003Adatabase\u0028\u0029",
             "name": "database",
             "summary": "DB\u0020settings.",
-            "url": "classes/Urisoft-Framework-ConfigInterface.html#method_database"
+            "url": "classes/WPframework-Component-ConfigInterface.html#method_database"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\ConfigInterface\u003A\u003Aoptimize\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\ConfigInterface\u003A\u003Aoptimize\u0028\u0029",
             "name": "optimize",
             "summary": "Optimize.",
-            "url": "classes/Urisoft-Framework-ConfigInterface.html#method_optimize"
+            "url": "classes/WPframework-Component-ConfigInterface.html#method_optimize"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\ConfigInterface\u003A\u003Amemory\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\ConfigInterface\u003A\u003Amemory\u0028\u0029",
             "name": "memory",
             "summary": "Memory\u0020Settings.",
-            "url": "classes/Urisoft-Framework-ConfigInterface.html#method_memory"
+            "url": "classes/WPframework-Component-ConfigInterface.html#method_memory"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\ConfigInterface\u003A\u003Asalts\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\ConfigInterface\u003A\u003Asalts\u0028\u0029",
             "name": "salts",
             "summary": "Authentication\u0020Unique\u0020Keys\u0020and\u0020Salts.",
-            "url": "classes/Urisoft-Framework-ConfigInterface.html#method_salts"
+            "url": "classes/WPframework-Component-ConfigInterface.html#method_salts"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\ConfigInterface\u003A\u003Aforce_ssl\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\ConfigInterface\u003A\u003Aforce_ssl\u0028\u0029",
             "name": "force_ssl",
             "summary": "SSL.",
-            "url": "classes/Urisoft-Framework-ConfigInterface.html#method_force_ssl"
+            "url": "classes/WPframework-Component-ConfigInterface.html#method_force_ssl"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\ConfigInterface\u003A\u003Aautosave\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\ConfigInterface\u003A\u003Aautosave\u0028\u0029",
             "name": "autosave",
             "summary": "AUTOSAVE\u0020and\u0020REVISIONS.",
-            "url": "classes/Urisoft-Framework-ConfigInterface.html#method_autosave"
+            "url": "classes/WPframework-Component-ConfigInterface.html#method_autosave"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\ActivityLog",
-            "name": "ActivityLog",
-            "summary": "TODO\u0020Setup\u0020Activity\u0020Logs.",
-            "url": "classes/Urisoft-Framework-Core-ActivityLog.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin",
             "name": "AutoLogin",
             "summary": "Class\u0020AutoLogin.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "AutoLogin\u0020constructor.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#method___construct"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003Aregister_login_action\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003Aregister_login_action\u0028\u0029",
             "name": "register_login_action",
             "summary": "Registers\u0020the\u0020auto\u002Dlogin\u0020action\u0020to\u0020handle\u0020automatic\u0020logins\u0020when\u0020the\u0020\u0027init\u0027\u0020action\u0020is\u0020triggered.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#method_register_login_action"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#method_register_login_action"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003Ainit\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003Ainit\u0028\u0029",
             "name": "init",
             "summary": "Initializes\u0020the\u0020automatic\u0020login\u0020functionality.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#method_init"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#method_init"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003Ahandle_auto_login\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003Ahandle_auto_login\u0028\u0029",
             "name": "handle_auto_login",
             "summary": "Handles\u0020the\u0020automatic\u0020login\u0020process\u0020based\u0020on\u0020the\u0020provided\u0020query\u0020parameters.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#method_handle_auto_login"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#method_handle_auto_login"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003Awp_user_exists\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003Awp_user_exists\u0028\u0029",
             "name": "wp_user_exists",
             "summary": "Determines\u0020whether\u0020the\u0020user\u0020exists\u0020in\u0020the\u0020database.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#method_wp_user_exists"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#method_wp_user_exists"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003Averify_signature\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003Averify_signature\u0028\u0029",
             "name": "verify_signature",
             "summary": "Verifies\u0020the\u0020authenticity\u0020of\u0020the\u0020signature\u0020for\u0020the\u0020auto\u002Dlogin\u0020request.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#method_verify_signature"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#method_verify_signature"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003Aauthenticate\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003Aauthenticate\u0028\u0029",
             "name": "authenticate",
             "summary": "Authenticates\u0020the\u0020user\u0020and\u0020performs\u0020necessary\u0020actions\u0020after\u0020successful\u0020authentication.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#method_authenticate"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#method_authenticate"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003Aget_req\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003Aget_req\u0028\u0029",
             "name": "get_req",
             "summary": "Retrieves\u0020and\u0020sanitizes\u0020a\u0020specific\u0020query\u0020parameter\u0020from\u0020the\u0020\u0024_GET\u0020superglobal\u0020array.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#method_get_req"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#method_get_req"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003A\u0024secret_key",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003A\u0024secret_key",
             "name": "secret_key",
             "summary": "The\u0020secret\u0020key\u0020used\u0020for\u0020generating\u0020and\u0020verifying\u0020signatures.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#property_secret_key"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#property_secret_key"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003A\u0024login_service",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003A\u0024login_service",
             "name": "login_service",
             "summary": "Holds\u0020the\u0020login\u0020service\u0020parameters.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#property_login_service"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#property_login_service"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003A\u0024home_url",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003A\u0024home_url",
             "name": "home_url",
             "summary": "The\u0020URL\u0020of\u0020the\u0020home\u0020page\u0020of\u0020the\u0020WordPress\u0020site.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#property_home_url"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#property_home_url"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003A\u0024environment_type",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003A\u0024environment_type",
             "name": "environment_type",
             "summary": "The\u0020WordPress\u0020environment\u0020setup.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#property_environment_type"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#property_environment_type"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin\u003A\u003A\u0024user_admin_url",
+            "fqsen": "\\WPframework\\Component\\Core\\AutoLogin\u003A\u003A\u0024user_admin_url",
             "name": "user_admin_url",
             "summary": "The\u0020URL\u0020of\u0020the\u0020user\u0027s\u0020admin\u0020area\u0020\u0028dashboard\u0029.",
-            "url": "classes/Urisoft-Framework-Core-AutoLogin.html#property_user_admin_url"
+            "url": "classes/WPframework-Component-Core-AutoLogin.html#property_user_admin_url"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth",
-            "name": "BasicAuth",
-            "summary": "Class\u0020BasicAuth.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Initializes\u0020the\u0020Sucuri\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003Ainit\u0028\u0029",
-            "name": "init",
-            "summary": "Initializes\u0020the\u0020BasicAuth\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method_init"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003Aregister_hooks\u0028\u0029",
-            "name": "register_hooks",
-            "summary": "Registers\u0020the\u0020hooks\u0020for\u0020the\u0020BasicAuth\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method_register_hooks"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003Arequire_auth\u0028\u0029",
-            "name": "require_auth",
-            "summary": "Requires\u0020Basic\u0020auth.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method_require_auth"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003Ais_background_work\u0028\u0029",
-            "name": "is_background_work",
-            "summary": "Checks\u0020if\u0020the\u0020application\u0020is\u0020running\u0020in\u0020a\u0020background\u0020work\u0020environment.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method_is_background_work"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003Aget_request_uri\u0028\u0029",
-            "name": "get_request_uri",
-            "summary": "Retrieves\u0020the\u0020sanitized\u0020REQUEST_URI.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method_get_request_uri"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003Ais_production\u0028\u0029",
-            "name": "is_production",
-            "summary": "Checks\u0020if\u0020the\u0020environment\u0020is\u0020in\u0020production.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method_is_production"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003AAUTH_OPTION",
-            "name": "AUTH_OPTION",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#constant_AUTH_OPTION"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003A\u0024username",
-            "name": "username",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#property_username"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003A\u0024user_password",
-            "name": "user_password",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#property_user_password"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003A\u0024auth_option",
-            "name": "auth_option",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#property_auth_option"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003A\u0024web_app",
-            "name": "web_app",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#property_web_app"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor",
-            "name": "Elementor",
-            "summary": "Easier\u0020setup\u0020for\u0020Elementor\u0020Pro\u0020activation.",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Initializes\u0020the\u0020Elementor\u0020pro\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003Ais_activation_locked\u0028\u0029",
-            "name": "is_activation_locked",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#method_is_activation_locked"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003Aactivate\u0028\u0029",
-            "name": "activate",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#method_activate"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003Aget_status\u0028\u0029",
-            "name": "get_status",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#method_get_status"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003Adeactivate\u0028\u0029",
-            "name": "deactivate",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#method_deactivate"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003Aset_transient\u0028\u0029",
-            "name": "set_transient",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#method_set_transient"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003Apost_request\u0028\u0029",
-            "name": "post_request",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#method_post_request"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003Alicense_data\u0028\u0029",
-            "name": "license_data",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#method_license_data"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003APRODUCT_NAME",
-            "name": "PRODUCT_NAME",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_PRODUCT_NAME"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003ASTORE_URL",
-            "name": "STORE_URL",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_STORE_URL"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003ARENEW_URL",
-            "name": "RENEW_URL",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_RENEW_URL"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003ASTATUS_VALID",
-            "name": "STATUS_VALID",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_STATUS_VALID"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003ASTATUS_INVALID",
-            "name": "STATUS_INVALID",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_STATUS_INVALID"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003ASTATUS_EXPIRED",
-            "name": "STATUS_EXPIRED",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_STATUS_EXPIRED"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003ASTATUS_INACTIVE",
-            "name": "STATUS_INACTIVE",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_STATUS_INACTIVE"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003ASTATUS_DISABLED",
-            "name": "STATUS_DISABLED",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_STATUS_DISABLED"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003AREQUEST_LOCK_TTL",
-            "name": "REQUEST_LOCK_TTL",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_REQUEST_LOCK_TTL"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003AREQUEST_LOCK_OPTION",
-            "name": "REQUEST_LOCK_OPTION",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_REQUEST_LOCK_OPTION"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003AACTIVATION_LOCK_ID",
-            "name": "ACTIVATION_LOCK_ID",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_ACTIVATION_LOCK_ID"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003ALICENSE_KEY_OPTION",
-            "name": "LICENSE_KEY_OPTION",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_LICENSE_KEY_OPTION"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003ALICENSE_DATA_OPTION",
-            "name": "LICENSE_DATA_OPTION",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_LICENSE_DATA_OPTION"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003ALICENSE_DATA_FALLBACK_OPTION",
-            "name": "LICENSE_DATA_FALLBACK_OPTION",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#constant_LICENSE_DATA_FALLBACK_OPTION"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003A\u0024api_version",
-            "name": "api_version",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#property_api_version"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Elementor\u003A\u003A\u0024license_key",
-            "name": "license_key",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Elementor.html#property_license_key"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\EnvColor",
-            "name": "EnvColor",
-            "summary": "Change\u0020The\u0020Color\u0020Scheme\u0020of\u0020wp\u002Dadmin\u0020based\u0020on\u0020env\u0020type\u0020like\u0020staging\u0020production\u0020secure\u0020etc.",
-            "url": "classes/Urisoft-Framework-Core-EnvColor.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\EnvColor\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Constructor\u0020initialize.",
-            "url": "classes/Urisoft-Framework-Core-EnvColor.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\EnvColor\u003A\u003A\u0024env_type",
-            "name": "env_type",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-EnvColor.html#property_env_type"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\EnvColor\u003A\u003A\u0024env_color",
-            "name": "env_color",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-EnvColor.html#property_env_color"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin",
             "name": "Plugin",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html"
+            "url": "classes/WPframework-Component-Core-Plugin.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#method___construct"
+            "url": "classes/WPframework-Component-Core-Plugin.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003Ainit\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Ainit\u0028\u0029",
             "name": "init",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#method_init"
+            "url": "classes/WPframework-Component-Core-Plugin.html#method_init"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003Aset_upload_directory\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Aset_upload_directory\u0028\u0029",
             "name": "set_upload_directory",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#method_set_upload_directory"
+            "summary": "Sets\u0020the\u0020upload\u0020directory\u0020to\u0020a\u0020tenant\u002Dspecific\u0020location.",
+            "url": "classes/WPframework-Component-Core-Plugin.html#method_set_upload_directory"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003Amanage_tenant_install_plugins\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Amanage_tenant_install_plugins\u0028\u0029",
             "name": "manage_tenant_install_plugins",
             "summary": "Modifies\u0020user\u0020capabilities\u0020to\u0020allow\u0020users\u0020with\u0020\u0027manage_tenant\u0027\u0020capability\u0020to\u0020install\u0020plugins.",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#method_manage_tenant_install_plugins"
+            "url": "classes/WPframework-Component-Core-Plugin.html#method_manage_tenant_install_plugins"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003Aadd_core_app_events\u0028\u0029",
-            "name": "add_core_app_events",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#method_add_core_app_events"
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Aframework_footer_label\u0028\u0029",
+            "name": "framework_footer_label",
+            "summary": "Custom\u0020admin\u0020footer\u0020text.",
+            "url": "classes/WPframework-Component-Core-Plugin.html#method_framework_footer_label"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003Asecurity_headers\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Aadd_wpframework_events\u0028\u0029",
+            "name": "add_wpframework_events",
+            "summary": "Schedules\u0020custom\u0020WP\u0020Framework\u0020events.",
+            "url": "classes/WPframework-Component-Core-Plugin.html#method_add_wpframework_events"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Asecurity_headers\u0028\u0029",
             "name": "security_headers",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#method_security_headers"
+            "url": "classes/WPframework-Component-Core-Plugin.html#method_security_headers"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003Aextract_domain\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Aextract_domain\u0028\u0029",
             "name": "extract_domain",
-            "summary": "Extracts\u0020the\u0020domain\u0020from\u0020a\u0020URL.",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#method_extract_domain"
+            "summary": "Extracts\u0020the\u0020domain\u0020from\u0020a\u0020URL\u0020using\u0020an\u0020optional\u0020list\u0020of\u0020public\u0020suffixes.",
+            "url": "classes/WPframework-Component-Core-Plugin.html#method_extract_domain"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003Adefine_basic_app_init\u0028\u0029",
-            "name": "define_basic_app_init",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Adefine_wpframework_init\u0028\u0029",
+            "name": "define_wpframework_init",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#method_define_basic_app_init"
+            "url": "classes/WPframework-Component-Core-Plugin.html#method_define_wpframework_init"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003AADMIN_BAR_MENU_ID",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003AADMIN_BAR_MENU_ID",
             "name": "ADMIN_BAR_MENU_ID",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#constant_ADMIN_BAR_MENU_ID"
+            "url": "classes/WPframework-Component-Core-Plugin.html#constant_ADMIN_BAR_MENU_ID"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003A\u0024env_menu_id",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003A\u0024env_menu_id",
             "name": "env_menu_id",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#property_env_menu_id"
+            "url": "classes/WPframework-Component-Core-Plugin.html#property_env_menu_id"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003A\u0024http_env_type",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003A\u0024http_env_type",
             "name": "http_env_type",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#property_http_env_type"
+            "url": "classes/WPframework-Component-Core-Plugin.html#property_http_env_type"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003A\u0024wp_sudo_admin",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003A\u0024wp_sudo_admin",
             "name": "wp_sudo_admin",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#property_wp_sudo_admin"
+            "url": "classes/WPframework-Component-Core-Plugin.html#property_wp_sudo_admin"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003A\u0024admin_group",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003A\u0024admin_group",
             "name": "admin_group",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#property_admin_group"
+            "url": "classes/WPframework-Component-Core-Plugin.html#property_admin_group"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugin\u003A\u003A\u0024tenant_id",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003A\u0024tenant_id",
             "name": "tenant_id",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugin.html#property_tenant_id"
+            "url": "classes/WPframework-Component-Core-Plugin.html#property_tenant_id"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugins\\Loader",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugins\\Loader",
             "name": "Loader",
             "summary": "Typically\u0020used\u0020in\u0020mu\u0020context\u0020to\u0020load\u0020plugins.",
-            "url": "classes/Urisoft-Framework-Core-Plugins-Loader.html"
+            "url": "classes/WPframework-Component-Core-Plugins-Loader.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugins\\Loader\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugins\\Loader\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Plugins-Loader.html#method___construct"
+            "url": "classes/WPframework-Component-Core-Plugins-Loader.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugins\\Loader\u003A\u003Aadd_plugin\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugins\\Loader\u003A\u003Aadd_plugin\u0028\u0029",
             "name": "add_plugin",
             "summary": "Adds\u0020a\u0020plugin\u0020to\u0020the\u0020list\u0020of\u0020plugins\u0020that\u0020should\u0020be\u0020loaded.",
-            "url": "classes/Urisoft-Framework-Core-Plugins-Loader.html#method_add_plugin"
+            "url": "classes/WPframework-Component-Core-Plugins-Loader.html#method_add_plugin"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugins\\Loader\u003A\u003Aload_plugins\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugins\\Loader\u003A\u003Aload_plugins\u0028\u0029",
             "name": "load_plugins",
             "summary": "Filters\u0020the\u0020list\u0020of\u0020active\u0020plugins\u0020to\u0020include\u0020the\u0020plugins\u0020added\u0020via\u0020add_plugin.",
-            "url": "classes/Urisoft-Framework-Core-Plugins-Loader.html#method_load_plugins"
+            "url": "classes/WPframework-Component-Core-Plugins-Loader.html#method_load_plugins"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugins\\Loader\u003A\u003A\u0024plugins",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugins\\Loader\u003A\u003A\u0024plugins",
             "name": "plugins",
             "summary": "Array\u0020to\u0020hold\u0020the\u0020plugins\u0020that\u0020should\u0020be\u0020loaded.",
-            "url": "classes/Urisoft-Framework-Core-Plugins-Loader.html#property_plugins"
+            "url": "classes/WPframework-Component-Core-Plugins-Loader.html#property_plugins"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\PublicKey",
+            "fqsen": "\\WPframework\\Component\\Core\\PublicKey",
             "name": "PublicKey",
             "summary": "Represents\u0020a\u0020public\u0020key\u0020used\u0020for\u0020encryption\u0020or\u0020verification\u0020purposes.",
-            "url": "classes/Urisoft-Framework-Core-PublicKey.html"
+            "url": "classes/WPframework-Component-Core-PublicKey.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\PublicKey\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\PublicKey\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "PublicKey\u0020constructor.",
-            "url": "classes/Urisoft-Framework-Core-PublicKey.html#method___construct"
+            "url": "classes/WPframework-Component-Core-PublicKey.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\PublicKey\u003A\u003Asave_public_key\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\PublicKey\u003A\u003Asave_public_key\u0028\u0029",
             "name": "save_public_key",
             "summary": "Saves\u0020the\u0020public\u0020key\u0020as\u0020an\u0020option\u0020in\u0020the\u0020WordPress\u0020options\u0020table.",
-            "url": "classes/Urisoft-Framework-Core-PublicKey.html#method_save_public_key"
+            "url": "classes/WPframework-Component-Core-PublicKey.html#method_save_public_key"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\PublicKey\u003A\u003Aget_public_key\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\PublicKey\u003A\u003Aget_public_key\u0028\u0029",
             "name": "get_public_key",
             "summary": "Retrieves\u0020the\u0020stored\u0020public\u0020key\u0020from\u0020the\u0020WordPress\u0020options\u0020table.",
-            "url": "classes/Urisoft-Framework-Core-PublicKey.html#method_get_public_key"
+            "url": "classes/WPframework-Component-Core-PublicKey.html#method_get_public_key"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\PublicKey\u003A\u003A\u0024option_name",
+            "fqsen": "\\WPframework\\Component\\Core\\PublicKey\u003A\u003A\u0024option_name",
             "name": "option_name",
             "summary": "The\u0020name\u0020of\u0020the\u0020option\u0020used\u0020to\u0020store\u0020the\u0020public\u0020key.",
-            "url": "classes/Urisoft-Framework-Core-PublicKey.html#property_option_name"
+            "url": "classes/WPframework-Component-Core-PublicKey.html#property_option_name"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\PublicKey\u003A\u003A\u0024app_path",
+            "fqsen": "\\WPframework\\Component\\Core\\PublicKey\u003A\u003A\u0024app_path",
             "name": "app_path",
             "summary": "The\u0020path\u0020to\u0020the\u0020application\u0020directory.",
-            "url": "classes/Urisoft-Framework-Core-PublicKey.html#property_app_path"
+            "url": "classes/WPframework-Component-Core-PublicKey.html#property_app_path"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\RestrictedAdmin",
-            "name": "RestrictedAdmin",
-            "summary": "Restricted\u0020Admin.",
-            "url": "classes/Urisoft-Framework-Core-RestrictedAdmin.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\RestrictedAdmin\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Initializes\u0020the\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-RestrictedAdmin.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\RestrictedAdmin\u003A\u003Aenable_restricted_admin\u0028\u0029",
-            "name": "enable_restricted_admin",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-RestrictedAdmin.html#method_enable_restricted_admin"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\RestrictedAdmin\u003A\u003A\u0024wp_sudo_admin",
-            "name": "wp_sudo_admin",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-RestrictedAdmin.html#property_wp_sudo_admin"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\RestrictedAdmin\u003A\u003A\u0024admin_group",
-            "name": "admin_group",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-RestrictedAdmin.html#property_admin_group"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\ScheduledEvent",
+            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent",
             "name": "ScheduledEvent",
             "summary": "Class\u0020ScheduledEvent.",
-            "url": "classes/Urisoft-Framework-Core-ScheduledEvent.html"
+            "url": "classes/WPframework-Component-Core-ScheduledEvent.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\ScheduledEvent\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructor\u0020for\u0020the\u0020ScheduledEvent\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-ScheduledEvent.html#method___construct"
+            "url": "classes/WPframework-Component-Core-ScheduledEvent.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\ScheduledEvent\u003A\u003Aadd_app_event\u0028\u0029",
-            "name": "add_app_event",
+            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003Aadd_wpframework_event\u0028\u0029",
+            "name": "add_wpframework_event",
             "summary": "Adds\u0020an\u0020action\u0020hook\u0020to\u0020schedule\u0020the\u0020event\u0020on\u0020WordPress\u0020initialization.",
-            "url": "classes/Urisoft-Framework-Core-ScheduledEvent.html#method_add_app_event"
+            "url": "classes/WPframework-Component-Core-ScheduledEvent.html#method_add_wpframework_event"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\ScheduledEvent\u003A\u003Aschedule_app_event\u0028\u0029",
-            "name": "schedule_app_event",
+            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003Aschedule_wpframework_event\u0028\u0029",
+            "name": "schedule_wpframework_event",
             "summary": "Schedules\u0020the\u0020custom\u0020event\u0020if\u0020it\u0027s\u0020not\u0020already\u0020scheduled.",
-            "url": "classes/Urisoft-Framework-Core-ScheduledEvent.html#method_schedule_app_event"
+            "url": "classes/WPframework-Component-Core-ScheduledEvent.html#method_schedule_wpframework_event"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\ScheduledEvent\u003A\u003Aevent_callback\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003Aevent_callback\u0028\u0029",
             "name": "event_callback",
             "summary": "Executes\u0020the\u0020specified\u0020callback\u0020function\u0020when\u0020the\u0020event\u0020is\u0020triggered.",
-            "url": "classes/Urisoft-Framework-Core-ScheduledEvent.html#method_event_callback"
+            "url": "classes/WPframework-Component-Core-ScheduledEvent.html#method_event_callback"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\ScheduledEvent\u003A\u003Aavailable_recurrences\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003Aavailable_recurrences\u0028\u0029",
             "name": "available_recurrences",
             "summary": "Get\u0020an\u0020array\u0020of\u0020available\u0020recurrence\u0020options\u0020for\u0020scheduling\u0020events.",
-            "url": "classes/Urisoft-Framework-Core-ScheduledEvent.html#method_available_recurrences"
+            "url": "classes/WPframework-Component-Core-ScheduledEvent.html#method_available_recurrences"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\ScheduledEvent\u003A\u003A\u0024event_name",
+            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003A\u0024event_name",
             "name": "event_name",
             "summary": "Event\u0020name\u0020to\u0020identify\u0020the\u0020scheduled\u0020event.",
-            "url": "classes/Urisoft-Framework-Core-ScheduledEvent.html#property_event_name"
+            "url": "classes/WPframework-Component-Core-ScheduledEvent.html#property_event_name"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\ScheduledEvent\u003A\u003A\u0024callback",
+            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003A\u0024callback",
             "name": "callback",
             "summary": "The\u0020callback\u0020function\u0020to\u0020execute\u0020when\u0020the\u0020event\u0020is\u0020triggered.",
-            "url": "classes/Urisoft-Framework-Core-ScheduledEvent.html#property_callback"
+            "url": "classes/WPframework-Component-Core-ScheduledEvent.html#property_callback"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\ScheduledEvent\u003A\u003A\u0024recurrence",
+            "fqsen": "\\WPframework\\Component\\Core\\ScheduledEvent\u003A\u003A\u0024recurrence",
             "name": "recurrence",
             "summary": "The\u0020recurrence\u0020interval\u0020for\u0020the\u0020event\u0020\u0028default\u0020is\u0020\u0027twicedaily\u0027\u0029.",
-            "url": "classes/Urisoft-Framework-Core-ScheduledEvent.html#property_recurrence"
+            "url": "classes/WPframework-Component-Core-ScheduledEvent.html#property_recurrence"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\AdminSettingsPage",
+            "fqsen": "\\WPframework\\Component\\Core\\Settings\\AdminSettingsPage",
             "name": "AdminSettingsPage",
             "summary": "Custom\u0020Admin\u0020Page\u0020class\u0020for\u0020WordPress.",
-            "url": "classes/Urisoft-Framework-Core-Settings-AdminSettingsPage.html"
+            "url": "classes/WPframework-Component-Core-Settings-AdminSettingsPage.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\AdminSettingsPage\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Settings\\AdminSettingsPage\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "AdminSettingsPage\u0020constructor.",
-            "url": "classes/Urisoft-Framework-Core-Settings-AdminSettingsPage.html#method___construct"
+            "url": "classes/WPframework-Component-Core-Settings-AdminSettingsPage.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\AdminSettingsPage\u003A\u003Aregister_settings_page\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Settings\\AdminSettingsPage\u003A\u003Aregister_settings_page\u0028\u0029",
             "name": "register_settings_page",
             "summary": "Registers\u0020the\u0020custom\u0020settings\u0020page\u0020in\u0020the\u0020WordPress\u0020admin\u0020menu.",
-            "url": "classes/Urisoft-Framework-Core-Settings-AdminSettingsPage.html#method_register_settings_page"
+            "url": "classes/WPframework-Component-Core-Settings-AdminSettingsPage.html#method_register_settings_page"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\AdminSettingsPage\u003A\u003A\u0024settings_page",
+            "fqsen": "\\WPframework\\Component\\Core\\Settings\\AdminSettingsPage\u003A\u003A\u0024settings_page",
             "name": "settings_page",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Settings-AdminSettingsPage.html#property_settings_page"
+            "url": "classes/WPframework-Component-Core-Settings-AdminSettingsPage.html#property_settings_page"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\AdminSettingsPage\u003A\u003A\u0024content_callback",
+            "fqsen": "\\WPframework\\Component\\Core\\Settings\\AdminSettingsPage\u003A\u003A\u0024content_callback",
             "name": "content_callback",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Settings-AdminSettingsPage.html#property_content_callback"
+            "url": "classes/WPframework-Component-Core-Settings-AdminSettingsPage.html#property_content_callback"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\AdminSettingsPage\u003A\u003A\u0024is_submenu",
+            "fqsen": "\\WPframework\\Component\\Core\\Settings\\AdminSettingsPage\u003A\u003A\u0024is_submenu",
             "name": "is_submenu",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Settings-AdminSettingsPage.html#property_is_submenu"
+            "url": "classes/WPframework-Component-Core-Settings-AdminSettingsPage.html#property_is_submenu"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\Register",
-            "name": "Register",
-            "summary": "Custom\u0020settings\u0020class\u0020for\u0020WordPress.",
-            "url": "classes/Urisoft-Framework-Core-Settings-Register.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\Register\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Settings\u0020constructor.",
-            "url": "classes/Urisoft-Framework-Core-Settings-Register.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\Register\u003A\u003Aregister_settings\u0028\u0029",
-            "name": "register_settings",
-            "summary": "Register\u0020the\u0020custom\u0020setting\u0020in\u0020WordPress.",
-            "url": "classes/Urisoft-Framework-Core-Settings-Register.html#method_register_settings"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\Register\u003A\u003Arender_settings\u0028\u0029",
-            "name": "render_settings",
-            "summary": "Callback\u0020function\u0020for\u0020the\u0020checkbox\u0020setting\u0020field.",
-            "url": "classes/Urisoft-Framework-Core-Settings-Register.html#method_render_settings"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\Register\u003A\u003A\u0024setting_name",
-            "name": "setting_name",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Settings-Register.html#property_setting_name"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri",
-            "name": "Sucuri",
-            "summary": "Custom\u0020Sucuri\u0020settings.",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Initializes\u0020the\u0020Sucuri\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003Ainit_action\u0028\u0029",
-            "name": "init_action",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#method_init_action"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003Adisable_firewall_ui\u0028\u0029",
-            "name": "disable_firewall_ui",
-            "summary": "Disable\u0020Sucuri\u0020WAF\u0020admin\u0020stuff.",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#method_disable_firewall_ui"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003Aremove_sucuri_admin_ui\u0028\u0029",
-            "name": "remove_sucuri_admin_ui",
-            "summary": "Removes\u0020Sucuri\u0020admin\u0020UI\u0020if\u0020user\u0020is\u0020not\u0020sudo\u0020admin.",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#method_remove_sucuri_admin_ui"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003Aremove_firewall_submenu\u0028\u0029",
-            "name": "remove_firewall_submenu",
-            "summary": "Removes\u0020WAF\u0020admin\u0020menu\u0020and\u0020the\u0020corresponding\u0020tab.",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#method_remove_firewall_submenu"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003Ais_sudo_admin_group\u0028\u0029",
-            "name": "is_sudo_admin_group",
-            "summary": "Check\u0020if\u0020a\u0020user\u0020belongs\u0020to\u0020the\u0020sudo\u0020admin\u0020group.",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#method_is_sudo_admin_group"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003A\u0024wp_sudo_admin",
-            "name": "wp_sudo_admin",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#property_wp_sudo_admin"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003A\u0024admin_group",
-            "name": "admin_group",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#property_admin_group"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Traits\\ActivateElementorTrait",
-            "name": "ActivateElementorTrait",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Traits-ActivateElementorTrait.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Traits\\ActivateElementorTrait\u003A\u003Aauto_activate_elementor\u0028\u0029",
-            "name": "auto_activate_elementor",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Traits-ActivateElementorTrait.html#method_auto_activate_elementor"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Traits\\AdminBarMenuTrait",
+            "fqsen": "\\WPframework\\Component\\Core\\Traits\\AdminBarMenuTrait",
             "name": "AdminBarMenuTrait",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Traits-AdminBarMenuTrait.html"
+            "url": "classes/WPframework-Component-Core-Traits-AdminBarMenuTrait.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Traits\\AdminBarMenuTrait\u003A\u003Aapp_env_admin_bar_menu\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Traits\\AdminBarMenuTrait\u003A\u003Aapp_env_admin_bar_menu\u0028\u0029",
             "name": "app_env_admin_bar_menu",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Traits-AdminBarMenuTrait.html#method_app_env_admin_bar_menu"
+            "url": "classes/WPframework-Component-Core-Traits-AdminBarMenuTrait.html#method_app_env_admin_bar_menu"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Updates",
+            "fqsen": "\\WPframework\\Component\\Core\\Updates",
             "name": "Updates",
             "summary": "Retrieve\u0020information\u0020about\u0020available\u0020updates\nfor\u0020WordPress\u0020core,\u0020themes,\u0020and\u0020plugins.",
-            "url": "classes/Urisoft-Framework-Core-Updates.html"
+            "url": "classes/WPframework-Component-Core-Updates.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Updates\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Updates\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructor\u0020initializes\u0020the\u0020update\u0020data\u0020and\u0020available\u0020updates\u0020count.",
-            "url": "classes/Urisoft-Framework-Core-Updates.html#method___construct"
+            "url": "classes/WPframework-Component-Core-Updates.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Updates\u003A\u003Aget_available_updates\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Updates\u003A\u003Aget_available_updates\u0028\u0029",
             "name": "get_available_updates",
             "summary": "Get\u0020the\u0020count\u0020of\u0020available\u0020updates.",
-            "url": "classes/Urisoft-Framework-Core-Updates.html#method_get_available_updates"
+            "url": "classes/WPframework-Component-Core-Updates.html#method_get_available_updates"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Updates\u003A\u003Aget_core_update\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Updates\u003A\u003Aget_core_update\u0028\u0029",
             "name": "get_core_update",
             "summary": "Get\u0020the\u0020count\u0020of\u0020available\u0020core\u0020updates.",
-            "url": "classes/Urisoft-Framework-Core-Updates.html#method_get_core_update"
+            "url": "classes/WPframework-Component-Core-Updates.html#method_get_core_update"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Updates\u003A\u003Aget_theme_update\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Updates\u003A\u003Aget_theme_update\u0028\u0029",
             "name": "get_theme_update",
             "summary": "Get\u0020the\u0020count\u0020of\u0020available\u0020theme\u0020updates.",
-            "url": "classes/Urisoft-Framework-Core-Updates.html#method_get_theme_update"
+            "url": "classes/WPframework-Component-Core-Updates.html#method_get_theme_update"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Updates\u003A\u003Aget_plugin_update\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Core\\Updates\u003A\u003Aget_plugin_update\u0028\u0029",
             "name": "get_plugin_update",
             "summary": "Get\u0020the\u0020count\u0020of\u0020available\u0020plugin\u0020updates.",
-            "url": "classes/Urisoft-Framework-Core-Updates.html#method_get_plugin_update"
+            "url": "classes/WPframework-Component-Core-Updates.html#method_get_plugin_update"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Updates\u003A\u003A\u0024update_plugins",
+            "fqsen": "\\WPframework\\Component\\Core\\Updates\u003A\u003A\u0024update_plugins",
             "name": "update_plugins",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Updates.html#property_update_plugins"
+            "url": "classes/WPframework-Component-Core-Updates.html#property_update_plugins"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Updates\u003A\u003A\u0024update_themes",
+            "fqsen": "\\WPframework\\Component\\Core\\Updates\u003A\u003A\u0024update_themes",
             "name": "update_themes",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Updates.html#property_update_themes"
+            "url": "classes/WPframework-Component-Core-Updates.html#property_update_themes"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Updates\u003A\u003A\u0024update_wordpress",
+            "fqsen": "\\WPframework\\Component\\Core\\Updates\u003A\u003A\u0024update_wordpress",
             "name": "update_wordpress",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Updates.html#property_update_wordpress"
+            "url": "classes/WPframework-Component-Core-Updates.html#property_update_wordpress"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Updates\u003A\u003A\u0024translation_updates",
+            "fqsen": "\\WPframework\\Component\\Core\\Updates\u003A\u003A\u0024translation_updates",
             "name": "translation_updates",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Updates.html#property_translation_updates"
+            "url": "classes/WPframework-Component-Core-Updates.html#property_translation_updates"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel",
-            "name": "WhiteLabel",
-            "summary": "white\u0020label\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003Aremove_dashboard_widgets\u0028\u0029",
-            "name": "remove_dashboard_widgets",
-            "summary": "Remove\u0020the\u0020Widgets\u0020\u0028\u0020do\u0020a\u0020check\u0020if\u0020the\u0020user\u0020can\u0020manage_options\u0020\u0029\nwe\u0020should\u0020add\u0020an\u0020option\u0020for\u0020this\u0020to\u0020allow\u0020admins\u0020to\u0020choose\u0020who\u0020can\u0020view\u0020the\u0020lowest\u0020level\u0020etc.",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#method_remove_dashboard_widgets"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003Alogout_link\u0028\u0029",
-            "name": "logout_link",
-            "summary": "logout_link.",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#method_logout_link"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003Aremove_admin_wp_logo\u0028\u0029",
-            "name": "remove_admin_wp_logo",
-            "summary": "remove_wp_logo.",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#method_remove_admin_wp_logo"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003Achange_footer_text\u0028\u0029",
-            "name": "change_footer_text",
-            "summary": "change_footer_text.",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#method_change_footer_text"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A\u0024apt9_url",
-            "name": "apt9_url",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#property_apt9_url"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A\u0024home_url",
-            "name": "home_url",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#property_home_url"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A\u0024date_year",
-            "name": "date_year",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#property_date_year"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A\u0024site_name",
-            "name": "site_name",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#property_site_name"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A\u0024powered_by",
-            "name": "powered_by",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#property_powered_by"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A\u0024tenant_id",
-            "name": "tenant_id",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#property_tenant_id"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvGenerator",
+            "fqsen": "\\WPframework\\Component\\EnvGenerator",
             "name": "EnvGenerator",
             "summary": "",
-            "url": "classes/Urisoft-Framework-EnvGenerator.html"
+            "url": "classes/WPframework-Component-EnvGenerator.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvGenerator\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\EnvGenerator\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/Urisoft-Framework-EnvGenerator.html#method___construct"
+            "url": "classes/WPframework-Component-EnvGenerator.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvGenerator\u003A\u003Acreate\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\EnvGenerator\u003A\u003Acreate\u0028\u0029",
             "name": "create",
             "summary": "",
-            "url": "classes/Urisoft-Framework-EnvGenerator.html#method_create"
+            "url": "classes/WPframework-Component-EnvGenerator.html#method_create"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvGenerator\u003A\u003Arand_str\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\EnvGenerator\u003A\u003Arand_str\u0028\u0029",
             "name": "rand_str",
             "summary": "Generate\u0020a\u0020cryptographically\u0020secure\u0020password.",
-            "url": "classes/Urisoft-Framework-EnvGenerator.html#method_rand_str"
+            "url": "classes/WPframework-Component-EnvGenerator.html#method_rand_str"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvGenerator\u003A\u003Aenv_file_content\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\EnvGenerator\u003A\u003Aenv_file_content\u0028\u0029",
             "name": "env_file_content",
             "summary": "",
-            "url": "classes/Urisoft-Framework-EnvGenerator.html#method_env_file_content"
+            "url": "classes/WPframework-Component-EnvGenerator.html#method_env_file_content"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvGenerator\u003A\u003Awpsalts\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\EnvGenerator\u003A\u003Awpsalts\u0028\u0029",
             "name": "wpsalts",
             "summary": "",
-            "url": "classes/Urisoft-Framework-EnvGenerator.html#method_wpsalts"
+            "url": "classes/WPframework-Component-EnvGenerator.html#method_wpsalts"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvGenerator\u003A\u003A\u0024filesystem",
+            "fqsen": "\\WPframework\\Component\\EnvGenerator\u003A\u003A\u0024filesystem",
             "name": "filesystem",
             "summary": "",
-            "url": "classes/Urisoft-Framework-EnvGenerator.html#property_filesystem"
+            "url": "classes/WPframework-Component-EnvGenerator.html#property_filesystem"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvInterface",
+            "fqsen": "\\WPframework\\Component\\EnvInterface",
             "name": "EnvInterface",
             "summary": "Interface\u0020for\u0020managing\u0020different\u0020environment\u0020settings.",
-            "url": "classes/Urisoft-Framework-EnvInterface.html"
+            "url": "classes/WPframework-Component-EnvInterface.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvInterface\u003A\u003Aenv_secure\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\EnvInterface\u003A\u003Aenv_secure\u0028\u0029",
             "name": "env_secure",
             "summary": "Configure\u0020the\u0020environment\u0020for\u0020secure\u0020production.",
-            "url": "classes/Urisoft-Framework-EnvInterface.html#method_env_secure"
+            "url": "classes/WPframework-Component-EnvInterface.html#method_env_secure"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvInterface\u003A\u003Aenv_production\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\EnvInterface\u003A\u003Aenv_production\u0028\u0029",
             "name": "env_production",
             "summary": "Configure\u0020the\u0020environment\u0020for\u0020production.",
-            "url": "classes/Urisoft-Framework-EnvInterface.html#method_env_production"
+            "url": "classes/WPframework-Component-EnvInterface.html#method_env_production"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvInterface\u003A\u003Aenv_staging\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\EnvInterface\u003A\u003Aenv_staging\u0028\u0029",
             "name": "env_staging",
             "summary": "Configure\u0020the\u0020environment\u0020for\u0020staging.",
-            "url": "classes/Urisoft-Framework-EnvInterface.html#method_env_staging"
+            "url": "classes/WPframework-Component-EnvInterface.html#method_env_staging"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvInterface\u003A\u003Aenv_development\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\EnvInterface\u003A\u003Aenv_development\u0028\u0029",
             "name": "env_development",
             "summary": "Configure\u0020the\u0020environment\u0020for\u0020development.",
-            "url": "classes/Urisoft-Framework-EnvInterface.html#method_env_development"
+            "url": "classes/WPframework-Component-EnvInterface.html#method_env_development"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvInterface\u003A\u003Aenv_debug\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\EnvInterface\u003A\u003Aenv_debug\u0028\u0029",
             "name": "env_debug",
             "summary": "Configure\u0020the\u0020environment\u0020for\u0020debugging.",
-            "url": "classes/Urisoft-Framework-EnvInterface.html#method_env_debug"
+            "url": "classes/WPframework-Component-EnvInterface.html#method_env_debug"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvSwitch",
+            "fqsen": "\\WPframework\\Component\\EnvSwitch",
             "name": "EnvSwitch",
             "summary": "Class\u0020EnvSwitch.",
-            "url": "classes/Urisoft-Framework-EnvSwitch.html"
+            "url": "classes/WPframework-Component-EnvSwitch.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvTypes",
+            "fqsen": "\\WPframework\\Component\\EnvTypes",
             "name": "EnvTypes",
             "summary": "",
-            "url": "classes/Urisoft-Framework-EnvTypes.html"
+            "url": "classes/WPframework-Component-EnvTypes.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvTypes\u003A\u003Ais_valid\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\EnvTypes\u003A\u003Ais_valid\u0028\u0029",
             "name": "is_valid",
             "summary": "Checks\u0020if\u0020the\u0020given\u0020type\u0020is\u0020a\u0020valid\u0020environment\u0020type.",
-            "url": "classes/Urisoft-Framework-EnvTypes.html#method_is_valid"
+            "url": "classes/WPframework-Component-EnvTypes.html#method_is_valid"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvTypes\u003A\u003Aget\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\EnvTypes\u003A\u003Aget\u0028\u0029",
             "name": "get",
             "summary": "Get\u0020all\u0020environment\u0020types.",
-            "url": "classes/Urisoft-Framework-EnvTypes.html#method_get"
+            "url": "classes/WPframework-Component-EnvTypes.html#method_get"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\EnvTypes\u003A\u003A\u0024env_types",
+            "fqsen": "\\WPframework\\Component\\EnvTypes\u003A\u003A\u0024env_types",
             "name": "env_types",
             "summary": "",
-            "url": "classes/Urisoft-Framework-EnvTypes.html#property_env_types"
+            "url": "classes/WPframework-Component-EnvTypes.html#property_env_types"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Exceptions\\ConstantAlreadyDefinedException",
+            "fqsen": "\\WPframework\\Component\\Exceptions\\ConstantAlreadyDefinedException",
             "name": "ConstantAlreadyDefinedException",
             "summary": "Exception\u0020thrown\u0020when\u0020attempting\u0020to\u0020define\u0028\u0029\u0020a\u0020constant\u0020that\u0020has\u0020already\u0020been\u0020defined.",
-            "url": "classes/Urisoft-Framework-Exceptions-ConstantAlreadyDefinedException.html"
+            "url": "classes/WPframework-Component-Exceptions-ConstantAlreadyDefinedException.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\App",
+            "fqsen": "\\WPframework\\Component\\Http\\App",
             "name": "App",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-App.html"
+            "url": "classes/WPframework-Component-Http-App.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\App\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Setup\u0020App.",
-            "url": "classes/Urisoft-Framework-Http-App.html#method___construct"
+            "url": "classes/WPframework-Component-Http-App.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\App\u003A\u003Akernel\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003Akernel\u0028\u0029",
             "name": "kernel",
             "summary": "Initializes\u0020and\u0020returns\u0020a\u0020BaseKernel\u0020object\u0020with\u0020the\u0020application\u0027s\u0020configuration.",
-            "url": "classes/Urisoft-Framework-Http-App.html#method_kernel"
+            "url": "classes/WPframework-Component-Http-App.html#method_kernel"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\App\u003A\u003Adefine_setup\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003Adefine_setup\u0028\u0029",
             "name": "define_setup",
             "summary": "Factory\u0020method\u0020for\u0020creating\u0020a\u0020Setup\u0020object\u0020with\u0020the\u0020specified\u0020application\u0020path.",
-            "url": "classes/Urisoft-Framework-Http-App.html#method_define_setup"
+            "url": "classes/WPframework-Component-Http-App.html#method_define_setup"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\App\u003A\u003Aset_app_errors\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003Aset_app_errors\u0028\u0029",
             "name": "set_app_errors",
             "summary": "Set\u0020up\u0020the\u0020application\u0020error\u0020handling\u0020based\u0020on\u0020environment\u0020settings.",
-            "url": "classes/Urisoft-Framework-Http-App.html#method_set_app_errors"
+            "url": "classes/WPframework-Component-Http-App.html#method_set_app_errors"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\App\u003A\u003A\u0024app_path",
+            "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A\u0024app_path",
             "name": "app_path",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-App.html#property_app_path"
+            "url": "classes/WPframework-Component-Http-App.html#property_app_path"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\App\u003A\u003A\u0024setup",
+            "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A\u0024setup",
             "name": "setup",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-App.html#property_setup"
+            "url": "classes/WPframework-Component-Http-App.html#property_setup"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\App\u003A\u003A\u0024config",
+            "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A\u0024config",
             "name": "config",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-App.html#property_config"
+            "url": "classes/WPframework-Component-Http-App.html#property_config"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\App\u003A\u003A\u0024config_dir",
+            "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A\u0024config_dir",
             "name": "config_dir",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-App.html#property_config_dir"
+            "url": "classes/WPframework-Component-Http-App.html#property_config_dir"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\Asset",
+            "fqsen": "\\WPframework\\Component\\Http\\Asset",
             "name": "Asset",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-Asset.html"
+            "url": "classes/WPframework-Component-Http-Asset.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\Asset\u003A\u003Aurl\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\Asset\u003A\u003Aurl\u0028\u0029",
             "name": "url",
             "summary": "The\u0020Asset\u0020url.",
-            "url": "classes/Urisoft-Framework-Http-Asset.html#method_url"
+            "url": "classes/WPframework-Component-Http-Asset.html#method_url"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel",
             "name": "BaseKernel",
             "summary": "Setup\u0020common\u0020elements.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Setup\u0020BaseKernel.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method___construct"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aget_app\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_app\u0028\u0029",
             "name": "get_app",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_get_app"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_app"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aget_app_security\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_app_security\u0028\u0029",
             "name": "get_app_security",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_get_app_security"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_app_security"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aget_app_path\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_app_path\u0028\u0029",
             "name": "get_app_path",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_get_app_path"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_app_path"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aget_args\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_args\u0028\u0029",
             "name": "get_args",
             "summary": "Get\u0020args.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_get_args"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_args"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aget_app_config\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_app_config\u0028\u0029",
             "name": "get_app_config",
             "summary": "Get\u0020app\u0020config\u0020args.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_get_app_config"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_app_config"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aoverrides\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aoverrides\u0028\u0029",
             "name": "overrides",
             "summary": "Loads\u0020tenant\u002Dspecific\u0020or\u0020default\u0020configuration\u0020based\u0020on\u0020the\u0020application\u0027s\u0020multi\u002Dtenant\u0020status.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_overrides"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_overrides"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aset_env_secret\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aset_env_secret\u0028\u0029",
             "name": "set_env_secret",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_set_env_secret"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_set_env_secret"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aget_secret\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_secret\u0028\u0029",
             "name": "get_secret",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_get_secret"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_secret"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Ainit\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Ainit\u0028\u0029",
             "name": "init",
             "summary": "Start\u0020the\u0020app.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_init"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_init"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aget_defined\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_defined\u0028\u0029",
             "name": "get_defined",
             "summary": "Get\u0020list\u0020of\u0020defined\u0020constants.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_get_defined"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_defined"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aget_server_env\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_server_env\u0028\u0029",
             "name": "get_server_env",
             "summary": "Retrieve\u0020server\u0020environment\u0020variables\u0020and\u0020obfuscate\u0020sensitive\u0020data.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_get_server_env"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_server_env"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aget_user_constants\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_user_constants\u0028\u0029",
             "name": "get_user_constants",
             "summary": "Retrieve\u0020user\u002Ddefined\u0020constants\u0020and\u0020obfuscate\u0020sensitive\u0020data.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_get_user_constants"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_user_constants"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Awp_is_not_installed\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Awp_is_not_installed\u0028\u0029",
             "name": "wp_is_not_installed",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_wp_is_not_installed"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_wp_is_not_installed"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aenvironment_args\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aenvironment_args\u0028\u0029",
             "name": "environment_args",
             "summary": "Generate\u0020environment\u002Dspecific\u0020arguments,\u0020including\u0020customized\u0020error\u0020log\u0020paths.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_environment_args"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_environment_args"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Ahttp\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Ahttp\u0028\u0029",
             "name": "http",
             "summary": "Initialize\u0020the\u0020HTTP\u0020client.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_http"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_http"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Ais_multitenant_app\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Ais_multitenant_app\u0028\u0029",
             "name": "is_multitenant_app",
             "summary": "Determines\u0020if\u0020the\u0020application\u0020is\u0020configured\u0020to\u0020operate\u0020in\u0020multi\u002Dtenant\u0020mode.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_is_multitenant_app"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_is_multitenant_app"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aget_maintenance_message\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_maintenance_message\u0028\u0029",
             "name": "get_maintenance_message",
             "summary": "Get\u0020the\u0020maintenance\u0020message.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_get_maintenance_message"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_maintenance_message"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aget_current_month\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_current_month\u0028\u0029",
             "name": "get_current_month",
             "summary": "Retrieve\u0020the\u0020current\u0020month.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_get_current_month"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_current_month"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Aget_current_year\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_current_year\u0028\u0029",
             "name": "get_current_year",
             "summary": "Retrieve\u0020the\u0020current\u0020year.",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_get_current_year"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_current_year"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003Ais_debug_mode\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Ais_debug_mode\u0028\u0029",
             "name": "is_debug_mode",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#method_is_debug_mode"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_is_debug_mode"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003A\u0024app_path",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024app_path",
             "name": "app_path",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#property_app_path"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#property_app_path"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003A\u0024log_file",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024log_file",
             "name": "log_file",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#property_log_file"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#property_log_file"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003A\u0024dir_name",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024dir_name",
             "name": "dir_name",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#property_dir_name"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#property_dir_name"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003A\u0024config_file",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024config_file",
             "name": "config_file",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#property_config_file"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#property_config_file"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003A\u0024env_secret",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024env_secret",
             "name": "env_secret",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#property_env_secret"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#property_env_secret"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003A\u0024list",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024list",
             "name": "list",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#property_list"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#property_list"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003A\u0024app_setup",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024app_setup",
             "name": "app_setup",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#property_app_setup"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#property_app_setup"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003A\u0024tenant_id",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024tenant_id",
             "name": "tenant_id",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#property_tenant_id"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#property_tenant_id"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\BaseKernel\u003A\u003A\u0024config_dir",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024config_dir",
             "name": "config_dir",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-BaseKernel.html#property_config_dir"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#property_config_dir"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB",
+            "fqsen": "\\WPframework\\Component\\Http\\DB",
             "name": "DB",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html"
+            "url": "classes/WPframework-Component-Http-DB.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\DB\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html#method___construct"
+            "url": "classes/WPframework-Component-Http-DB.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB\u003A\u003Aall\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\DB\u003A\u003Aall\u0028\u0029",
             "name": "all",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html#method_all"
+            "url": "classes/WPframework-Component-Http-DB.html#method_all"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB\u003A\u003Afind\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\DB\u003A\u003Afind\u0028\u0029",
             "name": "find",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html#method_find"
+            "url": "classes/WPframework-Component-Http-DB.html#method_find"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB\u003A\u003Awhere\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\DB\u003A\u003Awhere\u0028\u0029",
             "name": "where",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html#method_where"
+            "url": "classes/WPframework-Component-Http-DB.html#method_where"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB\u003A\u003Aconnect\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\DB\u003A\u003Aconnect\u0028\u0029",
             "name": "connect",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html#method_connect"
+            "url": "classes/WPframework-Component-Http-DB.html#method_connect"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB\u003A\u003A\u0024host",
+            "fqsen": "\\WPframework\\Component\\Http\\DB\u003A\u003A\u0024host",
             "name": "host",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html#property_host"
+            "url": "classes/WPframework-Component-Http-DB.html#property_host"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB\u003A\u003A\u0024dbName",
+            "fqsen": "\\WPframework\\Component\\Http\\DB\u003A\u003A\u0024dbName",
             "name": "dbName",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html#property_dbName"
+            "url": "classes/WPframework-Component-Http-DB.html#property_dbName"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB\u003A\u003A\u0024username",
+            "fqsen": "\\WPframework\\Component\\Http\\DB\u003A\u003A\u0024username",
             "name": "username",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html#property_username"
+            "url": "classes/WPframework-Component-Http-DB.html#property_username"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB\u003A\u003A\u0024password",
+            "fqsen": "\\WPframework\\Component\\Http\\DB\u003A\u003A\u0024password",
             "name": "password",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html#property_password"
+            "url": "classes/WPframework-Component-Http-DB.html#property_password"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB\u003A\u003A\u0024conn",
+            "fqsen": "\\WPframework\\Component\\Http\\DB\u003A\u003A\u0024conn",
             "name": "conn",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html#property_conn"
+            "url": "classes/WPframework-Component-Http-DB.html#property_conn"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB\u003A\u003A\u0024table",
+            "fqsen": "\\WPframework\\Component\\Http\\DB\u003A\u003A\u0024table",
             "name": "table",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html#property_table"
+            "url": "classes/WPframework-Component-Http-DB.html#property_table"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\DB\u003A\u003A\u0024prefix",
+            "fqsen": "\\WPframework\\Component\\Http\\DB\u003A\u003A\u0024prefix",
             "name": "prefix",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-DB.html#property_prefix"
+            "url": "classes/WPframework-Component-Http-DB.html#property_prefix"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HostInterface",
+            "fqsen": "\\WPframework\\Component\\Http\\HostInterface",
             "name": "HostInterface",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-HostInterface.html"
+            "url": "classes/WPframework-Component-Http-HostInterface.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HostInterface\u003A\u003Ais_https_secure\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\HostInterface\u003A\u003Ais_https_secure\u0028\u0029",
             "name": "is_https_secure",
             "summary": "Determines\u0020if\u0020the\u0020current\u0020request\u0020is\u0020made\u0020over\u0020HTTPS.",
-            "url": "classes/Urisoft-Framework-Http-HostInterface.html#method_is_https_secure"
+            "url": "classes/WPframework-Component-Http-HostInterface.html#method_is_https_secure"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HostInterface\u003A\u003Aget_http_host\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\HostInterface\u003A\u003Aget_http_host\u0028\u0029",
             "name": "get_http_host",
             "summary": "Retrieves\u0020the\u0020sanitized\u0020HTTP\u0020host\u0020if\u0020available,\u0020otherwise\u0020a\u0020default\u0020value.",
-            "url": "classes/Urisoft-Framework-Http-HostInterface.html#method_get_http_host"
+            "url": "classes/WPframework-Component-Http-HostInterface.html#method_get_http_host"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HostInterface\u003A\u003Aget_server_host\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\HostInterface\u003A\u003Aget_server_host\u0028\u0029",
             "name": "get_server_host",
             "summary": "Extracts\u0020the\u0020host\u0020domain\u0020and\u0020determines\u0020the\u0020protocol\u0020prefix.",
-            "url": "classes/Urisoft-Framework-Http-HostInterface.html#method_get_server_host"
+            "url": "classes/WPframework-Component-Http-HostInterface.html#method_get_server_host"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HostInterface\u003A\u003Aget_request_url\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\HostInterface\u003A\u003Aget_request_url\u0028\u0029",
             "name": "get_request_url",
             "summary": "Constructs\u0020the\u0020full\u0020request\u0020URL\u0020based\u0020on\u0020the\u0020current\u0020protocol\u0020and\u0020app\u0020host.",
-            "url": "classes/Urisoft-Framework-Http-HostInterface.html#method_get_request_url"
+            "url": "classes/WPframework-Component-Http-HostInterface.html#method_get_request_url"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HostManager",
+            "fqsen": "\\WPframework\\Component\\Http\\HostManager",
             "name": "HostManager",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-HostManager.html"
+            "url": "classes/WPframework-Component-Http-HostManager.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HostManager\u003A\u003Ais_https_secure\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\HostManager\u003A\u003Ais_https_secure\u0028\u0029",
             "name": "is_https_secure",
             "summary": "Determines\u0020if\u0020the\u0020current\u0020request\u0020is\u0020made\u0020over\u0020HTTPS.",
-            "url": "classes/Urisoft-Framework-Http-HostManager.html#method_is_https_secure"
+            "url": "classes/WPframework-Component-Http-HostManager.html#method_is_https_secure"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HostManager\u003A\u003Aget_http_host\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\HostManager\u003A\u003Aget_http_host\u0028\u0029",
             "name": "get_http_host",
             "summary": "Retrieves\u0020the\u0020sanitized\u0020HTTP\u0020host\u0020if\u0020available,\u0020otherwise\u0020a\u0020default\u0020value.",
-            "url": "classes/Urisoft-Framework-Http-HostManager.html#method_get_http_host"
+            "url": "classes/WPframework-Component-Http-HostManager.html#method_get_http_host"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HostManager\u003A\u003Aget_server_host\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\HostManager\u003A\u003Aget_server_host\u0028\u0029",
             "name": "get_server_host",
             "summary": "Extracts\u0020the\u0020host\u0020domain\u0020and\u0020determines\u0020the\u0020protocol\u0020prefix.",
-            "url": "classes/Urisoft-Framework-Http-HostManager.html#method_get_server_host"
+            "url": "classes/WPframework-Component-Http-HostManager.html#method_get_server_host"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HostManager\u003A\u003Aget_request_url\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\HostManager\u003A\u003Aget_request_url\u0028\u0029",
             "name": "get_request_url",
             "summary": "Constructs\u0020the\u0020full\u0020request\u0020URL\u0020based\u0020on\u0020the\u0020current\u0020protocol\u0020and\u0020app\u0020host.",
-            "url": "classes/Urisoft-Framework-Http-HostManager.html#method_get_request_url"
+            "url": "classes/WPframework-Component-Http-HostManager.html#method_get_request_url"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HostManager\u003A\u003A_sanitize_http_host\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\HostManager\u003A\u003A_sanitize_http_host\u0028\u0029",
             "name": "_sanitize_http_host",
             "summary": "Sanitizes\u0020the\u0020HTTP\u0020host.",
-            "url": "classes/Urisoft-Framework-Http-HostManager.html#method__sanitize_http_host"
+            "url": "classes/WPframework-Component-Http-HostManager.html#method__sanitize_http_host"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HttpFactory",
+            "fqsen": "\\WPframework\\Component\\Http\\HttpFactory",
             "name": "HttpFactory",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Http-HttpFactory.html"
+            "url": "classes/WPframework-Component-Http-HttpFactory.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http\\HttpFactory\u003A\u003Ainit\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Http\\HttpFactory\u003A\u003Ainit\u0028\u0029",
             "name": "init",
             "summary": "Creates\u0020and\u0020returns\u0020an\u0020instance\u0020of\u0020HostManager.",
-            "url": "classes/Urisoft-Framework-Http-HttpFactory.html#method_init"
+            "url": "classes/WPframework-Component-Http-HttpFactory.html#method_init"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Kernel",
+            "fqsen": "\\WPframework\\Component\\Kernel",
             "name": "Kernel",
             "summary": "Setup\u0020common\u0020elements.",
-            "url": "classes/Urisoft-Framework-Kernel.html"
+            "url": "classes/WPframework-Component-Kernel.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Kernel\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Kernel\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Setup\u0020Kernel.",
-            "url": "classes/Urisoft-Framework-Kernel.html#method___construct"
+            "url": "classes/WPframework-Component-Kernel.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup",
+            "fqsen": "\\WPframework\\Component\\Setup",
             "name": "Setup",
             "summary": "Setup\u0020WP\u0020Config.",
-            "url": "classes/Urisoft-Framework-Setup.html"
+            "url": "classes/WPframework-Component-Setup.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructor\u0020for\u0020initializing\u0020the\u0020application\u0020environment\u0020and\u0020configuration.",
-            "url": "classes/Urisoft-Framework-Setup.html#method___construct"
+            "url": "classes/WPframework-Component-Setup.html#method___construct"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Aget_current_path\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Aget_current_path\u0028\u0029",
             "name": "get_current_path",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Setup.html#method_get_current_path"
+            "url": "classes/WPframework-Component-Setup.html#method_get_current_path"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Ainit\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Ainit\u0028\u0029",
             "name": "init",
             "summary": "Singleton.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_init"
+            "url": "classes/WPframework-Component-Setup.html#method_init"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Aconfig\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Aconfig\u0028\u0029",
             "name": "config",
             "summary": "Configures\u0020application\u0020settings.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_config"
+            "url": "classes/WPframework-Component-Setup.html#method_config"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Aset_environment\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Aset_environment\u0028\u0029",
             "name": "set_environment",
             "summary": "Setting\u0020the\u0020environment\u0020type.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_set_environment"
+            "url": "classes/WPframework-Component-Setup.html#method_set_environment"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Aget_short_circuit\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Aget_short_circuit\u0028\u0029",
             "name": "get_short_circuit",
             "summary": "Get\u0020the\u0020short_circuit\u0020loaded.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_get_short_circuit"
+            "url": "classes/WPframework-Component-Setup.html#method_get_short_circuit"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Aget_env_files\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Aget_env_files\u0028\u0029",
             "name": "get_env_files",
             "summary": "Get\u0020the\u0020Env\u0020files\u0020loaded.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_get_env_files"
+            "url": "classes/WPframework-Component-Setup.html#method_get_env_files"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Aget_environment\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Aget_environment\u0028\u0029",
             "name": "get_environment",
             "summary": "Get\u0020the\u0020current\u0020Environment\u0020setup.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_get_environment"
+            "url": "classes/WPframework-Component-Setup.html#method_get_environment"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Aset_error_handler\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Aset_error_handler\u0028\u0029",
             "name": "set_error_handler",
             "summary": "Set\u0020error\u0020handler.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_set_error_handler"
+            "url": "classes/WPframework-Component-Setup.html#method_set_error_handler"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Adebug\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Adebug\u0028\u0029",
             "name": "debug",
             "summary": "Debug\u0020Settings.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_debug"
+            "url": "classes/WPframework-Component-Setup.html#method_debug"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Arequired\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Arequired\u0028\u0029",
             "name": "required",
             "summary": "Ensure\u0020that\u0020a\u0020specific\u0020constant\u0020is\u0020defined\u0020and\u0020not\u0020empty.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_required"
+            "url": "classes/WPframework-Component-Setup.html#method_required"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Anormalize_environment\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Anormalize_environment\u0028\u0029",
             "name": "normalize_environment",
             "summary": "Normalizes\u0020the\u0020environment\u0020configuration.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_normalize_environment"
+            "url": "classes/WPframework-Component-Setup.html#method_normalize_environment"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Adetermine_environment\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Adetermine_environment\u0028\u0029",
             "name": "determine_environment",
             "summary": "Determines\u0020the\u0020appropriate\u0020environment\u0020setting.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_determine_environment"
+            "url": "classes/WPframework-Component-Setup.html#method_determine_environment"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Afilter_existing_env_files\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Afilter_existing_env_files\u0028\u0029",
             "name": "filter_existing_env_files",
             "summary": "Filters\u0020out\u0020environment\u0020files\u0020that\u0020do\u0020not\u0020exist\u0020to\u0020avoid\u0020warnings.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_filter_existing_env_files"
+            "url": "classes/WPframework-Component-Setup.html#method_filter_existing_env_files"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Ainitialize_dotenv\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Ainitialize_dotenv\u0028\u0029",
             "name": "initialize_dotenv",
             "summary": "Initializes\u0020Dotenv\u0020with\u0020the\u0020set\u0020path\u0020and\u0020environment\u0020files.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_initialize_dotenv"
+            "url": "classes/WPframework-Component-Setup.html#method_initialize_dotenv"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Aget_default_file_names\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Aget_default_file_names\u0028\u0029",
             "name": "get_default_file_names",
             "summary": "Retrieves\u0020the\u0020default\u0020file\u0020names\u0020for\u0020environment\u0020configuration.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_get_default_file_names"
+            "url": "classes/WPframework-Component-Setup.html#method_get_default_file_names"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Aenvironment_switch\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Aenvironment_switch\u0028\u0029",
             "name": "environment_switch",
             "summary": "Switches\u0020between\u0020different\u0020environments\u0020based\u0020on\u0020the\u0020value\u0020of\u0020\u0024this\u002D\u003Eenvironment.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_environment_switch"
+            "url": "classes/WPframework-Component-Setup.html#method_environment_switch"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Aenable_error_handler\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Aenable_error_handler\u0028\u0029",
             "name": "enable_error_handler",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Setup.html#method_enable_error_handler"
+            "url": "classes/WPframework-Component-Setup.html#method_enable_error_handler"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Ais_required\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Ais_required\u0028\u0029",
             "name": "is_required",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Setup.html#method_is_required"
+            "url": "classes/WPframework-Component-Setup.html#method_is_required"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Aget_env\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Aget_env\u0028\u0029",
             "name": "get_env",
             "summary": "Get\u0020Env\u0020value\u0020or\u0020return\u0020null.",
-            "url": "classes/Urisoft-Framework-Setup.html#method_get_env"
+            "url": "classes/WPframework-Component-Setup.html#method_get_env"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003Areset_environment\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Areset_environment\u0028\u0029",
             "name": "reset_environment",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Setup.html#method_reset_environment"
+            "url": "classes/WPframework-Component-Setup.html#method_reset_environment"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003A\u0024path",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024path",
             "name": "path",
             "summary": "Directory\u0020\u0024path.",
-            "url": "classes/Urisoft-Framework-Setup.html#property_path"
+            "url": "classes/WPframework-Component-Setup.html#property_path"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003A\u0024is_multi_tenant",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024is_multi_tenant",
             "name": "is_multi_tenant",
             "summary": "Setup\u0020multi\u0020tenant.",
-            "url": "classes/Urisoft-Framework-Setup.html#property_is_multi_tenant"
+            "url": "classes/WPframework-Component-Setup.html#property_is_multi_tenant"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003A\u0024dotenv",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024dotenv",
             "name": "dotenv",
             "summary": "Dotenv\u0020\u0024dotenv.",
-            "url": "classes/Urisoft-Framework-Setup.html#property_dotenv"
+            "url": "classes/WPframework-Component-Setup.html#property_dotenv"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003A\u0024instance",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024instance",
             "name": "instance",
             "summary": "Private\u0020\u0024instance.",
-            "url": "classes/Urisoft-Framework-Setup.html#property_instance"
+            "url": "classes/WPframework-Component-Setup.html#property_instance"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003A\u0024environment",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024environment",
             "name": "environment",
             "summary": "The\u0020\u0024environment.",
-            "url": "classes/Urisoft-Framework-Setup.html#property_environment"
+            "url": "classes/WPframework-Component-Setup.html#property_environment"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003A\u0024error_handler",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024error_handler",
             "name": "error_handler",
             "summary": "Symfony\u0020error\u0020handler.",
-            "url": "classes/Urisoft-Framework-Setup.html#property_error_handler"
+            "url": "classes/WPframework-Component-Setup.html#property_error_handler"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003A\u0024error_log_dir",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024error_log_dir",
             "name": "error_log_dir",
             "summary": "Error\u0020log\u0020dir.",
-            "url": "classes/Urisoft-Framework-Setup.html#property_error_log_dir"
+            "url": "classes/WPframework-Component-Setup.html#property_error_log_dir"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003A\u0024env_files",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024env_files",
             "name": "env_files",
             "summary": "Env\u0020files.",
-            "url": "classes/Urisoft-Framework-Setup.html#property_env_files"
+            "url": "classes/WPframework-Component-Setup.html#property_env_files"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003A\u0024short_circuit",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024short_circuit",
             "name": "short_circuit",
             "summary": "short\u0020circuit\u0020loader.",
-            "url": "classes/Urisoft-Framework-Setup.html#property_short_circuit"
+            "url": "classes/WPframework-Component-Setup.html#property_short_circuit"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Setup\u003A\u003A\u0024env_types",
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024env_types",
             "name": "env_types",
             "summary": "Set\u0020supported\u0020env\u0020types.",
-            "url": "classes/Urisoft-Framework-Setup.html#property_env_types"
+            "url": "classes/WPframework-Component-Setup.html#property_env_types"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConfigTrait",
             "name": "ConfigTrait",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html"
+            "url": "classes/WPframework-Component-Traits-ConfigTrait.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait\u003A\u003Asite_url\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConfigTrait\u003A\u003Asite_url\u0028\u0029",
             "name": "site_url",
             "summary": "Site\u0020Url\u0020Settings.",
-            "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html#method_site_url"
+            "url": "classes/WPframework-Component-Traits-ConfigTrait.html#method_site_url"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait\u003A\u003Aasset_url\u0028\u0029",
-            "name": "asset_url",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConfigTrait\u003A\u003AassetUrl\u0028\u0029",
+            "name": "assetUrl",
             "summary": "The\u0020Site\u0020Asset\u0020Url\u0020Settings.",
-            "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html#method_asset_url"
+            "url": "classes/WPframework-Component-Traits-ConfigTrait.html#method_assetUrl"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait\u003A\u003Aoptimize\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConfigTrait\u003A\u003Aoptimize\u0028\u0029",
             "name": "optimize",
             "summary": "Optimize.",
-            "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html#method_optimize"
+            "url": "classes/WPframework-Component-Traits-ConfigTrait.html#method_optimize"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait\u003A\u003Amemory\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConfigTrait\u003A\u003Amemory\u0028\u0029",
             "name": "memory",
             "summary": "Memory\u0020Settings.",
-            "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html#method_memory"
+            "url": "classes/WPframework-Component-Traits-ConfigTrait.html#method_memory"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait\u003A\u003Aforce_ssl\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConfigTrait\u003A\u003Aforce_ssl\u0028\u0029",
             "name": "force_ssl",
             "summary": "SSL.",
-            "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html#method_force_ssl"
+            "url": "classes/WPframework-Component-Traits-ConfigTrait.html#method_force_ssl"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait\u003A\u003Aautosave\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConfigTrait\u003A\u003Aautosave\u0028\u0029",
             "name": "autosave",
             "summary": "AUTOSAVE\u0020and\u0020REVISIONS.",
-            "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html#method_autosave"
+            "url": "classes/WPframework-Component-Traits-ConfigTrait.html#method_autosave"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait\u003A\u003Adatabase\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConfigTrait\u003A\u003Adatabase\u0028\u0029",
             "name": "database",
             "summary": "DB\u0020settings.",
-            "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html#method_database"
+            "url": "classes/WPframework-Component-Traits-ConfigTrait.html#method_database"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait\u003A\u003Asalts\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConfigTrait\u003A\u003Asalts\u0028\u0029",
             "name": "salts",
             "summary": "Authentication\u0020Unique\u0020Keys\u0020and\u0020Salts.",
-            "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html#method_salts"
+            "url": "classes/WPframework-Component-Traits-ConfigTrait.html#method_salts"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait\u003A\u003Aconst\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConfigTrait\u003A\u003Aconst\u0028\u0029",
             "name": "const",
             "summary": "Env\u0020defaults.",
-            "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html#method_const"
+            "url": "classes/WPframework-Component-Traits-ConfigTrait.html#method_const"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConstantTrait",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConstantTrait",
             "name": "ConstantTrait",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Traits-ConstantTrait.html"
+            "url": "classes/WPframework-Component-Traits-ConstantTrait.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConstantTrait\u003A\u003Aset_config_constants\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConstantTrait\u003A\u003Aset_config_constants\u0028\u0029",
             "name": "set_config_constants",
             "summary": "Defines\u0020constants.",
-            "url": "classes/Urisoft-Framework-Traits-ConstantTrait.html#method_set_config_constants"
+            "url": "classes/WPframework-Component-Traits-ConstantTrait.html#method_set_config_constants"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConstantTrait\u003A\u003Aredis\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConstantTrait\u003A\u003Aredis\u0028\u0029",
             "name": "redis",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Traits-ConstantTrait.html#method_redis"
+            "url": "classes/WPframework-Component-Traits-ConstantTrait.html#method_redis"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConstantTrait\u003A\u003Asecurity\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConstantTrait\u003A\u003Asecurity\u0028\u0029",
             "name": "security",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Traits-ConstantTrait.html#method_security"
+            "url": "classes/WPframework-Component-Traits-ConstantTrait.html#method_security"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConstantTrait\u003A\u003A\u0024args",
+            "fqsen": "\\WPframework\\Component\\Traits\\ConstantTrait\u003A\u003A\u0024args",
             "name": "args",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Traits-ConstantTrait.html#property_args"
+            "url": "classes/WPframework-Component-Traits-ConstantTrait.html#property_args"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\EnvironmentSwitch",
+            "fqsen": "\\WPframework\\Component\\Traits\\EnvironmentSwitch",
             "name": "EnvironmentSwitch",
             "summary": "Trait\u0020EnvironmentSwitch.",
-            "url": "classes/Urisoft-Framework-Traits-EnvironmentSwitch.html"
+            "url": "classes/WPframework-Component-Traits-EnvironmentSwitch.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\EnvironmentSwitch\u003A\u003Aenv_secure\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\EnvironmentSwitch\u003A\u003Aenv_secure\u0028\u0029",
             "name": "env_secure",
             "summary": "Secure.",
-            "url": "classes/Urisoft-Framework-Traits-EnvironmentSwitch.html#method_env_secure"
+            "url": "classes/WPframework-Component-Traits-EnvironmentSwitch.html#method_env_secure"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\EnvironmentSwitch\u003A\u003Aenv_production\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\EnvironmentSwitch\u003A\u003Aenv_production\u0028\u0029",
             "name": "env_production",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Traits-EnvironmentSwitch.html#method_env_production"
+            "url": "classes/WPframework-Component-Traits-EnvironmentSwitch.html#method_env_production"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\EnvironmentSwitch\u003A\u003Aenv_staging\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\EnvironmentSwitch\u003A\u003Aenv_staging\u0028\u0029",
             "name": "env_staging",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Traits-EnvironmentSwitch.html#method_env_staging"
+            "url": "classes/WPframework-Component-Traits-EnvironmentSwitch.html#method_env_staging"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\EnvironmentSwitch\u003A\u003Aenv_development\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\EnvironmentSwitch\u003A\u003Aenv_development\u0028\u0029",
             "name": "env_development",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Traits-EnvironmentSwitch.html#method_env_development"
+            "url": "classes/WPframework-Component-Traits-EnvironmentSwitch.html#method_env_development"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\EnvironmentSwitch\u003A\u003Aenv_debug\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\EnvironmentSwitch\u003A\u003Aenv_debug\u0028\u0029",
             "name": "env_debug",
             "summary": "Debug.",
-            "url": "classes/Urisoft-Framework-Traits-EnvironmentSwitch.html#method_env_debug"
+            "url": "classes/WPframework-Component-Traits-EnvironmentSwitch.html#method_env_debug"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\EnvironmentSwitch\u003A\u003Aset_debug_log\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\EnvironmentSwitch\u003A\u003Aset_debug_log\u0028\u0029",
             "name": "set_debug_log",
             "summary": "Set\u0020debug\u0020environment.",
-            "url": "classes/Urisoft-Framework-Traits-EnvironmentSwitch.html#method_set_debug_log"
+            "url": "classes/WPframework-Component-Traits-EnvironmentSwitch.html#method_set_debug_log"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\TenantTrait",
+            "fqsen": "\\WPframework\\Component\\Traits\\TenantTrait",
             "name": "TenantTrait",
             "summary": "",
-            "url": "classes/Urisoft-Framework-Traits-TenantTrait.html"
+            "url": "classes/WPframework-Component-Traits-TenantTrait.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\TenantTrait\u003A\u003Aget_tenant_file_path\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\TenantTrait\u003A\u003Aget_tenant_file_path\u0028\u0029",
             "name": "get_tenant_file_path",
             "summary": "Retrieves\u0020the\u0020path\u0020for\u0020a\u0020tenant\u002Dspecific\u0020file,\u0020with\u0020an\u0020option\u0020to\u0020enforce\u0020strict\u0020finding.",
-            "url": "classes/Urisoft-Framework-Traits-TenantTrait.html#method_get_tenant_file_path"
+            "url": "classes/WPframework-Component-Traits-TenantTrait.html#method_get_tenant_file_path"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\TenantTrait\u003A\u003Adetermine_envpath\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\TenantTrait\u003A\u003Adetermine_envpath\u0028\u0029",
             "name": "determine_envpath",
             "summary": "Determines\u0020the\u0020env\u0020file\u0020application\u0020path,\u0020accounting\u0020for\u0020multi\u002Dtenancy.",
-            "url": "classes/Urisoft-Framework-Traits-TenantTrait.html#method_determine_envpath"
+            "url": "classes/WPframework-Component-Traits-TenantTrait.html#method_determine_envpath"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\TenantTrait\u003A\u003Ais_multitenant_app\u0028\u0029",
+            "fqsen": "\\WPframework\\Component\\Traits\\TenantTrait\u003A\u003Ais_multitenant_app\u0028\u0029",
             "name": "is_multitenant_app",
             "summary": "Determines\u0020if\u0020the\u0020application\u0020is\u0020configured\u0020to\u0020operate\u0020in\u0020multi\u002Dtenant\u0020mode.",
-            "url": "classes/Urisoft-Framework-Traits-TenantTrait.html#method_is_multitenant_app"
+            "url": "classes/WPframework-Component-Traits-TenantTrait.html#method_is_multitenant_app"
         },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",
             "url": "namespaces/default.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework",
-            "name": "Framework",
+            "fqsen": "\\WPframework\\Component",
+            "name": "Component",
             "summary": "",
-            "url": "namespaces/urisoft-framework.html"
+            "url": "namespaces/wpframework-component.html"
         },                {
-            "fqsen": "\\Urisoft",
-            "name": "Urisoft",
+            "fqsen": "\\WPframework",
+            "name": "WPframework",
             "summary": "",
-            "url": "namespaces/urisoft.html"
+            "url": "namespaces/wpframework.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core",
+            "fqsen": "\\WPframework\\Component\\Core",
             "name": "Core",
             "summary": "",
-            "url": "namespaces/urisoft-framework-core.html"
+            "url": "namespaces/wpframework-component-core.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Plugins",
+            "fqsen": "\\WPframework\\Component\\Core\\Plugins",
             "name": "Plugins",
             "summary": "",
-            "url": "namespaces/urisoft-framework-core-plugins.html"
+            "url": "namespaces/wpframework-component-core-plugins.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings",
+            "fqsen": "\\WPframework\\Component\\Core\\Settings",
             "name": "Settings",
             "summary": "",
-            "url": "namespaces/urisoft-framework-core-settings.html"
+            "url": "namespaces/wpframework-component-core-settings.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Traits",
+            "fqsen": "\\WPframework\\Component\\Core\\Traits",
             "name": "Traits",
             "summary": "",
-            "url": "namespaces/urisoft-framework-core-traits.html"
+            "url": "namespaces/wpframework-component-core-traits.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Exceptions",
+            "fqsen": "\\WPframework\\Component\\Exceptions",
             "name": "Exceptions",
             "summary": "",
-            "url": "namespaces/urisoft-framework-exceptions.html"
+            "url": "namespaces/wpframework-component-exceptions.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Http",
+            "fqsen": "\\WPframework\\Component\\Http",
             "name": "Http",
             "summary": "",
-            "url": "namespaces/urisoft-framework-http.html"
+            "url": "namespaces/wpframework-component-http.html"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits",
+            "fqsen": "\\WPframework\\Component\\Traits",
             "name": "Traits",
             "summary": "",
-            "url": "namespaces/urisoft-framework-traits.html"
+            "url": "namespaces/wpframework-component-traits.html"
         }            ]
 );

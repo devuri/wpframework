@@ -11,6 +11,9 @@
         "config",
         "env",
         "dotenv",
+        "dotenv",
+        "multi-tenant",
+        "multitenant",
         "devuri"
     ],
     "homepage": "https://github.com/devuri/wp-framework",
@@ -62,7 +65,7 @@
             "src/inc/helpers.php"
         ],
         "psr-4": {
-            "Urisoft\\": "src/"
+            "WPframework\\": "src/"
         }
     },
     "autoload-dev": {
@@ -152,19 +155,5 @@
             "johnpbloch/wordpress-core-installer": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
-    },
-    "suggest": {
-        "yahnis-elsts/wp-update-server": "Custom update API server.",
-        "humanmade/s3-uploads": "Store Uploads on Amazon S3",
-        "spatie/ssh": "execute commands over an SSH connection",
-        "embed/embed": "If you want to replace WP_oEmbed requires PHP 7.4",
-        "latitude/latitude": "SQL query builder with zero dependencies. ",
-        "ibericode/vat": "PHP library to help you deal with Europe's VAT rules.",
-        "aaemnnosttv/wp-sqlite-db": "A drop-in for using a SQLite database with WordPress.",
-        "itsgoingd/clockwork": "php dev tools in your browser.",
-        "daniel-zahariev/php-aws-ses": "Send emails via Amazon Simple Email Service (SES).",
-        "humanmade/aws-ses-wp-mail": "AWS SES is a very simple UI-less plugin for sending wp emails via AWS SES.",
-        "predis/predis": "A flexible and feature-complete Redis client for PHP.",
-        "phpseclib/phpseclib": "Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc."
     }
 }

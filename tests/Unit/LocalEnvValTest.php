@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Urisoft\Framework\Setup;
+use WPframework\Component\Setup;
 
 /**
  * @internal
