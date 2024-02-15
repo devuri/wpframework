@@ -2,7 +2,7 @@
 
 /**
  * @wordpress-plugin
- * Plugin Name:       App Framework Core
+ * Plugin Name:       WP-Framework Core
  * Plugin URI:        https://github.com/devuri/wp-framework
  * Description:       Web Application Framework provides `wpframework_init` action and bootstrap file.
  * Version:           0.0.2
@@ -34,8 +34,8 @@ if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
 do_action( 'wpframework_init', getHttpEnv() );
 
 /**
- * Start and load core plugin.
+ * Start and load the framework core plugin.
  */
-if ( function_exists( 'wpframework_core' ) ) {
-    wpframework_core();
+if ( function_exists( 'wpframeworkCore' ) ) {
+    wpframeworkCore();
 }
