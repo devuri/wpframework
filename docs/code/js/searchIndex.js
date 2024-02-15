@@ -31,80 +31,80 @@ Search.appendIndex(
             "summary": "The\u0020Asset\u0020url.",
             "url": "namespaces/default.html#function_asset"
         },                {
-            "fqsen": "\\asset_url\u0028\u0029",
-            "name": "asset_url",
+            "fqsen": "\\assetUrl\u0028\u0029",
+            "name": "assetUrl",
             "summary": "The\u0020Asset\u0020url\u0020only.",
-            "url": "namespaces/default.html#function_asset_url"
+            "url": "namespaces/default.html#function_assetUrl"
         },                {
             "fqsen": "\\env\u0028\u0029",
             "name": "env",
-            "summary": "Get\u0020the\u0020value\u0020of\u0020an\u0020environment\u0020variable.",
+            "summary": "Get\u0020the\u0020value\u0020of\u0020an\u0020environment\u0020variable\u0020with\u0020support\u0020for\u0020default\u0020values\u0020and\u0020optional\u0020encryption.",
             "url": "namespaces/default.html#function_env"
         },                {
-            "fqsen": "\\is_int_val\u0028\u0029",
-            "name": "is_int_val",
+            "fqsen": "\\isIntVal\u0028\u0029",
+            "name": "isIntVal",
             "summary": "Check\u0020if\u0020a\u0020string\u0020is\u0020an\u0020integer\u0020value.",
-            "url": "namespaces/default.html#function_is_int_val"
+            "url": "namespaces/default.html#function_isIntVal"
         },                {
-            "fqsen": "\\get_http_env\u0028\u0029",
-            "name": "get_http_env",
+            "fqsen": "\\getHttpEnv\u0028\u0029",
+            "name": "getHttpEnv",
             "summary": "Get\u0020the\u0020current\u0020set\u0020wp\u0020app\u0020env.",
-            "url": "namespaces/default.html#function_get_http_env"
+            "url": "namespaces/default.html#function_getHttpEnv"
         },                {
-            "fqsen": "\\wpc_app\u0028\u0029",
-            "name": "wpc_app",
+            "fqsen": "\\wpFramework\u0028\u0029",
+            "name": "wpFramework",
             "summary": "Initializes\u0020the\u0020App\u0020Kernel\u0020with\u0020optional\u0020multi\u002Dtenant\u0020support.",
-            "url": "namespaces/default.html#function_wpc_app"
+            "url": "namespaces/default.html#function_wpFramework"
         },                {
-            "fqsen": "\\wpc_app_config_core\u0028\u0029",
-            "name": "wpc_app_config_core",
+            "fqsen": "\\wpframeworkCore\u0028\u0029",
+            "name": "wpframeworkCore",
             "summary": "Start\u0020and\u0020load\u0020core\u0020plugin.",
-            "url": "namespaces/default.html#function_wpc_app_config_core"
+            "url": "namespaces/default.html#function_wpframeworkCore"
         },                {
-            "fqsen": "\\wpc_installed_plugins\u0028\u0029",
-            "name": "wpc_installed_plugins",
+            "fqsen": "\\wpInstalledPlugins\u0028\u0029",
+            "name": "wpInstalledPlugins",
             "summary": "Get\u0020installed\u0020plugins.",
-            "url": "namespaces/default.html#function_wpc_installed_plugins"
+            "url": "namespaces/default.html#function_wpInstalledPlugins"
         },                {
-            "fqsen": "\\app_config_default\u0028\u0029",
-            "name": "app_config_default",
+            "fqsen": "\\appConfig\u0028\u0029",
+            "name": "appConfig",
             "summary": "Get\u0020default\u0020app\u0020config\u0020values.",
-            "url": "namespaces/default.html#function_app_config_default"
+            "url": "namespaces/default.html#function_appConfig"
         },                {
             "fqsen": "\\config\u0028\u0029",
             "name": "config",
             "summary": "Retrieve\u0020configuration\u0020data\u0020using\u0020dot\u0020notation.",
             "url": "namespaces/default.html#function_config"
         },                {
-            "fqsen": "\\evhash\u0028\u0029",
-            "name": "evhash",
+            "fqsen": "\\envHash\u0028\u0029",
+            "name": "envHash",
             "summary": "Gets\u0020hash\u0020of\u0020given\u0020string.",
-            "url": "namespaces/default.html#function_evhash"
+            "url": "namespaces/default.html#function_envHash"
         },                {
-            "fqsen": "\\app_packagist_plugins_list\u0028\u0029",
-            "name": "app_packagist_plugins_list",
+            "fqsen": "\\packagistPluginsList\u0028\u0029",
+            "name": "packagistPluginsList",
             "summary": "",
-            "url": "namespaces/default.html#function_app_packagist_plugins_list"
+            "url": "namespaces/default.html#function_packagistPluginsList"
         },                {
-            "fqsen": "\\app_sanitizer\u0028\u0029",
-            "name": "app_sanitizer",
+            "fqsen": "\\wpSanitize\u0028\u0029",
+            "name": "wpSanitize",
             "summary": "Basic\u0020Sanitize\u0020and\u0020prepare\u0020for\u0020a\u0020string\u0020input\u0020for\u0020safe\u0020usage\u0020in\u0020the\u0020application.",
-            "url": "namespaces/default.html#function_app_sanitizer"
+            "url": "namespaces/default.html#function_wpSanitize"
         },                {
-            "fqsen": "\\env_tenant_id\u0028\u0029",
-            "name": "env_tenant_id",
+            "fqsen": "\\envTenantId\u0028\u0029",
+            "name": "envTenantId",
             "summary": "",
-            "url": "namespaces/default.html#function_env_tenant_id"
+            "url": "namespaces/default.html#function_envTenantId"
         },                {
-            "fqsen": "\\wp_terminate\u0028\u0029",
-            "name": "wp_terminate",
+            "fqsen": "\\wpTerminate\u0028\u0029",
+            "name": "wpTerminate",
             "summary": "Custom\u0020function\u0020to\u0020terminate\u0020script\u0020execution,\u0020display\u0020a\u0020message,\u0020and\u0020set\u0020an\u0020HTTP\u0020status\u0020code.",
-            "url": "namespaces/default.html#function_wp_terminate"
+            "url": "namespaces/default.html#function_wpTerminate"
         },                {
-            "fqsen": "\\sclean_sensitive_env\u0028\u0029",
-            "name": "sclean_sensitive_env",
+            "fqsen": "\\cleanSensitiveEnv\u0028\u0029",
+            "name": "cleanSensitiveEnv",
             "summary": "Cleans\u0020up\u0020sensitive\u0020environment\u0020variables.",
-            "url": "namespaces/default.html#function_sclean_sensitive_env"
+            "url": "namespaces/default.html#function_cleanSensitiveEnv"
         },                {
             "fqsen": "\\Urisoft\\Framework\\ConfigInterface",
             "name": "ConfigInterface",
@@ -160,11 +160,6 @@ Search.appendIndex(
             "name": "autosave",
             "summary": "AUTOSAVE\u0020and\u0020REVISIONS.",
             "url": "classes/Urisoft-Framework-ConfigInterface.html#method_autosave"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\ActivityLog",
-            "name": "ActivityLog",
-            "summary": "TODO\u0020Setup\u0020Activity\u0020Logs.",
-            "url": "classes/Urisoft-Framework-Core-ActivityLog.html"
         },                {
             "fqsen": "\\Urisoft\\Framework\\Core\\AutoLogin",
             "name": "AutoLogin",
@@ -235,71 +230,6 @@ Search.appendIndex(
             "name": "user_admin_url",
             "summary": "The\u0020URL\u0020of\u0020the\u0020user\u0027s\u0020admin\u0020area\u0020\u0028dashboard\u0029.",
             "url": "classes/Urisoft-Framework-Core-AutoLogin.html#property_user_admin_url"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth",
-            "name": "BasicAuth",
-            "summary": "Class\u0020BasicAuth.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Initializes\u0020the\u0020Sucuri\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003Ainit\u0028\u0029",
-            "name": "init",
-            "summary": "Initializes\u0020the\u0020BasicAuth\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method_init"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003Aregister_hooks\u0028\u0029",
-            "name": "register_hooks",
-            "summary": "Registers\u0020the\u0020hooks\u0020for\u0020the\u0020BasicAuth\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method_register_hooks"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003Arequire_auth\u0028\u0029",
-            "name": "require_auth",
-            "summary": "Requires\u0020Basic\u0020auth.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method_require_auth"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003Ais_background_work\u0028\u0029",
-            "name": "is_background_work",
-            "summary": "Checks\u0020if\u0020the\u0020application\u0020is\u0020running\u0020in\u0020a\u0020background\u0020work\u0020environment.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method_is_background_work"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003Aget_request_uri\u0028\u0029",
-            "name": "get_request_uri",
-            "summary": "Retrieves\u0020the\u0020sanitized\u0020REQUEST_URI.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method_get_request_uri"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003Ais_production\u0028\u0029",
-            "name": "is_production",
-            "summary": "Checks\u0020if\u0020the\u0020environment\u0020is\u0020in\u0020production.",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#method_is_production"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003AAUTH_OPTION",
-            "name": "AUTH_OPTION",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#constant_AUTH_OPTION"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003A\u0024username",
-            "name": "username",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#property_username"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003A\u0024user_password",
-            "name": "user_password",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#property_user_password"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003A\u0024auth_option",
-            "name": "auth_option",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#property_auth_option"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\BasicAuth\u003A\u003A\u0024web_app",
-            "name": "web_app",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-BasicAuth.html#property_web_app"
         },                {
             "fqsen": "\\Urisoft\\Framework\\Core\\Elementor",
             "name": "Elementor",
@@ -425,26 +355,6 @@ Search.appendIndex(
             "name": "license_key",
             "summary": "",
             "url": "classes/Urisoft-Framework-Core-Elementor.html#property_license_key"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\EnvColor",
-            "name": "EnvColor",
-            "summary": "Change\u0020The\u0020Color\u0020Scheme\u0020of\u0020wp\u002Dadmin\u0020based\u0020on\u0020env\u0020type\u0020like\u0020staging\u0020production\u0020secure\u0020etc.",
-            "url": "classes/Urisoft-Framework-Core-EnvColor.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\EnvColor\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Constructor\u0020initialize.",
-            "url": "classes/Urisoft-Framework-Core-EnvColor.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\EnvColor\u003A\u003A\u0024env_type",
-            "name": "env_type",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-EnvColor.html#property_env_type"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\EnvColor\u003A\u003A\u0024env_color",
-            "name": "env_color",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-EnvColor.html#property_env_color"
         },                {
             "fqsen": "\\Urisoft\\Framework\\Core\\Plugin",
             "name": "Plugin",
@@ -576,31 +486,6 @@ Search.appendIndex(
             "summary": "The\u0020path\u0020to\u0020the\u0020application\u0020directory.",
             "url": "classes/Urisoft-Framework-Core-PublicKey.html#property_app_path"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\RestrictedAdmin",
-            "name": "RestrictedAdmin",
-            "summary": "Restricted\u0020Admin.",
-            "url": "classes/Urisoft-Framework-Core-RestrictedAdmin.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\RestrictedAdmin\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Initializes\u0020the\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-RestrictedAdmin.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\RestrictedAdmin\u003A\u003Aenable_restricted_admin\u0028\u0029",
-            "name": "enable_restricted_admin",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-RestrictedAdmin.html#method_enable_restricted_admin"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\RestrictedAdmin\u003A\u003A\u0024wp_sudo_admin",
-            "name": "wp_sudo_admin",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-RestrictedAdmin.html#property_wp_sudo_admin"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\RestrictedAdmin\u003A\u003A\u0024admin_group",
-            "name": "admin_group",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-RestrictedAdmin.html#property_admin_group"
-        },                {
             "fqsen": "\\Urisoft\\Framework\\Core\\ScheduledEvent",
             "name": "ScheduledEvent",
             "summary": "Class\u0020ScheduledEvent.",
@@ -676,76 +561,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Urisoft-Framework-Core-Settings-AdminSettingsPage.html#property_is_submenu"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\Register",
-            "name": "Register",
-            "summary": "Custom\u0020settings\u0020class\u0020for\u0020WordPress.",
-            "url": "classes/Urisoft-Framework-Core-Settings-Register.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\Register\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Settings\u0020constructor.",
-            "url": "classes/Urisoft-Framework-Core-Settings-Register.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\Register\u003A\u003Aregister_settings\u0028\u0029",
-            "name": "register_settings",
-            "summary": "Register\u0020the\u0020custom\u0020setting\u0020in\u0020WordPress.",
-            "url": "classes/Urisoft-Framework-Core-Settings-Register.html#method_register_settings"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\Register\u003A\u003Arender_settings\u0028\u0029",
-            "name": "render_settings",
-            "summary": "Callback\u0020function\u0020for\u0020the\u0020checkbox\u0020setting\u0020field.",
-            "url": "classes/Urisoft-Framework-Core-Settings-Register.html#method_render_settings"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Settings\\Register\u003A\u003A\u0024setting_name",
-            "name": "setting_name",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Settings-Register.html#property_setting_name"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri",
-            "name": "Sucuri",
-            "summary": "Custom\u0020Sucuri\u0020settings.",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Initializes\u0020the\u0020Sucuri\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003Ainit_action\u0028\u0029",
-            "name": "init_action",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#method_init_action"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003Adisable_firewall_ui\u0028\u0029",
-            "name": "disable_firewall_ui",
-            "summary": "Disable\u0020Sucuri\u0020WAF\u0020admin\u0020stuff.",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#method_disable_firewall_ui"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003Aremove_sucuri_admin_ui\u0028\u0029",
-            "name": "remove_sucuri_admin_ui",
-            "summary": "Removes\u0020Sucuri\u0020admin\u0020UI\u0020if\u0020user\u0020is\u0020not\u0020sudo\u0020admin.",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#method_remove_sucuri_admin_ui"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003Aremove_firewall_submenu\u0028\u0029",
-            "name": "remove_firewall_submenu",
-            "summary": "Removes\u0020WAF\u0020admin\u0020menu\u0020and\u0020the\u0020corresponding\u0020tab.",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#method_remove_firewall_submenu"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003Ais_sudo_admin_group\u0028\u0029",
-            "name": "is_sudo_admin_group",
-            "summary": "Check\u0020if\u0020a\u0020user\u0020belongs\u0020to\u0020the\u0020sudo\u0020admin\u0020group.",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#method_is_sudo_admin_group"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003A\u0024wp_sudo_admin",
-            "name": "wp_sudo_admin",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#property_wp_sudo_admin"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\Sucuri\u003A\u003A\u0024admin_group",
-            "name": "admin_group",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-Sucuri.html#property_admin_group"
-        },                {
             "fqsen": "\\Urisoft\\Framework\\Core\\Traits\\ActivateElementorTrait",
             "name": "ActivateElementorTrait",
             "summary": "",
@@ -815,66 +630,6 @@ Search.appendIndex(
             "name": "translation_updates",
             "summary": "",
             "url": "classes/Urisoft-Framework-Core-Updates.html#property_translation_updates"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel",
-            "name": "WhiteLabel",
-            "summary": "white\u0020label\u0020class.",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#method___construct"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003Aremove_dashboard_widgets\u0028\u0029",
-            "name": "remove_dashboard_widgets",
-            "summary": "Remove\u0020the\u0020Widgets\u0020\u0028\u0020do\u0020a\u0020check\u0020if\u0020the\u0020user\u0020can\u0020manage_options\u0020\u0029\nwe\u0020should\u0020add\u0020an\u0020option\u0020for\u0020this\u0020to\u0020allow\u0020admins\u0020to\u0020choose\u0020who\u0020can\u0020view\u0020the\u0020lowest\u0020level\u0020etc.",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#method_remove_dashboard_widgets"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003Alogout_link\u0028\u0029",
-            "name": "logout_link",
-            "summary": "logout_link.",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#method_logout_link"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003Aremove_admin_wp_logo\u0028\u0029",
-            "name": "remove_admin_wp_logo",
-            "summary": "remove_wp_logo.",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#method_remove_admin_wp_logo"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003Achange_footer_text\u0028\u0029",
-            "name": "change_footer_text",
-            "summary": "change_footer_text.",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#method_change_footer_text"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A\u0024apt9_url",
-            "name": "apt9_url",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#property_apt9_url"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A\u0024home_url",
-            "name": "home_url",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#property_home_url"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A\u0024date_year",
-            "name": "date_year",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#property_date_year"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A\u0024site_name",
-            "name": "site_name",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#property_site_name"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A\u0024powered_by",
-            "name": "powered_by",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#property_powered_by"
-        },                {
-            "fqsen": "\\Urisoft\\Framework\\Core\\WhiteLabel\u003A\u003A\u0024tenant_id",
-            "name": "tenant_id",
-            "summary": "",
-            "url": "classes/Urisoft-Framework-Core-WhiteLabel.html#property_tenant_id"
         },                {
             "fqsen": "\\Urisoft\\Framework\\EnvGenerator",
             "name": "EnvGenerator",
@@ -1491,10 +1246,10 @@ Search.appendIndex(
             "summary": "Site\u0020Url\u0020Settings.",
             "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html#method_site_url"
         },                {
-            "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait\u003A\u003Aasset_url\u0028\u0029",
-            "name": "asset_url",
+            "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait\u003A\u003AassetUrl\u0028\u0029",
+            "name": "assetUrl",
             "summary": "The\u0020Site\u0020Asset\u0020Url\u0020Settings.",
-            "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html#method_asset_url"
+            "url": "classes/Urisoft-Framework-Traits-ConfigTrait.html#method_assetUrl"
         },                {
             "fqsen": "\\Urisoft\\Framework\\Traits\\ConfigTrait\u003A\u003Aoptimize\u0028\u0029",
             "name": "optimize",
@@ -1610,6 +1365,66 @@ Search.appendIndex(
             "name": "is_multitenant_app",
             "summary": "Determines\u0020if\u0020the\u0020application\u0020is\u0020configured\u0020to\u0020operate\u0020in\u0020multi\u002Dtenant\u0020mode.",
             "url": "classes/Urisoft-Framework-Traits-TenantTrait.html#method_is_multitenant_app"
+        },                {
+            "fqsen": "\\Urisoft\\Framework\\Core\\Label",
+            "name": "Label",
+            "summary": "white\u0020label\u0020class.",
+            "url": "classes/Urisoft-Framework-Core-Label.html"
+        },                {
+            "fqsen": "\\Urisoft\\Framework\\Core\\Label\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Urisoft-Framework-Core-Label.html#method___construct"
+        },                {
+            "fqsen": "\\Urisoft\\Framework\\Core\\Label\u003A\u003Aremove_dashboard_widgets\u0028\u0029",
+            "name": "remove_dashboard_widgets",
+            "summary": "Remove\u0020the\u0020Widgets\u0020\u0028\u0020do\u0020a\u0020check\u0020if\u0020the\u0020user\u0020can\u0020manage_options\u0020\u0029\nwe\u0020should\u0020add\u0020an\u0020option\u0020for\u0020this\u0020to\u0020allow\u0020admins\u0020to\u0020choose\u0020who\u0020can\u0020view\u0020the\u0020lowest\u0020level\u0020etc.",
+            "url": "classes/Urisoft-Framework-Core-Label.html#method_remove_dashboard_widgets"
+        },                {
+            "fqsen": "\\Urisoft\\Framework\\Core\\Label\u003A\u003Alogout_link\u0028\u0029",
+            "name": "logout_link",
+            "summary": "logout_link.",
+            "url": "classes/Urisoft-Framework-Core-Label.html#method_logout_link"
+        },                {
+            "fqsen": "\\Urisoft\\Framework\\Core\\Label\u003A\u003Aremove_admin_wp_logo\u0028\u0029",
+            "name": "remove_admin_wp_logo",
+            "summary": "remove_wp_logo.",
+            "url": "classes/Urisoft-Framework-Core-Label.html#method_remove_admin_wp_logo"
+        },                {
+            "fqsen": "\\Urisoft\\Framework\\Core\\Label\u003A\u003Achange_footer_text\u0028\u0029",
+            "name": "change_footer_text",
+            "summary": "change_footer_text.",
+            "url": "classes/Urisoft-Framework-Core-Label.html#method_change_footer_text"
+        },                {
+            "fqsen": "\\Urisoft\\Framework\\Core\\Label\u003A\u003A\u0024apt9_url",
+            "name": "apt9_url",
+            "summary": "",
+            "url": "classes/Urisoft-Framework-Core-Label.html#property_apt9_url"
+        },                {
+            "fqsen": "\\Urisoft\\Framework\\Core\\Label\u003A\u003A\u0024home_url",
+            "name": "home_url",
+            "summary": "",
+            "url": "classes/Urisoft-Framework-Core-Label.html#property_home_url"
+        },                {
+            "fqsen": "\\Urisoft\\Framework\\Core\\Label\u003A\u003A\u0024date_year",
+            "name": "date_year",
+            "summary": "",
+            "url": "classes/Urisoft-Framework-Core-Label.html#property_date_year"
+        },                {
+            "fqsen": "\\Urisoft\\Framework\\Core\\Label\u003A\u003A\u0024site_name",
+            "name": "site_name",
+            "summary": "",
+            "url": "classes/Urisoft-Framework-Core-Label.html#property_site_name"
+        },                {
+            "fqsen": "\\Urisoft\\Framework\\Core\\Label\u003A\u003A\u0024powered_by",
+            "name": "powered_by",
+            "summary": "",
+            "url": "classes/Urisoft-Framework-Core-Label.html#property_powered_by"
+        },                {
+            "fqsen": "\\Urisoft\\Framework\\Core\\Label\u003A\u003A\u0024tenant_id",
+            "name": "tenant_id",
+            "summary": "",
+            "url": "classes/Urisoft-Framework-Core-Label.html#property_tenant_id"
         },                {
             "fqsen": "\\",
             "name": "\\",
