@@ -15,46 +15,46 @@ class HelpersTest extends BaseTest
     {
         \define( 'WP_HOME', 'https://example.com');
 
-        $asset_url = asset( "/images/thing.png" );
+        $assetUrl = asset( "/images/thing.png" );
 
-        $this->assertIsString($asset_url);
+        $this->assertIsString($assetUrl);
 
         $default = "https://example.com/assets/dist/images/thing.png";
 
-        $this->assertSame($default, $asset_url);
+        $this->assertSame($default, $assetUrl);
     }
 
     public function test_asset_custom_path(): void
     {
-        $asset_url = asset( "/images/thing.png", "/static" );
+        $assetUrl = asset( "/images/thing.png", "/static" );
 
-        $this->assertIsString($asset_url);
+        $this->assertIsString($assetUrl);
 
         $static_path = "https://example.com/static/images/thing.png";
 
-        $this->assertSame($static_path, $asset_url);
+        $this->assertSame($static_path, $assetUrl);
     }
 
-    public function test_asset_url_return_url_only(): void
+    public function test_assetUrl_return_url_only(): void
     {
-        $assets = asset_url();
+        $assets = assetUrl();
 
-        $asset_url = $assets . "images/thing.png";
+        $assetUrl = $assets . "images/thing.png";
 
         $this->assertIsString($assets);
 
         $this->assertSame($assets, "https://example.com/assets/dist/");
 
-        $this->assertIsString($asset_url);
+        $this->assertIsString($assetUrl);
 
         $url = "https://example.com/assets/dist/images/thing.png";
 
-        $this->assertSame($url, $asset_url);
+        $this->assertSame($url, $assetUrl);
     }
 
-    public function test_static_asset_url_return(): void
+    public function test_static_assetUrl_return(): void
     {
-        $static_url = asset_url('/static');
+        $static_url = assetUrl('/static');
 
         $this->assertIsString($static_url);
 
