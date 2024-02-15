@@ -23,7 +23,7 @@ class ScleanSensitiveEnvTest extends TestCase
         unset($_ENV['TEST_VAR2']);
     }
 
-    public function test_cleanSensitiveEnv(): void
+    public function test_clean_sensitive_env(): void
     {
         // Check that environment variables are initially set
         $this->assertEquals('dummyvalue1', getenv('TEST_VAR1'));

@@ -45,11 +45,13 @@ if ( ! \function_exists( 'assetUrl' ) ) {
 /**
  * Get the value of an environment variable with support for default values and optional encryption.
  *
- * @param string $name Name of the environment variable.
- * @param mixed $default_or_encrypt Default value to return if the environment variable is not set. If true, the value is encrypted.
- * @param bool $strtolower Whether to convert the value to lowercase.
- * @return mixed The environment variable value, optionally encrypted, or the default value.
+ * @param string $name               Name of the environment variable.
+ * @param mixed  $default_or_encrypt Default value to return if the environment variable is not set. If true, the value is encrypted.
+ * @param bool   $strtolower         Whether to convert the value to lowercase.
+ *
  * @throws InvalidArgumentException If encryption is requested but APP_PATH is not defined.
+ *
+ * @return mixed The environment variable value, optionally encrypted, or the default value.
  */
 function env( string $name, $default_or_encrypt = null, bool $strtolower = false )
 {
@@ -74,13 +76,13 @@ function env( string $name, $default_or_encrypt = null, bool $strtolower = false
         return (int) $value;
     }
 
-	switch (strtolower($value)) {
+    switch (strtolower($value)) {
         case 'true': return true;
         case 'false': return false;
     }
 
     if ( \in_array( $value, [ 'Null', 'null', 'NULL' ], true ) ) {
-		// empty string is a required return type for null.
+        // empty string is a required return type for null.
         return '';
     }
 
@@ -428,7 +430,7 @@ function cleanSensitiveEnv(array $sensitives): void
 {
     foreach ($sensitives as $var) {
         unset($_ENV[$var]);
-		// Ensure to concatenate '=' to effectively unset it
+        // Ensure to concatenate '=' to effectively unset it
         putenv($var . '=');
     }
 }

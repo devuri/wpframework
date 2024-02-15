@@ -21,7 +21,7 @@ if ( ! \defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if (defined('WP_INSTALLING') && WP_INSTALLING) {
+if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
     return;
 }
 

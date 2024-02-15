@@ -16,7 +16,7 @@ class ConfigDefaultTest extends TestCase
         cleanSensitiveEnv(['SUDO_ADMIN', 'SENDGRID_API_KEY']);
     }
 
-    public function test_appConfig_returns_expected_structure_and_values(): void
+    public function test_app_config_returns_expected_structure_and_values(): void
     {
         $config = appConfig();
 

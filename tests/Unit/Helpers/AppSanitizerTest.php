@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  */
 class AppSanitizerTest extends TestCase
 {
-    public function test_wpSanitize_with_script_tags(): void
+    public function test_wp_sanitize_with_script_tags(): void
     {
         $input = "<script>alert('hello');</script>";
         $expected = "alert(&#039hello&#039)";
@@ -19,7 +19,7 @@ class AppSanitizerTest extends TestCase
         $this->assertEquals($expected, $sanitized);
     }
 
-    public function test_wpSanitize_with_html_entities(): void
+    public function test_wp_sanitize_with_html_entities(): void
     {
         $input = "&lt;script&gt;alert(&#39;hello&#39;);&lt;/script&gt;";
         $expected = "&ampltscript&ampgtalert(&amp#39hello&amp#39)&amplt/script&ampgt";
@@ -27,7 +27,7 @@ class AppSanitizerTest extends TestCase
         $this->assertEquals($expected, $sanitized);
     }
 
-    public function test_wpSanitize_with_whitespace(): void
+    public function test_wp_sanitize_with_whitespace(): void
     {
         $input = "   hello   ";
         $expected = "hello";
@@ -35,7 +35,7 @@ class AppSanitizerTest extends TestCase
         $this->assertEquals($expected, $sanitized);
     }
 
-    public function test_wpSanitize_empty_input(): void
+    public function test_wp_sanitize_empty_input(): void
     {
         $input = "";
         $expected = "";
@@ -43,7 +43,7 @@ class AppSanitizerTest extends TestCase
         $this->assertEquals($expected, $sanitized);
     }
 
-    public function test_wpSanitize_with_css(): void
+    public function test_wp_sanitize_with_css(): void
     {
         $input = "color: red; background-image: url('malicious.png');";
         $expected = "color: red background-image: url(&#039malicious.png&#039)";
@@ -51,7 +51,7 @@ class AppSanitizerTest extends TestCase
         $this->assertEquals($expected, $sanitized);
     }
 
-    public function test_wpSanitize_with_html(): void
+    public function test_wp_sanitize_with_html(): void
     {
         $input = "<p><a href='http://example.com'>Link</a></p>";
         $expected = "Link";

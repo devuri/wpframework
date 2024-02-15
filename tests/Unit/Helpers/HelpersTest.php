@@ -35,7 +35,7 @@ class HelpersTest extends BaseTest
         $this->assertSame($static_path, $assetUrl);
     }
 
-    public function test_assetUrl_return_url_only(): void
+    public function test_asset_url_return_url_only(): void
     {
         $assets = assetUrl();
 
@@ -52,7 +52,7 @@ class HelpersTest extends BaseTest
         $this->assertSame($url, $assetUrl);
     }
 
-    public function test_static_assetUrl_return(): void
+    public function test_static_asset_url_return(): void
     {
         $static_url = assetUrl('/static');
 
