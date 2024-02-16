@@ -7,7 +7,6 @@ require_once \dirname( __FILE__, 2 ) . '/vendor/autoload.php';
 \define('ABSPATH', __DIR__ );
 \define( 'WEBAPP_ENCRYPTION_KEY', APP_TEST_PATH . '/.secret.txt' );
 \define( 'SITE_CONFIG_DIR', APP_TEST_PATH . '/config' );
-
 \define( 'IS_MULTITENANT', false );
 
 // true to run unit tests.

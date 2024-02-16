@@ -12,7 +12,6 @@ namespace WPframework\Component\Core;
 
 use WP_User;
 use WPframework\Component\Core\Settings\AdminSettingsPage;
-use WPframework\Component\Core\Traits\ActivateElementorTrait;
 use WPframework\Component\Core\Traits\AdminBarMenuTrait;
 
 class Plugin
@@ -318,7 +317,7 @@ class Plugin
                         return implode( '.', array_reverse( \array_slice( $hostParts, 0, $domainPartsCount ) ) );
                     }
                 }
-            }//end foreach
+            }// end foreach
         }// end if
 
         // Fallback to the simpler method if no match is found in the suffix list or if the list is empty.

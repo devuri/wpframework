@@ -34,7 +34,8 @@ trait TenantTrait
         // Check for the tenant file's existence
         if ( file_exists( $tenant_file_path ) ) {
             return $tenant_file_path;
-        } elseif ( $find_or_fail ) {
+        }
+        if ( $find_or_fail ) {
             throw new Exception( 'REQUIRE_TENANT_CONFIG requires that each tenant must have their own configuration.', 1 );
         }
 
