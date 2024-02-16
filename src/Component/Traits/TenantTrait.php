@@ -34,7 +34,7 @@ trait TenantTrait
             return $tenant_file_path;
         }
         if ( $find_or_fail ) {
-            return null;
+            throw new Exception( 'REQUIRE_TENANT_CONFIG requires that each tenant must have their own configuration.', 1 );
         }
 
         // Construct the path for the fallback/default file
