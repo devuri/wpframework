@@ -1,5 +1,18 @@
 # Changelog
 
+## [5.0.3](https://github.com/devuri/wp-framework/compare/v5.0.2...v5.0.3) (2024-02-16)
+
+
+### Bug Fixes
+
+* add `is_required_tenant_config()` check ([f662e20](https://github.com/devuri/wp-framework/commit/f662e20411d505290c9cce1e185d14ee704f2817))
+* only apply tenant uploads filter if is multi tenant ([f53e80a](https://github.com/devuri/wp-framework/commit/f53e80ab2c6f3e15da650db6dff5e2ae63dc5f73))
+
+
+### Miscellaneous Chores
+
+* build ([432ce2f](https://github.com/devuri/wp-framework/commit/432ce2fd5989434cc0d41f1ed9e255fd8eba0733))
+
 ## [5.0.2](https://github.com/devuri/wp-framework/compare/v5.0.1...v5.0.2) (2024-02-16)
 
 
