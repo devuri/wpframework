@@ -1,5 +1,27 @@
 # Changelog
 
+## [5.0.0](https://github.com/devuri/wp-framework/compare/v4.0.0...v5.0.0) (2024-02-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* use camelCase for function names. start with a verb indicating the action they perform.
+
+### Features
+
+* use camelCase for function names. start with a verb indicating the action they perform. ([5980b90](https://github.com/devuri/wp-framework/commit/5980b90cf90df011cd37a05fbfd76f65060ad98f))
+
+
+### Miscellaneous Chores
+
+* build ([140efd5](https://github.com/devuri/wp-framework/commit/140efd5e6503b19f5e648624ff3aa507ea7176d0))
+* build ([c370335](https://github.com/devuri/wp-framework/commit/c3703352b66bce11c5be57a745fe5ef357dd5db4))
+* build ([2b6ea06](https://github.com/devuri/wp-framework/commit/2b6ea063a9ed10d21cc439251a0258d537c29ac5))
+* build ([c9f2c51](https://github.com/devuri/wp-framework/commit/c9f2c51a11dd7e0c91df1b9fe25f5d5238afc464))
+* codefix ([c9ebae2](https://github.com/devuri/wp-framework/commit/c9ebae221d231cb0f0a44b46cc14aa69f4c45b80))
+* fix test ([45c84bf](https://github.com/devuri/wp-framework/commit/45c84bf193f9bbee59c8aa38fb9f3208b43a06ee))
+* readme ([bac1773](https://github.com/devuri/wp-framework/commit/bac1773619dc2cdf084087da5b46ace7cdf0805b))
+
 ## [4.0.0](https://github.com/devuri/wp-framework/compare/v3.3.0...v4.0.0) (2024-02-14)
 
 
