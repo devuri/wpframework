@@ -80,6 +80,10 @@ if (!defined('APP_TENANT_ID')) {
     define('APP_TENANT_ID', false );
 }
 
+if (!defined('TENANCY_WEB_ROOT')) {
+    define('TENANCY_WEB_ROOT', 'public' );
+}
+
 // WordPress specific constants
 if (!defined('ABSPATH')) {
     define('ABSPATH', APP_TEST_PATH . '/wp');
