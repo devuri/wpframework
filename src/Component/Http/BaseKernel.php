@@ -8,6 +8,7 @@ use Exception;
 use InvalidArgumentException;
 use WPframework\Component\EnvTypes;
 use WPframework\Component\Setup;
+use WPframework\Component\Terminate;
 use WPframework\Component\Traits\ConstantBuilderTrait;
 use WPframework\Component\Traits\ConstantTrait;
 
@@ -21,90 +22,88 @@ class BaseKernel
     use ConstantBuilderTrait;
     use ConstantTrait;
 
-	/**
-	 * The base path of the application.
-	 *
-	 * @var string
-	 */
-	protected $app_path;
+    /**
+     * The base path of the application.
+     *
+     * @var string
+     */
+    protected $app_path;
 
-	/**
-	 * The name of the log file for the application.
-	 *
-	 * @var string
-	 */
-	protected $log_file;
+    /**
+     * The name of the log file for the application.
+     *
+     * @var string
+     */
+    protected $log_file;
 
-	/**
-	 * The directory name where the application is installed.
-	 *
-	 * @var string
-	 */
-	protected $dir_name;
+    /**
+     * The directory name where the application is installed.
+     *
+     * @var string
+     */
+    protected $dir_name;
 
-	/**
-	 * The name of the configuration file for the application.
-	 *
-	 * @var string
-	 */
-	protected $config_file;
+    /**
+     * The name of the configuration file for the application.
+     *
+     * @var string
+     */
+    protected $config_file;
 
-	/**
-	 * Array holding environment-specific secrets.
-	 *
-	 * @var array
-	 */
-	protected $env_secret = [];
+    /**
+     * Array holding environment-specific secrets.
+     *
+     * @var array
+     */
+    protected $env_secret = [];
 
-	/**
-	 * Static list used within the BaseKernel context.
-	 *
-	 * @var array
-	 */
-	protected static $list = [];
+    /**
+     * Static list used within the BaseKernel context.
+     *
+     * @var array
+     */
+    protected static $list = [];
 
-	/**
-	 * The Setup object for the application's configuration and environment setup.
-	 *
-	 * @var Setup|null
-	 */
-	protected $app_setup;
+    /**
+     * The Setup object for the application's configuration and environment setup.
+     *
+     * @var null|Setup
+     */
+    protected $app_setup;
 
-	/**
-	 * The tenant ID, used in multi-tenant applications to isolate tenant-specific data.
-	 *
-	 * @var string|null
-	 */
-	protected $tenant_id;
+    /**
+     * The tenant ID, used in multi-tenant applications to isolate tenant-specific data.
+     *
+     * @var null|string
+     */
+    protected $tenant_id;
 
-	/**
-	 * The directory where configuration files are stored.
-	 *
-	 * @var string
-	 */
-	protected $config_dir;
+    /**
+     * The directory where configuration files are stored.
+     *
+     * @var string
+     */
+    protected $config_dir;
 
-	/**
-	 * Constructs the BaseKernel object and initializes the application setup.
-	 * It loads the application configuration and sets up environment-specific settings.
-	 *
-	 * @param string     $app_path The base path of the application.
-	 * @param string[]   $args     Optional arguments for further configuration.
-	 * @param Setup|null $setup    Optional Setup object for custom setup configuration.
-	 *
-	 * @throws Exception If a critical setup error occurs.
-	 * @throws InvalidArgumentException If the provided arguments are not valid.
-	 */
+    /**
+     * Constructs the BaseKernel object and initializes the application setup.
+     * It loads the application configuration and sets up environment-specific settings.
+     *
+     * @param string     $app_path The base path of the application.
+     * @param string[]   $args     Optional arguments for further configuration.
+     * @param null|Setup $setup    Optional Setup object for custom setup configuration.
+     *
+     * @throws Exception                If a critical setup error occurs.
+     * @throws InvalidArgumentException If the provided arguments are not valid.
+     */
     public function __construct( string $app_path, ?array $args = [], ?Setup $setup = null )
     {
         $this->app_path   = $app_path;
         $this->config_dir = SITE_CONFIG_DIR;
 
-		if ( is_null( $args ) || empty( $args ) ) {
-            $this->args = self::get_default_config();
-        }
-
-        if ( ! \is_array( $args ) ) {
+        if ( \is_null( $args ) || empty( $args ) ) {
+            $this->args = array_merge( $this->args, self::get_default_config() );
+        } elseif ( ! \is_array( $args ) ) {
             throw new InvalidArgumentException( 'Error: args must be of type array', 1 );
         }
 
@@ -117,9 +116,9 @@ class BaseKernel
             $this->args['wp_dir_path'] = $args['wordpress'];
         }
 
-        $this->config_file = $this->args['config_file'];
-
         $this->args = array_merge( $this->args, $args );
+
+        $this->config_file = $this->args['config_file'];
 
         $this->tenant_id = envTenantId();
 
@@ -146,48 +145,48 @@ class BaseKernel
         }
     }
 
-	/**
-	 * Retrieves the Setup object associated with the application.
-	 *
-	 * @return Setup The Setup object for the application configuration and environment.
-	 */
+    /**
+     * Retrieves the Setup object associated with the application.
+     *
+     * @return Setup The Setup object for the application configuration and environment.
+     */
     public function get_app(): Setup
     {
         return $this->app_setup;
     }
 
-	/**
-	 * Returns the security configurations for the application.
-	 *
-	 * @return array An array containing security configuration settings.
-	 */
+    /**
+     * Returns the security configurations for the application.
+     *
+     * @return array An array containing security configuration settings.
+     */
     public function get_app_security(): array
     {
         return $this->args['security'];
     }
 
-	/**
-	 * Gets the base path of the application.
-	 *
-	 * @return string The application's base path.
-	 */
+    /**
+     * Gets the base path of the application.
+     *
+     * @return string The application's base path.
+     */
     public function get_app_path(): string
     {
         return $this->app_path;
     }
 
-	/**
-	 * Retrieves the default application configuration.
-	 *
-	 * This method returns the application's default configuration settings
-	 * by calling the `appConfig()` function.
-	 *
-	 * @return array The default configuration settings.
-	 */
-	public static function get_default_config(): array
-	{
-	    return appConfig();
-	}
+    /**
+     * Retrieves the default application configuration.
+     *
+     * This method returns the application's default configuration settings
+     * by calling the `appConfig()` function.
+     *
+     * @return array The default configuration settings.
+     */
+    public static function get_default_config(): array
+    {
+        return appConfig();
+    }
 
     /**
      * Get args.
@@ -246,14 +245,14 @@ class BaseKernel
         }
     }
 
-	/**
-	 * Sets a secret key in the environment secrets array.
-	 * Ensures that each key is stored only once.
-	 *
-	 * @param string $key The key to be stored as a secret.
-	 *
-	 * @return void
-	 */
+    /**
+     * Sets a secret key in the environment secrets array.
+     * Ensures that each key is stored only once.
+     *
+     * @param string $key The key to be stored as a secret.
+     *
+     * @return void
+     */
     public function set_env_secret( string $key ): void
     {
         if ( ! isset( $this->env_secret[ $key ] ) ) {
@@ -261,25 +260,25 @@ class BaseKernel
         }
     }
 
-	/**
-	 * Retrieves all keys stored in the environment secrets array.
-	 *
-	 * @return (int|string)[] An array of keys representing the stored secrets.
-	 */
+    /**
+     * Retrieves all keys stored in the environment secrets array.
+     *
+     * @return (int|string)[] An array of keys representing the stored secrets.
+     */
     public function get_secret(): array
     {
         return array_keys( $this->env_secret );
     }
 
-	/**
-	 * Initializes the application with environment-specific configurations and constants.
-	 * Also checks for maintenance mode and WP installation status.
-	 *
-	 * @param null|false|string|string[] $env_type  The environment type to initialize with.
-	 * @param bool                       $constants Whether to load default constants.
-	 *
-	 * @return void
-	 */
+    /**
+     * Initializes the application with environment-specific configurations and constants.
+     * Also checks for maintenance mode and WP installation status.
+     *
+     * @param null|false|string|string[] $env_type  The environment type to initialize with.
+     * @param bool                       $constants Whether to load default constants.
+     *
+     * @return void
+     */
     public function init( $env_type = null, bool $constants = true ): void
     {
         if ( \defined( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::is_valid( (string) WP_ENVIRONMENT_TYPE ) ) {
@@ -311,15 +310,15 @@ class BaseKernel
         }
 
         if ( file_exists( PUBLIC_WEB_DIR . '/.maintenance' ) ) {
-            wpTerminate( self::get_maintenance_message(), 503 );
+            Terminate::exit( self::get_maintenance_message(), 503 );
         }
 
         if ( file_exists( $this->app_setup->get_current_path() . '/.maintenance' ) ) {
-            wpTerminate( self::get_maintenance_message(), 503 );
+            Terminate::exit( self::get_maintenance_message(), 503 );
         }
 
         if ( $this->wp_is_not_installed() && \in_array( env( 'WP_ENVIRONMENT_TYPE' ), [ 'secure', 'sec', 'production', 'prod' ], true ) ) {
-            wpTerminate( 'wp is not installed change enviroment to run installer' );
+            Terminate::exit( 'wp is not installed change enviroment to run installer' );
         }
     }
 

@@ -58,7 +58,7 @@ class EnvGenerator
         try {
             $salt = (object) $this->wpsalts();
         } catch ( Exception $e ) {
-            wpTerminate( $e->getMessage() );
+            Terminate::exit( $e->getMessage() );
         }
 
         $home_url = "https://$wpdomain";

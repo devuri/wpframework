@@ -7,6 +7,7 @@ use Symfony\Component\ErrorHandler\Debug;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 use WPframework\Component\Setup;
+use WPframework\Component\Terminate;
 
 /**
  * The App class serves as the main entry point for initializing the WordPress application.
@@ -16,51 +17,51 @@ use WPframework\Component\Setup;
  */
 class App
 {
-	/**
-	 * The base path of the application.
-	 * This path is used to locate all necessary files and directories within the application.
-	 *
-	 * @var string
-	 */
-	protected $app_path;
+    /**
+     * The base path of the application.
+     * This path is used to locate all necessary files and directories within the application.
+     *
+     * @var string
+     */
+    protected $app_path;
 
-	/**
-	 * The Setup object responsible for initializing and managing the application's environment and configuration.
-	 * This object provides methods to access environment variables, configuration files, and other setup-related functionalities.
-	 *
-	 * @var Setup
-	 */
-	protected $setup;
+    /**
+     * The Setup object responsible for initializing and managing the application's environment and configuration.
+     * This object provides methods to access environment variables, configuration files, and other setup-related functionalities.
+     *
+     * @var Setup
+     */
+    protected $setup;
 
-	/**
-	 * The application's configuration array, loaded from the specified configuration file.
-	 * This array contains settings and parameters required for the application's operation.
-	 *
-	 * @var array
-	 */
-	protected $config;
+    /**
+     * The application's configuration array, loaded from the specified configuration file.
+     * This array contains settings and parameters required for the application's operation.
+     *
+     * @var array
+     */
+    protected $config;
 
-	/**
-	 * The directory path where configuration files are stored.
-	 * This path is used in conjunction with `$app_path` to locate configuration files.
-	 *
-	 * @var string
-	 */
-	protected $config_dir;
+    /**
+     * The directory path where configuration files are stored.
+     * This path is used in conjunction with `$app_path` to locate configuration files.
+     *
+     * @var string
+     */
+    protected $config_dir;
 
-	/**
-	 * Initializes the App class with essential configuration and setup.
-	 *
-	 * It loads the specified configuration options from a file and initializes error handling.
-	 * The constructor requires the base application path, the configuration directory location,
-	 * and an optional filename for configuration options.
-	 *
-	 * @param string $app_path    The base path of the application (e.g., __DIR__).
-	 * @param string $site_config The directory where configuration files are stored.
-	 * @param string $options     The filename of the configuration options without extension (default: 'app').
-	 *
-	 * @throws Exception If the configuration file is missing or the loaded configuration is not an array.
-	 */
+    /**
+     * Initializes the App class with essential configuration and setup.
+     *
+     * It loads the specified configuration options from a file and initializes error handling.
+     * The constructor requires the base application path, the configuration directory location,
+     * and an optional filename for configuration options.
+     *
+     * @param string $app_path    The base path of the application (e.g., __DIR__).
+     * @param string $site_config The directory where configuration files are stored.
+     * @param string $options     The filename of the configuration options without extension (default: 'app').
+     *
+     * @throws Exception If the configuration file is missing or the loaded configuration is not an array.
+     */
     public function __construct( string $app_path, string $site_config, string $options = 'app' )
     {
         $this->app_path   = $app_path;
@@ -81,10 +82,10 @@ class App
         $params_file = $this->setup->get_tenant_file_path( $options, $this->app_path, (bool) REQUIRE_TENANT_CONFIG );
 
         if ( ! empty( $params_file ) ) {
-            $this->config = require_once $params_file;
+            $this->config = require $params_file;
         } else {
-			$this->config = appConfig();
-		}
+            $this->config = appConfig();
+        }
 
         if ( ! \is_array( $this->config ) ) {
             throw new Exception( 'Options array is undefined, not array.', 1 );
@@ -107,7 +108,7 @@ class App
     public function kernel(): BaseKernel
     {
         if ( ! \is_array( $this->config ) ) {
-            wpTerminate( 'Uncaught TypeError: BaseKernel($args) must be of type array' );
+            Terminate::exit( 'Uncaught TypeError: BaseKernel($args) must be of type array' );
         }
 
         return new BaseKernel( $this->app_path, $this->config, $this->setup );

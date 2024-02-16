@@ -379,7 +379,7 @@ class Setup implements ConfigInterface
 
     /**
      * Initializes Dotenv with the set path and environment files.
-     * Handles exceptions by using the`wpTerminate` function to exit.
+     * Handles exceptions by using the`Terminate::exit` function to exit.
      */
     protected function initialize_dotenv(): void
     {
@@ -388,7 +388,7 @@ class Setup implements ConfigInterface
         try {
             $this->dotenv->load();
         } catch ( Exception $e ) {
-            wpTerminate( $e->getMessage() );
+            Terminate::exit( $e->getMessage() );
         }
     }
 
@@ -503,7 +503,7 @@ class Setup implements ConfigInterface
             $this->dotenv->required( 'LOGGED_IN_SALT' )->notEmpty();
             $this->dotenv->required( 'NONCE_SALT' )->notEmpty();
         } catch ( Exception $e ) {
-            wpTerminate( $e->getMessage() );
+            Terminate::exit( $e->getMessage() );
         }// end try
     }
 

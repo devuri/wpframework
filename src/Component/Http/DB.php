@@ -4,6 +4,7 @@ namespace WPframework\Component\Http;
 
 use PDO;
 use PDOException;
+use WPframework\Component\Terminate;
 
 class DB
 {
@@ -38,7 +39,7 @@ class DB
 
             return $stmt->fetchAll( PDO::FETCH_OBJ );
         } catch ( PDOException $e ) {
-            wpTerminate( 'Read error: ' );
+            Terminate::exit( 'Read error: ' );
         }
     }
 
@@ -54,7 +55,7 @@ class DB
 
             return $stmt->fetch( PDO::FETCH_ASSOC );
         } catch ( PDOException $e ) {
-            wpTerminate( 'record error: ' );
+            Terminate::exit( 'record error: ' );
         }
     }
 
@@ -70,7 +71,7 @@ class DB
 
             return $stmt->fetchAll( PDO::FETCH_OBJ );
         } catch ( PDOException $e ) {
-            wpTerminate( 'Query error: ' );
+            Terminate::exit( 'Query error: ' );
         }
     }
 
@@ -82,7 +83,7 @@ class DB
             $this->conn = new PDO( 'mysql:host=' . $this->host . ';dbname=' . $this->dbName, $this->username, $this->password );
             $this->conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
         } catch ( PDOException $e ) {
-            wpTerminate( 'Connection error: ' );
+            Terminate::exit( 'Connection error: ' );
         }
 
         return $this->conn;

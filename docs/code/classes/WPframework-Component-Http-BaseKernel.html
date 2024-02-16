@@ -115,7 +115,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 
     </aside>
 
@@ -140,16 +140,16 @@
                     <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#property_app_path">$app_path</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>The base path of the application.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#property_app_setup">$app_setup</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: null|<a href="classes/WPframework-Component-Setup.html"><abbr title="\WPframework\Component\Setup">Setup</abbr></a>            </span>
 </dt>
-<dd></dd>
+<dd>The Setup object for the application&#039;s configuration and environment setup.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Traits-ConstantTrait.html#property_args">$args</a>
@@ -161,65 +161,65 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#property_config_dir">$config_dir</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>The directory where configuration files are stored.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#property_config_file">$config_file</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>The name of the configuration file for the application.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#property_dir_name">$dir_name</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>The directory name where the application is installed.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#property_env_secret">$env_secret</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd></dd>
+<dd>Array holding environment-specific secrets.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#property_list">$list</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd></dd>
+<dd>Static list used within the BaseKernel context.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#property_log_file">$log_file</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>The name of the log file for the application.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#property_tenant_id">$tenant_id</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: null|string            </span>
 </dt>
-<dd></dd>
+<dd>The tenant ID, used in multi-tenant applications to isolate tenant-specific data.</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Setup BaseKernel.</dd>
+<dd>Constructs the BaseKernel object and initializes the application setup.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#method_get_app">get_app()</a>
     <span>
                                 &nbsp;: <a href="classes/WPframework-Component-Setup.html"><abbr title="\WPframework\Component\Setup">Setup</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>Retrieves the Setup object associated with the application.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#method_get_app_config">get_app_config()</a>
@@ -233,14 +233,14 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>Gets the base path of the application.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#method_get_app_security">get_app_security()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
+<dd>Returns the security configurations for the application.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#method_get_args">get_args()</a>
@@ -248,6 +248,13 @@
                                 &nbsp;: array&lt;string|int, string&gt;    </span>
 </dt>
 <dd>Get args.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/WPframework-Component-Http-BaseKernel.html#method_get_default_config">get_default_config()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Retrieves the default application configuration.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#method_get_defined">get_defined()</a>
@@ -261,7 +268,7 @@
     <span>
                                 &nbsp;: array&lt;string|int, int|string&gt;    </span>
 </dt>
-<dd></dd>
+<dd>Retrieves all keys stored in the environment secrets array.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#method_get_server_env">get_server_env()</a>
@@ -282,7 +289,7 @@
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Start the app.</dd>
+<dd>Initializes the application with environment-specific configurations and constants.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#method_overrides">overrides()</a>
@@ -303,7 +310,7 @@
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd></dd>
+<dd>Sets a secret key in the environment secrets array.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#method_environment_args">environment_args()</a>
@@ -403,21 +410,20 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The base path of the application.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$app_path</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -437,21 +443,20 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">72</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The Setup object for the application&#039;s configuration and environment setup.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">null|<a href="classes/WPframework-Component-Setup.html"><abbr title="\WPframework\Component\Setup">Setup</abbr></a></span>
     <span class="phpdocumentor-signature__name">$app_setup</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -505,21 +510,20 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">86</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The directory where configuration files are stored.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$config_dir</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -539,21 +543,20 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The name of the configuration file for the application.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$config_file</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -573,21 +576,20 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">44</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The directory name where the application is installed.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$dir_name</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -607,21 +609,20 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">58</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Array holding environment-specific secrets.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$env_secret</span>
      = <span class="phpdocumentor-signature__default-value">[]</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -641,21 +642,20 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">65</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Static list used within the BaseKernel context.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$list</span>
      = <span class="phpdocumentor-signature__default-value">[]</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -675,21 +675,20 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The name of the log file for the application.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$log_file</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -709,21 +708,20 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">79</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The tenant ID, used in multi-tenant applications to isolate tenant-specific data.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">null|string</span>
     <span class="phpdocumentor-signature__name">$tenant_id</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -747,17 +745,19 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">44</span>
+    <span class="phpdocumentor-element-found-in__line">99</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Setup BaseKernel.</p>
+        <p class="phpdocumentor-summary">Constructs the BaseKernel object and initializes the application setup.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$app_path</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$args</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">null|<a href="classes/WPframework-Component-Setup.html"><abbr title="\WPframework\Component\Setup">Setup</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$setup</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>It loads the application configuration and sets up environment-specific settings.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -765,21 +765,27 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>The base path of the application.</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$args</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, string&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Optional arguments for further configuration.</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$setup</span>
                 : <span class="phpdocumentor-signature__argument__return-type">null|<a href="classes/WPframework-Component-Setup.html"><abbr title="\WPframework\Component\Setup">Setup</abbr></a></span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>Optional Setup object for custom setup configuration.</p>
+</section>
+
             </dd>
             </dl>
 
@@ -795,7 +801,9 @@
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\Exception">Exception</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>If a critical setup error occurs.</p>
+</section>
+
                                     </dd>
                             <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">throws</span>
@@ -803,7 +811,9 @@
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\InvalidArgumentException">InvalidArgumentException</abbr></span>
                                                             
-                                             
+                                                 <section class="phpdocumentor-description"><p>If the provided arguments are not valid.</p>
+</section>
+
                                     </dd>
                         </dl>
 
@@ -826,24 +836,26 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">91</span>
+    <span class="phpdocumentor-element-found-in__line">153</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Retrieves the Setup object associated with the application.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">get_app</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/WPframework-Component-Setup.html"><abbr title="\WPframework\Component\Setup">Setup</abbr></a></span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type"><a href="classes/WPframework-Component-Setup.html"><abbr title="\WPframework\Component\Setup">Setup</abbr></a></span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>The Setup object for the application configuration and environment.</p>
+</section>
+
     
 </article>
                     <article
@@ -859,7 +871,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">121</span>
+    <span class="phpdocumentor-element-found-in__line">206</span>
 
     </aside>
 
@@ -892,24 +904,26 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">101</span>
+    <span class="phpdocumentor-element-found-in__line">173</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Gets the base path of the application.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">get_app_path</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>The application's base path.</p>
+</section>
+
     
 </article>
                     <article
@@ -925,24 +939,26 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">96</span>
+    <span class="phpdocumentor-element-found-in__line">163</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Returns the security configurations for the application.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">get_app_security</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>An array containing security configuration settings.</p>
+</section>
+
     
 </article>
                     <article
@@ -958,7 +974,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">111</span>
+    <span class="phpdocumentor-element-found-in__line">196</span>
 
     </aside>
 
@@ -982,6 +998,44 @@
         class="phpdocumentor-element
             -method
             -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_get_default_config">
+        get_default_config()
+        <a href="classes/WPframework-Component-Http-BaseKernel.html#method_get_default_config" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">186</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Retrieves the default application configuration.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">get_default_config</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+        <section class="phpdocumentor-description"><p>This method returns the application's default configuration settings
+by calling the <code class="prettyprint">appConfig()</code> function.</p>
+</section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>The default configuration settings.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="method_get_defined">
@@ -991,7 +1045,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">234</span>
+    <span class="phpdocumentor-element-found-in__line">330</span>
 
     </aside>
 
@@ -1026,11 +1080,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">175</span>
+    <span class="phpdocumentor-element-found-in__line">268</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Retrieves all keys stored in the environment secrets array.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">get_secret</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, int|string&gt;</span></code>
@@ -1038,26 +1093,13 @@
     
     
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">psalm-return</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>list<array-key></p>
-</section>
-
-                                    </dd>
-                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, int|string&gt;</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>An array of keys representing the stored secrets.</p>
+</section>
+
     
 </article>
                     <article
@@ -1073,7 +1115,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">249</span>
+    <span class="phpdocumentor-element-found-in__line">345</span>
 
     </aside>
 
@@ -1113,7 +1155,7 @@ or null if not in debug mode.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">268</span>
+    <span class="phpdocumentor-element-found-in__line">364</span>
 
     </aside>
 
@@ -1153,17 +1195,19 @@ or null if not in debug mode.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">186</span>
+    <span class="phpdocumentor-element-found-in__line">282</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Start the app.</p>
+        <p class="phpdocumentor-summary">Initializes the application with environment-specific configurations and constants.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">init</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">null|false|string|array&lt;string|int, string&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$env_type</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$constants</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>Also checks for maintenance mode and WP installation status.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1171,7 +1215,7 @@ or null if not in debug mode.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">null|false|string|array&lt;string|int, string&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>the environment type</p>
+                    <section class="phpdocumentor-description"><p>The environment type to initialize with.</p>
 </section>
 
             </dd>
@@ -1180,7 +1224,7 @@ or null if not in debug mode.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">true</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>load up default constants</p>
+                    <section class="phpdocumentor-description"><p>Whether to load default constants.</p>
 </section>
 
             </dd>
@@ -1207,7 +1251,7 @@ or null if not in debug mode.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">135</span>
+    <span class="phpdocumentor-element-found-in__line">220</span>
 
     </aside>
 
@@ -1292,16 +1336,18 @@ by requiring the respective file, if it exists.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">163</span>
+    <span class="phpdocumentor-element-found-in__line">256</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Sets a secret key in the environment secrets array.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">set_env_secret</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>Ensures that each key is stored only once.</p>
+</section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -1310,7 +1356,8 @@ by requiring the respective file, if it exists.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
+                    <section class="phpdocumentor-description"><p>The key to be stored as a secret.</p>
+</section>
 
             </dd>
             </dl>
@@ -1336,7 +1383,7 @@ by requiring the respective file, if it exists.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">298</span>
+    <span class="phpdocumentor-element-found-in__line">394</span>
 
     </aside>
 
@@ -1376,7 +1423,7 @@ for tenant-specific error logging.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">322</span>
+    <span class="phpdocumentor-element-found-in__line">418</span>
 
     </aside>
 
@@ -1502,7 +1549,7 @@ of the HostManager, which is used to manage HTTP requests and responses.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">279</span>
+    <span class="phpdocumentor-element-found-in__line">375</span>
 
     </aside>
 
@@ -1535,7 +1582,7 @@ of the HostManager, which is used to manage HTTP requests and responses.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">360</span>
+    <span class="phpdocumentor-element-found-in__line">456</span>
 
     </aside>
 
@@ -1570,7 +1617,7 @@ of the HostManager, which is used to manage HTTP requests and responses.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">370</span>
+    <span class="phpdocumentor-element-found-in__line">466</span>
 
     </aside>
 
@@ -1605,7 +1652,7 @@ of the HostManager, which is used to manage HTTP requests and responses.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">350</span>
+    <span class="phpdocumentor-element-found-in__line">446</span>
 
     </aside>
 
@@ -1644,7 +1691,7 @@ inform users about the temporary unavailability of the service.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">375</span>
+    <span class="phpdocumentor-element-found-in__line">471</span>
 
     </aside>
 
@@ -1677,7 +1724,7 @@ inform users about the temporary unavailability of the service.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">336</span>
+    <span class="phpdocumentor-element-found-in__line">432</span>
 
     </aside>
 
