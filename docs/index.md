@@ -3,7 +3,7 @@
 - [Resources](/wp-framework/resources/)
 - [Premium Plugins](/wp-framework/premium-plugins)
 - [Environment Variables](/wp-framework/env)
-- [Release Notes](https://github.com/devuri/wp-framework/releases/)
+- [Release Notes](/wp-framework/changelog/)
 - [Multi-Tenant Applications](/wp-framework/multi-tenant/)
 
 ## Support
