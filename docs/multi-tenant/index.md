@@ -110,7 +110,6 @@ This approach ensures a balance between customization for individual tenants and
 ## Isolated Uploads Directory
 
 - Media files for each tenant are stored in a separate directory, typically structured as `wp-content/tenant/{tenant_id}/uploads`. Depending on the framework's setup, the default path might vary, but it generally follows the format `app/tenant/{tenant_id}/uploads`.
-- It's recommended to encode the tenant UUID in file URLs to enhance security.
 
 ## Shared Resources
 
