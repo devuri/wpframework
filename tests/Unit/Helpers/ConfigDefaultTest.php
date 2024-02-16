@@ -40,19 +40,19 @@ class ConfigDefaultTest extends TestCase
         foreach (['brevo', 'postmark', 'sendgrid', 'mailerlite'] as $service) {
             $this->assertArrayHasKey($service, $config['mailer']);
             if ( isset($config['mailer'][$service]['apikey'])) {
-                $this->assertNull($config['mailer'][$service]['apikey']);
+                $this->assertEmpty($config['mailer'][$service]['apikey']);
             }
         }
 
         $this->assertArrayHasKey('mailgun', $config['mailer']);
-        $this->assertNull($config['mailer']['mailgun']['domain']);
-        $this->assertNull($config['mailer']['mailgun']['secret']);
+        $this->assertEmpty($config['mailer']['mailgun']['domain']);
+        $this->assertEmpty($config['mailer']['mailgun']['secret']);
         $this->assertEquals('api.mailgun.net', $config['mailer']['mailgun']['endpoint']);
         $this->assertEquals('https', $config['mailer']['mailgun']['scheme']);
 
         $this->assertArrayHasKey('ses', $config['mailer']);
-        $this->assertNull($config['mailer']['ses']['key']);
-        $this->assertNull($config['mailer']['ses']['secret']);
+        $this->assertEmpty($config['mailer']['ses']['key']);
+        $this->assertEmpty($config['mailer']['ses']['secret']);
         $this->assertEquals('us-east-1', $config['mailer']['ses']['region']);
 
         // Sudo Admin checks

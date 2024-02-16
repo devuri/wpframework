@@ -82,7 +82,7 @@ class App
         $params_file = $this->setup->get_tenant_file_path( $options, $this->app_path, (bool) REQUIRE_TENANT_CONFIG );
 
         if ( ! empty( $params_file ) ) {
-            $this->config = require_once $params_file;
+            $this->config = require $params_file;
         } else {
             $this->config = appConfig();
         }

@@ -96,11 +96,6 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#function_envTenantId"
         },                {
-            "fqsen": "\\wpTerminate\u0028\u0029",
-            "name": "wpTerminate",
-            "summary": "Custom\u0020function\u0020to\u0020terminate\u0020script\u0020execution,\u0020display\u0020a\u0020message,\u0020and\u0020set\u0020an\u0020HTTP\u0020status\u0020code.",
-            "url": "namespaces/default.html#function_wpTerminate"
-        },                {
             "fqsen": "\\cleanSensitiveEnv\u0028\u0029",
             "name": "cleanSensitiveEnv",
             "summary": "Cleans\u0020up\u0020sensitive\u0020environment\u0020variables.",
@@ -1240,6 +1235,41 @@ Search.appendIndex(
             "name": "is_multitenant_app",
             "summary": "Determines\u0020if\u0020the\u0020application\u0020is\u0020configured\u0020to\u0020operate\u0020in\u0020multi\u002Dtenant\u0020mode.",
             "url": "classes/WPframework-Component-Traits-TenantTrait.html#method_is_multitenant_app"
+        },                {
+            "fqsen": "\\WPframework\\Component\\HashValidator",
+            "name": "HashValidator",
+            "summary": "",
+            "url": "classes/WPframework-Component-HashValidator.html"
+        },                {
+            "fqsen": "\\WPframework\\Component\\HashValidator\u003A\u003AisMd5\u0028\u0029",
+            "name": "isMd5",
+            "summary": "Checks\u0020if\u0020a\u0020given\u0020string\u0020is\u0020a\u0020valid\u0020MD5\u0020hash.",
+            "url": "classes/WPframework-Component-HashValidator.html#method_isMd5"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Terminate",
+            "name": "Terminate",
+            "summary": "",
+            "url": "classes/WPframework-Component-Terminate.html"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Aexit\u0028\u0029",
+            "name": "exit",
+            "summary": "Terminates\u0020the\u0020script\u0020execution,\u0020displaying\u0020an\u0020error\u0020page\u0020with\u0020a\u0020custom\u0020message\u0020and\u0020HTTP\u0020status\u0020code.",
+            "url": "classes/WPframework-Component-Terminate.html#method_exit"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003AsendStatusCode\u0028\u0029",
+            "name": "sendStatusCode",
+            "summary": "Sends\u0020an\u0020HTTP\u0020status\u0020code.",
+            "url": "classes/WPframework-Component-Terminate.html#method_sendStatusCode"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003ArenderErrorPage\u0028\u0029",
+            "name": "renderErrorPage",
+            "summary": "Renders\u0020the\u0020error\u0020page\u0020with\u0020a\u0020given\u0020message\u0020and\u0020status\u0020code.",
+            "url": "classes/WPframework-Component-Terminate.html#method_renderErrorPage"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003AgetStyles\u0028\u0029",
+            "name": "getStyles",
+            "summary": "CSS\u0020styles.",
+            "url": "classes/WPframework-Component-Terminate.html#method_getStyles"
         },                {
             "fqsen": "\\",
             "name": "\\",

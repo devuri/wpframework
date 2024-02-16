@@ -79,7 +79,7 @@ function env( string $name, $default_or_encrypt = null, bool $strtolower = false
 
     if ( \in_array( $value, [ 'Null', 'null', 'NULL', null ], true ) ) {
         // empty string is a required return type for null.
-        return '';
+        return null;
     }
 
     switch (strtolower($value)) {
@@ -217,7 +217,7 @@ if ( ! \function_exists( 'appConfig' ) ) {
      */
     function appConfig(): array
     {
-        return require_once __DIR__ . '/config/app.php';
+        return require __DIR__ . '/config/app.php';
     }
 }
 

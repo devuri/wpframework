@@ -11,7 +11,6 @@ use WPframework\Component\Traits\ConfigTrait;
 use WPframework\Component\Traits\ConstantBuilderTrait;
 use WPframework\Component\Traits\EnvironmentSwitch;
 use WPframework\Component\Traits\TenantTrait;
-use WPframework\Component\Terminate;
 
 /**
  * Setup WP Config.

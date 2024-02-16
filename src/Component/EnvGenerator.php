@@ -4,7 +4,6 @@ namespace WPframework\Component;
 
 use Exception;
 use Symfony\Component\Filesystem\Filesystem;
-use WPframework\Component\Terminate;
 
 class EnvGenerator
 {

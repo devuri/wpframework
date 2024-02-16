@@ -8,9 +8,9 @@ use Exception;
 use InvalidArgumentException;
 use WPframework\Component\EnvTypes;
 use WPframework\Component\Setup;
+use WPframework\Component\Terminate;
 use WPframework\Component\Traits\ConstantBuilderTrait;
 use WPframework\Component\Traits\ConstantTrait;
-use WPframework\Component\Terminate;
 
 /**
  * Setup common elements.
@@ -102,10 +102,8 @@ class BaseKernel
         $this->config_dir = SITE_CONFIG_DIR;
 
         if ( \is_null( $args ) || empty( $args ) ) {
-            $this->args = self::get_default_config();
-        }
-
-        if ( ! \is_array( $args ) ) {
+            $this->args = array_merge( $this->args, self::get_default_config() );
+        } elseif ( ! \is_array( $args ) ) {
             throw new InvalidArgumentException( 'Error: args must be of type array', 1 );
         }
 
@@ -118,9 +116,9 @@ class BaseKernel
             $this->args['wp_dir_path'] = $args['wordpress'];
         }
 
-        $this->config_file = $this->args['config_file'];
-
         $this->args = array_merge( $this->args, $args );
+
+        $this->config_file = $this->args['config_file'];
 
         $this->tenant_id = envTenantId();
 

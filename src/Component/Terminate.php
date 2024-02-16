@@ -2,15 +2,29 @@
 
 namespace WPframework\Component;
 
-class Terminate {
+class Terminate
+{
+    /**
+     * Terminates the script execution, displaying an error page with a custom message and HTTP status code.
+     *
+     * @param string $message     The message to display.
+     * @param int    $status_code The HTTP status code to send. Defaults to 500.
+     */
+    public static function exit( string $message, int $status_code = 500 ): void
+    {
+        self::sendStatusCode( $status_code );
+        self::renderErrorPage( $message, $status_code );
+        exit;
+    }
 
     /**
      * Sends an HTTP status code.
      *
      * @param int $status_code The HTTP status code to send.
      */
-    protected static function sendStatusCode(int $status_code): void {
-        http_response_code($status_code);
+    protected static function sendStatusCode( int $status_code ): void
+    {
+        http_response_code( $status_code );
     }
 
     /**
@@ -19,8 +33,8 @@ class Terminate {
      * @param string $message     The message to display.
      * @param int    $status_code The HTTP status code.
      */
-    protected static function renderErrorPage(string $message, int $status_code): void
-	{
+    protected static function renderErrorPage( string $message, int $status_code ): void
+    {
         ?><!DOCTYPE html><html lang='en'>
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset='UTF-8'" />
@@ -41,23 +55,12 @@ class Terminate {
     }
 
     /**
-     * Terminates the script execution, displaying an error page with a custom message and HTTP status code.
-     *
-     * @param string $message     The message to display.
-     * @param int    $status_code The HTTP status code to send. Defaults to 500.
+     * CSS styles.
      */
-    public static function exit(string $message, int $status_code = 500): void {
-        self::sendStatusCode($status_code);
-        self::renderErrorPage($message, $status_code);
-        exit;
-    }
-
-	/**
-	 * CSS styles
-	 */
-	private static function getStyles(): void
-	{
-		?><style type="text/css">
+    private static function getStyles(): void
+    {
+        ?>
+        <style type="text/css">
 			html {
 				background: #f1f1f1;
 			}
@@ -108,6 +111,7 @@ class Terminate {
 			a {
 				color: #0073aa;
 			}
-		</style><?php
-	}
+		</style>
+        <?php
+    }
 }
