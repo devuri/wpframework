@@ -320,6 +320,13 @@
 <dd>Generate environment-specific arguments, including customized error log paths.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/WPframework-Component-Http-BaseKernel.html#method_handle_maintenance_mode">handle_maintenance_mode()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Checks for maintenance mode across different scopes and terminates execution if enabled.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#method_http">http()</a>
     <span>
                                 &nbsp;: <a href="classes/WPframework-Component-Http-HostManager.html"><abbr title="\WPframework\Component\Http\HostManager">HostManager</abbr></a>    </span>
@@ -1045,7 +1052,7 @@ by calling the <code class="prettyprint">appConfig()</code> function.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">330</span>
+    <span class="phpdocumentor-element-found-in__line">325</span>
 
     </aside>
 
@@ -1115,7 +1122,7 @@ by calling the <code class="prettyprint">appConfig()</code> function.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">345</span>
+    <span class="phpdocumentor-element-found-in__line">340</span>
 
     </aside>
 
@@ -1155,7 +1162,7 @@ or null if not in debug mode.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">364</span>
+    <span class="phpdocumentor-element-found-in__line">359</span>
 
     </aside>
 
@@ -1383,7 +1390,7 @@ by requiring the respective file, if it exists.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">394</span>
+    <span class="phpdocumentor-element-found-in__line">421</span>
 
     </aside>
 
@@ -1414,6 +1421,48 @@ for tenant-specific error logging.</p>
         class="phpdocumentor-element
             -method
             -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_handle_maintenance_mode">
+        handle_maintenance_mode()
+        <a href="classes/WPframework-Component-Http-BaseKernel.html#method_handle_maintenance_mode" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">380</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Checks for maintenance mode across different scopes and terminates execution if enabled.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">handle_maintenance_mode</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"><p>This function checks for a .maintenance file in various locations, affecting different
+scopes of the application:</p>
+<ul>
+<li>The entire tenant network (when located in PUBLIC_WEB_DIR or APP_PATH/config_dir).</li>
+<li>A single tenant (when located in the current application path).
+If a .maintenance file is found, it terminates the execution with a maintenance message
+and sends a 503 Service Unavailable status code.</li>
+</ul>
+</section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
                                     -static                    "
 >
     <h4 class="phpdocumentor-element__name" id="method_http">
@@ -1423,7 +1472,7 @@ for tenant-specific error logging.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">418</span>
+    <span class="phpdocumentor-element-found-in__line">445</span>
 
     </aside>
 
@@ -1549,7 +1598,7 @@ of the HostManager, which is used to manage HTTP requests and responses.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">375</span>
+    <span class="phpdocumentor-element-found-in__line">402</span>
 
     </aside>
 
@@ -1582,7 +1631,7 @@ of the HostManager, which is used to manage HTTP requests and responses.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">456</span>
+    <span class="phpdocumentor-element-found-in__line">483</span>
 
     </aside>
 
@@ -1617,7 +1666,7 @@ of the HostManager, which is used to manage HTTP requests and responses.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">466</span>
+    <span class="phpdocumentor-element-found-in__line">493</span>
 
     </aside>
 
@@ -1652,7 +1701,7 @@ of the HostManager, which is used to manage HTTP requests and responses.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">446</span>
+    <span class="phpdocumentor-element-found-in__line">473</span>
 
     </aside>
 
@@ -1691,7 +1740,7 @@ inform users about the temporary unavailability of the service.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">471</span>
+    <span class="phpdocumentor-element-found-in__line">498</span>
 
     </aside>
 
@@ -1724,7 +1773,7 @@ inform users about the temporary unavailability of the service.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">432</span>
+    <span class="phpdocumentor-element-found-in__line">459</span>
 
     </aside>
 

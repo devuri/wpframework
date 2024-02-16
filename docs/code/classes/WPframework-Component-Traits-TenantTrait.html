@@ -143,6 +143,13 @@
 </dt>
 <dd>Determines if the application is configured to operate in multi-tenant mode.</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_is_landlord">is_landlord()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Checks if the provided tenant ID matches the landlord&#039;s UUID.</dd>
+
         </dl>
 
 
@@ -306,6 +313,56 @@ considered to be in multi-tenant mode.</p>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
             <section class="phpdocumentor-description"><p>Returns <code class="prettyprint">true</code> if the application is in multi-tenant mode, otherwise <code class="prettyprint">false</code>.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_is_landlord">
+        is_landlord()
+        <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_is_landlord" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Traits/TenantTrait.php"><a href="files/src-component-traits-tenanttrait.html"><abbr title="src/Component/Traits/TenantTrait.php">TenantTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">91</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Checks if the provided tenant ID matches the landlord&#039;s UUID.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">is_landlord</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">null|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$tenant_id</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+        <section class="phpdocumentor-description"><p>This function determines if a given tenant ID is equivalent to the predefined
+LANDLORD_UUID constant, identifying if the tenant is the landlord.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$tenant_id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">null|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The tenant ID to check against the landlord's UUID. Default is null.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>True if the tenant ID matches the landlord's UUID, false otherwise.</p>
 </section>
 
     
