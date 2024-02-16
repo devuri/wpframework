@@ -1,3 +1,34 @@
+## [5.0.2](https://github.com/devuri/wp-framework/compare/v5.0.1...v5.0.2) (2024-02-16)
+
+
+### Bug Fixes
+
+* adds `/.maintenance` check for the config dir, to handle entire tenant network. ([b49eccc](https://github.com/devuri/wp-framework/commit/b49ecccdf2bb5c46fe884ad3abdc221030bb6917))
+* adds `is_landlord()` check for conditional plugin options ([4de5a27](https://github.com/devuri/wp-framework/commit/4de5a27e2a8bde701902c2855383cbe24f12efd0))
+* fix environment reset using `is_environment_null()` it will check null empty 0 etc ([30e3926](https://github.com/devuri/wp-framework/commit/30e39264bcb6c7b7d8ca7c72b8a2a11a099f33bc))
+* update fix env return on null as empty string ([2dde351](https://github.com/devuri/wp-framework/commit/2dde3514842c4ad28dc2dc4787799c39d7a1d69c))
+* uuid checks do not hash `LANDLORD_UUID` ([f079131](https://github.com/devuri/wp-framework/commit/f079131fd0fb5557f6c4cd35e497d5ec3ade9e81))
+
+
+### Miscellaneous Chores
+
+* build ([b502dcb](https://github.com/devuri/wp-framework/commit/b502dcb6d8d7ee653dbc3ce4c44d8664dd90469b))
+* build ([14dea95](https://github.com/devuri/wp-framework/commit/14dea9582bad69d3281da02d46937461a2c1ecaa))
+
+## [5.0.1](https://github.com/devuri/wp-framework/compare/v5.0.0...v5.0.1) (2024-02-16)
+
+
+### Bug Fixes
+
+* required options, each tenant, must have their own configuration ([52c04eb](https://github.com/devuri/wp-framework/commit/52c04eb2e9a32971dcc3a6f3ae2401f2f3f36943))
+
+
+### Miscellaneous Chores
+
+* build ([cac6f96](https://github.com/devuri/wp-framework/commit/cac6f96b0e8820d6e730246b5dd782fefda76905))
+* build ([8d8df5a](https://github.com/devuri/wp-framework/commit/8d8df5aa91028f6e4391a954d16c5a754e6101cc))
+* build ([ba2f6d3](https://github.com/devuri/wp-framework/commit/ba2f6d311b1f10d40f649f545fa01c698cf49b10))
+
 ## [5.0.0](https://github.com/devuri/wp-framework/compare/v4.0.0...v5.0.0) (2024-02-16)
 
 
