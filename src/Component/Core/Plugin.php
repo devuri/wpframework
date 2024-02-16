@@ -76,9 +76,9 @@ class Plugin
             add_filter(
                 'plugin_action_links',
                 function ( $actions, $plugin_file, $plugin_data, $context ) {
-					if( $this->is_landlord( $this->tenant_id ) ) {
-						return $actions;
-					}
+                    if ( $this->is_landlord( $this->tenant_id ) ) {
+                        return $actions;
+                    }
                     if ( \array_key_exists( 'delete', $actions ) ) {
                         unset( $actions['delete'] );
                     }
@@ -211,9 +211,9 @@ class Plugin
      */
     public function manage_tenant_install_plugins( $allcaps, $caps, $args, $user )
     {
-		if( $this->is_multitenant_app() && $this->is_landlord( $this->tenant_id ) ) {
-			return $allcaps;
-		}
+        if ( $this->is_multitenant_app() && $this->is_landlord( $this->tenant_id ) ) {
+            return $allcaps;
+        }
 
         if ( isset( $args[0] ) && 'install_plugins' === $args[0] ) {
             $allcaps['install_plugins'] = ! empty( $allcaps['manage_tenant'] );

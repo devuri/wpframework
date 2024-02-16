@@ -208,18 +208,6 @@ class Setup implements ConfigInterface
         return $this;
     }
 
-	/**
-	 * Determines if the environment property is not set or empty.
-	 *
-	 * This function checks if the 'environment' property of the class is either unset (null)
-	 * or considered empty. An empty value could be an empty string, zero, false, or an empty array.
-	 *
-	 * @return bool True if the 'environment' property is null or empty, false otherwise.
-	 */
-	private function is_environment_null(): bool {
-	    return empty($this->environment);
-	}
-
     /**
      * Get the short_circuit loaded.
      *
@@ -517,6 +505,19 @@ class Setup implements ConfigInterface
         } catch ( Exception $e ) {
             Terminate::exit( $e->getMessage() );
         }// end try
+    }
+
+    /**
+     * Determines if the environment property is not set or empty.
+     *
+     * This function checks if the 'environment' property of the class is either unset (null)
+     * or considered empty. An empty value could be an empty string, zero, false, or an empty array.
+     *
+     * @return bool True if the 'environment' property is null or empty, false otherwise.
+     */
+    private function is_environment_null(): bool
+    {
+        return empty( $this->environment );
     }
 
     /**

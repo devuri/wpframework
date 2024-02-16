@@ -309,42 +309,13 @@ class BaseKernel
             $this->set_config_constants();
         }
 
-		// maintenance mode
-		$this->handle_maintenance_mode();
+        // maintenance mode
+        $this->handle_maintenance_mode();
 
         if ( $this->wp_is_not_installed() && \in_array( env( 'WP_ENVIRONMENT_TYPE' ), [ 'secure', 'sec', 'production', 'prod' ], true ) ) {
             Terminate::exit( 'wp is not installed change enviroment to run installer' );
         }
     }
-
-	/**
-	 * Checks for maintenance mode across different scopes and terminates execution if enabled.
-	 *
-	 * This function checks for a .maintenance file in various locations, affecting different
-	 * scopes of the application:
-	 * - The entire tenant network (when located in PUBLIC_WEB_DIR or APP_PATH/config_dir).
-	 * - A single tenant (when located in the current application path).
-	 * If a .maintenance file is found, it terminates the execution with a maintenance message
-	 * and sends a 503 Service Unavailable status code.
-	 */
-	protected function handle_maintenance_mode(): void {
-	    $maintenance_checks = [
-	        // Affects the entire tenant network.
-	        PUBLIC_WEB_DIR . '/.maintenance' => 'Will affect the entire tenant network.',
-	        APP_PATH . "/{$this->config_dir}/.maintenance" => 'Will affect the entire tenant network.',
-
-	        // Affects a single tenant.
-	        $this->app_setup->get_current_path() . '/.maintenance' => 'For single tenant.',
-	    ];
-
-	    foreach ($maintenance_checks as $path => $scope) {
-	        if (file_exists($path)) {
-	            // TODO Log or handle the scope-specific message if needed, e.g., error_log($scope);
-	            Terminate::exit(self::get_maintenance_message(), 503);
-	            break; // Terminate the loop after the first match.
-	        }
-	    }
-	}
 
     /**
      * Get list of defined constants.
@@ -394,6 +365,38 @@ class BaseKernel
         $user_constants = get_defined_constants( true )['user'];
 
         return self::encrypt_secret( $user_constants, self::env_secrets() );
+    }
+
+    /**
+     * Checks for maintenance mode across different scopes and terminates execution if enabled.
+     *
+     * This function checks for a .maintenance file in various locations, affecting different
+     * scopes of the application:
+     * - The entire tenant network (when located in PUBLIC_WEB_DIR or APP_PATH/config_dir).
+     * - A single tenant (when located in the current application path).
+     * If a .maintenance file is found, it terminates the execution with a maintenance message
+     * and sends a 503 Service Unavailable status code.
+     */
+    protected function handle_maintenance_mode(): void
+    {
+        $maintenance_checks = [
+            // Affects the entire tenant network.
+            PUBLIC_WEB_DIR . '/.maintenance'               => 'Will affect the entire tenant network.',
+            APP_PATH . "/{$this->config_dir}/.maintenance" => 'Will affect the entire tenant network.',
+
+            // Affects a single tenant.
+            $this->app_setup->get_current_path() . '/.maintenance' => 'For single tenant.',
+        ];
+
+        foreach ( $maintenance_checks as $path => $scope ) {
+            if ( file_exists( $path ) ) {
+                // TODO Log or handle the scope-specific message if needed, e.g., error_log($scope);
+                Terminate::exit( self::get_maintenance_message(), 503 );
+
+                break;
+				// Terminate the loop after the first match.
+            }
+        }
     }
 
     protected function wp_is_not_installed(): bool

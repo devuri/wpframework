@@ -78,16 +78,18 @@ trait TenantTrait
         return \defined( 'ALLOW_MULTITENANT' ) && ALLOW_MULTITENANT === true;
     }
 
-	/**
-	 * Checks if the provided tenant ID matches the landlord's UUID.
-	 *
-	 * This function determines if a given tenant ID is equivalent to the predefined
-	 * LANDLORD_UUID constant, identifying if the tenant is the landlord.
-	 *
-	 * @param string|null $tenant_id The tenant ID to check against the landlord's UUID. Default is null.
-	 * @return bool True if the tenant ID matches the landlord's UUID, false otherwise.
-	 */
-	private function is_landlord(?string $tenant_id = null): bool {
-	    return defined('LANDLORD_UUID') && $tenant_id === LANDLORD_UUID;
-	}
+    /**
+     * Checks if the provided tenant ID matches the landlord's UUID.
+     *
+     * This function determines if a given tenant ID is equivalent to the predefined
+     * LANDLORD_UUID constant, identifying if the tenant is the landlord.
+     *
+     * @param null|string $tenant_id The tenant ID to check against the landlord's UUID. Default is null.
+     *
+     * @return bool True if the tenant ID matches the landlord's UUID, false otherwise.
+     */
+    private function is_landlord( ?string $tenant_id = null ): bool
+    {
+        return \defined( 'LANDLORD_UUID' ) && LANDLORD_UUID === $tenant_id;
+    }
 }
