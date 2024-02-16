@@ -11,7 +11,7 @@
 Should you encounter any issues or have questions about the framework, don't hesitate to open an issue on our GitHub repository.
 
 ## Changelog
-A complete listing of all notable changes are documented in [CHANGELOG](https://github.com/devuri/wp-framework/blob/master/CHANGELOG.md)
+A complete listing of all notable changes are documented in [CHANGELOG](/wp-framework/changelog/)
 
 ## Report An Issue
 
