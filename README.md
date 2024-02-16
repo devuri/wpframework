@@ -53,24 +53,7 @@ DB_PREFIX=wp_
    composer require devuri/wp-framework
    ```
 
-   With WP-Framework installed, you're all set to leverage its capabilities within your WordPress project. Your project structure might resemble the following:
-
-   ```plaintext
-   ├── .env
-   ├── wp-config.php
-   ├── composer.json
-   ├── composer.lock
-   ├── LICENSE
-   ├── public/wp/
-   │   ├── index.php
-   │   ├── wp-admin/
-   │   ├── wp-content/
-   │   ├── wp-includes/
-   │   ├── .htaccess
-   │   ├── robots.txt
-   │   └── ...
-   └── vendor/
-   ```
+   With WP-Framework installed, you're all set to leverage its capabilities within your WordPress project. 
 
 2. **Activate WP-Framework in `wp-config.php`**:
    Integrate WP-Framework into your WordPress configuration by including the Composer autoload file. The settings from the `.env` file will be loaded automatically:
