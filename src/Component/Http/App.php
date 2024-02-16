@@ -79,7 +79,7 @@ class App
          *
          * @var string
          */
-        $params_file = $this->setup->get_tenant_file_path( $options, $this->app_path, (bool) REQUIRE_TENANT_CONFIG );
+        $params_file = $this->setup->get_tenant_file_path( $options, $this->app_path, self::is_required_tenant_config() );
 
         if ( ! empty( $params_file ) ) {
             $this->config = require $params_file;
@@ -160,5 +160,10 @@ class App
             $whoops->pushHandler( new PrettyPageHandler() );
             $whoops->register();
         }
+    }
+
+    private static function is_required_tenant_config(): bool
+    {
+        return \defined( 'REQUIRE_TENANT_CONFIG' ) && REQUIRE_TENANT_CONFIG === true;
     }
 }
