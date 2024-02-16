@@ -50,7 +50,7 @@ To properly set up the Landlord environment for your multi-tenant application in
 
 ## Overview
 
-This document provides a comprehensive guide to the architecture and operational flow of our Multi-Tenant Application, introduced in version 0.8.0. The platform is designed to support multiple tenants (websites), each with its unique configuration and customization capabilities, on a shared infrastructure.
+This document provides a guide to the architecture and operational flow of our Multi-Tenant Application. The framework is designed to support multiple tenants (websites), each with its unique configuration and customization capabilities, on a shared infrastructure.
 
 ## Domain and Tenant Mapping
 
