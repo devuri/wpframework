@@ -67,7 +67,7 @@ class Plugin
         );
 
         // separate uploads for multi tenant.
-        if ( ! \is_null( $this->tenant_id ) || false !== $this->tenant_id ) {
+        if ( $this->is_multitenant_app() ) {
             add_filter( 'upload_dir', [ $this, 'set_upload_directory' ] );
         }
 
