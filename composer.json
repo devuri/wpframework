@@ -1,7 +1,7 @@
 {
     "name": "devuri/wp-framework",
     "type": "library",
-    "description": "A small package to define WordPress configuration constants using environment variables with a .env file.",
+    "description": "Effortlessly develop scalable WordPress applications that support multiple tenants from a single installation.",
     "keywords": [
         "wp",
         "wordpress",
