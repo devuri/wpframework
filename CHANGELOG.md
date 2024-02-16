@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.0.1](https://github.com/devuri/wp-framework/compare/v5.0.0...v5.0.1) (2024-02-16)
+
+
+### Bug Fixes
+
+* required options, each tenant, must have their own configuration ([52c04eb](https://github.com/devuri/wp-framework/commit/52c04eb2e9a32971dcc3a6f3ae2401f2f3f36943))
+
+
+### Miscellaneous Chores
+
+* build ([cac6f96](https://github.com/devuri/wp-framework/commit/cac6f96b0e8820d6e730246b5dd782fefda76905))
+* build ([8d8df5a](https://github.com/devuri/wp-framework/commit/8d8df5aa91028f6e4391a954d16c5a754e6101cc))
+* build ([ba2f6d3](https://github.com/devuri/wp-framework/commit/ba2f6d311b1f10d40f649f545fa01c698cf49b10))
+
 ## [5.0.0](https://github.com/devuri/wp-framework/compare/v4.0.0...v5.0.0) (2024-02-16)
 
 
