@@ -157,7 +157,7 @@ class Tenancy
      */
     private function get_db_prefix( string $tenant_id ): ?string
     {
-        if ( \defined( 'LANDLORD_UUID' ) && md5( LANDLORD_UUID ) === $tenant_id ) {
+        if ( \defined( 'LANDLORD_UUID' ) && LANDLORD_UUID === $tenant_id ) {
             return env( 'LANDLORD_DB_PREFIX' );
         }
 
