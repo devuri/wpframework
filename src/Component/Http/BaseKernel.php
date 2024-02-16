@@ -394,7 +394,7 @@ class BaseKernel
                 Terminate::exit( self::get_maintenance_message(), 503 );
 
                 break;
-				// Terminate the loop after the first match.
+                // Terminate the loop after the first match.
             }
         }
     }

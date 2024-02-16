@@ -95,11 +95,6 @@ class App
         $this->set_app_errors();
     }
 
-	private static function is_required_tenant_config(): bool
-	{
-		return \defined( 'REQUIRE_TENANT_CONFIG' ) && REQUIRE_TENANT_CONFIG === true;
-	}
-
     /**
      * Initializes and returns a BaseKernel object with the application's configuration.
      *
@@ -165,5 +160,10 @@ class App
             $whoops->pushHandler( new PrettyPageHandler() );
             $whoops->register();
         }
+    }
+
+    private static function is_required_tenant_config(): bool
+    {
+        return \defined( 'REQUIRE_TENANT_CONFIG' ) && REQUIRE_TENANT_CONFIG === true;
     }
 }

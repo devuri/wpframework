@@ -621,6 +621,11 @@ Search.appendIndex(
             "summary": "Set\u0020up\u0020the\u0020application\u0020error\u0020handling\u0020based\u0020on\u0020environment\u0020settings.",
             "url": "classes/WPframework-Component-Http-App.html#method_set_app_errors"
         },                {
+            "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003Ais_required_tenant_config\u0028\u0029",
+            "name": "is_required_tenant_config",
+            "summary": "",
+            "url": "classes/WPframework-Component-Http-App.html#method_is_required_tenant_config"
+        },                {
             "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A\u0024app_path",
             "name": "app_path",
             "summary": "The\u0020base\u0020path\u0020of\u0020the\u0020application.",
