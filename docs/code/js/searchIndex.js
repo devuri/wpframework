@@ -598,12 +598,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\App",
             "name": "App",
-            "summary": "",
+            "summary": "The\u0020App\u0020class\u0020serves\u0020as\u0020the\u0020main\u0020entry\u0020point\u0020for\u0020initializing\u0020the\u0020WordPress\u0020application.",
             "url": "classes/WPframework-Component-Http-App.html"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Setup\u0020App.",
+            "summary": "Initializes\u0020the\u0020App\u0020class\u0020with\u0020essential\u0020configuration\u0020and\u0020setup.",
             "url": "classes/WPframework-Component-Http-App.html#method___construct"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003Akernel\u0028\u0029",
@@ -623,22 +623,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A\u0024app_path",
             "name": "app_path",
-            "summary": "",
+            "summary": "The\u0020base\u0020path\u0020of\u0020the\u0020application.",
             "url": "classes/WPframework-Component-Http-App.html#property_app_path"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A\u0024setup",
             "name": "setup",
-            "summary": "",
+            "summary": "The\u0020Setup\u0020object\u0020responsible\u0020for\u0020initializing\u0020and\u0020managing\u0020the\u0020application\u0027s\u0020environment\u0020and\u0020configuration.",
             "url": "classes/WPframework-Component-Http-App.html#property_setup"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A\u0024config",
             "name": "config",
-            "summary": "",
+            "summary": "The\u0020application\u0027s\u0020configuration\u0020array,\u0020loaded\u0020from\u0020the\u0020specified\u0020configuration\u0020file.",
             "url": "classes/WPframework-Component-Http-App.html#property_config"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A\u0024config_dir",
             "name": "config_dir",
-            "summary": "",
+            "summary": "The\u0020directory\u0020path\u0020where\u0020configuration\u0020files\u0020are\u0020stored.",
             "url": "classes/WPframework-Component-Http-App.html#property_config_dir"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\Asset",
@@ -658,23 +658,28 @@ Search.appendIndex(
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Setup\u0020BaseKernel.",
+            "summary": "Constructs\u0020the\u0020BaseKernel\u0020object\u0020and\u0020initializes\u0020the\u0020application\u0020setup.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#method___construct"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_app\u0028\u0029",
             "name": "get_app",
-            "summary": "",
+            "summary": "Retrieves\u0020the\u0020Setup\u0020object\u0020associated\u0020with\u0020the\u0020application.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_app"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_app_security\u0028\u0029",
             "name": "get_app_security",
-            "summary": "",
+            "summary": "Returns\u0020the\u0020security\u0020configurations\u0020for\u0020the\u0020application.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_app_security"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_app_path\u0028\u0029",
             "name": "get_app_path",
-            "summary": "",
+            "summary": "Gets\u0020the\u0020base\u0020path\u0020of\u0020the\u0020application.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_app_path"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_default_config\u0028\u0029",
+            "name": "get_default_config",
+            "summary": "Retrieves\u0020the\u0020default\u0020application\u0020configuration.",
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_default_config"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_args\u0028\u0029",
             "name": "get_args",
@@ -693,17 +698,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aset_env_secret\u0028\u0029",
             "name": "set_env_secret",
-            "summary": "",
+            "summary": "Sets\u0020a\u0020secret\u0020key\u0020in\u0020the\u0020environment\u0020secrets\u0020array.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#method_set_env_secret"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_secret\u0028\u0029",
             "name": "get_secret",
-            "summary": "",
+            "summary": "Retrieves\u0020all\u0020keys\u0020stored\u0020in\u0020the\u0020environment\u0020secrets\u0020array.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_secret"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Ainit\u0028\u0029",
             "name": "init",
-            "summary": "Start\u0020the\u0020app.",
+            "summary": "Initializes\u0020the\u0020application\u0020with\u0020environment\u002Dspecific\u0020configurations\u0020and\u0020constants.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#method_init"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Aget_defined\u0028\u0029",
@@ -763,47 +768,47 @@ Search.appendIndex(
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024app_path",
             "name": "app_path",
-            "summary": "",
+            "summary": "The\u0020base\u0020path\u0020of\u0020the\u0020application.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#property_app_path"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024log_file",
             "name": "log_file",
-            "summary": "",
+            "summary": "The\u0020name\u0020of\u0020the\u0020log\u0020file\u0020for\u0020the\u0020application.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#property_log_file"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024dir_name",
             "name": "dir_name",
-            "summary": "",
+            "summary": "The\u0020directory\u0020name\u0020where\u0020the\u0020application\u0020is\u0020installed.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#property_dir_name"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024config_file",
             "name": "config_file",
-            "summary": "",
+            "summary": "The\u0020name\u0020of\u0020the\u0020configuration\u0020file\u0020for\u0020the\u0020application.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#property_config_file"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024env_secret",
             "name": "env_secret",
-            "summary": "",
+            "summary": "Array\u0020holding\u0020environment\u002Dspecific\u0020secrets.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#property_env_secret"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024list",
             "name": "list",
-            "summary": "",
+            "summary": "Static\u0020list\u0020used\u0020within\u0020the\u0020BaseKernel\u0020context.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#property_list"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024app_setup",
             "name": "app_setup",
-            "summary": "",
+            "summary": "The\u0020Setup\u0020object\u0020for\u0020the\u0020application\u0027s\u0020configuration\u0020and\u0020environment\u0020setup.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#property_app_setup"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024tenant_id",
             "name": "tenant_id",
-            "summary": "",
+            "summary": "The\u0020tenant\u0020ID,\u0020used\u0020in\u0020multi\u002Dtenant\u0020applications\u0020to\u0020isolate\u0020tenant\u002Dspecific\u0020data.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#property_tenant_id"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024config_dir",
             "name": "config_dir",
-            "summary": "",
+            "summary": "The\u0020directory\u0020where\u0020configuration\u0020files\u0020are\u0020stored.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#property_config_dir"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\DB",

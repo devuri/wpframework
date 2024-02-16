@@ -2,6 +2,8 @@
 
 namespace WPframework\Component\Traits;
 
+use Exception;
+
 trait TenantTrait
 {
     /**
@@ -32,8 +34,7 @@ trait TenantTrait
         // Check for the tenant file's existence
         if ( file_exists( $tenant_file_path ) ) {
             return $tenant_file_path;
-        }
-        if ( $find_or_fail ) {
+        } elseif ( $find_or_fail ) {
             throw new Exception( 'REQUIRE_TENANT_CONFIG requires that each tenant must have their own configuration.', 1 );
         }
 

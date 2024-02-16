@@ -112,12 +112,16 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/App.php"><a href="files/src-component-http-app.html"><abbr title="src/Component/Http/App.php">App.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">11</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 
     </aside>
 
-        
-    <section class="phpdocumentor-description"></section>
+            <p class="phpdocumentor-summary">The App class serves as the main entry point for initializing the WordPress application.</p>
+
+    <section class="phpdocumentor-description"><p>It sets up the application environment, loads configuration settings, and establishes
+error handling mechanisms based on the environment. This class ensures that the application
+is correctly configured before it starts running.</p>
+</section>
 
 
 
@@ -135,37 +139,37 @@
                     <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-App.html#property_app_path">$app_path</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>The base path of the application.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-App.html#property_config">$config</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd></dd>
+<dd>The application&#039;s configuration array, loaded from the specified configuration file.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-App.html#property_config_dir">$config_dir</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: string            </span>
 </dt>
-<dd></dd>
+<dd>The directory path where configuration files are stored.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-App.html#property_setup">$setup</a>
     <span>
-                        &nbsp;: mixed            </span>
+                        &nbsp;: <a href="classes/WPframework-Component-Setup.html"><abbr title="\WPframework\Component\Setup">Setup</abbr></a>            </span>
 </dt>
-<dd></dd>
+<dd>The Setup object responsible for initializing and managing the application&#039;s environment and configuration.</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Http-App.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Setup App.</dd>
+<dd>Initializes the App class with essential configuration and setup.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Http-App.html#method_kernel">kernel()</a>
@@ -216,21 +220,22 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/App.php"><a href="files/src-component-http-app.html"><abbr title="src/Component/Http/App.php">App.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">13</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The base path of the application.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$app_path</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>This path is used to locate all necessary files and directories within the application.</p>
+</section>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -250,21 +255,22 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/App.php"><a href="files/src-component-http-app.html"><abbr title="src/Component/Http/App.php">App.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">15</span>
+    <span class="phpdocumentor-element-found-in__line">41</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The application&#039;s configuration array, loaded from the specified configuration file.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$config</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>This array contains settings and parameters required for the application's operation.</p>
+</section>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -284,21 +290,22 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/App.php"><a href="files/src-component-http-app.html"><abbr title="src/Component/Http/App.php">App.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The directory path where configuration files are stored.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$config_dir</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>This path is used in conjunction with <code class="prettyprint">$app_path</code> to locate configuration files.</p>
+</section>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -318,21 +325,22 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/App.php"><a href="files/src-component-http-app.html"><abbr title="src/Component/Http/App.php">App.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">14</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The Setup object responsible for initializing and managing the application&#039;s environment and configuration.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/WPframework-Component-Setup.html"><abbr title="\WPframework\Component\Setup">Setup</abbr></a></span>
     <span class="phpdocumentor-signature__name">$setup</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>This object provides methods to access environment variables, configuration files, and other setup-related functionalities.</p>
+</section>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -356,17 +364,21 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/App.php"><a href="files/src-component-http-app.html"><abbr title="src/Component/Http/App.php">App.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">64</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Setup App.</p>
+        <p class="phpdocumentor-summary">Initializes the App class with essential configuration and setup.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$app_path</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$site_config</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;app&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>It loads the specified configuration options from a file and initializes error handling.
+The constructor requires the base application path, the configuration directory location,
+and an optional filename for configuration options.</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -374,7 +386,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The base app path, e.g., <strong>DIR</strong>.</p>
+                    <section class="phpdocumentor-description"><p>The base path of the application (e.g., <strong>DIR</strong>).</p>
 </section>
 
             </dd>
@@ -383,7 +395,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The config directory location.</p>
+                    <section class="phpdocumentor-description"><p>The directory where configuration files are stored.</p>
 </section>
 
             </dd>
@@ -392,7 +404,7 @@
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                  = <span class="phpdocumentor-signature__argument__default-value">&#039;app&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The configuration options filename, e.g., app.php.</p>
+                    <section class="phpdocumentor-description"><p>The filename of the configuration options without extension (default: 'app').</p>
 </section>
 
             </dd>
@@ -410,7 +422,7 @@
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\Exception">Exception</abbr></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>When the options file is not found.</p>
+                                                 <section class="phpdocumentor-description"><p>If the configuration file is missing or the loaded configuration is not an array.</p>
 </section>
 
                                     </dd>
@@ -435,7 +447,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/App.php"><a href="files/src-component-http-app.html"><abbr title="src/Component/Http/App.php">App.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">70</span>
+    <span class="phpdocumentor-element-found-in__line">107</span>
 
     </aside>
 
@@ -475,7 +487,7 @@ application path, configuration array, and setup object.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/App.php"><a href="files/src-component-http-app.html"><abbr title="src/Component/Http/App.php">App.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">127</span>
 
     </aside>
 
@@ -526,7 +538,7 @@ for encapsulating any future changes in the Setup class instantiation process.</
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/App.php"><a href="files/src-component-http-app.html"><abbr title="src/Component/Http/App.php">App.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">98</span>
+    <span class="phpdocumentor-element-found-in__line">135</span>
 
     </aside>
 
