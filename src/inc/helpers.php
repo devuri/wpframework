@@ -7,6 +7,7 @@ use WPframework\Component\Core\Plugin;
 use WPframework\Component\Http\App;
 use WPframework\Component\Http\Asset;
 use WPframework\Component\Http\Tenancy;
+use WPframework\Component\Terminate;
 
 // @codingStandardsIgnoreFile.
 
@@ -157,7 +158,7 @@ if ( ! \function_exists( 'wpframework' ) ) {
         try {
             $app = new App( $app_path, SITE_CONFIG_DIR, $options );
         } catch ( Exception $e ) {
-            wpTerminate('Framework Initialization Error: ' );
+            Terminate::exit('Framework Initialization Error: ' );
         }
 
         // @phpstan-ignore-next-line

@@ -4,6 +4,7 @@ namespace WPframework\Component;
 
 use Exception;
 use Symfony\Component\Filesystem\Filesystem;
+use WPframework\Component\Terminate;
 
 class EnvGenerator
 {
@@ -58,7 +59,7 @@ class EnvGenerator
         try {
             $salt = (object) $this->wpsalts();
         } catch ( Exception $e ) {
-            wpTerminate( $e->getMessage() );
+            Terminate::exit( $e->getMessage() );
         }
 
         $home_url = "https://$wpdomain";

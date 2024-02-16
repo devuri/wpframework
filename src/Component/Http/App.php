@@ -7,6 +7,7 @@ use Symfony\Component\ErrorHandler\Debug;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 use WPframework\Component\Setup;
+use WPframework\Component\Terminate;
 
 /**
  * The App class serves as the main entry point for initializing the WordPress application.
@@ -107,7 +108,7 @@ class App
     public function kernel(): BaseKernel
     {
         if ( ! \is_array( $this->config ) ) {
-            wpTerminate( 'Uncaught TypeError: BaseKernel($args) must be of type array' );
+            Terminate::exit( 'Uncaught TypeError: BaseKernel($args) must be of type array' );
         }
 
         return new BaseKernel( $this->app_path, $this->config, $this->setup );
