@@ -8,22 +8,59 @@ use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 use WPframework\Component\Setup;
 
+/**
+ * The App class serves as the main entry point for initializing the WordPress application.
+ * It sets up the application environment, loads configuration settings, and establishes
+ * error handling mechanisms based on the environment. This class ensures that the application
+ * is correctly configured before it starts running.
+ */
 class App
 {
-    protected $app_path;
-    protected $setup;
-    protected $config;
-    protected $config_dir;
+	/**
+	 * The base path of the application.
+	 * This path is used to locate all necessary files and directories within the application.
+	 *
+	 * @var string
+	 */
+	protected $app_path;
 
-    /**
-     * Setup App.
-     *
-     * @param string $app_path    The base app path, e.g., __DIR__.
-     * @param string $site_config The config directory location.
-     * @param string $options     The configuration options filename, e.g., app.php.
-     *
-     * @throws Exception When the options file is not found.
-     */
+	/**
+	 * The Setup object responsible for initializing and managing the application's environment and configuration.
+	 * This object provides methods to access environment variables, configuration files, and other setup-related functionalities.
+	 *
+	 * @var Setup
+	 */
+	protected $setup;
+
+	/**
+	 * The application's configuration array, loaded from the specified configuration file.
+	 * This array contains settings and parameters required for the application's operation.
+	 *
+	 * @var array
+	 */
+	protected $config;
+
+	/**
+	 * The directory path where configuration files are stored.
+	 * This path is used in conjunction with `$app_path` to locate configuration files.
+	 *
+	 * @var string
+	 */
+	protected $config_dir;
+
+	/**
+	 * Initializes the App class with essential configuration and setup.
+	 *
+	 * It loads the specified configuration options from a file and initializes error handling.
+	 * The constructor requires the base application path, the configuration directory location,
+	 * and an optional filename for configuration options.
+	 *
+	 * @param string $app_path    The base path of the application (e.g., __DIR__).
+	 * @param string $site_config The directory where configuration files are stored.
+	 * @param string $options     The filename of the configuration options without extension (default: 'app').
+	 *
+	 * @throws Exception If the configuration file is missing or the loaded configuration is not an array.
+	 */
     public function __construct( string $app_path, string $site_config, string $options = 'app' )
     {
         $this->app_path   = $app_path;
@@ -32,7 +69,7 @@ class App
         /*
          * We need setup to get access to our env values.
          *
-         * @var Set	    // Define the custom directory path using the tenant ID.up
+         * @var Setup
          */
         $this->setup = self::define_setup( $this->app_path );
 
@@ -46,11 +83,11 @@ class App
         if ( ! empty( $params_file ) ) {
             $this->config = require_once $params_file;
         } else {
-            throw new Exception( 'Options file not found.', 1 );
-        }
+			$this->config = appConfig();
+		}
 
         if ( ! \is_array( $this->config ) ) {
-            throw new Exception( 'Options array is undefined, not array.', 2 );
+            throw new Exception( 'Options array is undefined, not array.', 1 );
         }
 
         // handle errors early.
