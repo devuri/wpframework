@@ -1,7 +1,7 @@
 ## Documentation
 
 - [Resources](/wp-framework/resources/)
-- [Installation of Premium Plugins](/wp-framework/premium-plugins)
+- [Premium Plugins](/wp-framework/premium-plugins)
 - [Environment Variables](/wp-framework/env)
 - [Release Notes](https://github.com/devuri/wp-framework/releases/)
 - [Multi-Tenant Applications](/wp-framework/multi-tenant/)
