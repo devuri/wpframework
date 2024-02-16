@@ -21,6 +21,7 @@ class Plugin
     use TenantTrait;
     public const ADMIN_BAR_MENU_ID = 'wp-app-environment';
 
+    protected $path;
     protected $env_menu_id;
     protected $http_env_type;
     protected $wp_sudo_admin;

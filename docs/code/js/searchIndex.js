@@ -281,6 +281,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/WPframework-Component-Core-Plugin.html#constant_ADMIN_BAR_MENU_ID"
         },                {
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003A\u0024path",
+            "name": "path",
+            "summary": "",
+            "url": "classes/WPframework-Component-Core-Plugin.html#property_path"
+        },                {
             "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003A\u0024env_menu_id",
             "name": "env_menu_id",
             "summary": "",
@@ -721,6 +726,11 @@ Search.appendIndex(
             "summary": "Retrieve\u0020user\u002Ddefined\u0020constants\u0020and\u0020obfuscate\u0020sensitive\u0020data.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#method_get_user_constants"
         },                {
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Ahandle_maintenance_mode\u0028\u0029",
+            "name": "handle_maintenance_mode",
+            "summary": "Checks\u0020for\u0020maintenance\u0020mode\u0020across\u0020different\u0020scopes\u0020and\u0020terminates\u0020execution\u0020if\u0020enabled.",
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#method_handle_maintenance_mode"
+        },                {
             "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003Awp_is_not_installed\u0028\u0029",
             "name": "wp_is_not_installed",
             "summary": "",
@@ -1046,6 +1056,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/WPframework-Component-Setup.html#method_is_required"
         },                {
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Ais_environment_null\u0028\u0029",
+            "name": "is_environment_null",
+            "summary": "Determines\u0020if\u0020the\u0020environment\u0020property\u0020is\u0020not\u0020set\u0020or\u0020empty.",
+            "url": "classes/WPframework-Component-Setup.html#method_is_environment_null"
+        },                {
             "fqsen": "\\WPframework\\Component\\Setup\u003A\u003Aget_env\u0028\u0029",
             "name": "get_env",
             "summary": "Get\u0020Env\u0020value\u0020or\u0020return\u0020null.",
@@ -1235,6 +1250,11 @@ Search.appendIndex(
             "name": "is_multitenant_app",
             "summary": "Determines\u0020if\u0020the\u0020application\u0020is\u0020configured\u0020to\u0020operate\u0020in\u0020multi\u002Dtenant\u0020mode.",
             "url": "classes/WPframework-Component-Traits-TenantTrait.html#method_is_multitenant_app"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Traits\\TenantTrait\u003A\u003Ais_landlord\u0028\u0029",
+            "name": "is_landlord",
+            "summary": "Checks\u0020if\u0020the\u0020provided\u0020tenant\u0020ID\u0020matches\u0020the\u0020landlord\u0027s\u0020UUID.",
+            "url": "classes/WPframework-Component-Traits-TenantTrait.html#method_is_landlord"
         },                {
             "fqsen": "\\WPframework\\Component\\HashValidator",
             "name": "HashValidator",

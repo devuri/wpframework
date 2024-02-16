@@ -109,13 +109,13 @@
     
             <span class="phpdocumentor-element__extends">
             Uses
-                            <a href="classes/WPframework-Component-Core-Traits-AdminBarMenuTrait.html"><abbr title="\WPframework\Component\Core\Traits\AdminBarMenuTrait">AdminBarMenuTrait</abbr></a>                    </span>
+                            <a href="classes/WPframework-Component-Core-Traits-AdminBarMenuTrait.html"><abbr title="\WPframework\Component\Core\Traits\AdminBarMenuTrait">AdminBarMenuTrait</abbr></a>,                             <a href="classes/WPframework-Component-Traits-TenantTrait.html"><abbr title="\WPframework\Component\Traits\TenantTrait">TenantTrait</abbr></a>                    </span>
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">18</span>
 
     </aside>
 
@@ -164,6 +164,13 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/WPframework-Component-Core-Plugin.html#property_path">$path</a>
+    <span>
+                        &nbsp;: mixed            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Core-Plugin.html#property_tenant_id">$tenant_id</a>
     <span>
                         &nbsp;: mixed            </span>
@@ -197,6 +204,13 @@
                                 &nbsp;: string    </span>
 </dt>
 <dd>Custom admin footer text.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_get_tenant_file_path">get_tenant_file_path()</a>
+    <span>
+                                &nbsp;: null|string    </span>
+</dt>
+<dd>Retrieves the path for a tenant-specific file, with an option to enforce strict finding.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/WPframework-Component-Core-Plugin.html#method_init">init()</a>
@@ -234,6 +248,13 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_determine_envpath">determine_envpath()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Determines the env file application path, accounting for multi-tenancy.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/WPframework-Component-Core-Plugin.html#method_extract_domain">extract_domain()</a>
     <span>
                                 &nbsp;: null|string    </span>
@@ -241,11 +262,25 @@
 <dd>Extracts the domain from a URL using an optional list of public suffixes.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_is_multitenant_app">is_multitenant_app()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Determines if the application is configured to operate in multi-tenant mode.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/WPframework-Component-Core-Plugin.html#method_security_headers">security_headers()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_is_landlord">is_landlord()</a>
+    <span>
+                                &nbsp;: bool    </span>
+</dt>
+<dd>Checks if the provided tenant ID matches the landlord&#039;s UUID.</dd>
 
         </dl>
 
@@ -266,7 +301,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 
     </aside>
 
@@ -310,7 +345,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
@@ -344,7 +379,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
@@ -378,7 +413,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">26</span>
 
     </aside>
 
@@ -387,6 +422,40 @@
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">$http_env_type</span>
+    </code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_path">
+        $path
+        <a href="classes/WPframework-Component-Core-Plugin.html#property_path" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">24</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$path</span>
     </code>
 
         <section class="phpdocumentor-description"></section>
@@ -412,7 +481,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
@@ -446,7 +515,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
@@ -484,7 +553,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 
@@ -561,7 +630,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">221</span>
+    <span class="phpdocumentor-element-found-in__line">231</span>
 
     </aside>
 
@@ -587,6 +656,76 @@
         class="phpdocumentor-element
             -method
             -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_get_tenant_file_path">
+        get_tenant_file_path()
+        <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_get_tenant_file_path" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Traits/TenantTrait.php"><a href="files/src-component-traits-tenanttrait.html"><abbr title="src/Component/Traits/TenantTrait.php">TenantTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">23</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Retrieves the path for a tenant-specific file, with an option to enforce strict finding.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">get_tenant_file_path</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$dir</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$find_or_fail</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">null|string</span></code>
+
+        <section class="phpdocumentor-description"><p>In a multi-tenant application, this function attempts to find a file specific to the current tenant.
+If the file is not found and 'find_or_fail' is set to true, the function will return null.
+If the tenant-specific file does not exist (and 'find_or_fail' is false), it falls back to a default file path.
+If neither file is found, or the application is not in multi-tenant mode, null is returned.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$file</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The name of the file (without the .php extension).</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$dir</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The directory within the app path where the file should be located.</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$find_or_fail</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>Whether to fail if the tenant-specific file is not found.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">null|string</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>The path to the file if found, or null otherwise.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
                                     -static                    "
 >
     <h4 class="phpdocumentor-element__name" id="method_init">
@@ -596,7 +735,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">162</span>
+    <span class="phpdocumentor-element-found-in__line">168</span>
 
     </aside>
 
@@ -629,7 +768,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">207</span>
+    <span class="phpdocumentor-element-found-in__line">213</span>
 
     </aside>
 
@@ -707,7 +846,7 @@ allows them to install plugins by modifying the <code class="prettyprint">$allca
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">178</span>
+    <span class="phpdocumentor-element-found-in__line">184</span>
 
     </aside>
 
@@ -758,7 +897,7 @@ It ensures that each tenant's uploads are organized and stored in an isolated di
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">238</span>
+    <span class="phpdocumentor-element-found-in__line">248</span>
 
     </aside>
 
@@ -794,7 +933,7 @@ setting it to trigger on an hourly basis. The event triggers a custom action 'wp
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">332</span>
+    <span class="phpdocumentor-element-found-in__line">342</span>
 
     </aside>
 
@@ -820,6 +959,53 @@ setting it to trigger on an hourly basis. The event triggers a custom action 'wp
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_determine_envpath">
+        determine_envpath()
+        <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_determine_envpath" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Traits/TenantTrait.php"><a href="files/src-component-traits-tenanttrait.html"><abbr title="src/Component/Traits/TenantTrait.php">TenantTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">56</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Determines the env file application path, accounting for multi-tenancy.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">determine_envpath</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$base_path</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$base_path</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The base application directory path.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>The determined application path.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_extract_domain">
         extract_domain()
         <a href="classes/WPframework-Component-Core-Plugin.html#method_extract_domain" class="headerlink"><i class="fas fa-link"></i></a>
@@ -827,7 +1013,7 @@ setting it to trigger on an hourly basis. The event triggers a custom action 'wp
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">288</span>
+    <span class="phpdocumentor-element-found-in__line">298</span>
 
     </aside>
 
@@ -882,6 +1068,45 @@ domains with multiple subdomains or certain country-code top-level domains (ccTL
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_is_multitenant_app">
+        is_multitenant_app()
+        <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_is_multitenant_app" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Traits/TenantTrait.php"><a href="files/src-component-traits-tenanttrait.html"><abbr title="src/Component/Traits/TenantTrait.php">TenantTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">76</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Determines if the application is configured to operate in multi-tenant mode.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">is_multitenant_app</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+        <section class="phpdocumentor-description"><p>This is based on the presence and value of the <code class="prettyprint">ALLOW_MULTITENANT</code> constant.
+If <code class="prettyprint">ALLOW_MULTITENANT</code> is defined and set to <code class="prettyprint">true</code>, the application is
+considered to be in multi-tenant mode.</p>
+</section>
+
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>Returns <code class="prettyprint">true</code> if the application is in multi-tenant mode, otherwise <code class="prettyprint">false</code>.</p>
+</section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_security_headers">
         security_headers()
         <a href="classes/WPframework-Component-Core-Plugin.html#method_security_headers" class="headerlink"><i class="fas fa-link"></i></a>
@@ -889,7 +1114,7 @@ domains with multiple subdomains or certain country-code top-level domains (ccTL
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Core/Plugin.php"><a href="files/src-component-core-plugin.html"><abbr title="src/Component/Core/Plugin.php">Plugin.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">251</span>
+    <span class="phpdocumentor-element-found-in__line">261</span>
 
     </aside>
 
@@ -907,6 +1132,56 @@ domains with multiple subdomains or certain country-code top-level domains (ccTL
     <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_is_landlord">
+        is_landlord()
+        <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_is_landlord" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Traits/TenantTrait.php"><a href="files/src-component-traits-tenanttrait.html"><abbr title="src/Component/Traits/TenantTrait.php">TenantTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">91</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Checks if the provided tenant ID matches the landlord&#039;s UUID.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">is_landlord</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">null|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$tenant_id</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+        <section class="phpdocumentor-description"><p>This function determines if a given tenant ID is equivalent to the predefined
+LANDLORD_UUID constant, identifying if the tenant is the landlord.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$tenant_id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">null|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>The tenant ID to check against the landlord's UUID. Default is null.</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"><p>True if the tenant ID matches the landlord's UUID, false otherwise.</p>
+</section>
+
     
 </article>
             </section>
