@@ -197,7 +197,7 @@ class Setup implements ConfigInterface
             return $this;
         }
 
-        if ( \is_null( $this->environment ) ) {
+        if ( $this->is_environment_null() ) {
             $this->define( 'WP_ENVIRONMENT_TYPE', env( 'WP_ENVIRONMENT_TYPE' ) ?? self::const( 'environment' ) );
 
             return $this;
@@ -207,6 +207,18 @@ class Setup implements ConfigInterface
 
         return $this;
     }
+
+	/**
+	 * Determines if the environment property is not set or empty.
+	 *
+	 * This function checks if the 'environment' property of the class is either unset (null)
+	 * or considered empty. An empty value could be an empty string, zero, false, or an empty array.
+	 *
+	 * @return bool True if the 'environment' property is null or empty, false otherwise.
+	 */
+	private function is_environment_null(): bool {
+	    return empty($this->environment);
+	}
 
     /**
      * Get the short_circuit loaded.
@@ -291,7 +303,7 @@ class Setup implements ConfigInterface
             $this->reset_environment( env( 'WP_ENVIRONMENT_TYPE' ) );
         }
 
-        if ( \is_null( $this->environment ) && env( 'WP_ENVIRONMENT_TYPE' ) ) {
+        if ( $this->is_environment_null() && env( 'WP_ENVIRONMENT_TYPE' ) ) {
             $this->reset_environment( env( 'WP_ENVIRONMENT_TYPE' ) );
         }
 
