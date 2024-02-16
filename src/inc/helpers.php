@@ -76,14 +76,14 @@ function env( string $name, $default_or_encrypt = null, bool $strtolower = false
         return (int) $value;
     }
 
+	if ( \in_array( $value, [ 'Null', 'null', 'NULL', null ], true ) ) {
+        // empty string is a required return type for null.
+        return '';
+    }
+
     switch (strtolower($value)) {
         case 'true': return true;
         case 'false': return false;
-    }
-
-    if ( \in_array( $value, [ 'Null', 'null', 'NULL' ], true ) ) {
-        // empty string is a required return type for null.
-        return '';
     }
 
     return $strtolower ? strtolower($value) : $value;
