@@ -55,7 +55,7 @@ DB_PREFIX=wp_
 
    With WP-Framework installed, you're all set to leverage its capabilities within your WordPress project. 
 
-2. **Activate WP-Framework in `wp-config.php`**:
+2. **Activate WP-Framework in a bootstrap file`bootstrap.php`**:
    Integrate WP-Framework into your WordPress configuration by including the Composer autoload file. The settings from the `.env` file will be loaded automatically:
 
    ```php
