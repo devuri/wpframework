@@ -13,10 +13,12 @@ namespace WPframework\Component\Core;
 use WP_User;
 use WPframework\Component\Core\Settings\AdminSettingsPage;
 use WPframework\Component\Core\Traits\AdminBarMenuTrait;
+use WPframework\Component\Traits\TenantTrait;
 
 class Plugin
 {
     use AdminBarMenuTrait;
+    use TenantTrait;
     public const ADMIN_BAR_MENU_ID = 'wp-app-environment';
 
     protected $env_menu_id;
@@ -69,11 +71,14 @@ class Plugin
         }
 
         // multi tenant setup for plugins.
-        if ( \defined( 'ALLOW_MULTITENANT' ) && ALLOW_MULTITENANT === true ) {
+        if ( $this->is_multitenant_app() ) {
             // Remove the delete action link for plugins.
             add_filter(
                 'plugin_action_links',
                 function ( $actions, $plugin_file, $plugin_data, $context ) {
+					if( $this->is_landlord( $this->tenant_id ) ) {
+						return $actions;
+					}
                     if ( \array_key_exists( 'delete', $actions ) ) {
                         unset( $actions['delete'] );
                     }
@@ -91,7 +96,7 @@ class Plugin
                 'all_plugins',
                 function( $all_plugins ) {
                     $allowed_plugins = [
-                        'tenant-manager/tenant-manager.php',
+                        'tenancy-manager/tenancy-manager.php',
                     ];
 
                     // Iterate over all plugins and unset those not in the allowed list
@@ -206,6 +211,10 @@ class Plugin
      */
     public function manage_tenant_install_plugins( $allcaps, $caps, $args, $user )
     {
+		if( $this->is_multitenant_app() && $this->is_landlord( $this->tenant_id ) ) {
+			return $allcaps;
+		}
+
         if ( isset( $args[0] ) && 'install_plugins' === $args[0] ) {
             $allcaps['install_plugins'] = ! empty( $allcaps['manage_tenant'] );
         }
