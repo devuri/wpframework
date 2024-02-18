@@ -217,7 +217,7 @@ if ( ! \function_exists( 'appConfig' ) ) {
      */
     function appConfig(): array
     {
-        return require __DIR__ . '/config/app.php';
+        return require __DIR__ . '/configs/app.php';
     }
 }
 

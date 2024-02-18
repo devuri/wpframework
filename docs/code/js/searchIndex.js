@@ -1,26 +1,6 @@
 Search.appendIndex(
     [
                 {
-            "fqsen": "\\ALLOW_MULTITENANT",
-            "name": "ALLOW_MULTITENANT",
-            "summary": "",
-            "url": "namespaces/default.html#constant_ALLOW_MULTITENANT"
-        },                {
-            "fqsen": "\\LANDLORD_UUID",
-            "name": "LANDLORD_UUID",
-            "summary": "",
-            "url": "namespaces/default.html#constant_LANDLORD_UUID"
-        },                {
-            "fqsen": "\\REQUIRE_TENANT_CONFIG",
-            "name": "REQUIRE_TENANT_CONFIG",
-            "summary": "",
-            "url": "namespaces/default.html#constant_REQUIRE_TENANT_CONFIG"
-        },                {
-            "fqsen": "\\TENANCY_WEB_ROOT",
-            "name": "TENANCY_WEB_ROOT",
-            "summary": "",
-            "url": "namespaces/default.html#constant_TENANCY_WEB_ROOT"
-        },                {
             "fqsen": "\\SITE_CONFIGS_DIR",
             "name": "SITE_CONFIGS_DIR",
             "summary": "",
@@ -1365,6 +1345,26 @@ Search.appendIndex(
             "name": "terminate",
             "summary": "",
             "url": "classes/WPframework-Component-ExitInterface.html#method_terminate"
+        },                {
+            "fqsen": "\\ALLOW_MULTITENANT",
+            "name": "ALLOW_MULTITENANT",
+            "summary": "",
+            "url": "namespaces/default.html#constant_ALLOW_MULTITENANT"
+        },                {
+            "fqsen": "\\LANDLORD_UUID",
+            "name": "LANDLORD_UUID",
+            "summary": "",
+            "url": "namespaces/default.html#constant_LANDLORD_UUID"
+        },                {
+            "fqsen": "\\REQUIRE_TENANT_CONFIG",
+            "name": "REQUIRE_TENANT_CONFIG",
+            "summary": "",
+            "url": "namespaces/default.html#constant_REQUIRE_TENANT_CONFIG"
+        },                {
+            "fqsen": "\\TENANCY_WEB_ROOT",
+            "name": "TENANCY_WEB_ROOT",
+            "summary": "",
+            "url": "namespaces/default.html#constant_TENANCY_WEB_ROOT"
         },                {
             "fqsen": "\\",
             "name": "\\",

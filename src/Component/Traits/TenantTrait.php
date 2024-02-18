@@ -40,7 +40,7 @@ trait TenantTrait
         }
 
         // Construct the path for the fallback/default file
-        $fallback_file_path = "{$dir}/config/{$file}.php";
+        $fallback_file_path = "{$dir}/configs/{$file}.php";
 
         // Return the fallback file path if it exists
         return file_exists( $fallback_file_path ) ? $fallback_file_path : null;
