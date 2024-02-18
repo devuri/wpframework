@@ -2,7 +2,8 @@
 
 namespace WPframework\Component;
 
-class ConstLoader {
+class ConstLoader
+{
     /**
      * An array to hold the names of expected constants.
      *
@@ -15,7 +16,8 @@ class ConstLoader {
      *
      * @param array $expectedConstants An array of expected constant names.
      */
-    public function __construct(array $expectedConstants = []) {
+    public function __construct( array $expectedConstants = [] )
+    {
         $this->expectedConstants = $expectedConstants;
     }
 
@@ -23,27 +25,32 @@ class ConstLoader {
      * Safely retrieves the value of a global constant if it is defined and expected.
      * Exits the script with a message if the constant is undefined or unexpected.
      *
-     * @param  string $name The constant name.
-     * @return mixed  The value of the constant if defined and expected.
+     * @param string $name The constant name.
+     *
+     * @return mixed The value of the constant if defined and expected.
      */
-    public function get_constant($name) {
-        if (in_array($name, $this->expectedConstants) && defined($name)) {
-            return constant($name);
+    public function get_constant( $name )
+    {
+        if ( \in_array( $name, $this->expectedConstants, true ) && \defined( $name ) ) {
+            return \constant( $name );
         }
 
         // Exit the script with a friendly message to avoid potential security issues.
-        echo "An error occurred. Please contact the administrator.";
-        exit; // Stop script execution.
+        echo 'An error occurred. Please contact the administrator.';
+        exit;
+		// Stop script execution.
     }
 
     /**
      * Checks if a constant is defined and expected.
      *
-     * @param  string $name The constant name.
-     * @return boolean True if the constant is defined and expected; false otherwise.
+     * @param string $name The constant name.
+     *
+     * @return bool True if the constant is defined and expected; false otherwise.
      */
-    public function is_constant_defined($name) {
-        return in_array($name, $this->expectedConstants) && defined($name);
+    public function is_constant_defined( $name )
+    {
+        return \in_array( $name, $this->expectedConstants, true ) && \defined( $name );
     }
 }
 

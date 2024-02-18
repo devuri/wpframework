@@ -4,8 +4,8 @@ namespace WPframework\Component;
 
 class ExitHandler implements ExitInterface
 {
-    public function terminate($status = 0): void
+    public function terminate( $status = 0 ): void
     {
-        exit($status);
+        exit( $status );
     }
 }

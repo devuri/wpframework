@@ -21,10 +21,10 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html#constant_TENANCY_WEB_ROOT"
         },                {
-            "fqsen": "\\SITE_CONFIG_DIR",
-            "name": "SITE_CONFIG_DIR",
+            "fqsen": "\\SITE_CONFIGS_DIR",
+            "name": "SITE_CONFIGS_DIR",
             "summary": "",
-            "url": "namespaces/default.html#constant_SITE_CONFIG_DIR"
+            "url": "namespaces/default.html#constant_SITE_CONFIGS_DIR"
         },                {
             "fqsen": "\\asset\u0028\u0029",
             "name": "asset",
@@ -641,10 +641,10 @@ Search.appendIndex(
             "summary": "The\u0020application\u0027s\u0020configuration\u0020array,\u0020loaded\u0020from\u0020the\u0020specified\u0020configuration\u0020file.",
             "url": "classes/WPframework-Component-Http-App.html#property_config"
         },                {
-            "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A\u0024config_dir",
-            "name": "config_dir",
+            "fqsen": "\\WPframework\\Component\\Http\\App\u003A\u003A\u0024configs_dir",
+            "name": "configs_dir",
             "summary": "The\u0020directory\u0020path\u0020where\u0020configuration\u0020files\u0020are\u0020stored.",
-            "url": "classes/WPframework-Component-Http-App.html#property_config_dir"
+            "url": "classes/WPframework-Component-Http-App.html#property_configs_dir"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\Asset",
             "name": "Asset",
@@ -816,10 +816,10 @@ Search.appendIndex(
             "summary": "The\u0020tenant\u0020ID,\u0020used\u0020in\u0020multi\u002Dtenant\u0020applications\u0020to\u0020isolate\u0020tenant\u002Dspecific\u0020data.",
             "url": "classes/WPframework-Component-Http-BaseKernel.html#property_tenant_id"
         },                {
-            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024config_dir",
-            "name": "config_dir",
+            "fqsen": "\\WPframework\\Component\\Http\\BaseKernel\u003A\u003A\u0024configs_dir",
+            "name": "configs_dir",
             "summary": "The\u0020directory\u0020where\u0020configuration\u0020files\u0020are\u0020stored.",
-            "url": "classes/WPframework-Component-Http-BaseKernel.html#property_config_dir"
+            "url": "classes/WPframework-Component-Http-BaseKernel.html#property_configs_dir"
         },                {
             "fqsen": "\\WPframework\\Component\\Http\\DB",
             "name": "DB",
@@ -1276,25 +1276,95 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/WPframework-Component-Terminate.html"
         },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/WPframework-Component-Terminate.html#method___construct"
+        },                {
             "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Aexit\u0028\u0029",
             "name": "exit",
-            "summary": "Terminates\u0020the\u0020script\u0020execution,\u0020displaying\u0020an\u0020error\u0020page\u0020with\u0020a\u0020custom\u0020message\u0020and\u0020HTTP\u0020status\u0020code.",
+            "summary": "Handles\u0020termination\u0020of\u0020the\u0020script\u0020execution\u0020by\u0020sending\u0020an\u0020HTTP\u0020status\u0020code,\u0020displaying\u0020an\u0020error\u0020page,\nand\u0020logging\u0020the\u0020exception.",
             "url": "classes/WPframework-Component-Terminate.html#method_exit"
         },                {
-            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003AsendStatusCode\u0028\u0029",
-            "name": "sendStatusCode",
-            "summary": "Sends\u0020an\u0020HTTP\u0020status\u0020code.",
-            "url": "classes/WPframework-Component-Terminate.html#method_sendStatusCode"
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Asend_http_status_code\u0028\u0029",
+            "name": "send_http_status_code",
+            "summary": "Sends\u0020the\u0020HTTP\u0020status\u0020code\u0020header\u0020after\u0020validating\u0020it.",
+            "url": "classes/WPframework-Component-Terminate.html#method_send_http_status_code"
         },                {
-            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003ArenderErrorPage\u0028\u0029",
-            "name": "renderErrorPage",
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Ais_valid_http_status_code\u0028\u0029",
+            "name": "is_valid_http_status_code",
+            "summary": "Checks\u0020if\u0020the\u0020provided\u0020status\u0020code\u0020is\u0020a\u0020valid\u0020HTTP\u0020status\u0020code.",
+            "url": "classes/WPframework-Component-Terminate.html#method_is_valid_http_status_code"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Aparse_error\u0028\u0029",
+            "name": "parse_error",
+            "summary": "Parses\u0020the\u0020error\u0020details\u0020to\u0020extract\u0020the\u0020message\u0020and\u0020status\u0020code.",
+            "url": "classes/WPframework-Component-Terminate.html#method_parse_error"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Alog_exception\u0028\u0029",
+            "name": "log_exception",
+            "summary": "Handles\u0020exceptions\u0020by\u0020sending\u0020them\u0020to\u0020a\u0020monitoring\u0020tool.",
+            "url": "classes/WPframework-Component-Terminate.html#method_log_exception"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Arender_error_page\u0028\u0029",
+            "name": "render_error_page",
             "summary": "Renders\u0020the\u0020error\u0020page\u0020with\u0020a\u0020given\u0020message\u0020and\u0020status\u0020code.",
-            "url": "classes/WPframework-Component-Terminate.html#method_renderErrorPage"
+            "url": "classes/WPframework-Component-Terminate.html#method_render_error_page"
         },                {
-            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003AgetStyles\u0028\u0029",
-            "name": "getStyles",
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Apage_styles\u0028\u0029",
+            "name": "page_styles",
             "summary": "CSS\u0020styles.",
-            "url": "classes/WPframework-Component-Terminate.html#method_getStyles"
+            "url": "classes/WPframework-Component-Terminate.html#method_page_styles"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003A\u0024exitHandler",
+            "name": "exitHandler",
+            "summary": "",
+            "url": "classes/WPframework-Component-Terminate.html#property_exitHandler"
+        },                {
+            "fqsen": "\\WPframework\\Component\\ConstLoader",
+            "name": "ConstLoader",
+            "summary": "",
+            "url": "classes/WPframework-Component-ConstLoader.html"
+        },                {
+            "fqsen": "\\WPframework\\Component\\ConstLoader\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Constructor\u0020to\u0020initialize\u0020the\u0020class\u0020with\u0020expected\u0020constant\u0020names.",
+            "url": "classes/WPframework-Component-ConstLoader.html#method___construct"
+        },                {
+            "fqsen": "\\WPframework\\Component\\ConstLoader\u003A\u003Aget_constant\u0028\u0029",
+            "name": "get_constant",
+            "summary": "Safely\u0020retrieves\u0020the\u0020value\u0020of\u0020a\u0020global\u0020constant\u0020if\u0020it\u0020is\u0020defined\u0020and\u0020expected.",
+            "url": "classes/WPframework-Component-ConstLoader.html#method_get_constant"
+        },                {
+            "fqsen": "\\WPframework\\Component\\ConstLoader\u003A\u003Ais_constant_defined\u0028\u0029",
+            "name": "is_constant_defined",
+            "summary": "Checks\u0020if\u0020a\u0020constant\u0020is\u0020defined\u0020and\u0020expected.",
+            "url": "classes/WPframework-Component-ConstLoader.html#method_is_constant_defined"
+        },                {
+            "fqsen": "\\WPframework\\Component\\ConstLoader\u003A\u003A\u0024expectedConstants",
+            "name": "expectedConstants",
+            "summary": "An\u0020array\u0020to\u0020hold\u0020the\u0020names\u0020of\u0020expected\u0020constants.",
+            "url": "classes/WPframework-Component-ConstLoader.html#property_expectedConstants"
+        },                {
+            "fqsen": "\\WPframework\\Component\\ExitHandler",
+            "name": "ExitHandler",
+            "summary": "",
+            "url": "classes/WPframework-Component-ExitHandler.html"
+        },                {
+            "fqsen": "\\WPframework\\Component\\ExitHandler\u003A\u003Aterminate\u0028\u0029",
+            "name": "terminate",
+            "summary": "",
+            "url": "classes/WPframework-Component-ExitHandler.html#method_terminate"
+        },                {
+            "fqsen": "\\WPframework\\Component\\ExitInterface",
+            "name": "ExitInterface",
+            "summary": "",
+            "url": "classes/WPframework-Component-ExitInterface.html"
+        },                {
+            "fqsen": "\\WPframework\\Component\\ExitInterface\u003A\u003Aterminate\u0028\u0029",
+            "name": "terminate",
+            "summary": "",
+            "url": "classes/WPframework-Component-ExitInterface.html#method_terminate"
         },                {
             "fqsen": "\\",
             "name": "\\",

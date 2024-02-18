@@ -7,88 +7,91 @@ use InvalidArgumentException;
 
 class Terminate
 {
-	protected $exitHandler;
+    protected $exitHandler;
 
     public function __construct( ?ExitInterface $exit = null )
     {
         $this->exitHandler = $exit ?? new ExitHandler();
     }
 
-	/**
-	 * Sends the HTTP status code header after validating it.
-	 *
-	 * @param int $status_code The HTTP status code to send.
-	 * @throws InvalidArgumentException If the status code is not valid.
-	 */
-	protected function send_http_status_code(int $status_code): void
-	{
-	    if ($this->is_valid_http_status_code($status_code)) {
-	        http_response_code($status_code);
-	    } else {
-	        throw new InvalidArgumentException("Invalid HTTP status code: {$status_code}");
-	    }
-	}
+    /**
+     * Handles termination of the script execution by sending an HTTP status code, displaying an error page,
+     * and logging the exception.
+     *
+     * @param array     $error_details Contains the 'message' and optionally the 'status_code'.
+     * @param Exception $exception     The exception to log.
+     */
+    public static function exit( array $error_details, ?Exception $exception = null ): void
+    {
+        list($message, $status_code) = self::parse_error( $error_details );
 
-	/**
-	 * Checks if the provided status code is a valid HTTP status code.
-	 *
-	 * @param int $status_code The HTTP status code to validate.
-	 * @return bool True if the status code is valid, false otherwise.
-	 */
-	protected function is_valid_http_status_code(int $status_code): bool
-	{
-	    return $status_code >= 100 && $status_code <= 599;
-	}
+        $terminator = new self();
+        $terminator->send_http_status_code( $status_code );
+        $terminator->render_error_page( $message, $status_code );
+        $terminator->log_exception( $exception );
 
-	/**
-	 * Handles termination of the script execution by sending an HTTP status code, displaying an error page,
-	 * and logging the exception.
-	 *
-	 * @param array $error_details Contains the 'message' and optionally the 'status_code'.
-	 * @param Exception $exception The exception to log.
-	 */
-	public static function exit(array $error_details, ?Exception $exception = null ): void
-	{
-	    list($message, $status_code) = self::parse_error($error_details);
+        $terminator->exitHandler->terminate( 1 );
+    }
 
-		$terminator = new self();
-        $terminator->send_http_status_code($status_code);
-        $terminator->render_error_page($message, $status_code);
-        $terminator->log_exception($exception);
+    /**
+     * Sends the HTTP status code header after validating it.
+     *
+     * @param int $status_code The HTTP status code to send.
+     *
+     * @throws InvalidArgumentException If the status code is not valid.
+     */
+    protected function send_http_status_code( int $status_code ): void
+    {
+        if ( $this->is_valid_http_status_code( $status_code ) ) {
+            http_response_code( $status_code );
+        } else {
+            throw new InvalidArgumentException( "Invalid HTTP status code: {$status_code}" );
+        }
+    }
 
-        $terminator->exitHandler->terminate(1);
-	}
+    /**
+     * Checks if the provided status code is a valid HTTP status code.
+     *
+     * @param int $status_code The HTTP status code to validate.
+     *
+     * @return bool True if the status code is valid, false otherwise.
+     */
+    protected function is_valid_http_status_code( int $status_code ): bool
+    {
+        return $status_code >= 100 && $status_code <= 599;
+    }
 
-	/**
-	 * Parses the error details to extract the message and status code.
-	 *
-	 * @param array $error_details The error details provided.
-	 * @return array The message and status code.
-	 */
-	protected static function parse_error(array $error_details): array
-	{
-		$message = isset($error_details[0]) ? $error_details[0] : 'An error occurred';
-	    $status_code = isset($error_details[1]) ? $error_details[1] : 500;
+    /**
+     * Parses the error details to extract the message and status code.
+     *
+     * @param array $error_details The error details provided.
+     *
+     * @return array The message and status code.
+     */
+    protected static function parse_error( array $error_details ): array
+    {
+        $message     = $error_details[0] ?? 'An error occurred';
+        $status_code = $error_details[1] ?? 500;
 
-	    return [$message, $status_code];
-	}
+        return [ $message, $status_code ];
+    }
 
-	/**
-	 * Handles exceptions by sending them to a monitoring tool.
-	 *
-	 * @param Exception $exception The caught exception.
-	 */
-	protected function log_exception( ?Exception $exception = null ): void
-	{
-		if( is_null( $exception ) ) {
-			return;
-		}
-	    // TODO Assuming Sentry is set up and configured.
-	    //Sentry\captureException($exception);
+    /**
+     * Handles exceptions by sending them to a monitoring tool.
+     *
+     * @param Exception $exception The caught exception.
+     */
+    protected function log_exception( ?Exception $exception = null ): void
+    {
+        if ( \is_null( $exception ) ) {
+            return;
+        }
+        // TODO Assuming Sentry is set up and configured.
+        // Sentry\captureException($exception);
 
-	    // TODO Optionally, log the exception or perform additional actions
-	    // error_log($exception->getMessage());
-	}
+        // TODO Optionally, log the exception or perform additional actions
+        // error_log($exception->getMessage());
+    }
 
     /**
      * Renders the error page with a given message and status code.
