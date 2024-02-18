@@ -143,8 +143,8 @@ if ( ! \function_exists( 'wpframework' ) ) {
      */
     function wpframework( string $app_path, string $options = 'app' ): WPframework\Component\Http\BaseKernel
     {
-        if ( ! \defined('SITE_CONFIG_DIR') ) {
-            \define( 'SITE_CONFIG_DIR', 'config');
+        if ( ! \defined('SITE_CONFIGS_DIR') ) {
+            \define( 'SITE_CONFIGS_DIR', 'configs');
         }
 
         /**
@@ -152,13 +152,13 @@ if ( ! \function_exists( 'wpframework' ) ) {
          *
          * @var Tenancy
          */
-        $tenancy = new Tenancy( $app_path, SITE_CONFIG_DIR );
+        $tenancy = new Tenancy( $app_path, SITE_CONFIGS_DIR );
         $tenancy->initialize();
 
         try {
-            $app = new App( $app_path, SITE_CONFIG_DIR, $options );
+            $app = new App( $app_path, SITE_CONFIGS_DIR, $options );
         } catch ( Exception $e ) {
-            Terminate::exit('Framework Initialization Error: ' );
+            Terminate::exit(['Framework Initialization Error:'], $e );
         }
 
         // @phpstan-ignore-next-line
@@ -217,7 +217,7 @@ if ( ! \function_exists( 'appConfig' ) ) {
      */
     function appConfig(): array
     {
-        return require __DIR__ . '/config/app.php';
+        return require __DIR__ . '/configs/app.php';
     }
 }
 
@@ -245,7 +245,7 @@ function config( ?string $key = null, $default = null, $data_access = false )
     if ( $data_access ) {
         $dotdata = $data_access;
     } else {
-        $dotdata = new DotAccess( APP_PATH . SITE_CONFIG_DIR . '/app.php' );
+        $dotdata = new DotAccess( APP_PATH . SITE_CONFIGS_DIR . '/app.php' );
     }
 
     if ( \is_null( $key ) ) {

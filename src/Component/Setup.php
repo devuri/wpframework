@@ -388,7 +388,7 @@ class Setup implements ConfigInterface
         try {
             $this->dotenv->load();
         } catch ( Exception $e ) {
-            Terminate::exit( $e->getMessage() );
+            Terminate::exit( [ $e->getMessage() ] );
         }
     }
 
@@ -503,7 +503,7 @@ class Setup implements ConfigInterface
             $this->dotenv->required( 'LOGGED_IN_SALT' )->notEmpty();
             $this->dotenv->required( 'NONCE_SALT' )->notEmpty();
         } catch ( Exception $e ) {
-            Terminate::exit( $e->getMessage() );
+            Terminate::exit( [ $e->getMessage() ] );
         }// end try
     }
 

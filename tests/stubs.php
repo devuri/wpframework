@@ -68,8 +68,8 @@ if (!defined('WEBAPP_ENCRYPTION_KEY')) {
     define('WEBAPP_ENCRYPTION_KEY', APP_TEST_PATH . '/.secret.txt');
 }
 
-if (!defined('SITE_CONFIG_DIR')) {
-    define('SITE_CONFIG_DIR', APP_TEST_PATH . '/inc');
+if (!defined('SITE_CONFIGS_DIR')) {
+    define('SITE_CONFIGS_DIR', APP_TEST_PATH . '/inc');
 }
 
 if (!defined('REQUIRE_TENANT_CONFIG')) {

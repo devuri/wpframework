@@ -158,18 +158,18 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/WPframework-Component-Http-BaseKernel.html#property_config_dir">$config_dir</a>
-    <span>
-                        &nbsp;: string            </span>
-</dt>
-<dd>The directory where configuration files are stored.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#property_config_file">$config_file</a>
     <span>
                         &nbsp;: string            </span>
 </dt>
 <dd>The name of the configuration file for the application.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/WPframework-Component-Http-BaseKernel.html#property_configs_dir">$configs_dir</a>
+    <span>
+                        &nbsp;: string            </span>
+</dt>
+<dd>The directory where configuration files are stored.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/WPframework-Component-Http-BaseKernel.html#property_dir_name">$dir_name</a>
@@ -507,39 +507,6 @@
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_config_dir">
-        $config_dir
-        <a href="classes/WPframework-Component-Http-BaseKernel.html#property_config_dir" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">86</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">The directory where configuration files are stored.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$config_dir</span>
-    </code>
-
-    
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="property_config_file">
         $config_file
         <a href="classes/WPframework-Component-Http-BaseKernel.html#property_config_file" class="headerlink"><i class="fas fa-link"></i></a>
@@ -559,6 +526,39 @@
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$config_file</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_configs_dir">
+        $configs_dir
+        <a href="classes/WPframework-Component-Http-BaseKernel.html#property_configs_dir" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Http/BaseKernel.php"><a href="files/src-component-http-basekernel.html"><abbr title="src/Component/Http/BaseKernel.php">BaseKernel.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">86</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">The directory where configuration files are stored.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">$configs_dir</span>
     </code>
 
     
@@ -1415,7 +1415,7 @@ for tenant-specific error logging.</p>
         <section class="phpdocumentor-description"><p>This function checks for a .maintenance file in various locations, affecting different
 scopes of the application:</p>
 <ul>
-<li>The entire tenant network (when located in PUBLIC_WEB_DIR or APP_PATH/config_dir).</li>
+<li>The entire tenant network (when located in PUBLIC_WEB_DIR or APP_PATH/configs_dir).</li>
 <li>A single tenant (when located in the current application path).
 If a .maintenance file is found, it terminates the execution with a maintenance message
 and sends a 503 Service Unavailable status code.</li>

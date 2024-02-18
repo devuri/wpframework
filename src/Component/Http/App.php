@@ -47,7 +47,7 @@ class App
      *
      * @var string
      */
-    protected $config_dir;
+    protected $configs_dir;
 
     /**
      * Initializes the App class with essential configuration and setup.
@@ -64,8 +64,8 @@ class App
      */
     public function __construct( string $app_path, string $site_config, string $options = 'app' )
     {
-        $this->app_path   = $app_path;
-        $this->config_dir = $site_config;
+        $this->app_path    = $app_path;
+        $this->configs_dir = $site_config;
 
         /*
          * We need setup to get access to our env values.
@@ -108,7 +108,7 @@ class App
     public function kernel(): BaseKernel
     {
         if ( ! \is_array( $this->config ) ) {
-            Terminate::exit( 'Uncaught TypeError: BaseKernel($args) must be of type array' );
+            Terminate::exit( [ 'Uncaught TypeError: BaseKernel($args) must be of type array' ] );
         }
 
         return new BaseKernel( $this->app_path, $this->config, $this->setup );

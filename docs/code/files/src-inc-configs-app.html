@@ -60,7 +60,7 @@
 </h4>
     <ul class="phpdocumentor-list">
                     <li>
-                <a href="namespaces/wpframework-component.html" class="-active">Component</a>
+                <a href="namespaces/wpframework-component.html" class="">Component</a>
                 
             </li>
             </ul>
@@ -89,59 +89,32 @@
 
             <div class="phpdocumentor-column -eight phpdocumentor-content">
                     <ul class="phpdocumentor-breadcrumbs">
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/wpframework.html">WPframework</a></li>
     </ul>
 
-    <article class="phpdocumentor-element -namespace">
-        <h2 class="phpdocumentor-content__title">Component</h2>
+    <article class="phpdocumentor-element -file">
+        <h2 class="phpdocumentor-content__title">app.php</h2>
 
-        
-<h3 id="namespaces">
-    Namespaces
-    <a href="#namespaces" class="headerlink"><i class="fas fa-link"></i></a>
-</h3>
+            <p class="phpdocumentor-summary">This file defines various framework configuration options using key-value pairs.</p>
 
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/wpframework-component-core.html"><abbr title="\WPframework\Component\Core">Core</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/wpframework-component-exceptions.html"><abbr title="\WPframework\Component\Exceptions">Exceptions</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/wpframework-component-http.html"><abbr title="\WPframework\Component\Http">Http</abbr></a></dt>
-            <dt class="phpdocumentor-table-of-contents__entry -namespace"><a href="namespaces/wpframework-component-traits.html"><abbr title="\WPframework\Component\Traits">Traits</abbr></a></dt>
-    </dl>
+    <section class="phpdocumentor-description"><p>The values can be set in this file or by using environment variables defined in the <code class="prettyprint">.env</code> file.
+By utilizing environment variables, we can easily configure and customize the framework for different environments.
+Some values are predefined by the framework, while others can be explicitly defined here as per specific requirements.</p>
+<p>The configuration options can be accessed in two ways:</p>
+<ol>
+<li>Using the <code class="prettyprint">config()</code> framework helper function, which provides easy access to the configuration values.</li>
+<li>Utilizing the <code class="prettyprint">get_config()</code> method available in the framework's Kernel, which returns the configuration options as an array.</li>
+</ol>
+<p>Note that almost all configuration options in this file are optional, as the framework provides sensible defaults for required values.
+Any options not explicitly set here will be automatically handled by the framework.</p>
+</section>
 
-<h3 id="interfaces_class_traits">
-    Interfaces, Classes, Traits and Enums
-    <a href="#interfaces_class_traits" class="headerlink"><i class="fas fa-link"></i></a>
-</h3>
 
-<dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/WPframework-Component-ConfigInterface.html"><abbr title="\WPframework\Component\ConfigInterface">ConfigInterface</abbr></a></dt>
-        <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/WPframework-Component-EnvInterface.html"><abbr title="\WPframework\Component\EnvInterface">EnvInterface</abbr></a></dt>
-        <dd>Interface for managing different environment settings.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/WPframework-Component-ExitInterface.html"><abbr title="\WPframework\Component\ExitInterface">ExitInterface</abbr></a></dt>
-        <dd></dd>
-    
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-EnvGenerator.html"><abbr title="\WPframework\Component\EnvGenerator">EnvGenerator</abbr></a></dt>
-        <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-EnvSwitch.html"><abbr title="\WPframework\Component\EnvSwitch">EnvSwitch</abbr></a></dt>
-        <dd>Class EnvSwitch.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-EnvTypes.html"><abbr title="\WPframework\Component\EnvTypes">EnvTypes</abbr></a></dt>
-        <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-Kernel.html"><abbr title="\WPframework\Component\Kernel">Kernel</abbr></a></dt>
-        <dd>Setup common elements.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-Setup.html"><abbr title="\WPframework\Component\Setup">Setup</abbr></a></dt>
-        <dd>Setup WP Config.</dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-HashValidator.html"><abbr title="\WPframework\Component\HashValidator">HashValidator</abbr></a></dt>
-        <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-Terminate.html"><abbr title="\WPframework\Component\Terminate">Terminate</abbr></a></dt>
-        <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-ConstLoader.html"><abbr title="\WPframework\Component\ConstLoader">ConstLoader</abbr></a></dt>
-        <dd></dd>
-            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-ExitHandler.html"><abbr title="\WPframework\Component\ExitHandler">ExitHandler</abbr></a></dt>
-        <dd></dd>
-    
-    
-    </dl>
+
+
+
+
+
+
 
 
 
@@ -162,7 +135,7 @@
 </section>
             </div>
         </div>
-        <a href="namespaces/wpframework-component.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="files/src-inc-configs-app.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

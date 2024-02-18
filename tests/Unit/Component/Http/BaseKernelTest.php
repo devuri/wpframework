@@ -110,6 +110,8 @@ class BaseKernelTest extends BaseTest
             "APP_PATH" => $app_test_path,
             "APP_HTTP_HOST" => "default_domain.com",
             "PUBLIC_WEB_DIR" => $app_test_path . "/public",
+
+            // directory setup.
             "WP_DIR_PATH" => $app_test_path . "/public/wp",
             "APP_ASSETS_DIR" => $app_test_path . "/public/assets",
             "APP_CONTENT_DIR" => "app",
@@ -119,13 +121,20 @@ class BaseKernelTest extends BaseTest
             "WP_PLUGIN_URL" => "https://example.com/plugins",
             "WPMU_PLUGIN_DIR" => $app_test_path . "/public/mu-plugins",
             "WPMU_PLUGIN_URL" => "https://example.com/mu-plugins",
+
+            // admin
             "AUTOMATIC_UPDATER_DISABLED" => true,
             "WP_SUDO_ADMIN" => 1,
             "SUDO_ADMIN_GROUP" => null,
             "CAN_DEACTIVATE_PLUGINS" => true,
+
+            // sqlite.
             "DB_DIR" => $app_test_path . "/sqlitedb",
             "DB_FILE" => ".sqlite-wpdatabase",
+
             "WP_DEFAULT_THEME" => "brisko",
+
+            // salts.
             "COOKIEHASH" => "c984d06aafbecf6bc55569f964148ea3",
             "USER_COOKIE" => "wpc_user_c984d06aafbecf6bc55569f964148ea3",
             "PASS_COOKIE" => "wpc_pass_c984d06aafbecf6bc55569f964148ea3",
@@ -133,8 +142,12 @@ class BaseKernelTest extends BaseTest
             "SECURE_AUTH_COOKIE" => "wpc_sec_c984d06aafbecf6bc55569f964148ea3",
             "LOGGED_IN_COOKIE" => "wpc_logged_in_c984d06aafbecf6bc55569f964148ea3",
             "TEST_COOKIE" => "613df23f4d18ac79c829ba8c18b503e4",
+
+            // sucuri.
             "ENABLE_SUCURI_WAF" => false,
-            "SUCURI_DATA_STORAGE" => $app_test_path . "../../storage/logs/sucuri",
+            // "SUCURI_DATA_STORAGE" => $app_test_path . "../../storage/logs/sucuri",
+
+            // redis
             "WP_REDIS_DISABLED" => false,
             "WP_REDIS_PREFIX" => "c984d06aafbecf6bc55569f964148ea3redis-cache",
             "WP_REDIS_DATABASE" => 0,
@@ -152,7 +165,7 @@ class BaseKernelTest extends BaseTest
 
         $count = \count( $this->http_app()->get_defined() );
 
-        $this->assertEquals( 39, $count );
+        $this->assertEquals( 38, $count );
 
         $this->assertEquals( $const_defaults, $this->http_app()->get_defined());
     }

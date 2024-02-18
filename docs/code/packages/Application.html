@@ -108,6 +108,8 @@
         <dd>Interface for managing different environment settings.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/WPframework-Component-Http-HostInterface.html"><abbr title="\WPframework\Component\Http\HostInterface">HostInterface</abbr></a></dt>
         <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/WPframework-Component-ExitInterface.html"><abbr title="\WPframework\Component\ExitInterface">ExitInterface</abbr></a></dt>
+        <dd></dd>
     
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-Core-AutoLogin.html"><abbr title="\WPframework\Component\Core\AutoLogin">AutoLogin</abbr></a></dt>
         <dd>Class AutoLogin.</dd>
@@ -152,6 +154,10 @@ for WordPress core, themes, and plugins.</dd>
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-Terminate.html"><abbr title="\WPframework\Component\Terminate">Terminate</abbr></a></dt>
         <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-ConstLoader.html"><abbr title="\WPframework\Component\ConstLoader">ConstLoader</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-ExitHandler.html"><abbr title="\WPframework\Component\ExitHandler">ExitHandler</abbr></a></dt>
+        <dd></dd>
     
             <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/WPframework-Component-Core-Traits-AdminBarMenuTrait.html"><abbr title="\WPframework\Component\Core\Traits\AdminBarMenuTrait">AdminBarMenuTrait</abbr></a></dt>
         <dd></dd>
@@ -195,9 +201,9 @@ for WordPress core, themes, and plugins.</dd>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="namespaces/default.html#constant_SITE_CONFIG_DIR">SITE_CONFIG_DIR</a>
+    <a href="namespaces/default.html#constant_SITE_CONFIGS_DIR">SITE_CONFIGS_DIR</a>
     <span>
-        &nbsp;= &#039;config&#039;                            </span>
+        &nbsp;= &#039;configs&#039;                            </span>
 </dt>
 <dd></dd>
 
@@ -328,7 +334,7 @@ for WordPress core, themes, and plugins.</dd>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/inc/config/tenancy.php"><a href="files/src-inc-config-tenancy.html"><abbr title="src/inc/config/tenancy.php">tenancy.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/inc/configs/tenancy.php"><a href="files/src-inc-configs-tenancy.html"><abbr title="src/inc/configs/tenancy.php">tenancy.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">12</span>
 
@@ -357,7 +363,7 @@ for WordPress core, themes, and plugins.</dd>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/inc/config/tenancy.php"><a href="files/src-inc-config-tenancy.html"><abbr title="src/inc/config/tenancy.php">tenancy.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/inc/configs/tenancy.php"><a href="files/src-inc-configs-tenancy.html"><abbr title="src/inc/configs/tenancy.php">tenancy.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">20</span>
 
@@ -386,7 +392,7 @@ for WordPress core, themes, and plugins.</dd>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/inc/config/tenancy.php"><a href="files/src-inc-config-tenancy.html"><abbr title="src/inc/config/tenancy.php">tenancy.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/inc/configs/tenancy.php"><a href="files/src-inc-configs-tenancy.html"><abbr title="src/inc/configs/tenancy.php">tenancy.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">34</span>
 
@@ -409,9 +415,9 @@ for WordPress core, themes, and plugins.</dd>
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_SITE_CONFIG_DIR">
-        SITE_CONFIG_DIR
-        <a href="namespaces/default.html#constant_SITE_CONFIG_DIR" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_SITE_CONFIGS_DIR">
+        SITE_CONFIGS_DIR
+        <a href="namespaces/default.html#constant_SITE_CONFIGS_DIR" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -425,8 +431,8 @@ for WordPress core, themes, and plugins.</dd>
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">SITE_CONFIG_DIR</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;config&#039;</span>
+    <span class="phpdocumentor-signature__name">SITE_CONFIGS_DIR</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;configs&#039;</span>
 </code>
 
 
@@ -444,7 +450,7 @@ for WordPress core, themes, and plugins.</dd>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/inc/config/tenancy.php"><a href="files/src-inc-config-tenancy.html"><abbr title="src/inc/config/tenancy.php">tenancy.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/inc/configs/tenancy.php"><a href="files/src-inc-configs-tenancy.html"><abbr title="src/inc/configs/tenancy.php">tenancy.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">43</span>
 

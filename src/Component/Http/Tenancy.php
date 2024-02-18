@@ -17,7 +17,7 @@ class Tenancy
      */
     protected static $constants = [];
     private $app_path;
-    private $config_dir;
+    private $configs_dir;
     private $tenant;
 
     /**
@@ -28,8 +28,8 @@ class Tenancy
      */
     public function __construct( string $app_path, string $site_config )
     {
-        $this->app_path   = $app_path;
-        $this->config_dir = $site_config;
+        $this->app_path    = $app_path;
+        $this->configs_dir = $site_config;
     }
 
     /**
@@ -41,8 +41,8 @@ class Tenancy
      */
     public function initialize(): void
     {
-        if ( file_exists( "{$this->app_path}/{$this->config_dir}/tenancy.php" ) ) {
-            require_once "{$this->app_path}/{$this->config_dir}/tenancy.php";
+        if ( file_exists( "{$this->app_path}/{$this->configs_dir}/tenancy.php" ) ) {
+            require_once "{$this->app_path}/{$this->configs_dir}/tenancy.php";
         }
 
         if ( \defined( 'ALLOW_MULTITENANT' ) && true === ALLOW_MULTITENANT ) {
@@ -84,14 +84,14 @@ class Tenancy
             $_dotenv->required( 'LANDLORD_DB_PASSWORD' )->notEmpty();
             $_dotenv->required( 'LANDLORD_DB_PREFIX' )->notEmpty();
         } catch ( Exception $e ) {
-            Terminate::exit( 'Landlord info is required for multi-tenant', 403 );
+            Terminate::exit( [ 'Landlord info is required for multi-tenant', 403 ] );
         }
 
         $landlord = new DB( 'tenant', env( 'LANDLORD_DB_HOST' ), env( 'LANDLORD_DB_NAME' ), env( 'LANDLORD_DB_USER' ), env( 'LANDLORD_DB_PASSWORD' ), env( 'LANDLORD_DB_PREFIX' ) );
         $hostd    = $landlord->where( 'domain', $_app_http_host );
 
         if ( ! $hostd ) {
-            Terminate::exit( 'The website is not defined. Please review the URL and try again.', 403 );
+            Terminate::exit( [ 'The website is not defined. Please review the URL and try again.', 403 ] );
         } else {
             $this->tenant = $hostd[0];
             $this->define_tenant_constants();
@@ -139,7 +139,7 @@ class Tenancy
      */
     private function maybe_regenerate_env_file( string $tenant_id ): void
     {
-        $tenant_env_path = "{$this->app_path}/{$this->config_dir}/{$tenant_id}/.env";
+        $tenant_env_path = "{$this->app_path}/{$this->configs_dir}/{$tenant_id}/.env";
         if ( ! file_exists( $tenant_env_path ) ) {
             $generator = new EnvGenerator( new Filesystem() );
             $db_prefix = $this->get_db_prefix( $tenant_id );
