@@ -83,7 +83,7 @@ class BaseKernel
      *
      * @var string
      */
-    protected $config_dir;
+    protected $configs_dir;
 
     /**
      * Constructs the BaseKernel object and initializes the application setup.
@@ -99,7 +99,7 @@ class BaseKernel
     public function __construct( string $app_path, ?array $args = [], ?Setup $setup = null )
     {
         $this->app_path   = $app_path;
-        $this->config_dir = SITE_CONFIG_DIR;
+        $this->configs_dir = SITE_CONFIGS_DIR;
 
         if ( \is_null( $args ) || empty( $args ) ) {
             $this->args = array_merge( $this->args, self::get_default_config() );
@@ -223,7 +223,7 @@ class BaseKernel
 
         // Check if multi-tenant mode is enabled and a tenant ID is set
         if ( $this->is_multitenant_app() && ! empty( $this->tenant_id ) ) {
-            $tenant_config_file = $this->app_path . "/{$this->config_dir}/{$this->tenant_id}/{$this->config_file}.php";
+            $tenant_config_file = $this->app_path . "/{$this->configs_dir}/{$this->tenant_id}/{$this->config_file}.php";
 
             // Check if the tenant-specific config file exists
             if ( file_exists( $tenant_config_file ) ) {
@@ -372,7 +372,7 @@ class BaseKernel
      *
      * This function checks for a .maintenance file in various locations, affecting different
      * scopes of the application:
-     * - The entire tenant network (when located in PUBLIC_WEB_DIR or APP_PATH/config_dir).
+     * - The entire tenant network (when located in PUBLIC_WEB_DIR or APP_PATH/configs_dir).
      * - A single tenant (when located in the current application path).
      * If a .maintenance file is found, it terminates the execution with a maintenance message
      * and sends a 503 Service Unavailable status code.
@@ -382,7 +382,7 @@ class BaseKernel
         $maintenance_checks = [
             // Affects the entire tenant network.
             PUBLIC_WEB_DIR . '/.maintenance'               => 'Will affect the entire tenant network.',
-            APP_PATH . "/{$this->config_dir}/.maintenance" => 'Will affect the entire tenant network.',
+            APP_PATH . "/{$this->configs_dir}/.maintenance" => 'Will affect the entire tenant network.',
 
             // Affects a single tenant.
             $this->app_setup->get_current_path() . '/.maintenance' => 'For single tenant.',

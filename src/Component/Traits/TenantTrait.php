@@ -56,9 +56,9 @@ trait TenantTrait
     protected function determine_envpath( $base_path ): string
     {
         if ( $this->is_multitenant_app() && \defined( 'APP_TENANT_ID' ) ) {
-            $config_dir = SITE_CONFIG_DIR;
+            $configs_dir = SITE_CONFIGS_DIR;
 
-            return "{$base_path}/{$config_dir}/" . APP_TENANT_ID;
+            return "{$base_path}/{$configs_dir}/" . APP_TENANT_ID;
         }
 
         return $base_path;

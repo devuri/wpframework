@@ -122,7 +122,7 @@ trait ConstantTrait
 
         // SUCURI
         $this->define( 'ENABLE_SUCURI_WAF', $this->args['sucuri_waf'] );
-        $this->define( 'SUCURI_DATA_STORAGE', ABSPATH . '../../storage/logs/sucuri' );
+        //  $this->define( 'SUCURI_DATA_STORAGE', ABSPATH . '../../storage/logs/sucuri' );
 
         /*
          * Redis cache configuration for the WordPress application.
