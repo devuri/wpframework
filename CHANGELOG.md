@@ -1,5 +1,19 @@
 # Changelog
 
+## [5.0.4](https://github.com/devuri/wp-framework/compare/v5.0.3...v5.0.4) (2024-02-18)
+
+
+### Bug Fixes
+
+* rename `config` to `configs` for configs directory ([73839a6](https://github.com/devuri/wp-framework/commit/73839a6c2381453d90a3ea9acc6e79808723c4aa))
+* update `Terminate` to include `log_exception` for monitoring tools ([d3c6ca9](https://github.com/devuri/wp-framework/commit/d3c6ca96a21ac4cf57d99379ecdbc52b019dc3bb))
+
+
+### Miscellaneous Chores
+
+* build ([a9f30d2](https://github.com/devuri/wp-framework/commit/a9f30d2b656f09a4f5e1a2ba684cb971f5ac215f))
+* build ([0b3c2ec](https://github.com/devuri/wp-framework/commit/0b3c2ec2f24799e9ce9713597377052a9994cb83))
+
 ## [5.0.3](https://github.com/devuri/wp-framework/compare/v5.0.2...v5.0.3) (2024-02-16)
 
 
