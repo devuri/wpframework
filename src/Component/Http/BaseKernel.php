@@ -313,7 +313,7 @@ class BaseKernel
         $this->handle_maintenance_mode();
 
         if ( $this->wp_is_not_installed() && \in_array( env( 'WP_ENVIRONMENT_TYPE' ), [ 'secure', 'sec', 'production', 'prod' ], true ) ) {
-            Terminate::exit( 'wp is not installed change enviroment to run installer' );
+            Terminate::exit( ['wp is not installed change enviroment to run installer'] );
         }
     }
 
@@ -391,7 +391,7 @@ class BaseKernel
         foreach ( $maintenance_checks as $path => $scope ) {
             if ( file_exists( $path ) ) {
                 // TODO Log or handle the scope-specific message if needed, e.g., error_log($scope);
-                Terminate::exit( self::get_maintenance_message(), 503 );
+                Terminate::exit( [self::get_maintenance_message(), 503] );
 
                 break;
                 // Terminate the loop after the first match.

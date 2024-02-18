@@ -158,7 +158,7 @@ if ( ! \function_exists( 'wpframework' ) ) {
         try {
             $app = new App( $app_path, SITE_CONFIGS_DIR, $options );
         } catch ( Exception $e ) {
-            Terminate::exit('Framework Initialization Error: ' );
+            Terminate::exit(['Framework Initialization Error:'], $e );
         }
 
         // @phpstan-ignore-next-line
