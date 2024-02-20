@@ -38,7 +38,7 @@ class ConstLoader
         // Exit the script with a friendly message to avoid potential security issues.
         echo 'An error occurred. Please contact the administrator.';
         exit;
-		// Stop script execution.
+        // Stop script execution.
     }
 
     /**
