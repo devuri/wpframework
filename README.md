@@ -92,4 +92,4 @@ Should you encounter any issues or have questions about the framework, don't hes
 
 ## License
 
-WP-Framework is released under the [MIT License](LICENSE), promoting open and collaborative development.
+Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
