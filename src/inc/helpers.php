@@ -4,12 +4,12 @@ use Defuse\Crypto\Key;
 use Urisoft\DotAccess;
 use Urisoft\Encryption;
 use Urisoft\Env;
+use Urisoft\SimpleConfig;
 use WPframework\Component\Core\Plugin;
 use WPframework\Component\Http\App;
 use WPframework\Component\Http\Asset;
 use WPframework\Component\Http\Tenancy;
 use WPframework\Component\Terminate;
-use Urisoft\SimpleConfig;
 
 // @codingStandardsIgnoreFile.
 
@@ -83,9 +83,9 @@ function env($name, $defaultOrEncrypt = null, $strtolower = false)
  */
 function getEnvWhitelist(): array
 {
-	$config = new SimpleConfig( __DIR__ . '/configs', ['whitelist'] );
+    $config = new SimpleConfig( __DIR__ . '/configs', ['whitelist'] );
 
-	return $config->get('whitelist');
+    return $config->get('whitelist');
 }
 
 if ( ! \function_exists( 'getHttpEnv' ) ) {

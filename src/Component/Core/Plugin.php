@@ -158,7 +158,7 @@ class Plugin
 					<h2>Composer Plugins List</h2>
 					<?php
                     dump( packagistPluginsList() );
-                ?>
+					?>
 				</div>
 				<?php
             }

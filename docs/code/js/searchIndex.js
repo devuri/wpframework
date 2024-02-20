@@ -18,13 +18,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\env\u0028\u0029",
             "name": "env",
-            "summary": "Get\u0020the\u0020value\u0020of\u0020an\u0020environment\u0020variable\u0020with\u0020support\u0020for\u0020default\u0020values\u0020and\u0020optional\u0020encryption.",
+            "summary": "A\u0020convenient\u0020global\u0020function\u0020to\u0020access\u0020environment\u0020variables\u0020using\u0020the\u0020Env\u0020class.",
             "url": "namespaces/default.html#function_env"
         },                {
-            "fqsen": "\\isIntVal\u0028\u0029",
-            "name": "isIntVal",
-            "summary": "Check\u0020if\u0020a\u0020string\u0020is\u0020an\u0020integer\u0020value.",
-            "url": "namespaces/default.html#function_isIntVal"
+            "fqsen": "\\getEnvWhitelist\u0028\u0029",
+            "name": "getEnvWhitelist",
+            "summary": "Retrieves\u0020a\u0020list\u0020of\u0020whitelisted\u0020environment\u0020variable\u0020keys.",
+            "url": "namespaces/default.html#function_getEnvWhitelist"
         },                {
             "fqsen": "\\getHttpEnv\u0028\u0029",
             "name": "getHttpEnv",

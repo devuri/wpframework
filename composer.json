@@ -50,7 +50,6 @@
     "require-dev": {
         "10up/phpcs-composer": "dev-master",
         "brain/monkey": "^2.6",
-        "friendsofphp/php-cs-fixer": "^3.13",
         "php-stubs/wordpress-stubs": "^6.0",
         "phpstan/phpstan": "^1.8",
         "phpstan/phpstan-strict-rules": "^1.3",
