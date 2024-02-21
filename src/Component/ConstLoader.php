@@ -35,10 +35,7 @@ class ConstLoader
             return \constant( $name );
         }
 
-        // Exit the script with a friendly message to avoid potential security issues.
-        echo 'An error occurred. Please contact the administrator.';
-        exit;
-        // Stop script execution.
+        exit( 'An error occurred. Please contact the administrator.' );
     }
 
     /**
