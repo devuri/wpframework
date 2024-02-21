@@ -56,14 +56,23 @@ if ( ! \function_exists( 'assetUrl' ) ) {
  */
 function env($name, $defaultOrEncrypt = null, $strtolower = false)
 {
-    $whitelist = getEnvWhitelist();
+    static $whitelist;
+    static $whitelisted;
 
-    $encryptionPath = \defined('APP_PATH') ? APP_PATH : null;
+    if ( \is_null( $whitelist ) ) {
+        $whitelist = getEnvWhitelist();
+    }
+
+    if ( \is_null( $whitelisted ) ) {
+        $whitelisted = array_merge( $whitelist['framework'], $whitelist['wp']);
+    }
+
+    $encryptionPath = \defined('APP_PATH') ? APP_PATH : '';
 
     // Instance of the Env class with your predefined settings
     static $env = null;
     if (null === $env) {
-        $env = new Env($whitelist['framework'], $encryptionPath );
+        $env = new Env($whitelisted, $encryptionPath, false );
     }
 
     // Get the environment variable value
