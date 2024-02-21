@@ -35,7 +35,7 @@ class ConstLoader
             return \constant( $name );
         }
 
-        exit('An error occurred. Please contact the administrator.');
+        exit( 'An error occurred. Please contact the administrator.' );
     }
 
     /**
