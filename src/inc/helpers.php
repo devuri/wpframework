@@ -3,6 +3,8 @@
 use Defuse\Crypto\Key;
 use Urisoft\DotAccess;
 use Urisoft\Encryption;
+use Urisoft\Env;
+use Urisoft\SimpleConfig;
 use WPframework\Component\Core\Plugin;
 use WPframework\Component\Http\App;
 use WPframework\Component\Http\Asset;
@@ -44,64 +46,46 @@ if ( ! \function_exists( 'assetUrl' ) ) {
 }
 
 /**
- * Get the value of an environment variable with support for default values and optional encryption.
+ * A convenient global function to access environment variables using the Env class.
  *
- * @param string $name               Name of the environment variable.
- * @param mixed  $default_or_encrypt Default value to return if the environment variable is not set. If true, the value is encrypted.
- * @param bool   $strtolower         Whether to convert the value to lowercase.
+ * @param string $name             The name of the environment variable.
+ * @param mixed  $defaultOrEncrypt Default value or encryption flag.
+ * @param bool   $strtolower       Whether to convert the value to lowercase.
  *
- * @throws InvalidArgumentException If encryption is requested but APP_PATH is not defined.
- *
- * @return mixed The environment variable value, optionally encrypted, or the default value.
+ * @return mixed The value of the environment variable, processed according to the Env class logic.
  */
-function env( string $name, $default_or_encrypt = null, bool $strtolower = false )
+function env($name, $defaultOrEncrypt = null, $strtolower = false)
 {
-    if ( isset( $_ENV[ $name ] ) ) {
-        $value = $_ENV[ $name ];
-    } else {
-        $value = $default_or_encrypt;
+    $whitelist = getEnvWhitelist();
+
+    $encryptionPath = \defined('APP_PATH') ? APP_PATH : null;
+
+    // Instance of the Env class with your predefined settings
+    static $env = null;
+    if (null === $env) {
+        $env = new Env($whitelist['framework'], $encryptionPath );
     }
 
-    if ( true === $default_or_encrypt ) {
-        if ( ! \defined('APP_PATH') ) {
-            throw new InvalidArgumentException( 'Error: APP_PATH is not defined', 1 );
-        }
-
-        $encryption = new Encryption( APP_PATH );
-
-        // returns encrypted and base64 encoded.
-        return $encryption->encrypt( $value );
-    }
-
-    if ( isIntVal( $value ) ) {
-        return (int) $value;
-    }
-
-    if ( \in_array( $value, [ 'Null', 'null', 'NULL', null ], true ) ) {
-        // empty string is a required return type for null.
-        return '';
-    }
-
-    switch (strtolower($value)) {
-        case 'true': return true;
-        case 'false': return false;
-    }
-
-    return $strtolower ? strtolower($value) : $value;
+    // Get the environment variable value
+    return $env->get($name, $defaultOrEncrypt, $strtolower);
 }
 
-if ( ! \function_exists( 'isIntVal' ) ) {
-    /**
-     * Check if a string is an integer value.
-     *
-     * @param int|string $str The string to check.
-     *
-     * @return bool Returns true if the string is an integer value, and false otherwise.
-     */
-    function isIntVal( $str )
-    {
-        return is_numeric( $str ) && \intval( $str ) == $str;
-    }
+/**
+ * Retrieves a list of whitelisted environment variable keys.
+ *
+ * This function includes and returns an array from 'whitelist.php' located in the 'configs' directory.
+ * The array contains keys of environment variables that are permitted for use within the framework.
+ * Any environment variable not included in this whitelist will not be processed by the framework's
+ * environment handling function, enhancing security by restricting access to only those variables
+ * explicitly defined in the whitelist.
+ *
+ * @return array An indexed array containing the keys of allowed environment variables, such as 'DATA_APP', 'APP', etc.
+ */
+function getEnvWhitelist(): array
+{
+    $config = new SimpleConfig( __DIR__ . '/configs', ['whitelist'] );
+
+    return $config->get('whitelist');
 }
 
 if ( ! \function_exists( 'getHttpEnv' ) ) {
