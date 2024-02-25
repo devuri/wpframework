@@ -20,7 +20,7 @@ To activate the multi-tenant functionality within your setup, follow these steps
 2. **Modify Tenancy Configuration:**
    - Open the `tenancy.php` file (or create it if it does not exist) located in this directory to adjust your tenancy settings.
    - ```php
-     // example tenancy.php
+     // example default values in tenancy.php
       \define( 'ALLOW_MULTITENANT', false );
       \define( 'LANDLORD_UUID', null );
       \define( 'REQUIRE_TENANT_CONFIG', false );
