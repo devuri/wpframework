@@ -15,11 +15,17 @@ Install and activate the [Tenancy plugin](#), this will create the required data
 To activate the multi-tenant functionality within your setup, follow these steps:
 
 1. **Access Configuration Files:**
-   - Navigate to the `config` directory within your application's installation.
+   - Navigate to the `configs` (or create it if it does not exist) directory within your application's installation.
 
 2. **Modify Tenancy Configuration:**
-   - Open the `tenancy.php` file located in this directory to adjust your tenancy settings.
-
+   - Open the `tenancy.php` file (or create it if it does not exist) located in this directory to adjust your tenancy settings.
+   - ```php
+     // example tenancy.php
+      \define( 'ALLOW_MULTITENANT', false );
+      \define( 'LANDLORD_UUID', null );
+      \define( 'REQUIRE_TENANT_CONFIG', false );
+      \define( 'TENANCY_WEB_ROOT', 'public' );
+    ```
 3. **Activate Multi-Tenant Mode:**
    - Find and update the relevant line of code to turn on the multi-tenant feature by setting `ALLOW_MULTITENANT` to `true`:
     ```php
