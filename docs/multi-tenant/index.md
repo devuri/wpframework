@@ -10,27 +10,29 @@ Before making any changes, ensure you have a full backup of your WordPress files
 
 Install and activate the [Tenancy plugin](#), this will create the required database tables and admin area on the main site ( referred to as the Landlord site ).
 
-### Enabling Multi-Tenancy in Your Configuration
+### Enabling Multi-Tenancy Configuration
 
 To activate the multi-tenant functionality within your setup, follow these steps:
 
 1. **Access Configuration Files:**
-   - Navigate to the `configs` (or create it if it does not exist) directory within your application's installation.
+   - Ensure you're in your application's root directory. Look for the `configs` directory. If it doesn't exist, you'll need to create it to store your configuration files.
 
 2. **Modify Tenancy Configuration:**
-   - Open the `tenancy.php` file (or create it if it does not exist) located in this directory to adjust your tenancy settings.
-   - ```php
-     // example default values in tenancy.php
-      \define( 'ALLOW_MULTITENANT', false );
-      \define( 'LANDLORD_UUID', null );
-      \define( 'REQUIRE_TENANT_CONFIG', false );
-      \define( 'TENANCY_WEB_ROOT', 'public' );
-    ```
+   - In the `configs` directory, locate the `tenancy.php` file. If it's not present, you should create it. This file will hold your tenancy-related configurations.
+   - Here's an example of default values you might find or include in `tenancy.php`:
+     ```php
+     // Default settings in tenancy.php
+     define('ALLOW_MULTITENANT', false); // Flag to enable/disable multi-tenancy
+     define('LANDLORD_UUID', null); // Identifier for the landlord or primary tenant
+     define('REQUIRE_TENANT_CONFIG', false); // Whether tenant-specific config is mandatory
+     define('TENANCY_WEB_ROOT', 'public'); // Root directory for tenant-specific web assets
+     ```
+
 3. **Activate Multi-Tenant Mode:**
-   - Find and update the relevant line of code to turn on the multi-tenant feature by setting `ALLOW_MULTITENANT` to `true`:
-    ```php
-    define('ALLOW_MULTITENANT', true);
-    ```
+   - To enable the multi-tenant, you need to change the `ALLOW_MULTITENANT` setting from `false` to `true`. This action activates the multi-tenancy capabilities of your application, allowing it to handle requests for multiple tenants.
+     ```php
+     define('ALLOW_MULTITENANT', true); // Enable multi-tenancy
+     ```
 
 4. **Set the Landlord UUID:**
    - Additionally, you'll need to specify the UUID for the landlord (main tenant). This unique identifier is typically provided at the bottom of the plugin's main page after you've enabled the Tenancy Manager Plugin. If you have this information, update the following line accordingly:
