@@ -25,7 +25,7 @@ To activate the multi-tenant functionality within your setup, follow these steps
      define('ALLOW_MULTITENANT', false); // Flag to enable/disable multi-tenancy
      define('LANDLORD_UUID', null); // Identifier for the landlord or primary tenant
      define('REQUIRE_TENANT_CONFIG', false); // Whether tenant-specific config is mandatory
-     define('TENANCY_WEB_ROOT', 'public'); // Root directory for tenant-specific web assets
+     define('TENANCY_WEB_ROOT', 'public'); // Root directory for web assets
      ```
 
 3. **Activate Multi-Tenant Mode:**
