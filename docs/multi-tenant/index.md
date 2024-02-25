@@ -72,17 +72,17 @@ To properly set up the Landlord environment for your multi-tenant application in
 ## Configuration and Environment Files
 
 - Tenant-specific configuration files are located as follows:
-  - `.env`: `"path/site/a345ea9515c/.env"`
-  - `app.php`: `"path/site/a345ea9515c/app.php"`
-  - `config.php`: `"path/site/a345ea9515c/config.php"`
+  - `.env`: `"path/configs/a345ea9515c/.env"`
+  - `app.php`: `"path/configs/a345ea9515c/app.php"`
+  - `config.php`: `"path/configs/a345ea9515c/config.php"`
 
 The framework supports distinct configurations for each tenant, enabling customized settings per site within a multi-tenant environment:
 
 #### Locations
 
-- **Environment File**: Located at `path/site/{tenant_id}/.env`, it stores environment-specific variables.
-- **PHP Configuration**: Found at `path/site/{tenant_id}/config.php`, this file contains PHP configuration file overrides.
-- **Framework Options**: Found at `path/site/{tenant_id}/app.php`, this file contains an array of options specific to the tenant.
+- **Environment File**: Located at `path/configs/{tenant_id}/.env`, it stores environment-specific variables.
+- **PHP Configuration**: Found at `path/configs/{tenant_id}/config.php`, this file contains PHP configuration file overrides.
+- **Framework Options**: Found at `path/configs/{tenant_id}/app.php`, this file contains an array of options specific to the tenant.
 
 #### Loading Mechanism
 
