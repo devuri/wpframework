@@ -349,3 +349,30 @@ function cleanSensitiveEnv(array $sensitives): void
         putenv($var . '=');
     }
 }
+
+/**
+ * Retrieves all packages listed in the 'require' section of the composer.json file.
+ *
+ * @param string $app_path The path to the application root directory.
+ * @return array An array of required packages, or an empty array if the file doesn't exist or on error.
+ */
+function get_packages( string $app_path ): array
+{
+    $composer_path = $app_path . DIRECTORY_SEPARATOR . 'composer.json';
+
+    // Check if the composer.json file exists.
+    if ( ! is_file( $composer_path ) ) {
+        return [];
+    }
+
+    // Attempt to decode the JSON content from composer.json.
+    $composer_json = json_decode( file_get_contents( $composer_path ), true );
+
+    // Check for JSON errors.
+    if ( json_last_error() !== JSON_ERROR_NONE ) {
+        error_log( 'json error');
+        return [];
+    }
+
+    return $composer_json['require'] ?? [];
+}
