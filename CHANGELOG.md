@@ -1,5 +1,26 @@
 # Changelog
 
+## [5.1.0](https://github.com/devuri/wp-framework/compare/v5.0.4...v5.1.0) (2024-03-03)
+
+
+### Features
+
+* adds `get_packages()` ([48fc7e1](https://github.com/devuri/wp-framework/commit/48fc7e1de51967ec5f75dc261910d8e59d3d8f42))
+
+
+### Bug Fixes
+
+* add whitelisted array for wp and framework conts ([cbdf868](https://github.com/devuri/wp-framework/commit/cbdf868cdeb7e2c93d132b004007835ba4489856))
+* adds landlord to env whitelist ([03f4eca](https://github.com/devuri/wp-framework/commit/03f4eca1e691d9fcf4b52332b99b70506a28c248))
+* use `devuri/env` for `env()` ([9a66679](https://github.com/devuri/wp-framework/commit/9a6667959e8c62f821d93cc60574152fbdb1c4f0))
+
+
+### Miscellaneous Chores
+
+* build ([24bb046](https://github.com/devuri/wp-framework/commit/24bb0465370c3e2ae58dd1cff6abba7408d2f22e))
+* codefix ([e743b89](https://github.com/devuri/wp-framework/commit/e743b89b319d06dd597e536deed9af4c2faa68fa))
+* **deps-dev:** update vimeo/psalm requirement || ^5.0 ([e32b794](https://github.com/devuri/wp-framework/commit/e32b79401a99ba9693472b3dc7fd48876ca91b08))
+
 ## [5.0.4](https://github.com/devuri/wp-framework/compare/v5.0.3...v5.0.4) (2024-02-18)
 
 
