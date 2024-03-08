@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[![Unit Tests](https://github.com/devuri/wp-framework/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/devuri/wp-framework/actions/workflows/unit-tests.yml)
+[![Unit Tests](https://github.com/devuri/wp-framework/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/devuri/wp-framework/actions/workflows/unit-tests.yml) [![Static Analysis](https://github.com/devuri/wp-framework/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/devuri/wp-framework/actions/workflows/static-analysis.yml)
 
 </div>
 
