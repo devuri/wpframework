@@ -84,7 +84,7 @@ class App
         if ( ! empty( $params_file ) ) {
             $this->config = require $params_file;
         } else {
-            $this->config = appConfig();
+            $this->config = appConfig( $this->app_path, $options );
         }
 
         if ( ! \is_array( $this->config ) ) {
