@@ -51,10 +51,20 @@ Search.appendIndex(
             "summary": "Get\u0020default\u0020app\u0020config\u0020values.",
             "url": "namespaces/default.html#function_appConfig"
         },                {
+            "fqsen": "\\site_configs_dir\u0028\u0029",
+            "name": "site_configs_dir",
+            "summary": "",
+            "url": "namespaces/default.html#function_site_configs_dir"
+        },                {
             "fqsen": "\\config\u0028\u0029",
             "name": "config",
             "summary": "Retrieve\u0020configuration\u0020data\u0020using\u0020dot\u0020notation.",
             "url": "namespaces/default.html#function_config"
+        },                {
+            "fqsen": "\\_app_options\u0028\u0029",
+            "name": "_app_options",
+            "summary": "",
+            "url": "namespaces/default.html#function__app_options"
         },                {
             "fqsen": "\\envHash\u0028\u0029",
             "name": "envHash",
@@ -80,6 +90,11 @@ Search.appendIndex(
             "name": "cleanSensitiveEnv",
             "summary": "Cleans\u0020up\u0020sensitive\u0020environment\u0020variables.",
             "url": "namespaces/default.html#function_cleanSensitiveEnv"
+        },                {
+            "fqsen": "\\get_packages\u0028\u0029",
+            "name": "get_packages",
+            "summary": "Retrieves\u0020all\u0020packages\u0020listed\u0020in\u0020the\u0020\u0027require\u0027\u0020section\u0020of\u0020the\u0020composer.json\u0020file.",
+            "url": "namespaces/default.html#function_get_packages"
         },                {
             "fqsen": "\\WPframework\\Component\\ConfigInterface",
             "name": "ConfigInterface",
@@ -225,6 +240,11 @@ Search.appendIndex(
             "name": "set_upload_directory",
             "summary": "Sets\u0020the\u0020upload\u0020directory\u0020to\u0020a\u0020tenant\u002Dspecific\u0020location.",
             "url": "classes/WPframework-Component-Core-Plugin.html#method_set_upload_directory"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Aget_current_theme_info\u0028\u0029",
+            "name": "get_current_theme_info",
+            "summary": "",
+            "url": "classes/WPframework-Component-Core-Plugin.html#method_get_current_theme_info"
         },                {
             "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003Amanage_tenant_install_plugins\u0028\u0029",
             "name": "manage_tenant_install_plugins",

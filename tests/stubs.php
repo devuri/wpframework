@@ -1,5 +1,7 @@
 <?php
 
+define('WP_ENVIRONMENT_TYPE', 'testing');
+
 if (!defined('APP_HTTP_HOST')) {
     define('APP_HTTP_HOST', 'default_domain.com');
 }
