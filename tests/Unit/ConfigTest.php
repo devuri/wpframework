@@ -41,14 +41,14 @@ class ConfigTest extends BaseTest
         $this->assertNull($result);
     }
 
-	public function test_config_has_array(): void
+    public function test_config_has_array(): void
     {
-		//TODO fix: Failed to open stream: No such file or directory
-		// happens becuase APP_PATH is set to test dir, so we cant get to the
-		// configs in src
-        //$configs = config();
+        // TODO fix: Failed to open stream: No such file or directory
+        // happens becuase APP_PATH is set to test dir, so we cant get to the
+        // configs in src
+        // $configs = config();
 
-        //$this->assertIsArray( $configs );
+        // $this->assertIsArray( $configs );
     }
 
     private static function array_data()
@@ -58,7 +58,7 @@ class ConfigTest extends BaseTest
         return $_config_array_data;
     }
 
-	private static function not_array_data()
+    private static function not_array_data()
     {
         return \dirname( __FILE__, 3 ) . '/src/inc/app.php';
     }

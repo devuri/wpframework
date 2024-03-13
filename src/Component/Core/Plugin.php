@@ -13,8 +13,8 @@ namespace WPframework\Component\Core;
 use WP_User;
 use WPframework\Component\Core\Settings\AdminSettingsPage;
 use WPframework\Component\Core\Traits\AdminBarMenuTrait;
-use WPframework\Component\Traits\TenantTrait;
 use WPframework\Component\Terminate;
+use WPframework\Component\Traits\TenantTrait;
 
 class Plugin
 {
@@ -167,7 +167,7 @@ class Plugin
 
         // Missing theme fix.
         $theme_info = self::get_current_theme_info();
-        if ( false === $theme_info['available']) {
+        if ( false === $theme_info['available'] ) {
             Terminate::exit( [ $theme_info['error_message'] ] );
         }
     }
@@ -208,17 +208,17 @@ class Plugin
         $current_theme = wp_get_theme();
 
         // Check if the current theme is available
-        if ($current_theme->exists()) {
-            return array(
-                'available' => true,
-                'theme_info' => $current_theme->get('Name') . ' is available.',
-            );
-        } else {
-            return array(
-                'available' => false,
-                'error_message' => 'The current active theme is not available.',
-            );
+        if ( $current_theme->exists() ) {
+            return [
+                'available'  => true,
+                'theme_info' => $current_theme->get( 'Name' ) . ' is available.',
+            ];
         }
+
+        return [
+            'available'     => false,
+            'error_message' => 'The current active theme is not available.',
+        ];
     }
 
     /**

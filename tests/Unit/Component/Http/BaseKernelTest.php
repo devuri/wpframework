@@ -14,14 +14,14 @@ use WPframework\Component\Http\BaseKernel;
  */
 class BaseKernelTest extends TestCase
 {
-	protected $http_app = null;
+    protected $http_app = null;
 
     protected function setUp(): void
     {
         $this->http_app = new BaseKernel( APP_TEST_PATH );
     }
 
-	protected function tearDown(): void
+    protected function tearDown(): void
     {
         $this->http_app = null;
     }
@@ -177,7 +177,7 @@ class BaseKernelTest extends TestCase
         $this->assertEquals( $const_defaults, $this->http_app->get_defined());
     }
 
-	public function default_args(): array
+    public function default_args(): array
     {
         return [
             "web_root" => "public",

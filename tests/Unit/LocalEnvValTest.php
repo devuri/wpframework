@@ -20,7 +20,7 @@ class LocalEnvValTest extends TestCase
         $this->setup = new Setup( APP_TEST_PATH );
     }
 
-	protected function tearDown(): void
+    protected function tearDown(): void
     {
         $this->setup = null;
     }
