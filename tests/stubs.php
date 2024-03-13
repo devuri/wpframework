@@ -69,7 +69,7 @@ if (!defined('WEBAPP_ENCRYPTION_KEY')) {
 }
 
 if (!defined('SITE_CONFIGS_DIR')) {
-    define('SITE_CONFIGS_DIR', APP_TEST_PATH . '/inc');
+    define('SITE_CONFIGS_DIR', 'configs');
 }
 
 if (!defined('REQUIRE_TENANT_CONFIG')) {
