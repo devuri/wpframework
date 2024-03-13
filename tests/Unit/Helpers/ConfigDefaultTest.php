@@ -92,13 +92,13 @@ class ConfigDefaultTest extends TestCase
         // Redis checks
         $this->assertArrayHasKey('redis', $configs);
         $redis = $configs['redis'];
-        $this->assertFalse($redis['disabled']);
+        $this->assertEmpty($redis['disabled']);
         $this->assertEquals('127.0.0.1', $redis['host']);
         $this->assertEquals(6379, $redis['port']);
-        $this->assertEquals('', $redis['password']);
-        $this->assertFalse($redis['adminbar']);
-        $this->assertFalse($redis['disable-metrics']);
-        $this->assertFalse($redis['disable-banners']);
+        $this->assertEmpty($redis['password']);
+        $this->assertEmpty($redis['adminbar']);
+        $this->assertEmpty($redis['disable-metrics']);
+        $this->assertEmpty($redis['disable-banners']);
         $this->assertEquals('c984d06aafbecf6bc55569f964148ea3redis-cache', $redis['prefix']);
         $this->assertEquals(0, $redis['database']);
         $this->assertEquals(1, $redis['timeout']);

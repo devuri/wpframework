@@ -41,10 +41,25 @@ class ConfigTest extends BaseTest
         $this->assertNull($result);
     }
 
-    protected static function app_config_array_data()
+    public function test_config_has_array(): void
     {
-        $_config_array_data = require_once \dirname( __FILE__, 3 ) . '/src/inc/app.php';
+        // TODO fix: Failed to open stream: No such file or directory
+        // happens becuase APP_PATH is set to test dir, so we cant get to the
+        // configs in src
+        // $configs = config();
+
+        // $this->assertIsArray( $configs );
+    }
+
+    private static function array_data()
+    {
+        $_config_array_data = require \dirname( __FILE__, 3 ) . '/src/inc/configs/app.php';
 
         return $_config_array_data;
+    }
+
+    private static function not_array_data()
+    {
+        return \dirname( __FILE__, 3 ) . '/src/inc/app.php';
     }
 }

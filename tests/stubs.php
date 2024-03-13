@@ -1,5 +1,7 @@
 <?php
 
+define('WP_ENVIRONMENT_TYPE', 'testing');
+
 if (!defined('APP_HTTP_HOST')) {
     define('APP_HTTP_HOST', 'default_domain.com');
 }
@@ -69,7 +71,7 @@ if (!defined('WEBAPP_ENCRYPTION_KEY')) {
 }
 
 if (!defined('SITE_CONFIGS_DIR')) {
-    define('SITE_CONFIGS_DIR', APP_TEST_PATH . '/inc');
+    define('SITE_CONFIGS_DIR', 'configs');
 }
 
 if (!defined('REQUIRE_TENANT_CONFIG')) {

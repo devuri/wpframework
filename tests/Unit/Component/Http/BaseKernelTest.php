@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Component\Http;
 
-use Tests\BaseTest;
+use PHPUnit\Framework\TestCase;
 use WPframework\Component\Http\BaseKernel;
 
 /**
@@ -12,16 +12,23 @@ use WPframework\Component\Http\BaseKernel;
  *
  * @coversNothing
  */
-class BaseKernelTest extends BaseTest
+class BaseKernelTest extends TestCase
 {
-    public function http_app(): BaseKernel
+    protected $http_app = null;
+
+    protected function setUp(): void
     {
-        return new BaseKernel( APP_TEST_PATH );
+        $this->http_app = new BaseKernel( APP_TEST_PATH );
+    }
+
+    protected function tearDown(): void
+    {
+        $this->http_app = null;
     }
 
     public function test_get_app_path(): void
     {
-        $this->assertEquals( APP_TEST_PATH , $this->http_app()->get_app_path() );
+        $this->assertEquals( APP_TEST_PATH , $this->http_app->get_app_path() );
     }
 
     public function test_default_args(): void
@@ -97,12 +104,12 @@ class BaseKernelTest extends BaseTest
             'sucuri_waf' => false,
         ];
 
-        $this->assertEquals( $default, $this->http_app()->get_args());
+        $this->assertEquals( $default, $this->http_app->get_args());
     }
 
     public function test_constants_defined(): void
     {
-        $this->http_app()->set_config_constants();
+        $this->http_app->set_config_constants();
 
         $app_test_path = APP_TEST_PATH;
 
@@ -161,12 +168,38 @@ class BaseKernelTest extends BaseTest
             "WP_REDIS_READ_TIMEOUT" => 1,
         ];
 
-        $this->assertIsArray( $this->http_app()->get_defined() );
+        $this->assertIsArray( $this->http_app->get_defined() );
 
-        $count = \count( $this->http_app()->get_defined() );
+        $count = \count( $this->http_app->get_defined() );
 
         $this->assertEquals( 38, $count );
 
-        $this->assertEquals( $const_defaults, $this->http_app()->get_defined());
+        $this->assertEquals( $const_defaults, $this->http_app->get_defined());
+    }
+
+    public function default_args(): array
+    {
+        return [
+            "web_root" => "public",
+            "wp_dir_path" => "wp",
+            "wordpress" => "wp",
+            "asset_dir" => "assets",
+            "content_dir" => "content",
+            "plugin_dir" => "plugins",
+            "mu_plugin_dir" => "mu-plugins",
+            "sqlite_dir" => "sqlitedb",
+            "sqlite_file" => ".sqlite-wpdatabase",
+            "default_theme" => "twentytwentythree",
+            "disable_updates" => true,
+            "can_deactivate" => true,
+            "error_handler" => "symfony",
+            "config_file" => "config",
+            'templates_dir' => null,
+            "sudo_admin" => null,
+            "sudo_admin_group" => null,
+            "sucuri_waf" => false,
+            'redis' => [],
+            'security' => [],
+        ];
     }
 }

@@ -20,6 +20,11 @@ class LocalEnvValTest extends TestCase
         $this->setup = new Setup( APP_TEST_PATH );
     }
 
+    protected function tearDown(): void
+    {
+        $this->setup = null;
+    }
+
     public function test_wp_home(): void
     {
         $expectedValue = 'https://example.com';

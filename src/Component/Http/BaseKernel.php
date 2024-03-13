@@ -281,7 +281,9 @@ class BaseKernel
      */
     public function init( $env_type = null, bool $constants = true ): void
     {
-        if ( \defined( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::is_valid( (string) WP_ENVIRONMENT_TYPE ) ) {
+        if ( env( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::is_valid( (string) WP_ENVIRONMENT_TYPE ) ) {
+            $env_type = [ 'environment' => env( 'WP_ENVIRONMENT_TYPE' ) ];
+        } elseif ( \defined( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::is_valid( (string) WP_ENVIRONMENT_TYPE ) ) {
             $env_type = [ 'environment' => WP_ENVIRONMENT_TYPE ];
         }
 
