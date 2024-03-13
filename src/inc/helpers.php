@@ -208,9 +208,13 @@ if ( ! \function_exists( 'appConfig' ) ) {
      *
      * @psalm-return array{security: array{'brute-force': true, 'two-factor': true, 'no-pwned-passwords': true, 'admin-ips': array<empty, empty>}, mailer: array{brevo: array{apikey: mixed}, postmark: array{token: mixed}, sendgrid: array{apikey: mixed}, mailerlite: array{apikey: mixed}, mailgun: array{domain: mixed, secret: mixed, endpoint: mixed, scheme: 'https'}, ses: array{key: mixed, secret: mixed, region: mixed}}, sudo_admin: mixed, sudo_admin_group: null, web_root: 'public', s3uploads: array{bucket: mixed, key: mixed, secret: mixed, region: mixed, 'bucket-url': mixed, 'object-acl': mixed, expires: mixed, 'http-cache': mixed}, asset_dir: 'assets', content_dir: 'app', plugin_dir: 'plugins', mu_plugin_dir: 'mu-plugins', sqlite_dir: 'sqlitedb', sqlite_file: '.sqlite-wpdatabase', default_theme: 'brisko', disable_updates: true, can_deactivate: false, theme_dir: 'templates', error_handler: null, redis: array{disabled: mixed, host: mixed, port: mixed, password: mixed, adminbar: mixed, 'disable-metrics': mixed, 'disable-banners': mixed, prefix: mixed, database: mixed, timeout: mixed, 'read-timeout': mixed}, publickey: array{'app-key': mixed}}
      */
-	function appConfig( string $file_path, string $filename ): array
+	function appConfig( ?string $file_path = null, ?string $filename = null ): array
     {
 		$site_configs_dir = site_configs_dir();
+
+		if( ! $file_path && ! $filename ) {
+			return require __DIR__ . '/configs/app.php';
+		}
 
  		$options_file = "{$file_path}/{$site_configs_dir}/{$filename}.php";
 
@@ -218,7 +222,7 @@ if ( ! \function_exists( 'appConfig' ) ) {
             return require $options_file;
         }
 
-        return require __DIR__ . '/configs/app.php';
+        return [];
     }
 }
 
@@ -247,11 +251,12 @@ function site_configs_dir(): ?string
 function config( ?string $key = null, $default = null, $data_access = false )
 {
     $dotdata = null;
+    $options = _app_options( APP_PATH );
 
     if ( $data_access ) {
         $dotdata = $data_access;
-    } else {
-        $dotdata = new DotAccess( APP_PATH . SITE_CONFIGS_DIR . '/app.php' );
+    } elseif ( is_array( $options ) ) {
+		$dotdata = new DotAccess( $options );
     }
 
     if ( \is_null( $key ) ) {
@@ -259,6 +264,19 @@ function config( ?string $key = null, $default = null, $data_access = false )
     }
 
     return $dotdata->get( $key, $default );
+}
+
+function _app_options( ?string $app_path = null ): ?array
+{
+	$options_file = $app_path . '/'. SITE_CONFIGS_DIR . '/app.php';
+
+	if ( file_exists( $options_file ) ) {
+		$app_options = require $options_file;
+	} else {
+		$app_options = null;
+	}
+
+	return is_array( $app_options ) ? $app_options : null;
 }
 
 /**
