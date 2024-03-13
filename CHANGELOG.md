@@ -1,5 +1,21 @@
 # Changelog
 
+## [5.1.1](https://github.com/devuri/wpframework/compare/v5.1.0...v5.1.1) (2024-03-13)
+
+
+### Bug Fixes
+
+* add error message for missing theme instead of white screen of death ([394341c](https://github.com/devuri/wpframework/commit/394341cd6bb64b2b0600bb2ceef5e17b7e86aad5))
+* configs dir for single sites ([d541f48](https://github.com/devuri/wpframework/commit/d541f4875256ebff9f814c75dfb547c8761086ee))
+* DotAccess get correct array data ([eaa43be](https://github.com/devuri/wpframework/commit/eaa43be60fdf63d34bdf962060df8b413c370b01))
+* for when using localwp. ([bb7b26c](https://github.com/devuri/wpframework/commit/bb7b26cb00c2691e9a08b0c5d1fc72a3d64bfb66))
+
+
+### Miscellaneous Chores
+
+* build ([3386faf](https://github.com/devuri/wpframework/commit/3386faf135c5df45769fc14753c7818aa5cc4bb8))
+* build ([7379b5f](https://github.com/devuri/wpframework/commit/7379b5fe92d6dd38cf8849b7e8495a7b1e30a9cf))
+
 ## [5.1.0](https://github.com/devuri/wp-framework/compare/v5.0.4...v5.1.0) (2024-03-03)
 
 
