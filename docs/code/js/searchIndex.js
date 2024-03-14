@@ -1286,6 +1286,16 @@ Search.appendIndex(
             "summary": "Handles\u0020termination\u0020of\u0020the\u0020script\u0020execution\u0020by\u0020sending\u0020an\u0020HTTP\u0020status\u0020code,\u0020displaying\u0020an\u0020error\u0020page,\nand\u0020logging\u0020the\u0020exception.",
             "url": "classes/WPframework-Component-Terminate.html#method_exit"
         },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Aconfig\u0028\u0029",
+            "name": "config",
+            "summary": "",
+            "url": "classes/WPframework-Component-Terminate.html#method_config"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Aallow_terminate_debugger\u0028\u0029",
+            "name": "allow_terminate_debugger",
+            "summary": "",
+            "url": "classes/WPframework-Component-Terminate.html#method_allow_terminate_debugger"
+        },                {
             "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Asend_http_status_code\u0028\u0029",
             "name": "send_http_status_code",
             "summary": "Sends\u0020the\u0020HTTP\u0020status\u0020code\u0020header\u0020after\u0020validating\u0020it.",

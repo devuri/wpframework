@@ -51,9 +51,10 @@ class EnvGenerator
 
     protected function env_file_content( ?string $wpdomain = null, ?string $prefix = null ): string
     {
+        $salt              = null;
         $auto_login_secret = bin2hex( random_bytes( 32 ) );
         $app_tenant_secret = bin2hex( random_bytes( 32 ) );
-        $salt              = null;
+        $dbrootpass        = strtolower( self::rand_str( 14 ) );
 
         try {
             $salt = (object) $this->wpsalts();
@@ -116,6 +117,9 @@ class EnvGenerator
 		DB_HOST=localhost
 		DB_PREFIX=$dbprefix
 
+		# optional (for docker environments)
+		DB_ROOT_PASS=$dbrootpass
+
 		AUTH_KEY='$salt->AUTH_KEY'
 		SECURE_AUTH_KEY='$salt->SECURE_AUTH_KEY'
 		LOGGED_IN_KEY='$salt->LOGGED_IN_KEY'
@@ -124,6 +128,9 @@ class EnvGenerator
 		SECURE_AUTH_SALT='$salt->SECURE_AUTH_SALT'
 		LOGGED_IN_SALT='$salt->LOGGED_IN_SALT'
 		NONCE_SALT='$salt->NONCE_SALT'
+
+		WPENV_AUTO_LOGIN_SECRET_KEY='$auto_login_secret'
+		APP_TENANT_SECRET='$app_tenant_secret'
 
 		END;
     }

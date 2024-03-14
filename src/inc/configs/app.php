@@ -18,12 +18,14 @@
  */
 return [
 
-	/**
-	 * Determines whether to display error details upon application termination.
-	 * Enable this setting only during development, it should never be active in a production environment.
-	 * Always ensure this is set to false in production for security and privacy.
-	 */
-	'terminate_debugger' => false,
+    /*
+     * Determines whether to display error details upon application termination.
+     * Enable this setting only during development, it should never be active in a production environment.
+     * Always ensure this is set to false in production for security and privacy.
+     */
+	'terminate'        => [
+ 		'debugger' => false,
+ 	],
 
     /*
      * Security settings for the WordPress application.
