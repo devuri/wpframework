@@ -10,7 +10,7 @@
 
 </div>
 
-Welcome to WP-Framework, the Composer package that serves as the cutting-edge successor to `wp-env-config`. Designed to provide secure and modular WordPress development, WP-Framework equips developers with a solid, flexible foundation for crafting scalable single or multi-tenant web applications. It's packed with features aimed at boosting your productivity, enhancing the maintainability of your projects, and ensuring scalability.
+Welcome to the WPFramework, the Composer package that serves as the successor to `wp-env-config`. Designed to provide secure and modular WordPress development, WPFramework equips developers with a solid, flexible foundation for crafting scalable single or multi-tenant web applications. It's packed with features aimed at boosting your productivity, enhancing the maintainability of your projects, and ensuring scalability.
 
 ## Features
 
@@ -21,7 +21,7 @@ Welcome to WP-Framework, the Composer package that serves as the cutting-edge su
 
 ## Getting Started
 
-Incorporating WP-Framework into your WordPress project is seamless with Composer. First, make sure your development environment is Composer-ready, then proceed as follows:
+Incorporating WPFramework into your WordPress project is seamless with Composer. First, make sure your development environment is Composer-ready, then proceed as follows:
 
 ### Environment Setup
 
