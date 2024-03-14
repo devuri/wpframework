@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/devuri/wpframework/compare/v0.0.5...v0.0.6) (2024-03-14)
+
+
+### Miscellaneous Chores
+
+* fix links ([ea7863a](https://github.com/devuri/wpframework/commit/ea7863a8c092fa5246c4e3b35994dc993eea0dd8))
+
 ## [0.0.5](https://github.com/devuri/wpframework/compare/v5.1.1...v0.0.5) (2024-03-14)
 
 
