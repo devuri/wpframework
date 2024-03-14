@@ -30,7 +30,22 @@ class Terminate
         $terminator->render_error_page( $message, $status_code );
         $terminator->log_exception( $exception );
 
+        if( self::allow_terminate_debugger( $error_details ) ){
+            var_dump($error_details[2]);
+        }
+
         $terminator->exitHandler->terminate( 1 );
+    }
+
+    protected static function allow_terminate_debugger( $error_details ): ?bool
+    {
+        if( ! isset( $error_details[2] ) && ! isset( $error_details[2]['path'] ) ) {
+            return null;
+        }
+
+        $options = _app_options( $error_details[2]['path'] );
+
+        return $options['terminate_debugger'] ?? false;
     }
 
     /**
