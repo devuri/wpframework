@@ -34,6 +34,9 @@ class BaseKernelTest extends TestCase
     public function test_default_args(): void
     {
         $default = [
+            "terminate" => [
+                'debugger' => false,
+            ],
             "security" => [
                 "encryption_key" => null,
                 "brute-force" => true,

@@ -4,6 +4,7 @@ namespace WPframework\Component;
 
 use Exception;
 use InvalidArgumentException;
+use Urisoft\DotAccess;
 
 class Terminate
 {
@@ -30,7 +31,32 @@ class Terminate
         $terminator->render_error_page( $message, $status_code );
         $terminator->log_exception( $exception );
 
+        if ( self::allow_terminate_debugger( $error_details ) ) {
+            var_dump( $error_details[2] );
+        }
+
         $terminator->exitHandler->terminate( 1 );
+    }
+
+    public static function config( string $key, array $options )
+    {
+        static $app = null;
+        if ( \is_null( $app ) ) {
+            $app = new DotAccess( $options );
+        }
+
+        return $app->get( $key );
+    }
+
+    protected static function allow_terminate_debugger( $error_details ): ?bool
+    {
+        if ( ! isset( $error_details[2] ) && ! isset( $error_details[2]['path'] ) ) {
+            return null;
+        }
+
+        $options = _app_options( $error_details[2]['path'] );
+
+        return self::config( 'terminate.debugger', $options );
     }
 
     /**
@@ -110,6 +136,7 @@ class Terminate
 		</head>
 		<body id="page">
 			<div id="error-page" class="">
+				<h1>Raydium: error</h1>
 				<?php echo $message; ?>
 			</div>
 			<footer align="center">
@@ -137,13 +164,13 @@ class Terminate
 				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 			}
 			h1 {
-				border-bottom: 1px solid #dadada;
 				clear: both;
-				color: #666;
+				color: #0073aa;
 				font-size: 24px;
-				margin: 30px 0 0 0;
+				margin: 0 0 0 0;
 				padding: 0;
 				padding-bottom: 7px;
+				font-weight: inherit;
 			}
 			footer {
 				clear: both;
@@ -159,7 +186,7 @@ class Terminate
 				margin-top: 50px;
 				-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
 				box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
-				padding: 1em 2em;
+				padding: 1.6em 2em;
 			}
 			#error-page p,
 			#error-page .die-message {

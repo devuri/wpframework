@@ -388,7 +388,13 @@ class Setup implements ConfigInterface
         try {
             $this->dotenv->load();
         } catch ( Exception $e ) {
-            Terminate::exit( [ $e->getMessage() ] );
+            $debug = [
+                'class'  => static::class,
+                'object' => $this,
+                'path'   => $this->path,
+                'line'   => __LINE__,
+            ];
+            Terminate::exit( [ $e->getMessage(), 500, $debug ] );
         }
     }
 
