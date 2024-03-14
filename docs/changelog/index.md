@@ -1,35 +1,117 @@
-## [5.0.2](https://github.com/devuri/wpframework/compare/v5.0.1...v5.0.2) (2024-02-16)
-
-
-### Bug Fixes
-
-* adds `/.maintenance` check for the config dir, to handle entire tenant network. ([b49eccc](https://github.com/devuri/wpframework/commit/b49ecccdf2bb5c46fe884ad3abdc221030bb6917))
-* adds `is_landlord()` check for conditional plugin options ([4de5a27](https://github.com/devuri/wpframework/commit/4de5a27e2a8bde701902c2855383cbe24f12efd0))
-* fix environment reset using `is_environment_null()` it will check null empty 0 etc ([30e3926](https://github.com/devuri/wpframework/commit/30e39264bcb6c7b7d8ca7c72b8a2a11a099f33bc))
-* update fix env return on null as empty string ([2dde351](https://github.com/devuri/wpframework/commit/2dde3514842c4ad28dc2dc4787799c39d7a1d69c))
-* uuid checks do not hash `LANDLORD_UUID` ([f079131](https://github.com/devuri/wpframework/commit/f079131fd0fb5557f6c4cd35e497d5ec3ade9e81))
+## [0.0.6](https://github.com/devuri/wpframework/compare/v0.0.5...v0.0.6) (2024-03-14)
 
 
 ### Miscellaneous Chores
 
-* build ([b502dcb](https://github.com/devuri/wpframework/commit/b502dcb6d8d7ee653dbc3ce4c44d8664dd90469b))
-* build ([14dea95](https://github.com/devuri/wpframework/commit/14dea9582bad69d3281da02d46937461a2c1ecaa))
+* fix links ([ea7863a](https://github.com/devuri/wpframework/commit/ea7863a8c092fa5246c4e3b35994dc993eea0dd8))
 
-## [5.0.1](https://github.com/devuri/wpframework/compare/v5.0.0...v5.0.1) (2024-02-16)
+## [0.0.5](https://github.com/devuri/wpframework/compare/v5.1.1...v0.0.5) (2024-03-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* reverted back version numbers from the 5.x range to 0.0.5
+
+### Code Refactoring
+
+* reverted back version numbers from the 5.x range to 0.0.5 ([097074f](https://github.com/devuri/wpframework/commit/097074f9a3dd0b7a0dd6beaa598737c46ea70992))
+
+## [5.1.1](https://github.com/devuri/wpframework/compare/v5.1.0...v5.1.1) (2024-03-13)
 
 
 ### Bug Fixes
 
-* required options, each tenant, must have their own configuration ([52c04eb](https://github.com/devuri/wpframework/commit/52c04eb2e9a32971dcc3a6f3ae2401f2f3f36943))
+* add error message for missing theme instead of white screen of death ([394341c](https://github.com/devuri/wpframework/commit/394341cd6bb64b2b0600bb2ceef5e17b7e86aad5))
+* configs dir for single sites ([d541f48](https://github.com/devuri/wpframework/commit/d541f4875256ebff9f814c75dfb547c8761086ee))
+* DotAccess get correct array data ([eaa43be](https://github.com/devuri/wpframework/commit/eaa43be60fdf63d34bdf962060df8b413c370b01))
+* for when using localwp. ([bb7b26c](https://github.com/devuri/wpframework/commit/bb7b26cb00c2691e9a08b0c5d1fc72a3d64bfb66))
 
 
 ### Miscellaneous Chores
 
-* build ([cac6f96](https://github.com/devuri/wpframework/commit/cac6f96b0e8820d6e730246b5dd782fefda76905))
-* build ([8d8df5a](https://github.com/devuri/wpframework/commit/8d8df5aa91028f6e4391a954d16c5a754e6101cc))
-* build ([ba2f6d3](https://github.com/devuri/wpframework/commit/ba2f6d311b1f10d40f649f545fa01c698cf49b10))
+* build ([3386faf](https://github.com/devuri/wpframework/commit/3386faf135c5df45769fc14753c7818aa5cc4bb8))
+* build ([7379b5f](https://github.com/devuri/wpframework/commit/7379b5fe92d6dd38cf8849b7e8495a7b1e30a9cf))
 
-## [5.0.0](https://github.com/devuri/wpframework/compare/v4.0.0...v5.0.0) (2024-02-16)
+## [5.1.0](https://github.com/devuri/wp-framework/compare/v5.0.4...v5.1.0) (2024-03-03)
+
+
+### Features
+
+* adds `get_packages()` ([48fc7e1](https://github.com/devuri/wp-framework/commit/48fc7e1de51967ec5f75dc261910d8e59d3d8f42))
+
+
+### Bug Fixes
+
+* add whitelisted array for wp and framework conts ([cbdf868](https://github.com/devuri/wp-framework/commit/cbdf868cdeb7e2c93d132b004007835ba4489856))
+* adds landlord to env whitelist ([03f4eca](https://github.com/devuri/wp-framework/commit/03f4eca1e691d9fcf4b52332b99b70506a28c248))
+* use `devuri/env` for `env()` ([9a66679](https://github.com/devuri/wp-framework/commit/9a6667959e8c62f821d93cc60574152fbdb1c4f0))
+
+
+### Miscellaneous Chores
+
+* build ([24bb046](https://github.com/devuri/wp-framework/commit/24bb0465370c3e2ae58dd1cff6abba7408d2f22e))
+* codefix ([e743b89](https://github.com/devuri/wp-framework/commit/e743b89b319d06dd597e536deed9af4c2faa68fa))
+* **deps-dev:** update vimeo/psalm requirement || ^5.0 ([e32b794](https://github.com/devuri/wp-framework/commit/e32b79401a99ba9693472b3dc7fd48876ca91b08))
+
+## [5.0.4](https://github.com/devuri/wp-framework/compare/v5.0.3...v5.0.4) (2024-02-18)
+
+
+### Bug Fixes
+
+* rename `config` to `configs` for configs directory ([73839a6](https://github.com/devuri/wp-framework/commit/73839a6c2381453d90a3ea9acc6e79808723c4aa))
+* update `Terminate` to include `log_exception` for monitoring tools ([d3c6ca9](https://github.com/devuri/wp-framework/commit/d3c6ca96a21ac4cf57d99379ecdbc52b019dc3bb))
+
+
+### Miscellaneous Chores
+
+* build ([a9f30d2](https://github.com/devuri/wp-framework/commit/a9f30d2b656f09a4f5e1a2ba684cb971f5ac215f))
+* build ([0b3c2ec](https://github.com/devuri/wp-framework/commit/0b3c2ec2f24799e9ce9713597377052a9994cb83))
+
+## [5.0.3](https://github.com/devuri/wp-framework/compare/v5.0.2...v5.0.3) (2024-02-16)
+
+
+### Bug Fixes
+
+* add `is_required_tenant_config()` check ([f662e20](https://github.com/devuri/wp-framework/commit/f662e20411d505290c9cce1e185d14ee704f2817))
+* only apply tenant uploads filter if is multi tenant ([f53e80a](https://github.com/devuri/wp-framework/commit/f53e80ab2c6f3e15da650db6dff5e2ae63dc5f73))
+
+
+### Miscellaneous Chores
+
+* build ([432ce2f](https://github.com/devuri/wp-framework/commit/432ce2fd5989434cc0d41f1ed9e255fd8eba0733))
+
+## [5.0.2](https://github.com/devuri/wp-framework/compare/v5.0.1...v5.0.2) (2024-02-16)
+
+
+### Bug Fixes
+
+* adds `/.maintenance` check for the config dir, to handle entire tenant network. ([b49eccc](https://github.com/devuri/wp-framework/commit/b49ecccdf2bb5c46fe884ad3abdc221030bb6917))
+* adds `is_landlord()` check for conditional plugin options ([4de5a27](https://github.com/devuri/wp-framework/commit/4de5a27e2a8bde701902c2855383cbe24f12efd0))
+* fix environment reset using `is_environment_null()` it will check null empty 0 etc ([30e3926](https://github.com/devuri/wp-framework/commit/30e39264bcb6c7b7d8ca7c72b8a2a11a099f33bc))
+* update fix env return on null as empty string ([2dde351](https://github.com/devuri/wp-framework/commit/2dde3514842c4ad28dc2dc4787799c39d7a1d69c))
+* uuid checks do not hash `LANDLORD_UUID` ([f079131](https://github.com/devuri/wp-framework/commit/f079131fd0fb5557f6c4cd35e497d5ec3ade9e81))
+
+
+### Miscellaneous Chores
+
+* build ([b502dcb](https://github.com/devuri/wp-framework/commit/b502dcb6d8d7ee653dbc3ce4c44d8664dd90469b))
+* build ([14dea95](https://github.com/devuri/wp-framework/commit/14dea9582bad69d3281da02d46937461a2c1ecaa))
+
+## [5.0.1](https://github.com/devuri/wp-framework/compare/v5.0.0...v5.0.1) (2024-02-16)
+
+
+### Bug Fixes
+
+* required options, each tenant, must have their own configuration ([52c04eb](https://github.com/devuri/wp-framework/commit/52c04eb2e9a32971dcc3a6f3ae2401f2f3f36943))
+
+
+### Miscellaneous Chores
+
+* build ([cac6f96](https://github.com/devuri/wp-framework/commit/cac6f96b0e8820d6e730246b5dd782fefda76905))
+* build ([8d8df5a](https://github.com/devuri/wp-framework/commit/8d8df5aa91028f6e4391a954d16c5a754e6101cc))
+* build ([ba2f6d3](https://github.com/devuri/wp-framework/commit/ba2f6d311b1f10d40f649f545fa01c698cf49b10))
+
+## [5.0.0](https://github.com/devuri/wp-framework/compare/v4.0.0...v5.0.0) (2024-02-16)
 
 
 ### ⚠ BREAKING CHANGES
@@ -38,34 +120,34 @@
 
 ### Features
 
-* use camelCase for function names. start with a verb indicating the action they perform. ([5980b90](https://github.com/devuri/wpframework/commit/5980b90cf90df011cd37a05fbfd76f65060ad98f))
+* use camelCase for function names. start with a verb indicating the action they perform. ([5980b90](https://github.com/devuri/wp-framework/commit/5980b90cf90df011cd37a05fbfd76f65060ad98f))
 
 
 ### Miscellaneous Chores
 
-* build ([140efd5](https://github.com/devuri/wpframework/commit/140efd5e6503b19f5e648624ff3aa507ea7176d0))
-* build ([c370335](https://github.com/devuri/wpframework/commit/c3703352b66bce11c5be57a745fe5ef357dd5db4))
-* build ([2b6ea06](https://github.com/devuri/wpframework/commit/2b6ea063a9ed10d21cc439251a0258d537c29ac5))
-* build ([c9f2c51](https://github.com/devuri/wpframework/commit/c9f2c51a11dd7e0c91df1b9fe25f5d5238afc464))
-* codefix ([c9ebae2](https://github.com/devuri/wpframework/commit/c9ebae221d231cb0f0a44b46cc14aa69f4c45b80))
-* fix test ([45c84bf](https://github.com/devuri/wpframework/commit/45c84bf193f9bbee59c8aa38fb9f3208b43a06ee))
-* readme ([bac1773](https://github.com/devuri/wpframework/commit/bac1773619dc2cdf084087da5b46ace7cdf0805b))
+* build ([140efd5](https://github.com/devuri/wp-framework/commit/140efd5e6503b19f5e648624ff3aa507ea7176d0))
+* build ([c370335](https://github.com/devuri/wp-framework/commit/c3703352b66bce11c5be57a745fe5ef357dd5db4))
+* build ([2b6ea06](https://github.com/devuri/wp-framework/commit/2b6ea063a9ed10d21cc439251a0258d537c29ac5))
+* build ([c9f2c51](https://github.com/devuri/wp-framework/commit/c9f2c51a11dd7e0c91df1b9fe25f5d5238afc464))
+* codefix ([c9ebae2](https://github.com/devuri/wp-framework/commit/c9ebae221d231cb0f0a44b46cc14aa69f4c45b80))
+* fix test ([45c84bf](https://github.com/devuri/wp-framework/commit/45c84bf193f9bbee59c8aa38fb9f3208b43a06ee))
+* readme ([bac1773](https://github.com/devuri/wp-framework/commit/bac1773619dc2cdf084087da5b46ace7cdf0805b))
 
-## [4.0.0](https://github.com/devuri/wpframework/compare/v3.3.0...v4.0.0) (2024-02-14)
+## [4.0.0](https://github.com/devuri/wp-framework/compare/v3.3.0...v4.0.0) (2024-02-14)
 
 
 ### ⚠ BREAKING CHANGES
 
-* rebrand moved `wp-env-config` is now `wpframework` and `wp-env-app` is now `wptenancy`
+* rebrand moved `wp-env-config` is now `wp-framework` and `wp-env-app` is now `wptenancy`
 
 ### Features
 
-* rebrand moved `wp-env-config` is now `wpframework` and `wp-env-app` is now `wptenancy` ([7363ada](https://github.com/devuri/wpframework/commit/7363ada192f176ccf91b81f97779ee83f5315d67))
+* rebrand moved `wp-env-config` is now `wp-framework` and `wp-env-app` is now `wptenancy` ([7363ada](https://github.com/devuri/wp-framework/commit/7363ada192f176ccf91b81f97779ee83f5315d67))
 
 
 ### Miscellaneous Chores
 
-* build ([b350065](https://github.com/devuri/wpframework/commit/b350065a3997be3c134a6692a7c507d240daafae))
+* build ([b350065](https://github.com/devuri/wp-framework/commit/b350065a3997be3c134a6692a7c507d240daafae))
 
 ## [3.3.0](https://github.com/devuri/wp-env-config/compare/v3.2.0...v3.3.0) (2024-02-14)
 
