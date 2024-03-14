@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.0.7](https://github.com/devuri/wpframework/compare/v0.0.6...v0.0.7) (2024-03-14)
+
+
+### Bug Fixes
+
+* adds `terminate_debugger` it can show debug info on app termination ([951d424](https://github.com/devuri/wpframework/commit/951d424b048e2dafd38bc368789d2dafdb6173de))
+* update the env file vars include missing values ([e23eb16](https://github.com/devuri/wpframework/commit/e23eb165d24f40dea509b967b6bde5c48106e8a0))
+
 ## [0.0.6](https://github.com/devuri/wpframework/compare/v0.0.5...v0.0.6) (2024-03-14)
 
 
