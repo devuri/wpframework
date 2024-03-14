@@ -4,7 +4,7 @@
 - [Premium Plugins](/wpframework/premium-plugins)
 - [Environment Variables](/wpframework/env)
 - [Release Notes](/wpframework/changelog/)
-- [Multi-Tenant Applications](/wpframework/multi-tenant/)
+- [Multi-Tenant](/wpframework/multi-tenant/)
 
 ## Support
 
