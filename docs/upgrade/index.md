@@ -1,18 +1,18 @@
-## wp-framework version 5.0
-> Upgrade from wp-env-config to wp-framework version 5
+## wpframework version 0.0.5
+> Upgrade from wp-env-config to wpframework version 5
 
-To upgrade your project to use the latest `wp-framework` version 5 and integrate the new initialization process in your `bootstrap.php` file, follow this guide:
+To upgrade your project to use the latest `wpframework` version 5 and integrate the new initialization process in your `bootstrap.php` file, follow this guide:
 
 ### 1. Update `composer.json`
 
-Begin by updating your project's `composer.json` to require version 5 of `wp-framework`:
+Begin by updating your project's `composer.json` to require version 5 of `wpframework`:
 
 1. Open `composer.json` in your project's root directory.
-2. Locate the `require` section and replace the entry for `devuri/wp-env-config` with `devuri/wp-framework`, specifying version 5:
+2. Locate the `require` section and replace the entry for `devuri/wp-env-config` with `devuri/wpframework`, specifying version 5:
 
     ```json
     "require": {
-        "devuri/wp-framework": "^5.0"
+        "devuri/wpframework": "^0.0.5"
     }
     ```
 
@@ -20,7 +20,7 @@ Begin by updating your project's `composer.json` to require version 5 of `wp-fra
 
 ### 2. Update Project Dependencies
 
-Run Composer to update your dependencies, which will remove the old `wp-env-config` package and install the specified version of `wp-framework`:
+Run Composer to update your dependencies, which will remove the old `wp-env-config` package and install the specified version of `wpframework`:
 
 ```bash
 composer update
@@ -36,18 +36,18 @@ rm mu-plugins/compose.php
 
 ### 4. Download the New MU-Plugin File
 
-Download the new `wpframework.php` file from the `wp-framework` GitHub repository and place it in your `mu-plugins` directory. You can do this manually or use the following command:
+Download the new `wpframework.php` file from the `wpframework` GitHub repository and place it in your `mu-plugins` directory. You can do this manually or use the following command:
 
 Using `wget`:
 
 ```bash
-wget https://raw.githubusercontent.com/devuri/wp-framework/master/src/inc/mu-plugin/wpframework.php -O mu-plugins/wpframework.php
+wget https://raw.githubusercontent.com/devuri/wpframework/master/src/inc/mu-plugin/wpframework.php -O mu-plugins/wpframework.php
 ```
 
 Or using `curl`:
 
 ```bash
-curl -o mu-plugins/wpframework.php https://raw.githubusercontent.com/devuri/wp-framework/master/src/inc/mu-plugin/wpframework.php
+curl -o mu-plugins/wpframework.php https://raw.githubusercontent.com/devuri/wpframework/master/src/inc/mu-plugin/wpframework.php
 ```
 
 ### 5. Update the `bootstrap.php` File
@@ -58,10 +58,10 @@ In your `bootstrap.php` file, update the application initialization line to use 
 $http_app = wpframework(__DIR__);
 ```
 
-This line initializes your application with the base directory as its context, leveraging the `wp-framework`'s functionalities.
+This line initializes your application with the base directory as its context, leveraging the `wpframework`'s functionalities.
 
 ### 6. Test Your Application
 
-After making all the updates, thoroughly test your application to ensure everything functions correctly. Verify that the `wp-framework` is properly initialized and all configurations are loaded as expected.
+After making all the updates, thoroughly test your application to ensure everything functions correctly. Verify that the `wpframework` is properly initialized and all configurations are loaded as expected.
 
-By following these steps, your project will be successfully updated to use version 5 of the `wp-framework`, with the old `wp-env-config` removed and replaced by the new initialization process in the `bootstrap.php` file.
+By following these steps, your project will be successfully updated to use version 5 of the `wpframework`, with the old `wp-env-config` removed and replaced by the new initialization process in the `bootstrap.php` file.

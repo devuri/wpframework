@@ -7,7 +7,7 @@
  * settings and understand the implications of a multi-tenant setup prior to enabling.
  *
  * For comprehensive guidance on configuring a multi-tenant environment, refer to the official documentation:
- * @link https://devuri.github.io/wp-framework/multi-tenant/
+ * @link https://devuri.github.io/wpframework/multi-tenant/
  */
 \define( 'ALLOW_MULTITENANT', false );
 

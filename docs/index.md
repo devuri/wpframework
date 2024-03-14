@@ -1,18 +1,18 @@
 ## Documentation
 
-- [Resources](/wp-framework/resources/)
-- [Premium Plugins](/wp-framework/premium-plugins)
-- [Environment Variables](/wp-framework/env)
-- [Release Notes](/wp-framework/changelog/)
-- [Multi-Tenant Applications](/wp-framework/multi-tenant/)
+- [Resources](/wpframework/resources/)
+- [Premium Plugins](/wpframework/premium-plugins)
+- [Environment Variables](/wpframework/env)
+- [Release Notes](/wpframework/changelog/)
+- [Multi-Tenant Applications](/wpframework/multi-tenant/)
 
 ## Support
 
 Should you encounter any issues or have questions about the framework, don't hesitate to open an issue on our GitHub repository.
 
 ## Changelog
-A complete listing of all notable changes are documented in [CHANGELOG](/wp-framework/changelog/)
+A complete listing of all notable changes are documented in [CHANGELOG](/wpframework/changelog/)
 
 ## Report An Issue
 
-If you have discovered an issue or bug with , you can [report the issues here](https://github.com/devuri/wp-framework/issues). 
+If you have discovered an issue or bug with , you can [report the issues here](https://github.com/devuri/wpframework/issues).
