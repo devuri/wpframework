@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.0.5](https://github.com/devuri/wpframework/compare/v5.1.1...v0.0.5) (2024-03-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* reverted back version numbers from the 5.x range to 0.0.5
+
+### Code Refactoring
+
+* reverted back version numbers from the 5.x range to 0.0.5 ([097074f](https://github.com/devuri/wpframework/commit/097074f9a3dd0b7a0dd6beaa598737c46ea70992))
+
 ## [5.1.1](https://github.com/devuri/wpframework/compare/v5.1.0...v5.1.1) (2024-03-13)
 
 
