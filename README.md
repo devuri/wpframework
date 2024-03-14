@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[![Unit Tests](https://github.com/devuri/wp-framework/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/devuri/wp-framework/actions/workflows/unit-tests.yml) [![Static Analysis](https://github.com/devuri/wp-framework/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/devuri/wp-framework/actions/workflows/static-analysis.yml)
+[![Unit Tests](https://github.com/devuri/wpframework/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/devuri/wpframework/actions/workflows/unit-tests.yml) [![Static Analysis](https://github.com/devuri/wpframework/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/devuri/wpframework/actions/workflows/static-analysis.yml)
 
 </div>
 
@@ -50,10 +50,10 @@ DB_PREFIX=wp_
    Execute the following command within your project's root directory to integrate WP-Framework via Composer:
 
    ```bash
-   composer require devuri/wp-framework
+   composer require devuri/wpframework
    ```
 
-   With WP-Framework installed, you're all set to leverage its capabilities within your WordPress project. 
+   With WP-Framework installed, you're all set to leverage its capabilities within your WordPress project.
 
 2. **Activate WP-Framework in a bootstrap file`bootstrap.php`**:
    Integrate WP-Framework into your WordPress configuration by including the Composer autoload file. The settings from the `.env` file will be loaded automatically:
@@ -61,16 +61,16 @@ DB_PREFIX=wp_
    ```php
    // Include Composer's autoload file to load WP-Framework and its dependencies.
    require_once __DIR__ . '/vendor/autoload.php';
-   
+
    // Initialize WP-Framework with the base directory as a parameter.
    $http_app = wpframework(__DIR__);
-   
+
    // Apply any necessary overrides provided by WP-Framework.
    $http_app->overrides();
-   
+
    // Initialize WP-Framework to hook into WordPress with its configurations and tools.
    $http_app->init();
-   
+
    // Set the table prefix using an environment variable, or default to 'wp_' if not set.
    $table_prefix = env('DB_PREFIX', 'wp_');
    ```
