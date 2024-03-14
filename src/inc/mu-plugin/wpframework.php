@@ -3,7 +3,7 @@
 /**
  * @wordpress-plugin
  * Plugin Name:       WP-Framework Core
- * Plugin URI:        https://github.com/devuri/wp-framework
+ * Plugin URI:        https://github.com/devuri/wpframework
  * Description:       Web Application Framework provides `wpframework_init` action and bootstrap file.
  * Version:           0.0.2
  * Requires at least: 5.3.0

@@ -1,4 +1,4 @@
 ## Installation
 
 ## Upgrade Guide
-- [Upgrade](/wp-framework/upgrade/)
+- [Upgrade](/wpframework/upgrade/)

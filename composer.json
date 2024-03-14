@@ -1,5 +1,5 @@
 {
-    "name": "devuri/wp-framework",
+    "name": "devuri/wpframework",
     "type": "library",
     "description": "Effortlessly develop scalable WordPress applications that support multiple tenants from a single installation.",
     "keywords": [
@@ -16,7 +16,7 @@
         "multitenant",
         "devuri"
     ],
-    "homepage": "https://github.com/devuri/wp-framework",
+    "homepage": "https://github.com/devuri/wpframework",
     "license": "MIT",
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -29,8 +29,8 @@
         }
     ],
     "support": {
-        "source": "https://github.com/devuri/wp-framework",
-        "issues": "https://github.com/devuri/wp-framework/issues"
+        "source": "https://github.com/devuri/wpframework",
+        "issues": "https://github.com/devuri/wpframework/issues"
     },
     "require": {
         "php": "^7.4 || ^8.0",
