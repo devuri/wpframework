@@ -1,7 +1,7 @@
 # WPFramework
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/4777400/225331174-d5ae1c0e-5ec0-493b-aabc-91c4cc6a14c4.png" alt="WP-Framework Logo"/>
+  <img src="https://user-images.githubusercontent.com/4777400/225331174-d5ae1c0e-5ec0-493b-aabc-91c4cc6a14c4.png" alt="WPFramework Logo"/>
 </p>
 
 <div align="center">
@@ -49,45 +49,45 @@ DB_PREFIX=wp_
 
 ### Installation & Activation
 
-1. **Install WP-Framework**:
-   Execute the following command within your project's root directory to integrate WP-Framework via Composer:
+1. **Install WPFramework**:
+   Execute the following command within your project's root directory to integrate WPFramework via Composer:
 
    ```bash
    composer require devuri/wpframework
    ```
 
-   With WP-Framework installed, you're all set to leverage its capabilities within your WordPress project.
+   With WPFramework installed, you're all set to leverage its capabilities within your WordPress project.
 
-2. **Activate WP-Framework in a bootstrap file`bootstrap.php`**:
-   Integrate WP-Framework into your WordPress configuration by including the Composer autoload file. The settings from the `.env` file will be loaded automatically:
+2. **Activate WPFramework in a bootstrap file`bootstrap.php`**:
+   Integrate WPFramework into your WordPress configuration by including the Composer autoload file. The settings from the `.env` file will be loaded automatically:
 
    ```php
-   // Include Composer's autoload file to load WP-Framework and its dependencies.
+   // Include Composer's autoload file to load WPFramework and its dependencies.
    require_once __DIR__ . '/vendor/autoload.php';
 
-   // Initialize WP-Framework with the base directory as a parameter.
+   // Initialize WPFramework with the base directory as a parameter.
    $http_app = wpframework(__DIR__);
 
-   // Apply any necessary overrides provided by WP-Framework.
+   // Apply any necessary overrides provided by WPFramework.
    $http_app->overrides();
 
-   // Initialize WP-Framework to hook into WordPress with its configurations and tools.
+   // Initialize WPFramework to hook into WordPress with its configurations and tools.
    $http_app->init();
 
    // Set the table prefix using an environment variable, or default to 'wp_' if not set.
    $table_prefix = env('DB_PREFIX', 'wp_');
    ```
 
-   This setup ensures WP-Framework is fully integrated and operational within your WordPress environment, enhancing its capabilities and security.
+   This setup ensures WPFramework is fully integrated and operational within your WordPress environment, enhancing its capabilities and security.
 
 
 ## Documentation
 
-Explore the extensive [Documentation](#) for WP-Framework to learn about its installation, configuration, and the plethora of features it offers. The documentation includes detailed guides, API references, and best practices to help you maximize your use of WP-Framework.
+Explore the extensive [Documentation](#) for WPFramework to learn about its installation, configuration, and the plethora of features it offers. The documentation includes detailed guides, API references, and best practices to help you maximize your use of WPFramework.
 
 ## Contributing
 
-Your contributions are highly valued! Whether it's through feature suggestions, bug reports, or direct code contributions, your input significantly enhances WP-Framework's functionality and reach. Please review our [Contributing Guidelines](#) for details on how to get involved.
+Your contributions are highly valued! Whether it's through feature suggestions, bug reports, or direct code contributions, your input significantly enhances WPFramework's functionality and reach. Please review our [Contributing Guidelines](#) for details on how to get involved.
 
 ## Support
 
