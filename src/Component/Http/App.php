@@ -108,7 +108,13 @@ class App
     public function kernel(): BaseKernel
     {
         if ( ! \is_array( $this->config ) ) {
-            Terminate::exit( [ 'Uncaught TypeError: BaseKernel($args) must be of type array' ] );
+            $debug = [
+                'class'  => static::class,
+                'object' => $this,
+                'path'   => $this->app_path,
+                'line'   => __LINE__,
+            ];
+            Terminate::exit( [ 'Uncaught TypeError: BaseKernel($args) must be of type array', 500, $debug ] );
         }
 
         return new BaseKernel( $this->app_path, $this->config, $this->setup );

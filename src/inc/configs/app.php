@@ -23,9 +23,9 @@ return [
      * Enable this setting only during development, it should never be active in a production environment.
      * Always ensure this is set to false in production for security and privacy.
      */
-	'terminate'        => [
- 		'debugger' => false,
- 	],
+    'terminate'        => [
+        'debugger' => false,
+    ],
 
     /*
      * Security settings for the WordPress application.
