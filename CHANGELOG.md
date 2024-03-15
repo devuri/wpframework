@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.9](https://github.com/devuri/wpframework/compare/v0.0.8...v0.0.9) (2024-03-15)
+
+
+### Miscellaneous Chores
+
+* update readme ([8cc5622](https://github.com/devuri/wpframework/commit/8cc5622726807791b352f2b624ebea0522b2aa41))
+
 ## [0.0.8](https://github.com/devuri/wpframework/compare/v0.0.7...v0.0.8) (2024-03-15)
 
 
