@@ -1286,15 +1286,10 @@ Search.appendIndex(
             "summary": "Handles\u0020termination\u0020of\u0020the\u0020script\u0020execution\u0020by\u0020sending\u0020an\u0020HTTP\u0020status\u0020code,\u0020displaying\u0020an\u0020error\u0020page,\nand\u0020logging\u0020the\u0020exception.",
             "url": "classes/WPframework-Component-Terminate.html#method_exit"
         },                {
-            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Aconfig\u0028\u0029",
-            "name": "config",
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Aget_error\u0028\u0029",
+            "name": "get_error",
             "summary": "",
-            "url": "classes/WPframework-Component-Terminate.html#method_config"
-        },                {
-            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Aallow_terminate_debugger\u0028\u0029",
-            "name": "allow_terminate_debugger",
-            "summary": "",
-            "url": "classes/WPframework-Component-Terminate.html#method_allow_terminate_debugger"
+            "url": "classes/WPframework-Component-Terminate.html#method_get_error"
         },                {
             "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Asend_http_status_code\u0028\u0029",
             "name": "send_http_status_code",
@@ -1321,6 +1316,11 @@ Search.appendIndex(
             "summary": "Renders\u0020the\u0020error\u0020page\u0020with\u0020a\u0020given\u0020message\u0020and\u0020status\u0020code.",
             "url": "classes/WPframework-Component-Terminate.html#method_render_error_page"
         },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Ais_prod\u0028\u0029",
+            "name": "is_prod",
+            "summary": "",
+            "url": "classes/WPframework-Component-Terminate.html#method_is_prod"
+        },                {
             "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003Apage_styles\u0028\u0029",
             "name": "page_styles",
             "summary": "CSS\u0020styles.",
@@ -1330,6 +1330,16 @@ Search.appendIndex(
             "name": "exitHandler",
             "summary": "",
             "url": "classes/WPframework-Component-Terminate.html#property_exitHandler"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003A\u0024options",
+            "name": "options",
+            "summary": "",
+            "url": "classes/WPframework-Component-Terminate.html#property_options"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Terminate\u003A\u003A\u0024errors",
+            "name": "errors",
+            "summary": "",
+            "url": "classes/WPframework-Component-Terminate.html#property_errors"
         },                {
             "fqsen": "\\WPframework\\Component\\ConstLoader",
             "name": "ConstLoader",
