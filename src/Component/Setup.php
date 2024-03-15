@@ -389,10 +389,11 @@ class Setup implements ConfigInterface
             $this->dotenv->load();
         } catch ( Exception $e ) {
             $debug = [
-                'class'  => static::class,
-                'object' => $this,
-                'path'   => $this->path,
-                'line'   => __LINE__,
+                'class'     => static::class,
+                'object'    => $this,
+                'path'      => $this->path,
+                'line'      => __LINE__,
+                'exception' => $e,
             ];
             Terminate::exit( [ $e->getMessage(), 500, $debug ] );
         }
@@ -509,7 +510,14 @@ class Setup implements ConfigInterface
             $this->dotenv->required( 'LOGGED_IN_SALT' )->notEmpty();
             $this->dotenv->required( 'NONCE_SALT' )->notEmpty();
         } catch ( Exception $e ) {
-            Terminate::exit( [ $e->getMessage() ] );
+            $debug = [
+                'class'     => static::class,
+                'object'    => $this,
+                'path'      => $this->path,
+                'line'      => __LINE__,
+                'exception' => $e,
+            ];
+            Terminate::exit( [ $e->getMessage(), 500, $debug ] );
         }// end try
     }
 
