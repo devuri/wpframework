@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.0.8](https://github.com/devuri/wpframework/compare/v0.0.7...v0.0.8) (2024-03-15)
+
+
+### Bug Fixes
+
+* adds debug to `Terminate::exit` ([15d82d7](https://github.com/devuri/wpframework/commit/15d82d73c65fc220eeceb4bbd5e1c38875c90e20))
+
+
+### Miscellaneous Chores
+
+* build ([45dd5e7](https://github.com/devuri/wpframework/commit/45dd5e74adf147e74fec7c408c9416a329e8f81e))
+
 ## [0.0.7](https://github.com/devuri/wpframework/compare/v0.0.6...v0.0.7) (2024-03-14)
 
 
