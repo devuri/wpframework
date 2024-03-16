@@ -91,18 +91,23 @@
                     <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/wpframework.html">WPframework</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/wpframework-component.html">Component</a></li>
-            <li class="phpdocumentor-breadcrumb"><a href="namespaces/wpframework-component-traits.html">Traits</a></li>
     </ul>
 
-    <article class="phpdocumentor-element -trait">
+    <article class="phpdocumentor-element -interface">
         <h2 class="phpdocumentor-content__title">
-    TenantTrait
+    TenantInterface
+                <div class="phpdocumentor-element__package">
+            in
+            <ul class="phpdocumentor-breadcrumbs">
+                                    <li><a href="packages/Application.html">Application</a></li>
+                            </ul>
+        </div>
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Traits/TenantTrait.php"><a href="files/src-component-traits-tenanttrait.html"><abbr title="src/Component/Traits/TenantTrait.php">TenantTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/TenantInterface.php"><a href="files/src-component-tenantinterface.html"><abbr title="src/Component/TenantInterface.php">TenantInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">7</span>
+    <span class="phpdocumentor-element-found-in__line">5</span>
 
     </aside>
 
@@ -123,32 +128,18 @@
 
 <dl class="phpdocumentor-table-of-contents">
                         <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_get_tenant_file_path">get_tenant_file_path()</a>
-    <span>
-                                &nbsp;: null|string    </span>
-</dt>
-<dd>Retrieves the path for a tenant-specific file, with an option to enforce strict finding.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_is_landlord">is_landlord()</a>
+    <a href="classes/WPframework-Component-TenantInterface.html#method_is_landlord">is_landlord()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
 <dd>Checks if the provided tenant ID matches the landlord&#039;s UUID.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_is_multitenant_app">is_multitenant_app()</a>
+    <a href="classes/WPframework-Component-TenantInterface.html#method_is_multitenant_app">is_multitenant_app()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
 <dd>Determines if the application is configured to operate in multi-tenant mode.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_determine_envpath">determine_envpath()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>Determines the env file application path, accounting for multi-tenancy.</dd>
 
         </dl>
 
@@ -159,78 +150,8 @@
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/WPframework-Component-Traits-TenantTrait.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/WPframework-Component-TenantInterface.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_get_tenant_file_path">
-        get_tenant_file_path()
-        <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_get_tenant_file_path" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Traits/TenantTrait.php"><a href="files/src-component-traits-tenanttrait.html"><abbr title="src/Component/Traits/TenantTrait.php">TenantTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">23</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Retrieves the path for a tenant-specific file, with an option to enforce strict finding.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">get_tenant_file_path</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$dir</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$find_or_fail</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">null|string</span></code>
-
-        <section class="phpdocumentor-description"><p>In a multi-tenant application, this function attempts to find a file specific to the current tenant.
-If the file is not found and 'find_or_fail' is set to true, the function will return null.
-If the tenant-specific file does not exist (and 'find_or_fail' is false), it falls back to a default file path.
-If neither file is found, or the application is not in multi-tenant mode, null is returned.</p>
-</section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$file</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The name of the file (without the .php extension).</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$dir</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The directory within the app path where the file should be located.</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$find_or_fail</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>Whether to fail if the tenant-specific file is not found.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">null|string</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>The path to the file if found, or null otherwise.</p>
-</section>
-
-    
-</article>
                     <article
         class="phpdocumentor-element
             -method
@@ -239,12 +160,12 @@ If neither file is found, or the application is not in multi-tenant mode, null i
 >
     <h4 class="phpdocumentor-element__name" id="method_is_landlord">
         is_landlord()
-        <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_is_landlord" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/WPframework-Component-TenantInterface.html#method_is_landlord" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Traits/TenantTrait.php"><a href="files/src-component-traits-tenanttrait.html"><abbr title="src/Component/Traits/TenantTrait.php">TenantTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/TenantInterface.php"><a href="files/src-component-tenantinterface.html"><abbr title="src/Component/TenantInterface.php">TenantInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">73</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
@@ -289,12 +210,12 @@ LANDLORD_UUID constant, identifying if the tenant is the landlord.</p>
 >
     <h4 class="phpdocumentor-element__name" id="method_is_multitenant_app">
         is_multitenant_app()
-        <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_is_multitenant_app" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/WPframework-Component-TenantInterface.html#method_is_multitenant_app" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Traits/TenantTrait.php"><a href="files/src-component-traits-tenanttrait.html"><abbr title="src/Component/Traits/TenantTrait.php">TenantTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/TenantInterface.php"><a href="files/src-component-tenantinterface.html"><abbr title="src/Component/TenantInterface.php">TenantInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">58</span>
+    <span class="phpdocumentor-element-found-in__line">16</span>
 
     </aside>
 
@@ -316,53 +237,6 @@ considered to be in multi-tenant mode.</p>
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
             <section class="phpdocumentor-description"><p>Returns <code class="prettyprint">true</code> if the application is in multi-tenant mode, otherwise <code class="prettyprint">false</code>.</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_determine_envpath">
-        determine_envpath()
-        <a href="classes/WPframework-Component-Traits-TenantTrait.html#method_determine_envpath" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Component/Traits/TenantTrait.php"><a href="files/src-component-traits-tenanttrait.html"><abbr title="src/Component/Traits/TenantTrait.php">TenantTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">85</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Determines the env file application path, accounting for multi-tenancy.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">determine_envpath</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$base_path</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$base_path</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>The base application directory path.</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>The determined application path.</p>
 </section>
 
     
@@ -445,7 +319,7 @@ considered to be in multi-tenant mode.</p>
 </section>
             </div>
         </div>
-        <a href="classes/WPframework-Component-Traits-TenantTrait.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/WPframework-Component-TenantInterface.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 

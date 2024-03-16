@@ -5,7 +5,7 @@ use Urisoft\DotAccess;
 use Urisoft\Encryption;
 use Urisoft\Env;
 use Urisoft\SimpleConfig;
-use WPframework\Component\Core\Plugin;
+use WPframework\Component\Framework;
 use WPframework\Component\Http\App;
 use WPframework\Component\Http\Asset;
 use WPframework\Component\Http\Tenancy;
@@ -168,15 +168,21 @@ if ( ! \function_exists( 'wpframeworkCore' ) ) {
     /**
      * Start and load core plugin.
      *
-     * @return void
+     * @return null|Framework
      */
-    function wpframeworkCore(): void
+    function wpframeworkCore(): ?Framework
     {
         if ( ! \defined( 'ABSPATH' ) ) {
             exit;
         }
 
-        Plugin::init();
+        static $framework;
+
+        if ( \is_null( $framework ) ) {
+            $framework = Framework::app();
+        }
+
+        return $framework;
     }
 }
 
@@ -269,19 +275,6 @@ function config( ?string $key = null, $default = null, $data_access = false )
     }
 
     return $dotdata->get( $key, $default );
-}
-
-function _app_options( ?string $app_path = null ): ?array
-{
-    $options_file = $app_path . '/' . SITE_CONFIGS_DIR . '/app.php';
-
-    if ( file_exists( $options_file ) ) {
-        $app_options = require $options_file;
-    } else {
-        $app_options = null;
-    }
-
-    return \is_array( $app_options ) ? $app_options : null;
 }
 
 /**
@@ -413,4 +406,17 @@ function get_packages( string $app_path ): array
     }
 
     return $composer_json['require'] ?? [];
+}
+
+function _app_options( ?string $app_path = null ): ?array
+{
+    $options_file = $app_path . '/' . site_configs_dir() . '/app.php';
+
+    if ( file_exists( $options_file ) ) {
+        $app_options = require $options_file;
+    } else {
+        $app_options = null;
+    }
+
+    return \is_array( $app_options ) ? $app_options : null;
 }

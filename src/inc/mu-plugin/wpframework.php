@@ -26,16 +26,23 @@ if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
 }
 
 /**
+ * Start and load the framework core plugin.
+ */
+if ( function_exists( 'wpframeworkCore' ) ) {
+    $_wpframework = wpframeworkCore();
+    $_wpframework->plugin();
+} else {
+	$_wpframework = null;
+}
+
+/**
  * Must-use plugins are loaded before normal plugins.
  *
  * Must-use plugins are typically used for critical functionality or site-wide customizations
  * that should always be active which makes this hook a good place to add critical functionality
  */
-do_action( 'wpframework_init', getHttpEnv() );
-
-/**
- * Start and load the framework core plugin.
- */
-if ( function_exists( 'wpframeworkCore' ) ) {
-    wpframeworkCore();
+if ( is_object( $_wpframework ) ) {
+	do_action( 'wpframework_init', $_wpframework->get_app_options() );
+} else {
+	do_action( 'wpframework_init' );
 }

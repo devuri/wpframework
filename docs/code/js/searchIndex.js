@@ -61,11 +61,6 @@ Search.appendIndex(
             "summary": "Retrieve\u0020configuration\u0020data\u0020using\u0020dot\u0020notation.",
             "url": "namespaces/default.html#function_config"
         },                {
-            "fqsen": "\\_app_options\u0028\u0029",
-            "name": "_app_options",
-            "summary": "",
-            "url": "namespaces/default.html#function__app_options"
-        },                {
             "fqsen": "\\envHash\u0028\u0029",
             "name": "envHash",
             "summary": "Gets\u0020hash\u0020of\u0020given\u0020string.",
@@ -95,6 +90,11 @@ Search.appendIndex(
             "name": "get_packages",
             "summary": "Retrieves\u0020all\u0020packages\u0020listed\u0020in\u0020the\u0020\u0027require\u0027\u0020section\u0020of\u0020the\u0020composer.json\u0020file.",
             "url": "namespaces/default.html#function_get_packages"
+        },                {
+            "fqsen": "\\_app_options\u0028\u0029",
+            "name": "_app_options",
+            "summary": "",
+            "url": "namespaces/default.html#function__app_options"
         },                {
             "fqsen": "\\WPframework\\Component\\ConfigInterface",
             "name": "ConfigInterface",
@@ -310,6 +310,11 @@ Search.appendIndex(
             "name": "tenant_id",
             "summary": "",
             "url": "classes/WPframework-Component-Core-Plugin.html#property_tenant_id"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Core\\Plugin\u003A\u003A\u0024framework",
+            "name": "framework",
+            "summary": "",
+            "url": "classes/WPframework-Component-Core-Plugin.html#property_framework"
         },                {
             "fqsen": "\\WPframework\\Component\\Core\\Plugins\\Loader",
             "name": "Loader",
@@ -1076,10 +1081,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/WPframework-Component-Setup.html#method_reset_environment"
         },                {
-            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024path",
-            "name": "path",
-            "summary": "Directory\u0020\u0024path.",
-            "url": "classes/WPframework-Component-Setup.html#property_path"
+            "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024app_path",
+            "name": "app_path",
+            "summary": "Directory\u0020\u0024app_path.",
+            "url": "classes/WPframework-Component-Setup.html#property_app_path"
         },                {
             "fqsen": "\\WPframework\\Component\\Setup\u003A\u003A\u0024is_multi_tenant",
             "name": "is_multi_tenant",
@@ -1246,11 +1251,6 @@ Search.appendIndex(
             "summary": "Retrieves\u0020the\u0020path\u0020for\u0020a\u0020tenant\u002Dspecific\u0020file,\u0020with\u0020an\u0020option\u0020to\u0020enforce\u0020strict\u0020finding.",
             "url": "classes/WPframework-Component-Traits-TenantTrait.html#method_get_tenant_file_path"
         },                {
-            "fqsen": "\\WPframework\\Component\\Traits\\TenantTrait\u003A\u003Adetermine_envpath\u0028\u0029",
-            "name": "determine_envpath",
-            "summary": "Determines\u0020the\u0020env\u0020file\u0020application\u0020path,\u0020accounting\u0020for\u0020multi\u002Dtenancy.",
-            "url": "classes/WPframework-Component-Traits-TenantTrait.html#method_determine_envpath"
-        },                {
             "fqsen": "\\WPframework\\Component\\Traits\\TenantTrait\u003A\u003Ais_multitenant_app\u0028\u0029",
             "name": "is_multitenant_app",
             "summary": "Determines\u0020if\u0020the\u0020application\u0020is\u0020configured\u0020to\u0020operate\u0020in\u0020multi\u002Dtenant\u0020mode.",
@@ -1260,6 +1260,11 @@ Search.appendIndex(
             "name": "is_landlord",
             "summary": "Checks\u0020if\u0020the\u0020provided\u0020tenant\u0020ID\u0020matches\u0020the\u0020landlord\u0027s\u0020UUID.",
             "url": "classes/WPframework-Component-Traits-TenantTrait.html#method_is_landlord"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Traits\\TenantTrait\u003A\u003Adetermine_envpath\u0028\u0029",
+            "name": "determine_envpath",
+            "summary": "Determines\u0020the\u0020env\u0020file\u0020application\u0020path,\u0020accounting\u0020for\u0020multi\u002Dtenancy.",
+            "url": "classes/WPframework-Component-Traits-TenantTrait.html#method_determine_envpath"
         },                {
             "fqsen": "\\WPframework\\Component\\HashValidator",
             "name": "HashValidator",
@@ -1405,6 +1410,66 @@ Search.appendIndex(
             "name": "TENANCY_WEB_ROOT",
             "summary": "",
             "url": "namespaces/default.html#constant_TENANCY_WEB_ROOT"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Framework",
+            "name": "Framework",
+            "summary": "",
+            "url": "classes/WPframework-Component-Framework.html"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Framework\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/WPframework-Component-Framework.html#method___construct"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Framework\u003A\u003Aapp\u0028\u0029",
+            "name": "app",
+            "summary": "",
+            "url": "classes/WPframework-Component-Framework.html#method_app"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Framework\u003A\u003Aplugin\u0028\u0029",
+            "name": "plugin",
+            "summary": "",
+            "url": "classes/WPframework-Component-Framework.html#method_plugin"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Framework\u003A\u003Aenv_tenant_id\u0028\u0029",
+            "name": "env_tenant_id",
+            "summary": "",
+            "url": "classes/WPframework-Component-Framework.html#method_env_tenant_id"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Framework\u003A\u003Aget_app_options\u0028\u0029",
+            "name": "get_app_options",
+            "summary": "",
+            "url": "classes/WPframework-Component-Framework.html#method_get_app_options"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Framework\u003A\u003Aoptions\u0028\u0029",
+            "name": "options",
+            "summary": "",
+            "url": "classes/WPframework-Component-Framework.html#method_options"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Framework\u003A\u003A\u0024app_options",
+            "name": "app_options",
+            "summary": "",
+            "url": "classes/WPframework-Component-Framework.html#property_app_options"
+        },                {
+            "fqsen": "\\WPframework\\Component\\Framework\u003A\u003A\u0024app_path",
+            "name": "app_path",
+            "summary": "",
+            "url": "classes/WPframework-Component-Framework.html#property_app_path"
+        },                {
+            "fqsen": "\\WPframework\\Component\\TenantInterface",
+            "name": "TenantInterface",
+            "summary": "",
+            "url": "classes/WPframework-Component-TenantInterface.html"
+        },                {
+            "fqsen": "\\WPframework\\Component\\TenantInterface\u003A\u003Ais_multitenant_app\u0028\u0029",
+            "name": "is_multitenant_app",
+            "summary": "Determines\u0020if\u0020the\u0020application\u0020is\u0020configured\u0020to\u0020operate\u0020in\u0020multi\u002Dtenant\u0020mode.",
+            "url": "classes/WPframework-Component-TenantInterface.html#method_is_multitenant_app"
+        },                {
+            "fqsen": "\\WPframework\\Component\\TenantInterface\u003A\u003Ais_landlord\u0028\u0029",
+            "name": "is_landlord",
+            "summary": "Checks\u0020if\u0020the\u0020provided\u0020tenant\u0020ID\u0020matches\u0020the\u0020landlord\u0027s\u0020UUID.",
+            "url": "classes/WPframework-Component-TenantInterface.html#method_is_landlord"
         },                {
             "fqsen": "\\",
             "name": "\\",
