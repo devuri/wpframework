@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.1.0](https://github.com/devuri/wpframework/compare/v0.0.9...v0.1.0) (2024-03-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* Simplify and add Framework update for MU Plugin
+
+### Features
+
+* Simplify and add Framework update for MU Plugin ([7e13b19](https://github.com/devuri/wpframework/commit/7e13b1944a6ea3e4cfae50eb9d00438cb7880a86))
+
+
+### Miscellaneous Chores
+
+* build ([12ebd43](https://github.com/devuri/wpframework/commit/12ebd4303602fd4cf30f9db0cb8ce0e10b227b51))
+
 ## [0.0.9](https://github.com/devuri/wpframework/compare/v0.0.8...v0.0.9) (2024-03-15)
 
 
