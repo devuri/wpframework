@@ -13,13 +13,12 @@ namespace WPframework\Component\Core;
 use WP_User;
 use WPframework\Component\Core\Settings\AdminSettingsPage;
 use WPframework\Component\Core\Traits\AdminBarMenuTrait;
+use WPframework\Component\Framework;
 use WPframework\Component\Terminate;
-use WPframework\Component\Traits\TenantTrait;
 
 class Plugin
 {
     use AdminBarMenuTrait;
-    use TenantTrait;
     public const ADMIN_BAR_MENU_ID = 'wp-app-environment';
 
     protected $path;
@@ -28,11 +27,15 @@ class Plugin
     protected $wp_sudo_admin;
     protected $admin_group;
     protected $tenant_id;
+    protected $framework;
 
-    public function __construct()
+    public function __construct( Framework $framework )
     {
         // define basic app settings
         $this->define_wpframework_init();
+
+        // make framework available.
+        $this->framework = $framework;
 
         /*
          * The tenant ID for the application.
@@ -43,7 +46,7 @@ class Plugin
          * multi-tenant environment, `APP_TENANT_ID` is required and must always be set. The method
          * uses `envTenantId()` function to retrieve the tenant ID from the environment settings.
          */
-        $this->tenant_id = envTenantId();
+        $this->tenant_id = $this->framework::env_tenant_id();
 
         // Adds security headers if the SET_SECURITY_HEADERS constant is set and true.
         if ( \defined( 'SET_SECURITY_HEADERS' ) && SET_SECURITY_HEADERS === true ) {
@@ -68,17 +71,17 @@ class Plugin
         );
 
         // separate uploads for multi tenant.
-        if ( $this->is_multitenant_app() ) {
+        if ( $this->framework->is_multitenant_app() ) {
             add_filter( 'upload_dir', [ $this, 'set_upload_directory' ] );
         }
 
         // multi tenant setup for plugins.
-        if ( $this->is_multitenant_app() ) {
+        if ( $this->framework->is_multitenant_app() ) {
             // Remove the delete action link for plugins.
             add_filter(
                 'plugin_action_links',
                 function ( $actions, $plugin_file, $plugin_data, $context ) {
-                    if ( $this->is_landlord( $this->tenant_id ) ) {
+                    if ( $this->framework->is_landlord( $this->tenant_id ) ) {
                         return $actions;
                     }
                     if ( \array_key_exists( 'delete', $actions ) ) {
@@ -172,9 +175,9 @@ class Plugin
         }
     }
 
-    public static function init(): self
+    public static function init( Framework $framework ): self
     {
-        return new self();
+        return new self( $framework );
     }
 
     /**
@@ -237,7 +240,7 @@ class Plugin
      */
     public function manage_tenant_install_plugins( $allcaps, $caps, $args, $user )
     {
-        if ( $this->is_multitenant_app() && $this->is_landlord( $this->tenant_id ) ) {
+        if ( $this->framework->is_multitenant_app() && $this->framework->is_landlord( $this->tenant_id ) ) {
             return $allcaps;
         }
 
@@ -258,8 +261,8 @@ class Plugin
         $home_url   = esc_url( home_url() );
         $date_year  = gmdate( 'Y' );
         $site_name  = esc_html( get_bloginfo( 'name' ) );
-        $tenant_id  = esc_html( envTenantId() );
-        $powered_by = esc_html( apply_filters( 'wpframework_powered_by', __( 'Powered by WPframework.', 'wp-framework' ) ) );
+        $tenant_id  = esc_html( $this->tenant_id );
+        $powered_by = esc_html( apply_filters( 'wpframework_powered_by', __( 'Powered by Raydium WPframework.', 'wp-framework' ) ) );
 
         return wp_kses_post( "&copy; $date_year <a href=\"$home_url\" target=\"_blank\">$site_name</a> " . __( 'All Rights Reserved.', 'wp-framework' ) . " $powered_by $tenant_id" );
     }

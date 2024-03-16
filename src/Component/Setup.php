@@ -23,9 +23,9 @@ class Setup implements ConfigInterface
     use TenantTrait;
 
     /**
-     *  Directory $path.
+     *  Directory $app_path.
      */
-    protected $path;
+    protected $app_path;
 
     /**
      * Setup multi tenant.
@@ -92,13 +92,13 @@ class Setup implements ConfigInterface
      * Sets up the application path, initializes environment configuration loading with Dotenv,
      * and handles multi-tenancy. It also sets up default environment types and constants.
      *
-     * @param string $path           The base directory path for the application.
+     * @param string $app_path       The base directory path for the application.
      * @param array  $env_file_names Optional. Additional environment file names to support.
      * @param bool   $short_circuit  Optional. Whether to stop loading files after the first found. Defaults to true.
      */
-    public function __construct( string $path, array $env_file_names = [], bool $short_circuit = true )
+    public function __construct( string $app_path, array $env_file_names = [], bool $short_circuit = true )
     {
-        $this->path          = $this->determine_envpath( $path );
+        $this->app_path      = $this->determine_envpath( $app_path );
         $this->short_circuit = $short_circuit;
         $this->env_files     = array_merge( $this->get_default_file_names(), $env_file_names );
 
@@ -111,18 +111,18 @@ class Setup implements ConfigInterface
 
     public function get_current_path(): string
     {
-        return $this->path;
+        return $this->app_path;
     }
 
     /**
      * Singleton.
      *
-     * @param $path
+     * @param $app_path
      */
-    public static function init( string $path ): self
+    public static function init( string $app_path ): self
     {
         if ( ! isset( self::$instance ) ) {
-            self::$instance = new self( $path );
+            self::$instance = new self( $app_path );
         }
 
         return self::$instance;
@@ -371,7 +371,7 @@ class Setup implements ConfigInterface
     protected function filter_existing_env_files(): void
     {
         foreach ( $this->env_files as $key => $file ) {
-            if ( ! file_exists( $this->path . '/' . $file ) ) {
+            if ( ! file_exists( $this->app_path . '/' . $file ) ) {
                 unset( $this->env_files[ $key ] );
             }
         }
@@ -383,7 +383,7 @@ class Setup implements ConfigInterface
      */
     protected function initialize_dotenv(): void
     {
-        $this->dotenv = Dotenv::createImmutable( $this->path, $this->env_files, $this->short_circuit );
+        $this->dotenv = Dotenv::createImmutable( $this->app_path, $this->env_files, $this->short_circuit );
 
         try {
             $this->dotenv->load();
@@ -391,7 +391,7 @@ class Setup implements ConfigInterface
             $debug = [
                 'class'     => static::class,
                 'object'    => $this,
-                'path'      => $this->path,
+                'path'      => $this->app_path,
                 'line'      => __LINE__,
                 'exception' => $e,
             ];
@@ -513,7 +513,7 @@ class Setup implements ConfigInterface
             $debug = [
                 'class'     => static::class,
                 'object'    => $this,
-                'path'      => $this->path,
+                'path'      => $this->app_path,
                 'line'      => __LINE__,
                 'exception' => $e,
             ];
