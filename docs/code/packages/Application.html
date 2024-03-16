@@ -110,6 +110,8 @@
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/WPframework-Component-ExitInterface.html"><abbr title="\WPframework\Component\ExitInterface">ExitInterface</abbr></a></dt>
         <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -interface"><a href="classes/WPframework-Component-TenantInterface.html"><abbr title="\WPframework\Component\TenantInterface">TenantInterface</abbr></a></dt>
+        <dd></dd>
     
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-Core-AutoLogin.html"><abbr title="\WPframework\Component\Core\AutoLogin">AutoLogin</abbr></a></dt>
         <dd>Class AutoLogin.</dd>
@@ -157,6 +159,8 @@ for WordPress core, themes, and plugins.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-ConstLoader.html"><abbr title="\WPframework\Component\ConstLoader">ConstLoader</abbr></a></dt>
         <dd></dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-ExitHandler.html"><abbr title="\WPframework\Component\ExitHandler">ExitHandler</abbr></a></dt>
+        <dd></dd>
+            <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/WPframework-Component-Framework.html"><abbr title="\WPframework\Component\Framework">Framework</abbr></a></dt>
         <dd></dd>
     
             <dt class="phpdocumentor-table-of-contents__entry -trait"><a href="classes/WPframework-Component-Core-Traits-AdminBarMenuTrait.html"><abbr title="\WPframework\Component\Core\Traits\AdminBarMenuTrait">AdminBarMenuTrait</abbr></a></dt>
@@ -259,7 +263,7 @@ for WordPress core, themes, and plugins.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_wpframeworkCore">wpframeworkCore()</a>
     <span>
-                                &nbsp;: void    </span>
+                                &nbsp;: null|<abbr title="\Framework">Framework</abbr>    </span>
 </dt>
 <dd>Start and load core plugin.</dd>
 
@@ -290,13 +294,6 @@ for WordPress core, themes, and plugins.</dd>
                                 &nbsp;: mixed    </span>
 </dt>
 <dd>Retrieve configuration data using dot notation.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -function -">
-    <a href="namespaces/default.html#function__app_options">_app_options()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;|null    </span>
-</dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_envHash">envHash()</a>
@@ -339,6 +336,13 @@ for WordPress core, themes, and plugins.</dd>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 <dd>Retrieves all packages listed in the &#039;require&#039; section of the composer.json file.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -function -">
+    <a href="namespaces/default.html#function__app_options">_app_options()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;|null    </span>
+</dt>
+<dd></dd>
 
     </dl>
 
@@ -816,14 +820,14 @@ the tenant's domain is not recognized.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">wpframeworkCore</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">wpframeworkCore</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">null|<abbr title="\Framework">Framework</abbr></span></code>
 
     
     
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
+    <span class="phpdocumentor-signature__response_type">null|<abbr title="\Framework">Framework</abbr></span>
             &mdash;
         
     
@@ -836,7 +840,7 @@ the tenant's domain is not recognized.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/inc/helpers.php"><a href="files/src-inc-helpers.html"><abbr title="src/inc/helpers.php">helpers.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">191</span>
+    <span class="phpdocumentor-element-found-in__line">197</span>
 
     </aside>
 
@@ -879,7 +883,7 @@ the tenant's domain is not recognized.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/inc/helpers.php"><a href="files/src-inc-helpers.html"><abbr title="src/inc/helpers.php">helpers.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">216</span>
+    <span class="phpdocumentor-element-found-in__line">222</span>
 
     </aside>
 
@@ -941,7 +945,7 @@ the tenant's domain is not recognized.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/inc/helpers.php"><a href="files/src-inc-helpers.html"><abbr title="src/inc/helpers.php">helpers.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">234</span>
+    <span class="phpdocumentor-element-found-in__line">240</span>
 
     </aside>
 
@@ -969,7 +973,7 @@ the tenant's domain is not recognized.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/inc/helpers.php"><a href="files/src-inc-helpers.html"><abbr title="src/inc/helpers.php">helpers.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">256</span>
+    <span class="phpdocumentor-element-found-in__line">262</span>
 
     </aside>
 
@@ -1042,45 +1046,6 @@ returned.</p>
     
 </article>
                     <article class="phpdocumentor-element -function - ">
-    <h4 class="phpdocumentor-element__name" id="function__app_options">
-        _app_options()
-        <a href="namespaces/default.html#function__app_options" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/inc/helpers.php"><a href="files/src-inc-helpers.html"><abbr title="src/inc/helpers.php">helpers.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">274</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility"></span>
-                    <span class="phpdocumentor-signature__name">_app_options</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$app_path</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span></code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$app_path</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span>
-            &mdash;
-        
-    
-</article>
-                    <article class="phpdocumentor-element -function - ">
     <h4 class="phpdocumentor-element__name" id="function_envHash">
         envHash()
         <a href="namespaces/default.html#function_envHash" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1088,7 +1053,7 @@ returned.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/inc/helpers.php"><a href="files/src-inc-helpers.html"><abbr title="src/inc/helpers.php">helpers.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">300</span>
+    <span class="phpdocumentor-element-found-in__line">293</span>
 
     </aside>
 
@@ -1164,7 +1129,7 @@ returned.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/inc/helpers.php"><a href="files/src-inc-helpers.html"><abbr title="src/inc/helpers.php">helpers.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">315</span>
+    <span class="phpdocumentor-element-found-in__line">308</span>
 
     </aside>
 
@@ -1192,7 +1157,7 @@ returned.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/inc/helpers.php"><a href="files/src-inc-helpers.html"><abbr title="src/inc/helpers.php">helpers.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">350</span>
+    <span class="phpdocumentor-element-found-in__line">343</span>
 
     </aside>
 
@@ -1238,7 +1203,7 @@ and removing potentially dangerous characters for security.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/inc/helpers.php"><a href="files/src-inc-helpers.html"><abbr title="src/inc/helpers.php">helpers.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">360</span>
+    <span class="phpdocumentor-element-found-in__line">353</span>
 
     </aside>
 
@@ -1266,7 +1231,7 @@ and removing potentially dangerous characters for security.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/inc/helpers.php"><a href="files/src-inc-helpers.html"><abbr title="src/inc/helpers.php">helpers.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">380</span>
+    <span class="phpdocumentor-element-found-in__line">373</span>
 
     </aside>
 
@@ -1309,7 +1274,7 @@ and the environment to help secure sensitive information.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/inc/helpers.php"><a href="files/src-inc-helpers.html"><abbr title="src/inc/helpers.php">helpers.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">396</span>
+    <span class="phpdocumentor-element-found-in__line">389</span>
 
     </aside>
 
@@ -1341,6 +1306,45 @@ and the environment to help secure sensitive information.</p>
             <section class="phpdocumentor-description"><p>An array of required packages, or an empty array if the file doesn't exist or on error.</p>
 </section>
 
+    
+</article>
+                    <article class="phpdocumentor-element -function - ">
+    <h4 class="phpdocumentor-element__name" id="function__app_options">
+        _app_options()
+        <a href="namespaces/default.html#function__app_options" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/inc/helpers.php"><a href="files/src-inc-helpers.html"><abbr title="src/inc/helpers.php">helpers.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">411</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility"></span>
+                    <span class="phpdocumentor-signature__name">_app_options</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$app_path</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$app_path</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span>
+            &mdash;
+        
     
 </article>
             </section>
