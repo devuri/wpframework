@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Unit\Component\Http;
+namespace Tests\Unit\Component;
 
 use PHPUnit\Framework\TestCase;
-use WPframework\Component\Http\BaseKernel;
+use WPframework\Component\Kernel;
 
 /**
  * Test the Kernel.
@@ -12,13 +12,13 @@ use WPframework\Component\Http\BaseKernel;
  *
  * @coversNothing
  */
-class BaseKernelTest extends TestCase
+class KernelTest extends TestCase
 {
     protected $http_app = null;
 
     protected function setUp(): void
     {
-        $this->http_app = new BaseKernel( APP_TEST_PATH );
+        $this->http_app = new Kernel( APP_TEST_PATH );
     }
 
     protected function tearDown(): void

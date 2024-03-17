@@ -8,19 +8,22 @@ use Exception;
 use InvalidArgumentException;
 use WPframework\Component\EnvTypes;
 use WPframework\Component\Setup;
+use WPframework\Component\TenantInterface;
 use WPframework\Component\Terminate;
 use WPframework\Component\Traits\ConstantBuilderTrait;
 use WPframework\Component\Traits\ConstantTrait;
+use WPframework\Component\Traits\TenantTrait;
 
 /**
  * Setup common elements.
  *
  * Handles global constants.
  */
-class BaseKernel
+abstract class AbstractKernel implements TenantInterface
 {
     use ConstantBuilderTrait;
     use ConstantTrait;
+    use TenantTrait;
 
     /**
      * The base path of the application.
@@ -58,7 +61,7 @@ class BaseKernel
     protected $env_secret = [];
 
     /**
-     * Static list used within the BaseKernel context.
+     * Static list used within the AbstractKernel context.
      *
      * @var array
      */
@@ -86,7 +89,7 @@ class BaseKernel
     protected $configs_dir;
 
     /**
-     * Constructs the BaseKernel object and initializes the application setup.
+     * Constructs the AbstractKernel object and initializes the application setup.
      * It loads the application configuration and sets up environment-specific settings.
      *
      * @param string     $app_path The base path of the application.
@@ -120,7 +123,7 @@ class BaseKernel
 
         $this->config_file = $this->args['config_file'];
 
-        $this->tenant_id = envTenantId();
+        $this->tenant_id = $this->env_tenant_id();
 
         /*
          * By default, Dotenv will stop looking for files as soon as it finds one.
@@ -447,20 +450,6 @@ class BaseKernel
     protected static function http(): HostManager
     {
         return HttpFactory::init();
-    }
-
-    /**
-     * Determines if the application is configured to operate in multi-tenant mode.
-     *
-     * This is based on the presence and value of the `ALLOW_MULTITENANT` constant.
-     * If `ALLOW_MULTITENANT` is defined and set to `true`, the application is
-     * considered to be in multi-tenant mode.
-     *
-     * @return bool Returns `true` if the application is in multi-tenant mode, otherwise `false`.
-     */
-    private function is_multitenant_app(): bool
-    {
-        return \defined( 'ALLOW_MULTITENANT' ) && ALLOW_MULTITENANT === true;
     }
 
     /**

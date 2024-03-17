@@ -18,6 +18,10 @@ if (!defined('ASSET_URL')) {
     define('ASSET_URL', 'https://example.com/assets');
 }
 
+if (!defined('APP_DIR_PATH')) {
+    define('APP_DIR_PATH', '/srv/users/dev/apps/example');
+}
+
 if (!defined('APP_PATH')) {
     define('APP_PATH', '/srv/users/dev/apps/example');
 }

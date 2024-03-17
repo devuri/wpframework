@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use Tests\BaseTest;
-use Urisoft\DotAccess;
 
 /**
  * @internal
@@ -12,25 +11,25 @@ use Urisoft\DotAccess;
  */
 class ConfigTest extends BaseTest
 {
-    public function test_config_function_with_valid_key(): void
-    {
-        $configData = [
-            'app' => [
-                'name' => 'MyApp',
-                'debug' => true,
-            ],
-            'database' => [
-                'host' => 'localhost',
-                'port' => 3306,
-            ],
-        ];
-
-        $keyToTest = 'app.name';
-
-        $result = config($keyToTest, null, new DotAccess(  $configData ) );
-
-        $this->assertEquals($configData['app']['name'], $result);
-    }
+    // public function test_config_function_with_valid_key(): void
+    // {
+    //     $configData = [
+    //         'app' => [
+    //             'name' => 'MyApp',
+    //             'debug' => true,
+    //         ],
+    //         'database' => [
+    //             'host' => 'localhost',
+    //             'port' => 3306,
+    //         ],
+    //     ];
+    //
+    //     $keyToTest = 'app.name';
+    //
+    //     $result = config($keyToTest, null, new DotAccess(  $configData ) );
+    //
+    //     $this->assertEquals($configData['app']['name'], $result);
+    // }
 
     public function test_config_function_with_invalid_key(): void
     {

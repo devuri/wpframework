@@ -9,18 +9,13 @@ use Urisoft\DotAccess;
 class Terminate
 {
     protected $exitHandler;
-    protected $options;
+
     protected $errors;
 
     public function __construct( array $error_details = [], ?ExitInterface $exit = null )
     {
         $this->exitHandler = $exit ?? new ExitHandler();
         $this->errors      = new DotAccess( $this->parse_error( $error_details ) );
-        $app_options       = _app_options( $this->errors->get( 'debug.path' ) );
-
-        if ( $app_options && \is_array( $app_options ) ) {
-            $this->options = new DotAccess( $app_options );
-        }
     }
 
     /**
@@ -118,14 +113,8 @@ class Terminate
      */
     protected function render_error_page( string $message, int $status_code ): void
     {
-        ?><!DOCTYPE html><html lang='en'>
-        <head>
-            <meta http-equiv="Content-Type" content="text/html; charset='UTF-8'" />
-            <meta name="viewport" content="width=device-width">
-            <title>Unavailable</title>
-            <?php self::page_styles(); ?>
-        </head>
-        <body id="page">
+        $this->page_header();
+        ?>
             <div id="error-page" class="">
                 <h1>Raydium: error</h1>
                 <?php echo $message; ?>
@@ -134,17 +123,39 @@ class Terminate
                 <?php
                 if ( $this->is_prod() ) {
                     dump( 'Raydium: debug data is hidden in production' );
-                } elseif ( $this->options && $this->options->get( 'terminate.debugger' ) ) {
+                } elseif ( config( 'terminate.debugger' ) ) {
                     dump( $this->errors->get( 'debug' ) );
                 }
 				?>
             </div>
-            <footer align="center">
-                Status Code:<span style="color:#afafaf"><?php echo $status_code; ?></span>
-            </footer>
-        </body>
-        </html>
         <?php
+
+        $this->page_footer( $status_code );
+    }
+
+    private function page_header( string $page_title = 'Unavailable' ): void
+    {
+        ?>
+        <!DOCTYPE html><html lang='en'>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset='UTF-8'" />
+            <meta name="viewport" content="width=device-width">
+            <title><?php echo $page_title; ?></title>
+            <?php self::page_styles(); ?>
+        </head>
+		<body id="page">
+		<?php
+    }
+
+    private function page_footer( string $status_code ): void
+    {
+        ?>
+        <footer align="center">
+			Status Code:<span style="color:#afafaf"><?php echo $status_code; ?></span>
+			</footer>
+			</body>
+		</html>
+		<?php
     }
 
     private function is_prod(): bool

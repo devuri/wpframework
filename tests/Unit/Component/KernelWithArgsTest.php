@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Unit\Component\Http;
+namespace Tests\Unit\Component;
 
 use Tests\BaseTest;
-use WPframework\Component\Http\BaseKernel;
+use WPframework\Component\Kernel;
 
 /**
  * Test the Kernel.
@@ -12,7 +12,7 @@ use WPframework\Component\Http\BaseKernel;
  *
  * @coversNothing
  */
-class BaseKernelWithArgsTest extends BaseTest
+class KernelWithArgsTest extends BaseTest
 {
     public function test_http_app_with_args(): void
     {
@@ -21,7 +21,7 @@ class BaseKernelWithArgsTest extends BaseTest
             'wordpress'     => 'cms',
         ];
 
-        $app_with_args = new BaseKernel( getenv('FAKE_APP_DIR_PATH'), $args );
+        $app_with_args = new Kernel( getenv('FAKE_APP_DIR_PATH'), $args );
 
         $output = array_merge( $this->default_args(), [
             "wp_dir_path" => "cms",

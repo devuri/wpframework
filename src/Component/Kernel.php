@@ -2,21 +2,20 @@
 
 namespace WPframework\Component;
 
-use Exception;
-use WPframework\Component\Http\BaseKernel;
+use WPframework\Component\Http\AbstractKernel;
 
-class Kernel extends BaseKernel
+class Kernel extends AbstractKernel
 {
     /**
-     * Setup Kernel.
+     * Constructs the AbstractKernel object and initializes the application setup.
+     * It loads the application configuration and sets up environment-specific settings.
      *
-     * @param string   $app_path
-     * @param string[] $args
-     *
-     * @throws Exception
+     * @param string     $app_path The base path of the application.
+     * @param string[]   $args     Optional arguments for further configuration.
+     * @param null|Setup $setup    Optional Setup object for custom setup configuration.
      */
-    public function __construct( string $app_path, array $args = [] )
+    public function __construct( string $app_path, ?array $args = [], ?Setup $setup = null )
     {
-        parent::__construct( $app_path, $args );
+        parent::__construct( $app_path, $args, $setup );
     }
 }
