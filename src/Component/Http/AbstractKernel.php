@@ -146,6 +146,9 @@ abstract class AbstractKernel implements TenantInterface
         } else {
             $this->app_setup = $setup;
         }
+
+        // set the environment switcher.
+        $this->app_setup->set_switcher( new Switcher() );
     }
 
     /**
