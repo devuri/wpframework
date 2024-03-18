@@ -276,6 +276,15 @@ abstract class AbstractKernel implements TenantInterface
         return array_keys( $this->env_secret );
     }
 
+	private static function wp_env_type(): string
+	{
+		if ( \defined( 'WP_ENVIRONMENT_TYPE' ) ) {
+			return (string) WP_ENVIRONMENT_TYPE;
+		}
+
+		return '';
+	}
+
     /**
      * Initializes the application with environment-specific configurations and constants.
      * Also checks for maintenance mode and WP installation status.
@@ -287,9 +296,9 @@ abstract class AbstractKernel implements TenantInterface
      */
     public function init( $env_type = null, bool $constants = true ): void
     {
-        if ( env( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::is_valid( (string) WP_ENVIRONMENT_TYPE ) ) {
+        if ( env( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::is_valid( self::wp_env_type() ) ) {
             $env_type = [ 'environment' => env( 'WP_ENVIRONMENT_TYPE' ) ];
-        } elseif ( \defined( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::is_valid( (string) WP_ENVIRONMENT_TYPE ) ) {
+        } elseif ( \defined( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::is_valid( self::wp_env_type() )) {
             $env_type = [ 'environment' => WP_ENVIRONMENT_TYPE ];
         }
 
