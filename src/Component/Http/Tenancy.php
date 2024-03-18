@@ -6,13 +6,13 @@ use Dotenv\Dotenv;
 use Exception;
 use Symfony\Component\Filesystem\Filesystem;
 use WPframework\Component\EnvGenerator;
-use WPframework\Component\Terminate;
 use WPframework\Component\TenantInterface;
+use WPframework\Component\Terminate;
 use WPframework\Component\Traits\TenantTrait;
 
 class Tenancy implements TenantInterface
 {
-	use TenantTrait;
+    use TenantTrait;
 
     /**
      * List of constants defined.

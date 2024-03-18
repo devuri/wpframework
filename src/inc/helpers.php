@@ -1,19 +1,19 @@
 <?php
 
 use Defuse\Crypto\Key;
+use Dotenv\Dotenv;
+use Dotenv\Exception\InvalidPathException;
+use Symfony\Component\Filesystem\Filesystem;
 use Urisoft\DotAccess;
 use Urisoft\Encryption;
 use Urisoft\Env;
 use WPframework\Component\App;
+use WPframework\Component\EnvGenerator;
 use WPframework\Component\Framework;
 use WPframework\Component\Http\Asset;
+use WPframework\Component\Http\HttpFactory;
 use WPframework\Component\Http\Tenancy;
 use WPframework\Component\Terminate;
-use Dotenv\Dotenv;
-use Dotenv\Exception\InvalidPathException;
-use Symfony\Component\Filesystem\Filesystem;
-use WPframework\Component\EnvGenerator;
-use WPframework\Component\Http\HttpFactory;
 
 // @codingStandardsIgnoreFile.
 
@@ -132,7 +132,6 @@ if ( ! \function_exists( 'app_kernel' ) ) {
         try {
             $_dotenv->load();
         } catch ( InvalidPathException $e ) {
-
             try_regenerate_env_file( APP_DIR_PATH, APP_HTTP_HOST, $_env_files );
 
             $debug = [

@@ -28,11 +28,6 @@ class Framework implements TenantInterface
         self::$_all_app_options = $this->app_options;
     }
 
-    public function app( ?string $app_path = null )
-    {
-        return new self( $app_path );
-    }
-
     public function plugin(): Plugin
     {
         return Plugin::init( new self() );

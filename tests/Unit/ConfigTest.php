@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use Tests\BaseTest;
+use Urisoft\DotAccess;
 
 /**
  * @internal
