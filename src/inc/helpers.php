@@ -9,6 +9,11 @@ use WPframework\Component\Framework;
 use WPframework\Component\Http\Asset;
 use WPframework\Component\Http\Tenancy;
 use WPframework\Component\Terminate;
+use Dotenv\Dotenv;
+use Dotenv\Exception\InvalidPathException;
+use Symfony\Component\Filesystem\Filesystem;
+use WPframework\Component\EnvGenerator;
+use WPframework\Component\Http\HttpFactory;
 
 // @codingStandardsIgnoreFile.
 
@@ -98,8 +103,9 @@ if ( ! \function_exists( 'app_kernel' ) ) {
      *
      * @return WPframework\Component\Kernel The initialized application kernel.
      */
-    function http_component_kernel( string $app_path, string $options = 'app' ): WPframework\Component\Kernel
+    function http_component_kernel( string $app_path, string $options_file = 'app' ): WPframework\Component\Kernel
     {
+        // load constants early.
         if ( ! \defined('SITE_CONFIGS_DIR') ) {
             \define( 'SITE_CONFIGS_DIR', 'configs');
         }
@@ -108,19 +114,57 @@ if ( ! \function_exists( 'app_kernel' ) ) {
             \define( 'APP_DIR_PATH', $app_path );
         }
 
+        if ( ! \defined('APP_HTTP_HOST') ) {
+            \define( 'APP_HTTP_HOST', HttpFactory::init()->get_http_host() );
+        }
+
+        $app_options = [];
+        $supported_env_files =  _supported_env_files();
+
+        // TODO create a .env file if it doesnyt exist.
+
+        // Filters out environment files that do not exist to avoid warnings.
+        $_env_files = _env_files_filter( $supported_env_files, APP_DIR_PATH );
+
+        // load env from dotenv early.
+        $_dotenv = Dotenv::createImmutable( APP_DIR_PATH, $_env_files, true );
+
+        try {
+            $_dotenv->load();
+        } catch ( InvalidPathException $e ) {
+
+            try_regenerate_env_file( APP_DIR_PATH, APP_HTTP_HOST, $_env_files );
+
+            $debug = [
+                'path'      => APP_DIR_PATH,
+                'line'      => __LINE__,
+                'exception' => $e,
+                'invalidfile' => "Missing env file: {$e->getMessage()}",
+            ];
+
+            Terminate::exit( [ "Missing env file: {$e->getMessage()}", 500, $debug ] );
+        } catch ( Exception $e ) {
+            $debug = [
+                'path'      => APP_DIR_PATH,
+                'line'      => __LINE__,
+                'exception' => $e,
+            ];
+            Terminate::exit( [ $e->getMessage(), 500, $debug ] );
+        }
+
         /**
          * Handle multi-tenant setups.
          *
          * @var Tenancy
          */
-        $tenancy = new Tenancy( $app_path, SITE_CONFIGS_DIR );
-        $tenancy->initialize();
+        $tenancy = new Tenancy( APP_DIR_PATH, SITE_CONFIGS_DIR );
+        $tenancy->initialize( $_dotenv );
 
         try {
-            $app = new App( $app_path, SITE_CONFIGS_DIR, $options );
+            $app = new App( APP_DIR_PATH, SITE_CONFIGS_DIR, $options_file );
         } catch ( Exception $e ) {
             $debug = [
-                'path'   => $app_path,
+                'path'   => APP_DIR_PATH,
                 'line'   => __LINE__,
                 'exception'   => $e,
             ];
@@ -365,4 +409,70 @@ function _wpframework( ?string $app_path = null ): ?Framework
     }
 
     return $framework;
+}
+
+
+/**
+ * Retrieves the default file names for environment configuration.
+ *
+ * This protected method is designed to return an array of default file names
+ * used for environment configuration in a WordPress environment.
+ * These file names include various formats and stages of environment setup,
+ * such as production, staging, development, and local environments.
+ *
+ * @since [version number]
+ *
+ * @return array An array of default file names for environment configurations.
+ *               The array includes the following file names:
+ *               - 'env'
+ *               - '.env'
+ *               - '.env.secure'
+ *               - '.env.prod'
+ *               - '.env.staging'
+ *               - '.env.dev'
+ *               - '.env.debug'
+ *               - '.env.local'
+ *               - 'env.local'
+ */
+function _supported_env_files(): array
+{
+    return [
+        'env',
+        '.env',
+        '.env.secure',
+        '.env.prod',
+        '.env.staging',
+        '.env.dev',
+        '.env.debug',
+        '.env.local',
+        'env.local',
+    ];
+}
+
+/**
+ * Filters out environment files that do not exist to avoid warnings.
+ */
+function _env_files_filter( array $env_files, string $app_path ): array
+{
+    foreach ( $env_files as $key => $file ) {
+        if ( ! file_exists( $app_path . '/' . $file ) ) {
+            unset( $env_files[ $key ] );
+        }
+    }
+
+    return $env_files;
+}
+
+/**
+ * Regenerates the tenant-specific .env file if it doesn't exist.
+ *
+ * @param string $tenant_id Tenant's UUID.
+ */
+function try_regenerate_env_file( string $app_path, string $app_http_host, array $available_files = [] ): void
+{
+    $app_main_env_file = "{$app_path}/.env";
+    if ( ! file_exists( $app_main_env_file ) && empty( $available_files ) ) {
+        $generator = new EnvGenerator( new Filesystem() );
+        $generator->create( $app_main_env_file, $app_http_host );
+    }
 }
