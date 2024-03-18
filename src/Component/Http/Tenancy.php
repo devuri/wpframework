@@ -7,9 +7,13 @@ use Exception;
 use Symfony\Component\Filesystem\Filesystem;
 use WPframework\Component\EnvGenerator;
 use WPframework\Component\Terminate;
+use WPframework\Component\TenantInterface;
+use WPframework\Component\Traits\TenantTrait;
 
-class Tenancy
+class Tenancy implements TenantInterface
 {
+	use TenantTrait;
+
     /**
      * List of constants defined.
      *
@@ -39,14 +43,14 @@ class Tenancy
      *
      * @return void
      */
-    public function initialize(): void
+    public function initialize( Dotenv $_dotenv ): void
     {
         if ( file_exists( "{$this->app_path}/{$this->configs_dir}/tenancy.php" ) ) {
             require_once "{$this->app_path}/{$this->configs_dir}/tenancy.php";
         }
 
         if ( \defined( 'ALLOW_MULTITENANT' ) && true === ALLOW_MULTITENANT ) {
-            $this->setup_multi_tenant();
+            $this->setup_multi_tenant( $_dotenv );
         }
     }
 
@@ -70,14 +74,11 @@ class Tenancy
     /**
      * Sets up the environment for a multi-tenant configuration.
      */
-    protected function setup_multi_tenant(): void
+    protected function setup_multi_tenant( Dotenv $_dotenv ): void
     {
         $_app_http_host = HttpFactory::init()->get_http_host();
 
-        $_dotenv = Dotenv::createImmutable( $this->app_path );
-
         try {
-            $_dotenv->load();
             $_dotenv->required( 'LANDLORD_DB_HOST' )->notEmpty();
             $_dotenv->required( 'LANDLORD_DB_NAME' )->notEmpty();
             $_dotenv->required( 'LANDLORD_DB_USER' )->notEmpty();
