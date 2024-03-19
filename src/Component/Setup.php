@@ -15,7 +15,7 @@ use WPframework\Component\Traits\TenantTrait;
 /**
  * Setup WP Config.
  */
-class Setup implements ConfigInterface
+class Setup implements SetupInterface
 {
     use ConfigTrait;
     use ConstantBuilderTrait;
@@ -142,7 +142,7 @@ class Setup implements ConfigInterface
      *
      * @return self
      */
-    public function config( $environment = null, ?bool $setup = true ): ConfigInterface
+    public function config( $environment = null, ?bool $setup = true ): SetupInterface
     {
         // check required vars.
         $this->is_required();
@@ -200,7 +200,7 @@ class Setup implements ConfigInterface
      *
      * @return static
      */
-    public function set_environment(): ConfigInterface
+    public function set_environment(): SetupInterface
     {
         if ( false === $this->environment && env( 'WP_ENVIRONMENT_TYPE' ) ) {
             $this->define( 'WP_ENVIRONMENT_TYPE', env( 'WP_ENVIRONMENT_TYPE' ) );
@@ -260,7 +260,7 @@ class Setup implements ConfigInterface
      *
      * @return static
      */
-    public function set_error_handler( ?string $handler = null ): ConfigInterface
+    public function set_error_handler( ?string $handler = null ): SetupInterface
     {
         if ( ! $this->enable_error_handler() ) {
             return $this;
@@ -296,7 +296,7 @@ class Setup implements ConfigInterface
      *
      * @return static
      */
-    public function debug( $error_log_dir ): ConfigInterface
+    public function debug( $error_log_dir ): SetupInterface
     {
         if ( false === $this->environment && env( 'WP_ENVIRONMENT_TYPE' ) ) {
             $this->reset_environment( env( 'WP_ENVIRONMENT_TYPE' ) );
