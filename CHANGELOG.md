@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.2.0](https://github.com/devuri/wpframework/compare/v0.1.0...v0.2.0) (2024-03-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* streamline app setup with `app_kernel()`
+
+### Features
+
+* adds `environment switcher class::Switcher` ([3875fd8](https://github.com/devuri/wpframework/commit/3875fd8be63d4a22fa47076bcef48dd20bec4192))
+* generate new `.env` file if none is available ([e061e9b](https://github.com/devuri/wpframework/commit/e061e9b3abaa2cc6fd70daf6d0e0ae7f31f1fac8))
+
+
+### Bug Fixes
+
+* adds water.css ([969ed3a](https://github.com/devuri/wpframework/commit/969ed3a3568b18c7d7a17861322f46c9e2a004a3))
+* fixes `WP_ENVIRONMENT_TYPE` type check since it may not be set ([0c83d2a](https://github.com/devuri/wpframework/commit/0c83d2accda698c0cbda8ff7fc2db961d25eb195))
+* streamline app setup with `app_kernel()` ([141c373](https://github.com/devuri/wpframework/commit/141c37330b0127db0b13d126f1a09afda636b2c9))
+
+
+### Miscellaneous Chores
+
+* build ([164853c](https://github.com/devuri/wpframework/commit/164853c990acbba41320fb81473279eb1699716b))
+
 ## [0.1.0](https://github.com/devuri/wpframework/compare/v0.0.9...v0.1.0) (2024-03-16)
 
 
