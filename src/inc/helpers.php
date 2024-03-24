@@ -95,8 +95,8 @@ if ( ! \function_exists( 'app_kernel' ) ) {
      * execution with an error message if critical configurations are missing or if
      * the tenant's domain is not recognized.
      *
-     * @param string $app_path The base directory path of the application (e.g., __DIR__).
-     * @param string $options  Optional. The configuration filename, defaults to 'app'.
+     * @param string $app_path     The base directory path of the application (e.g., __DIR__).
+     * @param string $options_file Optional. The configuration filename, defaults to 'app'.
      *
      * @throws Exception If there are issues loading environment variables or initializing the App.
      * @throws Exception If required multi-tenant environment variables are missing or if the tenant's domain is not recognized.
@@ -462,11 +462,6 @@ function _env_files_filter( array $env_files, string $app_path ): array
     return $env_files;
 }
 
-/**
- * Regenerates the tenant-specific .env file if it doesn't exist.
- *
- * @param string $tenant_id Tenant's UUID.
- */
 function try_regenerate_env_file( string $app_path, string $app_http_host, array $available_files = [] ): void
 {
     $app_main_env_file = "{$app_path}/.env";

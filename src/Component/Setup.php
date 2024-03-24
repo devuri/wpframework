@@ -7,14 +7,11 @@ use Exception;
 use Symfony\Component\ErrorHandler\Debug;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
-use WPframework\Component\Http\EnvSwitcherInterface as Switcher;
+use WPframework\Component\Http\Switcher;
 use WPframework\Component\Traits\ConfigTrait;
 use WPframework\Component\Traits\ConstantBuilderTrait;
 use WPframework\Component\Traits\TenantTrait;
 
-/**
- * Setup WP Config.
- */
 class Setup implements SetupInterface
 {
     use ConfigTrait;
@@ -107,6 +104,9 @@ class Setup implements SetupInterface
         $this->app_path      = $this->determine_envpath( $app_path );
         $this->short_circuit = $short_circuit;
         $this->env_files     = array_merge( $this->get_default_file_names(), $env_file_names );
+
+        // set the environment switcher.
+        $this->set_switcher( new Switcher() );
 
         $this->filter_existing_env_files();
         $this->env_types = EnvTypes::get();
@@ -292,11 +292,11 @@ class Setup implements SetupInterface
     /**
      * Debug Settings.
      *
-     * @param false|string $error_log_dir
+     * @param null|string $error_log_dir
      *
      * @return static
      */
-    public function debug( $error_log_dir ): SetupInterface
+    public function debug( ?string $error_log_dir = null ): SetupInterface
     {
         if ( false === $this->environment && env( 'WP_ENVIRONMENT_TYPE' ) ) {
             $this->reset_environment( env( 'WP_ENVIRONMENT_TYPE' ) );
@@ -306,13 +306,18 @@ class Setup implements SetupInterface
             $this->reset_environment( env( 'WP_ENVIRONMENT_TYPE' ) );
         }
 
+        if ( ! empty( $error_log_dir ) ) {
+            $this->error_log_dir = $error_log_dir;
+        }
+
         if ( ! EnvTypes::is_valid( $this->environment ) ) {
+			// @phpstan-ignore-next-line
             $this->switcher->create_environment( 'production', $this->error_log_dir );
 
             return $this;
         }
 
-        // Switch between different environments
+        // @phpstan-ignore-next-line
         $this->switcher->create_environment( $this->environment, $this->error_log_dir );
 
         return $this;

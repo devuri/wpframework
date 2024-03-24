@@ -17,11 +17,11 @@ interface SetupInterface
     /**
      * Debug Settings.
      *
-     * @param false|string $error_log_dir
+     * @param null|string $error_log_dir
      *
      * @return self
      */
-    public function debug( $error_log_dir ): self;
+    public function debug( ?string $error_log_dir = null ): self;
 
     /**
      * Symfony Debug.

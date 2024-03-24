@@ -6,6 +6,8 @@ use function defined;
 
 use Exception;
 use InvalidArgumentException;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 use WPframework\Component\EnvTypes;
 use WPframework\Component\Setup;
 use WPframework\Component\TenantInterface;
@@ -146,9 +148,6 @@ abstract class AbstractKernel implements TenantInterface
         } else {
             $this->app_setup = $setup;
         }
-
-        // set the environment switcher.
-        $this->app_setup->set_switcher( new Switcher() );
     }
 
     /**
@@ -293,12 +292,14 @@ abstract class AbstractKernel implements TenantInterface
             $env_type = [ 'environment' => WP_ENVIRONMENT_TYPE ];
         }
 
+        $filesystem = new Filesystem();
+
         if ( \is_array( $env_type ) ) {
             $this->app_setup->config(
-                array_merge( $this->environment_args(), $env_type )
+                array_merge( $this->environment_args( $filesystem ), $env_type )
             );
         } else {
-            $this->app_setup->config( $this->environment_args() );
+            $this->app_setup->config( $this->environment_args( $filesystem ) );
         }
 
         /*
@@ -426,17 +427,23 @@ abstract class AbstractKernel implements TenantInterface
      *
      * @return array The array of environment-specific arguments.
      */
-    protected function environment_args(): array
+    protected function environment_args( Filesystem $filesystem ): array
     {
         $this->log_file = mb_strtolower( gmdate( 'm-d-Y' ) ) . '.log';
 
         // Determine the error logs directory path based on tenant ID presence.
         $error_logs_dir_suffix = $this->tenant_id ? "/{$this->tenant_id}/" : '/';
-        $error_logs_dir        = $this->app_path . '/storage/logs/wp-errors' . $error_logs_dir_suffix . "debug-{$this->log_file}";
+        $error_logs_dir        = $this->app_path . '/storage/logs/wp-errors' . $error_logs_dir_suffix;
+
+        try {
+            $filesystem->mkdir( $error_logs_dir );
+        } catch ( IOExceptionInterface $exception ) {
+            Terminate::exit( [ 'Unexpected Error while creating error logs directory' ] );
+        }
 
         return [
             'environment' => null,
-            'error_log'   => $error_logs_dir,
+            'error_log'   => $error_logs_dir . "debug-{$this->log_file}",
             'debug'       => false,
             'errors'      => $this->args['error_handler'],
         ];
