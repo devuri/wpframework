@@ -1,8 +1,8 @@
-# BaseKernel Class Documentation
+# Kernel Class Documentation
 
 ## Overview
 
-The `BaseKernel` class is a central component of the WPframework, designed to streamline the initialization and configuration of WordPress applications. It encapsulates the core functionalities needed for setting up the application environment, handling configurations, and managing global constants. This class is engineered to support complex applications, offering flexibility for multi-tenant setups and environment-specific configurations.
+The `Kernel` class is a central component of the WPframework, designed to streamline the initialization and configuration of WordPress applications. It encapsulates the core functionalities needed for setting up the application environment, handling configurations, and managing global constants. This class is engineered to support complex applications, offering flexibility for multi-tenant setups and environment-specific configurations.
 
 ## Features
 
@@ -15,12 +15,12 @@ The `BaseKernel` class is a central component of the WPframework, designed to st
 
 ## Getting Started
 
-To utilize the `BaseKernel` class in your application, follow these steps:
+To utilize the `Kernel` class in your application, follow these steps:
 
-1. **Initialization**: Instantiate the `BaseKernel` class by providing the base application path and optional configurations:
+1. **Initialization**: Instantiate the `Kernel` class by providing the base application path and optional configurations:
 
     ```php
-    $appKernel = new WPframework\Component\Http\BaseKernel(__DIR__, ['content_dir' => 'content']);
+    $appKernel = new WPframework\Component\Kernel(__DIR__, ['content_dir' => 'content']);
     ```
 
 2. **Configuration**: Pass an array of configurations (`$args`) during instantiation to customize the application setup. This array can include paths, environment flags, and other setup-related parameters.
@@ -40,7 +40,7 @@ To utilize the `BaseKernel` class in your application, follow these steps:
 ### Basic Initialization
 
 ```php
-$appKernel = new WPframework\Component\Http\BaseKernel(__DIR__);
+$appKernel = new WPframework\Component\Kernel(__DIR__);
 $appKernel->init();
 ```
 
@@ -58,7 +58,7 @@ $args = [
         'mu_plugin_dir'   => 'mu-plugins',
         'disable_updates' => true,
     ];
-$appKernel = new WPframework\Component\Http\BaseKernel(__DIR__, $args);
+$appKernel = new WPframework\Component\Kernel(__DIR__, $args);
 $appKernel->init(null, true);
 ```
 
@@ -75,4 +75,4 @@ This example shows how to pass custom configuration arguments and initialize the
 
 ## Conclusion
 
-The `BaseKernel` class is a foundational component designed to simplify and standardize the setup and configuration process of WordPress applications within the WPframework. By abstracting away the complexities of application initialization, environment management, and multi-tenancy support, it allows developers to focus on building robust and scalable WordPress applications.
+The `Kernel` class is a foundational component designed to simplify and standardize the setup and configuration process of WordPress applications within the WPframework. By abstracting away the complexities of application initialization, environment management, and multi-tenancy support, it allows developers to focus on building robust and scalable WordPress applications.

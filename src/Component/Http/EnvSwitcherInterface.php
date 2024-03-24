@@ -1,44 +1,54 @@
 <?php
 
-namespace WPframework\Component;
+namespace WPframework\Component\Http;
 
 /**
  * Interface for managing different environment settings.
  */
-interface EnvInterface
+interface EnvSwitcherInterface
 {
     /**
      * Configure the environment for secure production.
      *
      * This method should be used in a secure production environment.
      */
-    public function env_secure(): void;
+    public function secure(): void;
 
     /**
      * Configure the environment for production.
      *
      * This method should be used in a production environment.
      */
-    public function env_production(): void;
+    public function production(): void;
 
     /**
      * Configure the environment for staging.
      *
      * This method should be used in a staging environment.
      */
-    public function env_staging(): void;
+    public function staging(): void;
 
     /**
      * Configure the environment for development.
      *
      * This method should be used in a development environment.
      */
-    public function env_development(): void;
+    public function development(): void;
 
     /**
      * Configure the environment for debugging.
      *
      * This method should be used for debugging purposes.
      */
-    public function env_debug(): void;
+    public function debug(): void;
+
+    /**
+     * Switches between different environments based on the value of $environment.
+     *
+     * @param string $environment    The environment to switch to.
+     * @param string $error_logs_dir The error logs directory relative path.
+     *
+     * @return void
+     */
+    public function create_environment( string $environment, ?string $error_logs_dir ): void;
 }

@@ -1,13 +1,17 @@
 <?php
 
 use Defuse\Crypto\Key;
+use Dotenv\Dotenv;
+use Dotenv\Exception\InvalidPathException;
+use Symfony\Component\Filesystem\Filesystem;
 use Urisoft\DotAccess;
 use Urisoft\Encryption;
 use Urisoft\Env;
-use Urisoft\SimpleConfig;
+use WPframework\Component\App;
+use WPframework\Component\EnvGenerator;
 use WPframework\Component\Framework;
-use WPframework\Component\Http\App;
 use WPframework\Component\Http\Asset;
+use WPframework\Component\Http\HttpFactory;
 use WPframework\Component\Http\Tenancy;
 use WPframework\Component\Terminate;
 
@@ -60,7 +64,8 @@ function env($name, $defaultOrEncrypt = null, $strtolower = false)
     static $whitelisted;
 
     if ( \is_null( $whitelist ) ) {
-        $whitelist = getEnvWhitelist();
+        $config = new Urisoft\SimpleConfig( _configs_dir(), ['whitelist'] );
+        $whitelist = $config->get('whitelist');
     }
 
     if ( \is_null( $whitelisted ) ) {
@@ -79,43 +84,7 @@ function env($name, $defaultOrEncrypt = null, $strtolower = false)
     return $env->get($name, $defaultOrEncrypt, $strtolower);
 }
 
-/**
- * Retrieves a list of whitelisted environment variable keys.
- *
- * This function includes and returns an array from 'whitelist.php' located in the 'configs' directory.
- * The array contains keys of environment variables that are permitted for use within the framework.
- * Any environment variable not included in this whitelist will not be processed by the framework's
- * environment handling function, enhancing security by restricting access to only those variables
- * explicitly defined in the whitelist.
- *
- * @return array An indexed array containing the keys of allowed environment variables, such as 'DATA_APP', 'APP', etc.
- */
-function getEnvWhitelist(): array
-{
-    $config = new SimpleConfig( __DIR__ . '/configs', ['whitelist'] );
-
-    return $config->get('whitelist');
-}
-
-if ( ! \function_exists( 'getHttpEnv' ) ) {
-    /**
-     * Get the current set wp app env.
-     *
-     * This is used in the compose mu plugin.
-     *
-     * @return null|string the current app env set, or null if not defined
-     */
-    function getHttpEnv(): ?string
-    {
-        if ( ! \defined( 'HTTP_ENV_CONFIG' ) ) {
-            return null;
-        }
-
-        return strtoupper( HTTP_ENV_CONFIG );
-    }
-}
-
-if ( ! \function_exists( 'wpframework' ) ) {
+if ( ! \function_exists( 'app_kernel' ) ) {
     /**
      * Initializes the App Kernel with optional multi-tenant support.
      *
@@ -132,12 +101,54 @@ if ( ! \function_exists( 'wpframework' ) ) {
      * @throws Exception If there are issues loading environment variables or initializing the App.
      * @throws Exception If required multi-tenant environment variables are missing or if the tenant's domain is not recognized.
      *
-     * @return WPframework\Component\Http\BaseKernel The initialized application kernel.
+     * @return WPframework\Component\Kernel The initialized application kernel.
      */
-    function wpframework( string $app_path, string $options = 'app' ): WPframework\Component\Http\BaseKernel
+    function http_component_kernel( string $app_path, string $options_file = 'app' ): WPframework\Component\Kernel
     {
+        // load constants early.
         if ( ! \defined('SITE_CONFIGS_DIR') ) {
             \define( 'SITE_CONFIGS_DIR', 'configs');
+        }
+
+        if ( ! \defined('APP_DIR_PATH') ) {
+            \define( 'APP_DIR_PATH', $app_path );
+        }
+
+        if ( ! \defined('APP_HTTP_HOST') ) {
+            \define( 'APP_HTTP_HOST', HttpFactory::init()->get_http_host() );
+        }
+
+        $app_options = [];
+        $supported_env_files =  _supported_env_files();
+
+        // TODO create a .env file if it doesnyt exist.
+
+        // Filters out environment files that do not exist to avoid warnings.
+        $_env_files = _env_files_filter( $supported_env_files, APP_DIR_PATH );
+
+        // load env from dotenv early.
+        $_dotenv = Dotenv::createImmutable( APP_DIR_PATH, $_env_files, true );
+
+        try {
+            $_dotenv->load();
+        } catch ( InvalidPathException $e ) {
+            try_regenerate_env_file( APP_DIR_PATH, APP_HTTP_HOST, $_env_files );
+
+            $debug = [
+                'path'      => APP_DIR_PATH,
+                'line'      => __LINE__,
+                'exception' => $e,
+                'invalidfile' => "Missing env file: {$e->getMessage()}",
+            ];
+
+            Terminate::exit( [ "Missing env file: {$e->getMessage()}", 500, $debug ] );
+        } catch ( Exception $e ) {
+            $debug = [
+                'path'      => APP_DIR_PATH,
+                'line'      => __LINE__,
+                'exception' => $e,
+            ];
+            Terminate::exit( [ $e->getMessage(), 500, $debug ] );
         }
 
         /**
@@ -145,14 +156,14 @@ if ( ! \function_exists( 'wpframework' ) ) {
          *
          * @var Tenancy
          */
-        $tenancy = new Tenancy( $app_path, SITE_CONFIGS_DIR );
-        $tenancy->initialize();
+        $tenancy = new Tenancy( APP_DIR_PATH, SITE_CONFIGS_DIR );
+        $tenancy->initialize( $_dotenv );
 
         try {
-            $app = new App( $app_path, SITE_CONFIGS_DIR, $options );
+            $app = new App( APP_DIR_PATH, SITE_CONFIGS_DIR, $options_file );
         } catch ( Exception $e ) {
             $debug = [
-                'path'   => $app_path,
+                'path'   => APP_DIR_PATH,
                 'line'   => __LINE__,
                 'exception'   => $e,
             ];
@@ -176,13 +187,7 @@ if ( ! \function_exists( 'wpframeworkCore' ) ) {
             exit;
         }
 
-        static $framework;
-
-        if ( \is_null( $framework ) ) {
-            $framework = Framework::app();
-        }
-
-        return $framework;
+        return _wpframework();
     }
 }
 
@@ -224,7 +229,8 @@ if ( ! \function_exists( 'appConfig' ) ) {
         $site_configs_dir = site_configs_dir();
 
         if ( ! $file_path && ! $filename ) {
-            return require __DIR__ . '/configs/app.php';
+            // return default app array.
+            return require _configs_dir() . '/app.php';
         }
 
         $options_file = "{$file_path}/{$site_configs_dir}/{$filename}.php";
@@ -248,10 +254,9 @@ function site_configs_dir(): ?string
  * This function provides a convenient way to access nested data stored in a configuration file
  * using dot notation. It uses the DotAccess library to facilitate easy access to the data.
  *
- * @param null|string $key         The dot notation key to access the data. If null, the entire
- *                                 configuration data will be returned.
- * @param mixed       $default     The default value to return if the key is not found.
- * @param mixed       $data_access
+ * @param null|string $key     The dot notation key to access the data. If null, the entire
+ *                             configuration data will be returned.
+ * @param mixed       $default The default value to return if the key is not found.
  *
  * @return mixed The value associated with the specified key or the default value if the key
  *               is not found. If no key is provided (null), the entire configuration data is
@@ -259,22 +264,15 @@ function site_configs_dir(): ?string
  *
  * @see https://github.com/devuri/dot-access DotAccess library used for dot notation access.
  */
-function config( ?string $key = null, $default = null, $data_access = false )
+function config( ?string $key = null, $default = null )
 {
-    $dotdata = null;
-    $options = _app_options( APP_PATH );
-
-    if ( $data_access ) {
-        $dotdata = $data_access;
-    } elseif ( \is_array( $options ) ) {
-        $dotdata = new DotAccess( $options );
-    }
+    $_options = _wpframework()->options();
 
     if ( \is_null( $key ) ) {
-        return $dotdata;
+        return $_options;
     }
 
-    return $dotdata->get( $key, $default );
+    return $_options->get( $key, $default );
 }
 
 /**
@@ -350,18 +348,6 @@ function wpSanitize( string $input ): string
     return filter_var($input, FILTER_UNSAFE_RAW, FILTER_FLAG_NO_ENCODE_QUOTES);
 }
 
-function envTenantId(): ?string
-{
-    if ( \defined( 'APP_TENANT_ID' ) ) {
-        return APP_TENANT_ID;
-    }
-    if ( env( 'APP_TENANT_ID' ) ) {
-        return env( 'APP_TENANT_ID' );
-    }
-
-    return null;
-}
-
 /**
  * Cleans up sensitive environment variables.
  *
@@ -408,15 +394,84 @@ function get_packages( string $app_path ): array
     return $composer_json['require'] ?? [];
 }
 
-function _app_options( ?string $app_path = null ): ?array
+function _configs_dir(): string
 {
-    $options_file = $app_path . '/' . site_configs_dir() . '/app.php';
+    return  __DIR__ . '/configs';
+}
 
-    if ( file_exists( $options_file ) ) {
-        $app_options = require $options_file;
-    } else {
-        $app_options = null;
+function _wpframework( ?string $app_path = null ): ?Framework
+{
+    static $framework;
+
+    if ( \is_null( $framework ) ) {
+        $framework = new Framework( $app_path );
     }
 
-    return \is_array( $app_options ) ? $app_options : null;
+    return $framework;
+}
+
+
+/**
+ * Retrieves the default file names for environment configuration.
+ *
+ * This protected method is designed to return an array of default file names
+ * used for environment configuration in a WordPress environment.
+ * These file names include various formats and stages of environment setup,
+ * such as production, staging, development, and local environments.
+ *
+ * @since [version number]
+ *
+ * @return array An array of default file names for environment configurations.
+ *               The array includes the following file names:
+ *               - 'env'
+ *               - '.env'
+ *               - '.env.secure'
+ *               - '.env.prod'
+ *               - '.env.staging'
+ *               - '.env.dev'
+ *               - '.env.debug'
+ *               - '.env.local'
+ *               - 'env.local'
+ */
+function _supported_env_files(): array
+{
+    return [
+        'env',
+        '.env',
+        '.env.secure',
+        '.env.prod',
+        '.env.staging',
+        '.env.dev',
+        '.env.debug',
+        '.env.local',
+        'env.local',
+    ];
+}
+
+/**
+ * Filters out environment files that do not exist to avoid warnings.
+ */
+function _env_files_filter( array $env_files, string $app_path ): array
+{
+    foreach ( $env_files as $key => $file ) {
+        if ( ! file_exists( $app_path . '/' . $file ) ) {
+            unset( $env_files[ $key ] );
+        }
+    }
+
+    return $env_files;
+}
+
+/**
+ * Regenerates the tenant-specific .env file if it doesn't exist.
+ *
+ * @param string $tenant_id Tenant's UUID.
+ */
+function try_regenerate_env_file( string $app_path, string $app_http_host, array $available_files = [] ): void
+{
+    $app_main_env_file = "{$app_path}/.env";
+    if ( ! file_exists( $app_main_env_file ) && empty( $available_files ) ) {
+        $generator = new EnvGenerator( new Filesystem() );
+        $generator->create( $app_main_env_file, $app_http_host );
+    }
 }

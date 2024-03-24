@@ -2,7 +2,7 @@
 
 namespace WPframework\Component;
 
-interface ConfigInterface
+interface SetupInterface
 {
     /**
      * Runs config setup.

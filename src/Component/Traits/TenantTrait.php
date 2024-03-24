@@ -7,6 +7,43 @@ use Exception;
 trait TenantTrait
 {
     /**
+     * Get the current set wp app env.
+     *
+     * This is used in the compose mu plugin.
+     *
+     * @return null|string the current app env set, or null if not defined
+     */
+    public function get_http_env(): ?string
+    {
+        if ( ! \defined( 'HTTP_ENV_CONFIG' ) ) {
+            return null;
+        }
+
+        return strtoupper( HTTP_ENV_CONFIG );
+    }
+
+    /*
+     * The tenant ID for the application.
+     *
+     * This sets the tenant ID based on the environment configuration. The `APP_TENANT_ID`
+     * can be configured in the `.env` file. Setting `APP_TENANT_ID` to false will disable the
+     * custom uploads directory behavior that is typically used in a multi-tenant setup. In a
+     * multi-tenant environment, `APP_TENANT_ID` is required and must always be set. The method
+     * uses `envTenantId()` function to retrieve the tenant ID from the environment settings.
+     */
+    public static function env_tenant_id(): ?string
+    {
+        if ( \defined( 'APP_TENANT_ID' ) ) {
+            return APP_TENANT_ID;
+        }
+        if ( env( 'APP_TENANT_ID' ) ) {
+            return env( 'APP_TENANT_ID' );
+        }
+
+        return null;
+    }
+
+    /**
      * Retrieves the path for a tenant-specific file, with an option to enforce strict finding.
      *
      * In a multi-tenant application, this function attempts to find a file specific to the current tenant.

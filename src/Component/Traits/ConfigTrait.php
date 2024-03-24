@@ -2,7 +2,7 @@
 
 namespace WPframework\Component\Traits;
 
-use WPframework\Component\ConfigInterface;
+use WPframework\Component\SetupInterface;
 
 trait ConfigTrait
 {
@@ -11,7 +11,7 @@ trait ConfigTrait
      *
      * @return static
      */
-    public function site_url(): ConfigInterface
+    public function site_url(): SetupInterface
     {
         $this->define( 'WP_HOME', env( 'WP_HOME' ) );
         $this->define( 'WP_SITEURL', env( 'WP_SITEURL' ) );
@@ -24,7 +24,7 @@ trait ConfigTrait
      *
      * @return static
      */
-    public function assetUrl(): ConfigInterface
+    public function assetUrl(): SetupInterface
     {
         $this->define( 'ASSET_URL', env( 'ASSET_URL' ) );
 
@@ -36,7 +36,7 @@ trait ConfigTrait
      *
      * @return static
      */
-    public function optimize(): ConfigInterface
+    public function optimize(): SetupInterface
     {
         $this->define( 'CONCATENATE_SCRIPTS', env( 'CONCATENATE_SCRIPTS' ) ?? self::const( 'optimize' ) );
 
@@ -48,7 +48,7 @@ trait ConfigTrait
      *
      * @return static
      */
-    public function memory(): ConfigInterface
+    public function memory(): SetupInterface
     {
         $this->define( 'WP_MEMORY_LIMIT', env( 'MEMORY_LIMIT' ) ?? self::const( 'memory' ) );
         $this->define( 'WP_MAX_MEMORY_LIMIT', env( 'MAX_MEMORY_LIMIT' ) ?? self::const( 'memory' ) );
@@ -61,7 +61,7 @@ trait ConfigTrait
      *
      * @return static
      */
-    public function force_ssl(): ConfigInterface
+    public function force_ssl(): SetupInterface
     {
         $this->define( 'FORCE_SSL_ADMIN', env( 'FORCE_SSL_ADMIN' ) ?? self::const( 'ssl_admin' ) );
         $this->define( 'FORCE_SSL_LOGIN', env( 'FORCE_SSL_LOGIN' ) ?? self::const( 'ssl_login' ) );
@@ -74,7 +74,7 @@ trait ConfigTrait
      *
      * @return static
      */
-    public function autosave(): ConfigInterface
+    public function autosave(): SetupInterface
     {
         $this->define( 'AUTOSAVE_INTERVAL', env( 'AUTOSAVE_INTERVAL' ) ?? self::const( 'autosave' ) );
         $this->define( 'WP_POST_REVISIONS', env( 'WP_POST_REVISIONS' ) ?? self::const( 'revisions' ) );
@@ -87,7 +87,7 @@ trait ConfigTrait
      *
      * @return static
      */
-    public function database(): ConfigInterface
+    public function database(): SetupInterface
     {
         $this->define( 'DB_NAME', env( 'DB_NAME' ) );
         $this->define( 'DB_USER', env( 'DB_USER' ) );
@@ -105,7 +105,7 @@ trait ConfigTrait
      *
      * @return static
      */
-    public function salts(): ConfigInterface
+    public function salts(): SetupInterface
     {
         $this->define( 'AUTH_KEY', env( 'AUTH_KEY' ) );
         $this->define( 'SECURE_AUTH_KEY', env( 'SECURE_AUTH_KEY' ) );

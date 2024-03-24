@@ -1,13 +1,11 @@
 <?php
 
-namespace WPframework\Component\Http;
+namespace WPframework\Component;
 
 use Exception;
 use Symfony\Component\ErrorHandler\Debug;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
-use WPframework\Component\Setup;
-use WPframework\Component\Terminate;
 
 /**
  * The App class serves as the main entry point for initializing the WordPress application.
@@ -96,16 +94,16 @@ class App
     }
 
     /**
-     * Initializes and returns a BaseKernel object with the application's configuration.
+     * Initializes and returns a Kernel object with the application's configuration.
      *
      * This method ensures the configuration (`$this->config`) is an array before
-     * passing it to the BaseKernel constructor. If `$this->config` is not an array,
+     * passing it to the Kernel constructor. If `$this->config` is not an array,
      * the application is terminated with an error message to prevent type errors.
      *
-     * @return BaseKernel Returns an instance of BaseKernel initialized with the
-     *                    application path, configuration array, and setup object.
+     * @return Kernel Returns an instance of Kernel initialized with the
+     *                application path, configuration array, and setup object.
      */
-    public function kernel(): BaseKernel
+    public function kernel(): Kernel
     {
         if ( ! \is_array( $this->config ) ) {
             $debug = [
@@ -114,10 +112,10 @@ class App
                 'path'   => $this->app_path,
                 'line'   => __LINE__,
             ];
-            Terminate::exit( [ 'Uncaught TypeError: BaseKernel($args) must be of type array', 500, $debug ] );
+            Terminate::exit( [ 'Uncaught TypeError: Kernel($args) must be of type array', 500, $debug ] );
         }
 
-        return new BaseKernel( $this->app_path, $this->config, $this->setup );
+        return new Kernel( $this->app_path, $this->config, $this->setup );
     }
 
     /**

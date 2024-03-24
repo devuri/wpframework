@@ -7,19 +7,18 @@ use Exception;
 use Symfony\Component\ErrorHandler\Debug;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
+use WPframework\Component\Http\EnvSwitcherInterface as Switcher;
 use WPframework\Component\Traits\ConfigTrait;
 use WPframework\Component\Traits\ConstantBuilderTrait;
-use WPframework\Component\Traits\EnvironmentSwitch;
 use WPframework\Component\Traits\TenantTrait;
 
 /**
  * Setup WP Config.
  */
-class Setup implements ConfigInterface
+class Setup implements SetupInterface
 {
     use ConfigTrait;
     use ConstantBuilderTrait;
-    use EnvironmentSwitch;
     use TenantTrait;
 
     /**
@@ -80,6 +79,13 @@ class Setup implements ConfigInterface
     protected $short_circuit;
 
     /**
+     * setup environment switcher.
+     *
+     * @var bool
+     */
+    protected $switcher;
+
+    /**
      * Set supported env types.
      *
      * @var array
@@ -136,7 +142,7 @@ class Setup implements ConfigInterface
      *
      * @return self
      */
-    public function config( $environment = null, ?bool $setup = true ): ConfigInterface
+    public function config( $environment = null, ?bool $setup = true ): SetupInterface
     {
         // check required vars.
         $this->is_required();
@@ -151,7 +157,7 @@ class Setup implements ConfigInterface
 
         // self::init( __DIR__ )->config('production')
         $environment         = $this->normalize_environment( $environment );
-        $this->error_log_dir = $environment['error_log'] ?? false;
+        $this->error_log_dir = $environment['error_log'] ?? null;
         $this->error_handler = $environment['errors'] ?? null;
         $this->environment   = $this->determine_environment( $environment['environment'] );
 
@@ -184,12 +190,17 @@ class Setup implements ConfigInterface
         return $this;
     }
 
+    public function set_switcher( Switcher $switcher ): void
+    {
+        $this->switcher = $switcher;
+    }
+
     /**
      * Setting the environment type.
      *
      * @return static
      */
-    public function set_environment(): ConfigInterface
+    public function set_environment(): SetupInterface
     {
         if ( false === $this->environment && env( 'WP_ENVIRONMENT_TYPE' ) ) {
             $this->define( 'WP_ENVIRONMENT_TYPE', env( 'WP_ENVIRONMENT_TYPE' ) );
@@ -249,7 +260,7 @@ class Setup implements ConfigInterface
      *
      * @return static
      */
-    public function set_error_handler( ?string $handler = null ): ConfigInterface
+    public function set_error_handler( ?string $handler = null ): SetupInterface
     {
         if ( ! $this->enable_error_handler() ) {
             return $this;
@@ -285,7 +296,7 @@ class Setup implements ConfigInterface
      *
      * @return static
      */
-    public function debug( $error_log_dir ): ConfigInterface
+    public function debug( $error_log_dir ): SetupInterface
     {
         if ( false === $this->environment && env( 'WP_ENVIRONMENT_TYPE' ) ) {
             $this->reset_environment( env( 'WP_ENVIRONMENT_TYPE' ) );
@@ -296,13 +307,13 @@ class Setup implements ConfigInterface
         }
 
         if ( ! EnvTypes::is_valid( $this->environment ) ) {
-            $this->env_production();
+            $this->switcher->create_environment( 'production', $this->error_log_dir );
 
             return $this;
         }
 
         // Switch between different environments
-        $this->environment_switch();
+        $this->switcher->create_environment( $this->environment, $this->error_log_dir );
 
         return $this;
     }
@@ -434,44 +445,6 @@ class Setup implements ConfigInterface
             '.env.local',
             'env.local',
         ];
-    }
-
-    /**
-     * Switches between different environments based on the value of $this->environment.
-     *
-     * @return void
-     */
-    protected function environment_switch(): void
-    {
-        switch ( $this->environment ) {
-            case 'production':
-            case 'prod':
-                $this->env_production();
-
-                break;
-            case 'staging':
-                $this->env_staging();
-
-                break;
-            case 'deb':
-            case 'debug':
-            case 'local':
-                $this->env_debug();
-
-                break;
-            case 'development':
-            case 'dev':
-                $this->env_development();
-
-                break;
-            case 'secure':
-            case 'sec':
-                $this->env_secure();
-
-                break;
-            default:
-                $this->env_production();
-        }// end switch
     }
 
     protected function enable_error_handler(): bool
