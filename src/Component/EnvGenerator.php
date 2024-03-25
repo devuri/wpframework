@@ -74,7 +74,7 @@ class EnvGenerator
 		WP_HOME='$home_url'
 		WP_SITEURL="$site_url"
 
-		WP_ENVIRONMENT_TYPE='debug'
+		WP_ENVIRONMENT_TYPE='secure'
 		DISABLE_WP_APPLICATION_PASSWORDS=true
 		SUDO_ADMIN='1'
 
