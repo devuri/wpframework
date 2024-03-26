@@ -86,7 +86,7 @@ abstract class AbstractKernel implements TenantInterface
      */
     protected $configs_dir;
 
-	protected $args = [
+    protected $args = [
         'web_root'         => 'public',
         'wp_dir_path'      => 'wp',
         'wordpress'        => 'wp',
@@ -108,6 +108,69 @@ abstract class AbstractKernel implements TenantInterface
         'redis'            => [],
         'security'         => [],
     ];
+
+    /**
+     * Constructs the AbstractKernel object and initializes the application setup.
+     * It loads the application configuration and sets up environment-specific settings.
+     *
+     * @param string     $app_path The base path of the application.
+     * @param string[]   $args     Optional arguments for further configuration.
+     * @param null|Setup $setup    Optional Setup object for custom setup configuration.
+     *
+     * @throws Exception                If a critical setup error occurs.
+     * @throws InvalidArgumentException If the provided arguments are not valid.
+     */
+    public function __construct( string $app_path, ?array $args = [], ?Setup $setup = null )
+    {
+        $this->app_path    = $app_path;
+        $this->configs_dir = SITE_CONFIGS_DIR;
+
+        if ( \is_null( $args ) || empty( $args ) ) {
+            $this->args = array_merge( $this->args, self::get_default_config() );
+        } elseif ( ! \is_array( $args ) ) {
+            throw new InvalidArgumentException( 'Error: args must be of type array', 1 );
+        }
+
+        if ( \array_key_exists( 'theme_dir', $args ) ) {
+            $this->args['templates_dir'] = $args['theme_dir'];
+        }
+
+        // @codingStandardsIgnoreLine
+        if (\array_key_exists('wordpress', $args)) {
+            $this->args['wp_dir_path'] = $args['wordpress'];
+        }
+
+        $this->args = array_merge( $this->args, $args );
+
+        $this->config_file = $this->args['config_file'];
+
+        $this->tenant_id = $this->env_tenant_id();
+
+        /*
+         * By default, Dotenv will stop looking for files as soon as it finds one.
+         *
+         * To disable this behaviour, and load all files in order,
+         * we can disable the file loading with the `short_circuit` bool param.
+         *
+         * ['env', '.env', '.env.secure', '.env.prod', '.env.staging', '.env.dev', '.env.debug', '.env.local']
+         * Since these will load in order we can control our env by simply creating file that matches
+         * the environment on say staging we would create '.env.staging' since it's the only file available
+         * those will be the only values loaded.
+         *
+         * We can use Setup methods `get_short_circuit()` and `get_env_files()`
+         * to know how the enviroment is configured.
+         *
+         * @link https://github.com/vlucas/phpdotenv/pull/394
+         */
+        if ( \is_null( $setup ) ) {
+            $this->app_setup = Setup::init( $this->app_path );
+        } else {
+            $this->app_setup = $setup;
+        }
+
+        // set the environment switcher.
+        $this->app_setup->set_switcher( new Switcher() );
+    }
 
     /**
      * Defines constants.
@@ -230,87 +293,6 @@ abstract class AbstractKernel implements TenantInterface
 
         // web app security key
         $this->define( 'WEBAPP_ENCRYPTION_KEY', $this->security( 'encryption_key' ) );
-    }
-
-    protected function redis( string $key )
-    {
-        if ( empty( $this->args['redis'] ) ) {
-            return null;
-        }
-
-        return $this->args['redis'][ $key ] ?? null;
-    }
-
-    protected function security( string $key )
-    {
-        if ( empty( $this->args['security'] ) ) {
-            return null;
-        }
-
-        return $this->args['security'][ $key ] ?? null;
-    }
-
-    /**
-     * Constructs the AbstractKernel object and initializes the application setup.
-     * It loads the application configuration and sets up environment-specific settings.
-     *
-     * @param string     $app_path The base path of the application.
-     * @param string[]   $args     Optional arguments for further configuration.
-     * @param null|Setup $setup    Optional Setup object for custom setup configuration.
-     *
-     * @throws Exception                If a critical setup error occurs.
-     * @throws InvalidArgumentException If the provided arguments are not valid.
-     */
-    public function __construct( string $app_path, ?array $args = [], ?Setup $setup = null )
-    {
-        $this->app_path    = $app_path;
-        $this->configs_dir = SITE_CONFIGS_DIR;
-
-        if ( \is_null( $args ) || empty( $args ) ) {
-            $this->args = array_merge( $this->args, self::get_default_config() );
-        } elseif ( ! \is_array( $args ) ) {
-            throw new InvalidArgumentException( 'Error: args must be of type array', 1 );
-        }
-
-        if ( \array_key_exists( 'theme_dir', $args ) ) {
-            $this->args['templates_dir'] = $args['theme_dir'];
-        }
-
-        // @codingStandardsIgnoreLine
-        if (\array_key_exists('wordpress', $args)) {
-            $this->args['wp_dir_path'] = $args['wordpress'];
-        }
-
-        $this->args = array_merge( $this->args, $args );
-
-        $this->config_file = $this->args['config_file'];
-
-        $this->tenant_id = $this->env_tenant_id();
-
-        /*
-         * By default, Dotenv will stop looking for files as soon as it finds one.
-         *
-         * To disable this behaviour, and load all files in order,
-         * we can disable the file loading with the `short_circuit` bool param.
-         *
-         * ['env', '.env', '.env.secure', '.env.prod', '.env.staging', '.env.dev', '.env.debug', '.env.local']
-         * Since these will load in order we can control our env by simply creating file that matches
-         * the environment on say staging we would create '.env.staging' since it's the only file available
-         * those will be the only values loaded.
-         *
-         * We can use Setup methods `get_short_circuit()` and `get_env_files()`
-         * to know how the enviroment is configured.
-         *
-         * @link https://github.com/vlucas/phpdotenv/pull/394
-         */
-        if ( \is_null( $setup ) ) {
-            $this->app_setup = Setup::init( $this->app_path );
-        } else {
-            $this->app_setup = $setup;
-        }
-
-        // set the environment switcher.
-        $this->app_setup->set_switcher( new Switcher() );
     }
 
     /**
@@ -535,6 +517,24 @@ abstract class AbstractKernel implements TenantInterface
         $user_constants = get_defined_constants( true )['user'];
 
         return self::encrypt_secret( $user_constants, self::env_secrets() );
+    }
+
+    protected function redis( string $key )
+    {
+        if ( empty( $this->args['redis'] ) ) {
+            return null;
+        }
+
+        return $this->args['redis'][ $key ] ?? null;
+    }
+
+    protected function security( string $key )
+    {
+        if ( empty( $this->args['security'] ) ) {
+            return null;
+        }
+
+        return $this->args['security'][ $key ] ?? null;
     }
 
     /**
