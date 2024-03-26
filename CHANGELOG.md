@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/devuri/wpframework/compare/v0.2.1...v0.2.2) (2024-03-26)
+
+
+### Miscellaneous Chores
+
+* build ([e25cd9a](https://github.com/devuri/wpframework/commit/e25cd9a1787800af24cb0a325d72057f41fa597b))
+
 ## [0.2.1](https://github.com/devuri/wpframework/compare/v0.2.0...v0.2.1) (2024-03-25)
 
 
