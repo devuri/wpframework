@@ -87,15 +87,19 @@ abstract class AbstractKernel implements TenantInterface
     protected $configs_dir;
 
     protected $args = [
-        'web_root'         => 'public',
         'wp_dir_path'      => 'wp',
         'wordpress'        => 'wp',
-        'asset_dir'        => 'assets',
-        'content_dir'      => 'content',
-        'plugin_dir'       => 'plugins',
-        'mu_plugin_dir'    => 'mu-plugins',
-        'sqlite_dir'       => 'sqlitedb',
-        'sqlite_file'      => '.sqlite-wpdatabase',
+		"directory" => [
+			"web_root_dir" => "public",
+			"content_dir" => "content",
+			"plugin_dir" => "content/plugins",
+			"mu_plugin_dir" => "content/mu-plugins",
+			"sqlite_dir" => "sqlitedb",
+			"sqlite_file" => ".sqlite-wpdatabase",
+			"theme_dir" => "templates",
+			"asset_dir" => "assets",
+			"publickey_dir" => "pubkeys",
+		],
         'default_theme'    => 'twentytwentythree',
         'disable_updates'  => true,
         'can_deactivate'   => true,
@@ -191,7 +195,7 @@ abstract class AbstractKernel implements TenantInterface
         $this->define( 'PUBLIC_WEB_DIR', APP_PATH . '/' . $this->args['directory']['web_root_dir'] );
 
         // wp dir path
-        $this->define( 'WP_DIR_PATH', PUBLIC_WEB_DIR . '/' . $this->args['directory']['wp_dir_path'] );
+        $this->define( 'WP_DIR_PATH', PUBLIC_WEB_DIR . '/' . $this->args['wp_dir_path'] );
 
         // define assets dir.
         $this->define( 'APP_ASSETS_DIR', PUBLIC_WEB_DIR . '/' . $this->args['directory']['asset_dir'] );
