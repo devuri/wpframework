@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/devuri/wpframework/compare/v0.2.0...v0.2.1) (2024-03-25)
+
+
+### Features
+
+* new env files should default to `WP_ENVIRONMENT_TYPE='secure'` ([5425856](https://github.com/devuri/wpframework/commit/54258569534387b90f5e99ae63638f71a0131340))
+
 ## [0.2.0](https://github.com/devuri/wpframework/compare/v0.1.0...v0.2.0) (2024-03-24)
 
 
