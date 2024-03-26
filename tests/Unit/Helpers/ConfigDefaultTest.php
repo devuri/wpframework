@@ -60,15 +60,15 @@ class ConfigDefaultTest extends TestCase
         $this->assertNull($configs['sudo_admin_group']);
 
         // Web root and directories checks
-        $this->assertEquals('public', $configs['web_root']);
-        $this->assertEquals('assets', $configs['asset_dir']);
-        $this->assertEquals('app', $configs['content_dir']);
-        $this->assertEquals('plugins', $configs['plugin_dir']);
-        $this->assertEquals('mu-plugins', $configs['mu_plugin_dir']);
-        $this->assertEquals('sqlitedb', $configs['sqlite_dir']);
-        $this->assertEquals('.sqlite-wpdatabase', $configs['sqlite_file']);
-        $this->assertEquals('brisko', $configs['default_theme']);
-        $this->assertEquals('templates', $configs['theme_dir']);
+        $this->assertEquals('public', $configs['directory']['web_root_dir']);
+        $this->assertEquals('assets', $configs['directory']['asset_dir']);
+        $this->assertEquals('content', $configs['directory']['content_dir']);
+        $this->assertEquals('content/plugins', $configs['directory']['plugin_dir']);
+        $this->assertEquals('content/mu-plugins', $configs['directory']['mu_plugin_dir']);
+        $this->assertEquals('sqlitedb', $configs['directory']['sqlite_dir']);
+        $this->assertEquals('.sqlite-wpdatabase', $configs['directory']['sqlite_file']);
+        $this->assertEquals('twentytwentythree', $configs['default_theme']);
+        $this->assertEquals('templates', $configs['directory']['theme_dir']);
 
         // Boolean checks
         $this->assertTrue($configs['disable_updates']);

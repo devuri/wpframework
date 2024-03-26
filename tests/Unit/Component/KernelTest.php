@@ -37,6 +37,17 @@ class KernelTest extends TestCase
             "terminate" => [
                 'debugger' => false,
             ],
+			"directory" => [
+			    "web_root_dir" => "public",
+			    "content_dir" => "content",
+			    "plugin_dir" => "content/plugins",
+			    "mu_plugin_dir" => "content/mu-plugins",
+			    "sqlite_dir" => "sqlitedb",
+			    "sqlite_file" => ".sqlite-wpdatabase",
+			    "theme_dir" => "templates",
+			    "asset_dir" => "assets",
+			    "publickey_dir" => "pubkeys",
+			],
             "security" => [
                 "encryption_key" => null,
                 "brute-force" => true,
@@ -63,7 +74,6 @@ class KernelTest extends TestCase
             ],
             "sudo_admin" => 1,
             "sudo_admin_group" => null,
-            "web_root" => "public",
             "s3uploads" => [
                 "bucket" => "site-uploads",
                 "key" => "",
@@ -74,16 +84,8 @@ class KernelTest extends TestCase
                 "expires" => "2 days",
                 "http-cache" => 300,
             ],
-            "asset_dir" => "assets",
-            "content_dir" => "app",
-            "plugin_dir" => "plugins",
-            "mu_plugin_dir" => "mu-plugins",
-            "sqlite_dir" => "sqlitedb",
-            "sqlite_file" => ".sqlite-wpdatabase",
-            "default_theme" => "brisko",
             "disable_updates" => true,
             "can_deactivate" => true,
-            "theme_dir" => "templates",
             "error_handler" => null,
             "redis" => [
                 "disabled" => false,
@@ -99,13 +101,13 @@ class KernelTest extends TestCase
                 "read-timeout" => 1,
             ],
             "publickey" => ["app-key" => "b75b666f-ac11-4342-b001-d2546f1d3a5b"],
-            "publickey_dir" => "pubkeys",
             "config_file" => "config",
             "wp_dir_path" => "wp",
             "wordpress" => "wp",
-            'templates_dir' => null,
             'sucuri_waf' => false,
         ];
+
+		//dump($this->http_app->get_args());
 
         $this->assertEquals( $default, $this->http_app->get_args());
     }
@@ -178,31 +180,5 @@ class KernelTest extends TestCase
         $this->assertEquals( 38, $count );
 
         $this->assertEquals( $const_defaults, $this->http_app->get_defined());
-    }
-
-    public function default_args(): array
-    {
-        return [
-            "web_root" => "public",
-            "wp_dir_path" => "wp",
-            "wordpress" => "wp",
-            "asset_dir" => "assets",
-            "content_dir" => "content",
-            "plugin_dir" => "plugins",
-            "mu_plugin_dir" => "mu-plugins",
-            "sqlite_dir" => "sqlitedb",
-            "sqlite_file" => ".sqlite-wpdatabase",
-            "default_theme" => "twentytwentythree",
-            "disable_updates" => true,
-            "can_deactivate" => true,
-            "error_handler" => "symfony",
-            "config_file" => "config",
-            'templates_dir' => null,
-            "sudo_admin" => null,
-            "sudo_admin_group" => null,
-            "sucuri_waf" => false,
-            'redis' => [],
-            'security' => [],
-        ];
     }
 }

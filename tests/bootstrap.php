@@ -5,6 +5,7 @@ require_once \dirname( __FILE__, 2 ) . '/vendor/autoload.php';
 // app test path
 \define('APP_SRC_PATH', \dirname( __FILE__, 2 ) . '/src' );
 \define('APP_TEST_PATH', __DIR__ );
+\define('APP_DIR_PATH', __DIR__ );
 \define('ABSPATH', __DIR__ );
 \define( 'WEBAPP_ENCRYPTION_KEY', APP_TEST_PATH . '/.secret.txt' );
 \define( 'SITE_CONFIGS_DIR', 'configs' );
