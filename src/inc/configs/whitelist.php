@@ -6,6 +6,19 @@
  */
 return [
     'framework' => [
+        'ERROR_HANDLER',
+        'WEB_ROOT_DIR',
+        'CONTENT_DIR',
+        'PLUGIN_DIR',
+        'MU_PLUGIN_DIR',
+        'SQLITE_DIR',
+        'SQLITE_FILE',
+        'THEME_DIR',
+        'ASSET_DIR',
+        'PUBLICKEY_DIR',
+        'DEFAULT_THEME',
+        'DISABLE_UPDATES',
+        'CAN_DEACTIVATE',
         'APP_ASSETS_DIR',
         'APP_CONTENT_DIR',
         'APP_HTTP_HOST',

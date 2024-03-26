@@ -72,7 +72,7 @@ function env($name, $defaultOrEncrypt = null, $strtolower = false)
         $whitelisted = array_merge( $whitelist['framework'], $whitelist['wp']);
     }
 
-    $encryptionPath = \defined('APP_PATH') ? APP_PATH : '';
+    $encryptionPath = \defined('APP_PATH') ? APP_PATH : APP_DIR_PATH;
 
     // Instance of the Env class with your predefined settings
     static $env = null;
@@ -81,7 +81,13 @@ function env($name, $defaultOrEncrypt = null, $strtolower = false)
     }
 
     // Get the environment variable value
-    return $env->get($name, $defaultOrEncrypt, $strtolower);
+    try {
+        $env_var = $env->get($name, $defaultOrEncrypt, $strtolower);
+    } catch (Exception $e) {
+        Terminate::exit( [ "Missing env var: {$e->getMessage()}" ] );
+    }
+
+    return $env_var;
 }
 
 if ( ! \function_exists( 'app_kernel' ) ) {
