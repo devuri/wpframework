@@ -37,17 +37,17 @@ class KernelTest extends TestCase
             "terminate" => [
                 'debugger' => false,
             ],
-			"directory" => [
-			    "web_root_dir" => "public",
-			    "content_dir" => "content",
-			    "plugin_dir" => "content/plugins",
-			    "mu_plugin_dir" => "content/mu-plugins",
-			    "sqlite_dir" => "sqlitedb",
-			    "sqlite_file" => ".sqlite-wpdatabase",
-			    "theme_dir" => "templates",
-			    "asset_dir" => "assets",
-			    "publickey_dir" => "pubkeys",
-			],
+            "directory" => [
+                "web_root_dir" => "public",
+                "content_dir" => "content",
+                "plugin_dir" => "content/plugins",
+                "mu_plugin_dir" => "content/mu-plugins",
+                "sqlite_dir" => "sqlitedb",
+                "sqlite_file" => ".sqlite-wpdatabase",
+                "theme_dir" => "templates",
+                "asset_dir" => "assets",
+                "publickey_dir" => "pubkeys",
+            ],
             "security" => [
                 "encryption_key" => null,
                 "brute-force" => true,
@@ -107,7 +107,7 @@ class KernelTest extends TestCase
             'sucuri_waf' => false,
         ];
 
-		//dump($this->http_app->get_args());
+        // dump($this->http_app->get_args());
 
         $this->assertEquals( $default, $this->http_app->get_args());
     }
