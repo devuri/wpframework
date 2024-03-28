@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.3](https://github.com/devuri/wpframework/compare/v0.2.2...v0.2.3) (2024-03-28)
+
+
+### Bug Fixes
+
+* fixes env() func `$default` value ([64c41e1](https://github.com/devuri/wpframework/commit/64c41e1cfe9f7989a9ce167cd774c547aac84913))
+
+
+### Miscellaneous Chores
+
+* build ([9b2c9a9](https://github.com/devuri/wpframework/commit/9b2c9a969bcdde545fac6739fdb70a147fe7606c))
+
 ## [0.2.2](https://github.com/devuri/wpframework/compare/v0.2.1...v0.2.2) (2024-03-26)
 
 
