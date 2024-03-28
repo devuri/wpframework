@@ -52,10 +52,10 @@ if ( ! \function_exists( 'assetUrl' ) ) {
 /**
  * Retrieves a sanitized, and optionally encrypted or modified, environment variable by name.
  *
- * @param string $name             The name of the environment variable to retrieve.
- * @param mixed  $default Default value to return if the environment variable is not set
- * @param bool   $encrypt       Indicate that the value should be encrypted. Defaults to false.
- * @param bool   $strtolower       Whether to convert the retrieved value to lowercase. Defaults to false.
+ * @param string $name       The name of the environment variable to retrieve.
+ * @param mixed  $default    Default value to return if the environment variable is not set
+ * @param bool   $encrypt    Indicate that the value should be encrypted. Defaults to false.
+ * @param bool   $strtolower Whether to convert the retrieved value to lowercase. Defaults to false.
  *
  * @throws InvalidArgumentException If the requested environment variable name is not in the whitelist
  *                                  or if encryption is requested but the encryption path is not defined.
@@ -63,7 +63,7 @@ if ( ! \function_exists( 'assetUrl' ) ) {
  * @return mixed The sanitized environment variable value, possibly encrypted or typecast,
  *               or transformed to lowercase if specified.
  */
-function env( $name, $default = null, $encrypt = false, $strtolower = false ) {
+function env( $name, $default = null, $encrypt = false, $strtolower = false )
 {
     static $whitelist;
     static $whitelisted;
@@ -91,15 +91,14 @@ function env( $name, $default = null, $encrypt = false, $strtolower = false ) {
     try {
         $env_var = $env->get($name, $default, $encrypt, $strtolower);
     } catch (Exception $e) {
+        $debug = [
+            'path'      => $encryptionPath,
+            'line'      => __LINE__,
+            'exception' => $e,
+            'invalidfile' => "Missing env file: {$e->getMessage()}",
+        ];
 
-		$debug = [
-			'path'      => $encryptionPath,
-			'line'      => __LINE__,
-			'exception' => $e,
-			'invalidfile' => "Missing env file: {$e->getMessage()}",
-		];
-
-		Terminate::exit( [ "Missing env() var: {$e->getMessage()}", 500, $debug ] );
+        Terminate::exit( [ "Missing env() var: {$e->getMessage()}", 500, $debug ] );
     }
 
     return $env_var;
