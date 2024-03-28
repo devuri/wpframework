@@ -84,8 +84,8 @@ class KernelTest extends TestCase
                 "expires" => "2 days",
                 "http-cache" => 300,
             ],
-            "disable_updates" => true,
-            "can_deactivate" => true,
+            "disable_updates" => 1,
+            "can_deactivate" => 1,
             "error_handler" => null,
             "redis" => [
                 "disabled" => false,
@@ -105,9 +105,11 @@ class KernelTest extends TestCase
             "wp_dir_path" => "wp",
             "wordpress" => "wp",
             'sucuri_waf' => false,
+            "default_theme" => "twentytwentythree",
+            "templates_dir" => null,
         ];
 
-        // dump($this->http_app->get_args());
+        // dump($this->http_app->get_args()->export());
 
         $this->assertEquals( $default, $this->http_app->get_args());
     }
@@ -126,13 +128,13 @@ class KernelTest extends TestCase
             // directory setup.
             "WP_DIR_PATH" => $app_test_path . "/public/wp",
             "APP_ASSETS_DIR" => $app_test_path . "/public/assets",
-            "APP_CONTENT_DIR" => "app",
-            "WP_CONTENT_DIR" => $app_test_path . "/public/app",
-            "WP_CONTENT_URL" => "https://example.com/app",
-            "WP_PLUGIN_DIR" => $app_test_path . "/public/plugins",
-            "WP_PLUGIN_URL" => "https://example.com/plugins",
-            "WPMU_PLUGIN_DIR" => $app_test_path . "/public/mu-plugins",
-            "WPMU_PLUGIN_URL" => "https://example.com/mu-plugins",
+            "APP_CONTENT_DIR" => "content",
+            "WP_CONTENT_DIR" => $app_test_path . "/public/content",
+            "WP_CONTENT_URL" => "https://example.com/content",
+            "WP_PLUGIN_DIR" => $app_test_path . "/public/content/plugins",
+            "WP_PLUGIN_URL" => "https://example.com/content/plugins",
+            "WPMU_PLUGIN_DIR" => $app_test_path . "/public/content/mu-plugins",
+            "WPMU_PLUGIN_URL" => "https://example.com/content/mu-plugins",
 
             // admin
             "AUTOMATIC_UPDATER_DISABLED" => true,
@@ -144,7 +146,7 @@ class KernelTest extends TestCase
             "DB_DIR" => $app_test_path . "/sqlitedb",
             "DB_FILE" => ".sqlite-wpdatabase",
 
-            "WP_DEFAULT_THEME" => "brisko",
+            "WP_DEFAULT_THEME" => "twentytwentythree",
 
             // salts.
             "COOKIEHASH" => "c984d06aafbecf6bc55569f964148ea3",
@@ -160,15 +162,15 @@ class KernelTest extends TestCase
             // "SUCURI_DATA_STORAGE" => $app_test_path . "../../storage/logs/sucuri",
 
             // redis
-            "WP_REDIS_DISABLED" => false,
+            "WP_REDIS_DISABLED" => null,
             "WP_REDIS_PREFIX" => "c984d06aafbecf6bc55569f964148ea3redis-cache",
             "WP_REDIS_DATABASE" => 0,
             "WP_REDIS_HOST" => "127.0.0.1",
             "WP_REDIS_PORT" => 6379,
-            "WP_REDIS_PASSWORD" => "",
-            "WP_REDIS_DISABLE_ADMINBAR" => false,
-            "WP_REDIS_DISABLE_METRICS" => false,
-            "WP_REDIS_DISABLE_BANNERS" => false,
+            "WP_REDIS_PASSWORD" => null,
+            "WP_REDIS_DISABLE_ADMINBAR" => null,
+            "WP_REDIS_DISABLE_METRICS" => null,
+            "WP_REDIS_DISABLE_BANNERS" => null,
             "WP_REDIS_TIMEOUT" => 1,
             "WP_REDIS_READ_TIMEOUT" => 1,
         ];

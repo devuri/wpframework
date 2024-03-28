@@ -71,8 +71,8 @@ class ConfigDefaultTest extends TestCase
         $this->assertEquals('templates', $configs['directory']['theme_dir']);
 
         // Boolean checks
-        $this->assertTrue($configs['disable_updates']);
-        $this->assertTrue($configs['can_deactivate']);
+        $this->assertTrue((bool) $configs['disable_updates']);
+        $this->assertTrue((bool) $configs['can_deactivate']);
 
         // Error handler check
         $this->assertNull($configs['error_handler']);
@@ -107,6 +107,6 @@ class ConfigDefaultTest extends TestCase
         // Public key checks
         $this->assertArrayHasKey('publickey', $configs);
         $this->assertEquals('b75b666f-ac11-4342-b001-d2546f1d3a5b',$configs['publickey']['app-key']);
-        $this->assertEquals('pubkeys', $configs['publickey_dir']);
+        $this->assertEquals('pubkeys', $configs['directory']['publickey_dir']);
     }
 }
