@@ -6,6 +6,7 @@ use function defined;
 
 use Exception;
 use InvalidArgumentException;
+use Urisoft\DotAccess;
 use WPframework\Component\EnvTypes;
 use WPframework\Component\Setup;
 use WPframework\Component\TenantInterface;
@@ -144,9 +145,9 @@ abstract class AbstractKernel implements TenantInterface
             $this->args['wp_dir_path'] = $args['wordpress'];
         }
 
-        $this->args = array_merge( $this->args, $args );
+        $this->args = new DotAccess( array_merge( $this->args, $args ) );
 
-        $this->config_file = $this->args['config_file'];
+        $this->config_file = $this->args->get( 'config_file' );
 
         $this->tenant_id = $this->env_tenant_id();
 
@@ -192,16 +193,16 @@ abstract class AbstractKernel implements TenantInterface
         $this->define( 'APP_HTTP_HOST', self::http()->get_http_host() );
 
         // define public web root dir.
-        $this->define( 'PUBLIC_WEB_DIR', APP_PATH . '/' . $this->args['directory']['web_root_dir'] );
+        $this->define( 'PUBLIC_WEB_DIR', APP_PATH . '/' . $this->args->get( 'directory.web_root_dir' ) );
 
         // wp dir path
-        $this->define( 'WP_DIR_PATH', PUBLIC_WEB_DIR . '/' . $this->args['wp_dir_path'] );
+        $this->define( 'WP_DIR_PATH', PUBLIC_WEB_DIR . '/' . $this->args->get( 'wp_dir_path' ) );
 
         // define assets dir.
-        $this->define( 'APP_ASSETS_DIR', PUBLIC_WEB_DIR . '/' . $this->args['directory']['asset_dir'] );
+        $this->define( 'APP_ASSETS_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get( 'directory.asset_dir' ) );
 
         // Directory PATH.
-        $this->define( 'APP_CONTENT_DIR', $this->args['directory']['content_dir'] );
+        $this->define( 'APP_CONTENT_DIR', $this->args->get( 'directory.content_dir' ) );
         $this->define( 'WP_CONTENT_DIR', PUBLIC_WEB_DIR . '/' . APP_CONTENT_DIR );
         $this->define( 'WP_CONTENT_URL', env( 'WP_HOME' ) . '/' . APP_CONTENT_DIR );
 
@@ -214,38 +215,38 @@ abstract class AbstractKernel implements TenantInterface
          *
          * @link https://github.com/devuri/custom-wordpress-theme-dir
          */
-        if ( $this->args['directory']['templates_dir'] ) {
-            $this->define( 'APP_THEME_DIR', $this->args['directory']['templates_dir'] );
+        if ( $this->args->get( 'templates_dir' ) ) {
+            $this->define( 'APP_THEME_DIR', $this->args->get( 'templates_dir' ) );
         }
 
         // Plugins.
-        $this->define( 'WP_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args['directory']['plugin_dir'] );
-        $this->define( 'WP_PLUGIN_URL', env( 'WP_HOME' ) . '/' . $this->args['directory']['plugin_dir'] );
+        $this->define( 'WP_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get( 'directory.plugin_dir' ) );
+        $this->define( 'WP_PLUGIN_URL', env( 'WP_HOME' ) . '/' . $this->args->get( 'directory.plugin_dir' ) );
 
         // Must-Use Plugins.
-        $this->define( 'WPMU_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args['directory']['mu_plugin_dir'] );
-        $this->define( 'WPMU_PLUGIN_URL', env( 'WP_HOME' ) . '/' . $this->args['directory']['mu_plugin_dir'] );
+        $this->define( 'WPMU_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get( 'directory.mu_plugin_dir' ) );
+        $this->define( 'WPMU_PLUGIN_URL', env( 'WP_HOME' ) . '/' . $this->args->get( 'directory.mu_plugin_dir' ) );
 
         // Disable any kind of automatic upgrade.
         // this will be handled via composer.
-        $this->define( 'AUTOMATIC_UPDATER_DISABLED', $this->args['disable_updates'] );
+        $this->define( 'AUTOMATIC_UPDATER_DISABLED', $this->args->get( 'disable_updates' ) );
 
         // Sudo admin (granted more privilages uses user ID).
-        $this->define( 'WP_SUDO_ADMIN', $this->args['sudo_admin'] );
+        $this->define( 'WP_SUDO_ADMIN', $this->args->get( 'sudo_admin' ) );
 
         // A group of users with higher administrative privileges.
-        $this->define( 'SUDO_ADMIN_GROUP', $this->args['sudo_admin_group'] );
+        $this->define( 'SUDO_ADMIN_GROUP', $this->args->get( 'sudo_admin_group' ) );
 
         /*
          * Prevent Admin users from deactivating plugins, true or false.
          *
          * @link https://gist.github.com/devuri/034ccb7c833f970192bb64317814da3b
          */
-        $this->define( 'CAN_DEACTIVATE_PLUGINS', $this->args['can_deactivate'] );
+        $this->define( 'CAN_DEACTIVATE_PLUGINS', $this->args->get( 'can_deactivate' ) );
 
         // SQLite database location and filename.
-        $this->define( 'DB_DIR', APP_PATH . '/' . $this->args['directory']['sqlite_dir'] );
-        $this->define( 'DB_FILE', $this->args['directory']['sqlite_file'] );
+        $this->define( 'DB_DIR', APP_PATH . '/' . $this->args->get( 'directory.sqlite_dir' ) );
+        $this->define( 'DB_FILE', $this->args->get( 'directory.sqlite_file' ) );
 
         /*
          * Slug of the default theme for this installation.
@@ -254,7 +255,7 @@ abstract class AbstractKernel implements TenantInterface
          *
          * @see WP_Theme::get_core_default_theme()
          */
-        $this->define( 'WP_DEFAULT_THEME', $this->args['default_theme'] );
+        $this->define( 'WP_DEFAULT_THEME', $this->args->get( 'default_theme' ) );
 
         // home url md5 value.
         $this->define( 'COOKIEHASH', md5( env( 'WP_HOME' ) ) );
@@ -268,7 +269,7 @@ abstract class AbstractKernel implements TenantInterface
         $this->define( 'TEST_COOKIE', md5( 'wpc_test_cookie' . env( 'WP_HOME' ) ) );
 
         // SUCURI
-        $this->define( 'ENABLE_SUCURI_WAF', $this->args['sucuri_waf'] );
+        $this->define( 'ENABLE_SUCURI_WAF', $this->args->get( 'sucuri_waf' ) );
         // $this->define( 'SUCURI_DATA_STORAGE', ABSPATH . '../../storage/logs/sucuri' );
 
         /*
@@ -280,23 +281,23 @@ abstract class AbstractKernel implements TenantInterface
          *
          * @return void
          */
-        $this->define( 'WP_REDIS_DISABLED', $this->redis( 'disabled' ) );
+        $this->define( 'WP_REDIS_DISABLED', $this->args->get( 'redis.disabled' ) );
 
-        $this->define( 'WP_REDIS_PREFIX', $this->redis( 'prefix' ) );
-        $this->define( 'WP_REDIS_DATABASE', $this->redis( 'database' ) );
-        $this->define( 'WP_REDIS_HOST', $this->redis( 'host' ) );
-        $this->define( 'WP_REDIS_PORT', $this->redis( 'port' ) );
-        $this->define( 'WP_REDIS_PASSWORD', $this->redis( 'password' ) );
+        $this->define( 'WP_REDIS_PREFIX', $this->args->get( 'redis.prefix' ) );
+        $this->define( 'WP_REDIS_DATABASE', $this->args->get( 'redis.database' ) );
+        $this->define( 'WP_REDIS_HOST', $this->args->get( 'redis.host' ) );
+        $this->define( 'WP_REDIS_PORT', $this->args->get( 'redis.port' ) );
+        $this->define( 'WP_REDIS_PASSWORD', $this->args->get( 'redis.password' ) );
 
-        $this->define( 'WP_REDIS_DISABLE_ADMINBAR', $this->redis( 'adminbar' ) );
-        $this->define( 'WP_REDIS_DISABLE_METRICS', $this->redis( 'disable-metrics' ) );
-        $this->define( 'WP_REDIS_DISABLE_BANNERS', $this->redis( 'disable-banners' ) );
+        $this->define( 'WP_REDIS_DISABLE_ADMINBAR', $this->args->get( 'redis.adminbar' ) );
+        $this->define( 'WP_REDIS_DISABLE_METRICS', $this->args->get( 'redis.disable-metrics' ) );
+        $this->define( 'WP_REDIS_DISABLE_BANNERS', $this->args->get( 'redis.disable-banners' ) );
 
-        $this->define( 'WP_REDIS_TIMEOUT', $this->redis( 'timeout' ) );
-        $this->define( 'WP_REDIS_READ_TIMEOUT', $this->redis( 'read-timeout' ) );
+        $this->define( 'WP_REDIS_TIMEOUT', $this->args->get( 'redis.timeout' ) );
+        $this->define( 'WP_REDIS_READ_TIMEOUT', $this->args->get( 'redis.read-timeout' ) );
 
         // web app security key
-        $this->define( 'WEBAPP_ENCRYPTION_KEY', $this->security( 'encryption_key' ) );
+        $this->define( 'WEBAPP_ENCRYPTION_KEY', $this->args->get( 'security.encryption_key' ) );
     }
 
     /**
@@ -316,7 +317,7 @@ abstract class AbstractKernel implements TenantInterface
      */
     public function get_app_security(): array
     {
-        return $this->args['security'];
+        return $this->args->get( 'security' );
     }
 
     /**
@@ -342,14 +343,9 @@ abstract class AbstractKernel implements TenantInterface
         return appConfig();
     }
 
-    /**
-     * Get args.
-     *
-     * @return string[]
-     */
     public function get_args(): array
     {
-        return $this->args;
+        return $this->args->export();
     }
 
     /**
@@ -523,24 +519,6 @@ abstract class AbstractKernel implements TenantInterface
         return self::encrypt_secret( $user_constants, self::env_secrets() );
     }
 
-    protected function redis( string $key )
-    {
-        if ( empty( $this->args['redis'] ) ) {
-            return null;
-        }
-
-        return $this->args['redis'][ $key ] ?? null;
-    }
-
-    protected function security( string $key )
-    {
-        if ( empty( $this->args['security'] ) ) {
-            return null;
-        }
-
-        return $this->args['security'][ $key ] ?? null;
-    }
-
     /**
      * Checks for maintenance mode across different scopes and terminates execution if enabled.
      *
@@ -604,7 +582,7 @@ abstract class AbstractKernel implements TenantInterface
             'environment' => null,
             'error_log'   => $error_logs_dir,
             'debug'       => false,
-            'errors'      => $this->args['error_handler'],
+            'errors'      => $this->args->get( 'error_handler' ),
         ];
     }
 
