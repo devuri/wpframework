@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.4](https://github.com/devuri/wpframework/compare/v0.2.3...v0.2.4) (2024-03-28)
+
+
+### Bug Fixes
+
+* use `DotAccess` in kernel ([9a7c8bf](https://github.com/devuri/wpframework/commit/9a7c8bfe0e8e03e9e347e08009b9e589f98e72e4))
+
+
+### Miscellaneous Chores
+
+* build ([1179190](https://github.com/devuri/wpframework/commit/117919025be070fddbed96e80b185eed6fe4a6c1))
+
 ## [0.2.3](https://github.com/devuri/wpframework/compare/v0.2.2...v0.2.3) (2024-03-28)
 
 
