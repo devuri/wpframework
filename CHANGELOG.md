@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.2.3](https://github.com/devuri/wpframework/compare/v0.2.2...v0.2.3) (2024-03-28)
+
+
+### Bug Fixes
+
+* fixes env() func `$default` value ([64c41e1](https://github.com/devuri/wpframework/commit/64c41e1cfe9f7989a9ce167cd774c547aac84913))
+
+
+### Miscellaneous Chores
+
+* build ([9b2c9a9](https://github.com/devuri/wpframework/commit/9b2c9a969bcdde545fac6739fdb70a147fe7606c))
+
+## [0.2.2](https://github.com/devuri/wpframework/compare/v0.2.1...v0.2.2) (2024-03-26)
+
+
+### Miscellaneous Chores
+
+* build ([e25cd9a](https://github.com/devuri/wpframework/commit/e25cd9a1787800af24cb0a325d72057f41fa597b))
+
+## [0.2.1](https://github.com/devuri/wpframework/compare/v0.2.0...v0.2.1) (2024-03-25)
+
+
+### Features
+
+* new env files should default to `WP_ENVIRONMENT_TYPE='secure'` ([5425856](https://github.com/devuri/wpframework/commit/54258569534387b90f5e99ae63638f71a0131340))
+
 ## [0.2.0](https://github.com/devuri/wpframework/compare/v0.1.0...v0.2.0) (2024-03-24)
 
 

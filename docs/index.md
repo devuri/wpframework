@@ -1,5 +1,6 @@
 ## Documentation
 
+- [Configs](/wpframework/configs/)
 - [Resources](/wpframework/resources/)
 - [Premium Plugins](/wpframework/premium-plugins)
 - [Environment Variables](/wpframework/env)
