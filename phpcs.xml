@@ -26,6 +26,10 @@
 	    <exclude-pattern>src/Component/Http/HostManager.php</exclude-pattern>
 	</rule>
 
+	<rule ref="WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet">
+	    <exclude-pattern>src/Component/Terminate.php</exclude-pattern>
+	</rule>
+
 	<!-- Ignore mixed line-endings warnings -->
 	<rule ref="Internal.LineEndings.Mixed">
 		<severity>0</severity>

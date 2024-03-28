@@ -71,8 +71,8 @@ class ConfigDefaultTest extends TestCase
         $this->assertEquals('templates', $configs['directory']['theme_dir']);
 
         // Boolean checks
-        $this->assertTrue((bool)$configs['disable_updates']);
-        $this->assertTrue((bool)$configs['can_deactivate']);
+        $this->assertTrue((bool) $configs['disable_updates']);
+        $this->assertTrue((bool) $configs['can_deactivate']);
 
         // Error handler check
         $this->assertNull($configs['error_handler']);

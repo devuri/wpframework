@@ -105,11 +105,11 @@ class KernelTest extends TestCase
             "wp_dir_path" => "wp",
             "wordpress" => "wp",
             'sucuri_waf' => false,
-			"default_theme" => "twentytwentythree",
-			"templates_dir" => null,
+            "default_theme" => "twentytwentythree",
+            "templates_dir" => null,
         ];
 
-        //dump($this->http_app->get_args()->export());
+        // dump($this->http_app->get_args()->export());
 
         $this->assertEquals( $default, $this->http_app->get_args());
     }
