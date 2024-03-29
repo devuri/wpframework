@@ -1,6 +1,5 @@
-## wpframework version 0.0.5
-
-> Upgrade from wp-env-config to wpframework version 5
+# Upgrade ^0.0.5
+ > Upgrade from wp-env-config to wpframework version 5
 
 To upgrade your project to use the latest `wpframework` version 5 and integrate the new initialization process in your `bootstrap.php` file, follow this guide:
 

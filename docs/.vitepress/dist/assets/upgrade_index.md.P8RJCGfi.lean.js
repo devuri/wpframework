@@ -1,1 +1,0 @@
-import{_ as e,c as i,o as a,a4 as s}from"./chunks/framework.4aTu-Nia.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"upgrade/index.md","filePath":"upgrade/index.md"}'),o={name:"upgrade/index.md"},t=s("",25),p=[t];function n(r,l,d,h,c,u){return a(),i("div",null,p)}const m=e(o,[["render",n]]);export{g as __pageData,m as default};

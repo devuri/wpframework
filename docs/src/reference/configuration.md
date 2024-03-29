@@ -1,6 +1,6 @@
-## Full Configuration Example
+# Full Configuration Example
 
-> Below is an example showcasing various configurations in `configs/app.php` along with helpful comments for convenience.
+Below is an example showcasing various configurations in `configs/app.php` along with helpful comments for convenience.
 
 ```php
 <?php
