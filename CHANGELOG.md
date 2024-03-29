@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.5](https://github.com/devuri/wpframework/compare/v0.2.4...v0.2.5) (2024-03-29)
+
+
+### Miscellaneous Chores
+
+* docs file location, adds documentation directory for vitepress ([51846e4](https://github.com/devuri/wpframework/commit/51846e470e763425647f537bb26b658dfc0aca8f))
+* public docs dir ([1109ae5](https://github.com/devuri/wpframework/commit/1109ae597dc2c356e3d712f3e5620181edb93a20))
+
 ## [0.2.4](https://github.com/devuri/wpframework/compare/v0.2.3...v0.2.4) (2024-03-28)
 
 
