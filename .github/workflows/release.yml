@@ -36,7 +36,7 @@ jobs:
         run: |
           npm install
           npm run docs:build
-        working-directory: ./documentation
+        working-directory: documentation
 
       - name: Setup PHP 7.4
         if: ${{ steps.release.outputs.releases_created }}
