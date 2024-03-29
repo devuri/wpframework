@@ -1,4 +1,4 @@
-# Framework Configuration Guide
+# Configuration Guide
 
 This guide explains how to modify the configuration options of the framework used in this project. The configuration options are defined in the `configs/app.php` file.
 

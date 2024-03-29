@@ -23,7 +23,7 @@ export default defineConfig({
             },
             {
                 text: 'Reference',
-                link: '/reference/app-configs'
+                link: '/reference/environment-variables'
             }
         ],
 
@@ -101,7 +101,7 @@ export default defineConfig({
                     },
                     {
                         text: 'code',
-                        link: '/docs/code'
+                        link: '/code/'
                     }
                 ]
             },
