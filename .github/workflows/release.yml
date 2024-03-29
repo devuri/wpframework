@@ -24,3 +24,27 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           command: manifest
           default-branch: master
+
+      - name: Install and Setup Node 16.x
+        if: ${{ steps.release.outputs.releases_created }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install NPM dependencies
+        if: ${{ steps.release.outputs.releases_created }}
+        run: |
+          npm install
+          npm run docs:build
+        working-directory: ./documentation
+
+      - name: Setup PHP 7.4
+        if: ${{ steps.release.outputs.releases_created }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.4"
+          extensions: pcov
+          tools: composer:v2
+
+      - name: Generate PHP Documentation
+        run: composer phpdoc
