@@ -88,6 +88,117 @@ DEFAULT_THEME=my-custom-theme
 - Always ensure to follow best practices and security guidelines when modifying configuration options.
 - Make sure to test the changes, especially in different environments.
 
-## Full Configuration Example
+## Configuration Example:
 
-check out full Configuration example: [Config Reference](../reference/configuration)
+```php
+<?php
+
+return [
+
+    'error_handler'    => null,
+
+    'terminate'        => [
+        'debugger' => false,
+    ],
+
+    'directory'        => [
+
+        'web_root'      => 'public',
+
+        'content_dir'   => 'content',
+
+        'plugin_dir'    => 'content/plugins',
+
+        'mu_plugin_dir' => 'content/mu-plugins',
+
+        'sqlite_dir'    => 'sqlitedb',
+        'sqlite_file'   => '.sqlite-wpdatabase',
+
+        'theme_dir'     => 'templates',
+
+        'asset_dir'     => 'assets',
+
+        'publickey_dir' => 'pubkeys',
+    ],
+
+    'default_theme'    => 'brisko',
+
+    'disable_updates'  => true,
+
+    'can_deactivate'   => true,
+
+    'security'         => [
+        'encryption_key'     => null,
+        'brute-force'        => true,
+        'two-factor'         => true,
+        'no-pwned-passwords' => true,
+        'admin-ips'          => [],
+    ],
+
+    'mailer'           => [
+        'brevo'      => [
+            'apikey' => env( 'BREVO_API_KEY' ),
+        ],
+
+        'postmark'   => [
+            'token' => env( 'POSTMARK_TOKEN' ),
+        ],
+
+        'sendgrid'   => [
+            'apikey' => env( 'SENDGRID_API_KEY' ),
+        ],
+
+        'mailerlite' => [
+            'apikey' => env( 'MAILERLITE_API_KEY' ),
+        ],
+
+        'mailgun'    => [
+            'domain'   => env( 'MAILGUN_DOMAIN' ),
+            'secret'   => env( 'MAILGUN_SECRET' ),
+            'endpoint' => env( 'MAILGUN_ENDPOINT', 'api.mailgun.net' ),
+            'scheme'   => 'https',
+        ],
+
+        'ses'        => [
+            'key'    => env( 'AWS_ACCESS_KEY_ID' ),
+            'secret' => env( 'AWS_SECRET_ACCESS_KEY' ),
+            'region' => env( 'AWS_DEFAULT_REGION', 'us-east-1' ),
+        ],
+    ],
+
+    'sudo_admin'       => env( 'SUDO_ADMIN', 1 ),
+
+    'sudo_admin_group' => null,
+
+    's3uploads'        => [
+        'bucket'     => env( 'S3_UPLOADS_BUCKET', 'site-uploads' ),
+        'key'        => env( 'S3_UPLOADS_KEY', '' ),
+        'secret'     => env( 'S3_UPLOADS_SECRET', '' ),
+        'region'     => env( 'S3_UPLOADS_REGION', 'us-east-1' ),
+        'bucket-url' => env( 'S3_UPLOADS_BUCKET_URL', 'https://example.com' ),
+        'object-acl' => env( 'S3_UPLOADS_OBJECT_ACL', 'public' ),
+        'expires'    => env( 'S3_UPLOADS_HTTP_EXPIRES', '2 days' ),
+        'http-cache' => env( 'S3_UPLOADS_HTTP_CACHE_CONTROL', '300' ),
+    ],
+
+    'redis'            => [
+        'disabled'        => env( 'WP_REDIS_DISABLED', false ),
+        'host'            => env( 'WP_REDIS_HOST', '127.0.0.1' ),
+        'port'            => env( 'WP_REDIS_PORT', 6379 ),
+        'password'        => env( 'WP_REDIS_PASSWORD', '' ),
+        'adminbar'        => env( 'WP_REDIS_DISABLE_ADMINBAR', false ),
+        'disable-metrics' => env( 'WP_REDIS_DISABLE_METRICS', false ),
+        'disable-banners' => env( 'WP_REDIS_DISABLE_BANNERS', false ),
+        'prefix'          => env( 'WP_REDIS_PREFIX', md5( env( 'WP_HOME' ) ) . 'redis-cache' ),
+        'database'        => env( 'WP_REDIS_DATABASE', 0 ),
+        'timeout'         => env( 'WP_REDIS_TIMEOUT', 1 ),
+        'read-timeout'    => env( 'WP_REDIS_READ_TIMEOUT', 1 ),
+    ],
+
+    'publickey'        => [
+        'app-key' => env( 'WEB_APP_PUBLIC_KEY', null ),
+    ],
+];
+```
+
+Check out full configuration example: [Config Reference](../reference/configuration)
