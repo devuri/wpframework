@@ -9,7 +9,7 @@ export default defineConfig({
     title: 'Raydium',
     description: 'Effortlessly develop scalable WordPress applications that support multiple tenants from a single installation.',
     srcDir: 'src',
-	base: '/wpframework/',
+	  base: '/wpframework/',
     outDir: '../docs',
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
