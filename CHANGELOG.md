@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.6](https://github.com/devuri/wpframework/compare/v0.2.5...v0.2.6) (2024-03-29)
+
+
+### Bug Fixes
+
+* update docs ([51718f0](https://github.com/devuri/wpframework/commit/51718f01fb3355c404c466ffff8885a9ecd63a3f))
+
 ## [0.2.5](https://github.com/devuri/wpframework/compare/v0.2.4...v0.2.5) (2024-03-29)
 
 
