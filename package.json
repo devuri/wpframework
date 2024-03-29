@@ -1,0 +1,26 @@
+{
+    "name": "wpframework",
+    "description": "Effortlessly develop scalable WordPress applications",
+    "license": "MIT",
+    "author": "Uriel Wilson",
+    "homepage": "https://github.com/devuri/wpframework",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/devuri/wpframework.git"
+    },
+    "bugs": {
+        "url": "https://github.com/devuri/wpframework/issues"
+    },
+    "devDependencies": {
+        "cypress": "^13.2.0",
+        "dir-archiver": "^1.1.1",
+        "laravel-mix": "^6.0.43",
+        "prettier": "3.2.5",
+        "resolve-url-loader": "^5.0.0",
+        "vitepress": "^1.0.1"
+    },
+    "dependencies": {
+        "@popperjs/core": "^2.11.8",
+        "bootstrap": "^5.3.3"
+    }
+}
