@@ -2,7 +2,6 @@ composer.phar
 composer.lock
 .phpunit.result.cache
 /node_modules
-/docs
 /vendor
 /coverage-report
 /tmp
