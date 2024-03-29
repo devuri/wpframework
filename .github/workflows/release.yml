@@ -47,7 +47,9 @@ jobs:
           tools: composer:v2
 
       - name: Install PHP dependencies
+        if: ${{ steps.release.outputs.releases_created }}
         run: composer install
 
       - name: Generate PHP Documentation
+        if: ${{ steps.release.outputs.releases_created }}
         run: composer phpdoc
