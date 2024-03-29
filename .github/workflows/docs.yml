@@ -1,0 +1,39 @@
+name: Static Analysis
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  static-analysis:
+
+    name: Build Docs
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "📥 Fetching Repository Contents"
+        uses: actions/checkout@v2
+
+      - name: Install and Setup Node 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install NPM dependencies
+        run: |
+          npm install
+          npm run docs:build
+        working-directory: documentation
+
+      - name: Setup PHP 7.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.4"
+          extensions: pcov
+          tools: composer:v2
+
+      - name: Install PHP dependencies
+        run: composer install
+
+      - name: Generate PHP Documentation
+        run: composer phpdoc
