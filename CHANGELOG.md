@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.7](https://github.com/devuri/wpframework/compare/v0.2.6...v0.2.7) (2024-03-29)
+
+
+### Bug Fixes
+
+* docs `wpframework` base dir ([3045fb3](https://github.com/devuri/wpframework/commit/3045fb3243d94180e1b48c08017fb29546ad3167))
+* docs base dir ([d851072](https://github.com/devuri/wpframework/commit/d851072cc527d4ddc006af3d5e17f78e2ab3ee80))
+* docs base dir ([91a6bb9](https://github.com/devuri/wpframework/commit/91a6bb9700ad1601f4fd1ff3303ef2be2e63c7d1))
+
+
+### Miscellaneous Chores
+
+* build out the new docs ([c57caff](https://github.com/devuri/wpframework/commit/c57caff9c369bf822de85f39569b1da67d721602))
+
 ## [0.2.6](https://github.com/devuri/wpframework/compare/v0.2.5...v0.2.6) (2024-03-29)
 
 
