@@ -4,11 +4,11 @@ layout: home
 
 hero:
   name: "Raydium"
-  tagline: Supercharge your WordPress development with Raydium, the modern framework designed for efficiency, scalability, and security.
+  tagline: A WordPress micro-enhancement framework that enables you to swiftly architect robust and elegant web solutions, redefining simplicity and power.
   actions:
     - theme: brand
       text: What is Raydium
-      link: /guide/what-is-raydium
+      link: /overview/what-is-raydium
     - theme: alt
       text: Quick Start
       link: /guide/getting-started
