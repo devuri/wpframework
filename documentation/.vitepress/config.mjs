@@ -23,22 +23,30 @@ export default defineConfig({
             },
             {
                 text: 'Reference',
-                link: '/reference/environment-variables'
+                link: '/reference/environment-vars'
             }
         ],
 
-        sidebar: [{
-                text: 'Quick Start',
+        sidebar: [
+			{
+                text: 'Overview',
                 collapsible: true,
-                collapsed: false,
+                collapsed: true,
                 items: [{
                         text: 'Why Raydium',
-                        link: '/guide/why-raydium'
+                        link: '/overview/why-raydium'
                     },
                     {
                         text: 'What Is Raydium',
-                        link: '/guide/what-is-raydium'
-                    },
+                        link: '/overview/what-is-raydium'
+                    }
+                ]
+            },
+			{
+                text: 'Quick Start',
+                collapsible: true,
+                collapsed: false,
+                items: [
                     {
                         text: 'Getting Started',
                         link: '/guide/getting-started'
@@ -54,6 +62,10 @@ export default defineConfig({
                     {
                         text: 'Deploy',
                         link: '/guide/deploy'
+                    },
+					{
+                        text: 'Environments',
+                        link: '/guide/environments'
                     }
                 ]
             },
@@ -61,32 +73,45 @@ export default defineConfig({
                 text: 'Customization',
                 collapsible: true,
                 collapsed: true,
-                items: [{
+                items: [
+					{
                     text: 'App Configs',
                     link: '/customization/app-config'
-                }]
+					},
+					{
+	                    text: 'Constants',
+	                    link: '/customization/constants'
+	                }
+				]
             },
-            {
-                text: 'Upgrades',
-                collapsible: true,
-                collapsed: true,
-                items: [{
-                    text: '^0.0.5',
-                    link: '/upgrade/env-config-upgrade'
-                }, ]
-            },
-            {
-                text: 'Advanced',
-                items: [{
-                        text: 'Premium Plugins',
-                        link: '/premium-plugins'
-                    },
-                    {
-                        text: 'Multi-Tenant',
-                        link: '/multi-tenant'
-                    }
-                ]
-            },
+			{
+				text: 'Multi-Tenant',
+				collapsible: true,
+				collapsed: true,
+				items: [
+					{
+						text: 'Overview',
+						link: '/multi-tenant/overview'
+					},
+					{
+						text: 'Configuration',
+						link: '/multi-tenant/tenancy-config'
+					},
+					{
+						text: 'Architecture',
+						link: '/multi-tenant/architecture'
+					},
+				]
+			},
+			{
+				text: 'Tutorials',
+				collapsible: true,
+				collapsed: true,
+				items: [{
+					text: 'Overview',
+					link: '/tutorials/overview'
+				},]
+			},
             {
                 text: 'Reference',
                 collapsible: true,
@@ -97,14 +122,64 @@ export default defineConfig({
                     },
                     {
                         text: 'Environment',
-                        link: '/reference/environment-variables'
+                        link: '/reference/environment-vars'
                     },
+					{
+                        text: 'Lifecycle',
+                        link: '/reference/lifecycle'
+                    },
+					{
+                        text: 'App',
+                        link: '/reference/app-component'
+                    },
+					{
+						text: 'Kernel',
+						link: '/reference/kernel'
+					},
+					{
+						text: 'Setup',
+						link: '/reference/setup'
+					},
+					{
+						text: 'Tenancy',
+						link: '/reference/tenancy'
+					},
+					{
+						text: 'Switcher',
+						link: '/reference/switcher'
+					},
+					{
+						text: 'Terminate',
+						link: '/reference/terminate'
+					},
+					{
+						text: 'Architecture',
+						link: '/reference/architecture'
+					},
                     {
-                        text: 'code',
-                        link: '/code/'
+                        text: 'Code',
+                        link: 'https://devuri.github.io/wpframework/code/'
                     }
                 ]
             },
+			{
+				text: 'Upgrades',
+				collapsible: true,
+				collapsed: true,
+				items: [{
+					text: '^0.0.5',
+					link: '/upgrade/env-config-upgrade'
+				}, ]
+			},
+			{
+				text: 'Advanced',
+				items: [
+					{
+						text: 'Premium Plugins',
+						link: '/premium-plugins'
+					}
+				]
+			},
         ],
         socialLinks: [{
             icon: 'github',
