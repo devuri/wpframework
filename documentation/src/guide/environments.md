@@ -16,7 +16,7 @@ Environments are essentially different states your application can be in, each w
 
 ### Using `.env` File
 
-The Raydium Framework leverages a `.env` file at the root of your project to define environment variables. The key variable for setting the application's environment is `WP_ENVIRONMENT_TYPE`.
+The Raydium Framework leverages a `.env` [environment file](../guide/environment-file) at the root of your project to define environment variables. The key variable for setting the application's environment is `WP_ENVIRONMENT_TYPE`.
 
 Example of a `.env` file configuration:
 
@@ -50,7 +50,7 @@ To switch environments, simply change the `WP_ENVIRONMENT_TYPE` value in your `.
 
 ## Best Practices
 
-- **Keep `.env` Secure**: The `.env` file contains sensitive information. Ensure it's properly excluded from version control systems (e.g., using `.gitignore`).
+- **Keep `.env` Secure**: The `.env` [environment file](./environment-file) contains sensitive information. Ensure it's properly excluded from version control systems (e.g., using `.gitignore`).
 - **Environment Consistency**: Maintain consistency between your development, staging, and production environments to prevent "it works on my machine" issues.
 - **Use Environment-Specific Configurations**: Leverage the capability to define environment-specific settings for database connections, API keys, and other configurations.
 

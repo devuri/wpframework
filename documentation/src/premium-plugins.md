@@ -1,4 +1,4 @@
-# Premium Plugin Installation Guide
+# Premium Plugin Installation
 
 This comprehensive guide explains how to install premium plugins via Composer. In this example, we will cover the installation process for three premium plugins: ACF PRO, Elementor, and Object Cache Pro.
 

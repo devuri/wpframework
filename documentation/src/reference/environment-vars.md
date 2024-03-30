@@ -2,7 +2,7 @@
 
 ## Overview
 
-This file contains the environment variables used to configure the settings for your website. The variables define various aspects such as database connections, security settings, backup options, and more. Please review and modify the values accordingly to suit your specific needs.
+This [environment file](../guide/environment-file) contains the environment variables used to configure the settings for your website. The variables define various aspects such as database connections, security settings, backup options, and more. Please review and modify the values accordingly to suit your specific needs.
 
 ## Instructions
 

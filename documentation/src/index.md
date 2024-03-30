@@ -7,11 +7,11 @@ hero:
   tagline: A WordPress micro-enhancement framework that enables you to swiftly architect robust and elegant web solutions, redefining simplicity and power.
   actions:
     - theme: brand
-      text: What is Raydium
-      link: /overview/what-is-raydium
-    - theme: alt
       text: Quick Start
       link: /guide/getting-started
+    - theme: alt
+      text: What is Raydium
+      link: /overview/what-is-raydium
 
 features:
   - title: Modular Architecture

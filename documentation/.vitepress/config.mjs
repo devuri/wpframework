@@ -19,7 +19,7 @@ export default defineConfig({
             },
             {
                 text: 'Guide',
-                link: '/guide/what-is-raydium'
+                link: '/overview/what-is-raydium'
             },
             {
                 text: 'Reference',
@@ -32,13 +32,22 @@ export default defineConfig({
                 text: 'Overview',
                 collapsible: true,
                 collapsed: true,
-                items: [{
+                items: [
+					{
                         text: 'Why Raydium',
                         link: '/overview/why-raydium'
                     },
                     {
                         text: 'What Is Raydium',
                         link: '/overview/what-is-raydium'
+                    },
+					{
+                        text: 'Modern Development',
+                        link: '/overview/modern-development'
+                    },
+					{
+                        text: 'Is it Still WordPress',
+                        link: '/overview/is-it-wordpress'
                     }
                 ]
             },
@@ -66,6 +75,10 @@ export default defineConfig({
 					{
                         text: 'Environments',
                         link: '/guide/environments'
+                    },
+					{
+                        text: 'Environment File',
+                        link: '/guide/environment-file'
                     }
                 ]
             },
@@ -98,6 +111,10 @@ export default defineConfig({
 						link: '/multi-tenant/tenancy-config'
 					},
 					{
+						text: 'Isolation',
+						link: '/multi-tenant/isolation'
+					},
+					{
 						text: 'Architecture',
 						link: '/multi-tenant/architecture'
 					},
@@ -116,13 +133,18 @@ export default defineConfig({
                 text: 'Reference',
                 collapsible: true,
                 collapsed: true,
-                items: [{
+                items: [
+					{
                         text: 'Configs',
                         link: '/reference/configuration'
                     },
                     {
                         text: 'Environment',
                         link: '/reference/environment-vars'
+                    },
+					{
+                        text: 'Plugin',
+                        link: '/reference/plugin'
                     },
 					{
                         text: 'Lifecycle',
