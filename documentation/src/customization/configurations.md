@@ -97,7 +97,7 @@ The `app.php` file in the Raydium Framework is a crucial component for setting a
 
 ## Leveraging `env()` for Dynamic Configurations
 
-In the Raydium Framework, the `env()` function is a powerful tool that bridges the gap between static configuration files and the dynamic nature of different environments (development, staging, production, etc.). This functionality allows you to pull configuration values directly from the environment variables defined in your `.env` file, providing flexibility and security for your application settings.
+In the Raydium Framework, the `env()` function is a powerful tool that bridges the gap between static configuration files and the dynamic nature of different environments (development, staging, production, etc.). This functionality allows you to pull configuration values directly from the environment variables defined in your `.env` [environment file](../guide/environment-file), providing flexibility and security for your application settings.
 
 ## Understanding `env()`
 

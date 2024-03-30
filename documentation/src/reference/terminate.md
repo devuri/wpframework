@@ -1,4 +1,4 @@
-# Raydium Framework's Terminate Component Documentation
+# Raydium Framework's Terminate Component
 
 ## Overview
 

@@ -26,7 +26,7 @@ If multi-tenancy is allowed (`ALLOW_MULTITENANT` is defined and set to `true`), 
 - Validating landlord database credentials.
 - Fetching the tenant's information based on the domain.
 - Defining tenant-specific constants.
-- Regenerating the tenant's `.env` file if necessary.
+- Regenerating the tenant's `.env` [environment file](../guide/environment-file) if necessary.
 
 ### Tenant-Specific Constant Definition
 The component defines constants critical for the operation of a multi-tenant environment, such as `APP_TENANT_ID`, which is unique to each tenant, and `IS_MULTITENANT`, indicating the multi-tenant mode.

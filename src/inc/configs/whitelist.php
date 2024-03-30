@@ -94,6 +94,7 @@ return [
         'WP_REDIS_READ_TIMEOUT',
         'WP_REDIS_DISABLED',
         'WP_SUDO_ADMIN',
+        'USE_STRICT_ENV_VARS',
     ],
     'wp'        => [
         'WP_ENVIRONMENT_TYPE',
