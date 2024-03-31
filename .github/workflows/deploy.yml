@@ -35,9 +35,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build with VitePress
+      - name: Build VitePress Docs
         run: npm run docs:build
         working-directory: documentation
+
+      - name: Setup PHP 7.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.4"
+          extensions: pcov
+          tools: composer:v2
+
+      - name: Install PHP dependencies
+        run: composer install
+
+      - name: Generate PHP Documentation
+        run: composer phpdoc
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
