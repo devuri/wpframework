@@ -1,6 +1,3 @@
-#
-# This runs after changes are merged to `master`.
-#
 name: Release
 on:
   pull_request:
