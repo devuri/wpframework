@@ -1,4 +1,4 @@
-# Framework Initialization Lifecycle
+# Initialization Lifecycle
 
 The Raydium Framework is designed to enhance the WordPress development experience by providing a structured, secure, and scalable environment. Its initialization lifecycle is crucial for setting up the application's environment, ensuring compatibility with WordPress, and facilitating optional multi-tenant configurations. This documentation outlines the steps involved in the initialization lifecycle of the Raydium Framework and its integration with WordPress.
 

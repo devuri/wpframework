@@ -1,4 +1,4 @@
-# Defining Constants in Raydium Framework
+# Defining Constants
 
 In the Raydium Framework, constants play a crucial role in configuring and customizing your WordPress application. Raydium is designed to streamline the setup process, automatically defining most of the required constants to get your site up and running efficiently. However, there might be scenarios where you need to define additional constants or customize existing ones to suit your project's specific requirements.
 
@@ -10,7 +10,7 @@ Raydium utilizes a `.env` [environment file](../guide/environment-file) at the r
 
 ### Application Configurations (`configs/app.php`)
 
-For further customization, Raydium offers the `configs/app.php` file. This file is intended for more granular application-level configurations that might not fit within the scope of the `.env` [environment file](../guide/environment-file). Here, you can adjust settings that the framework or WordPress core might reference during runtime.
+For further customization, Raydium offers the `configs/app.php` file for [configuration options](../reference/configuration). This file is intended for more granular application-level configurations that might not fit within the scope of the `.env` [environment file](../guide/environment-file). Here, you can adjust settings that the framework or WordPress core might reference during runtime.
 
 ## Defining Additional Constants
 

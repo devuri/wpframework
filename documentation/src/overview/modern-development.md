@@ -1,4 +1,4 @@
-# Elevating Modern WordPress Development
+# Modern WordPress Development
 
 Raydium is a comprehensive framework designed to enhance WordPress development by incorporating and extending the benefits of modern development practices and tools, while also introducing unique features such as effortless configuration and optional multi-tenancy support. This document highlights how Raydium not only matches the modern development standards, but also provides additional capabilities to cater to a broad range of development scenarios.
 
@@ -42,6 +42,6 @@ Designed to support a wide array of project requirements, Raydium's architecture
 
 
 ### Streamlined Workflow for Developers and Agencies
-Raydium's combination of easy configuration, multi-tenancy, and modern development practices makes it an ideal choice for developers and agencies looking for a streamlined workflow to manage multiple WordPress sites with ease. Raydium redefines the development landscape by enhancing modern development practices and introducing features that emphasize ease of use, flexibility, and a top-notch developer experience. 
+Raydium's combination of easy configuration, multi-tenancy, and modern development practices makes it an ideal choice for developers and agencies looking for a streamlined workflow to manage multiple WordPress sites with ease. Raydium redefines the development landscape by enhancing modern development practices and introducing features that emphasize ease of use, flexibility, and a top-notch developer experience.
 
 > Raydium's approach caters to a broad audience, from individual developers to large agencies, providing a versatile and scalable solution. It's designed to be the go-to framework for any WordPress project, providing a seamless, efficient, and enjoyable development process from start to finish. Whether you're working on a small personal project or a large-scale enterprise applications, Raydium is equipped to take your development to the next level.

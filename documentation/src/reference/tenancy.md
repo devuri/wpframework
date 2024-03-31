@@ -1,4 +1,4 @@
-# Raydium Framework's Tenancy Component
+# Raydium's Tenancy Component
 
 ## Overview
 

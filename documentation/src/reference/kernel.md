@@ -1,4 +1,4 @@
-# Raydium Framework's Kernel Component
+# Raydium's Kernel Component
 
 ## Overview
 

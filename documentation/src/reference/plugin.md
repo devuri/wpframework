@@ -1,4 +1,4 @@
-# Raydium Plugin Component Documentation
+# Raydium Plugin Component
 
 The Raydium Plugin Component serves as a crucial part of the Raydium framework, focusing on enhancing WordPress's functionality with added flexibility and control. It encompasses a wide range of features from security enhancements to multi-tenancy support. This document delves into the various aspects of the Plugin component and how it integrates with WordPress.
 
