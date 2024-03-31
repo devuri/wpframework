@@ -100,8 +100,8 @@ export default defineConfig({
                 collapsed: true,
                 items: [
 					{
-                    text: 'App Configs',
-                    link: '/customization/app-config'
+                    text: 'Configuration',
+                    link: '/customization/config-overview'
 					},
 					{
 	                    text: 'Constants',
@@ -145,7 +145,10 @@ export default defineConfig({
                 text: 'Reference',
                 collapsible: true,
                 collapsed: true,
-                items: [
+                items: [{
+                        text: 'Lifecycle',
+                        link: '/reference/lifecycle'
+                    },
 					{
                         text: 'Configs',
                         link: '/reference/configuration'
@@ -158,10 +161,7 @@ export default defineConfig({
                         text: 'Plugin',
                         link: '/reference/plugin'
                     },
-					{
-                        text: 'Lifecycle',
-                        link: '/reference/lifecycle'
-                    },
+
 					{
                         text: 'App',
                         link: '/reference/app-component'

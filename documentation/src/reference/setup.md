@@ -1,4 +1,4 @@
-# Raydium Framework's Setup Component
+# Raydium's Setup Component
 
 ## Overview
 

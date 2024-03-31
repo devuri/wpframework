@@ -1,4 +1,4 @@
-# Configuring Multi-Tenancy in Raydium
+# Configuring Multi-Tenancy
 
 Multi-tenancy in Raydium allows you to operate multiple WordPress sites from a single installation, making it ideal for managing a network of sites with centralized resources. The `tenancy.php` configuration file is pivotal in enabling and managing these capabilities. Understanding and correctly configuring this file is crucial for the successful implementation of a multi-tenant architecture.
 

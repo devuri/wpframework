@@ -8,7 +8,7 @@ The `App` component serves as a central pillar in the Raydium Framework, orchest
 
 ### Environment and Configuration Setup
 - **Application Path Definition**: The `App` component initializes with the base path of the application, which is crucial for locating all necessary files and directories within the project.
-- **Configuration Management**: It loads configuration settings from a specified file (usually `app.php`), ensuring that the application adheres to predefined parameters and settings essential for its operation.
+- **Configuration Management**: It loads [configuration options](../reference/configuration) settings from a specified file (usually `app.php`), ensuring that the application adheres to predefined parameters and settings essential for its operation.
 - **Error Handling Setup**: Based on the environment type (`WP_ENVIRONMENT_TYPE`), the `App` component establishes appropriate error handling mechanisms to aid in development and debugging.
 
 ### Integration Points
@@ -20,7 +20,7 @@ The `App` component serves as a central pillar in the Raydium Framework, orchest
 ### Constructor
 The constructor (`__construct`) method is invoked with the application path, configuration directory, and an optional configuration filename. This method performs the following actions:
 - Initializes the `Setup` object to manage environment variables and configurations.
-- Loads the application configuration from the specified file, validating its structure as an associative array.
+- Loads the application [configuration options](../reference/configuration) from the specified file, validating its structure as an associative array.
 - Sets up error handling based on the application's running environment and specified error handler configurations.
 
 ### Kernel Initialization

@@ -74,30 +74,32 @@ To properly set up the Landlord environment for your multi-tenant application in
 
 ## Configuration and Environment Files
 
+The framework supports distinct configurations for each tenant, enabling customized settings per site within a multi-tenant environment.
+
+> In the following example our tenant UUID is `a345ea9515c`:
+
 - Tenant-specific configuration files are located as follows:
   - `.env`: `"path/configs/a345ea9515c/.env"`
   - `app.php`: `"path/configs/a345ea9515c/app.php"`
   - `config.php`: `"path/configs/a345ea9515c/config.php"`
 
-The framework supports distinct configurations for each tenant, enabling customized settings per site within a multi-tenant environment:
-
 #### Locations
 
 - **Environment File**: Located at `path/configs/{tenant_id}/.env`, it stores environment-specific variables.
 - **PHP Configuration**: Found at `path/configs/{tenant_id}/config.php`, this file contains PHP configuration file overrides.
-- **Framework Options**: Found at `path/configs/{tenant_id}/app.php`, this file contains an array of options specific to the tenant.
+- **Framework Options**: Found at `path/configs/{tenant_id}/app.php`, this file contains an array of [configuration options](../reference/configuration) specific to the tenant.
 
 #### Loading Mechanism
 
 1. **Tenant-Specific**: The framework first attempts to load configurations from the tenant's directory.
-2. **Fallback**: In the absence of tenant-specific files, it defaults to the global `config.php` or in the case of options `app.php`.
+2. **Fallback**: In the absence of tenant-specific files, it defaults to the global `config.php` or in the case of [configuration options](../reference/configuration) `app.php`.
 3. **Overrides**: Global settings in the default config can be overridden by tenant-specific files for flexibility.
 
 **`REQUIRE_TENANT_CONFIG` Setting:**
 
-> **Note:** The `REQUIRE_TENANT_CONFIG` constant mandates the presence of tenant-specific configuration options `app.php`. When enabled (`true`), it requires that each tenant must have their own configuration file located at `config/{tenant_id}/app.php`. Conversely, when disabled (`false`), we can use a global `app.php` file. The default setting for this constant is `false`.
+> **Note:** The `REQUIRE_TENANT_CONFIG` constant mandates the presence of tenant-specific [configuration options](../reference/configuration) `app.php`. When enabled (`true`), it requires that each tenant must have their own configuration file located at `config/{tenant_id}/app.php`. Conversely, when disabled (`false`), we can use a global `app.php` file. The default setting for this constant is `false`.
 
-This configuration toggles the enforcement of tenant-specific settings within the application. When enabled (`true`), it requires each tenant to have a dedicated `config/{tenant_id}/app.php` file, ensuring tailored settings per tenant. In the absence of a tenant-specific file, the application will signal an error, highlighting the necessity for individual configurations. By default, this setting is disabled (`false`), allowing for a shared `app.php` configuration across tenants, simplifying setup for environments where distinct tenant configurations are not critical.
+This toggles the enforcement of tenant-specific settings within the application. When enabled (`true`), it requires each tenant to have a dedicated `config/{tenant_id}/app.php` [configuration options](../reference/configuration) file, ensuring tailored settings per tenant. In the absence of a tenant-specific [configuration options](../reference/configuration) file, the application will signal an error, highlighting the necessity for individual configurations. By default, this setting is disabled (`false`), allowing for a shared `app.php` [configuration options](../reference/configuration) across tenants, simplifying setup for environments where distinct tenant configurations are not critical.
 
 #### Benefits
 
@@ -124,7 +126,7 @@ This approach ensures a balance between customization for individual tenants and
 ## Shared Resources
 
 - Plugins and Themes are shared across tenants, optimizing resources and simplifying management.
-- The shared resources' paths are defined in the `app.php` file and the framework's `composer.json`.
+- The shared resource paths are defined in the [configuration options](../reference/configuration) `app.php` file and the framework's `composer.json`.
 
 ## Plugin and Theme Management
 

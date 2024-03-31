@@ -46,7 +46,7 @@ In our tutorials section, we'll delve into a variety of topics designed to enhan
 - Implementing Security Best Practices within Raydium Projects
 - Optimizing Performance for Raydium-Powered WordPress Sites
 
-### Integrating with WordPress
+### Standard WordPress
 
 - Migrating from Standard WordPress to Raydium: A Comprehensive Guide
 - Seamlessly Integrating WooCommerce with Raydium for E-commerce Solutions
@@ -57,6 +57,8 @@ In our tutorials section, we'll delve into a variety of topics designed to enhan
 - Building a Dynamic Blogging Platform Using Raydium
 - Creating Feature-Rich Membership Sites with Raydium
 - Developing Professional Portfolio Sites with Advanced Custom Fields and Raydium
+- Building a DX Platform Using Raydium
+- Building a WaaS Platform Using Raydium
 
 ### Troubleshooting and Best Practices
 
@@ -66,7 +68,7 @@ In our tutorials section, we'll delve into a variety of topics designed to enhan
 
 ### Community Contributions and Extensions
 
-- Discovering and Utilizing Community-Created Raydium Themes and Plugins
+- Discovering and Utilizing Community-Created Raydium Plugins
 - Contributing to the Raydium Community: How to Get Involved
 - Extending Raydium's Capabilities with Custom Add-Ons
 
@@ -74,7 +76,7 @@ In our tutorials section, we'll delve into a variety of topics designed to enhan
 
 - Understanding the Security Landscape: A Primer for Raydium Developers
 - Deploying Secure Raydium Applications: Strategies and Best Practices
-- Managing Security Aspects in Raydium and WordPress Environments
+- Managing Security Aspects in Raydium-powered WordPress Environments
 
 Through these focused sections, our tutorials aim to provide a structured and comprehensive learning path, from basic introductions to advanced development techniques, ensuring you have the knowledge and tools needed to excel in Raydium and WordPress development.
 
