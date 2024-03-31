@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.8](https://github.com/devuri/wpframework/compare/v0.2.7...v0.2.8) (2024-03-31)
+
+
+### Miscellaneous Chores
+
+* build ([2384229](https://github.com/devuri/wpframework/commit/238422978d04352b11bb9ded82d3de45e73978fc))
+* docs style update ([de46611](https://github.com/devuri/wpframework/commit/de466113ebffea2544df6eb685456561bbb89cd7))
+* fix duplicate data in docs ([6415e77](https://github.com/devuri/wpframework/commit/6415e776a042f0deed46c12fa3a75efa1a868c45))
+
 ## [0.2.7](https://github.com/devuri/wpframework/compare/v0.2.6...v0.2.7) (2024-03-29)
 
 
