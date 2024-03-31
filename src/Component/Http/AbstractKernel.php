@@ -147,8 +147,21 @@ abstract class AbstractKernel implements TenantInterface
 
         $this->args = new DotAccess( array_merge( $this->args, $args ) );
 
+        /*
+         * Sets the name of the configuration `configs/config.php` file based on arguments.
+         *
+         * This method defines the configuration file name within the framework. 'config' is the default name, leading to 'config.php'.
+         * This name can be customized via the 'config_file' argument, allowing for files like 'constant.php'.
+         * This enables tailored settings for the WordPress application by leveraging various configuration files.
+         * TODO we are going to remove the ability change this in the future.
+         *
+         * @param array $args Associative array where 'config_file' specifies the configuration file name, excluding '.php'.
+         *
+         * @link https://devuri.github.io/wpframework/customization/constants
+         */
         $this->config_file = $this->args->get( 'config_file' );
 
+        // Sets the <tenant_id>
         $this->tenant_id = $this->env_tenant_id();
 
         /*

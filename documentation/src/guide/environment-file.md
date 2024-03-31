@@ -29,7 +29,18 @@ The framework doesn't assign specific purposes or content distinctions to differ
 
 ### Loading Order and Precedence
 
-The framework searches for these files in the listed order, loading the first one it finds. This behavior allows for straightforward environment-specific configurations.
+The framework searches for these files in the listed order, loading the first one it finds. This behavior allows for straightforward environment-specific configurations. The configuration files are loaded in the following sequence:
+
+1. **`env`**: Generic configuration file.
+2. **`.env`**: Commonly used in various environments.
+3. **`.env.secure`**: Sensitive or critical environments.
+4. **`.env.prod`**: Production-specific environments.
+5. **`.env.staging`**: Pre-production or staging environment environments.
+6. **`.env.dev`**: Development-specific configurations.
+7. **`.env.debug`**: Debugging and troubleshooting configurations.
+8. **`.env.local`**: Machine-specific local configurations.
+
+> This order ensures a flexible configuration system where more specific settings can override broader ones, supporting a range of development and production needs.
 
 ### Loading Behavior:
 
