@@ -14,7 +14,7 @@ Welcome to the WPFramework, the Composer package that serves as the successor to
 
 ## Documentation
 
-Explore the extensive [Documentation](https://devuri.github.io/wpframework/) to learn about its installation, configuration, and the features it offers. The documentation includes detailed guides, API references, and best practices to help you maximize your use of Raydium.
+Explore the extensive [Raydium Documentation](https://devuri.github.io/wpframework/) to learn about its installation, configuration, and the features it offers. The documentation includes detailed guides, API references, and best practices to help you maximize your use of Raydium.
 
 
 ## Support
