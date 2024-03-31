@@ -4,13 +4,29 @@ import {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-    logo: '/logo.png',
+	/* prettier-ignore */
+    head: [
+      ['link', { rel: 'icon', type: 'image/svg+xml', href: '/raydium-logo-mini.svg' }],
+      ['link', { rel: 'icon', type: 'image/png', href: '/raydium-logo-mini.png' }],
+      ['meta', { name: 'theme-color', content: '#008080' }],
+      ['meta', { property: 'og:type', content: 'website' }],
+      ['meta', { property: 'og:locale', content: 'en' }],
+      ['meta', { property: 'og:title', content: 'Raydium | A WordPress micro-enhancement framework' }],
+      ['meta', { property: 'og:site_name', content: 'Raydium Framework' }],
+      ['meta', { property: 'og:image', content: 'https://devuri.github.io/wpframework/docs/raydium-logo.png' }],
+      ['meta', { property: 'og:url', content: 'https://devuri.github.io/wpframework' }]
+    ],
+    logo: '/raydium-logo.png',
     lang: 'en-US',
     title: 'Raydium',
     description: 'Effortlessly develop scalable WordPress applications that support multiple tenants from a single installation.',
     srcDir: 'src',
 	  base: '/wpframework/',
     outDir: '../docs',
+	cleanUrls: true,
+	// sitemap: {
+	//     hostname: 'https://devuri.github.io/wpframework'
+	// },
     themeConfig: {
         // https://vitepress.dev/reference/default-theme-config
         nav: [{
@@ -178,6 +194,10 @@ export default defineConfig({
 						text: 'Architecture',
 						link: '/reference/architecture'
 					},
+					{
+						text: 'Framework',
+						link: '/reference/framework'
+					},
                     {
                         text: 'Code',
                         link: 'https://devuri.github.io/wpframework/code/'
@@ -208,7 +228,10 @@ export default defineConfig({
             link: 'https://github.com/devuri/wpframework'
         }],
         search: {
-            provider: 'local'
+            provider: 'local',
+			options: {
+                placeholder: 'Search Raydium Docs...',
+            },
         },
         footer: {
             message: 'Released under the <a href="https://github.com/devuri/wpframework/blob/master/LICENSE">MIT License</a>.',
