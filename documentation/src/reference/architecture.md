@@ -10,7 +10,7 @@ The Raydium Framework is engineered to enhance and streamline the WordPress setu
 - The integration of Raydium Framework with WordPress begins at the `wp-config` stage, where the framework is loaded to take charge of the setup process. This early integration ensures that Raydium can apply its environment configurations, constants, and other necessary settings before WordPress's core operations commence.
 
 ### Environment Configuration
-- Raydium reads environment variables from the `.env` [environment file](../guide/environment-file), setting the stage for the application's environment (`development`, `staging`, `production`, etc.) through the `WP_ENVIRONMENT_TYPE` variable and other related configurations.
+- Raydium reads environment variables from the `.env` [environment file](../customization/environment-file), setting the stage for the application's environment (`development`, `staging`, `production`, etc.) through the `WP_ENVIRONMENT_TYPE` variable and other related configurations.
 - The framework ensures that database settings, debugging levels, and any custom configurations relevant to the application's environment are accurately established.
 
 ## Framework Setup Lifecycle

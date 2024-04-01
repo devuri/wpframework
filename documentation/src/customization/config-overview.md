@@ -4,7 +4,7 @@ This guide explains how to modify the [configuration options](../reference/confi
 
 ## Using Environment Variables
 
-Most configuration values can be set using environment variables defined in the `.env` [environment file](../guide/environment-file). This approach provides flexibility and allows easy customization for different environments.
+Most configuration values can be set using environment variables defined in the `.env` [environment file](../customization/environment-file). This approach provides flexibility and allows easy customization for different environments.
 
 ## Accessing Configuration Options
 

@@ -50,7 +50,7 @@ To properly set up the Landlord environment for your multi-tenant application in
 
 1. **Backup Your Existing Environment File**: Before making any changes, it's crucial to back up your current `.env` file.
 
-2. **Create a New `.env` File**: In the root directory of application installation, create a new `.env` [environment file](../guide/environment-file). This file will store the environment-specific configurations for the Landlord database (settings in this env file are discarded after initial setup of the Landlord).
+2. **Create a New `.env` File**: In the root directory of application installation, create a new `.env` [environment file](../customization/environment-file). This file will store the environment-specific configurations for the Landlord database (settings in this env file are discarded after initial setup of the Landlord).
 
 3. **Configure Landlord Database Settings**: Inside the newly created `.env` file, input the following configuration settings. These settings should match those of the main site (also referred to as the Landlord site) where the Tenancy plugin is installed. Adjust the values to reflect your specific Landlord database credentials:
 

@@ -15,7 +15,7 @@ This early setup phase is critical for laying the groundwork for subsequent envi
 
 ## Environment Configuration
 
-Raydium identifies the supported `.env` [environment file](../guide/environment-file) names and filters out non-existent files to streamline the environment configuration process. This step ensures that only existing environment files are considered for loading environment variables.
+Raydium identifies the supported `.env` [environment file](../customization/environment-file) names and filters out non-existent files to streamline the environment configuration process. This step ensures that only existing environment files are considered for loading environment variables.
 
 ## Environment Variables Loading
 

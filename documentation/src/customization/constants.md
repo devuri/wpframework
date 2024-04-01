@@ -6,11 +6,11 @@ In the Raydium Framework, constants play a crucial role in configuring and custo
 
 ### Environment File (.env)
 
-Raydium utilizes a `.env` [environment file](../guide/environment-file) at the root of your project for environment-specific configurations. This file is the first place to look when you need to customize values related to database connections, site URLs, environment types, and more. Changes made here reflect across your application, providing a centralized location for critical configurations.
+Raydium utilizes a `.env` [environment file](../customization/environment-file) at the root of your project for environment-specific configurations. This file is the first place to look when you need to customize values related to database connections, site URLs, environment types, and more. Changes made here reflect across your application, providing a centralized location for critical configurations.
 
 ### Application Configurations (`configs/app.php`)
 
-For further customization, Raydium offers the `configs/app.php` file for [configuration options](../reference/configuration). This file is intended for more granular application-level configurations that might not fit within the scope of the `.env` [environment file](../guide/environment-file). Here, you can adjust settings that the framework or WordPress core might reference during runtime.
+For further customization, Raydium offers the `configs/app.php` file for [configuration options](../reference/configuration). This file is intended for more granular application-level configurations that might not fit within the scope of the `.env` [environment file](../customization/environment-file). Here, you can adjust settings that the framework or WordPress core might reference during runtime.
 
 ## Defining Additional Constants
 

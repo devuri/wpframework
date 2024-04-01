@@ -44,6 +44,6 @@ The Raydium framework ensures that tenant-specific [configuration options](../re
 
 ### Environment Variables
 
-Tenants also utilize environment variables defined in their `.env` [environment files](../guide/environment-file) for sensitive information, ensuring that configuration files remain secure and version-controllable.
+Tenants also utilize environment variables defined in their `.env` [environment files](../customization/environment-file) for sensitive information, ensuring that configuration files remain secure and version-controllable.
 
 > Multi-tenancy in Raydium offers a powerful paradigm for managing multiple WordPress sites with efficiency and security. By providing each tenant with its own database and the ability to use custom [configuration options](../reference/configuration), Raydium ensures that tenants can enjoy a tailored, secure, and isolated environment.

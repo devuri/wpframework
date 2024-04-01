@@ -36,7 +36,7 @@ Navigate to your project directory:
 cd your-project-name
 ```
 
-Within this directory, you'll find an `.env` [environment file](./environment-file). Open this file in your text editor and configure the following settings:
+Within this directory, you'll find an `.env` [environment file](../customization/environment-file). Open this file in your text editor and configure the following settings:
 
 - `WP_HOME`: Set this to your site's URL.
 - `WP_SITEURL`: This will be your WordPress core directory URL, typically `WP_HOME` appended with `/wp`.

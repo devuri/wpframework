@@ -26,7 +26,7 @@ After installing Raydium, proceed by navigating to your project directory to con
 cd your-project-name
 ```
 
-You'll need to adjust the `.env` [environment file](./environment-file) to align with your database settings and site URL. Ensure the `WP_HOME` variable accurately reflects your site's URL.
+You'll need to adjust the `.env` [environment file](../customization/environment-file) to align with your database settings and site URL. Ensure the `WP_HOME` variable accurately reflects your site's URL.
 
 ## File Structure
 
