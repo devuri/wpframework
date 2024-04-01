@@ -1,6 +1,5 @@
 name: X-Build Docs
 on:
-  pull_request:
   workflow_dispatch:
 
 jobs:
