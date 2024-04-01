@@ -1,12 +1,8 @@
 # Getting Started
 
-## Try It Online
-
-Currently, Raydium does not provide an online trial [coming soon](#). To experiment with Raydium, you'll need to set it up locally by following the installation and configuration steps outlined below.
-
 ## Installation
 
-## Prerequisites
+#### Prerequisites
 
 To get started with Raydium, make sure you have the following prerequisites:
 
