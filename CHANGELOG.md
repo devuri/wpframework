@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.12](https://github.com/devuri/wpframework/compare/v0.2.11...v0.2.12) (2024-04-01)
+
+
+### Bug Fixes
+
+* mu-plugin version is 0.2x ([0d50e18](https://github.com/devuri/wpframework/commit/0d50e183173f7ee8425e798e223f634cb36ba346))
+
+
+### Miscellaneous Chores
+
+* refactor docs and update links ([31c72ce](https://github.com/devuri/wpframework/commit/31c72ce15a72a6918d807b331dc8281e3c91c412))
+
 ## [0.2.11](https://github.com/devuri/wpframework/compare/v0.2.10...v0.2.11) (2024-04-01)
 
 
