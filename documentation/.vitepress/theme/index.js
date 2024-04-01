@@ -1,4 +1,4 @@
 import DefaultTheme from 'vitepress/theme'
-import './styles.css'
+import './app.css'
 
 export default DefaultTheme
