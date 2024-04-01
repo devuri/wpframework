@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.11](https://github.com/devuri/wpframework/compare/v0.2.10...v0.2.11) (2024-04-01)
+
+
+### Miscellaneous Chores
+
+* remove docs dir ([3bf1774](https://github.com/devuri/wpframework/commit/3bf177448c7e704aea30b9b368277eefa600ff7e))
+
 ## [0.2.10](https://github.com/devuri/wpframework/compare/v0.2.9...v0.2.10) (2024-04-01)
 
 
