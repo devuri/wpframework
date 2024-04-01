@@ -1,5 +1,4 @@
 ---
-# Raydium: Revolutionizing WordPress Development
 layout: home
 
 hero:
@@ -20,4 +19,5 @@ features:
     details: Effortlessly develop scalable WordPress applications that support multiple tenants from a single installation, providing customized experiences for each.
   - title: Enhanced Security
     details: Security is at the forefront of Raydium, offering robust features designed to protect your WordPress sites against common vulnerabilities.
+
 ---
