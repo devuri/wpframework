@@ -20,4 +20,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           command: manifest
-          default-branch: master
+          default-branch: main
