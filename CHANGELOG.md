@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.10](https://github.com/devuri/wpframework/compare/v0.2.9...v0.2.10) (2024-04-01)
+
+
+### Bug Fixes
+
+* revert remove tailwindcss ([e6e9b58](https://github.com/devuri/wpframework/commit/e6e9b5865f8b15f505c966bcdd1a8d50fabe10ba))
+
 ## [0.2.9](https://github.com/devuri/wpframework/compare/v0.2.8...v0.2.9) (2024-03-31)
 
 
