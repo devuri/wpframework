@@ -7,7 +7,7 @@ The Setup component within the Raydium Framework is fundamental to initializing 
 ## Key Functionalities
 
 ### Environment Configuration
-- **Environment Variable Management**: Utilizes Dotenv to load environment variables from various `.env` [environment files](../guide/environment-file), supporting a range of environments such as production, staging, and development.
+- **Environment Variable Management**: Utilizes Dotenv to load environment variables from various `.env` [environment files](../customization/environment-file), supporting a range of environments such as production, staging, and development.
 - **Environment Types**: Maintains a list of supported environment types to ensure that the application is configured according to the specified environment.
 
 ### Multi-Tenancy Support

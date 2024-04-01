@@ -83,14 +83,6 @@ export default defineConfig({
                     {
                         text: 'Deploy',
                         link: '/guide/deploy'
-                    },
-					{
-                        text: 'Environments',
-                        link: '/guide/environments'
-                    },
-					{
-                        text: 'Environment File',
-                        link: '/guide/environment-file'
                     }
                 ]
             },
@@ -102,6 +94,14 @@ export default defineConfig({
 					{
                     text: 'Configuration',
                     link: '/customization/config-overview'
+					},
+					{
+						text: 'Environments',
+						link: '/customization/environments'
+					},
+					{
+						text: 'Environment File',
+						link: '/customization/environment-file'
 					},
 					{
 	                    text: 'Constants',
