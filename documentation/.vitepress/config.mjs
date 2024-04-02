@@ -204,10 +204,16 @@ export default defineConfig({
 				text: 'Upgrades',
 				collapsible: true,
 				collapsed: true,
-				items: [{
+				items: [
+					{
 					text: '^0.0.5',
 					link: '/upgrade/env-config-upgrade'
-				}, ]
+					},
+					{
+						text: 'Changelog',
+						link: '/upgrade/changelog'
+					},
+				]
 			},
 			{
 				text: 'Advanced',
@@ -230,7 +236,7 @@ export default defineConfig({
             },
         },
         footer: {
-            message: 'Released under the <a href="https://github.com/devuri/wpframework/blob/master/LICENSE">MIT License</a>.',
+            message: 'Released under the <a href="https://github.com/devuri/wpframework/blob/main/LICENSE">MIT License</a>.',
             copyright: 'Copyright © <a href="https://github.com/devuri">Uriel Wilson</a>'
         }
     }
