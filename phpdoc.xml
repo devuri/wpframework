@@ -5,9 +5,9 @@
         xmlns="https://www.phpdoc.org"
         xsi:noNamespaceSchemaLocation="https://docs.phpdoc.org/latest/phpdoc.xsd"
 >
-<title>WordPress Environment Configuration</title>
+<title>Raydium Framework</title>
 	<paths>
-		<output>docs/code</output>
+		<output>docs/dist/code</output>
 	</paths>
     <version number="0.6.3">
         <api>
