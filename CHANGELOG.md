@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.13](https://github.com/devuri/wpframework/compare/v0.2.12...v0.2.13) (2024-04-02)
+
+
+### Miscellaneous Chores
+
+* adds change logs in docs ([e91f81f](https://github.com/devuri/wpframework/commit/e91f81f20625912a4c2f3714ab001b54ba68f854))
+
 ## [0.2.12](https://github.com/devuri/wpframework/compare/v0.2.11...v0.2.12) (2024-04-01)
 
 
