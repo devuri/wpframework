@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: "Raydium"
-  tagline: A WordPress micro-enhancement framework that enables you to swiftly architect robust and elegant web solutions, redefining simplicity and power.
+  tagline: A WordPress micro-enhancement framework that enables you to swiftly architect robust and elegant web solutions.
   actions:
     - theme: brand
       text: Quick Start
