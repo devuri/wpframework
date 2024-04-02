@@ -22,7 +22,7 @@ export default defineConfig({
     description: 'Effortlessly develop scalable WordPress applications that support multiple tenants from a single installation.',
     srcDir: 'src',
 	  base: '/wpframework/',
-    outDir: '../docs',
+    outDir: '../docs/dist',
 	cleanUrls: true,
 	// sitemap: {
 	//     hostname: 'https://devuri.github.io/wpframework'
