@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.14](https://github.com/devuri/wpframework/compare/v0.2.13...v0.2.14) (2024-04-02)
+
+
+### Bug Fixes
+
+* update `gitattributes` ([0871000](https://github.com/devuri/wpframework/commit/08710001ae75a433b698ef497c809185a611a3c8))
+
 ## [0.2.13](https://github.com/devuri/wpframework/compare/v0.2.12...v0.2.13) (2024-04-02)
 
 
