@@ -19,6 +19,8 @@ phpdoc.xml                     export-ignore
 psalm.xml                      export-ignore
 phpcs.xml                      export-ignore
 rules.neon                     export-ignore
+package-lock.json              export-ignore
+package.json                   export-ignore
 phpstan.neon                   export-ignore
 sample-wp-config.php           export-ignore
 release-please-config.json     export-ignore
