@@ -153,6 +153,10 @@ export default defineConfig({
                         text: 'Configs',
                         link: '/reference/configuration'
                     },
+					{
+                        text: 'Install Protection',
+                        link: '/reference/install-protection'
+                    },
                     {
                         text: 'Environment',
                         link: '/reference/environment-vars'
@@ -221,6 +225,10 @@ export default defineConfig({
 					{
 						text: 'Premium Plugins',
 						link: '/premium-plugins'
+					},
+					{
+						text: 'Managing Updates',
+						link: '/updates'
 					}
 				]
 			},

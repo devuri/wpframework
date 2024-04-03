@@ -566,7 +566,7 @@ abstract class AbstractKernel implements TenantInterface
 
     protected function is_wp_install(): bool
     {
-		if ( ! defined( 'RAYDIUM_INSTALL_PROTECTION' ) ) {
+        if ( \defined( 'RAYDIUM_INSTALL_PROTECTION' ) && false === RAYDIUM_INSTALL_PROTECTION ) {
             return false;
         }
 
