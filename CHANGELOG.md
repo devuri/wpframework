@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.15](https://github.com/devuri/wpframework/compare/v0.2.14...v0.2.15) (2024-04-03)
+
+
+### Bug Fixes
+
+* add `RAYDIUM_INSTALL_PROTECTION` required for install protection ([e420990](https://github.com/devuri/wpframework/commit/e420990323f108ab9b0eafefc6bd8e495d496933))
+
 ## [0.2.14](https://github.com/devuri/wpframework/compare/v0.2.13...v0.2.14) (2024-04-02)
 
 
