@@ -477,8 +477,8 @@ abstract class AbstractKernel implements TenantInterface
         // maintenance mode
         $this->handle_maintenance_mode();
 
-        if ( $this->wp_is_not_installed() && \in_array( env( 'WP_ENVIRONMENT_TYPE' ), [ 'secure', 'sec', 'production', 'prod' ], true ) ) {
-            Terminate::exit( [ 'wp is not installed change enviroment to run installer' ] );
+        if ( $this->is_wp_install() && \in_array( env( 'WP_ENVIRONMENT_TYPE' ), [ 'secure', 'sec', 'production', 'prod' ], true ) ) {
+            Terminate::exit( [ 'wp is not installed or doing an upgrade change enviroment to run installer' ] );
         }
     }
 
@@ -564,8 +564,12 @@ abstract class AbstractKernel implements TenantInterface
         }
     }
 
-    protected function wp_is_not_installed(): bool
+    protected function is_wp_install(): bool
     {
+		if ( ! defined( 'RAYDIUM_INSTALL_PROTECTION' ) ) {
+            return false;
+        }
+
         if ( \defined( 'WP_INSTALLING' ) && true === WP_INSTALLING ) {
             return true;
         }
