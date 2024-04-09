@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.16](https://github.com/devuri/wpframework/compare/v0.2.15...v0.2.16) (2024-04-09)
+
+
+### Bug Fixes
+
+* update configuration file path ([1a89052](https://github.com/devuri/wpframework/commit/1a890528dd63c2c9c27b5de7d37d2e7c0c7b61c1))
+
 ## [0.2.15](https://github.com/devuri/wpframework/compare/v0.2.14...v0.2.15) (2024-04-03)
 
 
