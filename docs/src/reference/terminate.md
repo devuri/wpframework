@@ -4,6 +4,8 @@
 
 The `Terminate` component within the Raydium Framework acts as the final arbitrator in handling script terminations, particularly in scenarios where an unrecoverable error or exception occurs. This component is meticulously designed to ensure graceful exits by displaying user-friendly error messages, logging exceptions for further analysis, and sending appropriate HTTP status codes, thereby preserving the integrity and security of the application during unexpected terminations.
 
+![invalidfile-env-file-on-trminate-with-terminate-debugger-true](https://github.com/devuri/wpframework/assets/4777400/69b3b41e-f2ac-4535-849d-d366c02e369e)
+
 ## Key Functionalities
 
 ### Error Handling and HTTP Status Codes
