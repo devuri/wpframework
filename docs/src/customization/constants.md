@@ -16,7 +16,7 @@ For further customization, Raydium offers the `configs/app.php` file for [config
 
 ### Using `configs/config.php`
 
-The `config.php` file in the Raydium Framework is a dedicated space for defining additional constants and customizing your WordPress application settings. This flexibility allows you to tailor application behavior, aligning it with specific requirements.
+The `config.php` file in the Raydium Framework is a dedicated space for defining additional [application constants](../reference/app-constants) and customizing your WordPress application settings. This flexibility allows you to tailor application behavior, aligning it with specific requirements.
 
 For constants that extend beyond the foundational setups provided by Raydium and the `.env` file, you can use the `configs/config.php` file.
 

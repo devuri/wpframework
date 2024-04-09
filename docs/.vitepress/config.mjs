@@ -154,6 +154,10 @@ export default defineConfig({
                         link: '/reference/configuration'
                     },
 					{
+                        text: 'Constants',
+                        link: '/reference/app-constants'
+                    },
+					{
                         text: 'Install Protection',
                         link: '/reference/install-protection'
                     },
