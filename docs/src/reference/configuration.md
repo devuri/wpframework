@@ -130,7 +130,7 @@ Environment variables provide a centralized location for managing application se
 
 ## Examples in `app.php`
 
-### Database Configuration
+### Sensitive AWS Configuration
 
 Instead of hardcoding your aws credentials, use `env()` to pull them from your `.env` file:
 
