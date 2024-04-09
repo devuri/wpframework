@@ -51,7 +51,7 @@ When adding or modifying settings in `config.php`:
 To set a constant in your application, you might use:
 
 ```php
-define('MY_NEW_CUSTOM_VALE', true);
+define('JWT_AUTH_SECRET_KEY', 'XHkoqEykIrQNQdwLmBNMErCFSiIqAGUlGYkA');
 ```
 
 Or, to override SSL settings established by the framework:
