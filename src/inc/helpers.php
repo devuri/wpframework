@@ -82,7 +82,7 @@ function env( $name, $default = null, $encrypt = false, $strtolower = false )
     // Instance of the Env class with your predefined settings
     static $env = null;
     if (null === $env) {
-        $env = new Env($whitelisted, $encryptionPath, false );
+        $env = new Env( $whitelisted, $encryptionPath, false );
     }
 
     // Get the environment variable value
