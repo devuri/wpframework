@@ -52,6 +52,11 @@ To set a constant in your application, you might use:
 
 ```php
 define('JWT_AUTH_SECRET_KEY', 'XHkoqEykIrQNQdwLmBNMErCFSiIqAGUlGYkA');
+
+// or keep sensitive data secure in your .env file
+
+define('JWT_AUTH_SECRET_KEY', env('RAYDIUM_JWT_AUTH_SECRET_KEY') );
+
 ```
 
 Or, to override SSL settings established by the framework:
