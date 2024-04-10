@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/devuri/wpframework/compare/v0.2.16...v0.3.0) (2024-04-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* update v0.3.0
+
+### Features
+
+* update v0.3.0 ([f567399](https://github.com/devuri/wpframework/commit/f5673996bc3df9c974d7224188301c1d1ce33e7e))
+
 ## [0.2.16](https://github.com/devuri/wpframework/compare/v0.2.15...v0.2.16) (2024-04-09)
 
 
