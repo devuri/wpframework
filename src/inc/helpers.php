@@ -141,8 +141,6 @@ if ( ! \function_exists( 'app_kernel' ) ) {
         $app_options = [];
         $supported_env_files =  _supported_env_files();
 
-        // TODO create a .env file if it doesnyt exist.
-
         // Filters out environment files that do not exist to avoid warnings.
         $_env_files = _env_files_filter( $supported_env_files, APP_DIR_PATH );
 
@@ -434,7 +432,7 @@ function _wpframework( ?string $app_path = null ): ?Framework
 /**
  * Retrieves the default file names for environment configuration.
  *
- * This protected method is designed to return an array of default file names
+ * This is designed to return an array of default file names
  * used for environment configuration in a WordPress environment.
  * These file names include various formats and stages of environment setup,
  * such as production, staging, development, and local environments.
