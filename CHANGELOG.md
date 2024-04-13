@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/devuri/wpframework/compare/v0.3.0...v0.3.1) (2024-04-13)
+
+
+### Bug Fixes
+
+* always load `default_configs` ([3adbe84](https://github.com/devuri/wpframework/commit/3adbe84a6422f9af0ba916d91d5aeb8c23b7774c))
+
 ## [0.3.0](https://github.com/devuri/wpframework/compare/v0.2.16...v0.3.0) (2024-04-10)
 
 
