@@ -15,7 +15,7 @@ Welcome to the WPFramework, the Composer package that serves as the successor to
 
 Before you begin the installation process, ensure you have the following prerequisites:
 
-**PHP**: Raydium requires PHP version 7.4 or higher. Verify your PHP version using the command: `php -v`.
+**PHP**: Raydium requires PHP version 7.4 or higher.
 
 **Composer**: Raydium uses Composer for dependency management. 
 
