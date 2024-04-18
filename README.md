@@ -25,7 +25,7 @@ Before you begin the installation process, ensure you have the following prerequ
 
 5. **Command Line Access**: You'll need terminal or command line access to execute Composer commands.
 
-## Installation Steps
+## Installation
 
 ### Create a New Raydium Project
 
