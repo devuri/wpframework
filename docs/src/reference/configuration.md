@@ -160,6 +160,7 @@ Configure your mailer service dynamically, allowing for different keys in differ
 
 > [!WARNING]
 > While the `env()` function offers a convenient access, variables must be whitelisted or you need to turn off strict env loader by setting the `USE_STRICT_ENV_VARS` to `false`.
+This is only applicable if you are not using default setup as the framework already sets this value to false.
 
 ## Best Practices
 

@@ -35,6 +35,7 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "devuri/dot-access": "^0.3",
+        "devuri/http": "^0.1",
         "devuri/env": "^0.3",
         "devuri/secure-password": "^0.1",
         "devuri/uuid-generator": "^0.0.1",
