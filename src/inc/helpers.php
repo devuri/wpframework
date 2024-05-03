@@ -255,12 +255,12 @@ if ( ! \function_exists( 'appConfig' ) ) {
 
 function env_whitelist(): array
 {
-	static $whitelist;
+    static $whitelist;
     static $whitelisted;
 
     if ( \is_null( $whitelist ) ) {
         $framework = new Urisoft\SimpleConfig( _configs_dir(), ['whitelist'] );
-        //$app = new Urisoft\SimpleConfig( site_configs_dir(), ['whitelist'] );
+        // $app = new Urisoft\SimpleConfig( site_configs_dir(), ['whitelist'] );
         $whitelist = $framework->get('whitelist');
     }
 
@@ -268,7 +268,7 @@ function env_whitelist(): array
         $whitelisted = array_merge( $whitelist['framework'], $whitelist['wp']);
     }
 
-	return $whitelisted;
+    return $whitelisted;
 }
 
 function site_configs_dir(): ?string

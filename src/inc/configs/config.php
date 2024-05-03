@@ -9,4 +9,4 @@
  * variables are set, allowing the application to run without throwing errors
  * due to undefined variables.
  */
-define( 'USE_STRICT_ENV_VARS', false );
+\define( 'USE_STRICT_ENV_VARS', false );
