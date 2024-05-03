@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.3](https://github.com/devuri/wpframework/compare/v0.3.2...v0.3.3) (2024-05-03)
+
+
+### Bug Fixes
+
+* load framework `$default_configs` when no `app.php` is defined ([ae3e7f9](https://github.com/devuri/wpframework/commit/ae3e7f9d18e0eafe51251c7059e41794818897d0))
+
 ## [0.3.2](https://github.com/devuri/wpframework/compare/v0.3.1...v0.3.2) (2024-05-03)
 
 
