@@ -65,24 +65,12 @@ if ( ! \function_exists( 'assetUrl' ) ) {
  */
 function env( $name, $default = null, $encrypt = false, $strtolower = false )
 {
-    static $whitelist;
-    static $whitelisted;
-
-    if ( \is_null( $whitelist ) ) {
-        $config = new Urisoft\SimpleConfig( _configs_dir(), ['whitelist'] );
-        $whitelist = $config->get('whitelist');
-    }
-
-    if ( \is_null( $whitelisted ) ) {
-        $whitelisted = array_merge( $whitelist['framework'], $whitelist['wp']);
-    }
-
     $encryptionPath = \defined('APP_PATH') ? APP_PATH : APP_DIR_PATH;
 
     // Instance of the Env class with your predefined settings
     static $env = null;
     if (null === $env) {
-        $env = new Env( $whitelisted, $encryptionPath, false );
+        $env = new Env( env_whitelist(), $encryptionPath, false );
     }
 
     // Get the environment variable value
@@ -256,12 +244,31 @@ if ( ! \function_exists( 'appConfig' ) ) {
 
         if ( file_exists( $options_file ) ) {
             return require $options_file;
-        } elseif ( ! file_exists( $options_file ) ) {
-			return require $default_configs_dir . '/app.php';
-		}
+        }
+        if ( ! file_exists( $options_file ) ) {
+            return require $default_configs_dir . '/app.php';
+        }
 
         return [];
     }
+}
+
+function env_whitelist(): array
+{
+    static $whitelist;
+    static $whitelisted;
+
+    if ( \is_null( $whitelist ) ) {
+        $framework = new Urisoft\SimpleConfig( _configs_dir(), ['whitelist'] );
+        // $app = new Urisoft\SimpleConfig( site_configs_dir(), ['whitelist'] );
+        $whitelist = $framework->get('whitelist');
+    }
+
+    if ( \is_null( $whitelisted ) ) {
+        $whitelisted = array_merge( $whitelist['framework'], $whitelist['wp']);
+    }
+
+    return $whitelisted;
 }
 
 function site_configs_dir(): ?string
