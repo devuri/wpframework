@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.4](https://github.com/devuri/wpframework/compare/v0.3.3...v0.3.4) (2024-05-03)
+
+
+### Bug Fixes
+
+* fixes CAN_DEACTIVATE_PLUGINS bool Update Plugin.php ([b5b6259](https://github.com/devuri/wpframework/commit/b5b62591da314dfb105176d4fd7d0a1d260b3f09))
+
 ## [0.3.3](https://github.com/devuri/wpframework/compare/v0.3.2...v0.3.3) (2024-05-03)
 
 
