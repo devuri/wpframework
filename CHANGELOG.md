@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/devuri/wpframework/compare/v0.3.1...v0.3.2) (2024-05-03)
+
+
+### Bug Fixes
+
+* wp moved to upstream Update composer.json ([1867677](https://github.com/devuri/wpframework/commit/1867677d2d03573a91a8787827a466d92fdfb105))
+
 ## [0.3.1](https://github.com/devuri/wpframework/compare/v0.3.0...v0.3.1) (2024-04-13)
 
 
