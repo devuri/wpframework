@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.5](https://github.com/devuri/wpframework/compare/v0.3.4...v0.3.5) (2024-05-03)
+
+
+### Miscellaneous Chores
+
+* build ([8d5b6b6](https://github.com/devuri/wpframework/commit/8d5b6b626aa4e86369fb003a51bc60f1ef7f3211))
+
 ## [0.3.4](https://github.com/devuri/wpframework/compare/v0.3.3...v0.3.4) (2024-05-03)
 
 
