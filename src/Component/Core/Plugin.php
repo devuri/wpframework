@@ -138,7 +138,7 @@ class Plugin
                 }
 
                 // if set to true users should be allowed to deactivate plugins.
-                if ( true === CAN_DEACTIVATE_PLUGINS ) {
+                if ( true === (bool) CAN_DEACTIVATE_PLUGINS ) {
                     return $actions;
                 }
 
