@@ -11,6 +11,30 @@
 
 Welcome to the WPFramework, the Composer package that serves as the successor to `wp-env-config` its the core framework for Raydium. Designed to provide secure and modular WordPress development, The framework equips developers with a solid, flexible foundation for crafting scalable single or multi-tenant web applications.
 
+## Prerequisites
+
+Before you begin the installation process, ensure you have the following prerequisites:
+
+**PHP**: Raydium requires PHP version 7.4 or higher.
+
+**Composer**: Raydium uses Composer for dependency management. 
+
+**MySQL or MariaDB Database**: You'll need the database credentials during the WordPress setup.
+
+**Web Server**: Any standard web server like Apache or Nginx.
+
+**Command Line Access**: You'll need terminal or command line access to execute Composer commands.
+
+
+## Installation
+
+### Create a New Raydium Project
+
+Start by creating a new Raydium project using Composer. Open your terminal or command line tool and run the following command:
+
+```bash
+composer create-project devuri/raydium your-project-name
+```
 
 ## Documentation
 

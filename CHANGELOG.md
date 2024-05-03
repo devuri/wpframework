@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.3.4](https://github.com/devuri/wpframework/compare/v0.3.3...v0.3.4) (2024-05-03)
+
+
+### Bug Fixes
+
+* fixes CAN_DEACTIVATE_PLUGINS bool Update Plugin.php ([b5b6259](https://github.com/devuri/wpframework/commit/b5b62591da314dfb105176d4fd7d0a1d260b3f09))
+
+## [0.3.3](https://github.com/devuri/wpframework/compare/v0.3.2...v0.3.3) (2024-05-03)
+
+
+### Bug Fixes
+
+* load framework `$default_configs` when no `app.php` is defined ([ae3e7f9](https://github.com/devuri/wpframework/commit/ae3e7f9d18e0eafe51251c7059e41794818897d0))
+
+## [0.3.2](https://github.com/devuri/wpframework/compare/v0.3.1...v0.3.2) (2024-05-03)
+
+
+### Bug Fixes
+
+* wp moved to upstream Update composer.json ([1867677](https://github.com/devuri/wpframework/commit/1867677d2d03573a91a8787827a466d92fdfb105))
+
+## [0.3.1](https://github.com/devuri/wpframework/compare/v0.3.0...v0.3.1) (2024-04-13)
+
+
+### Bug Fixes
+
+* always load `default_configs` ([3adbe84](https://github.com/devuri/wpframework/commit/3adbe84a6422f9af0ba916d91d5aeb8c23b7774c))
+
 ## [0.3.0](https://github.com/devuri/wpframework/compare/v0.2.16...v0.3.0) (2024-04-10)
 
 
