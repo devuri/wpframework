@@ -62,6 +62,25 @@ Configure your web server (Apache, Nginx, etc.) to serve the `public` directory 
 
 For Apache, ensure you have an `.htaccess` file within the `public` directory with the necessary rewrite rules. For Nginx, configure your site's server block to point the root to the `public` directory.
 
+#### Local Server Setup
+
+To serve your Raydium-powered WordPress application locally, use PHP's built-in server by executing the following command:
+
+```shell
+php -S localhost:8000 -t public -c .user.ini
+```
+
+Here's what each part does:
+- `php -S localhost:8000`: Starts the PHP built-in server on localhost at port 8000.
+- `-t public`: Sets the document root to the `public` directory.
+- `-c .user.ini`: Uses the `.user.ini` file for PHP configuration settings.
+
+#### Access Your Project
+
+Open a web browser and navigate to `http://localhost:8000`. You should see your new Raydium project running.
+
+> Remember, this local setup is ideal for development and testing but NOT suitable for a production environment.
+
 ### Step 4: Complete WordPress Setup
 
 Once your web server is serving the Raydium project, navigate to your site's URL in a web browser. You should be greeted with the WordPress installation wizard. Follow the steps to select a language, set up your WordPress admin account, and complete the installation.
