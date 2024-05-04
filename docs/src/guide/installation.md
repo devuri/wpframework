@@ -87,6 +87,55 @@ Open a web browser and navigate to `http://localhost:8000`. You should see your 
 
 Once your web server is serving the Raydium project, navigate to your site's URL in a web browser. You should be greeted with the WordPress installation wizard. Follow the steps to select a language, set up your WordPress admin account, and complete the installation.
 
+> [!TIP]
+> In Raydium, the `public` directory serves as the default document root, housing the main entry point and other publicly accessible assets of your application. Recognizing the need for flexibility, Raydium allows you to customize this setup by altering the document root to better fit your project’s requirements or security measures.
+
+## Change the Public Directory
+Modifying the public directory can be essential for various reasons, including:
+
+1. **Enhanced Security**: Adjusting the location of your public directory can help protect sensitive files and directories from unauthorized public access, bolstering your application's security.
+
+2. **Organizational Preferences**: Different organizations may have unique preferences for how they structure their projects. Changing the public directory can align the project structure with these organizational standards.
+
+3. **Integration Needs**: Adjusting your directory structure might be necessary to accommodate the integration with other systems or services, particularly when these systems impose specific directory requirements.
+
+### Steps to Change the Public Directory
+
+Changing the public directory in Raydium involves several clear steps:
+
+1. **Select a New Directory**: Identify a suitable name and location within your project for the new public directory.
+
+2. **Create or Modify the Directory**: If it does not already exist, establish the new directory at the chosen location. Transfer necessary files such as `index.php`, assets, and `.htaccess` (for Apache servers) from the existing `public` directory to the new one.
+
+3. **Update the Composer Configuration**:
+    - Adjust the `wordpress-install-dir` in your `composer.json` file to the new directory path.
+    - Update the `installer-paths` to reflect changes in the directory for themes, plugins, and must-use plugins. For example:
+      ```json
+      "extra": {
+          "wordpress-install-dir": "webroot/wp",
+          "installer-paths": {
+              "webroot/content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+              "webroot/content/plugins/{$name}/": ["type:wordpress-plugin"],
+              "webroot/content/themes/{$name}/": ["type:wordpress-theme"]
+          }
+      }
+      ```
+
+4. **Adjust Application Configuration**: Update configurations in your `app.php` or any relevant configuration files to reflect the new directory structure. For instance, change the `web_root` path:
+    ```php
+    'directory' => [
+        'web_root' => 'webroot', // previously 'public'
+        ...
+    ],
+    ```
+
+5. **Reconfigure the Web Server**: Depending on your setup (Apache, Nginx, built-in PHP server), update the web server configuration to point to the new public directory.
+
+6. **Test the Changes**: After making these updates, thoroughly test your application to ensure everything functions correctly. Verify that the server accurately serves the pages and that all resources load properly.
+
+> You can tailor the directory structure of your Raydium project to meet your specific needs, while maintaining its full functionality and enhancing its security. This flexibility is one of the many features that make Raydium a robust framework for developing scalable and secure WordPress applications.
+
+
 ## What's Next?
 
 After completing the installation, you're ready to start developing with Raydium. Explore the Raydium documentation to learn about its features, including modular architecture, enhanced security, and streamlined development workflow.
