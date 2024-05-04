@@ -60,7 +60,9 @@ DB_HOST='localhost'
 
 Configure your web server (Apache, Nginx, etc.) to serve the `public` directory of your Raydium project as the web root. This setup ensures that the web server correctly serves the WordPress site managed by Raydium.
 
-For Apache, ensure you have an `.htaccess` file within the `public` directory with the necessary rewrite rules. For Nginx, configure your site's server block to point the root to the `public` directory.
+> [!TIP]
+> For Apache, ensure you have an `.htaccess` file within the `public` directory with the necessary rewrite rules. For Nginx, configure your site's server block to point the root to the `public` directory.
+
 
 #### Local Server Setup
 
