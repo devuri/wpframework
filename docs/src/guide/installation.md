@@ -133,6 +133,7 @@ Changing the public directory in Raydium involves several clear steps:
 
 6. **Test the Changes**: After making these updates, thoroughly test your application to ensure everything functions correctly. Verify that the server accurately serves the pages and that all resources load properly.
 
+> [!NOTE]
 > You can tailor the directory structure of your Raydium project to meet your specific needs, while maintaining its full functionality and enhancing its security. This flexibility is one of the many features that make Raydium a robust framework for developing scalable and secure WordPress applications.
 
 
