@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.3.6](https://github.com/devuri/wpframework/compare/v0.3.5...v0.3.6) (2024-05-05)
+
+
+### Bug Fixes
+
+* adds `WP_DEVELOPMENT_MODE` in `wp_development_mode` [#102](https://github.com/devuri/wpframework/issues/102) ([b1a75f1](https://github.com/devuri/wpframework/commit/b1a75f100cb2474c6e117b40e40b83cdbdc8a918))
+* adds `WP_DEVELOPMENT_MODE` in generator as `theme` and whitelist ([389d458](https://github.com/devuri/wpframework/commit/389d4584f98877afc28e3abff51f77635bbc8d8a))
+
 ## [0.3.5](https://github.com/devuri/wpframework/compare/v0.3.4...v0.3.5) (2024-05-03)
 
 
