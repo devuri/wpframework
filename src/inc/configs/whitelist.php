@@ -97,6 +97,7 @@ return [
         'USE_STRICT_ENV_VARS',
     ],
     'wp'        => [
+        'WP_DEVELOPMENT_MODE',
         'WP_ENVIRONMENT_TYPE',
         'WP_MEMORY_LIMIT',
         'WP_MAX_MEMORY_LIMIT',
