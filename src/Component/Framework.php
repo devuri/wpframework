@@ -79,7 +79,7 @@ class Framework implements TenantInterface
      */
     private function _app_options( ?string $app_path = null ): ?array
     {
-        $options_file = $app_path . '/' . site_configs_dir() . '/app.php';
+        $options_file    = $app_path . '/' . site_configs_dir() . '/app.php';
         $default_configs = _configs_dir() . '/app.php';
 
         if ( ! file_exists( $options_file ) ) {
