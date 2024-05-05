@@ -200,6 +200,8 @@ class Setup implements SetupInterface
      */
     public function set_environment(): SetupInterface
     {
+        $this->define( 'WP_DEVELOPMENT_MODE', self::wp_development_mode() );
+
         if ( false === $this->environment && env( 'WP_ENVIRONMENT_TYPE' ) ) {
             $this->define( 'WP_ENVIRONMENT_TYPE', env( 'WP_ENVIRONMENT_TYPE' ) );
 
@@ -631,6 +633,11 @@ class Setup implements SetupInterface
         $constant['revisions']   = 10;
 
         return $constant[ $key ] ?? null;
+    }
+
+    private static function wp_development_mode(): string
+    {
+        return env( 'WP_DEVELOPMENT_MODE' ) ?? '';
     }
 
     /**
