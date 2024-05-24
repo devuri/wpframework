@@ -46,7 +46,9 @@ export default defineConfig({
                     { text: 'Getting Started', link: '/guide/getting-started' },
                     { text: 'Installation', link: '/guide/installation' },
                     { text: 'Migration', link: '/guide/migration' },
-                    { text: 'Deploy', link: '/guide/deploy' }
+                    { text: 'Deploy', link: '/guide/deploy' },
+                    { text: 'Repo Strategy', link: '/guide/repo-strategy' },
+                    { text: 'SSH Keys', link: '/guide/ssh-keys' }
                 ]
             },
             {
