@@ -48,6 +48,7 @@ export default defineConfig({
                     { text: 'Migration', link: '/guide/migration' },
                     { text: 'Deploy', link: '/guide/deploy' },
                     { text: 'Repo Strategy', link: '/guide/repo-strategy' },
+		    { text: 'Automated rsync Strategy', link: '/guide/rsync-strategy' },
                     { text: 'SSH Keys', link: '/guide/ssh-keys' }
                 ]
             },
