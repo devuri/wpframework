@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.7](https://github.com/devuri/wpframework/compare/v0.3.6...v0.3.7) (2024-05-24)
+
+
+### Features
+
+* docs add Bare Repository Strategy ([c25b2af](https://github.com/devuri/wpframework/commit/c25b2af480d03e5430d13c2d01f826542db5ebfb))
+
 ## [0.3.6](https://github.com/devuri/wpframework/compare/v0.3.5...v0.3.6) (2024-05-05)
 
 
