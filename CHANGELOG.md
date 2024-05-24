@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.8](https://github.com/devuri/wpframework/compare/v0.3.7...v0.3.8) (2024-05-24)
+
+
+### Features
+
+* adds Create rsync-strategy.md ([ecc8f29](https://github.com/devuri/wpframework/commit/ecc8f29a829d1d695527eb8918ed10a0d9926b2d))
+
 ## [0.3.7](https://github.com/devuri/wpframework/compare/v0.3.6...v0.3.7) (2024-05-24)
 
 
