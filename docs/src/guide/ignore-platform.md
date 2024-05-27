@@ -23,7 +23,7 @@ When installing Raydium or its WPFramework, you may encounter platform requireme
    If you're installing Raydium for the first time, use:
 
    ```sh
-   composer create-project raydium/core my-project --ignore-platform-reqs
+   composer create-project devuri/raydium my-project --ignore-platform-reqs
    ```
 
 #### Alternative: Specify Your Project's PHP Version
