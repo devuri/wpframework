@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.3.9](https://github.com/devuri/wpframework/compare/v0.3.8...v0.3.9) (2024-07-02)
+
+
+### Features
+
+* adds docs update guide ([72ca3cf](https://github.com/devuri/wpframework/commit/72ca3cf688c7e71298597211ce9676f5c39a511f))
+
+
+### Bug Fixes
+
+* fix update doc ([f896b73](https://github.com/devuri/wpframework/commit/f896b73c9501c8f7bc145d629aa5b88f0c08ea2a))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump braces from 3.0.2 to 3.0.3 ([49a25bb](https://github.com/devuri/wpframework/commit/49a25bb319844934e1df725b28cd79de4f041ba2))
+* **deps-dev:** bump ws from 8.16.0 to 8.17.1 ([ed6682e](https://github.com/devuri/wpframework/commit/ed6682e9899696c9a5971d376adf920fb6a3a3e4))
+* **deps:** update psr/log requirement from ^1.1 to ^1.1 || ^3.0 ([e86374e](https://github.com/devuri/wpframework/commit/e86374e432ca84f8157c2d5b24c8990faf7afe98))
+
 ## [0.3.8](https://github.com/devuri/wpframework/compare/v0.3.7...v0.3.8) (2024-05-24)
 
 
