@@ -48,6 +48,7 @@ export default defineConfig({
 		    { text: 'Ignore Platform', link: '/guide/ignore-platform' },
                     { text: 'Migration', link: '/guide/migration' },
                     { text: 'Deploy', link: '/guide/deploy' },
+                    { text: 'Updates', link: '/guide/updates' },
                     { text: 'Repo Strategy', link: '/guide/repo-strategy' },
 		    { text: 'Automated rsync', link: '/guide/rsync-strategy' },
                     { text: 'SSH Keys', link: '/guide/ssh-keys' }
