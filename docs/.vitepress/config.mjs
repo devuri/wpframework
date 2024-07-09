@@ -51,7 +51,8 @@ export default defineConfig({
                     { text: 'Updates', link: '/guide/updates' },
                     { text: 'Repo Strategy', link: '/guide/repo-strategy' },
 		    { text: 'Automated rsync', link: '/guide/rsync-strategy' },
-                    { text: 'SSH Keys', link: '/guide/ssh-keys' }
+                    { text: 'SSH Keys', link: '/guide/ssh-keys' },
+		    { text: 'Auto Updates', link: '/guide/auto-updates' }
                 ]
             },
             {
