@@ -124,4 +124,37 @@ You should see your newly added line among the listed cron jobs.
 
 
 
+## Warning About Automatic Updates
+While automated updates ensure that your dependencies are always up to date, they can also introduce breaking changes or incompatibilities without notice. This can potentially lead to downtime or unexpected behavior in your application. 
+
+> [!WARNING]
+> Automated updates may install new versions of plugins, themes, or core files that have not been thoroughly tested with your specific setup, causing conflicts or errors. Therefore, it is generally recommended to:
+- **Test Updates in a Staging Environment:** Before applying updates to your production environment, test them in a staging environment to identify any issues.
+- **Review Update Logs:** Regularly review update logs to understand what changes have been applied and to monitor for any potential issues.
+- **Have a Rollback Plan:** Ensure you have a backup and rollback plan in place in case an update causes problems.
+By taking these precautions, you can mitigate the risks associated with automatic updates and ensure that your Raydium project remains stable and secure.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 > With this cron job in place, your Raydium project will automatically update daily at midnight, ensuring that you always have the latest improvements and fixes. This helps in maintaining a secure and efficiently running application without manual intervention. If you choose to enable logging, you will also have a comprehensive record of updates, with an optional yearly cleanup to manage file sizes effectively.
