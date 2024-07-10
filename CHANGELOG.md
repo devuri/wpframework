@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.11](https://github.com/devuri/wpframework/compare/v0.3.10...v0.3.11) (2024-07-10)
+
+
+### Bug Fixes
+
+* `symfony/error-handler v5.0.11` Update composer.json ([652f132](https://github.com/devuri/wpframework/commit/652f132d318620237f5dc0325d5273f9be295e1e))
+
 ## [0.3.10](https://github.com/devuri/wpframework/compare/v0.3.9...v0.3.10) (2024-07-10)
 
 
