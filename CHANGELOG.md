@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.10](https://github.com/devuri/wpframework/compare/v0.3.9...v0.3.10) (2024-07-10)
+
+
+### Bug Fixes
+
+* use `"psr/log": "^1",` Update composer.json ([ad12a06](https://github.com/devuri/wpframework/commit/ad12a0619e5fbb235de4c9c6ee88b75f10d24578))
+
 ## [0.3.9](https://github.com/devuri/wpframework/compare/v0.3.8...v0.3.9) (2024-07-02)
 
 
