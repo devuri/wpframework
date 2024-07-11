@@ -52,7 +52,7 @@ export default defineConfig({
                     { text: 'Repo Strategy', link: '/guide/repo-strategy' },
 		    { text: 'Automated rsync', link: '/guide/rsync-strategy' },
                     { text: 'SSH Keys', link: '/guide/ssh-keys' },
-		    { text: 'SSH Key Pairs', link: '/guide/ssh-key-pairs' },
+		    { text: 'SSH Key Pairs', link: '/guide/ssh-keygen' },
 		    { text: 'Auto Updates', link: '/guide/auto-updates' }
                 ]
             },
