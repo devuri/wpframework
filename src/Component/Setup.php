@@ -335,14 +335,33 @@ class Setup implements SetupInterface
     }
 
     /**
-     * Site Url Settings.
+     * Sets the WordPress site URL and home URL configuration.
      *
-     * @return static
+     * This method retrieves the `wp.home` and `wp.siteurl` configuration values and defines
+     * the `WP_HOME` and `WP_SITEURL` constants for the WordPress installation. If either
+     * configuration value is missing, the script terminates with an error message and debugging
+     * information.
+     *
+     * @return SetupInterface Returns the current instance of the class implementing the SetupInterface.
      */
     public function site_url(): SetupInterface
     {
-        $this->define( 'WP_HOME', env( 'WP_HOME' ) );
-        $this->define( 'WP_SITEURL', env( 'WP_SITEURL' ) );
+        $wp_home    = config( 'wp.home' );
+        $wp_siteurl = config( 'wp.siteurl' );
+
+        if ( ! $wp_home || ! $wp_siteurl ) {
+            $debug = [
+                'class'   => static::class,
+                'object'  => $this,
+                'path'    => $this->app_path,
+                'line'    => __LINE__,
+                'message' => 'WP_HOME and/or WP_SITEURL is not setup correctly',
+            ];
+            Terminate::exit( [ $debug['message'], 500, $debug ] );
+        }
+
+        $this->define( 'WP_HOME', $wp_home );
+        $this->define( 'WP_SITEURL', $wp_siteurl );
 
         return $this;
     }
@@ -577,8 +596,9 @@ class Setup implements SetupInterface
     {
         try {
             // site url is required but can be overridden in wp-config.php
-            $this->required( 'WP_HOME' );
-            $this->required( 'WP_SITEURL' );
+            // $this->required( 'WP_HOME' );
+            // $this->required( 'WP_SITEURL' );
+            // No longer required can be setup in app.php config file
 
             // in most cases application passwords is not needed.
             $this->dotenv->required( 'DISABLE_WP_APPLICATION_PASSWORDS' )->allowedValues( [ 'true', 'false' ] );

@@ -17,6 +17,28 @@
  * @var array
  */
 return [
+    /*
+     * This section defines the WordPress configuration settings for the application.
+     * The 'home' and 'siteurl' values are retrieved from the environment variables
+     * 'WP_HOME' and 'WP_SITEURL' respectively.
+     */
+    'wp'               => [
+        /*
+         * The home URL for the WordPress site.
+         *
+         * This value is retrieved from the 'WP_HOME' environment variable. It defines
+         * the URL of the home page for the WordPress site.
+         */
+        'home'    => env( 'WP_HOME' ),
+
+        /*
+         * The site URL for the WordPress site.
+         *
+         * This value is retrieved from the 'WP_SITEURL' environment variable. It defines
+         * the URL where the WordPress application is accessible.
+         */
+        'siteurl' => env( 'WP_SITEURL' ),
+    ],
 
     /*
      * Sets the error handler for the project.
