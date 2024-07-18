@@ -171,7 +171,8 @@ class Plugin
         // Missing theme fix.
         $theme_info = self::get_current_theme_info();
         if ( false === $theme_info['available'] ) {
-            Terminate::exit( [ $theme_info['error_message'] ] );
+	    $active_theme = wp_get_theme();
+            Terminate::exit( [ $theme_info['error_message'].' -> '.$active_theme->template ] );
         }
     }
 
