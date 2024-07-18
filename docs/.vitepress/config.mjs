@@ -45,15 +45,23 @@ export default defineConfig({
                 items: [
                     { text: 'Getting Started', link: '/guide/getting-started' },
                     { text: 'Installation', link: '/guide/installation' },
-		    { text: 'Ignore Platform', link: '/guide/ignore-platform' },
+		            { text: 'Ignore Platform', link: '/guide/ignore-platform' },
                     { text: 'Migration', link: '/guide/migration' },
-                    { text: 'Deploy', link: '/guide/deploy' },
                     { text: 'Updates', link: '/guide/updates' },
-                    { text: 'Repo Strategy', link: '/guide/repo-strategy' },
-		    { text: 'Automated rsync', link: '/guide/rsync-strategy' },
-                    { text: 'SSH Keys', link: '/guide/ssh-keys' },
-		    { text: 'SSH Key Pairs', link: '/guide/ssh-keygen' },
-		    { text: 'Auto Updates', link: '/guide/auto-updates' }
+                ]
+            },
+			{
+                text: 'Deployment',
+                collapsible: true,
+                collapsed: true,
+                items: [
+                    { text: 'Deploy', link: '/deployment/deploy' },
+                    { text: 'Repo Strategy', link: '/deployment/repo-strategy' },
+		            { text: 'Automated rsync', link: '/deployment/rsync-strategy' },
+                    { text: 'SSH Keys', link: '/deployment/ssh-keys' },
+		            { text: 'SSH Key Pairs', link: '/deployment/ssh-keygen' },
+		            { text: 'Deploy Keys', link: '/deployment/deploy-keys' },
+		            { text: 'Auto Updates', link: '/deployment/auto-updates' }
                 ]
             },
             {
@@ -65,7 +73,7 @@ export default defineConfig({
                     { text: 'Environments', link: '/customization/environments' },
                     { text: 'Environment File', link: '/customization/environment-file' },
                     { text: 'Constants', link: '/customization/constants' },
-		    { text: 'GitHub Token', link: '/customization/auth-json' }
+		            { text: 'GitHub Token', link: '/customization/auth-json' }
                 ]
             },
             {
