@@ -1,7 +1,5 @@
 # Bare Repository Strategy
 
-### Deploying a Raydium Project using GitHub and GitHub Actions with a Bare Repository Strategy
-
 This guide details the process of deploying a Raydium-based WordPress site using GitHub and GitHub Actions with a bare repository strategy. Although GitHub and GitHub Actions are used in this example, similar steps can be applied to other platforms like GitLab CI, Jenkins, or Bitbucket Pipelines.
 
 ## Prerequisites
@@ -135,7 +133,7 @@ The post-receive hook will automate the deployment by copying files from the bar
    ```
 
 4. **Add Your SSH Key to GitHub Secrets:**
-   - Set up [SSH keys](/guide/ssh-keys) for your deployment.
+   - Set up [SSH keys](/deployment/ssh-keys) for your deployment.
    - Go to your GitHub repository settings.
    - Navigate to "Secrets and variables" > "Actions".
    - Add a new secret named `SSH_PRIVATE_KEY` and paste your private SSH key.
