@@ -1,6 +1,6 @@
 <?php
 /**
- * This file is part of the Slim White Label WordPress Plugin.
+ * This file is part of the Plugin.
  *
  * (c) Uriel Wilson
  *
