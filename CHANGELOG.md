@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.3.12](https://github.com/devuri/wpframework/compare/v0.3.11...v0.3.12) (2024-07-22)
+
+
+### Features
+
+* adds `ThemeSwitcher` ([8098b73](https://github.com/devuri/wpframework/commit/8098b73d3fdf71c058317800de03d5e3fd3cd195))
+
+
+### Bug Fixes
+
+* maybe add `// TODO switch_theme('kadence')` ([086fdb2](https://github.com/devuri/wpframework/commit/086fdb289ec680cacb5ffa6350038010c1a7e6b2))
+* show theme name if it is missing Update Plugin.php ([817da15](https://github.com/devuri/wpframework/commit/817da15cab846360f149358e32c0d1c4bd8d3383))
+
 ## [0.3.11](https://github.com/devuri/wpframework/compare/v0.3.10...v0.3.11) (2024-07-10)
 
 
