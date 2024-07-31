@@ -4,6 +4,9 @@
 
 This document provides a guide to the architecture and operational flow of our Multi-Tenant Application. The framework is designed to support multiple tenants (websites), each with its unique configuration and customization capabilities, on a shared infrastructure.
 
+> [!IMPORTANT]
+> Raydoum Multi-Tenant WordPress applications are functional, but we are in the early stages of developing this feature. While it works, it is important to proceed with caution. Be sure to thoroughly test your applications.
+
 ### Step 1: Backup Your Site
 
 Before making any changes, ensure you have a full backup of your WordPress files and database.
