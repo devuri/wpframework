@@ -126,6 +126,10 @@ if ( ! \function_exists( 'app_kernel' ) ) {
             \define( 'APP_HTTP_HOST', HttpFactory::init()->get_http_host() );
         }
 
+        if ( ! \defined('RAYDIUM_ENVIRONMENT_TYPE') ) {
+            \define( 'RAYDIUM_ENVIRONMENT_TYPE', null );
+        }
+
         $app_options = [];
         $supported_env_files =  _supported_env_files();
 

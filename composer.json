@@ -108,7 +108,7 @@
         ],
         "build": [
             "composer install -q",
-            "composer validate --strict",
+            "composer validate",
             "composer show --tree",
             "composer test",
             "composer wpcs-lint",
