@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.3.13](https://github.com/devuri/wpframework/compare/v0.3.12...v0.3.13) (2024-08-01)
+
+
+### Bug Fixes
+
+* adds `RAYDIUM_ENVIRONMENT_TYPE` Override for .env setup of `WP_ENVIRONMENT_TYPE`. ([13a29c9](https://github.com/devuri/wpframework/commit/13a29c9824c45517c1e7c09b9e1bd0227b186abc))
+
+
+### Miscellaneous Chores
+
+* build ([11de2f8](https://github.com/devuri/wpframework/commit/11de2f8417796623bf3eec4f9c6189038057470c))
+* removes composer dump in admin settings ([6233bfe](https://github.com/devuri/wpframework/commit/6233bfe220d4d5027a13ef126fe8122f3d385082))
+* update files and directory structure ([01f03fb](https://github.com/devuri/wpframework/commit/01f03fb5347282a892b698f1e9ee1093eaa85168))
+
 ## [0.3.12](https://github.com/devuri/wpframework/compare/v0.3.11...v0.3.12) (2024-07-22)
 
 
