@@ -11,7 +11,6 @@
 namespace WPframework\Component\Core;
 
 use WP_User;
-use WPframework\Component\Core\Settings\AdminSettingsPage;
 use WPframework\Component\Core\Traits\AdminBarMenuTrait;
 use WPframework\Component\Framework;
 use WPframework\Component\Terminate;
@@ -153,20 +152,6 @@ class Plugin
         );
 
         $this->add_wpframework_events();
-
-        // Add some special admin pages.
-        new AdminSettingsPage(
-            'Composer plugins',
-            function (): void {
-                ?><div class="wrap">
-					<h2>Composer Plugins List</h2>
-					<?php
-                    dump( packagistPluginsList() );
-					?>
-				</div>
-				<?php
-            }
-        );
 
         // Missing theme fix.
         $theme_info = self::get_current_theme_info();
