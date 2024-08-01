@@ -47,10 +47,10 @@ export default defineConfig({
                     { text: 'Installation', link: '/guide/installation' },
 		            { text: 'Ignore Platform', link: '/guide/ignore-platform' },
                     { text: 'Migration', link: '/guide/migration' },
-                    { text: 'Updates', link: '/guide/updates' },
+                    { text: 'Updates', link: '/guide/updates' }
                 ]
             },
-			{
+            {
                 text: 'Deployment',
                 collapsible: true,
                 collapsed: true,
@@ -84,7 +84,7 @@ export default defineConfig({
                     { text: 'Overview', link: '/multi-tenant/overview' },
                     { text: 'Configuration', link: '/multi-tenant/tenancy-config' },
                     { text: 'Isolation', link: '/multi-tenant/isolation' },
-                    { text: 'Architecture', link: '/multi-tenant/architecture' },
+                    { text: 'Architecture', link: '/multi-tenant/architecture' }
                 ]
             },
             {
@@ -121,7 +121,7 @@ export default defineConfig({
                 collapsed: true,
                 items: [
                     { text: '^0.0.5', link: '/upgrade/env-config-upgrade' },
-                    { text: 'Changelog', link: '/upgrade/changelog' },
+                    { text: 'Changelog', link: '/upgrade/changelog' }
                 ]
             },
             {
@@ -130,7 +130,7 @@ export default defineConfig({
                     { text: 'Premium Plugins', link: '/premium-plugins' },
                     { text: 'Managing Updates', link: '/updates' }
                 ]
-            },
+            }
         ],
         socialLinks: [{ icon: 'github', link: 'https://github.com/devuri/wpframework' }],
         search: {

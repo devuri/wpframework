@@ -33,37 +33,32 @@ You'll need to adjust the `.env` [environment file](../customization/environment
 Raydium provides an optimized file structure tailored for a modular and secure approach to development. It helps you maintain a clean and organized codebase, with a clear separation between the core, vendor libraries, and publicly accessible resources. Here's an overview of the default project file structure in Raydium:
 
 ```
-project-root/
+├── .env
 ├── bootstrap.php
 ├── composer.json
-├── .env
-├── public/
-│   ├── index.php
-│   ├── robots.txt
-│   ├── wp/                   # WordPress core
-│   │   └── index.php
-│   └── content/              # Equivalent to wp-content
-│       ├── mu-plugins/       # Must-Use plugins
-│       ├── plugins/          # Regular plugins
-│       └── themes/           # Themes
-│           └── mytheme/      # Example theme
 ├── vendor/                   # Composer dependencies
-└── wp-cli.yml
+└── public/
+    ├── index.php
+    ├── wp-config.php
+    ├── wp/                   # WordPress core
+    └── content/              # Equivalent to wp-content
+        ├── mu-plugins/       # Must-Use plugins
+        ├── plugins/          # Regular plugins
+        └── themes/           # Themes
+
 ```
 
 Key Components:
+- `.env`: Located at the root, away from the public directory, this file stores environment variables like database credentials and API keys, keeping sensitive information out of public access.
+- `bootstrap.php`: The bootstrapping file that initializes the application setup and environment.
+- `composer.json`: Defines dependencies and autoload settings managed by Composer.
+- `wp/`: Contains the WordPress core files. This separation ensures core files are not mixed with content or configuration files.
 - `public/`: Serves as the web root directory of your application. It contains the WordPress core and the content directory, which are exposed to the web.
   - `content/`: Replaces the standard `wp-content` directory in WordPress. It is structured to hold your themes and plugins, segregating them from core files.
     - `mu-plugins/`: Houses plugins that are always activated by default and cannot be disabled through the WordPress dashboard.
     - `plugins/`: Contains the installable plugins that can be activated or deactivated as needed.
     - `themes/`: Stores your WordPress theme directories.
-- `wp/`: Contains the WordPress core files. This separation ensures core files are not mixed with content or configuration files.
 - `vendor/`: Managed by Composer, this directory is safely placed outside the public scope. It includes all PHP dependencies and libraries required by your project.
-- `.env`: Located at the root, away from the public directory, this file stores environment variables like database credentials and API keys, keeping sensitive information out of public access.
-
-- `bootstrap.php`: The bootstrapping file that initializes the application setup and environment.
-- `composer.json`: Defines dependencies and autoload settings managed by Composer.
-- `wp-cli.yml`: Configuration file for WP-CLI, a command-line interface for WordPress.
 
 This structure reinforces security by minimizing exposure of critical files and simplifies maintenance by providing a logical organization for your application's components.
 
