@@ -87,6 +87,13 @@ abstract class AbstractKernel implements TenantInterface
      */
     protected $configs_dir;
 
+    /**
+     * The current environment type.
+     *
+     * @var string
+     */
+    protected $env_type;
+
     protected $args = [
         'wp_dir_path'      => 'wp',
         'wordpress'        => 'wp',
@@ -417,22 +424,24 @@ abstract class AbstractKernel implements TenantInterface
      * Initializes the application with environment-specific configurations and constants.
      * Also checks for maintenance mode and WP installation status.
      *
-     * @param null|false|string|string[] $env_type  The environment type to initialize with.
-     * @param bool                       $constants Whether to load default constants.
+     * @param null|string $environment_type The environment type to initialize with.
+     * @param bool        $constants        Whether to load default constants.
      *
      * @return void
      */
-    public function init( $env_type = null, bool $constants = true ): void
+    public function init( ?string $environment_type = null, bool $constants = true ): void
     {
-        if ( env( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::is_valid( self::wp_env_type() ) ) {
-            $env_type = [ 'environment' => env( 'WP_ENVIRONMENT_TYPE' ) ];
+        $environment = env( 'WP_ENVIRONMENT_TYPE', $environment_type );
+
+        if ( $environment && EnvTypes::is_valid( self::wp_env_type() ) ) {
+            $this->env_type = [ 'environment' => $environment ];
         } elseif ( \defined( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::is_valid( self::wp_env_type() ) ) {
-            $env_type = [ 'environment' => WP_ENVIRONMENT_TYPE ];
+            $this->env_type = [ 'environment' => WP_ENVIRONMENT_TYPE ];
         }
 
-        if ( \is_array( $env_type ) ) {
+        if ( \is_array( $this->env_type ) ) {
             $this->app_setup->config(
-                array_merge( $this->environment_args(), $env_type )
+                array_merge( $this->environment_args(), $this->env_type )
             );
         } else {
             $this->app_setup->config( $this->environment_args() );

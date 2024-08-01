@@ -23,6 +23,8 @@ Example of a `.env` file configuration:
 ```plaintext
 WP_ENVIRONMENT_TYPE='prod'
 ```
+> [!IMPORTANT]
+> Optionally, you can override the .env setup of WP_ENVIRONMENT_TYPE by using the RAYDIUM_ENVIRONMENT_TYPE constant, which should be updated in the bootstrap file. It's important to note that this constant must be defined before setting up http_component_kernel. The .env file takes precedence, so ensure you remove WP_ENVIRONMENT_TYPE='prod' from your .env file if it already exists.
 
 This configuration sets the application's environment to production. Depending on this setting, the Raydium Framework adjusts its behavior accordingly, optimizing for performance, security, or debugging capabilities.
 
