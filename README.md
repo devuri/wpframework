@@ -1,5 +1,6 @@
 # WPFramework for Raydium
 
+> This repository contains the foundational core framework for Raydium. If you're developing an application using the wpframework, use the pre-built version available at [Raydium](https://github.com/devuri/raydium/).
 
 <div align="center">
 
@@ -7,9 +8,8 @@
 
 </div>
 
-> This repository contains the foundational core framework for Raydium. If you're developing an application using the wpframework, use the pre-built version available at [Raydium](https://github.com/devuri/raydium/).
-
 Welcome to the WPFramework, the Composer package that serves as the successor to `wp-env-config` its the core framework for Raydium. Designed to provide secure and modular WordPress development, The framework equips developers with a solid, flexible foundation for crafting scalable single or multi-tenant web applications.
+
 
 ## Prerequisites
 
@@ -25,6 +25,8 @@ Before you begin the installation process, ensure you have the following prerequ
 
 **Command Line Access**: You'll need terminal or command line access to execute Composer commands.
 
+> [!CAUTION]
+> The core framework is designed to be used with the Raydium. While it's possible to use it as-is, it's generally recommended to utilize one of the pre-built versions [here](https://github.com/devuri/raydium/), unless you are experienced and understand the required file structure and specific setup expectations.
 
 ## Installation
 
