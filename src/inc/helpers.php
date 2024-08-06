@@ -53,8 +53,8 @@ if ( ! \function_exists( 'assetUrl' ) ) {
  * Retrieves a sanitized, and optionally encrypted or modified, environment variable by name.
  *
  * @param string $name       The name of the environment variable to retrieve.
- * @param mixed  $default    Default value to return if the environment variable is not set
- * @param bool   $encrypt    Indicate that the value should be encrypted. Defaults to false.
+ * @param mixed  $default    Default value to return if the environment variable is not set.
+ * @param bool   $encrypt    Indicate if the value should be encrypted. Defaults to false.
  * @param bool   $strtolower Whether to convert the retrieved value to lowercase. Defaults to false.
  *
  * @throws InvalidArgumentException If the requested environment variable name is not in the whitelist
@@ -65,28 +65,24 @@ if ( ! \function_exists( 'assetUrl' ) ) {
  */
 function env( $name, $default = null, $encrypt = false, $strtolower = false )
 {
-    $encryptionPath = \defined('APP_PATH') ? APP_PATH : APP_DIR_PATH;
-
-    // Instance of the Env class with your predefined settings
-    static $env = null;
-    if (null === $env) {
-        $env = new Env( env_whitelist(), $encryptionPath, false );
-    }
-
-    // Get the environment variable value
+    $encryption_path = \defined('APP_PATH') ? APP_PATH : APP_DIR_PATH;
     $env_var = null;
 
+    static $env_instance = null;
+    if (null === $env_instance) {
+        $env_instance = new Env( env_whitelist(), $encryption_path, false );
+    }
+
     try {
-        $env_var = $env->get($name, $default, $encrypt, $strtolower);
+        $env_var = $env_instance->get($name, $default, $encrypt, $strtolower);
     } catch (Exception $e) {
-        $debug = [
-            'path'      => $encryptionPath,
+        $debug_info = [
+            'path'      => $encryption_path,
             'line'      => __LINE__,
             'exception' => $e,
             'invalidfile' => "Missing env file: {$e->getMessage()}",
         ];
-
-        Terminate::exit( [ "Missing env() var: {$e->getMessage()}", 500, $debug ] );
+        Terminate::exit([ "Missing env() var: {$e->getMessage()}", 500, $debug_info ]);
     }
 
     return $env_var;
