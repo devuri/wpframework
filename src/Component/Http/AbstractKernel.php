@@ -136,10 +136,9 @@ abstract class AbstractKernel implements TenantInterface
     {
         $this->app_path    = $app_path;
         $this->configs_dir = SITE_CONFIGS_DIR;
+        $this->args        = array_merge( $this->args, self::get_default_config() );
 
-        if ( \is_null( $args ) || empty( $args ) ) {
-            $this->args = array_merge( $this->args, self::get_default_config() );
-        } elseif ( ! \is_array( $args ) ) {
+        if ( ! \is_array( $args ) ) {
             throw new InvalidArgumentException( 'Error: args must be of type array', 1 );
         }
 
@@ -360,7 +359,7 @@ abstract class AbstractKernel implements TenantInterface
      */
     public static function get_default_config(): array
     {
-        return appConfig();
+        return _default_configs();
     }
 
     public function get_args(): array
