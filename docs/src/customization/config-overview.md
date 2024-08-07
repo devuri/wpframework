@@ -100,7 +100,7 @@ return [
     ],
 
     'directory'        => [
-        'web_root'      => 'public',
+        'web_root_dir'      => 'public',
         'content_dir'   => 'content',
         'plugin_dir'    => 'content/plugins',
         'mu_plugin_dir' => 'content/mu-plugins',

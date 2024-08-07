@@ -30,7 +30,7 @@ The `app.php` file in the Raydium Framework is a crucial component for setting a
 
 ```php
 'directory' => [
-    'web_root'      => 'public_html',
+    'web_root_dir'      => 'public_html',
     'content_dir'   => 'content',
     'plugin_dir'    => 'content/plugins',
     'mu_plugin_dir' => 'content/mu-plugins',
@@ -242,7 +242,7 @@ return [
          *     ]
          * }
          */
-        'web_root'      => 'public',
+        'web_root_dir'      => 'public',
 
         /*
          * Sets the content directory for the project.

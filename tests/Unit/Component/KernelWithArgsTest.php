@@ -17,7 +17,7 @@ class KernelWithArgsTest extends BaseTest
     public function test_http_app_with_args(): void
     {
         $args = [
-            'web_root'      => 'public',
+            'web_root_dir'      => 'public',
             'wordpress'     => 'cms',
         ];
 

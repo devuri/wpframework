@@ -50,7 +50,7 @@ This basic example demonstrates how to initialize the application with default s
 
 ```php
 $args = [
-        'web_root'        => 'public',
+        'web_root_dir'        => 'public',
         'wp_dir_path'     => 'wp',
         'asset_dir'       => 'assets',
         'content_dir'     => 'content',
