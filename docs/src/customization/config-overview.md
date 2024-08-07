@@ -88,6 +88,26 @@ DEFAULT_THEME=my-custom-theme
 - Always ensure to follow best practices and security guidelines when modifying configuration options.
 - Make sure to test the changes, especially in different environments.
 
+> [!IMPORTANT]
+> The `configs/app.php` file includes sensible default settings. While you don't need to include all default configurations in your custom `app.php` file, it's best to add the full block of any setting you wish to override. This helps avoid unwanted errors or unexpected behavior.
+
+**Example:** If you want to change the `directory` settings, include the entire block in your `app.php`:
+ ```php
+ return [
+     'directory'        => [
+         'web_root_dir'  => 'public',
+         'content_dir'   => 'content',
+         'plugin_dir'    => 'content/plugins',
+         'mu_plugin_dir' => 'content/mu-plugins',
+         'sqlite_dir'    => 'sqlitedb',
+         'sqlite_file'   => '.sqlite-wpdatabase',
+         'theme_dir'     => 'templates',
+         'asset_dir'     => 'assets',
+         'publickey_dir' => 'pub_keys',
+     ]
+ ];
+ ```
+
 ## Configuration Example:
 
 ```php

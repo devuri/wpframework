@@ -2,7 +2,7 @@
 
 ## Overview
 
-The `app.php` file in the Raydium Framework is a crucial component for setting and customizing various configuration options for your WordPress application. It allows you to define key-value pairs for different settings, influencing how your application behaves in various environments.
+The `configs/app.php` file in the Raydium Framework is a crucial component for setting and customizing various [configuration options](../customization/config-overview) for your WordPress application. It allows you to define key-value pairs for different settings, influencing how your application behaves in various environments.
 
 ## Configuration Options
 
