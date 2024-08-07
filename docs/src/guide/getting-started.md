@@ -70,11 +70,19 @@ In Raydium, the primary configuration is handled through the `.env` file, offeri
 # Sample .env file content
 WP_HOME='https://yourdomain.com'
 WP_SITEURL="${WP_HOME}/wp"
+
+# Setting the environment 
+WP_ENVIRONMENT_TYPE='sec'
+
 DB_NAME='your_db_name'
 DB_USER='your_db_user'
 DB_PASSWORD='your_db_password'
 DB_HOST='localhost'
 ```
+> [!IMPORTANT]
+> The `WP_ENVIRONMENT_TYPE` setting is a crucial setting that defines different [states of the application](../customization/environments) such as development, staging, or production. Each state has its own specific configurations and behaviors. You can find more details [here](../customization/environments). 
+> 
+> You can also override the `WP_ENVIRONMENT_TYPE` setting by using the `RAYDIUM_ENVIRONMENT_TYPE` constant. To do this, update the `RAYDIUM_ENVIRONMENT_TYPE` in the `bootstrap.php` file.
 
 ## Source Files
 
