@@ -142,10 +142,6 @@ abstract class AbstractKernel implements TenantInterface
             throw new InvalidArgumentException( 'Error: args must be of type array', 1 );
         }
 
-        if ( \array_key_exists( 'theme_dir', $args ) ) {
-            $this->args['templates_dir'] = $args['theme_dir'];
-        }
-
         // @codingStandardsIgnoreLine
         if (\array_key_exists('wordpress', $args)) {
             $this->args['wp_dir_path'] = $args['wordpress'];
@@ -234,8 +230,8 @@ abstract class AbstractKernel implements TenantInterface
          *
          * @link https://github.com/devuri/custom-wordpress-theme-dir
          */
-        if ( $this->args->get( 'templates_dir' ) ) {
-            $this->define( 'APP_THEME_DIR', $this->args->get( 'templates_dir' ) );
+        if ( $this->args->get( 'directory.theme_dir' ) ) {
+            $this->define( 'APP_THEME_DIR', $this->args->get( 'directory.theme_dir' ) );
         }
 
         // Plugins.
