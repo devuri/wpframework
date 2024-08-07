@@ -233,24 +233,30 @@ if ( ! \function_exists( 'appConfig' ) ) {
     function appConfig( ?string $file_path = null, ?string $filename = null ): array
     {
         $site_configs_dir = site_configs_dir();
-        $default_configs_dir = _configs_dir();
 
         if ( ! $file_path && ! $filename ) {
             // return default app array.
-            return require $default_configs_dir . '/app.php';
+            return _default_configs();
         }
 
         $options_file = "{$file_path}/{$site_configs_dir}/{$filename}.php";
 
-        if ( file_exists( $options_file ) ) {
+        if ( file_exists( $options_file ) && \is_array(@require $options_file) ) {
             return require $options_file;
         }
         if ( ! file_exists( $options_file ) ) {
-            return require $default_configs_dir . '/app.php';
+            return _default_configs();
         }
 
         return [];
     }
+}
+
+function _default_configs(): array
+{
+    $default_configs_dir = _configs_dir();
+
+    return require $default_configs_dir . '/app.php';
 }
 
 function env_whitelist(): array
