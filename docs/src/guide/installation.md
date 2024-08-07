@@ -124,7 +124,7 @@ Changing the public directory in Raydium involves several clear steps:
 4. **Adjust Application Configuration**: Update  [configurations](../reference/configuration) in your `app.php` or any relevant configuration files to reflect the new directory structure. For instance, change the `web_root` path:
     ```php
     'directory' => [
-        'web_root' => 'webroot', // previously 'public'
+        'web_root_dir' => 'webroot', // previously 'public'
         ...
     ],
     ```
