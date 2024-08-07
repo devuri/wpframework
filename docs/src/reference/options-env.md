@@ -4,14 +4,14 @@ Here is a detailed reference of the various configuration options available in t
 
 #### Error Handling
 
-```dotenv
+```shell
 # Set the error handler for the project (options: 'oops', 'symfony')
 ERROR_HANDLER=oops
 ```
 
 #### Directory Configuration
 
-```dotenv
+```shell
 # Define the web root directory
 WEB_ROOT_DIR=public_html
 
@@ -40,28 +40,28 @@ PUBLICKEY_DIR=keys
 
 #### Default Theme
 
-```dotenv
+```shell
 # Specify the default fallback theme
 DEFAULT_THEME=mycustomtheme
 ```
 
 #### WordPress Updates
 
-```dotenv
+```shell
 # Disable WordPress updates (true to disable, false to enable)
 DISABLE_UPDATES=true
 ```
 
 #### Plugin Deactivation
 
-```dotenv
+```shell
 # Control plugin deactivation (true to allow deactivation, false to prevent it)
 CAN_DEACTIVATE=false
 ```
 
 #### Email SMTP Configuration
 
-```dotenv
+```shell
 # Set the API key for Brevo mailer
 BREVO_API_KEY=your_brevo_api_key
 
@@ -87,14 +87,14 @@ AWS_DEFAULT_REGION=us-east-1
 
 #### Sudo Admin
 
-```dotenv
+```shell
 # Define the user ID for the sudo admin
 SUDO_ADMIN=1
 ```
 
 #### S3 Uploads
 
-```dotenv
+```shell
 # Set the S3 bucket name
 S3_UPLOADS_BUCKET=my-s3-bucket
 
@@ -120,7 +120,7 @@ S3_UPLOADS_HTTP_CACHE_CONTROL=600
 
 #### Redis Cache Configuration
 
-```dotenv
+```shell
 # Enable or disable Redis cache (true to disable, false to enable)
 WP_REDIS_DISABLED=false
 
@@ -155,7 +155,7 @@ WP_REDIS_READ_TIMEOUT=1
 
 #### Public Key Configuration
 
-```dotenv
+```shell
 # Set the public key environment variable
 WEB_APP_PUBLIC_KEY=your_public_key
 ```
