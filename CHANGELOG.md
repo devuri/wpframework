@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.3.14](https://github.com/devuri/wpframework/compare/v0.3.13...v0.3.14) (2024-09-09)
+
+
+### Bug Fixes
+
+* better support for `app.php` with `_default_configs()` ([126c0a3](https://github.com/devuri/wpframework/commit/126c0a3f31ccdf01d4d14b880b9fc31b5fed17f2))
+* docs `web_root_dir` error ([e340437](https://github.com/devuri/wpframework/commit/e34043749f56beced3adde12d73cb04e42098688))
+* fixes theme dir location ([5abed88](https://github.com/devuri/wpframework/commit/5abed884b793f0929335d9d1bb3c624189e18d20))
+* Update constants.md ([aca76b6](https://github.com/devuri/wpframework/commit/aca76b689b53f1924e39cd953eec060d72a1198e))
+* updates `env()` function ([88fcfa0](https://github.com/devuri/wpframework/commit/88fcfa0a87cad2cf4a310065e0b3685dc533ca5e))
+
+
+### Miscellaneous Chores
+
+* `configs/app.php` file and using environment variables in the ([512f00b](https://github.com/devuri/wpframework/commit/512f00b6999d1075c5f4ec03b26d97e7730feaea))
+* **deps-dev:** bump webpack from 5.91.0 to 5.94.0 ([2ed6354](https://github.com/devuri/wpframework/commit/2ed6354c7e7ea3170e68c01f9b4022db77ec43bc))
+
 ## [0.3.13](https://github.com/devuri/wpframework/compare/v0.3.12...v0.3.13) (2024-08-01)
 
 
