@@ -4,6 +4,44 @@ In the Raydium Framework, constants play a crucial role in configuring and custo
 
 ## Customizing Constants
 
+### Adding Constants to `wp-config.php`
+
+When using the Raydium framework, you can still add custom constants to your `wp-config.php` file as needed. This is useful for defining settings required by plugins or other custom configurations.
+
+To add constants, open your `wp-config.php` file, located in the web root directory of your installation. Insert your custom constants above the line that reads `/* That's all, stop editing! Happy publishing. */`. This ensures that your constants are set before the Raydium framework and core WordPress settings are initialized.
+
+For example, if you need to define a constant for a plugin, you can do so like this:
+```php
+define( 'YOUR_CUSTOM_CONSTANT', 'value' );
+```
+
+Your `wp-config.php` file might look like this:
+```php
+<?php
+
+// Add your custom constants here
+define( 'YOUR_CUSTOM_CONSTANT', 'value' );
+
+/* That's all, stop editing! Happy publishing. */
+
+if ( file_exists(__DIR__ . '/../bootstrap.php') ) {
+    require_once __DIR__ . '/../bootstrap.php';
+}
+
+if ( ! defined( 'ABSPATH' ) ) {
+    define( 'ABSPATH', dirname( __FILE__ ) . '/' );
+}
+
+// Sets up WordPress.
+require_once ABSPATH . 'wp-settings.php';
+```
+
+> [!CAUTION]
+> The Raydium framework already defines many standard WordPress constants, and it only does so if they are not already set. Defining these constants yourself could lead to ***unexpected behavior or conflicts***. If you do need to define a constant, ensure it does not overlap with those managed by Raydium to avoid any issues.
+
+After making changes, save the file and test your WordPress site to ensure that everything functions as expected and that your custom settings are applied correctly.
+
+
 ### Environment File (.env)
 
 Raydium utilizes a `.env` [environment file](../customization/environment-file) at the root of your project for environment-specific configurations. This file is the first place to look when you need to customize values related to database connections, site URLs, environment types, and more. Changes made here reflect across your application, providing a centralized location for critical configurations.
@@ -16,7 +54,7 @@ For further customization, Raydium offers the `configs/app.php` file for [config
 
 ### Using `configs/config.php`
 
-The `config.php` file in the Raydium Framework is a dedicated space for defining additional [application constants](../reference/app-constants) and customizing your WordPress application settings. This flexibility allows you to tailor application behavior, aligning it with specific requirements.
+ While you can still add custom constants to your `wp-config.php` file just as you would with a standard setup, the `config.php` file in the Raydium Framework is a dedicated space for defining additional [application constants](../reference/app-constants) and customizing your WordPress application settings. This flexibility allows you to tailor application behavior, aligning it with specific requirements.
 
 For constants that extend beyond the foundational setups provided by Raydium and the `.env` file, you can use the `configs/config.php` file.
 
