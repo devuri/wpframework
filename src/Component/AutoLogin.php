@@ -102,7 +102,7 @@ class AutoLogin
      *
      * @return void This method does not return any value.
      */
-    public static function init( ?string $secret_key = null, ?string $environment_type = null ): void
+    public static function init( string $secret_key, string $environment_type ): void
     {
         $auto_login = new self( $secret_key, $environment_type );
         $auto_login->register_login_action();

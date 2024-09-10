@@ -52,7 +52,7 @@ if ( is_multitenant_app() ) {
 	add_filter( 'upload_dir', 'set_multitenant_upload_directory' );
 }
 
-if ( env( 'WPENV_AUTO_LOGIN_SECRET_KEY' ) ) {
+if ( env( 'WP_ENVIRONMENT_TYPE' ) && env( 'WPENV_AUTO_LOGIN_SECRET_KEY' ) ) {
     WPframework\Component\AutoLogin::init(
 		env( 'WPENV_AUTO_LOGIN_SECRET_KEY' ),
 		env( 'WP_ENVIRONMENT_TYPE' )
