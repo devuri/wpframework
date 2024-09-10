@@ -10,6 +10,7 @@ use Urisoft\Env;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 use WPframework\Component\Http\HttpFactory;
+use WPframework\Component\Http\KernelInterface;
 use WPframework\Component\Http\Tenancy;
 
 /**
@@ -105,10 +106,10 @@ class App
      * passing it to the Kernel constructor. If `$this->config` is not an array,
      * the application is terminated with an error message to prevent type errors.
      *
-     * @return Kernel Returns an instance of Kernel initialized with the
-     *                application path, configuration array, and setup object.
+     * @return KernelInterface Returns an instance of Kernel initialized with the
+     *                         application path, configuration array, and setup object.
      */
-    public function kernel(): Kernel
+    public function kernel(): KernelInterface
     {
         if ( ! \is_array( $this->config ) ) {
             $debug = [
@@ -139,9 +140,9 @@ class App
      * @throws Exception If there are issues loading environment variables or initializing the App.
      * @throws Exception If required multi-tenant environment variables are missing or if the tenant's domain is not recognized.
      *
-     * @return Kernel The initialized application kernel.
+     * @return KernelInterface The initialized application kernel.
      */
-    public static function init( string $app_path, string $options_file = 'app' ): Kernel
+    public static function init( string $app_path, string $options_file = 'app' ): KernelInterface
     {
         if ( ! \defined( 'SITE_CONFIGS_DIR' ) ) {
             \define( 'SITE_CONFIGS_DIR', 'configs' );

@@ -8,10 +8,10 @@ use WPframework\Component\App;
  * It loads the necessary files and sets up the environment for the application to run.
  * This includes initializing the Composer autoloader, which is used to load classes and packages.
  */
-if ( file_exists( \dirname( __FILE__ ) . '/../vendor/autoload.php' ) ) {
-    require_once \dirname( __FILE__ ) . '/../vendor/autoload.php';
+if ( file_exists( dirname( __DIR__ ) . '/vendor/autoload.php' ) ) {
+    require_once dirname( __DIR__ ) . '/vendor/autoload.php';
 } else {
-    exit( 'Cant find the vendor autoload file.' );
+    exit( 'Cannot find the vendor autoload file.' );
 }
 
 /*
@@ -22,17 +22,24 @@ if ( file_exists( \dirname( __FILE__ ) . '/../vendor/autoload.php' ) ) {
  * @var string|null RAYDIUM_ENVIRONMENT_TYPE The environment type, can be null to use the .env file setup.
  */
 if ( ! defined( 'RAYDIUM_ENVIRONMENT_TYPE' ) ) {
-	define( 'RAYDIUM_ENVIRONMENT_TYPE', null );
+    define( 'RAYDIUM_ENVIRONMENT_TYPE', null );
 }
+
 
 /* That's all, stop editing! Happy publishing. */
 
-App::init( dirname( __DIR__ ) )->overrides()->init( RAYDIUM_ENVIRONMENT_TYPE );
+// Initialize the application
+App::init( dirname( __DIR__ ) )
+    ->overrides()
+    ->init( RAYDIUM_ENVIRONMENT_TYPE );
 
+// Set the table prefix.
 $table_prefix = env( 'DB_PREFIX' );
 
+// Define ABSPATH.
 if ( ! defined( 'ABSPATH' ) ) {
-	define( 'ABSPATH', dirname( __FILE__ ) . '/' );
+    define( 'ABSPATH', __DIR__ . '/' );
 }
 
+// Load WordPress settings
 require_once ABSPATH . 'wp-settings.php';
