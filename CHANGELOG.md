@@ -1,5 +1,38 @@
 # Changelog
 
+## [0.4.0](https://github.com/devuri/wpframework/compare/v0.3.14...v0.4.0) (2024-09-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* update core mu-plugin file and removed `Plugin`
+* adds new `KernelInterface`
+* new `App::init()` replaces `http_component_kernel`
+
+### Features
+
+* adds new `KernelInterface` ([9fb7e59](https://github.com/devuri/wpframework/commit/9fb7e59ad8d0c667697739d6132bd1118bbf2106))
+* new `App::init()` replaces `http_component_kernel` ([d26eb7e](https://github.com/devuri/wpframework/commit/d26eb7e7050270ccca67474e0019cfb86cc9eb4f))
+
+
+### Bug Fixes
+
+* auto login is now 60 seconds ([ed4b4ae](https://github.com/devuri/wpframework/commit/ed4b4aeaddd35abe03544b4b8a60ac943ab9357c))
+* update bootstrap file for previous versions ([7ce1ad7](https://github.com/devuri/wpframework/commit/7ce1ad7e5d7b7dfec8bc01075b5fe7a91f02f75c))
+
+
+### Miscellaneous Chores
+
+* build ([cab9d79](https://github.com/devuri/wpframework/commit/cab9d79308364f1d4d5a1e30c24508a41e51d27f))
+* build ([430942d](https://github.com/devuri/wpframework/commit/430942d52be137ff532d14fd2fe544eb2dc9b122))
+* fix comment ([00a6e43](https://github.com/devuri/wpframework/commit/00a6e431c859fcea5d7d3278cadefa4b0cf1db0a))
+* update ([ca2fe87](https://github.com/devuri/wpframework/commit/ca2fe878d9f8bfed705c2d3d38f3337f02585090))
+
+
+### Code Refactoring
+
+* update core mu-plugin file and removed `Plugin` ([a661fd6](https://github.com/devuri/wpframework/commit/a661fd67aea299ad1be0c58ea26aeee94ec91d58))
+
 ## [0.3.14](https://github.com/devuri/wpframework/compare/v0.3.13...v0.3.14) (2024-09-09)
 
 
