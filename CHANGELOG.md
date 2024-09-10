@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.1](https://github.com/devuri/wpframework/compare/v0.4.0...v0.4.1) (2024-09-10)
+
+
+### Bug Fixes
+
+* auto login require `env( 'WP_ENVIRONMENT_TYPE' )` ([1e9377d](https://github.com/devuri/wpframework/commit/1e9377d7a3e6be6211e41bc9b3a152bdca0272ff))
+* autologin fix ([3df4559](https://github.com/devuri/wpframework/commit/3df45590e1cc92b8a6a46c4c555f62daaf7d480c))
+
 ## [0.4.0](https://github.com/devuri/wpframework/compare/v0.3.14...v0.4.0) (2024-09-10)
 
 
