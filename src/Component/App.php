@@ -2,10 +2,15 @@
 
 namespace WPframework\Component;
 
+use Dotenv\Dotenv;
+use Dotenv\Exception\InvalidPathException;
 use Exception;
 use Symfony\Component\ErrorHandler\Debug;
+use Urisoft\Env;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
+use WPframework\Component\Http\HttpFactory;
+use WPframework\Component\Http\Tenancy;
 
 /**
  * The App class serves as the main entry point for initializing the WordPress application.
@@ -116,6 +121,96 @@ class App
         }
 
         return new Kernel( $this->app_path, $this->config, $this->setup );
+    }
+
+    /**
+     * Initializes the App Kernel with optional multi-tenant support.
+     *
+     * Sets up the application kernel based on the provided application directory path.
+     * In multi-tenant configurations, it dynamically adjusts the environment based on
+     * the current HTTP host and tenant-specific settings. It ensures all required
+     * environment variables for the landlord (main tenant) are set and terminates
+     * execution with an error message if critical configurations are missing or if
+     * the tenant's domain is not recognized.
+     *
+     * @param string $app_path     The base directory path of the application (e.g., __DIR__).
+     * @param string $options_file Optional. The configuration filename, defaults to 'app'.
+     *
+     * @throws Exception If there are issues loading environment variables or initializing the App.
+     * @throws Exception If required multi-tenant environment variables are missing or if the tenant's domain is not recognized.
+     *
+     * @return Kernel The initialized application kernel.
+     */
+    public static function init( string $app_path, string $options_file = 'app' ): Kernel
+    {
+        if ( ! \defined( 'SITE_CONFIGS_DIR' ) ) {
+            \define( 'SITE_CONFIGS_DIR', 'configs' );
+        }
+
+        if ( ! \defined( 'APP_DIR_PATH' ) ) {
+            \define( 'APP_DIR_PATH', $app_path );
+        }
+
+        if ( ! \defined( 'APP_HTTP_HOST' ) ) {
+            \define( 'APP_HTTP_HOST', HttpFactory::init()->get_http_host() );
+        }
+
+        if ( ! \defined( 'RAYDIUM_ENVIRONMENT_TYPE' ) ) {
+            \define( 'RAYDIUM_ENVIRONMENT_TYPE', null );
+        }
+
+        $app_options         = [];
+        $supported_env_files = _supported_env_files();
+
+        // Filters out environment files that do not exist to avoid warnings.
+        $_env_files = _env_files_filter( $supported_env_files, APP_DIR_PATH );
+
+        // load env from dotenv early.
+        $_dotenv = Dotenv::createImmutable( APP_DIR_PATH, $_env_files, true );
+
+        try {
+            $_dotenv->load();
+        } catch ( InvalidPathException $e ) {
+            try_regenerate_env_file( APP_DIR_PATH, APP_HTTP_HOST, $_env_files );
+
+            $debug = [
+                'path'        => APP_DIR_PATH,
+                'line'        => __LINE__,
+                'exception'   => $e,
+                'invalidfile' => "Missing env file: {$e->getMessage()}",
+            ];
+
+            Terminate::exit( [ "Missing env file: {$e->getMessage()}", 500, $debug ] );
+        } catch ( Exception $e ) {
+            $debug = [
+                'path'      => APP_DIR_PATH,
+                'line'      => __LINE__,
+                'exception' => $e,
+            ];
+            Terminate::exit( [ $e->getMessage(), 500, $debug ] );
+        }// end try
+
+        /**
+         * Handle multi-tenant setups.
+         *
+         * @var Tenancy
+         */
+        $tenancy = new Tenancy( APP_DIR_PATH, SITE_CONFIGS_DIR );
+        $tenancy->initialize( $_dotenv );
+
+        try {
+            $app = new self( APP_DIR_PATH, SITE_CONFIGS_DIR, $options_file );
+        } catch ( Exception $e ) {
+            $debug = [
+                'path'      => APP_DIR_PATH,
+                'line'      => __LINE__,
+                'exception' => $e,
+            ];
+            Terminate::exit( [ 'Framework Initialization Error:', 500, $debug ] );
+        }
+
+        // @phpstan-ignore-next-line
+        return $app->kernel();
     }
 
     /**
