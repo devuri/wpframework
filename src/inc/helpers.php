@@ -13,36 +13,32 @@ use WPframework\Component\Terminate;
 
 // @codingStandardsIgnoreFile.
 
-if ( ! \function_exists( 'asset' ) ) {
-    /**
-     * The Asset url.
-     *
-     * You can configure the asset URL by setting the ASSET_URL in your .env
-     * Or optionally in the main config file.
-     *
-     * @param string      $asset path to the asset like: "/images/thing.png"
-     * @param null|string $path
-     *
-     * @return string
-     */
-    function asset( string $asset, ?string $path = null ): string
-    {
-        return Asset::url( $asset, $path );
-    }
+/**
+ * The Asset url.
+ *
+ * You can configure the asset URL by setting the ASSET_URL in your .env
+ * Or optionally in the main config file.
+ *
+ * @param string      $asset path to the asset like: "/images/thing.png"
+ * @param null|string $path
+ *
+ * @return string
+ */
+function asset( string $asset, ?string $path = null ): string
+{
+    return Asset::url( $asset, $path );
 }
 
-if ( ! \function_exists( 'assetUrl' ) ) {
-    /**
-     * The Asset url only.
-     *
-     * @param null|string $path
-     *
-     * @return string
-     */
-    function assetUrl( ?string $path = null ): string
-    {
-        return Asset::url( '/', $path );
-    }
+/**
+ * The Asset url only.
+ *
+ * @param null|string $path
+ *
+ * @return string
+ */
+function assetUrl( ?string $path = null ): string
+{
+    return Asset::url( '/', $path );
 }
 
 /**
@@ -84,75 +80,46 @@ function env( $name, $default = null, $encrypt = false, $strtolower = false )
     return $env_var;
 }
 
-if ( ! \function_exists( 'wpframeworkCore' ) ) {
-    /**
-     * Start and load core plugin.
-     *
-     * @return null|Framework
-     */
-    function wpframeworkCore(): ?Framework
-    {
-        if ( ! \defined( 'ABSPATH' ) ) {
-            exit;
-        }
-
-        return _wpframework();
+/**
+ * Start and load core plugin.
+ *
+ * @return null|Framework
+ */
+function wpframeworkCore(): ?Framework
+{
+    if ( ! \defined( 'ABSPATH' ) ) {
+        exit;
     }
+
+    return _wpframework();
 }
 
-if ( ! \function_exists( 'wpInstalledPlugins' ) ) {
-    /**
-     * Get installed plugins.
-     *
-     * @return string[]
-     *
-     * @psalm-return list<string>
-     */
-    function wpInstalledPlugins(): array
-    {
-        $plugins = get_plugins();
+/**
+ * Get default app config values.
+ *
+ * @return (null|bool|mixed|(mixed|(mixed|string)[]|true)[]|string)[]
+ *
+ * @psalm-return array{security: array{'brute-force': true, 'two-factor': true, 'no-pwned-passwords': true, 'admin-ips': array<empty, empty>}, mailer: array{brevo: array{apikey: mixed}, postmark: array{token: mixed}, sendgrid: array{apikey: mixed}, mailerlite: array{apikey: mixed}, mailgun: array{domain: mixed, secret: mixed, endpoint: mixed, scheme: 'https'}, ses: array{key: mixed, secret: mixed, region: mixed}}, sudo_admin: mixed, sudo_admin_group: null, web_root: 'public', s3uploads: array{bucket: mixed, key: mixed, secret: mixed, region: mixed, 'bucket-url': mixed, 'object-acl': mixed, expires: mixed, 'http-cache': mixed}, asset_dir: 'assets', content_dir: 'app', plugin_dir: 'plugins', mu_plugin_dir: 'mu-plugins', sqlite_dir: 'sqlitedb', sqlite_file: '.sqlite-wpdatabase', default_theme: 'brisko', disable_updates: true, can_deactivate: false, theme_dir: 'templates', error_handler: null, redis: array{disabled: mixed, host: mixed, port: mixed, password: mixed, adminbar: mixed, 'disable-metrics': mixed, 'disable-banners': mixed, prefix: mixed, database: mixed, timeout: mixed, 'read-timeout': mixed}, publickey: array{'app-key': mixed}}
+ */
+function appConfig( ?string $file_path = null, ?string $filename = null ): array
+{
+    $site_configs_dir = site_configs_dir();
 
-        $plugin_slugs = [];
-
-        foreach ( $plugins as $key => $plugin ) {
-            $slug = explode( '/', $key );
-
-            // Add the slug to the array
-            $plugin_slugs[] = '"wpackagist-plugin/' . $slug[0] . '": "*",';
-        }
-
-        return $plugin_slugs;
+    if ( ! $file_path && ! $filename ) {
+        // return default app array.
+        return _default_configs();
     }
-}// end if
 
-if ( ! \function_exists( 'appConfig' ) ) {
-    /**
-     * Get default app config values.
-     *
-     * @return (null|bool|mixed|(mixed|(mixed|string)[]|true)[]|string)[]
-     *
-     * @psalm-return array{security: array{'brute-force': true, 'two-factor': true, 'no-pwned-passwords': true, 'admin-ips': array<empty, empty>}, mailer: array{brevo: array{apikey: mixed}, postmark: array{token: mixed}, sendgrid: array{apikey: mixed}, mailerlite: array{apikey: mixed}, mailgun: array{domain: mixed, secret: mixed, endpoint: mixed, scheme: 'https'}, ses: array{key: mixed, secret: mixed, region: mixed}}, sudo_admin: mixed, sudo_admin_group: null, web_root: 'public', s3uploads: array{bucket: mixed, key: mixed, secret: mixed, region: mixed, 'bucket-url': mixed, 'object-acl': mixed, expires: mixed, 'http-cache': mixed}, asset_dir: 'assets', content_dir: 'app', plugin_dir: 'plugins', mu_plugin_dir: 'mu-plugins', sqlite_dir: 'sqlitedb', sqlite_file: '.sqlite-wpdatabase', default_theme: 'brisko', disable_updates: true, can_deactivate: false, theme_dir: 'templates', error_handler: null, redis: array{disabled: mixed, host: mixed, port: mixed, password: mixed, adminbar: mixed, 'disable-metrics': mixed, 'disable-banners': mixed, prefix: mixed, database: mixed, timeout: mixed, 'read-timeout': mixed}, publickey: array{'app-key': mixed}}
-     */
-    function appConfig( ?string $file_path = null, ?string $filename = null ): array
-    {
-        $site_configs_dir = site_configs_dir();
+    $options_file = "{$file_path}/{$site_configs_dir}/{$filename}.php";
 
-        if ( ! $file_path && ! $filename ) {
-            // return default app array.
-            return _default_configs();
-        }
-
-        $options_file = "{$file_path}/{$site_configs_dir}/{$filename}.php";
-
-        if ( file_exists( $options_file ) && \is_array(@require $options_file) ) {
-            return require $options_file;
-        }
-        if ( ! file_exists( $options_file ) ) {
-            return _default_configs();
-        }
-
-        return [];
+    if ( file_exists( $options_file ) && \is_array(@require $options_file) ) {
+        return require $options_file;
     }
+    if ( ! file_exists( $options_file ) ) {
+        return _default_configs();
+    }
+
+    return [];
 }
 
 function _default_configs(): array
@@ -232,36 +199,6 @@ function envHash( $data, ?string $secretkey = null, string $algo = 'sha256' ): s
     }
 
     return hash_hmac( $algo, $data, $secretkey );
-}
-
-/*
- * Generates a list of WordPress plugins in Composer format.
- *
- * @return array An associative array of Composer package names and their version constraints.
- */
-if ( ! \function_exists( 'packagistPluginsList' ) ) {
-    function packagistPluginsList()
-    {
-        if ( ! \function_exists( 'get_plugins' ) ) {
-            require_once ABSPATH . 'wp-admin/includes/plugin.php';
-        }
-
-        $all_plugins = get_plugins();
-
-        $plugins_list = [];
-
-        foreach ( $all_plugins as $plugin_path => $plugin_data ) {
-            // Extract the plugin slug from the directory name.
-            $plugin_slug = sanitize_title( \dirname( $plugin_path ) );
-
-            // Format the package name with the 'wpackagist-plugin' prefix.
-            $package_name = "wpackagist-plugin/{$plugin_slug}";
-
-            $plugins_list[ $package_name ] = 'latest';
-        }
-
-        return $plugins_list;
-    }
 }
 
 /**
