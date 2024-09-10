@@ -94,7 +94,7 @@ class AutoLogin
         }
     }
 
-    /**
+	/**
      * Initializes the automatic login functionality.
      *
      * This method is the entry point for the automatic login feature. It creates an instance of the class
@@ -102,7 +102,7 @@ class AutoLogin
      *
      * @return void This method does not return any value.
      */
-    public static function init( string $secret_key, string $environment_type ): void
+    public static function init( ?string $secret_key = null, ?string $environment_type = null ): void
     {
         $auto_login = new self( $secret_key, $environment_type );
         $auto_login->register_login_action();
