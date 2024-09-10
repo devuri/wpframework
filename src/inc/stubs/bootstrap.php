@@ -27,8 +27,6 @@ if ( ! defined( 'RAYDIUM_ENVIRONMENT_TYPE' ) ) {
 
 /**
  * Start and bootstrap the web application.
- *
- * @var Kernel
  */
 $raydium_http = App::init( __DIR__ );
 
