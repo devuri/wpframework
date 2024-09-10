@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/devuri/wpframework/compare/v0.4.1...v0.4.2) (2024-09-10)
+
+
+### Bug Fixes
+
+* environment in  `wp_env_type` ([a0c1b9f](https://github.com/devuri/wpframework/commit/a0c1b9f28fa3a4784406eefecba6f54ca193d2f7))
+
 ## [0.4.1](https://github.com/devuri/wpframework/compare/v0.4.0...v0.4.1) (2024-09-10)
 
 
