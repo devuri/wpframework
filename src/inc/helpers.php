@@ -1,8 +1,6 @@
 <?php
 
 use Defuse\Crypto\Key;
-use Dotenv\Dotenv;
-use Dotenv\Exception\InvalidPathException;
 use Symfony\Component\Filesystem\Filesystem;
 use Urisoft\DotAccess;
 use Urisoft\Encryption;
@@ -11,42 +9,36 @@ use WPframework\Component\App;
 use WPframework\Component\EnvGenerator;
 use WPframework\Component\Framework;
 use WPframework\Component\Http\Asset;
-use WPframework\Component\Http\HttpFactory;
-use WPframework\Component\Http\Tenancy;
 use WPframework\Component\Terminate;
 
 // @codingStandardsIgnoreFile.
 
-if ( ! \function_exists( 'asset' ) ) {
-    /**
-     * The Asset url.
-     *
-     * You can configure the asset URL by setting the ASSET_URL in your .env
-     * Or optionally in the main config file.
-     *
-     * @param string      $asset path to the asset like: "/images/thing.png"
-     * @param null|string $path
-     *
-     * @return string
-     */
-    function asset( string $asset, ?string $path = null ): string
-    {
-        return Asset::url( $asset, $path );
-    }
+/**
+ * The Asset url.
+ *
+ * You can configure the asset URL by setting the ASSET_URL in your .env
+ * Or optionally in the main config file.
+ *
+ * @param string      $asset path to the asset like: "/images/thing.png"
+ * @param null|string $path
+ *
+ * @return string
+ */
+function asset( string $asset, ?string $path = null ): string
+{
+    return Asset::url( $asset, $path );
 }
 
-if ( ! \function_exists( 'assetUrl' ) ) {
-    /**
-     * The Asset url only.
-     *
-     * @param null|string $path
-     *
-     * @return string
-     */
-    function assetUrl( ?string $path = null ): string
-    {
-        return Asset::url( '/', $path );
-    }
+/**
+ * The Asset url only.
+ *
+ * @param null|string $path
+ *
+ * @return string
+ */
+function assetUrl( ?string $path = null ): string
+{
+    return Asset::url( '/', $path );
 }
 
 /**
@@ -88,168 +80,46 @@ function env( $name, $default = null, $encrypt = false, $strtolower = false )
     return $env_var;
 }
 
-if ( ! \function_exists( 'app_kernel' ) ) {
-    /**
-     * Initializes the App Kernel with optional multi-tenant support.
-     *
-     * Sets up the application kernel based on the provided application directory path.
-     * In multi-tenant configurations, it dynamically adjusts the environment based on
-     * the current HTTP host and tenant-specific settings. It ensures all required
-     * environment variables for the landlord (main tenant) are set and terminates
-     * execution with an error message if critical configurations are missing or if
-     * the tenant's domain is not recognized.
-     *
-     * @param string $app_path     The base directory path of the application (e.g., __DIR__).
-     * @param string $options_file Optional. The configuration filename, defaults to 'app'.
-     *
-     * @throws Exception If there are issues loading environment variables or initializing the App.
-     * @throws Exception If required multi-tenant environment variables are missing or if the tenant's domain is not recognized.
-     *
-     * @return WPframework\Component\Kernel The initialized application kernel.
-     */
-    function http_component_kernel( string $app_path, string $options_file = 'app' ): WPframework\Component\Kernel
-    {
-        // load constants early.
-        if ( ! \defined('SITE_CONFIGS_DIR') ) {
-            \define( 'SITE_CONFIGS_DIR', 'configs');
-        }
-
-        if ( ! \defined('APP_DIR_PATH') ) {
-            \define( 'APP_DIR_PATH', $app_path );
-        }
-
-        if ( ! \defined('APP_HTTP_HOST') ) {
-            \define( 'APP_HTTP_HOST', HttpFactory::init()->get_http_host() );
-        }
-
-        if ( ! \defined('RAYDIUM_ENVIRONMENT_TYPE') ) {
-            \define( 'RAYDIUM_ENVIRONMENT_TYPE', null );
-        }
-
-        $app_options = [];
-        $supported_env_files =  _supported_env_files();
-
-        // Filters out environment files that do not exist to avoid warnings.
-        $_env_files = _env_files_filter( $supported_env_files, APP_DIR_PATH );
-
-        // load env from dotenv early.
-        $_dotenv = Dotenv::createImmutable( APP_DIR_PATH, $_env_files, true );
-
-        try {
-            $_dotenv->load();
-        } catch ( InvalidPathException $e ) {
-            try_regenerate_env_file( APP_DIR_PATH, APP_HTTP_HOST, $_env_files );
-
-            $debug = [
-                'path'      => APP_DIR_PATH,
-                'line'      => __LINE__,
-                'exception' => $e,
-                'invalidfile' => "Missing env file: {$e->getMessage()}",
-            ];
-
-            Terminate::exit( [ "Missing env file: {$e->getMessage()}", 500, $debug ] );
-        } catch ( Exception $e ) {
-            $debug = [
-                'path'      => APP_DIR_PATH,
-                'line'      => __LINE__,
-                'exception' => $e,
-            ];
-            Terminate::exit( [ $e->getMessage(), 500, $debug ] );
-        }
-
-        /**
-         * Handle multi-tenant setups.
-         *
-         * @var Tenancy
-         */
-        $tenancy = new Tenancy( APP_DIR_PATH, SITE_CONFIGS_DIR );
-        $tenancy->initialize( $_dotenv );
-
-        try {
-            $app = new App( APP_DIR_PATH, SITE_CONFIGS_DIR, $options_file );
-        } catch ( Exception $e ) {
-            $debug = [
-                'path'   => APP_DIR_PATH,
-                'line'   => __LINE__,
-                'exception'   => $e,
-            ];
-            Terminate::exit( [ 'Framework Initialization Error:', 500, $debug ] );
-        }
-
-        // @phpstan-ignore-next-line
-        return $app->kernel();
+/**
+ * Start and load core plugin.
+ *
+ * @return null|Framework
+ */
+function wpframeworkCore(): ?Framework
+{
+    if ( ! \defined( 'ABSPATH' ) ) {
+        exit;
     }
+
+    return _wpframework();
 }
 
-if ( ! \function_exists( 'wpframeworkCore' ) ) {
-    /**
-     * Start and load core plugin.
-     *
-     * @return null|Framework
-     */
-    function wpframeworkCore(): ?Framework
-    {
-        if ( ! \defined( 'ABSPATH' ) ) {
-            exit;
-        }
+/**
+ * Get default app config values.
+ *
+ * @return (null|bool|mixed|(mixed|(mixed|string)[]|true)[]|string)[]
+ *
+ * @psalm-return array{security: array{'brute-force': true, 'two-factor': true, 'no-pwned-passwords': true, 'admin-ips': array<empty, empty>}, mailer: array{brevo: array{apikey: mixed}, postmark: array{token: mixed}, sendgrid: array{apikey: mixed}, mailerlite: array{apikey: mixed}, mailgun: array{domain: mixed, secret: mixed, endpoint: mixed, scheme: 'https'}, ses: array{key: mixed, secret: mixed, region: mixed}}, sudo_admin: mixed, sudo_admin_group: null, web_root: 'public', s3uploads: array{bucket: mixed, key: mixed, secret: mixed, region: mixed, 'bucket-url': mixed, 'object-acl': mixed, expires: mixed, 'http-cache': mixed}, asset_dir: 'assets', content_dir: 'app', plugin_dir: 'plugins', mu_plugin_dir: 'mu-plugins', sqlite_dir: 'sqlitedb', sqlite_file: '.sqlite-wpdatabase', default_theme: 'brisko', disable_updates: true, can_deactivate: false, theme_dir: 'templates', error_handler: null, redis: array{disabled: mixed, host: mixed, port: mixed, password: mixed, adminbar: mixed, 'disable-metrics': mixed, 'disable-banners': mixed, prefix: mixed, database: mixed, timeout: mixed, 'read-timeout': mixed}, publickey: array{'app-key': mixed}}
+ */
+function appConfig( ?string $file_path = null, ?string $filename = null ): array
+{
+    $site_configs_dir = site_configs_dir();
 
-        return _wpframework();
+    if ( ! $file_path && ! $filename ) {
+        // return default app array.
+        return _default_configs();
     }
-}
 
-if ( ! \function_exists( 'wpInstalledPlugins' ) ) {
-    /**
-     * Get installed plugins.
-     *
-     * @return string[]
-     *
-     * @psalm-return list<string>
-     */
-    function wpInstalledPlugins(): array
-    {
-        $plugins = get_plugins();
+    $options_file = "{$file_path}/{$site_configs_dir}/{$filename}.php";
 
-        $plugin_slugs = [];
-
-        foreach ( $plugins as $key => $plugin ) {
-            $slug = explode( '/', $key );
-
-            // Add the slug to the array
-            $plugin_slugs[] = '"wpackagist-plugin/' . $slug[0] . '": "*",';
-        }
-
-        return $plugin_slugs;
+    if ( file_exists( $options_file ) && \is_array(@require $options_file) ) {
+        return require $options_file;
     }
-}// end if
-
-if ( ! \function_exists( 'appConfig' ) ) {
-    /**
-     * Get default app config values.
-     *
-     * @return (null|bool|mixed|(mixed|(mixed|string)[]|true)[]|string)[]
-     *
-     * @psalm-return array{security: array{'brute-force': true, 'two-factor': true, 'no-pwned-passwords': true, 'admin-ips': array<empty, empty>}, mailer: array{brevo: array{apikey: mixed}, postmark: array{token: mixed}, sendgrid: array{apikey: mixed}, mailerlite: array{apikey: mixed}, mailgun: array{domain: mixed, secret: mixed, endpoint: mixed, scheme: 'https'}, ses: array{key: mixed, secret: mixed, region: mixed}}, sudo_admin: mixed, sudo_admin_group: null, web_root: 'public', s3uploads: array{bucket: mixed, key: mixed, secret: mixed, region: mixed, 'bucket-url': mixed, 'object-acl': mixed, expires: mixed, 'http-cache': mixed}, asset_dir: 'assets', content_dir: 'app', plugin_dir: 'plugins', mu_plugin_dir: 'mu-plugins', sqlite_dir: 'sqlitedb', sqlite_file: '.sqlite-wpdatabase', default_theme: 'brisko', disable_updates: true, can_deactivate: false, theme_dir: 'templates', error_handler: null, redis: array{disabled: mixed, host: mixed, port: mixed, password: mixed, adminbar: mixed, 'disable-metrics': mixed, 'disable-banners': mixed, prefix: mixed, database: mixed, timeout: mixed, 'read-timeout': mixed}, publickey: array{'app-key': mixed}}
-     */
-    function appConfig( ?string $file_path = null, ?string $filename = null ): array
-    {
-        $site_configs_dir = site_configs_dir();
-
-        if ( ! $file_path && ! $filename ) {
-            // return default app array.
-            return _default_configs();
-        }
-
-        $options_file = "{$file_path}/{$site_configs_dir}/{$filename}.php";
-
-        if ( file_exists( $options_file ) && \is_array(@require $options_file) ) {
-            return require $options_file;
-        }
-        if ( ! file_exists( $options_file ) ) {
-            return _default_configs();
-        }
-
-        return [];
+    if ( ! file_exists( $options_file ) ) {
+        return _default_configs();
     }
+
+    return [];
 }
 
 function _default_configs(): array
@@ -329,36 +199,6 @@ function envHash( $data, ?string $secretkey = null, string $algo = 'sha256' ): s
     }
 
     return hash_hmac( $algo, $data, $secretkey );
-}
-
-/*
- * Generates a list of WordPress plugins in Composer format.
- *
- * @return array An associative array of Composer package names and their version constraints.
- */
-if ( ! \function_exists( 'packagistPluginsList' ) ) {
-    function packagistPluginsList()
-    {
-        if ( ! \function_exists( 'get_plugins' ) ) {
-            require_once ABSPATH . 'wp-admin/includes/plugin.php';
-        }
-
-        $all_plugins = get_plugins();
-
-        $plugins_list = [];
-
-        foreach ( $all_plugins as $plugin_path => $plugin_data ) {
-            // Extract the plugin slug from the directory name.
-            $plugin_slug = sanitize_title( \dirname( $plugin_path ) );
-
-            // Format the package name with the 'wpackagist-plugin' prefix.
-            $package_name = "wpackagist-plugin/{$plugin_slug}";
-
-            $plugins_list[ $package_name ] = 'latest';
-        }
-
-        return $plugins_list;
-    }
 }
 
 /**
@@ -494,6 +334,79 @@ function _env_files_filter( array $env_files, string $app_path ): array
     }
 
     return $env_files;
+}
+
+/**
+ * Determines if the application is configured to operate in multi-tenant mode.
+ *
+ * This is based on the presence and value of the `ALLOW_MULTITENANT` constant.
+ * If `ALLOW_MULTITENANT` is defined and set to `true`, the application is
+ * considered to be in multi-tenant mode.
+ *
+ * @return bool Returns `true` if the application is in multi-tenant mode, otherwise `false`.
+ */
+function is_multitenant_app(): bool
+{
+    return \defined( 'ALLOW_MULTITENANT' ) && ALLOW_MULTITENANT === true;
+}
+
+/**
+ * Sets the upload directory to a tenant-specific location.
+ *
+ * This function modifies the default WordPress upload directory paths
+ * to store tenant-specific uploads in a separate folder based on the tenant ID.
+ * It ensures that each tenant's uploads are organized and stored in an isolated directory.
+ *
+ * @param array $dir The array containing the current upload directory's path and URL.
+ *
+ * @return array The modified array with the new upload directory's path and URL for the tenant.
+ */
+function set_multitenant_upload_directory( $dir )
+{
+    $custom_dir = '/tenant/' . APP_TENANT_ID . '/uploads';
+
+    // Set the base directory and URL for the uploads.
+    $dir['basedir'] = WP_CONTENT_DIR . $custom_dir;
+    $dir['baseurl'] = content_url() . $custom_dir;
+
+    // Append the subdirectory to the base path and URL, if any.
+    $dir['path'] = $dir['basedir'] . $dir['subdir'];
+    $dir['url']  = $dir['baseurl'] . $dir['subdir'];
+
+    return $dir;
+}
+
+/**
+ * Custom admin footer text.
+ *
+ * @return string The formatted footer text.
+ */
+function _framework_footer_label(): string
+{
+    $home_url   = esc_url( home_url() );
+    $date_year  = gmdate( 'Y' );
+    $site_name  = esc_html( get_bloginfo( 'name' ) );
+    $tenant_id  = esc_html( APP_TENANT_ID );
+
+    return wp_kses_post( "&copy; $date_year <a href=\"$home_url\" target=\"_blank\">$site_name</a> " . __( 'All Rights Reserved.', 'wp-framework' ) . " $tenant_id" );
+}
+
+function _framework_current_theme_info(): array
+{
+    $current_theme = wp_get_theme();
+
+    // Check if the current theme is available
+    if ( $current_theme->exists() ) {
+        return [
+            'available'  => true,
+            'theme_info' => $current_theme->get( 'Name' ) . ' is available.',
+        ];
+    }
+
+    return [
+        'available'     => false,
+        'error_message' => 'The current active theme is not available.',
+    ];
 }
 
 /**

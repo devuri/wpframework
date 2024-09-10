@@ -19,7 +19,7 @@ use WPframework\Component\Traits\TenantTrait;
  *
  * Handles global constants.
  */
-abstract class AbstractKernel implements TenantInterface
+abstract class AbstractKernel implements KernelInterface, TenantInterface
 {
     use ConstantBuilderTrait;
     use TenantTrait;
@@ -377,7 +377,7 @@ abstract class AbstractKernel implements TenantInterface
      * Determines the configuration file to use based on the application's mode and tenant ID.
      * Falls back to the default configuration if no tenant-specific configuration is found.
      */
-    public function overrides(): void
+    public function overrides(): KernelInterface
     {
         $config_override_file = $this->get_tenant_config_file();
 
@@ -388,6 +388,8 @@ abstract class AbstractKernel implements TenantInterface
         if ( ! empty( $config_override_file ) ) {
             require_once $config_override_file;
         }
+
+        return $this;
     }
 
     /**
@@ -422,9 +424,9 @@ abstract class AbstractKernel implements TenantInterface
      * @param null|string $environment_type The environment type to initialize with.
      * @param bool        $constants        Whether to load default constants.
      *
-     * @return void
+     * @return KernelInterface
      */
-    public function init( ?string $environment_type = null, bool $constants = true ): void
+    public function init( ?string $environment_type = null, bool $constants = true ): KernelInterface
     {
         $environment = env( 'WP_ENVIRONMENT_TYPE', $environment_type );
 
@@ -464,6 +466,8 @@ abstract class AbstractKernel implements TenantInterface
         if ( $this->is_wp_install() && \in_array( env( 'WP_ENVIRONMENT_TYPE' ), [ 'secure', 'sec', 'production', 'prod' ], true ) ) {
             Terminate::exit( [ 'wp is not installed or doing an upgrade change enviroment to run installer' ] );
         }
+
+        return $this;
     }
 
     /**

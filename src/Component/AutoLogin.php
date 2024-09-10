@@ -8,15 +8,10 @@
  * for full copyright and license information.
  */
 
-namespace WPframework\Component\Core;
+namespace WPframework\Component;
 
 use WP_User;
 
-/**
- * Class AutoLogin.
- *
- * The AutoLogin class handles automatic login functionality for WordPress sites.
- */
 class AutoLogin
 {
     /**
@@ -48,6 +43,13 @@ class AutoLogin
     protected $environment_type = null;
 
     /**
+     * environments that allow autologin.
+     *
+     * @var array
+     */
+    protected $environments;
+
+    /**
      * The URL of the user's admin area (dashboard).
      *
      * @var null|string
@@ -65,10 +67,11 @@ class AutoLogin
      *
      * @return void This method does not return any value.
      */
-    public function __construct( ?string $secret_key = null, ?string $environment_type = null )
+    public function __construct( ?string $secret_key = null, ?string $environment_type = null, array $environments = [ 'sec', 'secure', 'prod', 'production' ] )
     {
         $this->secret_key       = $secret_key;
         $this->environment_type = $environment_type;
+        $this->environments     = $environments;
         $this->home_url         = home_url( '/' );
         $this->user_admin_url   = user_admin_url();
         $this->login_service    = [];
@@ -121,8 +124,8 @@ class AutoLogin
         $current_timestamp = time();
 
         // do not allow production login.
-        if ( \in_array( $this->environment_type, [ 'sec', 'secure', 'prod', 'production' ], true ) ) {
-            error_log( 'auto login will not work production, change to debug or staging' );
+        if ( \in_array( $this->environment_type, $this->environments, true ) ) {
+            error_log( 'auto login will not work in this environment: ' . $this->environment_type );
 
             return;
         }
@@ -130,20 +133,20 @@ class AutoLogin
         // WARNING | Processing form data without nonce verification.
         if ( isset( $_GET['token'] ) && isset( $_GET['sig'] ) ) {
             $this->login_service = [
-                'token'    => static::get_req( 'token' ),
-                'time'     => static::get_req( 'time' ),
-                'username' => static::get_req( 'username' ),
-                'site_id'  => static::get_req( 'site_id' ),
+                'token'    => static::get_query( 'token' ),
+                'time'     => static::get_query( 'time' ),
+                'username' => static::get_query( 'username' ),
+                'site_id'  => static::get_query( 'site_id' ),
             ];
 
-            // Check if the URL has expired (more than 30 seconds old).
-            if ( $current_timestamp - (int) $this->login_service['time'] > 30 ) {
+            // Check if the URL has expired (more than 60 seconds old).
+            if ( $current_timestamp - (int) $this->login_service['time'] > 60 ) {
                 wp_die( 'login expired' );
 
                 return;
             }
 
-            $signature = base64_decode( static::get_req( 'sig' ), true );
+            $signature = base64_decode( static::get_query( 'sig' ), true );
 
             if ( \is_null( $this->login_service['username'] ) || \is_null( $signature ) ) {
                 error_log( 'auto login username invalid' );
@@ -256,7 +259,7 @@ class AutoLogin
      *
      * @return null|string The sanitized value of the specified query parameter, or null if the parameter is not set.
      */
-    protected static function get_req( string $req_input )
+    protected static function get_query( string $req_input )
     {
         if ( isset( $_GET[ $req_input ] ) ) {
             return sanitize_text_field( wp_unslash( $_GET[ $req_input ] ) );
