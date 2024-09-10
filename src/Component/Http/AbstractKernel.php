@@ -429,10 +429,11 @@ abstract class AbstractKernel implements KernelInterface, TenantInterface
     public function init( ?string $environment_type = null, bool $constants = true ): KernelInterface
     {
         $environment = env( 'WP_ENVIRONMENT_TYPE', $environment_type );
+		$wp_env_type = self::wp_env_type( $environment );
 
-        if ( $environment && EnvTypes::is_valid( self::wp_env_type() ) ) {
+        if ( $environment && EnvTypes::is_valid( $wp_env_type ) ) {
             $this->env_type = [ 'environment' => $environment ];
-        } elseif ( \defined( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::is_valid( self::wp_env_type() ) ) {
+        } elseif ( \defined( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::is_valid( $wp_env_type ) ) {
             $this->env_type = [ 'environment' => WP_ENVIRONMENT_TYPE ];
         }
 
@@ -641,13 +642,13 @@ abstract class AbstractKernel implements KernelInterface, TenantInterface
         return HttpFactory::init();
     }
 
-    private static function wp_env_type(): string
+    private static function wp_env_type( string $environment = '' ): string
     {
         if ( \defined( 'WP_ENVIRONMENT_TYPE' ) ) {
             return (string) WP_ENVIRONMENT_TYPE;
         }
 
-        return '';
+        return $environment;
     }
 
     /**
