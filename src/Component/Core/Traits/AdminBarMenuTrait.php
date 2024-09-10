@@ -62,19 +62,5 @@ trait AdminBarMenuTrait
                 ],
             ]
         );
-
-        // Integrated Version Control
-        $admin_bar->add_menu(
-            [
-                'parent' => $this->env_menu_id,
-                'id'     => 'wpframework-app',
-                'title'  => __( 'Integrated Version Control (vcs build)' ),
-                'href'   => '#',
-                'meta'   => [
-                    'title' => __( 'Built with WPframework (wpframework.com)' ),
-                    'class' => 'wpc-warning',
-                ],
-            ]
-        );
     }
 }
