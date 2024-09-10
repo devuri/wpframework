@@ -8,15 +8,10 @@
  * for full copyright and license information.
  */
 
-namespace WPframework\Component\Core;
+namespace WPframework\Component;
 
 use WP_User;
 
-/**
- * Class AutoLogin.
- *
- * The AutoLogin class handles automatic login functionality for WordPress sites.
- */
 class AutoLogin
 {
     /**
@@ -47,11 +42,11 @@ class AutoLogin
      */
     protected $environment_type = null;
 
-	/**
-	 * environments that allow autologin
-	 *
-	 * @var array
-	 */
+    /**
+     * environments that allow autologin.
+     *
+     * @var array
+     */
     protected $environments;
 
     /**
@@ -76,7 +71,7 @@ class AutoLogin
     {
         $this->secret_key       = $secret_key;
         $this->environment_type = $environment_type;
-        $this->environments = $environments;
+        $this->environments     = $environments;
         $this->home_url         = home_url( '/' );
         $this->user_admin_url   = user_admin_url();
         $this->login_service    = [];
@@ -130,7 +125,7 @@ class AutoLogin
 
         // do not allow production login.
         if ( \in_array( $this->environment_type, $this->environments, true ) ) {
-            error_log( 'auto login will not work in this environment: '. $this->environment_type );
+            error_log( 'auto login will not work in this environment: ' . $this->environment_type );
 
             return;
         }

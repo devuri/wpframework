@@ -4,7 +4,6 @@ namespace WPframework\Component;
 
 use Urisoft\DotAccess;
 use Urisoft\SimpleConfig;
-use WPframework\Component\Core\Plugin;
 use WPframework\Component\Traits\TenantTrait;
 
 class Framework implements TenantInterface
@@ -26,11 +25,6 @@ class Framework implements TenantInterface
         }
 
         self::$_all_app_options = $this->app_options;
-    }
-
-    public function plugin(): Plugin
-    {
-        return Plugin::init( new self() );
     }
 
     public function get_app_options(): array

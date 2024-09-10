@@ -337,6 +337,79 @@ function _env_files_filter( array $env_files, string $app_path ): array
 }
 
 /**
+ * Determines if the application is configured to operate in multi-tenant mode.
+ *
+ * This is based on the presence and value of the `ALLOW_MULTITENANT` constant.
+ * If `ALLOW_MULTITENANT` is defined and set to `true`, the application is
+ * considered to be in multi-tenant mode.
+ *
+ * @return bool Returns `true` if the application is in multi-tenant mode, otherwise `false`.
+ */
+function is_multitenant_app(): bool
+{
+    return \defined( 'ALLOW_MULTITENANT' ) && ALLOW_MULTITENANT === true;
+}
+
+/**
+ * Sets the upload directory to a tenant-specific location.
+ *
+ * This function modifies the default WordPress upload directory paths
+ * to store tenant-specific uploads in a separate folder based on the tenant ID.
+ * It ensures that each tenant's uploads are organized and stored in an isolated directory.
+ *
+ * @param array $dir The array containing the current upload directory's path and URL.
+ *
+ * @return array The modified array with the new upload directory's path and URL for the tenant.
+ */
+function set_multitenant_upload_directory( $dir )
+{
+    $custom_dir = '/tenant/' . APP_TENANT_ID . '/uploads';
+
+    // Set the base directory and URL for the uploads.
+    $dir['basedir'] = WP_CONTENT_DIR . $custom_dir;
+    $dir['baseurl'] = content_url() . $custom_dir;
+
+    // Append the subdirectory to the base path and URL, if any.
+    $dir['path'] = $dir['basedir'] . $dir['subdir'];
+    $dir['url']  = $dir['baseurl'] . $dir['subdir'];
+
+    return $dir;
+}
+
+/**
+ * Custom admin footer text.
+ *
+ * @return string The formatted footer text.
+ */
+function _framework_footer_label(): string
+{
+    $home_url   = esc_url( home_url() );
+    $date_year  = gmdate( 'Y' );
+    $site_name  = esc_html( get_bloginfo( 'name' ) );
+    $tenant_id  = esc_html( APP_TENANT_ID );
+
+    return wp_kses_post( "&copy; $date_year <a href=\"$home_url\" target=\"_blank\">$site_name</a> " . __( 'All Rights Reserved.', 'wp-framework' ) . " $tenant_id" );
+}
+
+function _framework_current_theme_info(): array
+{
+    $current_theme = wp_get_theme();
+
+    // Check if the current theme is available
+    if ( $current_theme->exists() ) {
+        return [
+            'available'  => true,
+            'theme_info' => $current_theme->get( 'Name' ) . ' is available.',
+        ];
+    }
+
+    return [
+        'available'     => false,
+        'error_message' => 'The current active theme is not available.',
+    ];
+}
+
+/**
  * Regenerates the tenant-specific .env file if it doesn't exist.
  *
  * @param string $app_path

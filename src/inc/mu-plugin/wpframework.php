@@ -1,17 +1,13 @@
 <?php
 
 /**
- * @wordpress-plugin
  * Plugin Name:       WP-Framework Core
  * Plugin URI:        https://github.com/devuri/wpframework
- * Description:       Web Application Framework provides `wpframework_init` action and bootstrap file.
- * Version:           0.2
+ * Description:       Framework Core with `wpframework_init` hook.
+ * Version:           0.4
  * Requires at least: 5.3.0
  * Requires PHP:      7.3.5
- * Author:            Uriel
- * Author URI:        https://urielwilson.com
- * Text Domain:       wp-wpframework
- * Domain Path:       languages
+ * Author:            uriel
  * License:           GPLv2
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Network: true
@@ -25,14 +21,8 @@ if ( defined( 'WP_INSTALLING' ) && WP_INSTALLING ) {
     return;
 }
 
-/**
- * Start and load the framework core plugin.
- */
-if ( function_exists( 'wpframeworkCore' ) ) {
-    $_wpframework = wpframeworkCore();
-    $_wpframework->plugin();
-} else {
-	$_wpframework = null;
+if ( ! defined( 'APP_TENANT_ID' ) ) {
+    define( 'APP_TENANT_ID', null );
 }
 
 /**
@@ -41,8 +31,32 @@ if ( function_exists( 'wpframeworkCore' ) ) {
  * Must-use plugins are typically used for critical functionality or site-wide customizations
  * that should always be active which makes this hook a good place to add critical functionality
  */
-if ( is_object( $_wpframework ) ) {
-	do_action( 'wpframework_init', $_wpframework->get_app_options() );
-} else {
-	do_action( 'wpframework_init' );
+do_action( 'wpframework_init' );
+
+// custom theme directory.
+if ( \defined( 'APP_THEME_DIR' ) ) {
+	register_theme_directory( APP_THEME_DIR );
 }
+
+// Missing theme fix.
+$theme_info = _framework_current_theme_info();
+if ( false === $theme_info['available'] ) {
+	$active_theme = wp_get_theme();
+	WPframework\Component\Terminate::exit(
+		[ $theme_info['error_message'] . ' -> ' . $active_theme->template ]
+	);
+}
+
+if ( is_multitenant_app() ) {
+	// separate uploads for multi tenant.
+	add_filter( 'upload_dir', 'set_multitenant_upload_directory' );
+}
+
+if ( env( 'WPENV_AUTO_LOGIN_SECRET_KEY' ) ) {
+    WPframework\Component\AutoLogin::init(
+		env( 'WPENV_AUTO_LOGIN_SECRET_KEY' ),
+		env( 'WP_ENVIRONMENT_TYPE' )
+	);
+}
+
+add_filter( 'admin_footer_text', '_framework_footer_label' );
