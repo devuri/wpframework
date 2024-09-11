@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.3](https://github.com/devuri/wpframework/compare/v0.4.2...v0.4.3) (2024-09-11)
+
+
+### Bug Fixes
+
+* add (string) for `wp_env_type` ([cb92628](https://github.com/devuri/wpframework/commit/cb92628fac1febe418b7b05868871bcd5368f429))
+* add admin only info including `http_env` ([fe3ec08](https://github.com/devuri/wpframework/commit/fe3ec0878aa02ebda4c9e61bbd39747eae01f3c2))
+
+
+### Miscellaneous Chores
+
+* build ([289b7ed](https://github.com/devuri/wpframework/commit/289b7ed089be2c09fbfdca2cb921446311b291f0))
+
 ## [0.4.2](https://github.com/devuri/wpframework/compare/v0.4.1...v0.4.2) (2024-09-10)
 
 
