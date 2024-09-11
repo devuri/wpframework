@@ -12,11 +12,42 @@ To get started with Raydium, make sure you have the following prerequisites:
 - Terminal access to execute Raydium and other related commands.
 - A text editor or IDE that supports PHP and WordPress development, such as [VSCode](https://code.visualstudio.com/) with appropriate extensions.
 
-To integrate Raydium into your WordPress project, you can install it using Composer with the following command:
+
+To integrate Raydium into your WordPress project, you have several options, depending on your specific needs and preferences. Raydium provides three distinct setups via Composer, each serving different purposes and project requirements:
+
+- **Raydium**: Core framework with essential features for secure and scalable WordPress development.
+- **RaydiumX**: Extended template with more opinionated setups for a comprehensive starting point.
+- **RaydiumXE**: Minimal version for a lightweight and highly customizable foundation.
+
+
+  > Each option offers different levels of configuration and customization.
+
+#### Raydium
+
+[Raydium](https://github.com/devuri/radium/)  offers a solid foundation for developing secure, scalable, and modular WordPress applications. Use the following Composer command to create a new project with the core framework:
 
 ```shell
 composer create-project devuri/raydium your-project-name
 ```
+
+#### RaydiumX
+
+[RaydiumX](https://github.com/devuri/radiumx/)  is an extended template that includes more opinionated setups, incorporating additional tooling, configurations.
+Install RaydiumX with the following Composer command:
+
+```shell
+composer create-project devuri/raydiumx your-project-name
+```
+
+#### RaydiumXE
+
+[RaydiumXE](https://github.com/devuri/raydiumxe)  is a minimal version of Raydium, providing a stripped-down base to start from scratch. This option is ideal for keeping things simple and build upon a minimal setup, adding only the components necessary. You can install RaydiumXE with this command:
+
+```shell
+composer create-project devuri/raydiumxe your-project-name
+```
+
+
 
 ## Setup
 
