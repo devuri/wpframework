@@ -350,6 +350,15 @@ function is_multitenant_app(): bool
     return \defined( 'ALLOW_MULTITENANT' ) && ALLOW_MULTITENANT === true;
 }
 
+function get_wpframework_http_env(): ?string
+{
+    if ( ! \defined( 'HTTP_ENV_CONFIG' ) ) {
+        return null;
+    }
+
+    return strtoupper( HTTP_ENV_CONFIG );
+}
+
 /**
  * Sets the upload directory to a tenant-specific location.
  *
@@ -386,9 +395,17 @@ function _framework_footer_label(): string
     $home_url   = esc_url( home_url() );
     $date_year  = gmdate( 'Y' );
     $site_name  = esc_html( get_bloginfo( 'name' ) );
-    $tenant_id  = esc_html( APP_TENANT_ID );
 
-    return wp_kses_post( "&copy; $date_year <a href=\"$home_url\" target=\"_blank\">$site_name</a> " . __( 'All Rights Reserved.', 'wp-framework' ) . " $tenant_id" );
+    // admin only info.
+    if ( current_user_can('manage_options')) {
+        $tenant_id = esc_html( APP_TENANT_ID );
+        $http_env  =  strtolower( esc_html( HTTP_ENV_CONFIG ) );
+    } else {
+        $tenant_id = null;
+        $http_env  =  null;
+    }
+
+    return wp_kses_post( "&copy; $date_year <a href=\"$home_url\" target=\"_blank\">$site_name</a> " . __( 'All Rights Reserved.', 'wp-framework' ) . " $tenant_id $http_env" );
 }
 
 function _framework_current_theme_info(): array
