@@ -94,7 +94,7 @@ class AutoLogin
         }
     }
 
-	/**
+    /**
      * Initializes the automatic login functionality.
      *
      * This method is the entry point for the automatic login feature. It creates an instance of the class
