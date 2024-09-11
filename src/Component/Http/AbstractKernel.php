@@ -429,7 +429,7 @@ abstract class AbstractKernel implements KernelInterface, TenantInterface
     public function init( ?string $environment_type = null, bool $constants = true ): KernelInterface
     {
         $environment = env( 'WP_ENVIRONMENT_TYPE', $environment_type );
-		$wp_env_type = self::wp_env_type( $environment );
+		$wp_env_type = self::wp_env_type( (string) $environment );
 
         if ( $environment && EnvTypes::is_valid( $wp_env_type ) ) {
             $this->env_type = [ 'environment' => $environment ];
