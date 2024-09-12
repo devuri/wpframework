@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.1](https://github.com/devuri/wpframework/compare/v0.5.0...v0.5.1) (2024-09-12)
+
+
+### Bug Fixes
+
+* update interface `configuration_overrides` error ([dc831f3](https://github.com/devuri/wpframework/commit/dc831f355479ca3d5a570fded95681ab343a8597))
+
 ## [0.5.0](https://github.com/devuri/wpframework/compare/v0.4.3...v0.5.0) (2024-09-12)
 
 
