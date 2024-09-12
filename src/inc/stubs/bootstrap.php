@@ -31,13 +31,6 @@ if ( ! \defined( 'RAYDIUM_ENVIRONMENT_TYPE' ) ) {
 $raydium_http = App::init( __DIR__ );
 
 /*
- * Load constant overrides.
- *
- * This will load constant values that override constants defined in setup.
- */
-$raydium_http->overrides();
-
-/*
  * Configuration settings for your web application.
  *
  * We recommend using the .env file to set these values.
@@ -46,7 +39,7 @@ $raydium_http->overrides();
  * By default the value `RAYDIUM_ENVIRONMENT_TYPE` constant is used.
  * `RAYDIUM_ENVIRONMENT_TYPE` defaults to `null` if it is not set.
  */
-$raydium_http->init( RAYDIUM_ENVIRONMENT_TYPE );
+$raydium_http->app( RAYDIUM_ENVIRONMENT_TYPE );
 
 /**
  * WordPress Database Table prefix.

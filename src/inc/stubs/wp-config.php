@@ -28,10 +28,7 @@ if ( ! defined( 'RAYDIUM_ENVIRONMENT_TYPE' ) ) {
 
 /* That's all, stop editing! Happy publishing. */
 
-// Initialize the application
-App::init( dirname( __DIR__ ) )
-    ->overrides()
-    ->init( RAYDIUM_ENVIRONMENT_TYPE );
+App::init( dirname( __DIR__ ) )->app( RAYDIUM_ENVIRONMENT_TYPE );
 
 // Set the table prefix.
 $table_prefix = env( 'DB_PREFIX' );
