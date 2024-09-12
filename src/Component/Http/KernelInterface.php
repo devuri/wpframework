@@ -56,14 +56,7 @@ interface KernelInterface
      *
      * @return KernelInterface
      */
-    public function init( ?string $environment_type = null, bool $constants = true): self;
-
-    /**
-     * Applies configuration overrides.
-     *
-     * @return self
-     */
-    public function overrides(): self;
+    public function app( ?string $environment_type = null, bool $constants = true): self;
 
     /**
      * Sets an environment secret using a key.
