@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.5.0](https://github.com/devuri/wpframework/compare/v0.4.3...v0.5.0) (2024-09-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* simplify `Initial application setup`
+
+### Features
+
+* simplify `Initial application setup` ([e7e0afd](https://github.com/devuri/wpframework/commit/e7e0afd6c1fb428a1400bb003cfbe5705a5d985e))
+
 ## [0.4.3](https://github.com/devuri/wpframework/compare/v0.4.2...v0.4.3) (2024-09-11)
 
 
