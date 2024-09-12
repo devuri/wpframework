@@ -211,7 +211,7 @@ class App
         }
 
         // @phpstan-ignore-next-line
-        return $app->kernel();
+        return $app->kernel(); 
     }
 
     /**
