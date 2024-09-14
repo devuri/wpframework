@@ -1,15 +1,16 @@
 <?php
 
-namespace WPframework\Component;
+namespace WPframework;
 
 use Dotenv\Dotenv;
 use Exception;
 use Symfony\Component\ErrorHandler\Debug;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
-use WPframework\Component\Http\EnvSwitcherInterface as Switcher;
-use WPframework\Component\Traits\ConstantBuilderTrait;
-use WPframework\Component\Traits\TenantTrait;
+use WPframework\Http\EnvSwitcherInterface as Switcher;
+use WPframework\Traits\ConstantBuilderTrait;
+use WPframework\Traits\TenantTrait;
+use WPframework\Env\EnvTypes;
 
 /**
  * Setup WP Config.

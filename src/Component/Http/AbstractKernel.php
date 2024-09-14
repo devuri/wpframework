@@ -1,18 +1,19 @@
 <?php
 
-namespace WPframework\Component\Http;
+namespace WPframework\Http;
 
 use function defined;
 
 use Exception;
 use InvalidArgumentException;
 use Urisoft\DotAccess;
-use WPframework\Component\EnvTypes;
-use WPframework\Component\Setup;
-use WPframework\Component\TenantInterface;
-use WPframework\Component\Terminate;
-use WPframework\Component\Traits\ConstantBuilderTrait;
-use WPframework\Component\Traits\TenantTrait;
+use WPframework\EnvTypes;
+use WPframework\Setup;
+use WPframework\TenantInterface;
+use WPframework\Terminate;
+use WPframework\Traits\ConstantBuilderTrait;
+use WPframework\Traits\TenantTrait;
+use WPframework\Env\EnvTypes;
 
 /**
  * Setup common elements.

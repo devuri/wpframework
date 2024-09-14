@@ -1,8 +1,8 @@
 <?php
 
-namespace WPframework\Component\Http;
+namespace WPframework\Http;
 
-use WPframework\Component\Setup;
+use WPframework\Setup;
 
 interface KernelInterface
 {

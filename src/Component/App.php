@@ -1,6 +1,6 @@
 <?php
 
-namespace WPframework\Component;
+namespace WPframework;
 
 use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidPathException;
@@ -9,9 +9,9 @@ use Symfony\Component\ErrorHandler\Debug;
 use Urisoft\Env;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
-use WPframework\Component\Http\HttpFactory;
-use WPframework\Component\Http\KernelInterface;
-use WPframework\Component\Http\Tenancy;
+use WPframework\Http\HttpFactory;
+use WPframework\Http\KernelInterface;
+use WPframework\Http\Tenancy;
 
 /**
  * The App class serves as the main entry point for initializing the WordPress application.

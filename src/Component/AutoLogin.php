@@ -8,7 +8,7 @@
  * for full copyright and license information.
  */
 
-namespace WPframework\Component;
+namespace WPframework;
 
 use WP_User;
 

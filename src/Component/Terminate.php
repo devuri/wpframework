@@ -1,6 +1,6 @@
 <?php
 
-namespace WPframework\Component;
+namespace WPframework;
 
 use Exception;
 use InvalidArgumentException;

@@ -1,14 +1,14 @@
 <?php
 
-namespace WPframework\Component\Http;
+namespace WPframework\Http;
 
 use Dotenv\Dotenv;
 use Exception;
 use Symfony\Component\Filesystem\Filesystem;
-use WPframework\Component\EnvGenerator;
-use WPframework\Component\TenantInterface;
-use WPframework\Component\Terminate;
-use WPframework\Component\Traits\TenantTrait;
+use WPframework\EnvGenerator;
+use WPframework\TenantInterface;
+use WPframework\Terminate;
+use WPframework\Traits\TenantTrait;
 
 class Tenancy implements TenantInterface
 {

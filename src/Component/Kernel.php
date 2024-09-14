@@ -1,8 +1,8 @@
 <?php
 
-namespace WPframework\Component;
+namespace WPframework;
 
-use WPframework\Component\Http\AbstractKernel;
+use WPframework\Http\AbstractKernel;
 
 class Kernel extends AbstractKernel
 {

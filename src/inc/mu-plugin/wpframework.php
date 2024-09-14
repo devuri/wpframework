@@ -42,7 +42,7 @@ if ( \defined( 'APP_THEME_DIR' ) ) {
 $theme_info = _framework_current_theme_info();
 if ( false === $theme_info['available'] ) {
 	$active_theme = wp_get_theme();
-	WPframework\Component\Terminate::exit(
+	WPframework\Terminate::exit(
 		[ $theme_info['error_message'] . ' -> ' . $active_theme->template ]
 	);
 }
@@ -53,7 +53,7 @@ if ( is_multitenant_app() ) {
 }
 
 if ( env( 'WP_ENVIRONMENT_TYPE' ) && env( 'WPENV_AUTO_LOGIN_SECRET_KEY' ) ) {
-    WPframework\Component\AutoLogin::init(
+    WPframework\AutoLogin::init(
 		env( 'WPENV_AUTO_LOGIN_SECRET_KEY' ),
 		env( 'WP_ENVIRONMENT_TYPE' )
 	);

@@ -1,8 +1,8 @@
 <?php
 
-namespace WPframework\Component\Http;
+namespace WPframework\Http;
 
-use WPframework\Component\Traits\ConstantBuilderTrait;
+use WPframework\Traits\ConstantBuilderTrait;
 
 /**
  * Class EnvSwitch.

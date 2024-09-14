@@ -5,11 +5,11 @@ use Symfony\Component\Filesystem\Filesystem;
 use Urisoft\DotAccess;
 use Urisoft\Encryption;
 use Urisoft\Env;
-use WPframework\Component\App;
-use WPframework\Component\EnvGenerator;
-use WPframework\Component\Framework;
-use WPframework\Component\Http\Asset;
-use WPframework\Component\Terminate;
+use WPframework\App;
+use WPframework\EnvGenerator;
+use WPframework\Framework;
+use WPframework\Http\Asset;
+use WPframework\Terminate;
 
 // @codingStandardsIgnoreFile.
 

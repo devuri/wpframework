@@ -1,6 +1,6 @@
 <?php
 
-use WPframework\Component\App;
+use WPframework\App;
 
 /*
  * This is the bootstrap file for the web application.

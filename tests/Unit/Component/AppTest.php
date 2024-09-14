@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Component\Http;
+namespace Tests\Unit\Component;
 
 use Tests\BaseTest;
 
