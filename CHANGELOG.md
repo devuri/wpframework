@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.6.0](https://github.com/devuri/wpframework/compare/v0.5.1...v0.6.0) (2024-09-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* namespace update `WPframework\Component` is now `WPframework`
+
+### Features
+
+* namespace update `WPframework\Component` is now `WPframework` ([6686a46](https://github.com/devuri/wpframework/commit/6686a46042da5737eb49d6db74313fcd80c16cd0))
+
+
+### Miscellaneous Chores
+
+* build ([72ba9eb](https://github.com/devuri/wpframework/commit/72ba9ebbff80d515e43182ebc749fb7ec49eaafb))
+
 ## [0.5.1](https://github.com/devuri/wpframework/compare/v0.5.0...v0.5.1) (2024-09-12)
 
 
