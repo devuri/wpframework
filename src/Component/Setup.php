@@ -7,10 +7,10 @@ use Exception;
 use Symfony\Component\ErrorHandler\Debug;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
+use WPframework\Env\EnvTypes;
 use WPframework\Http\EnvSwitcherInterface as Switcher;
 use WPframework\Traits\ConstantBuilderTrait;
 use WPframework\Traits\TenantTrait;
-use WPframework\Env\EnvTypes;
 
 /**
  * Setup WP Config.

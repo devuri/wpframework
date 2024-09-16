@@ -7,13 +7,12 @@ use function defined;
 use Exception;
 use InvalidArgumentException;
 use Urisoft\DotAccess;
-use WPframework\EnvTypes;
+use WPframework\Env\EnvTypes;
 use WPframework\Setup;
 use WPframework\TenantInterface;
 use WPframework\Terminate;
 use WPframework\Traits\ConstantBuilderTrait;
 use WPframework\Traits\TenantTrait;
-use WPframework\Env\EnvTypes;
 
 /**
  * Setup common elements.
@@ -192,7 +191,7 @@ abstract class AbstractKernel implements KernelInterface, TenantInterface
         // set the environment switcher.
         $this->app_setup->set_switcher( new Switcher() );
 
-		//set config override file.
+        // set config override file.
         $this->configuration_overrides();
     }
 
@@ -378,25 +377,6 @@ abstract class AbstractKernel implements KernelInterface, TenantInterface
     }
 
     /**
-     * Determines the configuration file to use based on the application's mode and tenant ID.
-     * Falls back to the default configuration if no tenant-specific configuration is found.
-     */
-    protected function configuration_overrides(): KernelInterface
-    {
-        $config_override_file = $this->get_tenant_config_file();
-
-        if ( empty( $config_override_file ) ) {
-            $config_override_file = $this->get_default_config_file();
-        }
-
-        if ( ! empty( $config_override_file ) ) {
-            require_once $config_override_file;
-        }
-
-        return $this;
-    }
-
-    /**
      * Sets a secret key in the environment secrets array.
      * Ensures that each key is stored only once.
      *
@@ -523,6 +503,25 @@ abstract class AbstractKernel implements KernelInterface, TenantInterface
         $user_constants = get_defined_constants( true )['user'];
 
         return self::encrypt_secret( $user_constants, self::env_secrets() );
+    }
+
+    /**
+     * Determines the configuration file to use based on the application's mode and tenant ID.
+     * Falls back to the default configuration if no tenant-specific configuration is found.
+     */
+    protected function configuration_overrides(): KernelInterface
+    {
+        $config_override_file = $this->get_tenant_config_file();
+
+        if ( empty( $config_override_file ) ) {
+            $config_override_file = $this->get_default_config_file();
+        }
+
+        if ( ! empty( $config_override_file ) ) {
+            require_once $config_override_file;
+        }
+
+        return $this;
     }
 
     /**

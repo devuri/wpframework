@@ -3,7 +3,7 @@
 namespace Tests\Unit\Component;
 
 use PHPUnit\Framework\TestCase;
-use WPframework\Component\HashValidator;
+use WPframework\HashValidator;
 
 /**
  * @internal

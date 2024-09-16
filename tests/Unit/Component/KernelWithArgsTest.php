@@ -3,7 +3,7 @@
 namespace Tests\Unit\Component;
 
 use Tests\BaseTest;
-use WPframework\Component\Kernel;
+use WPframework\Kernel;
 
 /**
  * Test the Kernel.

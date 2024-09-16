@@ -3,8 +3,8 @@
 namespace Tests\Unit\Component\Traits;
 
 use PHPUnit\Framework\TestCase;
-use WPframework\Component\Exceptions\ConstantAlreadyDefinedException;
-use WPframework\Component\Traits\ConstantBuilderTrait;
+use WPframework\Exceptions\ConstantAlreadyDefinedException;
+use WPframework\Traits\ConstantBuilderTrait;
 
 /**
  * @internal
