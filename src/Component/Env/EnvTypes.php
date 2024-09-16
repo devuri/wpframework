@@ -4,16 +4,16 @@ namespace WPframework\Env;
 
 final class EnvTypes
 {
-    public const SECURE       = 'secure';
-    public const SEC          = 'sec';
-    public const PRODUCTION   = 'production';
-    public const PROD         = 'prod';
-    public const STAGING      = 'staging';
-    public const DEVELOPMENT  = 'development';
-    public const DEV          = 'dev';
-    public const DEBUG        = 'debug';
-    public const DEB          = 'deb';
-    public const LOCAL        = 'local';
+    public const SECURE      = 'secure';
+    public const SEC         = 'sec';
+    public const PRODUCTION  = 'production';
+    public const PROD        = 'prod';
+    public const STAGING     = 'staging';
+    public const DEVELOPMENT = 'development';
+    public const DEV         = 'dev';
+    public const DEBUG       = 'debug';
+    public const DEB         = 'deb';
+    public const LOCAL       = 'local';
 
     /**
      * An array of all environment types.
@@ -40,9 +40,9 @@ final class EnvTypes
      *
      * @return bool True if valid, false otherwise.
      */
-    public static function isValid(?string $type): bool
+    public static function isValid( ?string $type ): bool
     {
-        return in_array($type, self::$envTypes, true);
+        return \in_array( $type, self::$envTypes, true );
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Component;
+namespace WPframework\Tests\Component;
 
 use PHPUnit\Framework\TestCase;
 use WPframework\Kernel;
@@ -131,6 +131,7 @@ class KernelTest extends TestCase
             "APP_CONTENT_DIR" => "content",
             "WP_CONTENT_DIR" => $app_test_path . "/public/content",
             "WP_CONTENT_URL" => "https://example.com/content",
+            "APP_THEME_DIR" => "templates",
             "WP_PLUGIN_DIR" => $app_test_path . "/public/content/plugins",
             "WP_PLUGIN_URL" => "https://example.com/content/plugins",
             "WPMU_PLUGIN_DIR" => $app_test_path . "/public/content/mu-plugins",
@@ -175,11 +176,13 @@ class KernelTest extends TestCase
             "WP_REDIS_READ_TIMEOUT" => 1,
         ];
 
-        $this->assertIsArray( $this->http_app->get_defined() );
+        $http_app_defined = $this->http_app->get_defined();
 
-        $count = \count( $this->http_app->get_defined() );
+        $this->assertIsArray( $http_app_defined );
 
-        $this->assertEquals( 38, $count );
+        $count = \count( $http_app_defined );
+
+        $this->assertEquals( 39, $count );
 
         $this->assertEquals( $const_defaults, $this->http_app->get_defined());
     }

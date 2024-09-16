@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Component;
+namespace WPframework\Tests\Component;
 
 use Tests\BaseTest;
 use WPframework\Kernel;
@@ -14,20 +14,109 @@ use WPframework\Kernel;
  */
 class KernelWithArgsTest extends BaseTest
 {
-    public function test_http_app_with_args(): void
+    /**
+     * Test that getSettings returns the expected configuration array.
+     */
+    public function test_get_settings_returns_expected_array(): void
     {
-        $args = [
-            'web_root_dir'      => 'public',
-            'wordpress'     => 'cms',
-        ];
-
-        $app_with_args = new Kernel( getenv('FAKE_APP_DIR_PATH'), $args );
-
-        $output = array_merge( $this->default_args(), [
-            "wp_dir_path" => "cms",
-            "wordpress" => "cms",
+        $app_with_args = new Kernel( getenv('FAKE_APP_DIR_PATH'), [
+            'web_root_dir' => 'public',
+            'wordpress'   => 'cms',
         ] );
 
-        $this->assertEquals( $output, $app_with_args->get_args());
+        $expected = [
+            'wp_dir_path'    => 'cms',
+            'wordpress'      => 'cms',
+            'directory'      => [
+                'web_root_dir'  => 'public',
+                'content_dir'   => 'content',
+                'plugin_dir'    => 'content/plugins',
+                'mu_plugin_dir' => 'content/mu-plugins',
+                'sqlite_dir'    => 'sqlitedb',
+                'sqlite_file'   => '.sqlite-wpdatabase',
+                'theme_dir'     => 'templates',
+                'asset_dir'     => 'assets',
+                'publickey_dir' => 'pubkeys',
+            ],
+            'default_theme'     => 'twentytwentythree',
+            'disable_updates'   => true,
+            'can_deactivate'    => true,
+            'templates_dir'     => null,
+            'error_handler'     => null,
+            'config_file'       => 'config',
+            'sudo_admin'        => 1,
+            'sudo_admin_group'  => null,
+            'sucuri_waf'        => false,
+            'redis'             => [
+                'disabled'         => null,
+                'host'             => '127.0.0.1',
+                'port'             => 6379,
+                'password'         => null,
+                'adminbar'         => null,
+                'disable-metrics'  => null,
+                'disable-banners'  => null,
+                'prefix'           => 'c984d06aafbecf6bc55569f964148ea3redis-cache',
+                'database'         => 0,
+                'timeout'          => 1,
+                'read-timeout'     => 1,
+            ],
+            'security'          => [
+                'encryption_key'      => null,
+                'brute-force'         => true,
+                'two-factor'          => true,
+                'no-pwned-passwords'  => true,
+                'admin-ips'           => [],
+            ],
+            'terminate'         => [
+                'debugger' => false,
+            ],
+            'mailer'            => [
+                'brevo'     => [
+                    'apikey' => null,
+                ],
+                'postmark'  => [
+                    'token' => null,
+                ],
+                'sendgrid'  => [
+                    'apikey' => null,
+                ],
+                'mailerlite' => [
+                    'apikey' => null,
+                ],
+                'mailgun'   => [
+                    'domain'   => null,
+                    'secret'   => null,
+                    'endpoint' => 'api.mailgun.net',
+                    'scheme'   => 'https',
+                ],
+                'ses'       => [
+                    'key'     => null,
+                    'secret'  => null,
+                    'region'  => 'us-east-1',
+                ],
+            ],
+            's3uploads'         => [
+                'bucket'      => 'site-uploads',
+                'key'         => null,
+                'secret'      => null,
+                'region'      => 'us-east-1',
+                'bucket-url'  => 'https://example.com',
+                'object-acl'  => 'public',
+                'expires'     => '2 days',
+                'http-cache'  => 300,
+            ],
+            'publickey'         => [
+                'app-key' => 'b75b666f-ac11-4342-b001-d2546f1d3a5b',
+            ],
+            'web_root_dir'      => 'public',
+        ];
+
+        $actual = $app_with_args->get_args();
+
+        $this->assertEquals(
+            $expected,
+            $actual,
+            'Failed asserting that default_args() returns the expected configuration array.'
+        );
     }
 }

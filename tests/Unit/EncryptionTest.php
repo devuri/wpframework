@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace WPframework\Tests;
 
 use Defuse\Crypto\Crypto;
 use PHPUnit\Framework\TestCase;

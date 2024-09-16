@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace WPframework\Tests;
 
 use Tests\BaseTest;
 use Urisoft\DotAccess;
@@ -12,41 +12,27 @@ use Urisoft\DotAccess;
  */
 class ConfigTest extends BaseTest
 {
-    // public function test_config_function_with_valid_key(): void
-    // {
-    //     $configData = [
-    //         'app' => [
-    //             'name' => 'MyApp',
-    //             'debug' => true,
-    //         ],
-    //         'database' => [
-    //             'host' => 'localhost',
-    //             'port' => 3306,
-    //         ],
-    //     ];
-    //
-    //     $keyToTest = 'app.name';
-    //
-    //     $result = config($keyToTest, null, new DotAccess(  $configData ) );
-    //
-    //     $this->assertEquals($configData['app']['name'], $result);
-    // }
+    public function test_config_function_with_valid_key(): void
+    {
+        $result = config('directory.plugin_dir');
+
+        $this->assertEquals('content/plugins', $result);
+    }
 
     public function test_config_function_with_invalid_key(): void
     {
         $keyToTest = 'nonexistent.key';
 
-        $result = config($keyToTest, null, new DotAccess( [] ) );
+        $result = config($keyToTest);
 
         $this->assertNull($result);
     }
 
     public function test_config_has_array(): void
     {
-        // TODO fix: Failed to open stream: No such file or directory
-        // happens becuase APP_PATH is set to test dir, so we cant get to the
-        // configs in src
-        // $configs = config();
+        $configs = config();
+
+        $this->assertInstanceOf(DotAccess::class, $configs);
 
         // $this->assertIsArray( $configs );
     }
