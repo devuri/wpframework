@@ -1,7 +1,7 @@
 {
     "name": "devuri/wpframework",
     "type": "library",
-    "description": "Effortlessly develop scalable WordPress applications that support multiple tenants from a single installation.",
+    "description": "Effortlessly develop scalable WordPress applications that support multiple tenants.",
     "keywords": [
         "wp",
         "wordpress",
