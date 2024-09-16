@@ -47,6 +47,11 @@ composer create-project devuri/raydiumx your-project-name
 composer create-project devuri/raydiumxe your-project-name
 ```
 
+> After the installation, you can start testing Raydium locally by using this command:
+
+```shell
+php -S localhost:8000 -t public -c .user.ini
+```
 
 
 ## Setup
