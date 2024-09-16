@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.6.1](https://github.com/devuri/wpframework/compare/v0.6.0...v0.6.1) (2024-09-16)
+
+
+### Bug Fixes
+
+* update `EnvTypes` refactored and tested ([ef63229](https://github.com/devuri/wpframework/commit/ef632297e8535fb9f4fa1b8edbf44c0856ef9c74))
+
+
+### Miscellaneous Chores
+
+* build ([d73b541](https://github.com/devuri/wpframework/commit/d73b541cf3dd5662ffe46c2c20f0a01d32b0e394))
+
 ## [0.6.0](https://github.com/devuri/wpframework/compare/v0.5.1...v0.6.0) (2024-09-16)
 
 
