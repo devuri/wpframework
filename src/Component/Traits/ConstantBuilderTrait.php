@@ -1,8 +1,8 @@
 <?php
 
-namespace WPframework\Component\Traits;
+namespace WPframework\Traits;
 
-use WPframework\Component\Exceptions\ConstantAlreadyDefinedException;
+use WPframework\Exceptions\ConstantAlreadyDefinedException;
 
 /**
  * Trait ConstantBuilderTrait.

@@ -1,6 +1,6 @@
 <?php
 
-namespace WPframework\Component;
+namespace WPframework;
 
 use Exception;
 use InvalidArgumentException;
@@ -129,7 +129,7 @@ class Terminate
                 } elseif ( config( 'terminate.debugger' ) ) {
                     dump( $this->errors->get( 'debug' ) );
                 }
-				?>
+        ?>
             </div>
         <?php
 

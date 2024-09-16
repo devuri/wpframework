@@ -3,7 +3,7 @@
 namespace Tests\Unit\Helpers;
 
 use PHPUnit\Framework\TestCase;
-use WPframework\Component\Framework;
+use WPframework\Framework;
 
 /**
  * @internal

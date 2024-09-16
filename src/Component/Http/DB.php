@@ -1,10 +1,10 @@
 <?php
 
-namespace WPframework\Component\Http;
+namespace WPframework\Http;
 
 use PDO;
 use PDOException;
-use WPframework\Component\Terminate;
+use WPframework\Terminate;
 
 class DB
 {

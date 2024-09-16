@@ -1,6 +1,6 @@
 <?php
 
-namespace WPframework\Component\Exceptions;
+namespace WPframework\Exceptions;
 
 use RuntimeException;
 

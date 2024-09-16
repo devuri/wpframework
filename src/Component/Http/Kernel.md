@@ -20,7 +20,7 @@ To utilize the `Kernel` class in your application, follow these steps:
 1. **Initialization**: Instantiate the `Kernel` class by providing the base application path and optional configurations:
 
     ```php
-    $appKernel = new WPframework\Component\Kernel(__DIR__, ['content_dir' => 'content']);
+    $appKernel = new WPframework\Kernel(__DIR__, ['content_dir' => 'content']);
     ```
 
 2. **Configuration**: Pass an array of configurations (`$args`) during instantiation to customize the application setup. This array can include paths, environment flags, and other setup-related parameters.
@@ -40,7 +40,7 @@ To utilize the `Kernel` class in your application, follow these steps:
 ### Basic Initialization
 
 ```php
-$appKernel = new WPframework\Component\Kernel(__DIR__);
+$appKernel = new WPframework\Kernel(__DIR__);
 $appKernel->init();
 ```
 
@@ -58,7 +58,7 @@ $args = [
         'mu_plugin_dir'   => 'mu-plugins',
         'disable_updates' => true,
     ];
-$appKernel = new WPframework\Component\Kernel(__DIR__, $args);
+$appKernel = new WPframework\Kernel(__DIR__, $args);
 $appKernel->init(null, true);
 ```
 

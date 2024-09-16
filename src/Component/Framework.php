@@ -1,10 +1,10 @@
 <?php
 
-namespace WPframework\Component;
+namespace WPframework;
 
 use Urisoft\DotAccess;
 use Urisoft\SimpleConfig;
-use WPframework\Component\Traits\TenantTrait;
+use WPframework\Traits\TenantTrait;
 
 class Framework implements TenantInterface
 {

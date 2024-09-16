@@ -1,6 +1,6 @@
 <?php
 
-namespace WPframework\Component\Http;
+namespace WPframework\Http;
 
 /**
  * Interface for managing different environment settings.

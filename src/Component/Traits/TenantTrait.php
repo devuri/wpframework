@@ -1,6 +1,6 @@
 <?php
 
-namespace WPframework\Component\Traits;
+namespace WPframework\Traits;
 
 use Exception;
 

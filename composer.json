@@ -64,7 +64,7 @@
             "src/inc/helpers.php"
         ],
         "psr-4": {
-            "WPframework\\": "src/"
+            "WPframework\\": "src/Component"
         }
     },
     "autoload-dev": {
