@@ -1,5 +1,285 @@
 # Changelog
 
+## [0.6.1](https://github.com/devuri/wpframework/compare/v0.6.0...v0.6.1) (2024-09-16)
+
+
+### Bug Fixes
+
+* update `EnvTypes` refactored and tested ([ef63229](https://github.com/devuri/wpframework/commit/ef632297e8535fb9f4fa1b8edbf44c0856ef9c74))
+
+
+### Miscellaneous Chores
+
+* build ([d73b541](https://github.com/devuri/wpframework/commit/d73b541cf3dd5662ffe46c2c20f0a01d32b0e394))
+
+## [0.6.0](https://github.com/devuri/wpframework/compare/v0.5.1...v0.6.0) (2024-09-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* namespace update `WPframework\Component` is now `WPframework`
+
+### Features
+
+* namespace update `WPframework\Component` is now `WPframework` ([6686a46](https://github.com/devuri/wpframework/commit/6686a46042da5737eb49d6db74313fcd80c16cd0))
+
+
+### Miscellaneous Chores
+
+* build ([72ba9eb](https://github.com/devuri/wpframework/commit/72ba9ebbff80d515e43182ebc749fb7ec49eaafb))
+
+## [0.5.1](https://github.com/devuri/wpframework/compare/v0.5.0...v0.5.1) (2024-09-12)
+
+
+### Bug Fixes
+
+* update interface `configuration_overrides` error ([dc831f3](https://github.com/devuri/wpframework/commit/dc831f355479ca3d5a570fded95681ab343a8597))
+
+## [0.5.0](https://github.com/devuri/wpframework/compare/v0.4.3...v0.5.0) (2024-09-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* simplify `Initial application setup`
+
+### Features
+
+* simplify `Initial application setup` ([e7e0afd](https://github.com/devuri/wpframework/commit/e7e0afd6c1fb428a1400bb003cfbe5705a5d985e))
+
+## [0.4.3](https://github.com/devuri/wpframework/compare/v0.4.2...v0.4.3) (2024-09-11)
+
+
+### Bug Fixes
+
+* add (string) for `wp_env_type` ([cb92628](https://github.com/devuri/wpframework/commit/cb92628fac1febe418b7b05868871bcd5368f429))
+* add admin only info including `http_env` ([fe3ec08](https://github.com/devuri/wpframework/commit/fe3ec0878aa02ebda4c9e61bbd39747eae01f3c2))
+
+
+### Miscellaneous Chores
+
+* build ([289b7ed](https://github.com/devuri/wpframework/commit/289b7ed089be2c09fbfdca2cb921446311b291f0))
+
+## [0.4.2](https://github.com/devuri/wpframework/compare/v0.4.1...v0.4.2) (2024-09-10)
+
+
+### Bug Fixes
+
+* environment in  `wp_env_type` ([a0c1b9f](https://github.com/devuri/wpframework/commit/a0c1b9f28fa3a4784406eefecba6f54ca193d2f7))
+
+## [0.4.1](https://github.com/devuri/wpframework/compare/v0.4.0...v0.4.1) (2024-09-10)
+
+
+### Bug Fixes
+
+* auto login require `env( 'WP_ENVIRONMENT_TYPE' )` ([1e9377d](https://github.com/devuri/wpframework/commit/1e9377d7a3e6be6211e41bc9b3a152bdca0272ff))
+* autologin fix ([3df4559](https://github.com/devuri/wpframework/commit/3df45590e1cc92b8a6a46c4c555f62daaf7d480c))
+
+## [0.4.0](https://github.com/devuri/wpframework/compare/v0.3.14...v0.4.0) (2024-09-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* update core mu-plugin file and removed `Plugin`
+* adds new `KernelInterface`
+* new `App::init()` replaces `http_component_kernel`
+
+### Features
+
+* adds new `KernelInterface` ([9fb7e59](https://github.com/devuri/wpframework/commit/9fb7e59ad8d0c667697739d6132bd1118bbf2106))
+* new `App::init()` replaces `http_component_kernel` ([d26eb7e](https://github.com/devuri/wpframework/commit/d26eb7e7050270ccca67474e0019cfb86cc9eb4f))
+
+
+### Bug Fixes
+
+* auto login is now 60 seconds ([ed4b4ae](https://github.com/devuri/wpframework/commit/ed4b4aeaddd35abe03544b4b8a60ac943ab9357c))
+* update bootstrap file for previous versions ([7ce1ad7](https://github.com/devuri/wpframework/commit/7ce1ad7e5d7b7dfec8bc01075b5fe7a91f02f75c))
+
+
+### Miscellaneous Chores
+
+* build ([cab9d79](https://github.com/devuri/wpframework/commit/cab9d79308364f1d4d5a1e30c24508a41e51d27f))
+* build ([430942d](https://github.com/devuri/wpframework/commit/430942d52be137ff532d14fd2fe544eb2dc9b122))
+* fix comment ([00a6e43](https://github.com/devuri/wpframework/commit/00a6e431c859fcea5d7d3278cadefa4b0cf1db0a))
+* update ([ca2fe87](https://github.com/devuri/wpframework/commit/ca2fe878d9f8bfed705c2d3d38f3337f02585090))
+
+
+### Code Refactoring
+
+* update core mu-plugin file and removed `Plugin` ([a661fd6](https://github.com/devuri/wpframework/commit/a661fd67aea299ad1be0c58ea26aeee94ec91d58))
+
+## [0.3.14](https://github.com/devuri/wpframework/compare/v0.3.13...v0.3.14) (2024-09-09)
+
+
+### Bug Fixes
+
+* better support for `app.php` with `_default_configs()` ([126c0a3](https://github.com/devuri/wpframework/commit/126c0a3f31ccdf01d4d14b880b9fc31b5fed17f2))
+* docs `web_root_dir` error ([e340437](https://github.com/devuri/wpframework/commit/e34043749f56beced3adde12d73cb04e42098688))
+* fixes theme dir location ([5abed88](https://github.com/devuri/wpframework/commit/5abed884b793f0929335d9d1bb3c624189e18d20))
+* Update constants.md ([aca76b6](https://github.com/devuri/wpframework/commit/aca76b689b53f1924e39cd953eec060d72a1198e))
+* updates `env()` function ([88fcfa0](https://github.com/devuri/wpframework/commit/88fcfa0a87cad2cf4a310065e0b3685dc533ca5e))
+
+
+### Miscellaneous Chores
+
+* `configs/app.php` file and using environment variables in the ([512f00b](https://github.com/devuri/wpframework/commit/512f00b6999d1075c5f4ec03b26d97e7730feaea))
+* **deps-dev:** bump webpack from 5.91.0 to 5.94.0 ([2ed6354](https://github.com/devuri/wpframework/commit/2ed6354c7e7ea3170e68c01f9b4022db77ec43bc))
+
+## [0.3.13](https://github.com/devuri/wpframework/compare/v0.3.12...v0.3.13) (2024-08-01)
+
+
+### Bug Fixes
+
+* adds `RAYDIUM_ENVIRONMENT_TYPE` Override for .env setup of `WP_ENVIRONMENT_TYPE`. ([13a29c9](https://github.com/devuri/wpframework/commit/13a29c9824c45517c1e7c09b9e1bd0227b186abc))
+
+
+### Miscellaneous Chores
+
+* build ([11de2f8](https://github.com/devuri/wpframework/commit/11de2f8417796623bf3eec4f9c6189038057470c))
+* removes composer dump in admin settings ([6233bfe](https://github.com/devuri/wpframework/commit/6233bfe220d4d5027a13ef126fe8122f3d385082))
+* update files and directory structure ([01f03fb](https://github.com/devuri/wpframework/commit/01f03fb5347282a892b698f1e9ee1093eaa85168))
+
+## [0.3.12](https://github.com/devuri/wpframework/compare/v0.3.11...v0.3.12) (2024-07-22)
+
+
+### Features
+
+* adds `ThemeSwitcher` ([8098b73](https://github.com/devuri/wpframework/commit/8098b73d3fdf71c058317800de03d5e3fd3cd195))
+
+
+### Bug Fixes
+
+* maybe add `// TODO switch_theme('kadence')` ([086fdb2](https://github.com/devuri/wpframework/commit/086fdb289ec680cacb5ffa6350038010c1a7e6b2))
+* show theme name if it is missing Update Plugin.php ([817da15](https://github.com/devuri/wpframework/commit/817da15cab846360f149358e32c0d1c4bd8d3383))
+
+## [0.3.11](https://github.com/devuri/wpframework/compare/v0.3.10...v0.3.11) (2024-07-10)
+
+
+### Bug Fixes
+
+* `symfony/error-handler v5.0.11` Update composer.json ([652f132](https://github.com/devuri/wpframework/commit/652f132d318620237f5dc0325d5273f9be295e1e))
+
+## [0.3.10](https://github.com/devuri/wpframework/compare/v0.3.9...v0.3.10) (2024-07-10)
+
+
+### Bug Fixes
+
+* use `"psr/log": "^1",` Update composer.json ([ad12a06](https://github.com/devuri/wpframework/commit/ad12a0619e5fbb235de4c9c6ee88b75f10d24578))
+
+## [0.3.9](https://github.com/devuri/wpframework/compare/v0.3.8...v0.3.9) (2024-07-02)
+
+
+### Features
+
+* adds docs update guide ([72ca3cf](https://github.com/devuri/wpframework/commit/72ca3cf688c7e71298597211ce9676f5c39a511f))
+
+
+### Bug Fixes
+
+* fix update doc ([f896b73](https://github.com/devuri/wpframework/commit/f896b73c9501c8f7bc145d629aa5b88f0c08ea2a))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump braces from 3.0.2 to 3.0.3 ([49a25bb](https://github.com/devuri/wpframework/commit/49a25bb319844934e1df725b28cd79de4f041ba2))
+* **deps-dev:** bump ws from 8.16.0 to 8.17.1 ([ed6682e](https://github.com/devuri/wpframework/commit/ed6682e9899696c9a5971d376adf920fb6a3a3e4))
+* **deps:** update psr/log requirement from ^1.1 to ^1.1 || ^3.0 ([e86374e](https://github.com/devuri/wpframework/commit/e86374e432ca84f8157c2d5b24c8990faf7afe98))
+
+## [0.3.8](https://github.com/devuri/wpframework/compare/v0.3.7...v0.3.8) (2024-05-24)
+
+
+### Features
+
+* adds Create rsync-strategy.md ([ecc8f29](https://github.com/devuri/wpframework/commit/ecc8f29a829d1d695527eb8918ed10a0d9926b2d))
+
+## [0.3.7](https://github.com/devuri/wpframework/compare/v0.3.6...v0.3.7) (2024-05-24)
+
+
+### Features
+
+* docs add Bare Repository Strategy ([c25b2af](https://github.com/devuri/wpframework/commit/c25b2af480d03e5430d13c2d01f826542db5ebfb))
+
+## [0.3.6](https://github.com/devuri/wpframework/compare/v0.3.5...v0.3.6) (2024-05-05)
+
+
+### Bug Fixes
+
+* adds `WP_DEVELOPMENT_MODE` in `wp_development_mode` [#102](https://github.com/devuri/wpframework/issues/102) ([b1a75f1](https://github.com/devuri/wpframework/commit/b1a75f100cb2474c6e117b40e40b83cdbdc8a918))
+* adds `WP_DEVELOPMENT_MODE` in generator as `theme` and whitelist ([389d458](https://github.com/devuri/wpframework/commit/389d4584f98877afc28e3abff51f77635bbc8d8a))
+
+## [0.3.5](https://github.com/devuri/wpframework/compare/v0.3.4...v0.3.5) (2024-05-03)
+
+
+### Miscellaneous Chores
+
+* build ([8d5b6b6](https://github.com/devuri/wpframework/commit/8d5b6b626aa4e86369fb003a51bc60f1ef7f3211))
+
+## [0.3.4](https://github.com/devuri/wpframework/compare/v0.3.3...v0.3.4) (2024-05-03)
+
+
+### Bug Fixes
+
+* fixes CAN_DEACTIVATE_PLUGINS bool Update Plugin.php ([b5b6259](https://github.com/devuri/wpframework/commit/b5b62591da314dfb105176d4fd7d0a1d260b3f09))
+
+## [0.3.3](https://github.com/devuri/wpframework/compare/v0.3.2...v0.3.3) (2024-05-03)
+
+
+### Bug Fixes
+
+* load framework `$default_configs` when no `app.php` is defined ([ae3e7f9](https://github.com/devuri/wpframework/commit/ae3e7f9d18e0eafe51251c7059e41794818897d0))
+
+## [0.3.2](https://github.com/devuri/wpframework/compare/v0.3.1...v0.3.2) (2024-05-03)
+
+
+### Bug Fixes
+
+* wp moved to upstream Update composer.json ([1867677](https://github.com/devuri/wpframework/commit/1867677d2d03573a91a8787827a466d92fdfb105))
+
+## [0.3.1](https://github.com/devuri/wpframework/compare/v0.3.0...v0.3.1) (2024-04-13)
+
+
+### Bug Fixes
+
+* always load `default_configs` ([3adbe84](https://github.com/devuri/wpframework/commit/3adbe84a6422f9af0ba916d91d5aeb8c23b7774c))
+
+## [0.3.0](https://github.com/devuri/wpframework/compare/v0.2.16...v0.3.0) (2024-04-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* update v0.3.0
+
+### Features
+
+* update v0.3.0 ([f567399](https://github.com/devuri/wpframework/commit/f5673996bc3df9c974d7224188301c1d1ce33e7e))
+
+## [0.2.16](https://github.com/devuri/wpframework/compare/v0.2.15...v0.2.16) (2024-04-09)
+
+
+### Bug Fixes
+
+* update configuration file path ([1a89052](https://github.com/devuri/wpframework/commit/1a890528dd63c2c9c27b5de7d37d2e7c0c7b61c1))
+
+## [0.2.15](https://github.com/devuri/wpframework/compare/v0.2.14...v0.2.15) (2024-04-03)
+
+
+### Bug Fixes
+
+* add `RAYDIUM_INSTALL_PROTECTION` required for install protection ([e420990](https://github.com/devuri/wpframework/commit/e420990323f108ab9b0eafefc6bd8e495d496933))
+
+## [0.2.14](https://github.com/devuri/wpframework/compare/v0.2.13...v0.2.14) (2024-04-02)
+
+
+### Bug Fixes
+
+* update `gitattributes` ([0871000](https://github.com/devuri/wpframework/commit/08710001ae75a433b698ef497c809185a611a3c8))
+
+## [0.2.13](https://github.com/devuri/wpframework/compare/v0.2.12...v0.2.13) (2024-04-02)
+
+
+### Miscellaneous Chores
+
+* adds change logs in docs ([e91f81f](https://github.com/devuri/wpframework/commit/e91f81f20625912a4c2f3714ab001b54ba68f854))
+
 ## [0.2.12](https://github.com/devuri/wpframework/compare/v0.2.11...v0.2.12) (2024-04-01)
 
 
