@@ -108,7 +108,7 @@ class Setup implements SetupInterface
         $this->env_files     = array_merge( $this->get_default_file_names(), $env_file_names );
 
         $this->filter_existing_env_files();
-        $this->env_types = EnvTypes::get();
+        $this->env_types = EnvTypes::getAll();
         $this->initialize_dotenv();
 
         $this->set_constant_map();
@@ -307,7 +307,7 @@ class Setup implements SetupInterface
             $this->reset_environment( env( 'WP_ENVIRONMENT_TYPE' ) );
         }
 
-        if ( ! EnvTypes::is_valid( $this->environment ) ) {
+        if ( ! EnvTypes::isValid( $this->environment ) ) {
             $this->switcher->create_environment( 'production', $this->error_log_dir );
 
             return $this;
