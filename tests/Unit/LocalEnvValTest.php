@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace WPframework\Tests;
 
 use PHPUnit\Framework\TestCase;
 use WPframework\Setup;

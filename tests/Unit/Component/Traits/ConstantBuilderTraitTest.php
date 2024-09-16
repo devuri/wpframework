@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Component\Traits;
+namespace WPframework\Tests\Component\Traits;
 
 use PHPUnit\Framework\TestCase;
 use WPframework\Exceptions\ConstantAlreadyDefinedException;

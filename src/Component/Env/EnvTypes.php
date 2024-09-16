@@ -2,29 +2,56 @@
 
 namespace WPframework\Env;
 
-class EnvTypes
+final class EnvTypes
 {
-    protected static $env_types = [ 'secure', 'sec', 'production', 'prod', 'staging', 'development', 'dev', 'debug', 'deb', 'local' ];
+    public const SECURE      = 'secure';
+    public const SEC         = 'sec';
+    public const PRODUCTION  = 'production';
+    public const PROD        = 'prod';
+    public const STAGING     = 'staging';
+    public const DEVELOPMENT = 'development';
+    public const DEV         = 'dev';
+    public const DEBUG       = 'debug';
+    public const DEB         = 'deb';
+    public const LOCAL       = 'local';
+
+    /**
+     * An array of all environment types.
+     *
+     * @var string[]
+     */
+    private static $envTypes = [
+        self::SECURE,
+        self::SEC,
+        self::PRODUCTION,
+        self::PROD,
+        self::STAGING,
+        self::DEVELOPMENT,
+        self::DEV,
+        self::DEBUG,
+        self::DEB,
+        self::LOCAL,
+    ];
 
     /**
      * Checks if the given type is a valid environment type.
      *
-     * @param string $type The environment type to check.
+     * @param null|string $type The environment type to check.
      *
      * @return bool True if valid, false otherwise.
      */
-    public static function is_valid( string $type ): bool
+    public static function isValid( ?string $type ): bool
     {
-        return \in_array( $type, self::$env_types, true );
+        return \in_array( $type, self::$envTypes, true );
     }
 
     /**
      * Get all environment types.
      *
-     * @return array The list of environment types.
+     * @return string[] The list of environment types.
      */
-    public static function get(): array
+    public static function getAll(): array
     {
-        return self::$env_types;
+        return self::$envTypes;
     }
 }

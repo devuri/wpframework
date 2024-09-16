@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\Helpers;
+namespace WPframework\Tests\Helpers;
 
 use Tests\BaseTest;
 
