@@ -6,33 +6,31 @@ use Dotenv\Dotenv;
 use Exception;
 use Symfony\Component\Filesystem\Filesystem;
 use WPframework\EnvGenerator;
-use WPframework\TenantInterface;
+use WPframework\Tenant;
 use WPframework\Terminate;
-use WPframework\Traits\TenantTrait;
 
-class Tenancy implements TenantInterface
+class Tenancy
 {
-    use TenantTrait;
-
     /**
      * List of constants defined.
      *
      * @var array
      */
     protected static $constants = [];
-    private $app_path;
+    private $appPath;
     private $configs_dir;
     private $tenant;
 
     /**
      * Tenancy constructor.
      *
-     * @param string $app_path    The base directory path of the application (e.g., __DIR__).
+     * @param string $appPath     The base directory path of the application (e.g., __DIR__).
      * @param string $site_config The site config directory name
      */
-    public function __construct( string $app_path, string $site_config )
+    public function __construct( string $appPath, string $site_config )
     {
-        $this->app_path    = $app_path;
+        $this->tenant      = new Tenant( $appPath );
+        $this->appPath     = $this->tenant->getCurrentPath();
         $this->configs_dir = $site_config;
     }
 
@@ -45,8 +43,8 @@ class Tenancy implements TenantInterface
      */
     public function initialize( Dotenv $_dotenv ): void
     {
-        if ( file_exists( "{$this->app_path}/{$this->configs_dir}/tenancy.php" ) ) {
-            require_once "{$this->app_path}/{$this->configs_dir}/tenancy.php";
+        if ( file_exists( "{$this->appPath}/{$this->configs_dir}/tenancy.php" ) ) {
+            require_once "{$this->appPath}/{$this->configs_dir}/tenancy.php";
         }
 
         if ( \defined( 'ALLOW_MULTITENANT' ) && true === ALLOW_MULTITENANT ) {
@@ -129,7 +127,7 @@ class Tenancy implements TenantInterface
         // allow overrides.
         self::define( 'REQUIRE_TENANT_CONFIG', false );
         self::define( 'TENANCY_WEB_ROOT', 'public' );
-        self::define( 'PUBLIC_WEB_DIR', $this->app_path . '/' . TENANCY_WEB_ROOT );
+        self::define( 'PUBLIC_WEB_DIR', $this->appPath . '/' . TENANCY_WEB_ROOT );
         self::define( 'APP_CONTENT_DIR', 'app' );
     }
 
@@ -140,7 +138,7 @@ class Tenancy implements TenantInterface
      */
     private function maybe_regenerate_env_file( string $tenant_id ): void
     {
-        $tenant_env_path = "{$this->app_path}/{$this->configs_dir}/{$tenant_id}/.env";
+        $tenant_env_path = "{$this->appPath}/{$this->configs_dir}/{$tenant_id}/.env";
         if ( ! file_exists( $tenant_env_path ) ) {
             $generator = new EnvGenerator( new Filesystem() );
             $db_prefix = $this->get_db_prefix( $tenant_id );

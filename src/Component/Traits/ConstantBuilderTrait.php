@@ -82,7 +82,7 @@ trait ConstantBuilderTrait
      *
      * @return string[] Returns an array containing a list of constants defined by Setup, or null if WP_DEBUG is not defined or set to false.
      */
-    public function get_constant_map(): array
+    public function getConstantMap(): array
     {
         return self::encrypt_secret( $this->constant_map, self::env_secrets() );
     }
@@ -95,7 +95,7 @@ trait ConstantBuilderTrait
      * If the environment type is 'development', 'debug', or 'staging', it will use the static $constants property
      * as the constant map if it's an array; otherwise, it will set the constant map to ['invalid_type_returned'].
      */
-    protected function set_constant_map(): void
+    protected function setConstantMap(): void
     {
         if ( ! \defined( 'WP_DEBUG' ) ) {
             $this->constant_map = [ 'disabled' ];

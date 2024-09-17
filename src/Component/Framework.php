@@ -4,24 +4,21 @@ namespace WPframework;
 
 use Urisoft\DotAccess;
 use Urisoft\SimpleConfig;
-use WPframework\Traits\TenantTrait;
 
-class Framework implements TenantInterface
+class Framework
 {
-    use TenantTrait;
-
     protected $app_options;
     protected static $_all_app_options;
-    protected $app_path;
+    protected $appPath;
 
-    public function __construct( ?string $app_path = null )
+    public function __construct( ?string $appPath = null )
     {
-        if ( $app_path ) {
-            $this->app_path    = $app_path;
-            $this->app_options = $this->_app_options( $this->app_path );
+        if ( $appPath ) {
+            $this->appPath     = $appPath;
+            $this->app_options = $this->_app_options( $this->appPath );
         } else {
-            $this->app_path    = \defined( 'APP_PATH' ) ? APP_PATH : APP_DIR_PATH;
-            $this->app_options = $this->_app_options( $this->app_path );
+            $this->appPath     = \defined( 'APP_PATH' ) ? APP_PATH : APP_DIR_PATH;
+            $this->app_options = $this->_app_options( $this->appPath );
         }
 
         self::$_all_app_options = $this->app_options;
@@ -34,6 +31,11 @@ class Framework implements TenantInterface
         }
 
         return [];
+    }
+
+    public function tenant(): Tenant
+    {
+        return new Tenant( $this->appPath );
     }
 
     public function options(): ?DotAccess
