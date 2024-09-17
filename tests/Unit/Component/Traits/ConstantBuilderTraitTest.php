@@ -60,26 +60,26 @@ class ConstantBuilderTraitTest extends TestCase
     public function test_get_constant_map(): void
     {
         unset($_ENV['WP_DEBUG']);
-        $this->assertEquals(['disabled'], $this->get_constant_map());
+        $this->assertEquals(['disabled'], $this->getConstantMap());
 
         $_ENV['WP_DEBUG'] = false;
-        $this->assertEquals(['disabled'], $this->get_constant_map());
+        $this->assertEquals(['disabled'], $this->getConstantMap());
 
         $_ENV['WP_DEBUG'] = true;
         $_ENV['WP_ENVIRONMENT_TYPE'] = 'development';
-        $this->assertEquals(['disabled'], $this->get_constant_map());
+        $this->assertEquals(['disabled'], $this->getConstantMap());
 
         $_ENV['WP_ENVIRONMENT_TYPE'] = 'staging';
-        $this->assertEquals(['disabled'], $this->get_constant_map());
+        $this->assertEquals(['disabled'], $this->getConstantMap());
 
         $_ENV['WP_ENVIRONMENT_TYPE'] = 'production';
-        $this->assertEquals(['disabled'], $this->get_constant_map());
+        $this->assertEquals(['disabled'], $this->getConstantMap());
 
         $_ENV['WP_ENVIRONMENT_TYPE'] = 'custom_environment';
-        $this->assertEquals(['disabled'], $this->get_constant_map());
+        $this->assertEquals(['disabled'], $this->getConstantMap());
 
         $_ENV['WP_ENVIRONMENT_TYPE'] = 'debug';
-        $this->assertEquals(['disabled'], $this->get_constant_map());
+        $this->assertEquals(['disabled'], $this->getConstantMap());
     }
 
     // public function test_define_constant(): void
