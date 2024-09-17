@@ -1,0 +1,53 @@
+{
+    "name": "devuri/raydium",
+    "type": "project",
+    "license": "MIT",
+    "description": "Effortlessly spin up a fully-configured WordPress site in no time, specifically engineered for rapid development and deployment of secure, scalable WordPress applications, that support multiple tenants from a single installation.",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "devuri/wpframework": "^0.7",
+        "johnpbloch/wordpress": "^6.6",
+        "devuri/advanced-custom-site-status": "*",
+        "wpackagist-plugin/disable-comments": "*",
+        "wpackagist-plugin/disable-json-api": "*",
+        "wpackagist-plugin/email-log": "*",
+        "wpackagist-plugin/query-monitor": "*",
+        "wpackagist-plugin/stream": "*",
+        "wpackagist-plugin/sucuri-scanner": "*",
+        "wpackagist-plugin/wp-white-label-login": "*",
+        "wpackagist-theme/kadence": "*",
+        "devuri/wp-kdx-canvas": "^0.2",
+        "wpackagist-theme/twentytwentyfour": "*"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        }
+    ],
+    "extra": {
+        "wordpress-install-dir": "public/wp",
+        "installer-paths": {
+            "public/content/mu-plugins/{$name}/": [
+                "type:wordpress-muplugin"
+            ],
+            "public/content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "public/content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "johnpbloch/wordpress-core-installer": true,
+            "composer/installers": true
+        }
+    }
+}
