@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Traits;
 
 use WPframework\Exceptions\ConstantAlreadyDefinedException;
@@ -33,14 +42,14 @@ trait ConstantBuilderTrait
      *
      * @throws ConstantAlreadyDefinedException if the constant has already been defined.
      */
-    public function define( string $const, $value ): void
+    public function define(string $const, $value): void
     {
-        if ( $this->is_defined( $const ) ) {
+        if ($this->is_defined($const)) {
             return;
             // throw new ConstantAlreadyDefinedException( "Constant: $const has already been defined" );
         }
 
-        \define( $const, $value );
+        \define($const, $value);
 
         static::$constants[ $const ] = $value;
     }
@@ -52,9 +61,9 @@ trait ConstantBuilderTrait
      *
      * @return bool True if the constant is defined, false otherwise.
      */
-    public function is_defined( string $const ): bool
+    public function is_defined(string $const): bool
     {
-        return \defined( $const );
+        return \defined($const);
     }
 
     /**
@@ -64,9 +73,9 @@ trait ConstantBuilderTrait
      *
      * @return null|mixed The value of the constant if defined, null otherwise.
      */
-    public function get_constant( string $key )
+    public function get_constant(string $key)
     {
-        if ( isset( static::$constants[ $key ] ) ) {
+        if (isset(static::$constants[ $key ])) {
             return static::$constants[ $key ];
         }
 
@@ -84,7 +93,7 @@ trait ConstantBuilderTrait
      */
     public function getConstantMap(): array
     {
-        return self::encrypt_secret( $this->constant_map, self::env_secrets() );
+        return self::encrypt_secret($this->constant_map, self::env_secrets());
     }
 
     /**
@@ -97,22 +106,22 @@ trait ConstantBuilderTrait
      */
     protected function setConstantMap(): void
     {
-        if ( ! \defined( 'WP_DEBUG' ) ) {
+        if (! \defined('WP_DEBUG')) {
             $this->constant_map = [ 'disabled' ];
 
             return;
         }
 
-        if ( \defined( 'WP_DEBUG' ) && false === WP_DEBUG ) {
+        if (\defined('WP_DEBUG') && false === WP_DEBUG) {
             $this->constant_map = [ 'disabled' ];
 
             return;
         }
 
-        if ( \in_array( env( 'WP_ENVIRONMENT_TYPE' ), [ 'development', 'debug', 'staging' ], true ) ) {
+        if (\in_array(env('WP_ENVIRONMENT_TYPE'), [ 'development', 'debug', 'staging' ], true)) {
             $constant_map = static::$constants;
 
-            if ( \is_array( $constant_map ) ) {
+            if (\is_array($constant_map)) {
                 $this->constant_map = $constant_map;
             }
 
@@ -133,13 +142,13 @@ trait ConstantBuilderTrait
      *
      * @return array $encrypted_config An associative array with sensitive values hashed
      */
-    protected function encrypt_secret( array $config, array $secrets = [] ): array
+    protected function encrypt_secret(array $config, array $secrets = []): array
     {
         $encrypted = [];
 
-        foreach ( $config as $key => $value ) {
-            if ( \in_array( $key, $secrets, true ) ) {
-                $encrypted[ $key ] = hash( 'sha256', $value );
+        foreach ($config as $key => $value) {
+            if (\in_array($key, $secrets, true)) {
+                $encrypted[ $key ] = hash('sha256', $value);
             } else {
                 $encrypted[ $key ] = $value;
             }
@@ -155,7 +164,7 @@ trait ConstantBuilderTrait
      *
      * @psalm-return array{0: 'DB_USER', 1: 'DB_PASSWORD', 2: 'AUTH_KEY', 3: 'SECURE_AUTH_KEY', 4: 'LOGGED_IN_KEY', 5: 'NONCE_KEY', 6: 'AUTH_SALT', 7: 'SECURE_AUTH_SALT', 8: 'LOGGED_IN_SALT', 9: 'NONCE_SALT'}
      */
-    protected static function env_secrets( array $secrets = [] ): array
+    protected static function env_secrets(array $secrets = []): array
     {
         return array_merge(
             $secrets,

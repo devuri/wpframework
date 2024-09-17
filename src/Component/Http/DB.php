@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Http;
 
 use PDO;
@@ -16,7 +25,7 @@ class DB
     private $table;
     private $prefix;
 
-    public function __construct( string $table_name_no_prefix, string $host, string $dbName, string $username, string $password, string $prefix )
+    public function __construct(string $table_name_no_prefix, string $host, string $dbName, string $username, string $password, string $prefix)
     {
         $this->host     = $host;
         $this->dbName   = $dbName;
@@ -32,46 +41,46 @@ class DB
     public function all()
     {
         $query = 'SELECT * FROM ' . $this->table;
-        $stmt  = $this->connect()->prepare( $query );
+        $stmt  = $this->connect()->prepare($query);
 
         try {
             $stmt->execute();
 
-            return $stmt->fetchAll( PDO::FETCH_OBJ );
-        } catch ( PDOException $e ) {
-            Terminate::exit( [ 'Read error: ' ] );
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            Terminate::exit([ 'Read error: ' ]);
         }
     }
 
     // Find a specific record by ID
-    public function find( $id )
+    public function find($id)
     {
         $query = 'SELECT * FROM ' . $this->table . ' WHERE id = :id LIMIT 1';
-        $stmt  = $this->connect()->prepare( $query );
-        $stmt->bindParam( ':id', $id, PDO::PARAM_INT );
+        $stmt  = $this->connect()->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
         try {
             $stmt->execute();
 
-            return $stmt->fetch( PDO::FETCH_ASSOC );
-        } catch ( PDOException $e ) {
-            Terminate::exit( [ 'record error: ' ] );
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            Terminate::exit([ 'record error: ' ]);
         }
     }
 
     // Get records based on a specified condition
-    public function where( $column, $value )
+    public function where($column, $value)
     {
         $query = 'SELECT * FROM ' . $this->table . ' WHERE ' . $column . ' = :value';
-        $stmt  = $this->connect()->prepare( $query );
-        $stmt->bindParam( ':value', $value );
+        $stmt  = $this->connect()->prepare($query);
+        $stmt->bindParam(':value', $value);
 
         try {
             $stmt->execute();
 
-            return $stmt->fetchAll( PDO::FETCH_OBJ );
-        } catch ( PDOException $e ) {
-            Terminate::exit( [ 'Query error: ' ] );
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            Terminate::exit([ 'Query error: ' ]);
         }
     }
 
@@ -80,10 +89,10 @@ class DB
         $this->conn = null;
 
         try {
-            $this->conn = new PDO( 'mysql:host=' . $this->host . ';dbname=' . $this->dbName, $this->username, $this->password );
-            $this->conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-        } catch ( PDOException $e ) {
-            Terminate::exit( [ 'Connection error: ' ] );
+            $this->conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->dbName, $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            Terminate::exit([ 'Connection error: ' ]);
         }
 
         return $this->conn;

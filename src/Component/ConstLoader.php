@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework;
 
 class ConstLoader
@@ -16,7 +25,7 @@ class ConstLoader
      *
      * @param array $expectedConstants An array of expected constant names.
      */
-    public function __construct( array $expectedConstants = [] )
+    public function __construct(array $expectedConstants = [])
     {
         $this->expectedConstants = $expectedConstants;
     }
@@ -29,13 +38,13 @@ class ConstLoader
      *
      * @return mixed The value of the constant if defined and expected.
      */
-    public function get_constant( $name )
+    public function get_constant($name)
     {
-        if ( \in_array( $name, $this->expectedConstants, true ) && \defined( $name ) ) {
-            return \constant( $name );
+        if (\in_array($name, $this->expectedConstants, true) && \defined($name)) {
+            return \constant($name);
         }
 
-        exit( 'An error occurred. Please contact the administrator.' );
+        exit('An error occurred. Please contact the administrator.');
     }
 
     /**
@@ -45,9 +54,9 @@ class ConstLoader
      *
      * @return bool True if the constant is defined and expected; false otherwise.
      */
-    public function is_constant_defined( $name )
+    public function is_constant_defined($name)
     {
-        return \in_array( $name, $this->expectedConstants, true ) && \defined( $name );
+        return \in_array($name, $this->expectedConstants, true) && \defined($name);
     }
 }
 

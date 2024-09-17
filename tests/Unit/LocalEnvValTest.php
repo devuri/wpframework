@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Tests;
 
 use PHPUnit\Framework\TestCase;
@@ -17,7 +26,7 @@ class LocalEnvValTest extends TestCase
     protected function setUp(): void
     {
         // parent::setUp();
-        $this->setup = new Setup( APP_TEST_PATH );
+        $this->setup = new Setup(APP_TEST_PATH);
     }
 
     protected function tearDown(): void

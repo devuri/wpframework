@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Tests;
 
 use Defuse\Crypto\Crypto;
@@ -31,20 +40,20 @@ class EncryptionTest extends TestCase
             APP_TEST_PATH . '/.env.encryptfile',
         ];
 
-        foreach ( $files as $file ) {
-            if ( file_exists( $file ) ) {
-                unlink( $file );
+        foreach ($files as $file) {
+            if (file_exists($file)) {
+                unlink($file);
             }
         }
     }
 
     public function test_encrypt_and_decrypt(): void
     {
-        $encryptedData = $this->encryption->encrypt($this->secret_test_data, false );
+        $encryptedData = $this->encryption->encrypt($this->secret_test_data, false);
 
         $this->assertNotEmpty($encryptedData);
 
-        $decryptedData = $this->encryption->decrypt($encryptedData, false );
+        $decryptedData = $this->encryption->decrypt($encryptedData, false);
 
         $this->assertEquals($this->secret_test_data, $decryptedData);
     }
@@ -55,7 +64,7 @@ class EncryptionTest extends TestCase
 
         $this->assertNotEmpty($encryptedData);
 
-        $decryptedData = $this->encryption->decrypt( $encryptedData );
+        $decryptedData = $this->encryption->decrypt($encryptedData);
 
         $this->assertEquals($this->secret_test_data, $decryptedData);
     }

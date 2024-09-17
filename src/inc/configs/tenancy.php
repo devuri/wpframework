@@ -1,15 +1,15 @@
 <?php
+
 /*
- * Controls the activation of multi-tenant capabilities within the WordPress environment.
+ * This file is part of the WPframework package.
  *
- * When enabled, this feature allows the operation of multiple WordPress sites from a single installation,
- * facilitating a multi-tenant architecture. It's essential to ensure proper configuration of tenant-specific
- * settings and understand the implications of a multi-tenant setup prior to enabling.
+ * (c) Uriel Wilson <uriel@wpframework.io>
  *
- * For comprehensive guidance on configuring a multi-tenant environment, refer to the official documentation:
- * @link https://devuri.github.io/wpframework/multi-tenant/
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-\define( 'ALLOW_MULTITENANT', false );
+
+\define('ALLOW_MULTITENANT', false);
 
 /*
  * Specifies the UUID of the main site (also known as the landlord) in a multi-tenant setups.
@@ -17,7 +17,7 @@
  * This constant should be assigned the UUID value of the primary tenant that acts as the landlord.
  * Setting this value is crucial for identifying the main tenant in a multi-tenant configuration.
  */
-\define( 'LANDLORD_UUID', null );
+\define('LANDLORD_UUID', null);
 
 /*
  * Determines the handling of tenant-specific configurations in a multi-tenant application.
@@ -31,7 +31,7 @@
  * does not fall back to using a shared or default configuration, enhancing security and
  * customization for each tenant.
  */
-\define( 'REQUIRE_TENANT_CONFIG', false );
+\define('REQUIRE_TENANT_CONFIG', false);
 
 /*
  * Defines the web root directory in multi-tenant mode.
@@ -40,4 +40,4 @@
  * multi-tenancy in the application. Ensure that the specified directory exists
  * and is correctly configured to serve web assets.
  */
-\define( 'TENANCY_WEB_ROOT', 'public' );
+\define('TENANCY_WEB_ROOT', 'public');

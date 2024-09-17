@@ -1,12 +1,12 @@
 <?php
 
-/**
- * Determines whether strict environment variables should be enforced.
+/*
+ * This file is part of the WPframework package.
  *
- * By setting this constant to false, the application will not enforce
- * strict environment variables when loading values using the env() function.
- * This can be useful in development environments where not all environment
- * variables are set, allowing the application to run without throwing errors
- * due to undefined variables.
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
-\define( 'USE_STRICT_ENV_VARS', false );
+
+\define('USE_STRICT_ENV_VARS', false);

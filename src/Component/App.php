@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework;
 
 use Dotenv\Dotenv;
@@ -66,7 +75,7 @@ class App
      *
      * @throws Exception If the configuration file is missing or the loaded configuration is not an array.
      */
-    public function __construct( string $app_path, string $site_config, string $options = 'app' )
+    public function __construct(string $app_path, string $site_config, string $options = 'app')
     {
         $this->app_path    = $app_path;
         $this->configs_dir = $site_config;
@@ -76,23 +85,23 @@ class App
          *
          * @var Setup
          */
-        $this->setup = self::define_setup( $this->app_path );
+        $this->setup = self::define_setup($this->app_path);
 
         /**
          * setup params.
          *
          * @var string
          */
-        $params_file = $this->setup->tenant()->getTenantFilePath( $options, $this->app_path, self::is_required_tenant_config() );
+        $params_file = $this->setup->tenant()->getTenantFilePath($options, $this->app_path, self::is_required_tenant_config());
 
-        if ( ! empty( $params_file ) ) {
+        if (! empty($params_file)) {
             $this->config = require $params_file;
         } else {
-            $this->config = appConfig( $this->app_path, $options );
+            $this->config = appConfig($this->app_path, $options);
         }
 
-        if ( ! \is_array( $this->config ) ) {
-            throw new Exception( 'Options array is undefined, not array.', 1 );
+        if (! \is_array($this->config)) {
+            throw new Exception('Options array is undefined, not array.', 1);
         }
 
         // handle errors early.
@@ -111,17 +120,17 @@ class App
      */
     public function kernel(): KernelInterface
     {
-        if ( ! \is_array( $this->config ) ) {
+        if (! \is_array($this->config)) {
             $debug = [
                 'class'  => static::class,
                 'object' => $this,
                 'path'   => $this->app_path,
                 'line'   => __LINE__,
             ];
-            Terminate::exit( [ 'Uncaught TypeError: Kernel($args) must be of type array', 500, $debug ] );
+            Terminate::exit([ 'Uncaught TypeError: Kernel($args) must be of type array', 500, $debug ]);
         }
 
-        return new Kernel( $this->app_path, $this->config, $this->setup );
+        return new Kernel($this->app_path, $this->config, $this->setup);
     }
 
     /**
@@ -142,37 +151,37 @@ class App
      *
      * @return KernelInterface The initialized application kernel.
      */
-    public static function init( string $app_path, string $options_file = 'app' ): KernelInterface
+    public static function init(string $app_path, string $options_file = 'app'): KernelInterface
     {
-        if ( ! \defined( 'SITE_CONFIGS_DIR' ) ) {
-            \define( 'SITE_CONFIGS_DIR', 'configs' );
+        if (! \defined('SITE_CONFIGS_DIR')) {
+            \define('SITE_CONFIGS_DIR', 'configs');
         }
 
-        if ( ! \defined( 'APP_DIR_PATH' ) ) {
-            \define( 'APP_DIR_PATH', $app_path );
+        if (! \defined('APP_DIR_PATH')) {
+            \define('APP_DIR_PATH', $app_path);
         }
 
-        if ( ! \defined( 'APP_HTTP_HOST' ) ) {
-            \define( 'APP_HTTP_HOST', HttpFactory::init()->get_http_host() );
+        if (! \defined('APP_HTTP_HOST')) {
+            \define('APP_HTTP_HOST', HttpFactory::init()->get_http_host());
         }
 
-        if ( ! \defined( 'RAYDIUM_ENVIRONMENT_TYPE' ) ) {
-            \define( 'RAYDIUM_ENVIRONMENT_TYPE', null );
+        if (! \defined('RAYDIUM_ENVIRONMENT_TYPE')) {
+            \define('RAYDIUM_ENVIRONMENT_TYPE', null);
         }
 
         $app_options         = [];
-        $supported_env_files = _supported_env_files();
+        $supported_env_files = _supportedEnvFiles();
 
         // Filters out environment files that do not exist to avoid warnings.
-        $_env_files = _env_files_filter( $supported_env_files, APP_DIR_PATH );
+        $_env_files = _envFilesFilter($supported_env_files, APP_DIR_PATH);
 
         // load env from dotenv early.
-        $_dotenv = Dotenv::createImmutable( APP_DIR_PATH, $_env_files, true );
+        $_dotenv = Dotenv::createImmutable(APP_DIR_PATH, $_env_files, true);
 
         try {
             $_dotenv->load();
-        } catch ( InvalidPathException $e ) {
-            try_regenerate_env_file( APP_DIR_PATH, APP_HTTP_HOST, $_env_files );
+        } catch (InvalidPathException $e) {
+            tryRegenerateEnvFile(APP_DIR_PATH, APP_HTTP_HOST, $_env_files);
 
             $debug = [
                 'path'        => APP_DIR_PATH,
@@ -181,14 +190,14 @@ class App
                 'invalidfile' => "Missing env file: {$e->getMessage()}",
             ];
 
-            Terminate::exit( [ "Missing env file: {$e->getMessage()}", 500, $debug ] );
-        } catch ( Exception $e ) {
+            Terminate::exit([ "Missing env file: {$e->getMessage()}", 500, $debug ]);
+        } catch (Exception $e) {
             $debug = [
                 'path'      => APP_DIR_PATH,
                 'line'      => __LINE__,
                 'exception' => $e,
             ];
-            Terminate::exit( [ $e->getMessage(), 500, $debug ] );
+            Terminate::exit([ $e->getMessage(), 500, $debug ]);
         }// end try
 
         /**
@@ -196,18 +205,18 @@ class App
          *
          * @var Tenancy
          */
-        $tenancy = new Tenancy( APP_DIR_PATH, SITE_CONFIGS_DIR );
-        $tenancy->initialize( $_dotenv );
+        $tenancy = new Tenancy(APP_DIR_PATH, SITE_CONFIGS_DIR);
+        $tenancy->initialize($_dotenv);
 
         try {
-            $app = new self( APP_DIR_PATH, SITE_CONFIGS_DIR, $options_file );
-        } catch ( Exception $e ) {
+            $app = new self(APP_DIR_PATH, SITE_CONFIGS_DIR, $options_file);
+        } catch (Exception $e) {
             $debug = [
                 'path'      => APP_DIR_PATH,
                 'line'      => __LINE__,
                 'exception' => $e,
             ];
-            Terminate::exit( [ 'Framework Initialization Error:', 500, $debug ] );
+            Terminate::exit([ 'Framework Initialization Error:', 500, $debug ]);
         }
 
         // @phpstan-ignore-next-line
@@ -225,9 +234,9 @@ class App
      *
      * @return Setup Returns a new Setup object configured with the provided application path.
      */
-    protected static function define_setup( string $app_path ): Setup
+    protected static function define_setup(string $app_path): Setup
     {
-        return new Setup( $app_path );
+        return new Setup($app_path);
     }
 
     /**
@@ -235,35 +244,35 @@ class App
      */
     protected function set_app_errors(): void
     {
-        if ( ! \in_array( env( 'WP_ENVIRONMENT_TYPE' ), [ 'debug', 'development', 'dev', 'local' ], true ) ) {
+        if (! \in_array(env('WP_ENVIRONMENT_TYPE'), [ 'debug', 'development', 'dev', 'local' ], true)) {
             return;
         }
 
-        if ( \defined( 'WP_INSTALLING' ) ) {
+        if (\defined('WP_INSTALLING')) {
             return;
         }
 
-        if ( false === $this->config['error_handler'] ) {
+        if (false === $this->config['error_handler']) {
             return;
         }
 
-        if ( true === $this->config['error_handler'] ) {
+        if (true === $this->config['error_handler']) {
             Debug::enable();
 
             return;
         }
 
-        if ( \is_null( $this->config['error_handler'] ) || 'symfony' === $this->config['error_handler'] ) {
+        if (\is_null($this->config['error_handler']) || 'symfony' === $this->config['error_handler']) {
             Debug::enable();
-        } elseif ( 'oops' === $this->config['error_handler'] ) {
+        } elseif ('oops' === $this->config['error_handler']) {
             $whoops = new Run();
-            $whoops->pushHandler( new PrettyPageHandler() );
+            $whoops->pushHandler(new PrettyPageHandler());
             $whoops->register();
         }
     }
 
     private static function is_required_tenant_config(): bool
     {
-        return \defined( 'REQUIRE_TENANT_CONFIG' ) && REQUIRE_TENANT_CONFIG === true;
+        return \defined('REQUIRE_TENANT_CONFIG') && REQUIRE_TENANT_CONFIG === true;
     }
 }

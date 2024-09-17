@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework;
 
 use Exception;
@@ -8,9 +17,9 @@ class Tenant implements TenantInterface
 {
     protected $appPath;
 
-    public function __construct( string $appPath )
+    public function __construct(string $appPath)
     {
-        $this->appPath = $this->determineEnvPath( $appPath );
+        $this->appPath = $this->determineEnvPath($appPath);
     }
 
     /**
@@ -22,11 +31,11 @@ class Tenant implements TenantInterface
      */
     public function getHttpEnv(): ?string
     {
-        if ( ! \defined( 'HTTP_ENV_CONFIG' ) ) {
+        if (! \defined('HTTP_ENV_CONFIG')) {
             return null;
         }
 
-        return strtoupper( HTTP_ENV_CONFIG );
+        return strtoupper(HTTP_ENV_CONFIG);
     }
 
     /*
@@ -40,11 +49,11 @@ class Tenant implements TenantInterface
      */
     public static function envTenantId(): ?string
     {
-        if ( \defined( 'APP_TENANT_ID' ) ) {
+        if (\defined('APP_TENANT_ID')) {
             return APP_TENANT_ID;
         }
-        if ( env( 'APP_TENANT_ID' ) ) {
-            return env( 'APP_TENANT_ID' );
+        if (env('APP_TENANT_ID')) {
+            return env('APP_TENANT_ID');
         }
 
         return null;
@@ -64,9 +73,9 @@ class Tenant implements TenantInterface
      *
      * @return null|string The path to the file if found, or null otherwise.
      */
-    public function getTenantFilePath( string $file, string $dir, bool $find_or_fail = false ): ?string
+    public function getTenantFilePath(string $file, string $dir, bool $find_or_fail = false): ?string
     {
-        if ( $this->isMultitenantApp() && \defined( 'APP_TENANT_ID' ) ) {
+        if ($this->isMultitenantApp() && \defined('APP_TENANT_ID')) {
             $tenant_id = APP_TENANT_ID;
         } else {
             return null;
@@ -76,18 +85,18 @@ class Tenant implements TenantInterface
         $tenant_file_path = "{$this->getCurrentPath()}/{$file}.php";
 
         // Check for the tenant file's existence
-        if ( file_exists( $tenant_file_path ) ) {
+        if (file_exists($tenant_file_path)) {
             return $tenant_file_path;
         }
-        if ( $find_or_fail ) {
-            throw new Exception( 'REQUIRE_TENANT_CONFIG requires that each tenant must have their own configuration.', 1 );
+        if ($find_or_fail) {
+            throw new Exception('REQUIRE_TENANT_CONFIG requires that each tenant must have their own configuration.', 1);
         }
 
         // Construct the path for the fallback/default file
         $fallback_file_path = "{$dir}/configs/{$file}.php";
 
         // Return the fallback file path if it exists
-        return file_exists( $fallback_file_path ) ? $fallback_file_path : null;
+        return file_exists($fallback_file_path) ? $fallback_file_path : null;
     }
 
     /**
@@ -101,7 +110,7 @@ class Tenant implements TenantInterface
      */
     public function isMultitenantApp(): bool
     {
-        return \defined( 'ALLOW_MULTITENANT' ) && ALLOW_MULTITENANT === true;
+        return \defined('ALLOW_MULTITENANT') && ALLOW_MULTITENANT === true;
     }
 
     /**
@@ -114,9 +123,9 @@ class Tenant implements TenantInterface
      *
      * @return bool True if the tenant ID matches the landlord's UUID, false otherwise.
      */
-    public function isLandlord( ?string $tenant_id = null ): bool
+    public function isLandlord(?string $tenant_id = null): bool
     {
-        return \defined( 'LANDLORD_UUID' ) && LANDLORD_UUID === $tenant_id;
+        return \defined('LANDLORD_UUID') && LANDLORD_UUID === $tenant_id;
     }
 
     public function getCurrentPath(): string
@@ -131,9 +140,9 @@ class Tenant implements TenantInterface
      *
      * @return string The determined application path.
      */
-    private function determineEnvpath( $base_path ): string
+    private function determineEnvpath($base_path): string
     {
-        if ( $this->isMultitenantApp() && \defined( 'APP_TENANT_ID' ) ) {
+        if ($this->isMultitenantApp() && \defined('APP_TENANT_ID')) {
             $configs_dir = SITE_CONFIGS_DIR;
 
             return "{$base_path}/{$configs_dir}/" . APP_TENANT_ID;

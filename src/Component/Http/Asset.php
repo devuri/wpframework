@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Http;
 
 class Asset
@@ -15,13 +24,13 @@ class Asset
      *
      * @return string
      */
-    public static function url( string $asset, ?string $path = null ): string
+    public static function url(string $asset, ?string $path = null): string
     {
-        if ( $path ) {
+        if ($path) {
             return WP_HOME . $path . $asset;
         }
 
-        if ( ! \defined( 'ASSET_URL' ) ) {
+        if (! \defined('ASSET_URL')) {
             return WP_HOME . '/assets/dist' . $asset;
         }
 

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Http;
 
 class HostManager implements HostInterface
@@ -11,12 +20,12 @@ class HostManager implements HostInterface
      */
     public function is_https_secure(): bool
     {
-        if ( isset( $_SERVER['HTTPS'] ) && filter_var( $_SERVER['HTTPS'], FILTER_VALIDATE_BOOLEAN ) ) {
+        if (isset($_SERVER['HTTPS']) && filter_var($_SERVER['HTTPS'], FILTER_VALIDATE_BOOLEAN)) {
             return true;
         }
 
         // Check for the 'X-Forwarded-Proto' header in case of reverse proxy setups.
-        if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === strtolower( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) ) {
+        if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && 'https' === strtolower($_SERVER['HTTP_X_FORWARDED_PROTO'])) {
             return true;
         }
 
@@ -30,11 +39,11 @@ class HostManager implements HostInterface
      */
     public function get_http_host(): string
     {
-        if ( isset( $_SERVER['HTTP_HOST'] ) ) {
-            $httpHost = $this->_sanitize_http_host( $_SERVER['HTTP_HOST'] );
+        if (isset($_SERVER['HTTP_HOST'])) {
+            $httpHost = $this->_sanitize_http_host($_SERVER['HTTP_HOST']);
 
-            if ( $httpHost ) {
-                return strtolower( rtrim( $httpHost, '/' ) );
+            if ($httpHost) {
+                return strtolower(rtrim($httpHost, '/'));
             }
         }
 
@@ -51,9 +60,9 @@ class HostManager implements HostInterface
         $host_domain = $this->get_http_host();
 
         // Remove port information if present
-        $portPosition = strrpos( $host_domain, ':' );
-        if ( false !== $portPosition ) {
-            $host_domain = substr( $host_domain, 0, $portPosition );
+        $portPosition = strrpos($host_domain, ':');
+        if (false !== $portPosition) {
+            $host_domain = substr($host_domain, 0, $portPosition);
         }
 
         $prefix = $this->is_https_secure() ? 'https' : 'http';
@@ -74,13 +83,13 @@ class HostManager implements HostInterface
         $isHttps  = $this->is_https_secure();
         $app_host = $this->get_http_host();
 
-        if ( \is_null( $app_host ) ) {
+        if (\is_null($app_host)) {
             return null;
         }
 
         $protocol = $isHttps ? 'https' : 'http';
 
-        return filter_var( $protocol . '://' . $app_host, FILTER_SANITIZE_URL );
+        return filter_var($protocol . '://' . $app_host, FILTER_SANITIZE_URL);
     }
 
     /**
@@ -90,11 +99,11 @@ class HostManager implements HostInterface
      *
      * @return null|string The sanitized host or null if invalid.
      */
-    protected function _sanitize_http_host( string $httpHost ): ?string
+    protected function _sanitize_http_host(string $httpHost): ?string
     {
-        $sanitizedHost = filter_var( $httpHost, FILTER_SANITIZE_URL );
+        $sanitizedHost = filter_var($httpHost, FILTER_SANITIZE_URL);
 
-        if ( preg_match( '/^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $sanitizedHost ) ) {
+        if (preg_match('/^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $sanitizedHost)) {
             return $sanitizedHost;
         }
 

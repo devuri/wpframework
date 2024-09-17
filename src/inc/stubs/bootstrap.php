@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 use WPframework\App;
 
 /*
@@ -8,10 +17,10 @@ use WPframework\App;
  * It loads the necessary files and sets up the environment for the application to run.
  * This includes initializing the Composer autoloader, which is used to load classes and packages.
  */
-if ( file_exists( \dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
-    require_once \dirname( __FILE__ ) . '/vendor/autoload.php';
+if (file_exists(\dirname(__FILE__) . '/vendor/autoload.php')) {
+    require_once \dirname(__FILE__) . '/vendor/autoload.php';
 } else {
-    exit( 'Cant find the vendor autoload file.' );
+    exit('Cant find the vendor autoload file.');
 }
 
 /*
@@ -21,14 +30,14 @@ if ( file_exists( \dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
  *
  * @var string|null RAYDIUM_ENVIRONMENT_TYPE The environment type, can be null to use the .env file setup.
  */
-if ( ! \defined( 'RAYDIUM_ENVIRONMENT_TYPE' ) ) {
-    \define( 'RAYDIUM_ENVIRONMENT_TYPE', null );
+if (! \defined('RAYDIUM_ENVIRONMENT_TYPE')) {
+    \define('RAYDIUM_ENVIRONMENT_TYPE', null);
 }
 
 /**
  * Start and bootstrap the web application.
  */
-$raydium_http = App::init( __DIR__ );
+$raydium_http = App::init(__DIR__);
 
 /*
  * Configuration settings for your web application.
@@ -39,7 +48,7 @@ $raydium_http = App::init( __DIR__ );
  * By default the value `RAYDIUM_ENVIRONMENT_TYPE` constant is used.
  * `RAYDIUM_ENVIRONMENT_TYPE` defaults to `null` if it is not set.
  */
-$raydium_http->app( RAYDIUM_ENVIRONMENT_TYPE );
+$raydium_http->app(RAYDIUM_ENVIRONMENT_TYPE);
 
 /**
  * WordPress Database Table prefix.
@@ -47,4 +56,4 @@ $raydium_http->app( RAYDIUM_ENVIRONMENT_TYPE );
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = env( 'DB_PREFIX' );
+$table_prefix = env('DB_PREFIX');

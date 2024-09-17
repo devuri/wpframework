@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework;
 
 use Exception;
@@ -9,15 +18,15 @@ class EnvGenerator
 {
     protected $filesystem = null;
 
-    public function __construct( Filesystem $filesystem )
+    public function __construct(Filesystem $filesystem)
     {
         $this->filesystem = $filesystem;
     }
 
-    public function create( string $file_path, string $domain, ?string $prefix = null ): void
+    public function create(string $file_path, string $domain, ?string $prefix = null): void
     {
-        if ( ! $this->filesystem->exists( $file_path ) ) {
-            $this->filesystem->dumpFile( $file_path, $this->env_file_content( $domain, $prefix ) );
+        if (! $this->filesystem->exists($file_path)) {
+            $this->filesystem->dumpFile($file_path, $this->env_file_content($domain, $prefix));
         }
     }
 
@@ -31,41 +40,41 @@ class EnvGenerator
      *
      * @see https://github.com/devuri/secure-password
      */
-    public static function rand_str( int $length = 8, $useSpecialChars = false )
+    public static function rand_str(int $length = 8, $useSpecialChars = false)
     {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        if ( $useSpecialChars ) {
+        if ($useSpecialChars) {
             $characters .= '!@#$%^&*()';
         }
-        $charactersLength = \strlen( $characters );
+        $charactersLength = \strlen($characters);
         $password         = '';
 
-        for ( $i = 0; $i < $length; $i++ ) {
-            $password .= $characters[ random_int( 0, $charactersLength - 1 ) ];
+        for ($i = 0; $i < $length; $i++) {
+            $password .= $characters[ random_int(0, $charactersLength - 1) ];
         }
 
         return $password;
     }
 
-    protected function env_file_content( ?string $wpdomain = null, ?string $prefix = null ): string
+    protected function env_file_content(?string $wpdomain = null, ?string $prefix = null): string
     {
         $salt              = null;
-        $auto_login_secret = bin2hex( random_bytes( 32 ) );
-        $app_tenant_secret = bin2hex( random_bytes( 32 ) );
-        $dbrootpass        = strtolower( self::rand_str( 14 ) );
+        $auto_login_secret = bin2hex(random_bytes(32));
+        $app_tenant_secret = bin2hex(random_bytes(32));
+        $dbrootpass        = strtolower(self::rand_str(14));
 
         try {
             $salt = (object) $this->wpsalts();
-        } catch ( Exception $e ) {
-            Terminate::exit( [ $e->getMessage() ] );
+        } catch (Exception $e) {
+            Terminate::exit([ $e->getMessage() ]);
         }
 
         $home_url = "https://$wpdomain";
         $site_url = '${WP_HOME}/wp';
-        if ( $prefix ) {
+        if ($prefix) {
             $dbprefix = "wp_{$prefix}_";
         } else {
-            $dbprefix = strtolower( 'wp_' . self::rand_str( 8 ) . '_' );
+            $dbprefix = strtolower('wp_' . self::rand_str(8) . '_');
         }
 
         return <<<END
@@ -137,22 +146,22 @@ class EnvGenerator
     protected function wpsalts(): array
     {
         $saltsUrl     = 'https://api.wordpress.org/secret-key/1.1/salt/';
-        $saltsContent = @file_get_contents( $saltsUrl );
+        $saltsContent = @file_get_contents($saltsUrl);
 
-        if ( false === $saltsContent ) {
-            throw new Exception( 'Unable to retrieve salts from WordPress API.' );
+        if (false === $saltsContent) {
+            throw new Exception('Unable to retrieve salts from WordPress API.');
         }
 
-        $string  = str_replace( [ "\r", "\n" ], '', $saltsContent );
+        $string  = str_replace([ "\r", "\n" ], '', $saltsContent);
         $pattern = "/define\('([^']*)',\s*'([^']*)'\);/";
         $result  = [];
 
-        if ( preg_match_all( $pattern, $string, $matches, PREG_SET_ORDER ) ) {
-            foreach ( $matches as $match ) {
+        if (preg_match_all($pattern, $string, $matches, PREG_SET_ORDER)) {
+            foreach ($matches as $match) {
                 $result[ $match[1] ] = $match[2];
             }
         } else {
-            throw new Exception( 'Failed to parse the salts string.' );
+            throw new Exception('Failed to parse the salts string.');
         }
 
         return $result;

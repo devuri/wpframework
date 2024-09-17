@@ -1,8 +1,15 @@
 <?php
 
-namespace WPframework\Http;
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
-use function defined;
+namespace WPframework\Http;
 
 use Exception;
 use InvalidArgumentException;
@@ -11,6 +18,8 @@ use WPframework\Env\EnvTypes;
 use WPframework\Setup;
 use WPframework\Terminate;
 use WPframework\Traits\ConstantBuilderTrait;
+
+use function defined;
 
 /**
  * Setup common elements.
@@ -129,14 +138,14 @@ abstract class AbstractKernel implements KernelInterface
      * @throws Exception                If a critical setup error occurs.
      * @throws InvalidArgumentException If the provided arguments are not valid.
      */
-    public function __construct( string $app_path, ?array $args = [], ?Setup $setup = null )
+    public function __construct(string $app_path, ?array $args = [], ?Setup $setup = null)
     {
         $this->app_path    = $app_path;
         $this->configs_dir = SITE_CONFIGS_DIR;
-        $this->args        = array_merge( $this->args, self::get_default_config() );
+        $this->args        = array_merge($this->args, self::get_default_config());
 
-        if ( ! \is_array( $args ) ) {
-            throw new InvalidArgumentException( 'Error: args must be of type array', 1 );
+        if (! \is_array($args)) {
+            throw new InvalidArgumentException('Error: args must be of type array', 1);
         }
 
         // @codingStandardsIgnoreLine
@@ -144,7 +153,7 @@ abstract class AbstractKernel implements KernelInterface
             $this->args['wp_dir_path'] = $args['wordpress'];
         }
 
-        $this->args = new DotAccess( array_merge( $this->args, $args ) );
+        $this->args = new DotAccess(array_merge($this->args, $args));
 
         /*
          * Sets the name of the configuration `configs/config.php` file based on arguments.
@@ -158,7 +167,7 @@ abstract class AbstractKernel implements KernelInterface
          *
          * @link https://devuri.github.io/wpframework/customization/constants
          */
-        $this->config_file = $this->args->get( 'config_file' );
+        $this->config_file = $this->args->get('config_file');
 
         // Sets the <tenant_id>
         $this->tenant_id = $this->envTenantId();
@@ -179,14 +188,14 @@ abstract class AbstractKernel implements KernelInterface
          *
          * @link https://github.com/vlucas/phpdotenv/pull/394
          */
-        if ( \is_null( $setup ) ) {
-            $this->app_setup = Setup::init( $this->app_path );
+        if (\is_null($setup)) {
+            $this->app_setup = Setup::init($this->app_path);
         } else {
             $this->app_setup = $setup;
         }
 
         // set the environment switcher.
-        $this->app_setup->setSwitcher( new Switcher() );
+        $this->app_setup->setSwitcher(new Switcher());
 
         // set config override file.
         $this->configuration_overrides();
@@ -202,24 +211,24 @@ abstract class AbstractKernel implements KernelInterface
     public function set_config_constants(): void
     {
         // define app_path.
-        $this->define( 'APP_PATH', $this->get_app_path() );
+        $this->define('APP_PATH', $this->get_app_path());
 
         // set app http host.
-        $this->define( 'APP_HTTP_HOST', self::http()->get_http_host() );
+        $this->define('APP_HTTP_HOST', self::http()->get_http_host());
 
         // define public web root dir.
-        $this->define( 'PUBLIC_WEB_DIR', APP_PATH . '/' . $this->args->get( 'directory.web_root_dir' ) );
+        $this->define('PUBLIC_WEB_DIR', APP_PATH . '/' . $this->args->get('directory.web_root_dir'));
 
         // wp dir path
-        $this->define( 'WP_DIR_PATH', PUBLIC_WEB_DIR . '/' . $this->args->get( 'wp_dir_path' ) );
+        $this->define('WP_DIR_PATH', PUBLIC_WEB_DIR . '/' . $this->args->get('wp_dir_path'));
 
         // define assets dir.
-        $this->define( 'APP_ASSETS_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get( 'directory.asset_dir' ) );
+        $this->define('APP_ASSETS_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.asset_dir'));
 
         // Directory PATH.
-        $this->define( 'APP_CONTENT_DIR', $this->args->get( 'directory.content_dir' ) );
-        $this->define( 'WP_CONTENT_DIR', PUBLIC_WEB_DIR . '/' . APP_CONTENT_DIR );
-        $this->define( 'WP_CONTENT_URL', env( 'WP_HOME' ) . '/' . APP_CONTENT_DIR );
+        $this->define('APP_CONTENT_DIR', $this->args->get('directory.content_dir'));
+        $this->define('WP_CONTENT_DIR', PUBLIC_WEB_DIR . '/' . APP_CONTENT_DIR);
+        $this->define('WP_CONTENT_URL', env('WP_HOME') . '/' . APP_CONTENT_DIR);
 
         /*
          * Themes, prefer '/templates'
@@ -230,38 +239,38 @@ abstract class AbstractKernel implements KernelInterface
          *
          * @link https://github.com/devuri/custom-wordpress-theme-dir
          */
-        if ( $this->args->get( 'directory.theme_dir' ) ) {
-            $this->define( 'APP_THEME_DIR', $this->args->get( 'directory.theme_dir' ) );
+        if ($this->args->get('directory.theme_dir')) {
+            $this->define('APP_THEME_DIR', $this->args->get('directory.theme_dir'));
         }
 
         // Plugins.
-        $this->define( 'WP_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get( 'directory.plugin_dir' ) );
-        $this->define( 'WP_PLUGIN_URL', env( 'WP_HOME' ) . '/' . $this->args->get( 'directory.plugin_dir' ) );
+        $this->define('WP_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.plugin_dir'));
+        $this->define('WP_PLUGIN_URL', env('WP_HOME') . '/' . $this->args->get('directory.plugin_dir'));
 
         // Must-Use Plugins.
-        $this->define( 'WPMU_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get( 'directory.mu_plugin_dir' ) );
-        $this->define( 'WPMU_PLUGIN_URL', env( 'WP_HOME' ) . '/' . $this->args->get( 'directory.mu_plugin_dir' ) );
+        $this->define('WPMU_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.mu_plugin_dir'));
+        $this->define('WPMU_PLUGIN_URL', env('WP_HOME') . '/' . $this->args->get('directory.mu_plugin_dir'));
 
         // Disable any kind of automatic upgrade.
         // this will be handled via composer.
-        $this->define( 'AUTOMATIC_UPDATER_DISABLED', $this->args->get( 'disable_updates' ) );
+        $this->define('AUTOMATIC_UPDATER_DISABLED', $this->args->get('disable_updates'));
 
         // Sudo admin (granted more privilages uses user ID).
-        $this->define( 'WP_SUDO_ADMIN', $this->args->get( 'sudo_admin' ) );
+        $this->define('WP_SUDO_ADMIN', $this->args->get('sudo_admin'));
 
         // A group of users with higher administrative privileges.
-        $this->define( 'SUDO_ADMIN_GROUP', $this->args->get( 'sudo_admin_group' ) );
+        $this->define('SUDO_ADMIN_GROUP', $this->args->get('sudo_admin_group'));
 
         /*
          * Prevent Admin users from deactivating plugins, true or false.
          *
          * @link https://gist.github.com/devuri/034ccb7c833f970192bb64317814da3b
          */
-        $this->define( 'CAN_DEACTIVATE_PLUGINS', $this->args->get( 'can_deactivate' ) );
+        $this->define('CAN_DEACTIVATE_PLUGINS', $this->args->get('can_deactivate'));
 
         // SQLite database location and filename.
-        $this->define( 'DB_DIR', APP_PATH . '/' . $this->args->get( 'directory.sqlite_dir' ) );
-        $this->define( 'DB_FILE', $this->args->get( 'directory.sqlite_file' ) );
+        $this->define('DB_DIR', APP_PATH . '/' . $this->args->get('directory.sqlite_dir'));
+        $this->define('DB_FILE', $this->args->get('directory.sqlite_file'));
 
         /*
          * Slug of the default theme for this installation.
@@ -270,21 +279,21 @@ abstract class AbstractKernel implements KernelInterface
          *
          * @see WP_Theme::get_core_default_theme()
          */
-        $this->define( 'WP_DEFAULT_THEME', $this->args->get( 'default_theme' ) );
+        $this->define('WP_DEFAULT_THEME', $this->args->get('default_theme'));
 
         // home url md5 value.
-        $this->define( 'COOKIEHASH', md5( env( 'WP_HOME' ) ) );
+        $this->define('COOKIEHASH', md5(env('WP_HOME')));
 
         // Defines cookie-related override for WordPress constants.
-        $this->define( 'USER_COOKIE', 'wpc_user_' . COOKIEHASH );
-        $this->define( 'PASS_COOKIE', 'wpc_pass_' . COOKIEHASH );
-        $this->define( 'AUTH_COOKIE', 'wpc_' . COOKIEHASH );
-        $this->define( 'SECURE_AUTH_COOKIE', 'wpc_sec_' . COOKIEHASH );
-        $this->define( 'LOGGED_IN_COOKIE', 'wpc_logged_in_' . COOKIEHASH );
-        $this->define( 'TEST_COOKIE', md5( 'wpc_test_cookie' . env( 'WP_HOME' ) ) );
+        $this->define('USER_COOKIE', 'wpc_user_' . COOKIEHASH);
+        $this->define('PASS_COOKIE', 'wpc_pass_' . COOKIEHASH);
+        $this->define('AUTH_COOKIE', 'wpc_' . COOKIEHASH);
+        $this->define('SECURE_AUTH_COOKIE', 'wpc_sec_' . COOKIEHASH);
+        $this->define('LOGGED_IN_COOKIE', 'wpc_logged_in_' . COOKIEHASH);
+        $this->define('TEST_COOKIE', md5('wpc_test_cookie' . env('WP_HOME')));
 
         // SUCURI
-        $this->define( 'ENABLE_SUCURI_WAF', $this->args->get( 'sucuri_waf' ) );
+        $this->define('ENABLE_SUCURI_WAF', $this->args->get('sucuri_waf'));
         // $this->define( 'SUCURI_DATA_STORAGE', ABSPATH . '../../storage/logs/sucuri' );
 
         /*
@@ -296,23 +305,23 @@ abstract class AbstractKernel implements KernelInterface
          *
          * @return void
          */
-        $this->define( 'WP_REDIS_DISABLED', $this->args->get( 'redis.disabled' ) );
+        $this->define('WP_REDIS_DISABLED', $this->args->get('redis.disabled'));
 
-        $this->define( 'WP_REDIS_PREFIX', $this->args->get( 'redis.prefix' ) );
-        $this->define( 'WP_REDIS_DATABASE', $this->args->get( 'redis.database' ) );
-        $this->define( 'WP_REDIS_HOST', $this->args->get( 'redis.host' ) );
-        $this->define( 'WP_REDIS_PORT', $this->args->get( 'redis.port' ) );
-        $this->define( 'WP_REDIS_PASSWORD', $this->args->get( 'redis.password' ) );
+        $this->define('WP_REDIS_PREFIX', $this->args->get('redis.prefix'));
+        $this->define('WP_REDIS_DATABASE', $this->args->get('redis.database'));
+        $this->define('WP_REDIS_HOST', $this->args->get('redis.host'));
+        $this->define('WP_REDIS_PORT', $this->args->get('redis.port'));
+        $this->define('WP_REDIS_PASSWORD', $this->args->get('redis.password'));
 
-        $this->define( 'WP_REDIS_DISABLE_ADMINBAR', $this->args->get( 'redis.adminbar' ) );
-        $this->define( 'WP_REDIS_DISABLE_METRICS', $this->args->get( 'redis.disable-metrics' ) );
-        $this->define( 'WP_REDIS_DISABLE_BANNERS', $this->args->get( 'redis.disable-banners' ) );
+        $this->define('WP_REDIS_DISABLE_ADMINBAR', $this->args->get('redis.adminbar'));
+        $this->define('WP_REDIS_DISABLE_METRICS', $this->args->get('redis.disable-metrics'));
+        $this->define('WP_REDIS_DISABLE_BANNERS', $this->args->get('redis.disable-banners'));
 
-        $this->define( 'WP_REDIS_TIMEOUT', $this->args->get( 'redis.timeout' ) );
-        $this->define( 'WP_REDIS_READ_TIMEOUT', $this->args->get( 'redis.read-timeout' ) );
+        $this->define('WP_REDIS_TIMEOUT', $this->args->get('redis.timeout'));
+        $this->define('WP_REDIS_READ_TIMEOUT', $this->args->get('redis.read-timeout'));
 
         // web app security key
-        $this->define( 'WEBAPP_ENCRYPTION_KEY', $this->args->get( 'security.encryption_key' ) );
+        $this->define('WEBAPP_ENCRYPTION_KEY', $this->args->get('security.encryption_key'));
     }
 
     /**
@@ -332,7 +341,7 @@ abstract class AbstractKernel implements KernelInterface
      */
     public function get_app_security(): array
     {
-        return $this->args->get( 'security' );
+        return $this->args->get('security');
     }
 
     /**
@@ -355,7 +364,7 @@ abstract class AbstractKernel implements KernelInterface
      */
     public static function get_default_config(): array
     {
-        return _default_configs();
+        return _defaultConfigs();
     }
 
     public function get_args(): array
@@ -363,13 +372,13 @@ abstract class AbstractKernel implements KernelInterface
         return $this->args->export();
     }
 
-	public static function envTenantId(): ?string
+    public static function envTenantId(): ?string
     {
-        if ( \defined( 'APP_TENANT_ID' ) ) {
+        if (\defined('APP_TENANT_ID')) {
             return APP_TENANT_ID;
         }
-        if ( env( 'APP_TENANT_ID' ) ) {
-            return env( 'APP_TENANT_ID' );
+        if (env('APP_TENANT_ID')) {
+            return env('APP_TENANT_ID');
         }
 
         return null;
@@ -393,9 +402,9 @@ abstract class AbstractKernel implements KernelInterface
      *
      * @return void
      */
-    public function set_env_secret( string $key ): void
+    public function set_env_secret(string $key): void
     {
-        if ( ! isset( $this->env_secret[ $key ] ) ) {
+        if (! isset($this->env_secret[ $key ])) {
             $this->env_secret[ $key ] = $key;
         }
     }
@@ -407,7 +416,7 @@ abstract class AbstractKernel implements KernelInterface
      */
     public function get_secret(): array
     {
-        return array_keys( $this->env_secret );
+        return array_keys($this->env_secret);
     }
 
     /**
@@ -419,23 +428,23 @@ abstract class AbstractKernel implements KernelInterface
      *
      * @return KernelInterface
      */
-    public function app( ?string $environment_type = null, bool $constants = true ): KernelInterface
+    public function app(?string $environment_type = null, bool $constants = true): KernelInterface
     {
-        $environment = env( 'WP_ENVIRONMENT_TYPE', $environment_type );
-        $wp_env_type = self::wp_env_type( (string) $environment );
+        $environment = env('WP_ENVIRONMENT_TYPE', $environment_type);
+        $wp_env_type = self::wp_env_type((string) $environment);
 
-        if ( $environment && EnvTypes::isValid( $wp_env_type ) ) {
+        if ($environment && EnvTypes::isValid($wp_env_type)) {
             $this->env_type = [ 'environment' => $environment ];
-        } elseif ( \defined( 'WP_ENVIRONMENT_TYPE' ) && EnvTypes::isValid( $wp_env_type ) ) {
+        } elseif (\defined('WP_ENVIRONMENT_TYPE') && EnvTypes::isValid($wp_env_type)) {
             $this->env_type = [ 'environment' => WP_ENVIRONMENT_TYPE ];
         }
 
-        if ( \is_array( $this->env_type ) ) {
+        if (\is_array($this->env_type)) {
             $this->app_setup->config(
-                array_merge( $this->environment_args(), $this->env_type )
+                array_merge($this->environment_args(), $this->env_type)
             );
         } else {
-            $this->app_setup->config( $this->environment_args() );
+            $this->app_setup->config($this->environment_args());
         }
 
         /*
@@ -445,20 +454,20 @@ abstract class AbstractKernel implements KernelInterface
          *
          * @link https://github.com/aaemnnosttv/wp-sqlite-db/blob/master/src/db.php
          */
-        $this->define( 'USE_MYSQL', true );
+        $this->define('USE_MYSQL', true);
 
         // make env available.
-        $this->define( 'HTTP_ENV_CONFIG', $this->app_setup->getEnvironment() );
+        $this->define('HTTP_ENV_CONFIG', $this->app_setup->getEnvironment());
 
-        if ( true === $constants ) {
+        if (true === $constants) {
             $this->set_config_constants();
         }
 
         // maintenance mode
         $this->handle_maintenance_mode();
 
-        if ( $this->is_wp_install() && \in_array( env( 'WP_ENVIRONMENT_TYPE' ), [ 'secure', 'sec', 'production', 'prod' ], true ) ) {
-            Terminate::exit( [ 'wp is not installed or doing an upgrade change enviroment to run installer' ] );
+        if ($this->is_wp_install() && \in_array(env('WP_ENVIRONMENT_TYPE'), [ 'secure', 'sec', 'production', 'prod' ], true)) {
+            Terminate::exit([ 'wp is not installed or doing an upgrade change enviroment to run installer' ]);
         }
 
         return $this;
@@ -486,11 +495,11 @@ abstract class AbstractKernel implements KernelInterface
      */
     public function get_server_env(): ?array
     {
-        if ( ! self::is_debug_mode() ) {
+        if (! self::is_debug_mode()) {
             return null;
         }
 
-        return self::encrypt_secret( $_ENV, self::env_secrets() );
+        return self::encrypt_secret($_ENV, self::env_secrets());
     }
 
     /**
@@ -505,13 +514,13 @@ abstract class AbstractKernel implements KernelInterface
      */
     public function get_user_constants(): ?array
     {
-        if ( ! self::is_debug_mode() ) {
+        if (! self::is_debug_mode()) {
             return null;
         }
 
-        $user_constants = get_defined_constants( true )['user'];
+        $user_constants = get_defined_constants(true)['user'];
 
-        return self::encrypt_secret( $user_constants, self::env_secrets() );
+        return self::encrypt_secret($user_constants, self::env_secrets());
     }
 
     /**
@@ -522,11 +531,11 @@ abstract class AbstractKernel implements KernelInterface
     {
         $config_override_file = $this->get_tenant_config_file();
 
-        if ( empty( $config_override_file ) ) {
+        if (empty($config_override_file)) {
             $config_override_file = $this->get_default_config_file();
         }
 
-        if ( ! empty( $config_override_file ) ) {
+        if (! empty($config_override_file)) {
             require_once $config_override_file;
         }
 
@@ -540,9 +549,9 @@ abstract class AbstractKernel implements KernelInterface
      */
     protected function get_tenant_config_file(): ?string
     {
-        if ( is_multitenant_app() && ! empty( $this->tenant_id ) ) {
+        if (isMultitenantApp() && ! empty($this->tenant_id)) {
             $tenant_config_file = "{$this->app_path}/{$this->configs_dir}/{$this->tenant_id}/{$this->config_file}.php";
-            if ( file_exists( $tenant_config_file ) ) {
+            if (file_exists($tenant_config_file)) {
                 return $tenant_config_file;
             }
         }
@@ -560,10 +569,10 @@ abstract class AbstractKernel implements KernelInterface
         $default_config_file = "{$this->app_path}/{$this->config_file}.php";
         $configs_config_file = "{$this->app_path}/{$this->configs_dir}/{$this->config_file}.php";
 
-        if ( file_exists( $configs_config_file ) ) {
+        if (file_exists($configs_config_file)) {
             return $configs_config_file;
         }
-        if ( file_exists( $default_config_file ) ) {
+        if (file_exists($default_config_file)) {
             return $default_config_file;
         }
 
@@ -591,10 +600,10 @@ abstract class AbstractKernel implements KernelInterface
             $this->app_setup->getAppPath() . '/.maintenance' => 'For single tenant.',
         ];
 
-        foreach ( $maintenance_checks as $path => $scope ) {
-            if ( file_exists( $path ) ) {
+        foreach ($maintenance_checks as $path => $scope) {
+            if (file_exists($path)) {
                 // TODO Log or handle the scope-specific message if needed, e.g., error_log($scope);
-                Terminate::exit( [ self::get_maintenance_message(), 503 ] );
+                Terminate::exit([ self::get_maintenance_message(), 503 ]);
 
                 break;
                 // Terminate the loop after the first match.
@@ -604,11 +613,11 @@ abstract class AbstractKernel implements KernelInterface
 
     protected function is_wp_install(): bool
     {
-        if ( \defined( 'RAYDIUM_INSTALL_PROTECTION' ) && false === RAYDIUM_INSTALL_PROTECTION ) {
+        if (\defined('RAYDIUM_INSTALL_PROTECTION') && false === RAYDIUM_INSTALL_PROTECTION) {
             return false;
         }
 
-        if ( \defined( 'WP_INSTALLING' ) && true === WP_INSTALLING ) {
+        if (\defined('WP_INSTALLING') && true === WP_INSTALLING) {
             return true;
         }
 
@@ -627,7 +636,7 @@ abstract class AbstractKernel implements KernelInterface
      */
     protected function environment_args(): array
     {
-        $this->log_file = mb_strtolower( gmdate( 'm-d-Y' ) ) . '.log';
+        $this->log_file = mb_strtolower(gmdate('m-d-Y')) . '.log';
 
         // Determine the error logs directory path based on tenant ID presence.
         $error_logs_dir_suffix = $this->tenant_id ? "/{$this->tenant_id}/" : '/';
@@ -637,7 +646,7 @@ abstract class AbstractKernel implements KernelInterface
             'environment' => null,
             'error_log'   => $error_logs_dir,
             'debug'       => false,
-            'errors'      => $this->args->get( 'error_handler' ),
+            'errors'      => $this->args->get('error_handler'),
         ];
     }
 
@@ -654,9 +663,9 @@ abstract class AbstractKernel implements KernelInterface
         return HttpFactory::init();
     }
 
-    private static function wp_env_type( string $environment = '' ): string
+    private static function wp_env_type(string $environment = ''): string
     {
-        if ( \defined( 'WP_ENVIRONMENT_TYPE' ) ) {
+        if (\defined('WP_ENVIRONMENT_TYPE')) {
             return (string) WP_ENVIRONMENT_TYPE;
         }
 
@@ -684,7 +693,7 @@ abstract class AbstractKernel implements KernelInterface
      */
     private function get_current_month(): string
     {
-        return gmdate( 'm' );
+        return gmdate('m');
     }
 
     /**
@@ -694,20 +703,20 @@ abstract class AbstractKernel implements KernelInterface
      */
     private function get_current_year(): string
     {
-        return gmdate( 'Y' );
+        return gmdate('Y');
     }
 
     private static function is_debug_mode(): bool
     {
-        if ( ! \defined( 'WP_DEBUG' ) ) {
+        if (! \defined('WP_DEBUG')) {
             return false;
         }
 
-        if ( \defined( 'WP_DEBUG' ) && false === WP_DEBUG ) {
+        if (\defined('WP_DEBUG') && false === WP_DEBUG) {
             return false;
         }
 
-        if ( \defined( 'WP_DEBUG' ) && true === WP_DEBUG ) {
+        if (\defined('WP_DEBUG') && true === WP_DEBUG) {
             return true;
         }
 

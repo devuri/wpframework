@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Tests\Helpers;
 
 use Tests\BaseTest;
@@ -13,9 +22,9 @@ class HelpersTest extends BaseTest
 {
     public function test_asset_function(): void
     {
-        \define( 'WP_HOME', 'https://example.com');
+        \define('WP_HOME', 'https://example.com');
 
-        $assetUrl = asset( "/images/thing.png" );
+        $assetUrl = asset("/images/thing.png");
 
         $this->assertIsString($assetUrl);
 
@@ -26,7 +35,7 @@ class HelpersTest extends BaseTest
 
     public function test_asset_custom_path(): void
     {
-        $assetUrl = asset( "/images/thing.png", "/static" );
+        $assetUrl = asset("/images/thing.png", "/static");
 
         $this->assertIsString($assetUrl);
 

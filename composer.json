@@ -47,7 +47,6 @@
         "vlucas/phpdotenv": "^5.2"
     },
     "require-dev": {
-        "10up/phpcs-composer": "dev-master",
         "brain/monkey": "^2.6",
         "php-stubs/wordpress-stubs": "^6.0",
         "phpbench/phpbench": "^1.2",
@@ -56,8 +55,7 @@
         "phpunit/phpunit": "^9.5",
         "spatie/ssh": "^1.9",
         "szepeviktor/phpstan-wordpress": "^1.1",
-        "vimeo/psalm": "^4.24 || ^5.0",
-        "yoast/phpunit-polyfills": "^1.0 || ^2.0 || ^3.0"
+        "vimeo/psalm": "^4.24 || ^5.0"
     },
     "autoload": {
         "files": [
@@ -73,20 +71,6 @@
         }
     },
     "scripts": {
-        "wpcs": "composer wpcs-lint",
-        "wpcs-all": "composer wpcs-lint-all",
-        "wpcs-lint": [
-            "composer install -q",
-            "phpcs -ns src"
-        ],
-        "wpcs-lint-all": [
-            "composer install -q",
-            "phpcs -s src"
-        ],
-        "wpcs-fix": [
-            "composer install -q",
-            "phpcbf src"
-        ],
         "test": [
             "composer install -q",
             "vendor/bin/phpunit",
@@ -108,10 +92,8 @@
         ],
         "build": [
             "composer install -q",
-            "composer validate",
             "composer show --tree",
             "composer test",
-            "composer wpcs-lint",
             "composer lint",
             "composer install -q",
             "composer phpdoc -q",
@@ -144,7 +126,7 @@
         "no-dev": "composer install --no-dev"
     },
     "extra": {
-        "wordpress-install-dir": "public/wp"
+        "wordpress-install-dir": "tests-dev-public/wp"
     },
     "config": {
         "optimize-autoloader": true,
