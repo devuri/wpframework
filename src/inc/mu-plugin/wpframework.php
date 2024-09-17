@@ -41,22 +41,12 @@ if (\defined('APP_THEME_DIR')) {
 // Missing theme fix.
 $theme_info = _frameworkCurrentThemeInfo();
 if (false === $theme_info['available']) {
-    $active_theme = wp_get_theme();
-    WPframework\Terminate::exit(
-        [ $theme_info['error_message'] . ' -> ' . $active_theme->template ]
-    );
+    exitWithThemeError($theme_info);
 }
 
 if (isMultitenantApp()) {
     // separate uploads for multi tenant.
     add_filter('upload_dir', 'setMultitenantUploadDirectory');
-}
-
-if (env('WP_ENVIRONMENT_TYPE') && env('WPENV_AUTO_LOGIN_SECRET_KEY')) {
-    WPframework\AutoLogin::init(
-        env('WPENV_AUTO_LOGIN_SECRET_KEY'),
-        env('WP_ENVIRONMENT_TYPE')
-    );
 }
 
 add_filter('admin_footer_text', '_frameworkFooterLabel');

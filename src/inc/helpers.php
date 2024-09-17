@@ -450,3 +450,12 @@ function tryRegenerateEnvFile(string $app_path, string $app_http_host, array $av
         $generator->create($app_main_env_file, $app_http_host);
     }
 }
+
+function exitWithThemeError(array $themeInfo): void
+{
+    $activeTheme = wp_get_theme();
+
+    WPframework\Terminate::exit([
+        $themeInfo['error_message'] . ' -> ' . $activeTheme->template,
+    ]);
+}
