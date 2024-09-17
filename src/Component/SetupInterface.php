@@ -30,14 +30,14 @@ interface SetupInterface
      *
      * @return self
      */
-    public function set_error_handler( ?string $handler = null ): self;
+    public function setErrorHandler( ?string $handler = null ): self;
 
     /**
      * Site Url Settings.
      *
      * @return self
      */
-    public function site_url(): self;
+    public function siteUrl(): self;
 
     /**
      *  DB settings.
@@ -72,7 +72,7 @@ interface SetupInterface
      *
      * @return self
      */
-    public function force_ssl(): self;
+    public function forceSsl(): self;
 
     /**
      * AUTOSAVE and REVISIONS.

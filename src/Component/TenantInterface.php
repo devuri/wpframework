@@ -13,7 +13,7 @@ interface TenantInterface
      *
      * @return bool Returns `true` if the application is in multi-tenant mode, otherwise `false`.
      */
-    public function is_multitenant_app(): bool;
+    public function isMultitenantApp(): bool;
 
     /**
      * Checks if the provided tenant ID matches the landlord's UUID.
@@ -25,5 +25,5 @@ interface TenantInterface
      *
      * @return bool True if the tenant ID matches the landlord's UUID, false otherwise.
      */
-    public function is_landlord( ?string $tenant_id = null ): bool;
+    public function isLandlord( ?string $tenant_id = null ): bool;
 }

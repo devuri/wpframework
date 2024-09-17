@@ -9,20 +9,17 @@ use InvalidArgumentException;
 use Urisoft\DotAccess;
 use WPframework\Env\EnvTypes;
 use WPframework\Setup;
-use WPframework\TenantInterface;
 use WPframework\Terminate;
 use WPframework\Traits\ConstantBuilderTrait;
-use WPframework\Traits\TenantTrait;
 
 /**
  * Setup common elements.
  *
  * Handles global constants.
  */
-abstract class AbstractKernel implements KernelInterface, TenantInterface
+abstract class AbstractKernel implements KernelInterface
 {
     use ConstantBuilderTrait;
-    use TenantTrait;
 
     /**
      * The base path of the application.
@@ -164,7 +161,7 @@ abstract class AbstractKernel implements KernelInterface, TenantInterface
         $this->config_file = $this->args->get( 'config_file' );
 
         // Sets the <tenant_id>
-        $this->tenant_id = $this->env_tenant_id();
+        $this->tenant_id = $this->envTenantId();
 
         /*
          * By default, Dotenv will stop looking for files as soon as it finds one.
@@ -189,7 +186,7 @@ abstract class AbstractKernel implements KernelInterface, TenantInterface
         }
 
         // set the environment switcher.
-        $this->app_setup->set_switcher( new Switcher() );
+        $this->app_setup->setSwitcher( new Switcher() );
 
         // set config override file.
         $this->configuration_overrides();
@@ -366,6 +363,18 @@ abstract class AbstractKernel implements KernelInterface, TenantInterface
         return $this->args->export();
     }
 
+	public static function envTenantId(): ?string
+    {
+        if ( \defined( 'APP_TENANT_ID' ) ) {
+            return APP_TENANT_ID;
+        }
+        if ( env( 'APP_TENANT_ID' ) ) {
+            return env( 'APP_TENANT_ID' );
+        }
+
+        return null;
+    }
+
     /**
      * Get app config args.
      *
@@ -439,7 +448,7 @@ abstract class AbstractKernel implements KernelInterface, TenantInterface
         $this->define( 'USE_MYSQL', true );
 
         // make env available.
-        $this->define( 'HTTP_ENV_CONFIG', $this->app_setup->get_environment() );
+        $this->define( 'HTTP_ENV_CONFIG', $this->app_setup->getEnvironment() );
 
         if ( true === $constants ) {
             $this->set_config_constants();
@@ -531,7 +540,7 @@ abstract class AbstractKernel implements KernelInterface, TenantInterface
      */
     protected function get_tenant_config_file(): ?string
     {
-        if ( $this->is_multitenant_app() && ! empty( $this->tenant_id ) ) {
+        if ( is_multitenant_app() && ! empty( $this->tenant_id ) ) {
             $tenant_config_file = "{$this->app_path}/{$this->configs_dir}/{$this->tenant_id}/{$this->config_file}.php";
             if ( file_exists( $tenant_config_file ) ) {
                 return $tenant_config_file;
@@ -579,7 +588,7 @@ abstract class AbstractKernel implements KernelInterface, TenantInterface
             APP_PATH . "/{$this->configs_dir}/.maintenance" => 'Will affect the entire tenant network.',
 
             // Affects a single tenant.
-            $this->app_setup->get_current_path() . '/.maintenance' => 'For single tenant.',
+            $this->app_setup->getAppPath() . '/.maintenance' => 'For single tenant.',
         ];
 
         foreach ( $maintenance_checks as $path => $scope ) {

@@ -1,11 +1,18 @@
 <?php
 
-namespace WPframework\Traits;
+namespace WPframework;
 
 use Exception;
 
-trait TenantTrait
+class Tenant implements TenantInterface
 {
+    protected $appPath;
+
+    public function __construct( string $appPath )
+    {
+        $this->appPath = $this->determineEnvPath( $appPath );
+    }
+
     /**
      * Get the current set wp app env.
      *
@@ -13,7 +20,7 @@ trait TenantTrait
      *
      * @return null|string the current app env set, or null if not defined
      */
-    public function get_http_env(): ?string
+    public function getHttpEnv(): ?string
     {
         if ( ! \defined( 'HTTP_ENV_CONFIG' ) ) {
             return null;
@@ -31,7 +38,7 @@ trait TenantTrait
      * multi-tenant environment, `APP_TENANT_ID` is required and must always be set. The method
      * uses `envTenantId()` function to retrieve the tenant ID from the environment settings.
      */
-    public static function env_tenant_id(): ?string
+    public static function envTenantId(): ?string
     {
         if ( \defined( 'APP_TENANT_ID' ) ) {
             return APP_TENANT_ID;
@@ -57,16 +64,16 @@ trait TenantTrait
      *
      * @return null|string The path to the file if found, or null otherwise.
      */
-    public function get_tenant_file_path( string $file, string $dir, bool $find_or_fail = false ): ?string
+    public function getTenantFilePath( string $file, string $dir, bool $find_or_fail = false ): ?string
     {
-        if ( $this->is_multitenant_app() && \defined( 'APP_TENANT_ID' ) ) {
+        if ( $this->isMultitenantApp() && \defined( 'APP_TENANT_ID' ) ) {
             $tenant_id = APP_TENANT_ID;
         } else {
             return null;
         }
 
         // Construct the path for the tenant-specific file
-        $tenant_file_path = "{$this->app_path}/{$file}.php";
+        $tenant_file_path = "{$this->getCurrentPath()}/{$file}.php";
 
         // Check for the tenant file's existence
         if ( file_exists( $tenant_file_path ) ) {
@@ -92,7 +99,7 @@ trait TenantTrait
      *
      * @return bool Returns `true` if the application is in multi-tenant mode, otherwise `false`.
      */
-    public function is_multitenant_app(): bool
+    public function isMultitenantApp(): bool
     {
         return \defined( 'ALLOW_MULTITENANT' ) && ALLOW_MULTITENANT === true;
     }
@@ -107,9 +114,14 @@ trait TenantTrait
      *
      * @return bool True if the tenant ID matches the landlord's UUID, false otherwise.
      */
-    public function is_landlord( ?string $tenant_id = null ): bool
+    public function isLandlord( ?string $tenant_id = null ): bool
     {
         return \defined( 'LANDLORD_UUID' ) && LANDLORD_UUID === $tenant_id;
+    }
+
+    public function getCurrentPath(): string
+    {
+        return $this->appPath;
     }
 
     /**
@@ -119,9 +131,9 @@ trait TenantTrait
      *
      * @return string The determined application path.
      */
-    protected function determine_envpath( $base_path ): string
+    private function determineEnvpath( $base_path ): string
     {
-        if ( $this->is_multitenant_app() && \defined( 'APP_TENANT_ID' ) ) {
+        if ( $this->isMultitenantApp() && \defined( 'APP_TENANT_ID' ) ) {
             $configs_dir = SITE_CONFIGS_DIR;
 
             return "{$base_path}/{$configs_dir}/" . APP_TENANT_ID;

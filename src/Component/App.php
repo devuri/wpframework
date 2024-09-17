@@ -83,7 +83,7 @@ class App
          *
          * @var string
          */
-        $params_file = $this->setup->get_tenant_file_path( $options, $this->app_path, self::is_required_tenant_config() );
+        $params_file = $this->setup->tenant()->getTenantFilePath( $options, $this->app_path, self::is_required_tenant_config() );
 
         if ( ! empty( $params_file ) ) {
             $this->config = require $params_file;

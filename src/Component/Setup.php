@@ -10,178 +10,92 @@ use Whoops\Run;
 use WPframework\Env\EnvTypes;
 use WPframework\Http\EnvSwitcherInterface as Switcher;
 use WPframework\Traits\ConstantBuilderTrait;
-use WPframework\Traits\TenantTrait;
 
-/**
- * Setup WP Config.
- */
 class Setup implements SetupInterface
 {
     use ConstantBuilderTrait;
-    use TenantTrait;
 
-    /**
-     *  Directory $app_path.
-     */
-    protected $app_path;
-
-    /**
-     * Setup multi tenant.
-     */
-    protected $is_multi_tenant;
-
-    /**
-     *  Dotenv $dotenv.
-     */
+    protected $appPath;
+    protected $isMultiTenant;
     protected $dotenv;
-
-    /**
-     * Private $instance.
-     *
-     * @var self
-     */
     protected static $instance;
-
-    /**
-     * The $environment.
-     *
-     * @var string
-     */
     protected $environment;
-
-    /**
-     * Symfony error handler.
-     *
-     * @var bool
-     */
-    protected $error_handler;
-
-    /**
-     * Error log dir.
-     *
-     * @var string
-     */
-    protected $error_log_dir;
-
-    /**
-     * Env files.
-     *
-     * @var array
-     */
-    protected $env_files = [];
-
-    /**
-     * short circuit loader.
-     *
-     * @var bool
-     */
-    protected $short_circuit;
-
-    /**
-     * setup environment switcher.
-     *
-     * @var bool
-     */
+    protected $errorHandler;
+    protected $errorLogDir;
+    protected $envFiles = [];
+    protected $shortCircuit;
     protected $switcher;
+    protected $envTypes = [];
+    protected $tenant;
 
-    /**
-     * Set supported env types.
-     *
-     * @var array
-     */
-    protected $env_types = [];
-
-    /**
-     * Constructor for initializing the application environment and configuration.
-     *
-     * Sets up the application path, initializes environment configuration loading with Dotenv,
-     * and handles multi-tenancy. It also sets up default environment types and constants.
-     *
-     * @param string $app_path       The base directory path for the application.
-     * @param array  $env_file_names Optional. Additional environment file names to support.
-     * @param bool   $short_circuit  Optional. Whether to stop loading files after the first found. Defaults to true.
-     */
-    public function __construct( string $app_path, array $env_file_names = [], bool $short_circuit = true )
+    public function __construct( string $appPath, array $envFileNames = [], bool $shortCircuit = true )
     {
-        $this->app_path      = $this->determine_envpath( $app_path );
-        $this->short_circuit = $short_circuit;
-        $this->env_files     = array_merge( $this->get_default_file_names(), $env_file_names );
+        $this->tenant       = new Tenant( $appPath );
+        $this->appPath      = $this->tenant->getCurrentPath();
+        $this->shortCircuit = $shortCircuit;
+        $this->envFiles     = array_merge( $this->getDefaultFileNames(), $envFileNames );
 
-        $this->filter_existing_env_files();
-        $this->env_types = EnvTypes::getAll();
-        $this->initialize_dotenv();
+        $this->filterExistingEnvFiles();
+        $this->envTypes = EnvTypes::getAll();
+        $this->initializeDotenv();
 
-        $this->set_constant_map();
+        $this->setConstantMap();
     }
 
-    public function get_current_path(): string
+    public function tenant(): Tenant
     {
-        return $this->app_path;
+        return $this->tenant;
     }
 
-    /**
-     * Singleton.
-     *
-     * @param $app_path
-     */
-    public static function init( string $app_path ): self
+    public function getAppPath()
+    {
+        return $this->appPath;
+    }
+
+    public static function init( string $appPath ): self
     {
         if ( ! isset( self::$instance ) ) {
-            self::$instance = new self( $app_path );
+            self::$instance = new self( $appPath );
         }
 
         return self::$instance;
     }
 
-    /**
-     * Configures application settings.
-     *
-     * @param null|array|string $environment Configuration settings or environment name.
-     * @param null|bool         $setup       Controls the setup process. If null, setup is bypassed.
-     *
-     * @return self
-     */
     public function config( $environment = null, ?bool $setup = true ): SetupInterface
     {
-        // check required vars.
-        $this->is_required();
+        $this->isRequired();
 
-        // set $setup to null allows us to short-circuit and bypass setup for more granular control.
-        // Setup::init(__DIR__)->config( 'development', false )->set_environment()>database()->salts()->apply();
         if ( \is_null( $setup ) ) {
             $this->environment = $environment;
 
             return $this;
         }
 
-        // self::init( __DIR__ )->config('production')
-        $environment         = $this->normalize_environment( $environment );
-        $this->error_log_dir = $environment['error_log'] ?? null;
-        $this->error_handler = $environment['errors'] ?? null;
-        $this->environment   = $this->determine_environment( $environment['environment'] );
+        $environment        = $this->normalizeEnvironment( $environment );
+        $this->errorLogDir  = $environment['error_log'] ?? null;
+        $this->errorHandler = $environment['errors'] ?? null;
+        $this->environment  = $this->determineEnvironment( $environment['environment'] );
 
-        // $setup = false allows for bypass of default setup.
         if ( false === $setup ) {
-            $this->set_environment()
-                ->debug( $this->error_log_dir )
-                ->set_error_handler()
+            $this->setEnvironment()
+                ->debug( $this->errorLogDir )
+                ->setErrorHandler()
                 ->database()
                 ->salts();
 
             return $this;
         }
 
-        // do default setup.
         if ( true === $setup ) {
-            $this->set_environment()
-                ->debug( $this->error_log_dir )
-                ->set_error_handler()
+            $this->setEnvironment()
+                ->debug( $this->errorLogDir )
+                ->setErrorHandler()
                 ->database()
-                ->site_url()
+                ->siteUrl()
                 ->assetUrl()
                 ->memory()
                 ->optimize()
-                ->force_ssl()
+                ->forceSsl()
                 ->autosave()
                 ->salts();
         }
@@ -189,19 +103,14 @@ class Setup implements SetupInterface
         return $this;
     }
 
-    public function set_switcher( Switcher $switcher ): void
+    public function setSwitcher( Switcher $switcher ): void
     {
         $this->switcher = $switcher;
     }
 
-    /**
-     * Setting the environment type.
-     *
-     * @return static
-     */
-    public function set_environment(): SetupInterface
+    public function setEnvironment(): SetupInterface
     {
-        $this->define( 'WP_DEVELOPMENT_MODE', self::wp_development_mode() );
+        $this->define( 'WP_DEVELOPMENT_MODE', self::wpDevelopmentMode() );
 
         if ( false === $this->environment && env( 'WP_ENVIRONMENT_TYPE' ) ) {
             $this->define( 'WP_ENVIRONMENT_TYPE', env( 'WP_ENVIRONMENT_TYPE' ) );
@@ -209,8 +118,8 @@ class Setup implements SetupInterface
             return $this;
         }
 
-        if ( $this->is_environment_null() ) {
-            $this->define( 'WP_ENVIRONMENT_TYPE', env( 'WP_ENVIRONMENT_TYPE' ) ?? self::const( 'environment' ) );
+        if ( $this->isEnvironmentNull() ) {
+            $this->define( 'WP_ENVIRONMENT_TYPE', env( 'WP_ENVIRONMENT_TYPE' ) ?? self::getConstant( 'environment' ) );
 
             return $this;
         }
@@ -220,54 +129,28 @@ class Setup implements SetupInterface
         return $this;
     }
 
-    /**
-     * Get the short_circuit loaded.
-     *
-     * @return bool
-     *
-     * @psalm-return bool
-     */
-    public function get_short_circuit(): bool
+    public function getShortCircuit(): bool
     {
-        return $this->short_circuit;
+        return $this->shortCircuit;
     }
 
-    /**
-     * Get the Env files loaded.
-     *
-     * @return string[]
-     *
-     * @psalm-return string[]
-     */
-    public function get_env_files(): array
+    public function getEnvFiles(): array
     {
-        return $this->env_files;
+        return $this->envFiles;
     }
 
-    /**
-     * Get the current Environment setup.
-     *
-     * @return string
-     */
-    public function get_environment(): string
+    public function getEnvironment(): string
     {
         return $this->environment;
     }
 
-    /**
-     * Set error handler.
-     *
-     * @param string $handler override for $this->error_handler
-     *
-     * @return static
-     */
-    public function set_error_handler( ?string $handler = null ): SetupInterface
+    public function setErrorHandler( ?string $handler = null ): SetupInterface
     {
-        if ( ! $this->enable_error_handler() ) {
+        if ( ! $this->enableErrorHandler() ) {
             return $this;
         }
 
-        if ( \is_null( $this->error_handler ) ) {
+        if ( \is_null( $this->errorHandler ) ) {
             return $this;
         }
 
@@ -276,12 +159,12 @@ class Setup implements SetupInterface
         }
 
         if ( $handler ) {
-            $this->error_handler = $handler;
+            $this->errorHandler = $handler;
         }
 
-        if ( 'symfony' === $this->error_handler ) {
+        if ( 'symfony' === $this->errorHandler ) {
             Debug::enable();
-        } elseif ( 'oops' === $this->error_handler ) {
+        } elseif ( 'oops' === $this->errorHandler ) {
             $whoops = new Run();
             $whoops->pushHandler( new PrettyPageHandler() );
             $whoops->register();
@@ -290,44 +173,27 @@ class Setup implements SetupInterface
         return $this;
     }
 
-    /**
-     * Debug Settings.
-     *
-     * @param false|string $error_log_dir
-     *
-     * @return static
-     */
-    public function debug( $error_log_dir ): SetupInterface
+    public function debug( $errorLogDir ): SetupInterface
     {
         if ( false === $this->environment && env( 'WP_ENVIRONMENT_TYPE' ) ) {
-            $this->reset_environment( env( 'WP_ENVIRONMENT_TYPE' ) );
+            $this->resetEnvironment( env( 'WP_ENVIRONMENT_TYPE' ) );
         }
 
-        if ( $this->is_environment_null() && env( 'WP_ENVIRONMENT_TYPE' ) ) {
-            $this->reset_environment( env( 'WP_ENVIRONMENT_TYPE' ) );
+        if ( $this->isEnvironmentNull() && env( 'WP_ENVIRONMENT_TYPE' ) ) {
+            $this->resetEnvironment( env( 'WP_ENVIRONMENT_TYPE' ) );
         }
 
         if ( ! EnvTypes::isValid( $this->environment ) ) {
-            $this->switcher->create_environment( 'production', $this->error_log_dir );
+            $this->switcher->create_environment( 'production', $this->errorLogDir );
 
             return $this;
         }
 
-        // Switch between different environments
-        $this->switcher->create_environment( $this->environment, $this->error_log_dir );
+        $this->switcher->create_environment( $this->environment, $this->errorLogDir );
 
         return $this;
     }
 
-    /**
-     * Ensure that a specific constant is defined and not empty.
-     *
-     * This method checks if the given constant is defined. If not, it uses the Dotenv library to ensure
-     * that the constant is present and not empty in the environment configuration. If the constant is missing
-     * or empty, it will throw an exception.
-     *
-     * @param string $name The name of the constant to check.
-     */
     public function required( string $name ): void
     {
         if ( ! \defined( $name ) ) {
@@ -335,12 +201,7 @@ class Setup implements SetupInterface
         }
     }
 
-    /**
-     * Site Url Settings.
-     *
-     * @return static
-     */
-    public function site_url(): SetupInterface
+    public function siteUrl(): SetupInterface
     {
         $this->define( 'WP_HOME', env( 'WP_HOME' ) );
         $this->define( 'WP_SITEURL', env( 'WP_SITEURL' ) );
@@ -348,11 +209,6 @@ class Setup implements SetupInterface
         return $this;
     }
 
-    /**
-     * The Site Asset Url Settings.
-     *
-     * @return static
-     */
     public function assetUrl(): SetupInterface
     {
         $this->define( 'ASSET_URL', env( 'ASSET_URL' ) );
@@ -360,80 +216,49 @@ class Setup implements SetupInterface
         return $this;
     }
 
-    /**
-     * Optimize.
-     *
-     * @return static
-     */
     public function optimize(): SetupInterface
     {
-        $this->define( 'CONCATENATE_SCRIPTS', env( 'CONCATENATE_SCRIPTS' ) ?? self::const( 'optimize' ) );
+        $this->define( 'CONCATENATE_SCRIPTS', env( 'CONCATENATE_SCRIPTS' ) ?? self::getConstant( 'optimize' ) );
 
         return $this;
     }
 
-    /**
-     * Memory Settings.
-     *
-     * @return static
-     */
     public function memory(): SetupInterface
     {
-        $this->define( 'WP_MEMORY_LIMIT', env( 'MEMORY_LIMIT' ) ?? self::const( 'memory' ) );
-        $this->define( 'WP_MAX_MEMORY_LIMIT', env( 'MAX_MEMORY_LIMIT' ) ?? self::const( 'memory' ) );
+        $this->define( 'WP_MEMORY_LIMIT', env( 'MEMORY_LIMIT' ) ?? self::getConstant( 'memory' ) );
+        $this->define( 'WP_MAX_MEMORY_LIMIT', env( 'MAX_MEMORY_LIMIT' ) ?? self::getConstant( 'memory' ) );
 
         return $this;
     }
 
-    /**
-     * SSL.
-     *
-     * @return static
-     */
-    public function force_ssl(): SetupInterface
+    public function forceSsl(): SetupInterface
     {
-        $this->define( 'FORCE_SSL_ADMIN', env( 'FORCE_SSL_ADMIN' ) ?? self::const( 'ssl_admin' ) );
-        $this->define( 'FORCE_SSL_LOGIN', env( 'FORCE_SSL_LOGIN' ) ?? self::const( 'ssl_login' ) );
+        $this->define( 'FORCE_SSL_ADMIN', env( 'FORCE_SSL_ADMIN' ) ?? self::getConstant( 'ssl_admin' ) );
+        $this->define( 'FORCE_SSL_LOGIN', env( 'FORCE_SSL_LOGIN' ) ?? self::getConstant( 'ssl_login' ) );
 
         return $this;
     }
 
-    /**
-     * AUTOSAVE and REVISIONS.
-     *
-     * @return static
-     */
     public function autosave(): SetupInterface
     {
-        $this->define( 'AUTOSAVE_INTERVAL', env( 'AUTOSAVE_INTERVAL' ) ?? self::const( 'autosave' ) );
-        $this->define( 'WP_POST_REVISIONS', env( 'WP_POST_REVISIONS' ) ?? self::const( 'revisions' ) );
+        $this->define( 'AUTOSAVE_INTERVAL', env( 'AUTOSAVE_INTERVAL' ) ?? self::getConstant( 'autosave' ) );
+        $this->define( 'WP_POST_REVISIONS', env( 'WP_POST_REVISIONS' ) ?? self::getConstant( 'revisions' ) );
 
         return $this;
     }
 
-    /**
-     * DB settings.
-     *
-     * @return static
-     */
     public function database(): SetupInterface
     {
         $this->define( 'DB_NAME', env( 'DB_NAME' ) );
         $this->define( 'DB_USER', env( 'DB_USER' ) );
         $this->define( 'DB_PASSWORD', env( 'DB_PASSWORD' ) );
-        $this->define( 'DB_HOST', env( 'DB_HOST' ) ?? self::const( 'db_host' ) );
+        $this->define( 'DB_HOST', env( 'DB_HOST' ) ?? self::getConstant( 'db_host' ) );
         $this->define( 'DB_CHARSET', env( 'DB_CHARSET' ) ?? 'utf8mb4' );
         $this->define( 'DB_COLLATE', env( 'DB_COLLATE' ) ?? '' );
 
         return $this;
     }
 
-
-    /**
-     * Authentication Unique Keys and Salts.
-     *
-     * @return static
-     */
     public function salts(): SetupInterface
     {
         $this->define( 'AUTH_KEY', env( 'AUTH_KEY' ) );
@@ -445,20 +270,12 @@ class Setup implements SetupInterface
         $this->define( 'LOGGED_IN_SALT', env( 'LOGGED_IN_SALT' ) );
         $this->define( 'NONCE_SALT', env( 'NONCE_SALT' ) );
 
-        // Provides an easy way to differentiate a user from other admin users.
         $this->define( 'DEVELOPER_ADMIN', env( 'DEVELOPER_ADMIN' ) ?? '0' );
 
         return $this;
     }
 
-    /**
-     * Normalizes the environment configuration.
-     *
-     * @param mixed $environment The provided environment configuration.
-     *
-     * @return array The normalized configuration array.
-     */
-    protected function normalize_environment( $environment ): array
+    protected function normalizeEnvironment( $environment ): array
     {
         if ( ! \is_array( $environment ) ) {
             $environment = [ 'environment' => $environment ];
@@ -475,43 +292,27 @@ class Setup implements SetupInterface
         );
     }
 
-    /**
-     * Determines the appropriate environment setting.
-     *
-     * @param mixed $environment The environment setting from the configuration.
-     *
-     * @return mixed The determined environment value.
-     */
-    protected function determine_environment( $environment )
+    protected function determineEnvironment( $environment )
     {
         if ( \is_bool( $environment ) || \is_string( $environment ) ) {
             return $environment;
         }
 
         return trim( (string) $environment );
-
-        return $environment;
     }
 
-    /**
-     * Filters out environment files that do not exist to avoid warnings.
-     */
-    protected function filter_existing_env_files(): void
+    protected function filterExistingEnvFiles(): void
     {
-        foreach ( $this->env_files as $key => $file ) {
-            if ( ! file_exists( $this->app_path . '/' . $file ) ) {
-                unset( $this->env_files[ $key ] );
+        foreach ( $this->envFiles as $key => $file ) {
+            if ( ! file_exists( $this->appPath . '/' . $file ) ) {
+                unset( $this->envFiles[ $key ] );
             }
         }
     }
 
-    /**
-     * Initializes Dotenv with the set path and environment files.
-     * Handles exceptions by using the`Terminate::exit` function to exit.
-     */
-    protected function initialize_dotenv(): void
+    protected function initializeDotenv(): void
     {
-        $this->dotenv = Dotenv::createImmutable( $this->app_path, $this->env_files, $this->short_circuit );
+        $this->dotenv = Dotenv::createImmutable( $this->appPath, $this->envFiles, $this->shortCircuit );
 
         try {
             $this->dotenv->load();
@@ -519,7 +320,7 @@ class Setup implements SetupInterface
             $debug = [
                 'class'     => static::class,
                 'object'    => $this,
-                'path'      => $this->app_path,
+                'path'      => $this->appPath,
                 'line'      => __LINE__,
                 'exception' => $e,
             ];
@@ -527,29 +328,7 @@ class Setup implements SetupInterface
         }
     }
 
-    /**
-     * Retrieves the default file names for environment configuration.
-     *
-     * This protected method is designed to return an array of default file names
-     * used for environment configuration in a WordPress environment.
-     * These file names include various formats and stages of environment setup,
-     * such as production, staging, development, and local environments.
-     *
-     * @since [version number]
-     *
-     * @return array An array of default file names for environment configurations.
-     *               The array includes the following file names:
-     *               - 'env'
-     *               - '.env'
-     *               - '.env.secure'
-     *               - '.env.prod'
-     *               - '.env.staging'
-     *               - '.env.dev'
-     *               - '.env.debug'
-     *               - '.env.local'
-     *               - 'env.local'
-     */
-    protected function get_default_file_names(): array
+    protected function getDefaultFileNames(): array
     {
         return [
             'env',
@@ -564,33 +343,28 @@ class Setup implements SetupInterface
         ];
     }
 
-    protected function enable_error_handler(): bool
+    protected function enableErrorHandler(): bool
     {
-        if ( $this->error_handler ) {
+        if ( $this->errorHandler ) {
             return true;
         }
 
         return false;
     }
 
-    // required vars.
-    protected function is_required(): void
+    protected function isRequired(): void
     {
         try {
-            // site url is required but can be overridden in wp-config.php
             $this->required( 'WP_HOME' );
             $this->required( 'WP_SITEURL' );
 
-            // in most cases application passwords is not needed.
             $this->dotenv->required( 'DISABLE_WP_APPLICATION_PASSWORDS' )->allowedValues( [ 'true', 'false' ] );
 
-            // db vars must be defined in .env.
             $this->dotenv->required( 'DB_HOST' )->notEmpty();
             $this->dotenv->required( 'DB_NAME' )->notEmpty();
             $this->dotenv->required( 'DB_USER' )->notEmpty();
             $this->dotenv->required( 'DB_PASSWORD' )->notEmpty();
 
-            // salts must be defined in .env.
             $this->dotenv->required( 'AUTH_KEY' )->notEmpty();
             $this->dotenv->required( 'SECURE_AUTH_KEY' )->notEmpty();
             $this->dotenv->required( 'LOGGED_IN_KEY' )->notEmpty();
@@ -603,25 +377,15 @@ class Setup implements SetupInterface
             $debug = [
                 'class'     => static::class,
                 'object'    => $this,
-                'path'      => $this->app_path,
+                'path'      => $this->appPath,
                 'line'      => __LINE__,
                 'exception' => $e,
             ];
             Terminate::exit( [ $e->getMessage(), 500, $debug ] );
-        }// end try
+        }//end try
     }
 
-    /**
-     * Env defaults.
-     *
-     * These are some defaults that will apply
-     * if they do not exist in .env
-     *
-     * @param string $key val to retrieve
-     *
-     * @return mixed
-     */
-    protected static function const( string $key )
+    protected static function getConstant( string $key )
     {
         $constant['environment'] = 'production';
         $constant['debug']       = true;
@@ -636,32 +400,17 @@ class Setup implements SetupInterface
         return $constant[ $key ] ?? null;
     }
 
-    private static function wp_development_mode(): string
+    private static function wpDevelopmentMode(): string
     {
         return env( 'WP_DEVELOPMENT_MODE' ) ?? '';
     }
 
-    /**
-     * Determines if the environment property is not set or empty.
-     *
-     * This function checks if the 'environment' property of the class is either unset (null)
-     * or considered empty. An empty value could be an empty string, zero, false, or an empty array.
-     *
-     * @return bool True if the 'environment' property is null or empty, false otherwise.
-     */
-    private function is_environment_null(): bool
+    private function isEnvironmentNull(): bool
     {
         return empty( $this->environment );
     }
 
-    /**
-     * Get Env value or return null.
-     *
-     * @param string $name the env var name.
-     *
-     * @return mixed
-     */
-    private static function get_env( string $name )
+    private static function getEnv( string $name )
     {
         if ( \is_null( env( $name ) ) ) {
             return null;
@@ -670,7 +419,7 @@ class Setup implements SetupInterface
         return env( $name );
     }
 
-    private function reset_environment( $reset ): void
+    private function resetEnvironment( $reset ): void
     {
         $this->environment = $reset;
     }
