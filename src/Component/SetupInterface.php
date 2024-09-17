@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework;
 
 interface SetupInterface
@@ -12,16 +21,16 @@ interface SetupInterface
      * @param null|string[] $environment .
      * @param bool          $setup       .
      */
-    public function config( $environment = null, bool $setup = true ): self;
+    public function config($environment = null, bool $setup = true): self;
 
     /**
      * Debug Settings.
      *
-     * @param false|string $error_log_dir
+     * @param false|string $errorLogsDir
      *
      * @return self
      */
-    public function debug( $error_log_dir ): self;
+    public function debug($errorLogsDir): self;
 
     /**
      * Symfony Debug.
@@ -30,7 +39,7 @@ interface SetupInterface
      *
      * @return self
      */
-    public function setErrorHandler( ?string $handler = null ): self;
+    public function setErrorHandler(?string $handler = null): self;
 
     /**
      * Site Url Settings.
@@ -80,4 +89,12 @@ interface SetupInterface
      * @return self
      */
     public function autosave(): self;
+
+    /**
+     * ASSET_URL or env(ASSET_URL).
+     *
+     * @return self
+     */
+    public function assetUrl(): self;
+
 }

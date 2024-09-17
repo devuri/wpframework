@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework;
 
 use Urisoft\DotAccess;
@@ -11,14 +20,14 @@ class Framework
     protected static $_all_app_options;
     protected $appPath;
 
-    public function __construct( ?string $appPath = null )
+    public function __construct(?string $appPath = null)
     {
-        if ( $appPath ) {
+        if ($appPath) {
             $this->appPath     = $appPath;
-            $this->app_options = $this->_app_options( $this->appPath );
+            $this->app_options = $this->_app_options($this->appPath);
         } else {
-            $this->appPath     = \defined( 'APP_PATH' ) ? APP_PATH : APP_DIR_PATH;
-            $this->app_options = $this->_app_options( $this->appPath );
+            $this->appPath     = \defined('APP_PATH') ? APP_PATH : APP_DIR_PATH;
+            $this->app_options = $this->_app_options($this->appPath);
         }
 
         self::$_all_app_options = $this->app_options;
@@ -26,7 +35,7 @@ class Framework
 
     public function get_app_options(): array
     {
-        if ( \is_array( self::$_all_app_options ) ) {
+        if (\is_array(self::$_all_app_options)) {
             return self::$_all_app_options;
         }
 
@@ -35,14 +44,14 @@ class Framework
 
     public function tenant(): Tenant
     {
-        return new Tenant( $this->appPath );
+        return new Tenant($this->appPath);
     }
 
     public function options(): ?DotAccess
     {
         static $options;
-        if ( \is_null( $options ) ) {
-            $options = new DotAccess( $this->get_app_options() );
+        if (\is_null($options)) {
+            $options = new DotAccess($this->get_app_options());
         }
 
         return $options;
@@ -61,9 +70,9 @@ class Framework
      */
     public function get_whitelist(): array
     {
-        $config = new SimpleConfig( _configs_dir(), [ 'whitelist' ] );
+        $config = new SimpleConfig(_configsDir(), [ 'whitelist' ]);
 
-        return $config->get( 'whitelist' );
+        return $config->get('whitelist');
     }
 
     /**
@@ -73,19 +82,19 @@ class Framework
      *
      * @return null|array
      */
-    private function _app_options( ?string $app_path = null ): ?array
+    private function _app_options(?string $app_path = null): ?array
     {
-        $options_file    = $app_path . '/' . site_configs_dir() . '/app.php';
-        $default_configs = _configs_dir() . '/app.php';
+        $options_file    = $app_path . '/' . siteConfigsDir() . '/app.php';
+        $defaultConfigs = _configsDir() . '/app.php';
 
-        if ( ! file_exists( $options_file ) ) {
-            $app_options = require $default_configs;
-        } elseif ( file_exists( $options_file ) ) {
+        if (! file_exists($options_file)) {
+            $app_options = require $defaultConfigs;
+        } elseif (file_exists($options_file)) {
             $app_options = require $options_file;
         } else {
             $app_options = null;
         }
 
-        return \is_array( $app_options ) ? $app_options : null;
+        return \is_array($app_options) ? $app_options : null;
     }
 }

@@ -1,9 +1,14 @@
 <?php
-/**
- * Returns a list of environment variables allowed for use.
+
+/*
+ * This file is part of the WPframework package.
  *
- * TODO: This list needs to be made available for updates in the current application.
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
+
 return [
     'framework' => [
         'ERROR_HANDLER',

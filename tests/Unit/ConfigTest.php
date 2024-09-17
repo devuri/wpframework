@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Tests;
 
 use Tests\BaseTest;
@@ -39,13 +48,13 @@ class ConfigTest extends BaseTest
 
     private static function array_data()
     {
-        $_config_array_data = require \dirname( __FILE__, 3 ) . '/src/inc/configs/app.php';
+        $_config_array_data = require \dirname(__FILE__, 3) . '/src/inc/configs/app.php';
 
         return $_config_array_data;
     }
 
     private static function not_array_data()
     {
-        return \dirname( __FILE__, 3 ) . '/src/inc/app.php';
+        return \dirname(__FILE__, 3) . '/src/inc/app.php';
     }
 }

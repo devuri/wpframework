@@ -1,21 +1,14 @@
 <?php
 
-/**
- * This file defines various framework configuration options using key-value pairs.
+/*
+ * This file is part of the WPframework package.
  *
- * The values can be set in this file or by using environment variables defined in the `.env` file.
- * By utilizing environment variables, we can easily configure and customize the framework for different environments.
- * Some values are predefined by the framework, while others can be explicitly defined here as per specific requirements.
+ * (c) Uriel Wilson <uriel@wpframework.io>
  *
- * The configuration options can be accessed in two ways:
- * 1. Using the `config()` framework helper function, which provides easy access to the configuration values.
- * 2. Utilizing the `get_config()` method available in the framework's Kernel, which returns the configuration options as an array.
- *
- * Note that almost all configuration options in this file are optional, as the framework provides sensible defaults for required values.
- * Any options not explicitly set here will be automatically handled by the framework.
- *
- * @var array
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
+
 return [
 
     /*
@@ -28,7 +21,7 @@ return [
      *
      * Please note that the error handler will only run in 'debug', 'development', or 'local' environments.
      */
-    'error_handler'    => env( 'ERROR_HANDLER', false ),
+    'error_handler'    => env('ERROR_HANDLER', false),
 
     /*
      * Determines whether to display error details upon application termination.
@@ -60,7 +53,7 @@ return [
          *     ]
          * }
          */
-        'web_root_dir'  => env( 'WEB_ROOT_DIR', 'public' ),
+        'web_root_dir'  => env('WEB_ROOT_DIR', 'public'),
 
         /*
          * Sets the content directory for the project.
@@ -69,7 +62,7 @@ return [
          * The 'app' directory is equivalent to the 'wp-content' directory.
          * However, this can be modified to use a different directory, such as 'content'.
          */
-        'content_dir'   => env( 'CONTENT_DIR', 'content' ),
+        'content_dir'   => env('CONTENT_DIR', 'content'),
 
         /*
          * Sets the plugins directory.
@@ -77,7 +70,7 @@ return [
          * The plugins directory is located outside the project directory and
          * allows for installation and management of plugins using Composer.
          */
-        'plugin_dir'    => env( 'PLUGIN_DIR', 'content/plugins' ),
+        'plugin_dir'    => env('PLUGIN_DIR', 'content/plugins'),
 
         /*
          * Sets the directory for Must-Use (MU) plugins.
@@ -88,7 +81,7 @@ return [
          * By default, the framework includes the 'compose' MU plugin, which includes the 'web_app_config' hook.
          * This hook can be leveraged to configure the web application in most cases.
          */
-        'mu_plugin_dir' => env( 'MU_PLUGIN_DIR', 'content/mu-plugins' ),
+        'mu_plugin_dir' => env('MU_PLUGIN_DIR', 'content/mu-plugins'),
 
         /*
          * SQLite Configuration
@@ -100,8 +93,8 @@ return [
          *
          * @see https://github.com/aaemnnosttv/wp-sqlite-db
          */
-        'sqlite_dir'    => env( 'SQLITE_DIR', 'sqlitedb' ),
-        'sqlite_file'   => env( 'SQLITE_FILE', '.sqlite-wpdatabase' ),
+        'sqlite_dir'    => env('SQLITE_DIR', 'sqlitedb'),
+        'sqlite_file'   => env('SQLITE_FILE', '.sqlite-wpdatabase'),
 
         /*
          * Sets the directory for additional themes.
@@ -110,7 +103,7 @@ return [
          * to include our own custom themes for the project. This provides flexibility and allows
          * us to have a separate location for our custom theme files.
          */
-        'theme_dir'     => env( 'THEME_DIR', 'templates' ),
+        'theme_dir'     => env('THEME_DIR', 'templates'),
 
         /*
          * Global assets directory.
@@ -129,7 +122,7 @@ return [
          * - assetUrl($path): Returns the asset URL without the filename. The $path parameter is the path to the asset.
          *   Example: assetUrl("/dist") returns "https://example.com/assets/dist/".
          */
-        'asset_dir'     => env( 'ASSET_DIR', 'assets' ),
+        'asset_dir'     => env('ASSET_DIR', 'assets'),
 
         /*
          * Defines the public key directory.
@@ -137,7 +130,7 @@ return [
          * This is the directory where we store out public key files.
          * the directory here is relative to the application root path
          */
-        'publickey_dir' => env( 'PUBLICKEY_DIR', 'pubkeys' ),
+        'publickey_dir' => env('PUBLICKEY_DIR', 'pubkeys'),
     ],
 
     /*
@@ -146,7 +139,7 @@ return [
      * By default, WordPress uses one of the "twenty*" themes as the fallback theme.
      * However, in our project, we have the flexibility to define our own custom fallback theme.
      */
-    'default_theme'    => env( 'DEFAULT_THEME', 'twentytwentythree' ),
+    'default_theme'    => env('DEFAULT_THEME', 'twentytwentythree'),
 
     /*
      * Disable WordPress updates.
@@ -154,7 +147,7 @@ return [
      * Since we will manage updates with Composer,
      * it is recommended to disable all updates within WordPress.
      */
-    'disable_updates'  => env( 'DISABLE_UPDATES', true ),
+    'disable_updates'  => env('DISABLE_UPDATES', true),
 
     /*
      * Controls whether we can deactivate plugins.
@@ -166,7 +159,7 @@ return [
      * Setting it to true brings back the ability to deactivate plugins.
      * The default setting is true.
      */
-    'can_deactivate'   => env( 'CAN_DEACTIVATE', true ),
+    'can_deactivate'   => env('CAN_DEACTIVATE', true),
 
     /*
      * Security settings for the WordPress application.
@@ -215,32 +208,32 @@ return [
 
     'mailer'           => [
         'brevo'      => [
-            'apikey' => env( 'BREVO_API_KEY' ),
+            'apikey' => env('BREVO_API_KEY'),
         ],
 
         'postmark'   => [
-            'token' => env( 'POSTMARK_TOKEN' ),
+            'token' => env('POSTMARK_TOKEN'),
         ],
 
         'sendgrid'   => [
-            'apikey' => env( 'SENDGRID_API_KEY' ),
+            'apikey' => env('SENDGRID_API_KEY'),
         ],
 
         'mailerlite' => [
-            'apikey' => env( 'MAILERLITE_API_KEY' ),
+            'apikey' => env('MAILERLITE_API_KEY'),
         ],
 
         'mailgun'    => [
-            'domain'   => env( 'MAILGUN_DOMAIN' ),
-            'secret'   => env( 'MAILGUN_SECRET' ),
-            'endpoint' => env( 'MAILGUN_ENDPOINT', 'api.mailgun.net' ),
+            'domain'   => env('MAILGUN_DOMAIN'),
+            'secret'   => env('MAILGUN_SECRET'),
+            'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
             'scheme'   => 'https',
         ],
 
         'ses'        => [
-            'key'    => env( 'AWS_ACCESS_KEY_ID' ),
-            'secret' => env( 'AWS_SECRET_ACCESS_KEY' ),
-            'region' => env( 'AWS_DEFAULT_REGION', 'us-east-1' ),
+            'key'    => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
         ],
     ],
 
@@ -254,7 +247,7 @@ return [
      *
      * @default null
      */
-    'sudo_admin'       => env( 'SUDO_ADMIN', 1 ),
+    'sudo_admin'       => env('SUDO_ADMIN', 1),
 
     /*
      * Sudo Admin Group: A group of users with higher administrative privileges.
@@ -300,14 +293,14 @@ return [
      *   The value for the 'Cache-Control' header. Defaults to '300'.
      */
     's3uploads'        => [
-        'bucket'     => env( 'S3_UPLOADS_BUCKET', 'site-uploads' ),
-        'key'        => env( 'S3_UPLOADS_KEY', '' ),
-        'secret'     => env( 'S3_UPLOADS_SECRET', '' ),
-        'region'     => env( 'S3_UPLOADS_REGION', 'us-east-1' ),
-        'bucket-url' => env( 'S3_UPLOADS_BUCKET_URL', 'https://example.com' ),
-        'object-acl' => env( 'S3_UPLOADS_OBJECT_ACL', 'public' ),
-        'expires'    => env( 'S3_UPLOADS_HTTP_EXPIRES', '2 days' ),
-        'http-cache' => env( 'S3_UPLOADS_HTTP_CACHE_CONTROL', '300' ),
+        'bucket'     => env('S3_UPLOADS_BUCKET', 'site-uploads'),
+        'key'        => env('S3_UPLOADS_KEY', ''),
+        'secret'     => env('S3_UPLOADS_SECRET', ''),
+        'region'     => env('S3_UPLOADS_REGION', 'us-east-1'),
+        'bucket-url' => env('S3_UPLOADS_BUCKET_URL', 'https://example.com'),
+        'object-acl' => env('S3_UPLOADS_OBJECT_ACL', 'public'),
+        'expires'    => env('S3_UPLOADS_HTTP_EXPIRES', '2 days'),
+        'http-cache' => env('S3_UPLOADS_HTTP_CACHE_CONTROL', '300'),
     ],
 
     /*
@@ -347,17 +340,17 @@ return [
      * }
      */
     'redis'            => [
-        'disabled'        => env( 'WP_REDIS_DISABLED', false ),
-        'host'            => env( 'WP_REDIS_HOST', '127.0.0.1' ),
-        'port'            => env( 'WP_REDIS_PORT', 6379 ),
-        'password'        => env( 'WP_REDIS_PASSWORD', '' ),
-        'adminbar'        => env( 'WP_REDIS_DISABLE_ADMINBAR', false ),
-        'disable-metrics' => env( 'WP_REDIS_DISABLE_METRICS', false ),
-        'disable-banners' => env( 'WP_REDIS_DISABLE_BANNERS', false ),
-        'prefix'          => env( 'WP_REDIS_PREFIX', md5( env( 'WP_HOME' ) ) . 'redis-cache' ),
-        'database'        => env( 'WP_REDIS_DATABASE', 0 ),
-        'timeout'         => env( 'WP_REDIS_TIMEOUT', 1 ),
-        'read-timeout'    => env( 'WP_REDIS_READ_TIMEOUT', 1 ),
+        'disabled'        => env('WP_REDIS_DISABLED', false),
+        'host'            => env('WP_REDIS_HOST', '127.0.0.1'),
+        'port'            => env('WP_REDIS_PORT', 6379),
+        'password'        => env('WP_REDIS_PASSWORD', ''),
+        'adminbar'        => env('WP_REDIS_DISABLE_ADMINBAR', false),
+        'disable-metrics' => env('WP_REDIS_DISABLE_METRICS', false),
+        'disable-banners' => env('WP_REDIS_DISABLE_BANNERS', false),
+        'prefix'          => env('WP_REDIS_PREFIX', md5(env('WP_HOME')) . 'redis-cache'),
+        'database'        => env('WP_REDIS_DATABASE', 0),
+        'timeout'         => env('WP_REDIS_TIMEOUT', 1),
+        'read-timeout'    => env('WP_REDIS_READ_TIMEOUT', 1),
     ],
 
     /*
@@ -378,6 +371,6 @@ return [
      * @var array $publickey An array containing the UUID of the public key stored as an option in the WordPress options table.
      */
     'publickey'        => [
-        'app-key' => env( 'WEB_APP_PUBLIC_KEY', null ),
+        'app-key' => env('WEB_APP_PUBLIC_KEY', null),
     ],
 ];

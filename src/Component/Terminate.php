@@ -12,10 +12,10 @@ class Terminate
 
     protected $errors;
 
-    public function __construct( array $error_details = [], ?ExitInterface $exit = null )
+    public function __construct(array $error_details = [], ?ExitInterface $exit = null)
     {
         $this->exitHandler = $exit ?? new ExitHandler();
-        $this->errors      = new DotAccess( $this->parse_error( $error_details ) );
+        $this->errors      = new DotAccess($this->parse_error($error_details));
     }
 
     /**
@@ -25,19 +25,19 @@ class Terminate
      * @param array     $error_details Contains the 'message' and optionally the 'status_code'.
      * @param Exception $exception     The exception to log.
      */
-    public static function exit( array $error_details, ?Exception $exception = null ): void
+    public static function exit(array $error_details, ?Exception $exception = null): void
     {
-        $terminator = new self( $error_details );
-        $terminator->send_http_status_code( $terminator->get_error( 'code' ) );
-        $terminator->render_error_page( $terminator->get_error( 'message' ), $terminator->get_error( 'code' ) );
-        $terminator->log_exception( $exception );
-        $terminator->exitHandler->terminate( 1 );
+        $terminator = new self($error_details);
+        $terminator->send_http_status_code($terminator->get_error('code'));
+        $terminator->render_error_page($terminator->get_error('message'), $terminator->get_error('code'));
+        $terminator->log_exception($exception);
+        $terminator->exitHandler->terminate(1);
     }
 
     // mixed returned
-    public function get_error( $key )
+    public function get_error($key)
     {
-        return $this->errors->get( $key );
+        return $this->errors->get($key);
     }
 
     /**
@@ -47,12 +47,12 @@ class Terminate
      *
      * @throws InvalidArgumentException If the status code is not valid.
      */
-    protected function send_http_status_code( int $status_code ): void
+    protected function send_http_status_code(int $status_code): void
     {
-        if ( $this->is_valid_http_status_code( $status_code ) ) {
-            http_response_code( $status_code );
+        if ($this->is_valid_http_status_code($status_code)) {
+            http_response_code($status_code);
         } else {
-            throw new InvalidArgumentException( "Invalid HTTP status code: {$status_code}" );
+            throw new InvalidArgumentException("Invalid HTTP status code: {$status_code}");
         }
     }
 
@@ -63,7 +63,7 @@ class Terminate
      *
      * @return bool True if the status code is valid, false otherwise.
      */
-    protected function is_valid_http_status_code( int $status_code ): bool
+    protected function is_valid_http_status_code(int $status_code): bool
     {
         return $status_code >= 100 && $status_code <= 599;
     }
@@ -75,7 +75,7 @@ class Terminate
      *
      * @return array The message and status code.
      */
-    protected function parse_error( array $error_details ): array
+    protected function parse_error(array $error_details): array
     {
         $message     = $error_details[0] ?? 'An error occurred';
         $status_code = $error_details[1] ?? 500;
@@ -93,9 +93,9 @@ class Terminate
      *
      * @param Exception $exception The caught exception.
      */
-    protected function log_exception( ?Exception $exception = null ): void
+    protected function log_exception(?Exception $exception = null): void
     {
-        if ( \is_null( $exception ) ) {
+        if (\is_null($exception)) {
             return;
         }
         // TODO Assuming Sentry is set up and configured.
@@ -111,7 +111,7 @@ class Terminate
      * @param string $message     The message to display.
      * @param int    $status_code The HTTP status code.
      */
-    protected function render_error_page( string $message, int $status_code ): void
+    protected function render_error_page(string $message, int $status_code): void
     {
         $this->page_header();
         ?>
@@ -124,19 +124,19 @@ class Terminate
             </div>
             <div>
                 <?php
-                if ( $this->is_prod() ) {
-                    dump( 'Raydium: debug data is hidden in production' );
-                } elseif ( config( 'terminate.debugger' ) ) {
-                    dump( $this->errors->get( 'debug' ) );
+                if ($this->is_prod()) {
+                    dump('Raydium: debug data is hidden in production');
+                } elseif (config('terminate.debugger')) {
+                    dump($this->errors->get('debug'));
                 }
-				?>
+        ?>
             </div>
         <?php
 
-        $this->page_footer( $status_code );
+        $this->page_footer($status_code);
     }
 
-    private function page_header( string $page_title = 'Service Unavailable' ): void
+    private function page_header(string $page_title = 'Service Unavailable'): void
     {
         ?>
         <!DOCTYPE html><html lang='en'>
@@ -151,7 +151,7 @@ class Terminate
 		<?php
     }
 
-    private function page_footer( string $status_code ): void
+    private function page_footer(string $status_code): void
     {
         ?>
         <footer align="center">
@@ -164,7 +164,7 @@ class Terminate
 
     private function is_prod(): bool
     {
-        if ( \defined( 'WP_ENVIRONMENT_TYPE' ) && \in_array( WP_ENVIRONMENT_TYPE, [ 'secure', 'sec', 'production', 'prod' ], true ) ) {
+        if (\defined('WP_ENVIRONMENT_TYPE') && \in_array(WP_ENVIRONMENT_TYPE, [ 'secure', 'sec', 'production', 'prod' ], true)) {
             return true;
         }
 

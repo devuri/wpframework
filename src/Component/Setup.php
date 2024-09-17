@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework;
 
 use Dotenv\Dotenv;
@@ -28,12 +37,12 @@ class Setup implements SetupInterface
     protected $envTypes = [];
     protected $tenant;
 
-    public function __construct( string $appPath, array $envFileNames = [], bool $shortCircuit = true )
+    public function __construct(string $appPath, array $envFileNames = [], bool $shortCircuit = true)
     {
-        $this->tenant       = new Tenant( $appPath );
+        $this->tenant       = new Tenant($appPath);
         $this->appPath      = $this->tenant->getCurrentPath();
         $this->shortCircuit = $shortCircuit;
-        $this->envFiles     = array_merge( $this->getDefaultFileNames(), $envFileNames );
+        $this->envFiles     = array_merge($this->getDefaultFileNames(), $envFileNames);
 
         $this->filterExistingEnvFiles();
         $this->envTypes = EnvTypes::getAll();
@@ -52,33 +61,33 @@ class Setup implements SetupInterface
         return $this->appPath;
     }
 
-    public static function init( string $appPath ): self
+    public static function init(string $appPath): self
     {
-        if ( ! isset( self::$instance ) ) {
-            self::$instance = new self( $appPath );
+        if (! isset(self::$instance)) {
+            self::$instance = new self($appPath);
         }
 
         return self::$instance;
     }
 
-    public function config( $environment = null, ?bool $setup = true ): SetupInterface
+    public function config($environment = null, ?bool $setup = true): SetupInterface
     {
         $this->isRequired();
 
-        if ( \is_null( $setup ) ) {
+        if (\is_null($setup)) {
             $this->environment = $environment;
 
             return $this;
         }
 
-        $environment        = $this->normalizeEnvironment( $environment );
+        $environment        = $this->normalizeEnvironment($environment);
         $this->errorLogDir  = $environment['error_log'] ?? null;
         $this->errorHandler = $environment['errors'] ?? null;
-        $this->environment  = $this->determineEnvironment( $environment['environment'] );
+        $this->environment  = $this->determineEnvironment($environment['environment']);
 
-        if ( false === $setup ) {
+        if (false === $setup) {
             $this->setEnvironment()
-                ->debug( $this->errorLogDir )
+                ->debug($this->errorLogDir)
                 ->setErrorHandler()
                 ->database()
                 ->salts();
@@ -86,9 +95,9 @@ class Setup implements SetupInterface
             return $this;
         }
 
-        if ( true === $setup ) {
+        if (true === $setup) {
             $this->setEnvironment()
-                ->debug( $this->errorLogDir )
+                ->debug($this->errorLogDir)
                 ->setErrorHandler()
                 ->database()
                 ->siteUrl()
@@ -103,28 +112,28 @@ class Setup implements SetupInterface
         return $this;
     }
 
-    public function setSwitcher( Switcher $switcher ): void
+    public function setSwitcher(Switcher $switcher): void
     {
         $this->switcher = $switcher;
     }
 
     public function setEnvironment(): SetupInterface
     {
-        $this->define( 'WP_DEVELOPMENT_MODE', self::wpDevelopmentMode() );
+        $this->define('WP_DEVELOPMENT_MODE', self::wpDevelopmentMode());
 
-        if ( false === $this->environment && env( 'WP_ENVIRONMENT_TYPE' ) ) {
-            $this->define( 'WP_ENVIRONMENT_TYPE', env( 'WP_ENVIRONMENT_TYPE' ) );
-
-            return $this;
-        }
-
-        if ( $this->isEnvironmentNull() ) {
-            $this->define( 'WP_ENVIRONMENT_TYPE', env( 'WP_ENVIRONMENT_TYPE' ) ?? self::getConstant( 'environment' ) );
+        if (false === $this->environment && env('WP_ENVIRONMENT_TYPE')) {
+            $this->define('WP_ENVIRONMENT_TYPE', env('WP_ENVIRONMENT_TYPE'));
 
             return $this;
         }
 
-        $this->define( 'WP_ENVIRONMENT_TYPE', $this->environment );
+        if ($this->isEnvironmentNull()) {
+            $this->define('WP_ENVIRONMENT_TYPE', env('WP_ENVIRONMENT_TYPE') ?? self::getConstant('environment'));
+
+            return $this;
+        }
+
+        $this->define('WP_ENVIRONMENT_TYPE', $this->environment);
 
         return $this;
     }
@@ -144,140 +153,140 @@ class Setup implements SetupInterface
         return $this->environment;
     }
 
-    public function setErrorHandler( ?string $handler = null ): SetupInterface
+    public function setErrorHandler(?string $handler = null): SetupInterface
     {
-        if ( ! $this->enableErrorHandler() ) {
+        if (! $this->enableErrorHandler()) {
             return $this;
         }
 
-        if ( \is_null( $this->errorHandler ) ) {
+        if (\is_null($this->errorHandler)) {
             return $this;
         }
 
-        if ( ! \in_array( $this->environment, [ 'debug', 'development', 'dev', 'local' ], true ) ) {
+        if (! \in_array($this->environment, [ 'debug', 'development', 'dev', 'local' ], true)) {
             return $this;
         }
 
-        if ( $handler ) {
+        if ($handler) {
             $this->errorHandler = $handler;
         }
 
-        if ( 'symfony' === $this->errorHandler ) {
+        if ('symfony' === $this->errorHandler) {
             Debug::enable();
-        } elseif ( 'oops' === $this->errorHandler ) {
+        } elseif ('oops' === $this->errorHandler) {
             $whoops = new Run();
-            $whoops->pushHandler( new PrettyPageHandler() );
+            $whoops->pushHandler(new PrettyPageHandler());
             $whoops->register();
         }
 
         return $this;
     }
 
-    public function debug( $errorLogDir ): SetupInterface
+    public function debug($errorLogsDir): SetupInterface
     {
-        if ( false === $this->environment && env( 'WP_ENVIRONMENT_TYPE' ) ) {
-            $this->resetEnvironment( env( 'WP_ENVIRONMENT_TYPE' ) );
+        if (false === $this->environment && env('WP_ENVIRONMENT_TYPE')) {
+            $this->resetEnvironment(env('WP_ENVIRONMENT_TYPE'));
         }
 
-        if ( $this->isEnvironmentNull() && env( 'WP_ENVIRONMENT_TYPE' ) ) {
-            $this->resetEnvironment( env( 'WP_ENVIRONMENT_TYPE' ) );
+        if ($this->isEnvironmentNull() && env('WP_ENVIRONMENT_TYPE')) {
+            $this->resetEnvironment(env('WP_ENVIRONMENT_TYPE'));
         }
 
-        if ( ! EnvTypes::isValid( $this->environment ) ) {
-            $this->switcher->create_environment( 'production', $this->errorLogDir );
+        if (! EnvTypes::isValid($this->environment)) {
+            $this->switcher->create_environment('production', $this->errorLogDir);
 
             return $this;
         }
 
-        $this->switcher->create_environment( $this->environment, $this->errorLogDir );
+        $this->switcher->create_environment($this->environment, $this->errorLogDir);
 
         return $this;
     }
 
-    public function required( string $name ): void
+    public function required(string $name): void
     {
-        if ( ! \defined( $name ) ) {
-            $this->dotenv->required( $name )->notEmpty();
+        if (! \defined($name)) {
+            $this->dotenv->required($name)->notEmpty();
         }
     }
 
     public function siteUrl(): SetupInterface
     {
-        $this->define( 'WP_HOME', env( 'WP_HOME' ) );
-        $this->define( 'WP_SITEURL', env( 'WP_SITEURL' ) );
+        $this->define('WP_HOME', env('WP_HOME'));
+        $this->define('WP_SITEURL', env('WP_SITEURL'));
 
         return $this;
     }
 
     public function assetUrl(): SetupInterface
     {
-        $this->define( 'ASSET_URL', env( 'ASSET_URL' ) );
+        $this->define('ASSET_URL', env('ASSET_URL'));
 
         return $this;
     }
 
     public function optimize(): SetupInterface
     {
-        $this->define( 'CONCATENATE_SCRIPTS', env( 'CONCATENATE_SCRIPTS' ) ?? self::getConstant( 'optimize' ) );
+        $this->define('CONCATENATE_SCRIPTS', env('CONCATENATE_SCRIPTS') ?? self::getConstant('optimize'));
 
         return $this;
     }
 
     public function memory(): SetupInterface
     {
-        $this->define( 'WP_MEMORY_LIMIT', env( 'MEMORY_LIMIT' ) ?? self::getConstant( 'memory' ) );
-        $this->define( 'WP_MAX_MEMORY_LIMIT', env( 'MAX_MEMORY_LIMIT' ) ?? self::getConstant( 'memory' ) );
+        $this->define('WP_MEMORY_LIMIT', env('MEMORY_LIMIT') ?? self::getConstant('memory'));
+        $this->define('WP_MAX_MEMORY_LIMIT', env('MAX_MEMORY_LIMIT') ?? self::getConstant('memory'));
 
         return $this;
     }
 
     public function forceSsl(): SetupInterface
     {
-        $this->define( 'FORCE_SSL_ADMIN', env( 'FORCE_SSL_ADMIN' ) ?? self::getConstant( 'ssl_admin' ) );
-        $this->define( 'FORCE_SSL_LOGIN', env( 'FORCE_SSL_LOGIN' ) ?? self::getConstant( 'ssl_login' ) );
+        $this->define('FORCE_SSL_ADMIN', env('FORCE_SSL_ADMIN') ?? self::getConstant('ssl_admin'));
+        $this->define('FORCE_SSL_LOGIN', env('FORCE_SSL_LOGIN') ?? self::getConstant('ssl_login'));
 
         return $this;
     }
 
     public function autosave(): SetupInterface
     {
-        $this->define( 'AUTOSAVE_INTERVAL', env( 'AUTOSAVE_INTERVAL' ) ?? self::getConstant( 'autosave' ) );
-        $this->define( 'WP_POST_REVISIONS', env( 'WP_POST_REVISIONS' ) ?? self::getConstant( 'revisions' ) );
+        $this->define('AUTOSAVE_INTERVAL', env('AUTOSAVE_INTERVAL') ?? self::getConstant('autosave'));
+        $this->define('WP_POST_REVISIONS', env('WP_POST_REVISIONS') ?? self::getConstant('revisions'));
 
         return $this;
     }
 
     public function database(): SetupInterface
     {
-        $this->define( 'DB_NAME', env( 'DB_NAME' ) );
-        $this->define( 'DB_USER', env( 'DB_USER' ) );
-        $this->define( 'DB_PASSWORD', env( 'DB_PASSWORD' ) );
-        $this->define( 'DB_HOST', env( 'DB_HOST' ) ?? self::getConstant( 'db_host' ) );
-        $this->define( 'DB_CHARSET', env( 'DB_CHARSET' ) ?? 'utf8mb4' );
-        $this->define( 'DB_COLLATE', env( 'DB_COLLATE' ) ?? '' );
+        $this->define('DB_NAME', env('DB_NAME'));
+        $this->define('DB_USER', env('DB_USER'));
+        $this->define('DB_PASSWORD', env('DB_PASSWORD'));
+        $this->define('DB_HOST', env('DB_HOST') ?? self::getConstant('db_host'));
+        $this->define('DB_CHARSET', env('DB_CHARSET') ?? 'utf8mb4');
+        $this->define('DB_COLLATE', env('DB_COLLATE') ?? '');
 
         return $this;
     }
 
     public function salts(): SetupInterface
     {
-        $this->define( 'AUTH_KEY', env( 'AUTH_KEY' ) );
-        $this->define( 'SECURE_AUTH_KEY', env( 'SECURE_AUTH_KEY' ) );
-        $this->define( 'LOGGED_IN_KEY', env( 'LOGGED_IN_KEY' ) );
-        $this->define( 'NONCE_KEY', env( 'NONCE_KEY' ) );
-        $this->define( 'AUTH_SALT', env( 'AUTH_SALT' ) );
-        $this->define( 'SECURE_AUTH_SALT', env( 'SECURE_AUTH_SALT' ) );
-        $this->define( 'LOGGED_IN_SALT', env( 'LOGGED_IN_SALT' ) );
-        $this->define( 'NONCE_SALT', env( 'NONCE_SALT' ) );
+        $this->define('AUTH_KEY', env('AUTH_KEY'));
+        $this->define('SECURE_AUTH_KEY', env('SECURE_AUTH_KEY'));
+        $this->define('LOGGED_IN_KEY', env('LOGGED_IN_KEY'));
+        $this->define('NONCE_KEY', env('NONCE_KEY'));
+        $this->define('AUTH_SALT', env('AUTH_SALT'));
+        $this->define('SECURE_AUTH_SALT', env('SECURE_AUTH_SALT'));
+        $this->define('LOGGED_IN_SALT', env('LOGGED_IN_SALT'));
+        $this->define('NONCE_SALT', env('NONCE_SALT'));
 
-        $this->define( 'DEVELOPER_ADMIN', env( 'DEVELOPER_ADMIN' ) ?? '0' );
+        $this->define('DEVELOPER_ADMIN', env('DEVELOPER_ADMIN') ?? '0');
 
         return $this;
     }
 
-    protected function normalizeEnvironment( $environment ): array
+    protected function normalizeEnvironment($environment): array
     {
-        if ( ! \is_array( $environment ) ) {
+        if (! \is_array($environment)) {
             $environment = [ 'environment' => $environment ];
         }
 
@@ -292,31 +301,31 @@ class Setup implements SetupInterface
         );
     }
 
-    protected function determineEnvironment( $environment )
+    protected function determineEnvironment($environment)
     {
-        if ( \is_bool( $environment ) || \is_string( $environment ) ) {
+        if (\is_bool($environment) || \is_string($environment)) {
             return $environment;
         }
 
-        return trim( (string) $environment );
+        return trim((string) $environment);
     }
 
     protected function filterExistingEnvFiles(): void
     {
-        foreach ( $this->envFiles as $key => $file ) {
-            if ( ! file_exists( $this->appPath . '/' . $file ) ) {
-                unset( $this->envFiles[ $key ] );
+        foreach ($this->envFiles as $key => $file) {
+            if (! file_exists($this->appPath . '/' . $file)) {
+                unset($this->envFiles[ $key ]);
             }
         }
     }
 
     protected function initializeDotenv(): void
     {
-        $this->dotenv = Dotenv::createImmutable( $this->appPath, $this->envFiles, $this->shortCircuit );
+        $this->dotenv = Dotenv::createImmutable($this->appPath, $this->envFiles, $this->shortCircuit);
 
         try {
             $this->dotenv->load();
-        } catch ( Exception $e ) {
+        } catch (Exception $e) {
             $debug = [
                 'class'     => static::class,
                 'object'    => $this,
@@ -324,7 +333,7 @@ class Setup implements SetupInterface
                 'line'      => __LINE__,
                 'exception' => $e,
             ];
-            Terminate::exit( [ $e->getMessage(), 500, $debug ] );
+            Terminate::exit([ $e->getMessage(), 500, $debug ]);
         }
     }
 
@@ -345,7 +354,7 @@ class Setup implements SetupInterface
 
     protected function enableErrorHandler(): bool
     {
-        if ( $this->errorHandler ) {
+        if ($this->errorHandler) {
             return true;
         }
 
@@ -355,25 +364,25 @@ class Setup implements SetupInterface
     protected function isRequired(): void
     {
         try {
-            $this->required( 'WP_HOME' );
-            $this->required( 'WP_SITEURL' );
+            $this->required('WP_HOME');
+            $this->required('WP_SITEURL');
 
-            $this->dotenv->required( 'DISABLE_WP_APPLICATION_PASSWORDS' )->allowedValues( [ 'true', 'false' ] );
+            $this->dotenv->required('DISABLE_WP_APPLICATION_PASSWORDS')->allowedValues([ 'true', 'false' ]);
 
-            $this->dotenv->required( 'DB_HOST' )->notEmpty();
-            $this->dotenv->required( 'DB_NAME' )->notEmpty();
-            $this->dotenv->required( 'DB_USER' )->notEmpty();
-            $this->dotenv->required( 'DB_PASSWORD' )->notEmpty();
+            $this->dotenv->required('DB_HOST')->notEmpty();
+            $this->dotenv->required('DB_NAME')->notEmpty();
+            $this->dotenv->required('DB_USER')->notEmpty();
+            $this->dotenv->required('DB_PASSWORD')->notEmpty();
 
-            $this->dotenv->required( 'AUTH_KEY' )->notEmpty();
-            $this->dotenv->required( 'SECURE_AUTH_KEY' )->notEmpty();
-            $this->dotenv->required( 'LOGGED_IN_KEY' )->notEmpty();
-            $this->dotenv->required( 'NONCE_KEY' )->notEmpty();
-            $this->dotenv->required( 'AUTH_SALT' )->notEmpty();
-            $this->dotenv->required( 'SECURE_AUTH_SALT' )->notEmpty();
-            $this->dotenv->required( 'LOGGED_IN_SALT' )->notEmpty();
-            $this->dotenv->required( 'NONCE_SALT' )->notEmpty();
-        } catch ( Exception $e ) {
+            $this->dotenv->required('AUTH_KEY')->notEmpty();
+            $this->dotenv->required('SECURE_AUTH_KEY')->notEmpty();
+            $this->dotenv->required('LOGGED_IN_KEY')->notEmpty();
+            $this->dotenv->required('NONCE_KEY')->notEmpty();
+            $this->dotenv->required('AUTH_SALT')->notEmpty();
+            $this->dotenv->required('SECURE_AUTH_SALT')->notEmpty();
+            $this->dotenv->required('LOGGED_IN_SALT')->notEmpty();
+            $this->dotenv->required('NONCE_SALT')->notEmpty();
+        } catch (Exception $e) {
             $debug = [
                 'class'     => static::class,
                 'object'    => $this,
@@ -381,11 +390,11 @@ class Setup implements SetupInterface
                 'line'      => __LINE__,
                 'exception' => $e,
             ];
-            Terminate::exit( [ $e->getMessage(), 500, $debug ] );
+            Terminate::exit([ $e->getMessage(), 500, $debug ]);
         }//end try
     }
 
-    protected static function getConstant( string $key )
+    protected static function getConstant(string $key)
     {
         $constant['environment'] = 'production';
         $constant['debug']       = true;
@@ -402,24 +411,24 @@ class Setup implements SetupInterface
 
     private static function wpDevelopmentMode(): string
     {
-        return env( 'WP_DEVELOPMENT_MODE' ) ?? '';
+        return env('WP_DEVELOPMENT_MODE') ?? '';
     }
 
     private function isEnvironmentNull(): bool
     {
-        return empty( $this->environment );
+        return empty($this->environment);
     }
 
-    private static function getEnv( string $name )
+    private static function getEnv(string $name)
     {
-        if ( \is_null( env( $name ) ) ) {
+        if (\is_null(env($name))) {
             return null;
         }
 
-        return env( $name );
+        return env($name);
     }
 
-    private function resetEnvironment( $reset ): void
+    private function resetEnvironment($reset): void
     {
         $this->environment = $reset;
     }

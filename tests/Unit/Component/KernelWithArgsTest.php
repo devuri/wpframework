@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Tests\Component;
 
 use Tests\BaseTest;
@@ -19,10 +28,10 @@ class KernelWithArgsTest extends BaseTest
      */
     public function test_get_settings_returns_expected_array(): void
     {
-        $app_with_args = new Kernel( getenv('FAKE_APP_DIR_PATH'), [
+        $app_with_args = new Kernel(getenv('FAKE_APP_DIR_PATH'), [
             'web_root_dir' => 'public',
             'wordpress'   => 'cms',
-        ] );
+        ]);
 
         $expected = [
             'wp_dir_path'    => 'cms',

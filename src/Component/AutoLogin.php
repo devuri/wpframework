@@ -1,11 +1,12 @@
 <?php
-/**
- * This file is part of the WordPress project install.
+
+/*
+ * This file is part of the WPframework package.
  *
- * (c) Uriel Wilson
+ * (c) Uriel Wilson <uriel@wpframework.io>
  *
- * Please see the LICENSE file that was distributed with this source code
- * for full copyright and license information.
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace WPframework;
@@ -67,12 +68,12 @@ class AutoLogin
      *
      * @return void This method does not return any value.
      */
-    public function __construct( ?string $secret_key = null, ?string $environment_type = null, array $environments = [ 'sec', 'secure', 'prod', 'production' ] )
+    public function __construct(?string $secret_key = null, ?string $environment_type = null, array $environments = [ 'sec', 'secure', 'prod', 'production' ])
     {
         $this->secret_key       = $secret_key;
         $this->environment_type = $environment_type;
         $this->environments     = $environments;
-        $this->home_url         = home_url( '/' );
+        $this->home_url         = home_url('/');
         $this->user_admin_url   = user_admin_url();
         $this->login_service    = [];
     }
@@ -89,8 +90,8 @@ class AutoLogin
      */
     public function register_login_action(): void
     {
-        if ( $this->secret_key ) {
-            add_action( 'init', [ $this, 'handle_auto_login' ] );
+        if ($this->secret_key) {
+            add_action('init', [ $this, 'handle_auto_login' ]);
         }
     }
 
@@ -102,9 +103,9 @@ class AutoLogin
      *
      * @return void This method does not return any value.
      */
-    public static function init( string $secret_key, string $environment_type ): void
+    public static function init(string $secret_key, string $environment_type): void
     {
-        $auto_login = new self( $secret_key, $environment_type );
+        $auto_login = new self($secret_key, $environment_type);
         $auto_login->register_login_action();
     }
 
@@ -124,60 +125,60 @@ class AutoLogin
         $current_timestamp = time();
 
         // do not allow production login.
-        if ( \in_array( $this->environment_type, $this->environments, true ) ) {
-            error_log( 'auto login will not work in this environment: ' . $this->environment_type );
+        if (\in_array($this->environment_type, $this->environments, true)) {
+            error_log('auto login will not work in this environment: ' . $this->environment_type);
 
             return;
         }
 
         // WARNING | Processing form data without nonce verification.
-        if ( isset( $_GET['token'] ) && isset( $_GET['sig'] ) ) {
+        if (isset($_GET['token']) && isset($_GET['sig'])) {
             $this->login_service = [
-                'token'    => static::get_query( 'token' ),
-                'time'     => static::get_query( 'time' ),
-                'username' => static::get_query( 'username' ),
-                'site_id'  => static::get_query( 'site_id' ),
+                'token'    => static::get_query('token'),
+                'time'     => static::get_query('time'),
+                'username' => static::get_query('username'),
+                'site_id'  => static::get_query('site_id'),
             ];
 
             // Check if the URL has expired (more than 60 seconds old).
-            if ( $current_timestamp - (int) $this->login_service['time'] > 60 ) {
-                wp_die( 'login expired' );
+            if ($current_timestamp - (int) $this->login_service['time'] > 60) {
+                wp_die('login expired');
 
                 return;
             }
 
-            $signature = base64_decode( static::get_query( 'sig' ), true );
+            $signature = base64_decode(static::get_query('sig'), true);
 
-            if ( \is_null( $this->login_service['username'] ) || \is_null( $signature ) ) {
-                error_log( 'auto login username invalid' );
+            if (\is_null($this->login_service['username']) || \is_null($signature)) {
+                error_log('auto login username invalid');
 
                 return;
             }
 
-            if ( ! $this->verify_signature( $signature ) ) {
-                wp_safe_redirect( $this->home_url );
+            if (! $this->verify_signature($signature)) {
+                wp_safe_redirect($this->home_url);
 
                 return;
             }
 
             // WP_User object on success, false on failure.
-            $user = get_user_by( 'login', $this->login_service['username'] );
+            $user = get_user_by('login', $this->login_service['username']);
 
-            if ( false === $user ) {
+            if (false === $user) {
                 $user = null;
             }
 
-            if ( ! $this->wp_user_exists( $user ) ) {
-                wp_die( 'User not found.' );
+            if (! $this->wp_user_exists($user)) {
+                wp_die('User not found.');
             }
 
-            if ( $user ) {
-                static::authenticate( $user );
-                wp_safe_redirect( $this->user_admin_url );
+            if ($user) {
+                static::authenticate($user);
+                wp_safe_redirect($this->user_admin_url);
                 exit;
             }
 
-            wp_safe_redirect( $this->home_url );
+            wp_safe_redirect($this->home_url);
             exit;
         }// end if
     }
@@ -189,13 +190,13 @@ class AutoLogin
      *
      * @return null|bool Null no user, True if user exists in the database, false if not.
      */
-    protected function wp_user_exists( ?WP_User $user ): ?bool
+    protected function wp_user_exists(?WP_User $user): ?bool
     {
-        if ( \is_null( $user ) ) {
+        if (\is_null($user)) {
             return null;
         }
 
-        if ( $user->exists() ) {
+        if ($user->exists()) {
             return true;
         }
 
@@ -213,13 +214,13 @@ class AutoLogin
      *
      * @return bool Returns true if the provided signature matches the expected signature, false otherwise.
      */
-    protected function verify_signature( $signature )
+    protected function verify_signature($signature)
     {
-        $http_query = http_build_query( $this->login_service, '', '&' );
+        $http_query = http_build_query($this->login_service, '', '&');
 
-        $generatedSignature = hash_hmac( 'sha256', $http_query, $this->secret_key );
+        $generatedSignature = hash_hmac('sha256', $http_query, $this->secret_key);
 
-        return hash_equals( $generatedSignature, $signature );
+        return hash_equals($generatedSignature, $signature);
     }
 
     /**
@@ -235,17 +236,17 @@ class AutoLogin
      *
      * @return void This method does not return any value.
      */
-    protected static function authenticate( WP_User $user ): void
+    protected static function authenticate(WP_User $user): void
     {
-        if ( ! $user ) {
+        if (! $user) {
             return;
         }
 
         wp_clear_auth_cookie();
-        wp_set_current_user( $user->ID );
-        wp_set_auth_cookie( $user->ID, false, is_ssl() );
-        do_action( 'wpenv_auto_login', $user->user_login, $user );
-        do_action( 'wp_login', $user->user_login, $user );
+        wp_set_current_user($user->ID);
+        wp_set_auth_cookie($user->ID, false, is_ssl());
+        do_action('wpenv_auto_login', $user->user_login, $user);
+        do_action('wp_login', $user->user_login, $user);
     }
 
     /**
@@ -259,10 +260,10 @@ class AutoLogin
      *
      * @return null|string The sanitized value of the specified query parameter, or null if the parameter is not set.
      */
-    protected static function get_query( string $req_input )
+    protected static function get_query(string $req_input)
     {
-        if ( isset( $_GET[ $req_input ] ) ) {
-            return sanitize_text_field( wp_unslash( $_GET[ $req_input ] ) );
+        if (isset($_GET[ $req_input ])) {
+            return sanitize_text_field(wp_unslash($_GET[ $req_input ]));
         }
 
         return null;

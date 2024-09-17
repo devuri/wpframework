@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Http;
 
 use WPframework\Setup;
@@ -56,7 +65,7 @@ interface KernelInterface
      *
      * @return KernelInterface
      */
-    public function app( ?string $environment_type = null, bool $constants = true): self;
+    public function app(?string $environment_type = null, bool $constants = true): self;
 
     /**
      * Sets an environment secret using a key.
@@ -65,7 +74,7 @@ interface KernelInterface
      *
      * @return void
      */
-    public function set_env_secret( string $key): void;
+    public function set_env_secret(string $key): void;
 
     /**
      * Retrieves the list of environment secret keys.

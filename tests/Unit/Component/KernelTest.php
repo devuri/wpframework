@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Tests\Component;
 
 use PHPUnit\Framework\TestCase;
@@ -18,7 +27,7 @@ class KernelTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->http_app = new Kernel( APP_TEST_PATH );
+        $this->http_app = new Kernel(APP_TEST_PATH);
     }
 
     protected function tearDown(): void
@@ -28,7 +37,7 @@ class KernelTest extends TestCase
 
     public function test_get_app_path(): void
     {
-        $this->assertEquals( APP_TEST_PATH , $this->http_app->get_app_path() );
+        $this->assertEquals(APP_TEST_PATH, $this->http_app->get_app_path());
     }
 
     public function test_default_args(): void
@@ -111,7 +120,7 @@ class KernelTest extends TestCase
 
         // dump($this->http_app->get_args()->export());
 
-        $this->assertEquals( $default, $this->http_app->get_args());
+        $this->assertEquals($default, $this->http_app->get_args());
     }
 
     public function test_constants_defined(): void
@@ -178,12 +187,12 @@ class KernelTest extends TestCase
 
         $http_app_defined = $this->http_app->get_defined();
 
-        $this->assertIsArray( $http_app_defined );
+        $this->assertIsArray($http_app_defined);
 
-        $count = \count( $http_app_defined );
+        $count = \count($http_app_defined);
 
-        $this->assertEquals( 39, $count );
+        $this->assertEquals(39, $count);
 
-        $this->assertEquals( $const_defaults, $this->http_app->get_defined());
+        $this->assertEquals($const_defaults, $this->http_app->get_defined());
     }
 }

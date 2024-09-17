@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework;
 
 class HashValidator
@@ -14,8 +23,8 @@ class HashValidator
      *
      * @return bool Returns true if the string is a valid MD5 hash, otherwise false.
      */
-    public static function isMd5( $string )
+    public static function isMd5($string)
     {
-        return 32 == \strlen( $string ) && ctype_xdigit( $string );
+        return 32 == \strlen($string) && ctype_xdigit($string);
     }
 }

@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Tests\Helpers;
 
 use PHPUnit\Framework\TestCase;
@@ -39,7 +48,7 @@ class ConfigDefaultTest extends TestCase
         // Mailer services checks
         foreach (['brevo', 'postmark', 'sendgrid', 'mailerlite'] as $service) {
             $this->assertArrayHasKey($service, $configs['mailer']);
-            if ( isset($configs['mailer'][$service]['apikey'])) {
+            if (isset($configs['mailer'][$service]['apikey'])) {
                 $this->assertEmpty($configs['mailer'][$service]['apikey']);
             }
         }
@@ -106,7 +115,7 @@ class ConfigDefaultTest extends TestCase
 
         // Public key checks
         $this->assertArrayHasKey('publickey', $configs);
-        $this->assertEquals('b75b666f-ac11-4342-b001-d2546f1d3a5b',$configs['publickey']['app-key']);
+        $this->assertEquals('b75b666f-ac11-4342-b001-d2546f1d3a5b', $configs['publickey']['app-key']);
         $this->assertEquals('pubkeys', $configs['directory']['publickey_dir']);
     }
 }

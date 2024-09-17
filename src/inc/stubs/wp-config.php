@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 use WPframework\App;
 
 /*
@@ -8,10 +17,10 @@ use WPframework\App;
  * It loads the necessary files and sets up the environment for the application to run.
  * This includes initializing the Composer autoloader, which is used to load classes and packages.
  */
-if ( file_exists( dirname( __DIR__ ) . '/vendor/autoload.php' ) ) {
-    require_once dirname( __DIR__ ) . '/vendor/autoload.php';
+if (file_exists(dirname(__DIR__) . '/vendor/autoload.php')) {
+    require_once dirname(__DIR__) . '/vendor/autoload.php';
 } else {
-    exit( 'Cannot find the vendor autoload file.' );
+    exit('Cannot find the vendor autoload file.');
 }
 
 /*
@@ -21,21 +30,21 @@ if ( file_exists( dirname( __DIR__ ) . '/vendor/autoload.php' ) ) {
  *
  * @var string|null RAYDIUM_ENVIRONMENT_TYPE The environment type, can be null to use the .env file setup.
  */
-if ( ! defined( 'RAYDIUM_ENVIRONMENT_TYPE' ) ) {
-    define( 'RAYDIUM_ENVIRONMENT_TYPE', null );
+if (! defined('RAYDIUM_ENVIRONMENT_TYPE')) {
+    define('RAYDIUM_ENVIRONMENT_TYPE', null);
 }
 
 
 /* That's all, stop editing! Happy publishing. */
 
-App::init( dirname( __DIR__ ) )->app( RAYDIUM_ENVIRONMENT_TYPE );
+App::init(dirname(__DIR__))->app(RAYDIUM_ENVIRONMENT_TYPE);
 
 // Set the table prefix.
-$table_prefix = env( 'DB_PREFIX' );
+$table_prefix = env('DB_PREFIX');
 
 // Define ABSPATH.
-if ( ! defined( 'ABSPATH' ) ) {
-    define( 'ABSPATH', __DIR__ . '/' );
+if (! defined('ABSPATH')) {
+    define('ABSPATH', __DIR__ . '/');
 }
 
 // Load WordPress settings

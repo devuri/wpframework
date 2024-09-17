@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework\Env;
 
 final class EnvTypes
@@ -40,9 +49,9 @@ final class EnvTypes
      *
      * @return bool True if valid, false otherwise.
      */
-    public static function isValid( ?string $type ): bool
+    public static function isValid(?string $type): bool
     {
-        return \in_array( $type, self::$envTypes, true );
+        return \in_array($type, self::$envTypes, true);
     }
 
     /**

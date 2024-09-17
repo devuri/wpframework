@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace WPframework;
 
 interface TenantInterface
@@ -25,5 +34,5 @@ interface TenantInterface
      *
      * @return bool True if the tenant ID matches the landlord's UUID, false otherwise.
      */
-    public function isLandlord( ?string $tenant_id = null ): bool;
+    public function isLandlord(?string $tenant_id = null): bool;
 }

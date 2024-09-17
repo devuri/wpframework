@@ -1,15 +1,24 @@
 <?php
 
-require_once \dirname( __FILE__, 2 ) . '/vendor/autoload.php';
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+require_once \dirname(__FILE__, 2) . '/vendor/autoload.php';
 
 // app test path
-\define('APP_SRC_PATH', \dirname( __FILE__, 2 ) . '/src' );
-\define('APP_TEST_PATH', __DIR__ );
-\define('APP_DIR_PATH', __DIR__ );
-\define('ABSPATH', __DIR__ );
-\define( 'WEBAPP_ENCRYPTION_KEY', APP_TEST_PATH . '/.secret.txt' );
-\define( 'SITE_CONFIGS_DIR', 'configs' );
-\define( 'IS_MULTITENANT', false );
+\define('APP_SRC_PATH', \dirname(__FILE__, 2) . '/src');
+\define('APP_TEST_PATH', __DIR__);
+\define('APP_DIR_PATH', __DIR__);
+\define('ABSPATH', __DIR__);
+\define('WEBAPP_ENCRYPTION_KEY', APP_TEST_PATH . '/.secret.txt');
+\define('SITE_CONFIGS_DIR', 'configs');
+\define('IS_MULTITENANT', false);
 
 // true to run unit tests.
 \define('WP_ENV_TEST_MODE', true);

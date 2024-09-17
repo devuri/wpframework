@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the WPframework package.
+ *
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 use Defuse\Crypto\Key;
 use Symfony\Component\Filesystem\Filesystem;
 use Urisoft\DotAccess;
@@ -24,9 +33,9 @@ use WPframework\Terminate;
  *
  * @return string
  */
-function asset( string $asset, ?string $path = null ): string
+function asset(string $asset, ?string $path = null): string
 {
-    return Asset::url( $asset, $path );
+    return Asset::url($asset, $path);
 }
 
 /**
@@ -36,9 +45,9 @@ function asset( string $asset, ?string $path = null ): string
  *
  * @return string
  */
-function assetUrl( ?string $path = null ): string
+function assetUrl(?string $path = null): string
 {
-    return Asset::url( '/', $path );
+    return Asset::url('/', $path);
 }
 
 /**
@@ -55,14 +64,14 @@ function assetUrl( ?string $path = null ): string
  * @return mixed The sanitized environment variable value, possibly encrypted or typecast,
  *               or transformed to lowercase if specified.
  */
-function env( $name, $default = null, $encrypt = false, $strtolower = false )
+function env($name, $default = null, $encrypt = false, $strtolower = false)
 {
     $encryption_path = \defined('APP_PATH') ? APP_PATH : APP_DIR_PATH;
     $env_var = null;
 
     static $env_instance = null;
     if (null === $env_instance) {
-        $env_instance = new Env( env_whitelist(), $encryption_path, false );
+        $env_instance = new Env(envWhitelist(), $encryption_path, false);
     }
 
     try {
@@ -87,7 +96,7 @@ function env( $name, $default = null, $encrypt = false, $strtolower = false )
  */
 function wpframeworkCore(): ?Framework
 {
-    if ( ! \defined( 'ABSPATH' ) ) {
+    if (! \defined('ABSPATH')) {
         exit;
     }
 
@@ -101,53 +110,53 @@ function wpframeworkCore(): ?Framework
  *
  * @psalm-return array{security: array{'brute-force': true, 'two-factor': true, 'no-pwned-passwords': true, 'admin-ips': array<empty, empty>}, mailer: array{brevo: array{apikey: mixed}, postmark: array{token: mixed}, sendgrid: array{apikey: mixed}, mailerlite: array{apikey: mixed}, mailgun: array{domain: mixed, secret: mixed, endpoint: mixed, scheme: 'https'}, ses: array{key: mixed, secret: mixed, region: mixed}}, sudo_admin: mixed, sudo_admin_group: null, web_root: 'public', s3uploads: array{bucket: mixed, key: mixed, secret: mixed, region: mixed, 'bucket-url': mixed, 'object-acl': mixed, expires: mixed, 'http-cache': mixed}, asset_dir: 'assets', content_dir: 'app', plugin_dir: 'plugins', mu_plugin_dir: 'mu-plugins', sqlite_dir: 'sqlitedb', sqlite_file: '.sqlite-wpdatabase', default_theme: 'brisko', disable_updates: true, can_deactivate: false, theme_dir: 'templates', error_handler: null, redis: array{disabled: mixed, host: mixed, port: mixed, password: mixed, adminbar: mixed, 'disable-metrics': mixed, 'disable-banners': mixed, prefix: mixed, database: mixed, timeout: mixed, 'read-timeout': mixed}, publickey: array{'app-key': mixed}}
  */
-function appConfig( ?string $file_path = null, ?string $filename = null ): array
+function appConfig(?string $file_path = null, ?string $filename = null): array
 {
-    $site_configs_dir = site_configs_dir();
+    $site_configs_dir = siteConfigsDir();
 
-    if ( ! $file_path && ! $filename ) {
+    if (! $file_path && ! $filename) {
         // return default app array.
-        return _default_configs();
+        return _defaultConfigs();
     }
 
     $options_file = "{$file_path}/{$site_configs_dir}/{$filename}.php";
 
-    if ( file_exists( $options_file ) && \is_array(@require $options_file) ) {
+    if (file_exists($options_file) && \is_array(@require $options_file)) {
         return require $options_file;
     }
-    if ( ! file_exists( $options_file ) ) {
-        return _default_configs();
+    if (! file_exists($options_file)) {
+        return _defaultConfigs();
     }
 
     return [];
 }
 
-function _default_configs(): array
+function _defaultConfigs(): array
 {
-    $default_configs_dir = _configs_dir();
+    $defaultConfigs_dir = _configsDir();
 
-    return require $default_configs_dir . '/app.php';
+    return require $defaultConfigs_dir . '/app.php';
 }
 
-function env_whitelist(): array
+function envWhitelist(): array
 {
     static $whitelist;
     static $whitelisted;
 
-    if ( \is_null( $whitelist ) ) {
-        $framework = new Urisoft\SimpleConfig( _configs_dir(), ['whitelist'] );
-        // $app = new Urisoft\SimpleConfig( site_configs_dir(), ['whitelist'] );
+    if (\is_null($whitelist)) {
+        $framework = new Urisoft\SimpleConfig(_configsDir(), ['whitelist']);
+        // $app = new Urisoft\SimpleConfig( siteConfigsDir(), ['whitelist'] );
         $whitelist = $framework->get('whitelist');
     }
 
-    if ( \is_null( $whitelisted ) ) {
-        $whitelisted = array_merge( $whitelist['framework'], $whitelist['wp']);
+    if (\is_null($whitelisted)) {
+        $whitelisted = array_merge($whitelist['framework'], $whitelist['wp']);
     }
 
     return $whitelisted;
 }
 
-function site_configs_dir(): ?string
+function siteConfigsDir(): ?string
 {
     return \defined('SITE_CONFIGS_DIR') ? SITE_CONFIGS_DIR : null;
 }
@@ -168,15 +177,15 @@ function site_configs_dir(): ?string
  *
  * @see https://github.com/devuri/dot-access DotAccess library used for dot notation access.
  */
-function config( ?string $key = null, $default = null )
+function config(?string $key = null, $default = null)
 {
     $_options = _wpframework()->options();
 
-    if ( \is_null( $key ) ) {
+    if (\is_null($key)) {
         return $_options;
     }
 
-    return $_options->get( $key, $default );
+    return $_options->get($key, $default);
 }
 
 /**
@@ -192,13 +201,13 @@ function config( ?string $key = null, $default = null )
  *
  * @see https://www.php.net/manual/en/function.hash-hmac.php
  */
-function envHash( $data, ?string $secretkey = null, string $algo = 'sha256' ): string
+function envHash($data, ?string $secretkey = null, string $algo = 'sha256'): string
 {
-    if ( \is_null( $secretkey ) ) {
-        return hash_hmac( $algo, $data, env( 'SECURE_AUTH_KEY' ) );
+    if (\is_null($secretkey)) {
+        return hash_hmac($algo, $data, env('SECURE_AUTH_KEY'));
     }
 
-    return hash_hmac( $algo, $data, $secretkey );
+    return hash_hmac($algo, $data, $secretkey);
 }
 
 /**
@@ -212,7 +221,7 @@ function envHash( $data, ?string $secretkey = null, string $algo = 'sha256' ): s
  *
  * @return string The sanitized input ready for safe usage within the application.
  */
-function wpSanitize( string $input ): string
+function wpSanitize(string $input): string
 {
     $input = trim($input);
     $input = strip_tags($input);
@@ -246,21 +255,21 @@ function cleanSensitiveEnv(array $sensitives): void
  *
  * @return array An array of required packages, or an empty array if the file doesn't exist or on error.
  */
-function get_packages( string $app_path ): array
+function get_packages(string $app_path): array
 {
     $composer_path = $app_path . DIRECTORY_SEPARATOR . 'composer.json';
 
     // Check if the composer.json file exists.
-    if ( ! is_file( $composer_path ) ) {
+    if (! is_file($composer_path)) {
         return [];
     }
 
     // Attempt to decode the JSON content from composer.json.
-    $composer_json = json_decode( file_get_contents( $composer_path ), true );
+    $composer_json = json_decode(file_get_contents($composer_path), true);
 
     // Check for JSON errors.
-    if ( JSON_ERROR_NONE !== json_last_error() ) {
-        error_log( 'json error');
+    if (JSON_ERROR_NONE !== json_last_error()) {
+        error_log('json error');
 
         return [];
     }
@@ -268,17 +277,17 @@ function get_packages( string $app_path ): array
     return $composer_json['require'] ?? [];
 }
 
-function _configs_dir(): string
+function _configsDir(): string
 {
     return  __DIR__ . '/configs';
 }
 
-function _wpframework( ?string $app_path = null ): ?Framework
+function _wpframework(?string $app_path = null): ?Framework
 {
     static $framework;
 
-    if ( \is_null( $framework ) ) {
-        $framework = new Framework( $app_path );
+    if (\is_null($framework)) {
+        $framework = new Framework($app_path);
     }
 
     return $framework;
@@ -307,7 +316,7 @@ function _wpframework( ?string $app_path = null ): ?Framework
  *               - '.env.local'
  *               - 'env.local'
  */
-function _supported_env_files(): array
+function _supportedEnvFiles(): array
 {
     return [
         'env',
@@ -325,11 +334,11 @@ function _supported_env_files(): array
 /**
  * Filters out environment files that do not exist to avoid warnings.
  */
-function _env_files_filter( array $env_files, string $app_path ): array
+function _envFilesFilter(array $env_files, string $app_path): array
 {
-    foreach ( $env_files as $key => $file ) {
-        if ( ! file_exists( $app_path . '/' . $file ) ) {
-            unset( $env_files[ $key ] );
+    foreach ($env_files as $key => $file) {
+        if (! file_exists($app_path . '/' . $file)) {
+            unset($env_files[ $key ]);
         }
     }
 
@@ -345,18 +354,18 @@ function _env_files_filter( array $env_files, string $app_path ): array
  *
  * @return bool Returns `true` if the application is in multi-tenant mode, otherwise `false`.
  */
-function is_multitenant_app(): bool
+function isMultitenantApp(): bool
 {
-    return \defined( 'ALLOW_MULTITENANT' ) && ALLOW_MULTITENANT === true;
+    return \defined('ALLOW_MULTITENANT') && ALLOW_MULTITENANT === true;
 }
 
-function get_wpframework_http_env(): ?string
+function getWpframeworkHttpEnv(): ?string
 {
-    if ( ! \defined( 'HTTP_ENV_CONFIG' ) ) {
+    if (! \defined('HTTP_ENV_CONFIG')) {
         return null;
     }
 
-    return strtoupper( HTTP_ENV_CONFIG );
+    return strtoupper(HTTP_ENV_CONFIG);
 }
 
 /**
@@ -370,7 +379,7 @@ function get_wpframework_http_env(): ?string
  *
  * @return array The modified array with the new upload directory's path and URL for the tenant.
  */
-function set_multitenant_upload_directory( $dir )
+function setMultitenantUploadDirectory($dir)
 {
     $custom_dir = '/tenant/' . APP_TENANT_ID . '/uploads';
 
@@ -390,33 +399,33 @@ function set_multitenant_upload_directory( $dir )
  *
  * @return string The formatted footer text.
  */
-function _framework_footer_label(): string
+function _frameworkFooterLabel(): string
 {
-    $home_url   = esc_url( home_url() );
-    $date_year  = gmdate( 'Y' );
-    $site_name  = esc_html( get_bloginfo( 'name' ) );
+    $home_url   = esc_url(home_url());
+    $date_year  = gmdate('Y');
+    $site_name  = esc_html(get_bloginfo('name'));
 
     // admin only info.
-    if ( current_user_can('manage_options')) {
-        $tenant_id = esc_html( APP_TENANT_ID );
-        $http_env  =  strtolower( esc_html( HTTP_ENV_CONFIG ) );
+    if (current_user_can('manage_options')) {
+        $tenant_id = esc_html(APP_TENANT_ID);
+        $http_env  = strtolower(esc_html(HTTP_ENV_CONFIG));
     } else {
         $tenant_id = null;
         $http_env  =  null;
     }
 
-    return wp_kses_post( "&copy; $date_year <a href=\"$home_url\" target=\"_blank\">$site_name</a> " . __( 'All Rights Reserved.', 'wp-framework' ) . " $tenant_id $http_env" );
+    return wp_kses_post("&copy; $date_year <a href=\"$home_url\" target=\"_blank\">$site_name</a> " . __('All Rights Reserved.', 'wp-framework') . " $tenant_id $http_env");
 }
 
-function _framework_current_theme_info(): array
+function _frameworkCurrentThemeInfo(): array
 {
     $current_theme = wp_get_theme();
 
     // Check if the current theme is available
-    if ( $current_theme->exists() ) {
+    if ($current_theme->exists()) {
         return [
             'available'  => true,
-            'theme_info' => $current_theme->get( 'Name' ) . ' is available.',
+            'theme_info' => $current_theme->get('Name') . ' is available.',
         ];
     }
 
@@ -433,11 +442,11 @@ function _framework_current_theme_info(): array
  * @param string $app_http_host
  * @param array  $available_files
  */
-function try_regenerate_env_file( string $app_path, string $app_http_host, array $available_files = [] ): void
+function tryRegenerateEnvFile(string $app_path, string $app_http_host, array $available_files = []): void
 {
     $app_main_env_file = "{$app_path}/.env";
-    if ( ! file_exists( $app_main_env_file ) && empty( $available_files ) ) {
-        $generator = new EnvGenerator( new Filesystem() );
-        $generator->create( $app_main_env_file, $app_http_host );
+    if (! file_exists($app_main_env_file) && empty($available_files)) {
+        $generator = new EnvGenerator(new Filesystem());
+        $generator->create($app_main_env_file, $app_http_host);
     }
 }
