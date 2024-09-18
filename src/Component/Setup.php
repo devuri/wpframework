@@ -70,7 +70,14 @@ class Setup implements SetupInterface
         return self::$instance;
     }
 
-    public function config($environment = null, ?bool $setup = true): SetupInterface
+    /**
+     * @return static
+     *
+     * @param (false|mixed|null|string)[]|null $environment
+     *
+     * @psalm-param array{environment: 'testing'|mixed|null, error_log: string, debug: false, errors: mixed}|null $environment
+     */
+    public function config(?array $environment = null, ?bool $setup = true): SetupInterface
     {
         $this->isRequired();
 
@@ -117,7 +124,10 @@ class Setup implements SetupInterface
         $this->switcher = $switcher;
     }
 
-    public function setEnvironment(): SetupInterface
+    /**
+     * @return static
+     */
+    public function setEnvironment(): self
     {
         $this->define('WP_DEVELOPMENT_MODE', self::wpDevelopmentMode());
 
@@ -153,6 +163,9 @@ class Setup implements SetupInterface
         return $this->environment;
     }
 
+    /**
+     * @return static
+     */
     public function setErrorHandler(?string $handler = null): SetupInterface
     {
         if (! $this->enableErrorHandler()) {
@@ -182,7 +195,12 @@ class Setup implements SetupInterface
         return $this;
     }
 
-    public function debug($errorLogsDir): SetupInterface
+    /**
+     * @return static
+     *
+     * @param null|string $errorLogsDir
+     */
+    public function debug(?string $errorLogsDir): SetupInterface
     {
         if (false === $this->environment && env('WP_ENVIRONMENT_TYPE')) {
             $this->resetEnvironment(env('WP_ENVIRONMENT_TYPE'));
@@ -210,6 +228,9 @@ class Setup implements SetupInterface
         }
     }
 
+    /**
+     * @return static
+     */
     public function siteUrl(): SetupInterface
     {
         $this->define('WP_HOME', env('WP_HOME'));
@@ -218,6 +239,9 @@ class Setup implements SetupInterface
         return $this;
     }
 
+    /**
+     * @return static
+     */
     public function assetUrl(): SetupInterface
     {
         $this->define('ASSET_URL', env('ASSET_URL'));
@@ -225,6 +249,9 @@ class Setup implements SetupInterface
         return $this;
     }
 
+    /**
+     * @return static
+     */
     public function optimize(): SetupInterface
     {
         $this->define('CONCATENATE_SCRIPTS', env('CONCATENATE_SCRIPTS') ?? self::getConstant('optimize'));
@@ -232,6 +259,9 @@ class Setup implements SetupInterface
         return $this;
     }
 
+    /**
+     * @return static
+     */
     public function memory(): SetupInterface
     {
         $this->define('WP_MEMORY_LIMIT', env('MEMORY_LIMIT') ?? self::getConstant('memory'));
@@ -240,6 +270,9 @@ class Setup implements SetupInterface
         return $this;
     }
 
+    /**
+     * @return static
+     */
     public function forceSsl(): SetupInterface
     {
         $this->define('FORCE_SSL_ADMIN', env('FORCE_SSL_ADMIN') ?? self::getConstant('ssl_admin'));
@@ -248,6 +281,9 @@ class Setup implements SetupInterface
         return $this;
     }
 
+    /**
+     * @return static
+     */
     public function autosave(): SetupInterface
     {
         $this->define('AUTOSAVE_INTERVAL', env('AUTOSAVE_INTERVAL') ?? self::getConstant('autosave'));
@@ -256,6 +292,9 @@ class Setup implements SetupInterface
         return $this;
     }
 
+    /**
+     * @return static
+     */
     public function database(): SetupInterface
     {
         $this->define('DB_NAME', env('DB_NAME'));
@@ -268,6 +307,9 @@ class Setup implements SetupInterface
         return $this;
     }
 
+    /**
+     * @return static
+     */
     public function salts(): SetupInterface
     {
         $this->define('AUTH_KEY', env('AUTH_KEY'));
@@ -284,7 +326,16 @@ class Setup implements SetupInterface
         return $this;
     }
 
-    protected function normalizeEnvironment($environment): array
+    /**
+     * @param null|string[] $environment
+     *
+     * @psalm-param array<string>|null $environment
+     *
+     * @return (false|null|string)[]
+     *
+     * @psalm-return array{environment: null|string, error_log: null|string, debug: false|null|string, errors: false|null|string,...}
+     */
+    protected function normalizeEnvironment(?array $environment): array
     {
         if (! \is_array($environment)) {
             $environment = [ 'environment' => $environment ];
@@ -301,7 +352,10 @@ class Setup implements SetupInterface
         );
     }
 
-    protected function determineEnvironment($environment)
+    /**
+     * @param null|string $environment
+     */
+    protected function determineEnvironment(?string $environment)
     {
         if (\is_bool($environment) || \is_string($environment)) {
             return $environment;
@@ -337,6 +391,11 @@ class Setup implements SetupInterface
         }
     }
 
+    /**
+     * @return string[]
+     *
+     * @psalm-return list{'env', '.env', '.env.secure', '.env.prod', '.env.staging', '.env.dev', '.env.debug', '.env.local', 'env.local'}
+     */
     protected function getDefaultFileNames(): array
     {
         return [

@@ -197,11 +197,11 @@ function config(?string $key = null, $default = null)
  * @param string $secretkey Secret key used for generating the HMAC variant.
  * @param string $algo      Name of selected hashing algorithm (i.e. "md5", "sha256", "haval160,4", etc..)
  *
- * @return string Returns a string containing the calculated hash value.
+ * @return false|string Returns a string containing the calculated hash value.
  *
  * @see https://www.php.net/manual/en/function.hash-hmac.php
  */
-function envHash($data, ?string $secretkey = null, string $algo = 'sha256'): string
+function envHash($data, ?string $secretkey = null, string $algo = 'sha256')
 {
     if (\is_null($secretkey)) {
         return hash_hmac($algo, $data, env('SECURE_AUTH_KEY'));
@@ -304,17 +304,9 @@ function _wpframework(?string $app_path = null): ?Framework
  *
  * @since [version number]
  *
- * @return array An array of default file names for environment configurations.
- *               The array includes the following file names:
- *               - 'env'
- *               - '.env'
- *               - '.env.secure'
- *               - '.env.prod'
- *               - '.env.staging'
- *               - '.env.dev'
- *               - '.env.debug'
- *               - '.env.local'
- *               - 'env.local'
+ * @return string[] An array of default file names for environment configurations. The array includes the following file names: - 'env' - '.env' - '.env.secure' - '.env.prod' - '.env.staging' - '.env.dev' - '.env.debug' - '.env.local' - 'env.local'
+ *
+ * @psalm-return list{'env', '.env', '.env.secure', '.env.prod', '.env.staging', '.env.dev', '.env.debug', '.env.local', 'env.local'}
  */
 function _supportedEnvFiles(): array
 {
@@ -377,9 +369,11 @@ function getWpframeworkHttpEnv(): ?string
  *
  * @param array $dir The array containing the current upload directory's path and URL.
  *
- * @return array The modified array with the new upload directory's path and URL for the tenant.
+ * @return (mixed|string)[]
+ *
+ * @psalm-return array{basedir: 'public/content/tenant//uploads', baseurl: string, path: string, url: string,...}
  */
-function setMultitenantUploadDirectory($dir)
+function setMultitenantUploadDirectory($dir): array
 {
     $custom_dir = '/tenant/' . APP_TENANT_ID . '/uploads';
 
@@ -417,6 +411,11 @@ function _frameworkFooterLabel(): string
     return wp_kses_post("&copy; $date_year <a href=\"$home_url\" target=\"_blank\">$site_name</a> " . __('All Rights Reserved.', 'wp-framework') . " $tenant_id $http_env");
 }
 
+/**
+ * @return (bool|string)[]
+ *
+ * @psalm-return array{available: bool, error_message?: 'The current active theme is not available.', theme_info?: string}
+ */
 function _frameworkCurrentThemeInfo(): array
 {
     $current_theme = wp_get_theme();

@@ -18,9 +18,9 @@ interface KernelInterface
     /**
      * Returns the application setup instance.
      *
-     * @return Setup
+     * @return null|Setup
      */
-    public function get_app(): Setup;
+    public function get_app(): ?Setup;
 
     /**
      * Retrieves the security settings of the application.

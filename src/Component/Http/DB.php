@@ -69,7 +69,10 @@ class DB
     }
 
     // Get records based on a specified condition
-    public function where($column, $value)
+    /**
+     * @psalm-param 'domain' $column
+     */
+    public function where(string $column, string $value)
     {
         $query = 'SELECT * FROM ' . $this->table . ' WHERE ' . $column . ' = :value';
         $stmt  = $this->connect()->prepare($query);

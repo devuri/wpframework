@@ -35,7 +35,10 @@ class Terminate
     }
 
     // mixed returned
-    public function get_error($key)
+    /**
+     * @psalm-param 'code'|'message' $key
+     */
+    public function get_error(string $key)
     {
         return $this->errors->get($key);
     }
@@ -73,7 +76,9 @@ class Terminate
      *
      * @param array $error_details The error details provided.
      *
-     * @return array The message and status code.
+     * @return (array|int|mixed|string)[] The message and status code.
+     *
+     * @psalm-return array{message: 'An error occurred'|mixed, code: 500|mixed, debug: array<never, never>|mixed,...}
      */
     protected function parse_error(array $error_details): array
     {

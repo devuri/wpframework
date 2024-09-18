@@ -143,6 +143,11 @@ class EnvGenerator
 		END;
     }
 
+    /**
+     * @return string[]
+     *
+     * @psalm-return array<string, string>
+     */
     protected function wpsalts(): array
     {
         $saltsUrl     = 'https://api.wordpress.org/secret-key/1.1/salt/';
