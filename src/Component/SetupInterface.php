@@ -21,7 +21,7 @@ interface SetupInterface
      * @param null|string[] $environment .
      * @param bool          $setup       .
      */
-    public function config($environment = null, bool $setup = true): self;
+    public function config(?array $environment = null, ?bool $setup = true): self;
 
     /**
      * Debug Settings.
@@ -30,7 +30,7 @@ interface SetupInterface
      *
      * @return self
      */
-    public function debug($errorLogsDir): self;
+    public function debug(?string $errorLogsDir): self;
 
     /**
      * Symfony Debug.

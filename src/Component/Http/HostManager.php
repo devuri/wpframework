@@ -53,7 +53,9 @@ class HostManager implements HostInterface
     /**
      * Extracts the host domain and determines the protocol prefix.
      *
-     * @return array An associative array with 'prefix' (protocol) and 'domain' (host domain).
+     * @return (false|string)[] An associative array with 'prefix' (protocol) and 'domain' (host domain).
+     *
+     * @psalm-return array{prefix: 'http'|'https', domain: false|string}
      */
     public function get_server_host(): array
     {

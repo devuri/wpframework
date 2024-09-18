@@ -327,9 +327,9 @@ abstract class AbstractKernel implements KernelInterface
     /**
      * Retrieves the Setup object associated with the application.
      *
-     * @return Setup The Setup object for the application configuration and environment.
+     * @return Setup|null The Setup object for the application configuration and environment.
      */
-    public function get_app(): Setup
+    public function get_app(): ?Setup
     {
         return $this->app_setup;
     }
@@ -413,6 +413,8 @@ abstract class AbstractKernel implements KernelInterface
      * Retrieves all keys stored in the environment secrets array.
      *
      * @return (int|string)[] An array of keys representing the stored secrets.
+     *
+     * @psalm-return list<array-key>
      */
     public function get_secret(): array
     {
@@ -426,7 +428,7 @@ abstract class AbstractKernel implements KernelInterface
      * @param null|string $environment_type The environment type to initialize with.
      * @param bool        $constants        Whether to load default constants.
      *
-     * @return KernelInterface
+     * @return static
      */
     public function app(?string $environment_type = null, bool $constants = true): KernelInterface
     {
@@ -526,8 +528,10 @@ abstract class AbstractKernel implements KernelInterface
     /**
      * Determines the configuration file to use based on the application's mode and tenant ID.
      * Falls back to the default configuration if no tenant-specific configuration is found.
+     *
+     * @return static
      */
-    protected function configuration_overrides(): KernelInterface
+    protected function configuration_overrides(): self
     {
         $config_override_file = $this->get_tenant_config_file();
 
@@ -562,7 +566,7 @@ abstract class AbstractKernel implements KernelInterface
     /**
      * Gets the default configuration file, preferring the one in the configs directory.
      *
-     * @return string Path to the default configuration file.
+     * @return null|string Path to the default configuration file.
      */
     protected function get_default_config_file(): ?string
     {
@@ -632,7 +636,9 @@ abstract class AbstractKernel implements KernelInterface
      * the error log directory based on the presence of a tenant ID, allowing
      * for tenant-specific error logging.
      *
-     * @return array The array of environment-specific arguments.
+     * @return (false|mixed|null|string)[]
+     *
+     * @psalm-return array{environment: null, error_log: string, debug: false, errors: mixed}
      */
     protected function environment_args(): array
     {
@@ -680,6 +686,8 @@ abstract class AbstractKernel implements KernelInterface
      * inform users about the temporary unavailability of the service.
      *
      * @return string The maintenance message to be displayed to users.
+     *
+     * @psalm-return 'Service Unavailable: <br>The server is currently unable to handle the request due to temporary maintenance of the server.'
      */
     private static function get_maintenance_message(): string
     {
@@ -689,7 +697,7 @@ abstract class AbstractKernel implements KernelInterface
     /**
      * Retrieve the current month.
      *
-     * @return string The current month value (formatted as "01"-"12").
+     * @return numeric-string The current month value (formatted as "01"-"12").
      */
     private function get_current_month(): string
     {
@@ -699,7 +707,7 @@ abstract class AbstractKernel implements KernelInterface
     /**
      * Retrieve the current year.
      *
-     * @return string The current year value (formatted as "YYYY").
+     * @return numeric-string The current year value (formatted as "YYYY").
      */
     private function get_current_year(): string
     {

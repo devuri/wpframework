@@ -115,10 +115,9 @@ class App
      * passing it to the Kernel constructor. If `$this->config` is not an array,
      * the application is terminated with an error message to prevent type errors.
      *
-     * @return KernelInterface Returns an instance of Kernel initialized with the
-     *                         application path, configuration array, and setup object.
+     * @return Kernel Returns an instance of Kernel initialized with the application path, configuration array, and setup object.
      */
-    public function kernel(): KernelInterface
+    public function kernel(): Kernel
     {
         if (! \is_array($this->config)) {
             $debug = [
@@ -149,9 +148,9 @@ class App
      * @throws Exception If there are issues loading environment variables or initializing the App.
      * @throws Exception If required multi-tenant environment variables are missing or if the tenant's domain is not recognized.
      *
-     * @return KernelInterface The initialized application kernel.
+     * @return Kernel The initialized application kernel.
      */
-    public static function init(string $app_path, string $options_file = 'app'): KernelInterface
+    public static function init(string $app_path, string $options_file = 'app'): Kernel
     {
         if (! \defined('SITE_CONFIGS_DIR')) {
             \define('SITE_CONFIGS_DIR', 'configs');
@@ -273,6 +272,6 @@ class App
 
     private static function is_required_tenant_config(): bool
     {
-        return \defined('REQUIRE_TENANT_CONFIG') && REQUIRE_TENANT_CONFIG === true;
+        return \defined('REQUIRE_TENANT_CONFIG') && constant('REQUIRE_TENANT_CONFIG') === true;
     }
 }
