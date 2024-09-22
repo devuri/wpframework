@@ -46,7 +46,7 @@ trait ConstantBuilderTrait
     {
         if ($this->is_defined($const)) {
             return;
-            // throw new ConstantAlreadyDefinedException( "Constant: $const has already been defined" );
+            // throw new ConstantAlreadyDefinedException( "Constant: $const has already been defined upstream" );
         }
 
         \define($const, $value);

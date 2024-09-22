@@ -64,3 +64,26 @@ Consider adding a config file if you need to:
 - **Multi-Tenant Platform**: Operating a multi-tenant platform? Create a unique `config.php` file for each tenant within their respective directories to ensure customized experiences.
 
 > This guide aims to provide you with a clear understanding of the framework's flexible and intelligent const configuration system. By following these guidelines, you can tailor the framework to meet your exact requirements, whether you're managing a simple site or a complex, multi-tenant platform.
+
+## Initial Framework Constants
+
+Before setting up the full environment, the framework defines several key initial constants. These constants form the foundation for determining configuration paths, application root, and the environment type. If these constants are not already defined, default values are assigned.
+
+> [!DANGER]
+> **Modifying Initial Constants:** Modifying these initial constants can lead to **unexpected behavior** if not handled carefully. These constants are fundamental to the proper functioning of the framework setup. Ensure that any modifications are thoroughly tested to avoid breaking the initialization process or causing instability in the application.
+
+## **Initial Constants**
+
+- **`SITE_CONFIGS_DIR`**:  
+  Specifies the directory where site-specific configuration files are stored. By default, it is set to `'configs'`.
+
+- **`APP_DIR_PATH`**:  
+  Defines the root path of the application. This constant points to the main application directory, allowing the framework to locate necessary files.
+
+- **`APP_HTTP_HOST`**:  
+  Sets the HTTP host for the application. By default, this is dynamically determined from the current environment.
+
+- **`RAYDIUM_ENVIRONMENT_TYPE`**:  
+  Identifies the environment type for the application (e.g., development, production). By default, it is set to `null`.
+
+> These initial constants are fundamental for setting up the environment, and their default values ensure that the application has a solid foundation before other constants are set.

@@ -210,81 +210,76 @@ abstract class AbstractKernel implements KernelInterface
      */
     public function set_config_constants(): void
     {
-        // define app_path.
+        /** -------------------------------------
+         * Framework Required Constants
+         * -------------------------------------- */
+
+        // Define app path.
         $this->define('APP_PATH', $this->get_app_path());
 
-        // set app http host.
+        // Set app HTTP host.
         $this->define('APP_HTTP_HOST', self::http()->get_http_host());
 
-        // define public web root dir.
+        // Define public web root directory.
         $this->define('PUBLIC_WEB_DIR', APP_PATH . '/' . $this->args->get('directory.web_root_dir'));
 
-        // wp dir path
-        $this->define('WP_DIR_PATH', PUBLIC_WEB_DIR . '/' . $this->args->get('wp_dir_path'));
-
-        // define assets dir.
+        // Define assets directory.
         $this->define('APP_ASSETS_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.asset_dir'));
 
         // Directory PATH.
         $this->define('APP_CONTENT_DIR', $this->args->get('directory.content_dir'));
-        $this->define('WP_CONTENT_DIR', PUBLIC_WEB_DIR . '/' . APP_CONTENT_DIR);
-        $this->define('WP_CONTENT_URL', env('WP_HOME') . '/' . APP_CONTENT_DIR);
 
-        /*
-         * Themes, prefer '/templates'
-         *
-         * This requires mu-plugin or add `register_theme_directory( APP_THEME_DIR );`
-         *
-         * path should be a folder within WP_CONTENT_DIR
-         *
-         * @link https://github.com/devuri/custom-wordpress-theme-dir
-         */
-        if ($this->args->get('directory.theme_dir')) {
-            $this->define('APP_THEME_DIR', $this->args->get('directory.theme_dir'));
-        }
-
-        // Plugins.
-        $this->define('WP_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.plugin_dir'));
-        $this->define('WP_PLUGIN_URL', env('WP_HOME') . '/' . $this->args->get('directory.plugin_dir'));
-
-        // Must-Use Plugins.
-        $this->define('WPMU_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.mu_plugin_dir'));
-        $this->define('WPMU_PLUGIN_URL', env('WP_HOME') . '/' . $this->args->get('directory.mu_plugin_dir'));
-
-        // Disable any kind of automatic upgrade.
-        // this will be handled via composer.
-        $this->define('AUTOMATIC_UPDATER_DISABLED', $this->args->get('disable_updates'));
-
-        // Sudo admin (granted more privilages uses user ID).
+        // Sudo admin (granted more privileges, uses user ID).
         $this->define('WP_SUDO_ADMIN', $this->args->get('sudo_admin'));
 
         // A group of users with higher administrative privileges.
         $this->define('SUDO_ADMIN_GROUP', $this->args->get('sudo_admin_group'));
 
-        /*
-         * Prevent Admin users from deactivating plugins, true or false.
-         *
-         * @link https://gist.github.com/devuri/034ccb7c833f970192bb64317814da3b
-         */
-        $this->define('CAN_DEACTIVATE_PLUGINS', $this->args->get('can_deactivate'));
+        // Web app security encryption key.
+        $this->define('WEBAPP_ENCRYPTION_KEY', $this->args->get('security.encryption_key'));
 
-        // SQLite database location and filename.
+        // Define app theme directory.
+        if ($this->args->get('directory.theme_dir')) {
+            $this->define('APP_THEME_DIR', $this->args->get('directory.theme_dir'));
+        }
+
+        /** -------------------------------------
+         * SQLite for WordPress Constants
+         * --------------------------------------*/
+
+        // Define SQLite database location and filename.
         $this->define('DB_DIR', APP_PATH . '/' . $this->args->get('directory.sqlite_dir'));
         $this->define('DB_FILE', $this->args->get('directory.sqlite_file'));
 
-        /*
-         * Slug of the default theme for this installation.
-         * Used as the default theme when installing new sites.
-         * It will be used as the fallback if the active theme doesn't exist.
-         *
-         * @see WP_Theme::get_core_default_theme()
-         */
+        /** -------------------------------------
+         * WordPress Core Constants
+         * -------------------------------------- */
+
+        // WordPress content directory.
+        $this->define('WP_CONTENT_DIR', PUBLIC_WEB_DIR . '/' . APP_CONTENT_DIR);
+        $this->define('WP_CONTENT_URL', env('WP_HOME') . '/' . APP_CONTENT_DIR);
+
+        // WordPress directory path.
+        $this->define('WP_DIR_PATH', PUBLIC_WEB_DIR . '/' . $this->args->get('wp_dir_path'));
+
+        // WordPress plugin directory.
+        $this->define('WP_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.plugin_dir'));
+        $this->define('WP_PLUGIN_URL', env('WP_HOME') . '/' . $this->args->get('directory.plugin_dir'));
+
+        // WordPress Must-Use plugin directory.
+        $this->define('WPMU_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.mu_plugin_dir'));
+        $this->define('WPMU_PLUGIN_URL', env('WP_HOME') . '/' . $this->args->get('directory.mu_plugin_dir'));
+
+        // Disable automatic updates (handled via composer).
+        $this->define('AUTOMATIC_UPDATER_DISABLED', $this->args->get('disable_updates'));
+
+        // Default theme for WordPress installation.
         $this->define('WP_DEFAULT_THEME', $this->args->get('default_theme'));
 
-        // home url md5 value.
+        // Home URL MD5 hash for cookies.
         $this->define('COOKIEHASH', md5(env('WP_HOME')));
 
-        // Defines cookie-related override for WordPress constants.
+        // Cookie-related WordPress constants.
         $this->define('USER_COOKIE', 'wpc_user_' . COOKIEHASH);
         $this->define('PASS_COOKIE', 'wpc_pass_' . COOKIEHASH);
         $this->define('AUTH_COOKIE', 'wpc_' . COOKIEHASH);
@@ -292,36 +287,28 @@ abstract class AbstractKernel implements KernelInterface
         $this->define('LOGGED_IN_COOKIE', 'wpc_logged_in_' . COOKIEHASH);
         $this->define('TEST_COOKIE', md5('wpc_test_cookie' . env('WP_HOME')));
 
-        // SUCURI
+        /** -------------------------------------
+         * WordPress Plugin-Related Constants
+         * -------------------------------------- */
+
+        // Prevent admin users from deactivating plugins.
+        $this->define('CAN_DEACTIVATE_PLUGINS', $this->args->get('can_deactivate'));
+
+        // SUCURI WAF (Web Application Firewall) enablement.
         $this->define('ENABLE_SUCURI_WAF', $this->args->get('sucuri_waf'));
-        // $this->define( 'SUCURI_DATA_STORAGE', ABSPATH . '../../storage/logs/sucuri' );
 
-        /*
-         * Redis cache configuration for the WordPress application.
-         *
-         * This array contains configuration settings for the Redis cache integration in WordPress.
-         * For detailed installation instructions, refer to the documentation at:
-         * @link https://github.com/rhubarbgroup/redis-cache/blob/develop/INSTALL.md
-         *
-         * @return void
-         */
+        // Redis cache configuration.
         $this->define('WP_REDIS_DISABLED', $this->args->get('redis.disabled'));
-
         $this->define('WP_REDIS_PREFIX', $this->args->get('redis.prefix'));
         $this->define('WP_REDIS_DATABASE', $this->args->get('redis.database'));
         $this->define('WP_REDIS_HOST', $this->args->get('redis.host'));
         $this->define('WP_REDIS_PORT', $this->args->get('redis.port'));
         $this->define('WP_REDIS_PASSWORD', $this->args->get('redis.password'));
-
         $this->define('WP_REDIS_DISABLE_ADMINBAR', $this->args->get('redis.adminbar'));
         $this->define('WP_REDIS_DISABLE_METRICS', $this->args->get('redis.disable-metrics'));
         $this->define('WP_REDIS_DISABLE_BANNERS', $this->args->get('redis.disable-banners'));
-
         $this->define('WP_REDIS_TIMEOUT', $this->args->get('redis.timeout'));
         $this->define('WP_REDIS_READ_TIMEOUT', $this->args->get('redis.read-timeout'));
-
-        // web app security key
-        $this->define('WEBAPP_ENCRYPTION_KEY', $this->args->get('security.encryption_key'));
     }
 
     /**
@@ -610,7 +597,6 @@ abstract class AbstractKernel implements KernelInterface
                 Terminate::exit([ self::get_maintenance_message(), 503 ]);
 
                 break;
-                // Terminate the loop after the first match.
             }
         }
     }

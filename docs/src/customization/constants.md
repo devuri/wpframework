@@ -1,6 +1,8 @@
 # Defining Constants
 
-In the Raydium Framework, constants play a crucial role in configuring and customizing your WordPress application. Raydium is designed to streamline the setup process, automatically defining most of the required constants to get your site up and running efficiently. However, there might be scenarios where you need to define additional constants or customize existing ones to suit your project's specific requirements.
+In the Raydium Framework, constants play a crucial role in configuring and customizing your WordPress application. Raydium is designed to streamline the setup process, automatically defining most of the required constants to get your site up and running efficiently. However, there might be scenarios where you need to define additional constants, [override framework constants](../customization/const-overrides) or customize existing ones to suit your project's specific requirements.
+
+> Read more about how the framework handles [constant definitions](../customization/const-overrides).
 
 ## Customizing Constants
 
