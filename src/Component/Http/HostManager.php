@@ -40,7 +40,7 @@ class HostManager implements HostInterface
     public function get_http_host(): string
     {
         if (isset($_SERVER['HTTP_HOST'])) {
-            $httpHost = $this->_sanitize_http_host($_SERVER['HTTP_HOST']);
+            $httpHost = $this->sanitize_http_host($_SERVER['HTTP_HOST']);
 
             if ($httpHost) {
                 return strtolower(rtrim($httpHost, '/'));
@@ -101,7 +101,7 @@ class HostManager implements HostInterface
      *
      * @return null|string The sanitized host or null if invalid.
      */
-    protected function _sanitize_http_host(string $httpHost): ?string
+    protected function sanitize_http_host(string $httpHost): ?string
     {
         $sanitizedHost = filter_var($httpHost, FILTER_SANITIZE_URL);
 
