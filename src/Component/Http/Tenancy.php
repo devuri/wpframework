@@ -20,11 +20,6 @@ use WPframework\Terminate;
 
 class Tenancy
 {
-    /**
-     * List of constants defined.
-     *
-     * @var array
-     */
     protected static $constants = [];
     private $appPath;
     private $configs_dir;
