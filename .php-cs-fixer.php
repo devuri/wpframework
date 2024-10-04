@@ -38,7 +38,6 @@ return (new PhpCsFixer\Config())
         'yoda_style' => false,
 		'protected_to_private' => false,
 		'header_comment' => ['header' => $sourceCodeHeader],
-		'trailing_comma_in_multiline' => ['elements' => ['arrays', 'match', 'parameters']],
     ])
     ->setLineEnding("\n")
     ->setIndent(str_repeat(' ', 4)) // Use 4 spaces for indentation
