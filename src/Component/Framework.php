@@ -24,10 +24,10 @@ class Framework
     {
         if ($appPath) {
             $this->appPath     = $appPath;
-            $this->app_options = $this->_app_options($this->appPath);
+            $this->app_options = $this->_app_options();
         } else {
             $this->appPath     = \defined('APP_PATH') ? APP_PATH : APP_DIR_PATH;
-            $this->app_options = $this->_app_options($this->appPath);
+            $this->app_options = $this->_app_options();
         }
 
         self::$_all_app_options = $this->app_options;
@@ -78,23 +78,18 @@ class Framework
     /**
      * Options set in the framework configs/app.php.
      *
-     * @param null|string $app_path the current application path.
-     *
-     * @return null|array
+     * @return array
      */
-    private function _app_options(?string $app_path = null): ?array
+    private function _app_options(): array
     {
-        $options_file    = $app_path . '/' . siteConfigsDir() . '/app.php';
-        $defaultConfigs = _configsDir() . '/app.php';
+        $site_options = Config::siteConfig($this->tenant()->getCurrentPath());
 
-        if (! file_exists($options_file)) {
-            $app_options = require $defaultConfigs;
-        } elseif (file_exists($options_file)) {
-            $app_options = require $options_file;
-        } else {
-            $app_options = null;
+        if (empty($site_options)) {
+            $site_options = Config::getDefault();
         }
 
-        return \is_array($app_options) ? $app_options : null;
+		// TODO fix: these are usually merged in the kernel, results here are not merged.
+
+        return $site_options;
     }
 }

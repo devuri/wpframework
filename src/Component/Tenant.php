@@ -67,13 +67,12 @@ class Tenant implements TenantInterface
      * If the tenant-specific file does not exist (and 'find_or_fail' is false), it falls back to a default file path.
      * If neither file is found, or the application is not in multi-tenant mode, null is returned.
      *
-     * @param string $file         The name of the file (without the .php extension).
      * @param string $dir          The directory within the app path where the file should be located.
      * @param bool   $find_or_fail Whether to fail if the tenant-specific file is not found.
      *
      * @return null|string The path to the file if found, or null otherwise.
      */
-    public function getTenantFilePath(string $file, string $dir, bool $find_or_fail = false): ?string
+    public function getTenantFilePath(string $dir, bool $find_or_fail = false): ?string
     {
         if ($this->isMultitenantApp() && \defined('APP_TENANT_ID')) {
             $tenant_id = APP_TENANT_ID;
@@ -82,7 +81,7 @@ class Tenant implements TenantInterface
         }
 
         // Construct the path for the tenant-specific file
-        $tenant_file_path = "{$this->getCurrentPath()}/{$file}.php";
+        $tenant_file_path = "{$this->getCurrentPath()}/app.php";
 
         // Check for the tenant file's existence
         if (file_exists($tenant_file_path)) {
@@ -93,7 +92,7 @@ class Tenant implements TenantInterface
         }
 
         // Construct the path for the fallback/default file
-        $fallback_file_path = "{$dir}/configs/{$file}.php";
+        $fallback_file_path = "{$dir}/configs/app.php";
 
         // Return the fallback file path if it exists
         return file_exists($fallback_file_path) ? $fallback_file_path : null;
@@ -140,7 +139,7 @@ class Tenant implements TenantInterface
      *
      * @return string The determined application path.
      */
-    private function determineEnvpath($base_path): string
+    private function determineEnvPath($base_path): string
     {
         if ($this->isMultitenantApp() && \defined('APP_TENANT_ID')) {
             $configs_dir = SITE_CONFIGS_DIR;

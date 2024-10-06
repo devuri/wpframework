@@ -26,7 +26,7 @@ interface SetupInterface
     /**
      * Debug Settings.
      *
-     * @param false|string $errorLogsDir
+     * @param null|string $errorLogsDir
      *
      * @return self
      */

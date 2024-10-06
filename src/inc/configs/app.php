@@ -33,6 +33,7 @@ return [
     ],
 
     'directory'        => [
+        'wp_dir_path'   => 'wp',
         /*
          * Web Root: the public web directory.
          *
@@ -181,6 +182,7 @@ return [
      * }
      */
     'security'         => [
+        'sucuri_waf'         => false,
         'encryption_key'     => null,
         'brute-force'        => true,
         'two-factor'         => true,

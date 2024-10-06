@@ -80,14 +80,10 @@ class HostManager implements HostInterface
      *
      * @return null|string The full request URL or null if the app host is not available.
      */
-    public function get_request_url(): ?string
+    public function get_request_url(): string
     {
         $isHttps  = $this->is_https_secure();
         $app_host = $this->get_http_host();
-
-        if (\is_null($app_host)) {
-            return null;
-        }
 
         $protocol = $isHttps ? 'https' : 'http';
 

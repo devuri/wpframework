@@ -27,14 +27,14 @@ class ConfigDefaultTest extends TestCase
 
     public function test_app_config_returns_expected_structure_and_values(): void
     {
-        $configs = appConfig();
+        $configs = appConfig(APP_TEST_PATH);
 
         // Assert overall structure
         $this->assertIsArray($configs);
 
         // Security checks
         $this->assertArrayHasKey('security', $configs);
-        $this->assertCount(5, $configs['security']);
+        $this->assertCount(6, $configs['security']);
         $this->assertNull($configs['security']['encryption_key']);
         $this->assertTrue($configs['security']['brute-force']);
         $this->assertTrue($configs['security']['two-factor']);
