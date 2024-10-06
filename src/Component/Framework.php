@@ -88,6 +88,8 @@ class Framework
             $site_options = Config::getDefault();
         }
 
+		// TODO fix: these are usually merged in the kernel, results here are not merged.
+
         return $site_options;
     }
 }

@@ -124,7 +124,7 @@ abstract class AbstractKernel implements KernelInterface
             throw new InvalidArgumentException('Error: args must be of type array', 1);
         }
 
-        $this->args = new DotAccess(array_merge($this->args, $args));
+        $this->args = new DotAccess(self::multiMerge($this->args, $args));
 
         /*
          * Sets the name of the configuration `configs/config.php` file based on arguments.
@@ -700,5 +700,33 @@ abstract class AbstractKernel implements KernelInterface
         }
 
         return false;
+    }
+
+    /**
+     * Merges two multi-dimensional arrays recursively.
+     *
+     * This function will recursively merge the values of `$array2` into `$array1`.
+     * If the same key exists in both arrays, and both corresponding values are arrays,
+     * the values are recursively merged.
+     * Otherwise, values from `$array2` will overwrite those in `$array1`.
+     *
+     * @param array $array1 The base array that will be merged into.
+     * @param array $array2 The array with values to merge into `$array1`.
+     *
+     * @return array The merged array.
+     */
+    private static function multiMerge(array $array1, array $array2): array
+    {
+        $merged = $array1;
+
+        foreach ($array2 as $key => $value) {
+            if (isset($merged[$key]) && is_array($merged[$key]) && is_array($value)) {
+                $merged[$key] = self::multiMerge($merged[$key], $value);
+            } else {
+                $merged[$key] = $value;
+            }
+        }
+
+        return $merged;
     }
 }
