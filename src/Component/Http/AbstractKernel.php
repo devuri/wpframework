@@ -18,6 +18,7 @@ use WPframework\Env\EnvTypes;
 use WPframework\Setup;
 use WPframework\Terminate;
 use WPframework\Traits\ConstantBuilderTrait;
+use WPframework\Config;
 
 use function defined;
 
@@ -100,32 +101,7 @@ abstract class AbstractKernel implements KernelInterface
      */
     protected $env_type;
 
-    protected $args = [
-        'wp_dir_path'      => 'wp',
-        'wordpress'        => 'wp',
-        'directory'        => [
-            'web_root_dir'  => 'public',
-            'content_dir'   => 'content',
-            'plugin_dir'    => 'content/plugins',
-            'mu_plugin_dir' => 'content/mu-plugins',
-            'sqlite_dir'    => 'sqlitedb',
-            'sqlite_file'   => '.sqlite-wpdatabase',
-            'theme_dir'     => 'templates',
-            'asset_dir'     => 'assets',
-            'publickey_dir' => 'pubkeys',
-        ],
-        'default_theme'    => 'twentytwentythree',
-        'disable_updates'  => true,
-        'can_deactivate'   => true,
-        'templates_dir'    => null,
-        'error_handler'    => 'symfony',
-        'config_file'      => 'config',
-        'sudo_admin'       => null,
-        'sudo_admin_group' => null,
-        'sucuri_waf'       => false,
-        'redis'            => [],
-        'security'         => [],
-    ];
+    protected $args;
 
     /**
      * Constructs the AbstractKernel object and initializes the application setup.
@@ -142,15 +118,10 @@ abstract class AbstractKernel implements KernelInterface
     {
         $this->app_path    = $app_path;
         $this->configs_dir = SITE_CONFIGS_DIR;
-        $this->args        = array_merge($this->args, self::get_default_config());
+        $this->args        = self::get_default_config();
 
         if (! \is_array($args)) {
             throw new InvalidArgumentException('Error: args must be of type array', 1);
-        }
-
-        // @codingStandardsIgnoreLine
-        if (\array_key_exists('wordpress', $args)) {
-            $this->args['wp_dir_path'] = $args['wordpress'];
         }
 
         $this->args = new DotAccess(array_merge($this->args, $args));
@@ -220,7 +191,7 @@ abstract class AbstractKernel implements KernelInterface
         $this->define('PUBLIC_WEB_DIR', APP_PATH . '/' . $this->args->get('directory.web_root_dir'));
 
         // wp dir path
-        $this->define('WP_DIR_PATH', PUBLIC_WEB_DIR . '/' . $this->args->get('wp_dir_path'));
+        $this->define('WP_DIR_PATH', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.wp_dir_path'));
 
         // define assets dir.
         $this->define('APP_ASSETS_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.asset_dir'));
@@ -293,7 +264,7 @@ abstract class AbstractKernel implements KernelInterface
         $this->define('TEST_COOKIE', md5('wpc_test_cookie' . env('WP_HOME')));
 
         // SUCURI
-        $this->define('ENABLE_SUCURI_WAF', $this->args->get('sucuri_waf'));
+        $this->define('ENABLE_SUCURI_WAF', $this->args->get('security.sucuri_waf'));
         // $this->define( 'SUCURI_DATA_STORAGE', ABSPATH . '../../storage/logs/sucuri' );
 
         /*
@@ -364,7 +335,7 @@ abstract class AbstractKernel implements KernelInterface
      */
     public static function get_default_config(): array
     {
-        return _defaultConfigs();
+        return Config::getDefault();
     }
 
     public function get_args(): array

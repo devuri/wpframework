@@ -71,11 +71,10 @@ class App
      *
      * @param string $app_path    The base path of the application (e.g., __DIR__).
      * @param string $site_config The directory where configuration files are stored.
-     * @param string $options     The filename of the configuration options without extension (default: 'app').
      *
      * @throws Exception If the configuration file is missing or the loaded configuration is not an array.
      */
-    public function __construct(string $app_path, string $site_config, string $options = 'app')
+    public function __construct(string $app_path, string $site_config)
     {
         $this->app_path    = $app_path;
         $this->configs_dir = $site_config;
@@ -92,12 +91,12 @@ class App
          *
          * @var string
          */
-        $params_file = $this->setup->tenant()->getTenantFilePath($options, $this->app_path, self::is_required_tenant_config());
+        $tenant_options = $this->setup->tenant()->getTenantFilePath($this->app_path, self::is_required_tenant_config());
 
-        if (! empty($params_file)) {
-            $this->config = require $params_file;
+        if (! empty($tenant_options)) {
+            $this->config = require $tenant_options;
         } else {
-            $this->config = appConfig($this->app_path, $options);
+            $this->config = appConfig($this->app_path);
         }
 
         if (! \is_array($this->config)) {
@@ -143,14 +142,13 @@ class App
      * the tenant's domain is not recognized.
      *
      * @param string $app_path     The base directory path of the application (e.g., __DIR__).
-     * @param string $options_file Optional. The configuration filename, defaults to 'app'.
      *
      * @throws Exception If there are issues loading environment variables or initializing the App.
      * @throws Exception If required multi-tenant environment variables are missing or if the tenant's domain is not recognized.
      *
      * @return Kernel The initialized application kernel.
      */
-    public static function init(string $app_path, string $options_file = 'app'): Kernel
+    public static function init(string $app_path): Kernel
     {
         if (! \defined('SITE_CONFIGS_DIR')) {
             \define('SITE_CONFIGS_DIR', 'configs');
@@ -208,7 +206,7 @@ class App
         $tenancy->initialize($_dotenv);
 
         try {
-            $app = new self(APP_DIR_PATH, SITE_CONFIGS_DIR, $options_file);
+            $app = new self(APP_DIR_PATH, SITE_CONFIGS_DIR);
         } catch (Exception $e) {
             $debug = [
                 'path'      => APP_DIR_PATH,

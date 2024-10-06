@@ -29,33 +29,41 @@ class KernelWithArgsTest extends BaseTest
     public function test_get_settings_returns_expected_array(): void
     {
         $app_with_args = new Kernel(getenv('FAKE_APP_DIR_PATH'), [
-            'web_root_dir' => 'public',
-            'wordpress'   => 'cms',
-        ]);
-
-        $expected = [
-            'wp_dir_path'    => 'cms',
-            'wordpress'      => 'cms',
-            'directory'      => [
-                'web_root_dir'  => 'public',
-                'content_dir'   => 'content',
-                'plugin_dir'    => 'content/plugins',
-                'mu_plugin_dir' => 'content/mu-plugins',
+            'directory' => [
+                'wp_dir_path'   => 'cms',
+                'web_root_dir' => 'public',
+                'content_dir'   => 'wp-content',
+                'plugin_dir'    => 'wp-content/plugins',
+                'mu_plugin_dir' => 'wp-content/mu-plugins',
                 'sqlite_dir'    => 'sqlitedb',
                 'sqlite_file'   => '.sqlite-wpdatabase',
                 'theme_dir'     => 'templates',
-                'asset_dir'     => 'assets',
+                'asset_dir'     => 'asset',
                 'publickey_dir' => 'pubkeys',
             ],
-            'default_theme'     => 'twentytwentythree',
+            'default_theme' => 'brisko',
+        ]);
+
+        $expected = [
+            'directory'      => [
+                'wp_dir_path'   => 'cms',
+                'web_root_dir'  => 'public',
+                'content_dir'   => 'wp-content',
+                'plugin_dir'    => 'wp-content/plugins',
+                'mu_plugin_dir' => 'wp-content/mu-plugins',
+                'sqlite_dir'    => 'sqlitedb',
+                'sqlite_file'   => '.sqlite-wpdatabase',
+                'theme_dir'     => 'templates',
+                'asset_dir'     => 'asset',
+                'publickey_dir' => 'pubkeys',
+            ],
+            'default_theme'     => 'brisko',
             'disable_updates'   => true,
             'can_deactivate'    => true,
-            'templates_dir'     => null,
             'error_handler'     => null,
             'config_file'       => 'config',
             'sudo_admin'        => 1,
             'sudo_admin_group'  => null,
-            'sucuri_waf'        => false,
             'redis'             => [
                 'disabled'         => null,
                 'host'             => '127.0.0.1',
@@ -70,6 +78,7 @@ class KernelWithArgsTest extends BaseTest
                 'read-timeout'     => 1,
             ],
             'security'          => [
+                'sucuri_waf'          => false,
                 'encryption_key'      => null,
                 'brute-force'         => true,
                 'two-factor'          => true,
@@ -116,8 +125,7 @@ class KernelWithArgsTest extends BaseTest
             ],
             'publickey'         => [
                 'app-key' => 'b75b666f-ac11-4342-b001-d2546f1d3a5b',
-            ],
-            'web_root_dir'      => 'public',
+            ]
         ];
 
         $actual = $app_with_args->get_args();

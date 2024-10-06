@@ -42,83 +42,9 @@ class KernelTest extends TestCase
 
     public function test_default_args(): void
     {
-        $default = [
-            "terminate" => [
-                'debugger' => false,
-            ],
-            "directory" => [
-                "web_root_dir" => "public",
-                "content_dir" => "content",
-                "plugin_dir" => "content/plugins",
-                "mu_plugin_dir" => "content/mu-plugins",
-                "sqlite_dir" => "sqlitedb",
-                "sqlite_file" => ".sqlite-wpdatabase",
-                "theme_dir" => "templates",
-                "asset_dir" => "assets",
-                "publickey_dir" => "pubkeys",
-            ],
-            "security" => [
-                "encryption_key" => null,
-                "brute-force" => true,
-                "two-factor" => true,
-                "no-pwned-passwords" => true,
-                "admin-ips" => [],
-            ],
-            "mailer" => [
-                "brevo" => ["apikey" => ""],
-                "postmark" => ["token" => ""],
-                "sendgrid" => ["apikey" => ""],
-                "mailerlite" => ["apikey" => ""],
-                "mailgun" => [
-                    "domain" => "",
-                    "secret" => "",
-                    "endpoint" => "api.mailgun.net",
-                    "scheme" => "https",
-                ],
-                "ses" => [
-                    "key" => "",
-                    "secret" => "",
-                    "region" => "us-east-1",
-                ],
-            ],
-            "sudo_admin" => 1,
-            "sudo_admin_group" => null,
-            "s3uploads" => [
-                "bucket" => "site-uploads",
-                "key" => "",
-                "secret" => "",
-                "region" => "us-east-1",
-                "bucket-url" => "https://example.com",
-                "object-acl" => "public",
-                "expires" => "2 days",
-                "http-cache" => 300,
-            ],
-            "disable_updates" => 1,
-            "can_deactivate" => 1,
-            "error_handler" => null,
-            "redis" => [
-                "disabled" => false,
-                "host" => "127.0.0.1",
-                "port" => 6379,
-                "password" => "",
-                "adminbar" => false,
-                "disable-metrics" => false,
-                "disable-banners" => false,
-                "prefix" => "c984d06aafbecf6bc55569f964148ea3redis-cache",
-                "database" => 0,
-                "timeout" => 1,
-                "read-timeout" => 1,
-            ],
-            "publickey" => ["app-key" => "b75b666f-ac11-4342-b001-d2546f1d3a5b"],
-            "config_file" => "config",
-            "wp_dir_path" => "wp",
-            "wordpress" => "wp",
-            'sucuri_waf' => false,
-            "default_theme" => "twentytwentythree",
-            "templates_dir" => null,
-        ];
+        $default = self::getDefaultConfig();
 
-        // dump($this->http_app->get_args()->export());
+        ///dump($this->http_app->get_args());
 
         $this->assertEquals($default, $this->http_app->get_args());
     }
@@ -194,5 +120,92 @@ class KernelTest extends TestCase
         $this->assertEquals(39, $count);
 
         $this->assertEquals($const_defaults, $this->http_app->get_defined());
+    }
+
+    public static function getDefaultConfig()
+    {
+        return [
+            "error_handler" => null,
+            "config_file" => "config",
+            "terminate" => [
+                "debugger" => false,
+            ],
+            "directory" => [
+                "wp_dir_path" => "wp",
+                "web_root_dir" => "public",
+                "content_dir" => "content",
+                "plugin_dir" => "content/plugins",
+                "mu_plugin_dir" => "content/mu-plugins",
+                "sqlite_dir" => "sqlitedb",
+                "sqlite_file" => ".sqlite-wpdatabase",
+                "theme_dir" => "templates",
+                "asset_dir" => "assets",
+                "publickey_dir" => "pubkeys",
+            ],
+            "default_theme" => "twentytwentythree",
+            "disable_updates" => true,
+            "can_deactivate" => true,
+            "security" => [
+                "sucuri_waf" => false,
+                "encryption_key" => null,
+                "brute-force" => true,
+                "two-factor" => true,
+                "no-pwned-passwords" => true,
+                "admin-ips" => [],
+            ],
+            "mailer" => [
+                "brevo" => [
+                    "apikey" => null,
+                ],
+                "postmark" => [
+                    "token" => null,
+                ],
+                "sendgrid" => [
+                    "apikey" => null,
+                ],
+                "mailerlite" => [
+                    "apikey" => null,
+                ],
+                "mailgun" => [
+                    "domain" => null,
+                    "secret" => null,
+                    "endpoint" => "api.mailgun.net",
+                    "scheme" => "https",
+                ],
+                "ses" => [
+                    "key" => null,
+                    "secret" => null,
+                    "region" => "us-east-1",
+                ],
+            ],
+            "sudo_admin" => 1,
+            "sudo_admin_group" => null,
+            "s3uploads" => [
+                "bucket" => "site-uploads",
+                "key" => null,
+                "secret" => null,
+                "region" => "us-east-1",
+                "bucket-url" => "https://example.com",
+                "object-acl" => "public",
+                "expires" => "2 days",
+                "http-cache" => 300,
+            ],
+            "redis" => [
+                "disabled" => null,
+                "host" => "127.0.0.1",
+                "port" => 6379,
+                "password" => null,
+                "adminbar" => null,
+                "disable-metrics" => null,
+                "disable-banners" => null,
+                "prefix" => "c984d06aafbecf6bc55569f964148ea3redis-cache",
+                "database" => 0,
+                "timeout" => 1,
+                "read-timeout" => 1,
+            ],
+            "publickey" => [
+                "app-key" => "b75b666f-ac11-4342-b001-d2546f1d3a5b",
+            ],
+        ];
     }
 }
