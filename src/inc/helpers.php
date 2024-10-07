@@ -180,7 +180,7 @@ function config(?string $key = null, $default = null)
  * @param string $secretkey Secret key used for generating the HMAC variant.
  * @param string $algo      Name of selected hashing algorithm (i.e. "md5", "sha256", "haval160,4", etc..)
  *
- * @return false|string Returns a string containing the calculated hash value.
+ * @return string Returns a string containing the calculated hash value.
  *
  * @see https://www.php.net/manual/en/function.hash-hmac.php
  */
@@ -331,7 +331,7 @@ function _envFilesFilter(array $env_files, string $app_path): array
  */
 function isMultitenantApp(): bool
 {
-    return \defined('ALLOW_MULTITENANT') && ALLOW_MULTITENANT === true;
+    return \defined('ALLOW_MULTITENANT') && constant('ALLOW_MULTITENANT') === true;
 }
 
 function getWpframeworkHttpEnv(): ?string
@@ -352,9 +352,7 @@ function getWpframeworkHttpEnv(): ?string
  *
  * @param array $dir The array containing the current upload directory's path and URL.
  *
- * @return (mixed|string)[]
- *
- * @psalm-return array{basedir: 'public/content/tenant//uploads', baseurl: string, path: string, url: string,...}
+ * @return array
  */
 function setMultitenantUploadDirectory($dir): array
 {
@@ -384,7 +382,7 @@ function _frameworkFooterLabel(): string
 
     // admin only info.
     if (current_user_can('manage_options')) {
-        $tenant_id = esc_html(APP_TENANT_ID);
+        $tenant_id = APP_TENANT_ID;
         $http_env  = strtolower(esc_html(HTTP_ENV_CONFIG));
     } else {
         $tenant_id = null;

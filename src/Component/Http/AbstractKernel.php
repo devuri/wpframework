@@ -118,7 +118,7 @@ abstract class AbstractKernel implements KernelInterface
     {
         $this->app_path    = $app_path;
         $this->configs_dir = SITE_CONFIGS_DIR;
-        $this->args        = self::get_default_config();
+        $this->args        = self::getDefaultConfig();
 
         if (! \is_array($args)) {
             throw new InvalidArgumentException('Error: args must be of type array', 1);
@@ -325,20 +325,12 @@ abstract class AbstractKernel implements KernelInterface
         return $this->app_path;
     }
 
-    /**
-     * Retrieves the default application configuration.
-     *
-     * This method returns the application's default configuration settings
-     * by calling the `appConfig()` function.
-     *
-     * @return array The default configuration settings.
-     */
-    public static function get_default_config(): array
+    public static function getDefaultConfig(): array
     {
         return Config::getDefault();
     }
 
-    public function get_args(): array
+    public function getArgs(): array
     {
         return $this->args->export();
     }
@@ -362,7 +354,7 @@ abstract class AbstractKernel implements KernelInterface
      */
     public function get_app_config(): array
     {
-        return $this->get_args();
+        return $this->getArgs();
     }
 
     /**

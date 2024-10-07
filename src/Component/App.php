@@ -84,7 +84,7 @@ class App
          *
          * @var Setup
          */
-        $this->setup = self::define_setup($this->app_path);
+        $this->setup = self::defineSetup($this->app_path);
 
         /**
          * setup params.
@@ -104,7 +104,7 @@ class App
         }
 
         // handle errors early.
-        $this->set_app_errors();
+        $this->setAppErrors();
     }
 
     /**
@@ -169,7 +169,7 @@ class App
         $app_options         = [];
         $supported_env_files = _supportedEnvFiles();
 
-        // Filters out environment files that do not exist to avoid warnings.
+        // Filters out environment files that do not exist.
         $_env_files = _envFilesFilter($supported_env_files, APP_DIR_PATH);
 
         // load env from dotenv early.
@@ -231,7 +231,7 @@ class App
      *
      * @return Setup Returns a new Setup object configured with the provided application path.
      */
-    protected static function define_setup(string $app_path): Setup
+    protected static function defineSetup(string $app_path): Setup
     {
         return new Setup($app_path);
     }
@@ -239,7 +239,7 @@ class App
     /**
      * Set up the application error handling based on environment settings.
      */
-    protected function set_app_errors(): void
+    protected function setAppErrors(): void
     {
         if (! \in_array(env('WP_ENVIRONMENT_TYPE'), [ 'debug', 'development', 'dev', 'local' ], true)) {
             return;
