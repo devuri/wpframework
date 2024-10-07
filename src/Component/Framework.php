@@ -33,7 +33,7 @@ class Framework
         self::$_all_app_options = $this->app_options;
     }
 
-    protected function getAppOptions(): array
+    public function getAppOptions(): array
     {
         if (\is_array(self::$_all_app_options)) {
             return self::$_all_app_options;
