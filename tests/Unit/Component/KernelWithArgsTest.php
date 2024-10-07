@@ -128,7 +128,7 @@ class KernelWithArgsTest extends BaseTest
             ]
         ];
 
-        $actual = $app_with_args->get_args();
+        $actual = $app_with_args->getArgs();
 
         $this->assertEquals(
             $expected,

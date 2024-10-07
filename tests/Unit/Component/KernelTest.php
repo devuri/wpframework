@@ -44,9 +44,9 @@ class KernelTest extends TestCase
     {
         $default = self::getDefaultConfig();
 
-        ///dump($this->http_app->get_args());
+        ///dump($this->http_app->getArgs());
 
-        $this->assertEquals($default, $this->http_app->get_args());
+        $this->assertEquals($default, $this->http_app->getArgs());
     }
 
     public function test_constants_defined(): void
