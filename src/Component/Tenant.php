@@ -109,7 +109,7 @@ class Tenant implements TenantInterface
      */
     public function isMultitenantApp(): bool
     {
-        return \defined('ALLOW_MULTITENANT') && ALLOW_MULTITENANT === true;
+        return \defined('ALLOW_MULTITENANT') && constant('ALLOW_MULTITENANT') === true;
     }
 
     /**

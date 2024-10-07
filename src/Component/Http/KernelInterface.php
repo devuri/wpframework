@@ -41,7 +41,7 @@ interface KernelInterface
      *
      * @return array
      */
-    public function get_args(): array;
+    public function getArgs(): array;
 
     /**
      * Retrieves the application configuration.

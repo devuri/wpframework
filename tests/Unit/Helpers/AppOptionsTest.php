@@ -29,6 +29,6 @@ class AppOptionsTest extends TestCase
     }
     private function _app_options()
     {
-        return (new Framework())->get_app_options();
+        return (new Framework())->getAppOptions();
     }
 }

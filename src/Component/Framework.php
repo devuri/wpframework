@@ -33,7 +33,7 @@ class Framework
         self::$_all_app_options = $this->app_options;
     }
 
-    public function get_app_options(): array
+    public function getAppOptions(): array
     {
         if (\is_array(self::$_all_app_options)) {
             return self::$_all_app_options;
@@ -51,7 +51,7 @@ class Framework
     {
         static $options;
         if (\is_null($options)) {
-            $options = new DotAccess($this->get_app_options());
+            $options = new DotAccess($this->getAppOptions());
         }
 
         return $options;
@@ -88,7 +88,7 @@ class Framework
             $site_options = Config::getDefault();
         }
 
-		// TODO fix: these are usually merged in the kernel, results here are not merged.
+        // TODO fix: these are usually merged in the kernel, results here are not merged.
 
         return $site_options;
     }

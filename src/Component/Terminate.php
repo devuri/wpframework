@@ -156,11 +156,11 @@ class Terminate
 		<?php
     }
 
-    private function page_footer(string $status_code): void
+    private function page_footer(int $status_code): void
     {
         ?>
         <footer align="center">
-			Status Code:<span style="color:#afafaf"><?php echo $status_code; ?></span>
+			Status Code:<span style="color:#afafaf"><?php echo (string) $status_code; ?></span>
 			</footer>
 			</body>
 		</html>
@@ -169,7 +169,7 @@ class Terminate
 
     private function is_prod(): bool
     {
-        if (\defined('WP_ENVIRONMENT_TYPE') && \in_array(WP_ENVIRONMENT_TYPE, [ 'secure', 'sec', 'production', 'prod' ], true)) {
+        if (\defined('WP_ENVIRONMENT_TYPE') && \in_array(constant('WP_ENVIRONMENT_TYPE'), [ 'secure', 'sec', 'production', 'prod' ], true)) {
             return true;
         }
 

@@ -143,13 +143,11 @@ class AutoLogin
             // Check if the URL has expired (more than 60 seconds old).
             if ($current_timestamp - (int) $this->login_service['time'] > 60) {
                 wp_die('login expired');
-
-                return;
             }
 
             $signature = base64_decode(static::get_query('sig'), true);
 
-            if (\is_null($this->login_service['username']) || \is_null($signature)) {
+            if (\is_null($this->login_service['username']) || ! $signature) {
                 error_log('auto login username invalid');
 
                 return;
@@ -238,10 +236,6 @@ class AutoLogin
      */
     protected static function authenticate(WP_User $user): void
     {
-        if (! $user) {
-            return;
-        }
-
         wp_clear_auth_cookie();
         wp_set_current_user($user->ID);
         wp_set_auth_cookie($user->ID, false, is_ssl());
