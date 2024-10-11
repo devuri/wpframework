@@ -55,16 +55,10 @@ class AutoLogin
      *
      * @var null|string
      */
-    protected $user_admin_url = null;
+    protected $user_admin_url;
 
     /**
      * AutoLogin constructor.
-     *
-     * Initializes the AutoLogin class with necessary properties and settings.
-     *
-     * The constructor sets up the class properties required for the auto-login functionality.
-     * It initializes the secret key for added security, stores the home URL and user admin URL for redirection,
-     * and initializes an empty array to hold the login service parameters for processing auto-login requests.
      *
      * @return void This method does not return any value.
      */
@@ -81,11 +75,6 @@ class AutoLogin
     /**
      * Registers the auto-login action to handle automatic logins when the 'init' action is triggered.
      *
-     * This method registers the 'handle_auto_login' method to be executed when the 'init' action is triggered.
-     * The 'handle_auto_login' method handles automatic logins by processing specific query parameters and
-     * authenticating users based on the provided information. The registration of this action is conditional
-     * and depends on the presence of a secret key for added security.
-     *
      * @return void This method does not return any value.
      */
     public function register_login_action(): void
@@ -98,9 +87,6 @@ class AutoLogin
     /**
      * Initializes the automatic login functionality.
      *
-     * This method is the entry point for the automatic login feature. It creates an instance of the class
-     * and registers the necessary action to trigger the auto-login process when the designated event occurs.
-     *
      * @return void This method does not return any value.
      */
     public static function init(string $secret_key, string $environment_type): void
@@ -111,11 +97,6 @@ class AutoLogin
 
     /**
      * Handles the automatic login process based on the provided query parameters.
-     *
-     * This method processes the automatic login request initiated via the 'wpenv_auto_login' query parameter.
-     * It verifies the request's validity, checks if the login timestamp is within the valid range (30 seconds),
-     * and authenticates the user if the signature is valid. The method also checks the environment type to prevent
-     * auto-login on production sites to ensure security.
      *
      * @return void This method does not return any value.
      */
@@ -204,10 +185,6 @@ class AutoLogin
     /**
      * Verifies the authenticity of the signature for the auto-login request.
      *
-     * This method checks the provided signature against the expected signature to ensure the authenticity
-     * of the auto-login request. It uses the login service parameters and a secret key to generate the expected
-     * signature and then compares it with the provided signature using the hash_equals function to prevent timing attacks.
-     *
      * @param string $signature The signature to be verified for the auto-login request.
      *
      * @return bool Returns true if the provided signature matches the expected signature, false otherwise.
@@ -224,12 +201,6 @@ class AutoLogin
     /**
      * Authenticates the user and performs necessary actions after successful authentication.
      *
-     * This method is responsible for authenticating the user after a successful login attempt. If the
-     * provided user object is not empty, it clears the current authentication cookie, sets the user as the
-     * current user, and sets a new authentication cookie. It also triggers the 'wp_login' action hook and
-     * redirects the user to the admin area (user dashboard) upon successful authentication. If the user object
-     * is empty, it redirects the user back to the home URL.
-     *
      * @param WP_User $user The WP_User object representing the user to authenticate.
      *
      * @return void This method does not return any value.
@@ -239,17 +210,12 @@ class AutoLogin
         wp_clear_auth_cookie();
         wp_set_current_user($user->ID);
         wp_set_auth_cookie($user->ID, false, is_ssl());
+		update_user_meta($user->ID, 'last_login_time', current_time('mysql'));
         do_action('wpenv_auto_login', $user->user_login, $user);
         do_action('wp_login', $user->user_login, $user);
     }
 
     /**
-     * Retrieves and sanitizes a specific query parameter from the $_GET superglobal array.
-     *
-     * This method is used to get and sanitize a specific query parameter from the $_GET array
-     * to prevent potential security vulnerabilities. It uses the sanitize_text_field and wp_unslash
-     * functions to sanitize the input and remove any harmful data.
-     *
      * @param string $req_input The name of the query parameter to retrieve and sanitize.
      *
      * @return null|string The sanitized value of the specified query parameter, or null if the parameter is not set.
