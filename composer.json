@@ -69,7 +69,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "WPframework\\Tests\\": "tests/"
         }
     },
     "scripts": {

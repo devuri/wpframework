@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace WPframework\Tests\Env;
+namespace WPframework\Tests\Unit\Component\Env;
 
 use PHPUnit\Framework\TestCase;
 use WPframework\Env\EnvTypes;

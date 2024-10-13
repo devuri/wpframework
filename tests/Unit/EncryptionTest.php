@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace WPframework\Tests;
+namespace WPframework\Tests\Unit;
 
 use Defuse\Crypto\Crypto;
 use PHPUnit\Framework\TestCase;

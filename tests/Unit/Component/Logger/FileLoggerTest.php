@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace WPframework\Tests\Component\Logger;
+namespace WPframework\Tests\Unit\Component\Logger;
 
 use PHPUnit\Framework\TestCase;
 use WPframework\Logger\FileLogger;
