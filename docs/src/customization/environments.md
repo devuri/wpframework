@@ -1,42 +1,39 @@
 # Managing Environments
 
-The Raydium Framework offers a sophisticated way to handle different environments such as development, staging, and production. This guide will help you understand how to effectively manage these environments within your Raydium-powered application.
+The Raydium Framework offers a sophisticated way to handle different environments, such as development, staging, and production. This guide will help you understand how to effectively manage these environments within your Raydium-powered application.
 
 ## Understanding Environments
 
-Environments are essentially different **states** your application can be in, each with its own set of configurations and behaviors. Common environments include:
+Environments represent different **states** your application can be in, each tailored with specific configurations and behaviors to match its purpose. Common environments include:
 
-- **Production** (`'production'`, `'prod'`): The live site where performance and security are optimized, and debugging tools are typically turned off.
-- **Staging** (`'staging'`): Mirrors the production environment for testing purposes. It's a final check before an update goes live.
-- **Development** (`'development'`, `'dev'`): Used during the development phase, with extensive logging, error reporting, and debugging tools enabled.
-- **Debug** (`'deb'`, `'debug'`, `'local'`): A special case of the development environment with additional debugging capabilities.
-- **Secure** (`'secure'`, `'sec'`): An environment with heightened security measures, often used in sensitive applications.
-
----
+- **Production** (`'production'`, `'prod'`): The live environment where the application is optimized for performance and security, with debugging tools disabled.
+- **Staging** (`'staging'`): A near-replica of production, used for final testing before updates are made live.
+- **Development** (`'development'`, `'dev'`): Used during the development phase, enabling logging, error reporting, and debugging tools.
+- **Debug** (`'deb'`, `'debug'`, `'local'`): Similar to development but with extra debugging capabilities for in-depth troubleshooting.
+- **Secure** (`'secure'`, `'sec'`): Emphasizes heightened security, typically for sensitive applications.
 
 ## Best Practices
 
-- **Keep `.env` file Secure**: The `.env` [environment file](../customization/environment-file) contains sensitive information. Ensure it's properly excluded from version control systems (e.g., using `.gitignore`).
-- **Environment Consistency**: Maintain consistency between your development, staging, and production environments to prevent "it works on my machine" issues.
-- **Use Environment-Specific Configurations**: Leverage the capability to define environment-specific settings for database connections, API keys, and other configurations.
-
+- **Keep the `.env` File Secure**: The `.env` [environment file](../customization/environment-file) contains sensitive information. Ensure it's excluded from version control (e.g., using `.gitignore`).
+- **Maintain Environment Consistency**: Strive for consistency between development, staging, and production environments to minimize "it works on my machine" problems.
+- **Leverage Environment-Specific Configurations**: Utilize environment-specific settings for database connections, API keys, and other configurations to streamline development and deployment.
 
 ## Configuring Environments
 
 ### Using the `.env` File
 
-The Raydium Framework leverages a `.env` [environment file](../customization/environment-file) at the root of your project to define environment variables. The key variable for setting the application's environment is `WP_ENVIRONMENT_TYPE`.
+The Raydium Framework uses a `.env` [environment file](../customization/environment-file) located at the root of your project to define environment variables. The key variable for setting the environment is `WP_ENVIRONMENT_TYPE`.
 
-Example of a `.env` file configuration:
+Example `.env` file configuration:
 
 ```plaintext
 WP_ENVIRONMENT_TYPE='prod'
 ```
 
 > [!IMPORTANT]
-> Optionally, you can override the `.env` setup of `WP_ENVIRONMENT_TYPE` by using the `RAYDIUM_ENVIRONMENT_TYPE` constant, which should be updated in the bootstrap file. It's important to note that this constant must be defined before setting up `http_component_kernel`. The `.env` file takes precedence, so ensure you remove `WP_ENVIRONMENT_TYPE='prod'` from your `.env` file if it already exists.
+> Optionally, You can override the `.env` setup of `WP_ENVIRONMENT_TYPE` by defining the `RAYDIUM_ENVIRONMENT_TYPE` constant in the bootstrap file or in `wp-config.php`. Note that the `.env` file takes precedence, so ensure `WP_ENVIRONMENT_TYPE='prod'` is removed from the file if you plan to override it.
 
-This configuration sets the application's environment to production. Depending on this setting, the Raydium Framework adjusts its behavior accordingly, optimizing for performance, security, or debugging capabilities.
+Depending on this setting, the Raydium Framework adjusts its behavior for performance, security, or debugging.
 
 ### Supported Environment Values
 
@@ -48,293 +45,262 @@ This configuration sets the application's environment to production. Depending o
 
 ### Switching Environments
 
-To switch environments, simply modify the `WP_ENVIRONMENT_TYPE` value in your `.env` file and redeploy your application if necessary. The Raydium Framework will automatically detect this change and apply the corresponding configuration settings.
-
----
+To switch environments, simply modify the `WP_ENVIRONMENT_TYPE` value in your `.env` file. Afterward, redeploy your application if necessary. The Raydium Framework will automatically detect and apply the corresponding configuration settings.
 
 ## Environment-Specific Behaviors
 
-Depending on the `WP_ENVIRONMENT_TYPE` value, the Raydium Framework configures the application as follows:
+Depending on the `WP_ENVIRONMENT_TYPE` value, the Raydium Framework configures the application accordingly:
 
-- **Production**: Maximizes performance and security. Disables debugging tools and error displays.
-- **Staging**: Similar to production but might have logging or error reporting enabled for testing.
-- **Development**: Enables error reporting, debugging tools, and might have performance optimizations disabled for easier troubleshooting.
-- **Debug**: Extends development settings with additional debugging capabilities, such as script debugging and query logging.
-- **Secure**: Similar to production with additional security measures like file editing restrictions and stringent error handling.
-
----
+- **Production**: Optimized for maximum performance and security. Disables debugging tools and hides errors.
+- **Staging**: Similar to production but with some logging enabled for testing purposes.
+- **Development**: Enables extensive error reporting and debugging tools while turning off performance optimizations.
+- **Debug**: Builds upon the development environment by enabling additional debugging features such as script debugging, query logging, and disabling script concatenation.
+- **Secure**: Similar to production, but with additional security features, like file modification restrictions and tighter error handling.
+- **Cache Settings**: The production and secure environments also enable caching to improve performance, unless explicitly disabled by defining the `SWITCH_OFF_CACHE` constant as `true`.
 
 ## Environment Constants Documentation
 
-The framework provides a set of constants to configure the application's behavior based on different environments, ensuring optimal settings for performance, security, and debugging.
+The Raydium Framework offers several constants to tailor the application for different environments, ensuring the best balance between performance, security, and debugging.
 
 ### Production Environment
 
 **Environment Identifiers**: `'production'`, `'prod'`
 
-In the production environment, the application is optimized for performance and security.
+The production environment is optimized for performance and security.
 
 #### Defined Constants
 
-- **`DISALLOW_FILE_EDIT`**: `true`
-  - **Purpose**: Disables the plugin and theme editors in the admin panel to prevent direct editing of code.
+- **`DISALLOW_FILE_EDIT`**: `true`  
+  *Prevents file editing via the WordPress admin panel to enhance security.*
 
-- **`WP_DEBUG_DISPLAY`**: `false`
-  - **Purpose**: Hides debug messages from being displayed on the frontend.
+- **`WP_DEBUG_DISPLAY`**: `false`  
+  *Hides debug messages on the frontend.*
 
-- **`SCRIPT_DEBUG`**: `false`
-  - **Purpose**: Uses minified JavaScript and CSS files to improve load times.
+- **`SCRIPT_DEBUG`**: `false`  
+  *Uses minified JavaScript and CSS files for faster load times.*
 
-- **`WP_CRON_LOCK_TIMEOUT`**: `60`
-  - **Purpose**: Sets the time (in seconds) before a cron job is considered failed and can be retried.
+- **`WP_CRON_LOCK_TIMEOUT`**: `60`  
+  *Defines the time (in seconds) before a cron job is marked as failed and can be retried.*
 
-- **`EMPTY_TRASH_DAYS`**: `15`
-  - **Purpose**: Automatically deletes items in the trash after 15 days.
+- **`EMPTY_TRASH_DAYS`**: `15`  
+  *Automatically deletes trashed items after 15 days.*
 
-- **`WP_DEBUG`**:
-  - **Value**: `true` if `$error_logs_dir` is provided; otherwise `false`.
-  - **Purpose**: Enables or disables the WordPress debugging mode.
+- **`WP_DEBUG`**: `true` if `$error_logs_dir` is provided; otherwise `false`.  
+  *Enables or disables WordPress debugging.*
 
-- **`WP_DEBUG_LOG`**:
-  - **Value**: Path specified by `$error_logs_dir` if provided; otherwise `false`.
-  - **Purpose**: Specifies where to log debug messages.
+- **`WP_DEBUG_LOG`**: Path specified by `$error_logs_dir` if provided; otherwise `false`.  
+  *Defines where to log debug messages.*
+
+- **`WP_CACHE`**: `true`  
+  *Enables caching for improved performance.*
+
+- **`COMPRESS_SCRIPTS`**: `true`  
+  *Enables compression of JavaScript files for improved performance.*
+
+- **`COMPRESS_CSS`**: `true`  
+  *Enables compression of CSS files for improved performance.*
+
+- **`CONCATENATE_SCRIPTS`**: `true`  
+  *Enables concatenation of scripts to reduce HTTP requests.*
 
 #### PHP Settings
 
-- **`display_errors`**: `'0'`
-  - **Purpose**: Prevents PHP errors from being displayed to users.
-
----
+- **`display_errors`**: `'0'`  
+  *Prevents PHP errors from being displayed to users.*
 
 ### Staging Environment
 
 **Environment Identifier**: `'staging'`
 
-The staging environment is used for testing before deploying to production.
+The staging environment mirrors production, with additional error visibility for testing.
 
 #### Defined Constants
 
-- **`DISALLOW_FILE_EDIT`**: `false`
-  - **Purpose**: Allows editing of plugin and theme files via the admin panel.
+- **`DISALLOW_FILE_EDIT`**: `false`  
+  *Allows editing plugin and theme files in the admin panel.*
 
-- **`WP_DEBUG_DISPLAY`**: `true`
-  - **Purpose**: Displays debug messages on the frontend for testing.
+- **`WP_DEBUG_DISPLAY`**: `true`  
+  *Shows debug messages on the frontend.*
 
-- **`SCRIPT_DEBUG`**: `false`
-  - **Purpose**: Uses minified scripts.
+- **`SCRIPT_DEBUG`**: `false`  
+  *Uses minified scripts.*
 
-- **`WP_DEBUG`**: `true`
-  - **Purpose**: Enables WordPress debugging mode.
+- **`SAVEQUERIES`**: `true`  
+  *Saves database queries for analysis.*
 
-- **`WP_DEBUG_LOG`**:
-  - **Value**: Path specified by `$error_logs_dir` if provided; otherwise `true`.
-  - **Purpose**: Logs debug messages to the specified file or the default log.
+- **`WP_DEBUG`**: `true`  
+  *Enables WordPress debugging.*
+
+- **`WP_DEBUG_LOG`**: Path specified by `$error_logs_dir` if provided; otherwise `true`.  
+  *Logs debug messages to the specified file.*
 
 #### PHP Settings
 
-- **`display_errors`**: `'0'`
-  - **Purpose**: Keeps PHP errors hidden from frontend users.
-
----
+- **`display_errors`**: `'0'`  
+  *Keeps PHP errors hidden from users.*
 
 ### Development Environment
 
 **Environment Identifiers**: `'development'`, `'dev'`
 
-The development environment is configured for developers to build and test features.
+Configured for building and testing features.
 
 #### Defined Constants
 
-- **`WP_DEBUG`**: `true`
-  - **Purpose**: Enables WordPress debugging mode.
+- **`WP_DEBUG`**: `true`  
+  *Enables WordPress debugging.*
 
-- **`SAVEQUERIES`**: `true`
-  - **Purpose**: Saves database queries for analysis.
+- **`SAVEQUERIES`**: `true`  
+  *Saves database queries for analysis.*
 
-- **`WP_DEBUG_DISPLAY`**: `true`
-  - **Purpose**: Displays debug messages on the frontend.
+- **`WP_DEBUG_DISPLAY`**: `true`  
+  *Shows debug messages on the frontend.*
 
-- **`WP_DISABLE_FATAL_ERROR_HANDLER`**: `true`
-  - **Purpose**: Disables the fatal error handler to allow for error visibility.
+- **`WP_DISABLE_FATAL_ERROR_HANDLER`**: `true`  
+  *Disables the fatal error handler to display errors.*
 
-- **`SCRIPT_DEBUG`**: `true`
-  - **Purpose**: Uses unminified scripts for easier debugging.
+- **`SCRIPT_DEBUG`**: `true`  
+  *Uses unminified scripts for easier debugging.*
 
-- **`WP_DEBUG_LOG`**:
-  - **Value**: Path specified by `$error_logs_dir` if provided; otherwise `true`.
-  - **Purpose**: Logs debug messages.
+- **`WP_DEBUG_LOG`**: Path specified by `$error_logs_dir` if provided; otherwise `true`.  
+  *Logs debug messages.*
 
 #### PHP Settings
 
-- **`display_errors`**: `'1'`
-  - **Purpose**: Displays PHP errors directly on the frontend.
-
----
+- **`display_errors`**: `'1'`  
+  *Displays PHP errors on the frontend.*
 
 ### Debug Environment
 
 **Environment Identifiers**: `'deb'`, `'debug'`, `'local'`
 
-The debug environment provides extensive debugging capabilities for troubleshooting.
+Extensive debugging capabilities for detailed troubleshooting.
 
 #### Defined Constants
 
-- **`WP_DEBUG`**: `true`
-  - **Purpose**: Enables WordPress debugging mode.
+- **`WP_DEBUG`**: `true`  
+  *Enables WordPress debugging.*
 
-- **`WP_DEBUG_DISPLAY`**: `true`
-  - **Purpose**: Shows debug messages on the frontend.
+- **`WP_DEBUG_DISPLAY`**: `true`  
+  *Displays debug messages.*
 
-- **`CONCATENATE_SCRIPTS`**: `false`
-  - **Purpose**: Prevents concatenation of scripts for easier debugging.
+- **`CONCATENATE_SCRIPTS`**: `false`  
+  *Prevents concatenation of scripts for easier debugging.*
 
-- **`SAVEQUERIES`**: `true`
-  - **Purpose**: Saves database queries for debugging purposes.
+- **`SAVEQUERIES`**: `true`  
+  *Saves database queries.*
 
-- **`WP_DEBUG_LOG`**:
-  - **Value**: Path specified by `$error_logs_dir` if provided; otherwise `true`.
-  - **Purpose**: Logs debug messages.
+- **`WP_CRON_LOCK_TIMEOUT`**: `120`  
+  *Sets a longer cron lock timeout for debugging.*
+
+- **`EMPTY_TRASH_DAYS`**: `50`  
+  *Extends trash retention period for easier recovery during debugging.*
+
+- **`WP_DEBUG_LOG`**: Path specified by `$error_logs_dir` if provided; otherwise `true`.  
+  *Logs debug messages.*
 
 #### PHP Settings
 
-- **`error_reporting`**: `E_ALL`
-  - **Purpose**: Reports all types of errors.
+- **`error_reporting`**: `E_ALL`  
+  *Reports all errors.*
 
-- **`log_errors`**: `'1'`
-  - **Purpose**: Enables logging of errors.
+- **`log_errors`**: `'1'`  
+  *Enables error logging.*
 
-- **`log_errors_max_len`**: `'0'`
-  - **Purpose**: Removes the limit on the length of logged errors.
+- **`log_errors_max_len`**: `'0'`  
+  *Removes the limit on the length of logged errors.*
 
-- **`display_errors`**: `'1'`
-  - **Purpose**: Displays errors on the frontend.
+- **`display_errors`**: `'1'`  
+  *Displays PHP errors on the frontend.*
 
-- **`display_startup_errors`**: `'1'`
-  - **Purpose**: Displays startup sequence errors.
-
----
+- **`display_startup_errors`**: `'1'`  
+  *Displays startup sequence errors.*
 
 ### Secure Environment
 
 **Environment Identifiers**: `'secure'`, `'sec'`
 
-The secure environment is optimized for maximum security.
+Optimized for maximum security.
 
 #### Defined Constants
 
-- **`DISALLOW_FILE_EDIT`**: `true`
-  - **Purpose**: Disables file editing via the admin panel.
+- **`DISALLOW_FILE_EDIT`**: `true`  
+  *Disables editing files through the admin panel.*
 
-- **`DISALLOW_FILE_MODS`**: `true`
-  - **Purpose**: Prevents updates and installations of plugins and themes.
+- **`DISALLOW_FILE_MODS`**: `true`  
+  *Prevents updates and installations of plugins and themes.*
 
-- **`WP_DEBUG_DISPLAY`**: `false`
-  - **Purpose**: Hides debug messages from the frontend.
+- **`WP_DEBUG_DISPLAY`**: `false`  
+  *Hides debug messages.*
 
-- **`SCRIPT_DEBUG`**: `false`
-  - **Purpose**: Uses minified scripts.
+- **`SCRIPT_DEBUG`**: `false`  
+  *Uses minified scripts.*
 
-- **`WP_CRON_LOCK_TIMEOUT`**: `120`
-  - **Purpose**: Sets a longer timeout for cron jobs.
+- **`WP_CRON_LOCK_TIMEOUT`**: `120`  
+  *Sets a longer cron lock timeout.*
 
-- **`EMPTY_TRASH_DAYS`**: `10`
-  - **Purpose**: Empties trash more frequently to reduce data retention.
+- **`EMPTY_TRASH_DAYS`**: `10`  
+  *Reduces trash retention period.*
 
-- **`WP_DEBUG`**:
-  - **Value**: `true` if `$error_logs_dir` is provided; otherwise `false`.
-  - **Purpose**: Enables or disables debugging mode.
+- **`WP_DEBUG`**: `true` if `$error_logs_dir` is provided; otherwise `false`.  
+  *Enables or disables debugging.*
 
-- **`WP_DEBUG_LOG`**:
-  - **Value**: Path specified by `$error_logs_dir` if provided; otherwise `false`.
-  - **Purpose**: Specifies debug log location.
+- **`WP_CACHE`**: `true`  
+  *Enables caching for improved performance.*
+
+- **`COMPRESS_SCRIPTS`**: `true`  
+  *Enables compression of JavaScript files.*
+
+- **`COMPRESS_CSS`**: `true`  
+  *Enables compression of CSS files.*
+
+- **`CONCATENATE_SCRIPTS`**: `true`  
+  *Enables concatenation of scripts.*
 
 #### PHP Settings
 
-- **`display_errors`**: `'0'`
-  - **Purpose**: Ensures errors are not displayed to users.
-
----
+- **`display_errors`**: `'0'`  
+  *Ensures errors are not displayed to users.*
 
 ## Commonly Used Constants Explained
 
-- **`DISALLOW_FILE_EDIT`**:
-  - **Usage**: Prevents file modifications via the WordPress admin panel, enhancing security.
-
-- **`DISALLOW_FILE_MODS`**:
-  - **Usage**: Disables all file modifications including updates and installations.
-
-- **`WP_DEBUG`**:
-  - **Usage**: Activates the built-in debugging system in WordPress.
-
-- **`WP_DEBUG_DISPLAY`**:
-  - **Usage**: Controls whether debug messages are shown on the frontend.
-
-- **`WP_DEBUG_LOG`**:
-  - **Usage**: Determines if debug messages are logged to a file.
-
-- **`SCRIPT_DEBUG`**:
-  - **Usage**: Forces WordPress to use the unminified versions of scripts and styles.
-
-- **`SAVEQUERIES`**:
-  - **Usage**: Saves database queries for debugging purposes.
-
-- **`CONCATENATE_SCRIPTS`**:
-  - **Usage**: When disabled, scripts are loaded individually rather than concatenated.
-
-- **`WP_DISABLE_FATAL_ERROR_HANDLER`**:
-  - **Usage**: Disables the fatal error handler for better error visibility during development.
-
-- **`WP_CRON_LOCK_TIMEOUT`**:
-  - **Usage**: Adjusts the timeout for cron jobs, affecting how quickly they can be retried after failure.
-
-- **`EMPTY_TRASH_DAYS`**:
-  - **Usage**: Sets the number of days before trash is emptied automatically.
+- **`DISALLOW_FILE_EDIT`**: Prevents file editing via the admin panel.
+- **`DISALLOW_FILE_MODS`**: Disables all file modifications, including updates.
+- **`WP_DEBUG`**: Activates WordPress debugging mode.
+- **`WP_DEBUG_DISPLAY`**: Controls whether debug messages are shown.
+- **`WP_DEBUG_LOG`**: Specifies whether debug messages are logged.
+- **`SCRIPT_DEBUG`**: Uses unminified versions of scripts and styles.
+- **`SAVEQUERIES`**: Saves database queries for debugging.
+- **`CONCATENATE_SCRIPTS`**: Disables or enables script concatenation.
+- **`WP_DISABLE_FATAL_ERROR_HANDLER`**: Disables the fatal error handler during development.
+- **`WP_CRON_LOCK_TIMEOUT`**: Adjusts the retry timeout for cron jobs.
+- **`EMPTY_TRASH_DAYS`**: Sets auto-delete period for trashed items.
+- **`WP_CACHE`**: Enables caching for improved performance, especially in production and secure environments.
+- **`COMPRESS_SCRIPTS`**: Enables compression of JavaScript for faster loading.
+- **`COMPRESS_CSS`**: Enables compression of CSS for faster loading.
 
 ### Overriding Constants
 
-The constants defined by the framework can be overridden in the `wp-config.php` file. The framework will only define these constants if they have not already been set, allowing you to adjust them as needed.
+Constants can be overridden in the `wp-config.php` file. The Raydium Framework only defines these if they haven't been set, allowing custom configurations.
 
-For more information about WordPress constants and how they work, refer to the official WordPress documentation:
+For more on WordPress constants:
 
 - [WordPress Debugging Tools](https://wordpress.org/support/article/debugging-in-wordpress/)
 - [Editing wp-config.php](https://wordpress.org/support/article/editing-wp-config-php/)
 
-These resources provide additional insights into how to customize WordPress settings to suit your development, staging, or production needs.
-
----
-
 ## PHP Settings Explained
 
-- **`error_reporting`**:
-  - **Purpose**: Defines which errors are reported by PHP.
-
-- **`display_errors`**:
-  - **Purpose**: Controls whether errors are displayed to the user.
-
-- **`display_startup_errors`**:
-  - **Purpose**: Displays errors that occur during PHP's startup sequence.
-
-- **`log_errors`**:
-  - **Purpose**: Enables or disables error logging.
-
-- **`log_errors_max_len`**:
-  - **Purpose**: Sets the maximum length of error messages in logs.
-
----
+- **`error_reporting`**: Specifies which PHP errors are reported.
+- **`display_errors`**: Controls whether errors are displayed to users.
+- **`display_startup_errors`**: Shows errors that occur during PHP's startup sequence.
+- **`log_errors`**: Enables or disables error logging.
+- **`log_errors_max_len`**: Defines the maximum length of log messages.
 
 ## Notes
 
-- **Error Logs Directory (`$error_logs_dir`)**:
-  - If provided, this path is used for logging debug messages.
-  - Affects the values of `WP_DEBUG` and `WP_DEBUG_LOG`.
+- **Error Logs Directory (`$error_logs_dir`)**: If specified, this path is used for logging debug messages.
+- **`ini_set` Function**: Used to modify runtime settings like error display and logging.
+- **Error Handling**: The production and secure environments hide errors, while development and debug environments display them for easier troubleshooting.
+- **Caching**: Caching is enabled in production and secure environments by default to improve performance, unless explicitly disabled by the `SWITCH_OFF_CACHE` constant.
 
-- **`ini_set` Function**:
-  - Used to modify PHP runtime configuration settings for error display and logging.
-
-- **Error Handling in Environments**:
-  - **Production** and **Secure** environments hide errors from users and may disable debugging.
-  - **Development** and **Debug** environments display errors and enable extensive logging for troubleshooting.
-
----
-
-By understanding the constants and settings defined in each environment, developers and administrators can configure their application to behave appropriately, ensuring security, performance, and effective debugging.
+> By understanding and properly configuring each environment, developers and administrators can optimize their application for security, performance, and ease of debugging.
