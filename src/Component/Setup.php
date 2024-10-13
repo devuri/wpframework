@@ -211,12 +211,12 @@ class Setup implements SetupInterface
         }
 
         if (! EnvTypes::isValid($this->environment)) {
-            $this->switcher->create_environment('production', $this->errorLogDir);
+            $this->switcher->createEnvironment('production', $this->errorLogDir);
 
             return $this;
         }
 
-        $this->switcher->create_environment($this->environment, $this->errorLogDir);
+        $this->switcher->createEnvironment($this->environment, $this->errorLogDir);
 
         return $this;
     }

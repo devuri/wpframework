@@ -53,7 +53,7 @@ The Switcher component is integrated into the Raydium Framework to facilitate se
 
 To utilize the Environment Switcher within the Raydium Framework:
 - Determine the current operational environment of the application (e.g., development, staging, production).
-- Invoke the `create_environment` method of the Switcher component, passing the current environment and an optional error log directory.
+- Invoke the `createEnvironment` method of the Switcher component, passing the current environment and an optional error log directory.
 - The Switcher component will automatically apply the configurations associated with the specified environment.
 
 > The Environment Switcher is a critical component of the Raydium Framework, providing dynamic and flexible environment configuration to optimize the application for various operational contexts. By defining clear boundaries and settings for each environment, the Switcher ensures that applications developed with the Raydium Framework are secure, debuggable, and performant, aligned with the best practices for modern web development.
