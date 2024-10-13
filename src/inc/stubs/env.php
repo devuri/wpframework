@@ -1,10 +1,12 @@
 <?php
 
-/**
- * Example Environment Setup for Raydium Framework
+/*
+ * This file is part of the WPframework package.
  *
- * This example demonstrates how to set configuration constants
- * for different environments in the Raydium Framework.
+ * (c) Uriel Wilson <uriel@wpframework.io>
+ *
+ * The full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 // Production Environment
