@@ -59,5 +59,5 @@ interface EnvSwitcherInterface
      *
      * @return void
      */
-    public function create_environment(string $environment, ?string $error_logs_dir): void;
+    public function createEnvironment(string $environment, ?string $error_logs_dir): void;
 }

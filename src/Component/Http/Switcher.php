@@ -39,14 +39,15 @@ class Switcher implements EnvSwitcherInterface
      *
      * @return void
      */
-    public function create_environment(string $environment, ?string $error_logs_dir): void
+    public function createEnvironment(string $environment, ?string $error_logs_dir): void
     {
-        $this->set_error_logs_dir($error_logs_dir);
+        $this->setErrorLogsDir($error_logs_dir);
 
         switch ($environment) {
             case 'production':
             case 'prod':
                 $this->production();
+				self::setCache();
 
                 break;
             case 'staging':
@@ -67,10 +68,12 @@ class Switcher implements EnvSwitcherInterface
             case 'secure':
             case 'sec':
                 $this->secure();
+				self::setCache();
 
                 break;
             default:
                 $this->production();
+				self::setCache();
         }// end switch
     }
 
@@ -128,11 +131,12 @@ class Switcher implements EnvSwitcherInterface
 
         $this->define('WP_DEBUG_DISPLAY', true);
         $this->define('SCRIPT_DEBUG', false);
+		$this->define('SAVEQUERIES', true);
 
         $this->define('WP_DEBUG', true);
         ini_set('display_errors', '0');
 
-        self::set_debug_log();
+        self::setDebugLog();
     }
 
     public function development(): void
@@ -146,7 +150,7 @@ class Switcher implements EnvSwitcherInterface
         $this->define('SCRIPT_DEBUG', true);
         ini_set('display_errors', '1');
 
-        self::set_debug_log();
+        self::setDebugLog();
     }
 
     /**
@@ -158,8 +162,10 @@ class Switcher implements EnvSwitcherInterface
         $this->define('WP_DEBUG_DISPLAY', true);
         $this->define('CONCATENATE_SCRIPTS', false);
         $this->define('SAVEQUERIES', true);
+		$this->define('WP_CRON_LOCK_TIMEOUT', 120);
+		$this->define('EMPTY_TRASH_DAYS', 50);
 
-        self::set_debug_log();
+        self::setDebugLog();
 
         error_reporting(E_ALL);
         ini_set('log_errors', '1');
@@ -171,7 +177,7 @@ class Switcher implements EnvSwitcherInterface
     /**
      * Set debug environment.
      */
-    protected function set_debug_log(): void
+    protected function setDebugLog(): void
     {
         if ($this->error_logs_dir) {
             $this->define('WP_DEBUG_LOG', $this->error_logs_dir);
@@ -183,8 +189,20 @@ class Switcher implements EnvSwitcherInterface
     /**
      * Set error_logs_dir for environment.
      */
-    private function set_error_logs_dir(?string $error_logs_dir): void
+    private function setErrorLogsDir(?string $error_logs_dir): void
     {
         $this->error_logs_dir = $error_logs_dir;
     }
+
+	private static function setCache(): void
+	{
+		if( defined('SWITCH_OFF_CACHE') && constant('SWITCH_OFF_CACHE') === true ) {
+			return;
+		}
+
+		$this->define('WP_CACHE', true);
+		$this->define('CONCATENATE_SCRIPTS', true);
+		$this->define('COMPRESS_SCRIPTS', true);
+		$this->define('COMPRESS_CSS', true);
+	}
 }

@@ -210,7 +210,7 @@ class AutoLogin
         wp_clear_auth_cookie();
         wp_set_current_user($user->ID);
         wp_set_auth_cookie($user->ID, false, is_ssl());
-		update_user_meta($user->ID, 'last_login_time', current_time('mysql'));
+        update_user_meta($user->ID, 'last_login_time', current_time('mysql'));
         do_action('wpenv_auto_login', $user->user_login, $user);
         do_action('wp_login', $user->user_login, $user);
     }
