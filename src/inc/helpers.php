@@ -19,6 +19,9 @@ use WPframework\EnvGenerator;
 use WPframework\Framework;
 use WPframework\Http\Asset;
 use WPframework\Terminate;
+use Psr\Log\LogLevel;
+use WPframework\Logger\Log;
+use Psr\Log\InvalidArgumentException;
 
 // @codingStandardsIgnoreFile.
 
@@ -438,4 +441,83 @@ function exitWithThemeError(array $themeInfo): void
     WPframework\Terminate::exit([
         $themeInfo['error_message'] . ' -> ' . $activeTheme->template,
     ]);
+}
+
+
+if (!function_exists('logMessage')) {
+    /**
+     * Logs a message with the specified level and an optional log file.
+     *
+     * @param string $level The log level (e.g., 'info', 'error', 'debug', etc.).
+     * @param string $message The log message.
+     * @param array $context Optional context data for the log message.
+     * @param string|null $logFile Optional log file to use. If null, the default or fallback will be used.
+     */
+    function logMessage(string $message, string $level = 'info', array $context = [], ?string $logFile = null): void
+    {
+        if ($logFile) {
+            Log::init($logFile); // Use the provided log file
+        } else {
+            Log::init();
+        }
+
+        switch ($level) {
+            case LogLevel::EMERGENCY:
+                Log::emergency($message, $context);
+                break;
+            case LogLevel::ALERT:
+                Log::alert($message, $context);
+                break;
+            case LogLevel::CRITICAL:
+                Log::critical($message, $context);
+                break;
+            case LogLevel::ERROR:
+                Log::error($message, $context);
+                break;
+            case LogLevel::WARNING:
+                Log::warning($message, $context);
+                break;
+            case LogLevel::NOTICE:
+                Log::notice($message, $context);
+                break;
+            case LogLevel::INFO:
+                Log::info($message, $context);
+                break;
+            case LogLevel::DEBUG:
+                Log::debug($message, $context);
+                break;
+            default:
+                // Handle invalid log level
+                throw new InvalidArgumentException("Invalid log level: $level");
+        }
+    }
+}
+
+/**
+ * Ensure that a log file exists. If the file or its parent directories do not exist,
+ * this function will create them.
+ *
+ * @param string $logFile The path to the log file.
+ * @return void
+ * @throws RuntimeException If the file cannot be created.
+ */
+function makeLogFile(string $logFile): void
+{
+    $logDir = dirname($logFile);
+
+    if (!is_dir($logDir)) {
+        if (!mkdir($logDir, 0777, true) && !is_dir($logDir)) {
+            throw new RuntimeException("Unable to create directory: $logDir");
+        }
+    }
+
+    if (!file_exists($logFile)) {
+        if (file_put_contents($logFile, '') === false) {
+            throw new RuntimeException("Unable to create log file: $logFile");
+        }
+    }
+
+    if (!is_writable($logFile)) {
+        throw new RuntimeException("Log file is not writable: $logFile");
+    }
 }

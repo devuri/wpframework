@@ -42,6 +42,7 @@
         "devuri/uuid-generator": "^0.0.1",
         "filp/whoops": "^2.15",
         "matomo/device-detector": "^6.4",
+        "psr/log": "^1.1 || ^2.0 || ^3.0",
         "symfony/error-handler": "5.0.11",
         "symfony/filesystem": "^5.4",
         "symfony/var-dumper": "^5.4",
@@ -73,8 +74,8 @@
     },
     "scripts": {
         "test": [
-            "composer install -q",
-            "vendor/bin/phpunit",
+            "composer install",
+            "vendor/bin/phpunit --testdox",
             "composer no-dev -q"
         ],
         "test-covers": [
