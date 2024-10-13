@@ -47,7 +47,7 @@ class Switcher implements EnvSwitcherInterface
             case 'production':
             case 'prod':
                 $this->production();
-                self::setCache();
+                $this->setCache();
 
                 break;
             case 'staging':
@@ -68,12 +68,12 @@ class Switcher implements EnvSwitcherInterface
             case 'secure':
             case 'sec':
                 $this->secure();
-                self::setCache();
+                $this->setCache();
 
                 break;
             default:
                 $this->production();
-                self::setCache();
+                $this->setCache();
         }// end switch
     }
 
@@ -194,7 +194,7 @@ class Switcher implements EnvSwitcherInterface
         $this->error_logs_dir = $error_logs_dir;
     }
 
-    private static function setCache(): void
+    private function setCache(): void
     {
         if (defined('SWITCH_OFF_CACHE') && constant('SWITCH_OFF_CACHE') === true) {
             return;

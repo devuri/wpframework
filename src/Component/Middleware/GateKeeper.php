@@ -11,6 +11,8 @@
 
 namespace WPframework\Middleware;
 
+use Psr\Log\LoggerInterface;
+
 class GateKeeper
 {
     protected array $middleware = [];

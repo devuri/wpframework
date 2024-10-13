@@ -21,7 +21,7 @@ class Log
      * Initializes the logger with an optional file path. If no file path is provided,
      * it will fall back to error_log.
      *
-     * @param string|null $logFile The file where logs will be stored (optional).
+     * @param null|LoggerInterface $logger
      */
     public static function init(?LoggerInterface $logger = null): void
     {
