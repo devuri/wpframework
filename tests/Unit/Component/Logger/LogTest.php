@@ -12,6 +12,7 @@
 namespace WPframework\Tests\Component\Logger;
 
 use PHPUnit\Framework\TestCase;
+use WPframework\Logger\FileLogger;
 use WPframework\Logger\Log;
 use Psr\Log\InvalidArgumentException;
 
@@ -23,9 +24,10 @@ class LogTest extends TestCase
     protected function setUp(): void
     {
         $this->logFile = APP_TEST_PATH . '/test.log';
-        Log::init($this->logFile);
+        Log::init(new FileLogger($this->logFile));
 
         $this->customErrorLog = APP_TEST_PATH . '/error.log';
+        makeLogFile($this->customErrorLog);
         ini_set('error_log', $this->customErrorLog);
     }
 
@@ -135,13 +137,10 @@ class LogTest extends TestCase
      */
     public function testFallbackToErrorLog(): void
     {
-        // Re-initialize Log without file, should fallback to error_log
-        Log::init(null);
+        Log::init(new FileLogger());
 
-        // Log a message (this should go to custom error_log)
         Log::warning('This log goes to error_log');
 
-        // Assert that the log was written to the custom error_log file
         $this->assertFileExists($this->customErrorLog);
         $logContent = file_get_contents($this->customErrorLog);
         $this->assertStringContainsString('WARNING: This log goes to error_log', $logContent);

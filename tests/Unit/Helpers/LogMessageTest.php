@@ -12,6 +12,7 @@
 namespace WPframework\Tests\Helpers;
 
 use PHPUnit\Framework\TestCase;
+use WPframework\Logger\FileLogger;
 use WPframework\Logger\Log;
 use Psr\Log\InvalidArgumentException;
 
@@ -30,7 +31,7 @@ class LogMessageTest extends TestCase
         makeLogFile($this->customLogFile);
 
         makeLogFile($this->logFile);
-        $log = Log::init($this->logFile);
+        $log = Log::init(new FileLogger($this->logFile));
 
         makeLogFile($this->ErrorLogFile);
         ini_set('error_log', $this->ErrorLogFile);

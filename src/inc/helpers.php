@@ -20,6 +20,7 @@ use WPframework\Framework;
 use WPframework\Http\Asset;
 use WPframework\Terminate;
 use Psr\Log\LogLevel;
+use WPframework\Logger\FileLogger;
 use WPframework\Logger\Log;
 use Psr\Log\InvalidArgumentException;
 
@@ -456,9 +457,9 @@ if (!function_exists('logMessage')) {
     function logMessage(string $message, string $level = 'info', array $context = [], ?string $logFile = null): void
     {
         if ($logFile) {
-            Log::init($logFile); // Use the provided log file
+            Log::init(new FileLogger($logFile));
         } else {
-            Log::init();
+            Log::init(new FileLogger());
         }
 
         switch ($level) {

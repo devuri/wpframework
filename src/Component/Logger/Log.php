@@ -11,9 +11,11 @@
 
 namespace WPframework\Logger;
 
+use Psr\Log\LoggerInterface;
+
 class Log
 {
-    private static ?FileLogger $logger = null;
+    private static ?LoggerInterface $logger = null;
 
     /**
      * Initializes the logger with an optional file path. If no file path is provided,
@@ -21,9 +23,9 @@ class Log
      *
      * @param string|null $logFile The file where logs will be stored (optional).
      */
-    public static function init(?string $logFile = null): void
+    public static function init(?LoggerInterface $logger = null): void
     {
-        self::$logger = new FileLogger($logFile);
+        self::$logger = $logger;
     }
 
     /**
@@ -117,14 +119,10 @@ class Log
     /**
      * Ensure that the logger is initialized and return the logger instance.
      *
-     * @return FileLogger
+     * @return LoggerInterface
      */
-    private static function getLogger(): FileLogger
+    private static function getLogger(): LoggerInterface
     {
-        if (self::$logger === null) {
-            self::init();
-        }
-
         return self::$logger;
     }
 }
