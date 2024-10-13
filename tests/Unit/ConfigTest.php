@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace WPframework\Tests;
+namespace WPframework\Tests\Unit;
 
-use Tests\BaseTest;
+use WPframework\Tests\BaseTest;
 use Urisoft\DotAccess;
 
 /**

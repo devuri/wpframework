@@ -47,7 +47,7 @@ class Switcher implements EnvSwitcherInterface
             case 'production':
             case 'prod':
                 $this->production();
-				self::setCache();
+                $this->setCache();
 
                 break;
             case 'staging':
@@ -68,12 +68,12 @@ class Switcher implements EnvSwitcherInterface
             case 'secure':
             case 'sec':
                 $this->secure();
-				self::setCache();
+                $this->setCache();
 
                 break;
             default:
                 $this->production();
-				self::setCache();
+                $this->setCache();
         }// end switch
     }
 
@@ -131,7 +131,7 @@ class Switcher implements EnvSwitcherInterface
 
         $this->define('WP_DEBUG_DISPLAY', true);
         $this->define('SCRIPT_DEBUG', false);
-		$this->define('SAVEQUERIES', true);
+        $this->define('SAVEQUERIES', true);
 
         $this->define('WP_DEBUG', true);
         ini_set('display_errors', '0');
@@ -162,8 +162,8 @@ class Switcher implements EnvSwitcherInterface
         $this->define('WP_DEBUG_DISPLAY', true);
         $this->define('CONCATENATE_SCRIPTS', false);
         $this->define('SAVEQUERIES', true);
-		$this->define('WP_CRON_LOCK_TIMEOUT', 120);
-		$this->define('EMPTY_TRASH_DAYS', 50);
+        $this->define('WP_CRON_LOCK_TIMEOUT', 120);
+        $this->define('EMPTY_TRASH_DAYS', 50);
 
         self::setDebugLog();
 
@@ -194,15 +194,15 @@ class Switcher implements EnvSwitcherInterface
         $this->error_logs_dir = $error_logs_dir;
     }
 
-	private static function setCache(): void
-	{
-		if( defined('SWITCH_OFF_CACHE') && constant('SWITCH_OFF_CACHE') === true ) {
-			return;
-		}
+    private function setCache(): void
+    {
+        if (defined('SWITCH_OFF_CACHE') && constant('SWITCH_OFF_CACHE') === true) {
+            return;
+        }
 
-		$this->define('WP_CACHE', true);
-		$this->define('CONCATENATE_SCRIPTS', true);
-		$this->define('COMPRESS_SCRIPTS', true);
-		$this->define('COMPRESS_CSS', true);
-	}
+        $this->define('WP_CACHE', true);
+        $this->define('CONCATENATE_SCRIPTS', true);
+        $this->define('COMPRESS_SCRIPTS', true);
+        $this->define('COMPRESS_CSS', true);
+    }
 }

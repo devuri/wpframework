@@ -136,17 +136,17 @@ class Request implements RequestInterface
         return $headers;
     }
 
-    public function getQueryParam(string $key, $default = null)
-    {
-        $value = filter_input(INPUT_GET, $key, FILTER_SANITIZE_STRING);
-        return $value !== null ? $value : $default;
-    }
-
-    public function getPostParam(string $key, $default = null)
-    {
-        $value = filter_input(INPUT_POST, $key, FILTER_SANITIZE_STRING);
-        return $value !== null ? $value : $default;
-    }
+    // public function getQueryParam(string $key, $default = null)
+    // {
+    //     $value = filter_input(INPUT_GET, $key, FILTER_SANITIZE_STRING);
+    //     return $value !== null ? $value : $default;
+    // }
+    //
+    // public function getPostParam(string $key, $default = null)
+    // {
+    //     $value = filter_input(INPUT_POST, $key, FILTER_SANITIZE_STRING);
+    //     return $value !== null ? $value : $default;
+    // }
 
     public function getQueryParamInt(string $key, int $default = 0): int
     {

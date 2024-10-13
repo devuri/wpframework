@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace WPframework\Tests\Component\Traits;
+namespace WPframework\Tests\Unit\Component\Traits;
 
 use PHPUnit\Framework\TestCase;
 use WPframework\Exceptions\ConstantAlreadyDefinedException;

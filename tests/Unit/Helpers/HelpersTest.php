@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace WPframework\Tests\Helpers;
+namespace WPframework\Tests\Unit\Helpers;
 
-use Tests\BaseTest;
+use WPframework\Tests\BaseTest;
 
 /**
  * @internal

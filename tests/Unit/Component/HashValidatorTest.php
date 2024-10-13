@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace WPframework\Tests\Component;
+namespace WPframework\Tests\Unit\Component;
 
 use PHPUnit\Framework\TestCase;
 use WPframework\HashValidator;
