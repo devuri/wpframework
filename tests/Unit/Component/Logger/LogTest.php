@@ -27,7 +27,7 @@ class LogTest extends TestCase
         Log::init(new FileLogger($this->logFile));
 
         $this->customErrorLog = APP_TEST_PATH . '/error.log';
-        makeLogFile($this->customErrorLog);
+        Log::createLogFile($this->customErrorLog);
         ini_set('error_log', $this->customErrorLog);
     }
 

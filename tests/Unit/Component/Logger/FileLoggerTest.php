@@ -14,6 +14,7 @@ namespace WPframework\Tests\Unit\Component\Logger;
 use PHPUnit\Framework\TestCase;
 use WPframework\Logger\FileLogger;
 use Psr\Log\LogLevel;
+use WPframework\Logger\Log;
 
 class FileLoggerTest extends TestCase
 {
@@ -24,7 +25,7 @@ class FileLoggerTest extends TestCase
         $this->ErrorLogFile = APP_TEST_PATH . '/errorlog-test.log';
         $this->logFile = APP_TEST_PATH . '/test.log';
 
-        makeLogFile($this->ErrorLogFile);
+        Log::createLogFile($this->ErrorLogFile);
         ini_set('error_log', $this->ErrorLogFile);
     }
 
