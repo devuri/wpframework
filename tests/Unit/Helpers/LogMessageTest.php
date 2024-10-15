@@ -28,12 +28,12 @@ class LogMessageTest extends TestCase
         $this->ErrorLogFile = APP_TEST_PATH . '/errorlog-test.log';
         $this->logFile = APP_TEST_PATH . '/test.log';
 
-        makeLogFile($this->customLogFile);
+        Log::createLogFile($this->customLogFile);
 
-        makeLogFile($this->logFile);
+        Log::createLogFile($this->logFile);
         $log = Log::init(new FileLogger($this->logFile));
 
-        makeLogFile($this->ErrorLogFile);
+        Log::createLogFile($this->ErrorLogFile);
         ini_set('error_log', $this->ErrorLogFile);
     }
 

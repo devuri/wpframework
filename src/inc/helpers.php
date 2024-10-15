@@ -493,32 +493,3 @@ if (!function_exists('logMessage')) {
         }
     }
 }
-
-/**
- * Ensure that a log file exists. If the file or its parent directories do not exist,
- * this function will create them.
- *
- * @param string $logFile The path to the log file.
- * @return void
- * @throws RuntimeException If the file cannot be created.
- */
-function makeLogFile(string $logFile): void
-{
-    $logDir = dirname($logFile);
-
-    if (!is_dir($logDir)) {
-        if (!mkdir($logDir, 0777, true) && !is_dir($logDir)) {
-            throw new RuntimeException("Unable to create directory: $logDir");
-        }
-    }
-
-    if (!file_exists($logFile)) {
-        if (file_put_contents($logFile, '') === false) {
-            throw new RuntimeException("Unable to create log file: $logFile");
-        }
-    }
-
-    if (!is_writable($logFile)) {
-        throw new RuntimeException("Log file is not writable: $logFile");
-    }
-}
