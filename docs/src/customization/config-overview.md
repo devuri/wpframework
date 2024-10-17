@@ -96,9 +96,9 @@ DEFAULT_THEME=my-custom-theme
  return [
      'directory'        => [
          'web_root_dir'  => 'public',
-         'content_dir'   => 'content',
-         'plugin_dir'    => 'content/plugins',
-         'mu_plugin_dir' => 'content/mu-plugins',
+         'content_dir'   => 'wp-content',
+         'plugin_dir'    => 'wp-content/plugins',
+         'mu_plugin_dir' => 'wp-content/mu-plugins',
          'sqlite_dir'    => 'sqlitedb',
          'sqlite_file'   => '.sqlite-wpdatabase',
          'theme_dir'     => 'templates',
@@ -121,9 +121,9 @@ return [
 
     'directory'        => [
         'web_root_dir'      => 'public',
-        'content_dir'   => 'content',
-        'plugin_dir'    => 'content/plugins',
-        'mu_plugin_dir' => 'content/mu-plugins',
+        'content_dir'   => 'wp-content',
+        'plugin_dir'    => 'wp-content/plugins',
+        'mu_plugin_dir' => 'wp-content/mu-plugins',
         'sqlite_dir'    => 'sqlitedb',
         'sqlite_file'   => '.sqlite-wpdatabase',
         'theme_dir'     => 'templates',

@@ -77,7 +77,7 @@ Raydium provides an optimized file structure tailored for a modular and secure a
     ├── index.php
     ├── wp-config.php
     ├── wp/                   # WordPress core
-    └── content/              # Equivalent to wp-content
+    └── wp-content/           # Equivalent to wp-content
         ├── mu-plugins/       # Must-Use plugins
         ├── plugins/          # Regular plugins
         └── themes/           # Themes
@@ -90,7 +90,7 @@ Key Components:
 - `composer.json`: Defines dependencies and autoload settings managed by Composer.
 - `wp/`: Contains the WordPress core files. This separation ensures core files are not mixed with content or configuration files.
 - `public/`: Serves as the web root directory of your application. It contains the WordPress core and the content directory, which are exposed to the web.
-  - `content/`: Replaces the standard `wp-content` directory in WordPress. It is structured to hold your themes and plugins, segregating them from core files.
+  - `wp-content/`: Replaces the standard `wp-content` directory in WordPress. It is structured to hold your themes and plugins, segregating them from core files.
     - `mu-plugins/`: Houses plugins that are always activated by default and cannot be disabled through the WordPress dashboard.
     - `plugins/`: Contains the installable plugins that can be activated or deactivated as needed.
     - `themes/`: Stores your WordPress theme directories.
@@ -107,7 +107,7 @@ In Raydium, the primary configuration is handled through the `.env` file, offeri
 WP_HOME='https://yourdomain.com'
 WP_SITEURL="${WP_HOME}/wp"
 
-# Setting the environment 
+# Setting the environment
 WP_ENVIRONMENT_TYPE='sec'
 
 DB_NAME='your_db_name'
@@ -116,8 +116,8 @@ DB_PASSWORD='your_db_password'
 DB_HOST='localhost'
 ```
 > [!IMPORTANT]
-> The `WP_ENVIRONMENT_TYPE` setting is a crucial setting that defines different [states of the application](../customization/environments) such as development, staging, or production. Each state has its own specific configurations and behaviors. You can find more details [here](../customization/environments). 
-> 
+> The `WP_ENVIRONMENT_TYPE` setting is a crucial setting that defines different [states of the application](../customization/environments) such as development, staging, or production. Each state has its own specific configurations and behaviors. You can find more details [here](../customization/environments).
+>
 > You can also override the `WP_ENVIRONMENT_TYPE` setting by using the `RAYDIUM_ENVIRONMENT_TYPE` constant. To do this, update the `RAYDIUM_ENVIRONMENT_TYPE` in the `bootstrap.php` file.
 
 ## Source Files

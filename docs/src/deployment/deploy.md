@@ -2,7 +2,7 @@
 
 Deploying a Raydium-powered WordPress site involves several considerations, tailored to accommodate Raydium's unique structure and dependencies, including Composer management:
 
-- Your project, inclusive of Raydium and WordPress, resides in the root directory, with `public` serving as the web root containing the `public/content` directory for WordPress themes, plugins, and uploads.
+- Your project, inclusive of Raydium and WordPress, resides in the root directory, with `public` serving as the web root containing the `public/wp-content` directory for WordPress themes, plugins, and uploads.
 - The `vendor` directory and `.env` file, essential for Raydium and WordPress configurations, are located outside the web root for enhanced security.
 - Key deployment scripts are defined in your `composer.json`, facilitating tasks such as dependency installation and environment setup.
 

@@ -63,7 +63,7 @@ return [
          * The 'app' directory is equivalent to the 'wp-content' directory.
          * However, this can be modified to use a different directory, such as 'content'.
          */
-        'content_dir'   => env('CONTENT_DIR', 'content'),
+        'content_dir'   => env('CONTENT_DIR', 'wp-content'),
 
         /*
          * Sets the plugins directory.
@@ -71,7 +71,7 @@ return [
          * The plugins directory is located outside the project directory and
          * allows for installation and management of plugins using Composer.
          */
-        'plugin_dir'    => env('PLUGIN_DIR', 'content/plugins'),
+        'plugin_dir'    => env('PLUGIN_DIR', 'wp-content/plugins'),
 
         /*
          * Sets the directory for Must-Use (MU) plugins.
@@ -82,7 +82,7 @@ return [
          * By default, the framework includes the 'compose' MU plugin, which includes the 'web_app_config' hook.
          * This hook can be leveraged to configure the web application in most cases.
          */
-        'mu_plugin_dir' => env('MU_PLUGIN_DIR', 'content/mu-plugins'),
+        'mu_plugin_dir' => env('MU_PLUGIN_DIR', 'wp-content/mu-plugins'),
 
         /*
          * SQLite Configuration

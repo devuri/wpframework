@@ -71,9 +71,9 @@ class ConfigDefaultTest extends TestCase
         // Web root and directories checks
         $this->assertEquals('public', $configs['directory']['web_root_dir']);
         $this->assertEquals('assets', $configs['directory']['asset_dir']);
-        $this->assertEquals('content', $configs['directory']['content_dir']);
-        $this->assertEquals('content/plugins', $configs['directory']['plugin_dir']);
-        $this->assertEquals('content/mu-plugins', $configs['directory']['mu_plugin_dir']);
+        $this->assertEquals('wp-content', $configs['directory']['content_dir']);
+        $this->assertEquals('wp-content/plugins', $configs['directory']['plugin_dir']);
+        $this->assertEquals('wp-content/mu-plugins', $configs['directory']['mu_plugin_dir']);
         $this->assertEquals('sqlitedb', $configs['directory']['sqlite_dir']);
         $this->assertEquals('.sqlite-wpdatabase', $configs['directory']['sqlite_file']);
         $this->assertEquals('twentytwentythree', $configs['default_theme']);
