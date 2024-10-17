@@ -4,7 +4,7 @@
 
 The `configs/app.php` file in the Raydium Framework is a crucial component for setting and customizing various [configuration options](../customization/config-overview) for your WordPress application. It allows you to define key-value pairs for different settings, influencing how your application behaves in various environments.
 
-> The framework provides a flexible configuration system that allows you to set various options. These settings are typically specified in the `configs/app.php` file. However, if this file is not created, Raydium will use sensible default values. Additionally, even if the `app.php` file is present, you can still [override specific values](../reference/options-env.md) using [environment variables](../reference/environment-vars.md). 
+> The framework provides a flexible configuration system that allows you to set various options. These settings are typically specified in the `configs/app.php` file. However, if this file is not created, Raydium will use sensible default values. Additionally, even if the `app.php` file is present, you can still [override specific values](../reference/options-env.md) using [environment variables](../reference/environment-vars.md).
 
 ## Configuration Options
 
@@ -28,15 +28,15 @@ The `configs/app.php` file in the Raydium Framework is a crucial component for s
 
 ### Directory Structure
 
-- **Web Root & Content Directories**: Define custom paths for your web root, content, plugins, themes, and assets. This flexibility allows you to structure your project in a way that best suits your workflow and organizational preferences.
+- **Web Root & Content Directories**: Define custom paths for your web root, wp-content, plugins, themes, and assets. This flexibility allows you to structure your project in a way that best suits your workflow and organizational preferences.
 
 ```php
 'directory' => [
     'web_root_dir'      => 'public_html',
-    'content_dir'   => 'content',
-    'plugin_dir'    => 'content/plugins',
-    'mu_plugin_dir' => 'content/mu-plugins',
-    'theme_dir'     => 'content/themes',
+    'content_dir'   => 'wp-content',
+    'plugin_dir'    => 'wp-content/plugins',
+    'mu_plugin_dir' => 'wp-content/mu-plugins',
+    'theme_dir'     => 'wp-content/themes',
     'asset_dir'     => 'assets',
 ],
 ```
@@ -233,10 +233,10 @@ return [
          *
          * "wordpress-install-dir": "public_html/wp",
          * "installer-paths": {
-         *     "public_html/content/mu-plugins/{$name}/": [
+         *     "public_html/wp-content/mu-plugins/{$name}/": [
          *         "type:wordpress-muplugin"
          *     ],
-         *     "public_html/content/plugins/{$name}/": [
+         *     "public_html/wp-content/plugins/{$name}/": [
          *         "type:wordpress-plugin"
          *     ],
          *     "public_html/template/{$name}/": [
@@ -249,11 +249,10 @@ return [
         /*
          * Sets the content directory for the project.
          *
-         * By default, the project uses the 'app' directory as the content directory.
-         * The 'app' directory is equivalent to the 'wp-content' directory.
+         * The directory is equivalent to the 'wp-content' directory.
          * However, this can be modified to use a different directory, such as 'content'.
          */
-        'content_dir'   => 'content',
+        'content_dir'   => 'wp-content',
 
         /*
          * Sets the plugins directory.
@@ -261,7 +260,7 @@ return [
          * The plugins directory is located outside the project directory and
          * allows for installation and management of plugins using Composer.
          */
-        'plugin_dir'    => 'content/plugins',
+        'plugin_dir'    => 'wp-content/plugins',
 
         /*
          * Sets the directory for Must-Use (MU) plugins.
@@ -272,7 +271,7 @@ return [
          * By default, the framework includes the 'compose' MU plugin, which includes the 'web_app_config' hook.
          * This hook can be leveraged to configure the web application in most cases.
          */
-        'mu_plugin_dir' => 'content/mu-plugins',
+        'mu_plugin_dir' => 'wp-content/mu-plugins',
 
         /*
          * SQLite Configuration

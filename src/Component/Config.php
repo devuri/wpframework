@@ -24,9 +24,9 @@ final class Config
             'directory'        => [
                 'wp_dir_path'   => 'wp',
                 'web_root_dir'  => env('WEB_ROOT_DIR', 'public'),
-                'content_dir'   => env('CONTENT_DIR', 'content'),
-                'plugin_dir'    => env('PLUGIN_DIR', 'content/plugins'),
-                'mu_plugin_dir' => env('MU_PLUGIN_DIR', 'content/mu-plugins'),
+                'content_dir'   => env('CONTENT_DIR', 'wp-content'),
+                'plugin_dir'    => env('PLUGIN_DIR', 'wp-content/plugins'),
+                'mu_plugin_dir' => env('MU_PLUGIN_DIR', 'wp-content/mu-plugins'),
                 'sqlite_dir'    => env('SQLITE_DIR', 'sqlitedb'),
                 'sqlite_file'   => env('SQLITE_FILE', '.sqlite-wpdatabase'),
                 'theme_dir'     => env('THEME_DIR', 'templates'),

@@ -25,7 +25,7 @@ class ConfigTest extends BaseTest
     {
         $result = config('directory.plugin_dir');
 
-        $this->assertEquals('content/plugins', $result);
+        $this->assertEquals('wp-content/plugins', $result);
     }
 
     public function test_config_function_with_invalid_key(): void

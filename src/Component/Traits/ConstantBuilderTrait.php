@@ -45,8 +45,9 @@ trait ConstantBuilderTrait
     public function define(string $const, $value): void
     {
         if ($this->is_defined($const)) {
-            return;
             // throw new ConstantAlreadyDefinedException( "Constant: $const has already been defined" );
+            //trigger_error('Constant Already Defined:' . $const);
+            return;
         }
 
         \define($const, $value);
@@ -112,7 +113,7 @@ trait ConstantBuilderTrait
             return;
         }
 
-        if (\defined('WP_DEBUG') && false === WP_DEBUG) {
+        if (\defined('WP_DEBUG') && false === constant('WP_DEBUG')) {
             $this->constant_map = [ 'disabled' ];
 
             return;

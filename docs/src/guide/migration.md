@@ -39,7 +39,7 @@ Import your exported database into the new database configured for your Raydium 
 
 ### Migrate `wp-content`
 
-Raydium uses a `public/content` directory instead of the standard `wp-content`. Copy your themes, plugins, and uploads from your backup to the corresponding directories within `public/content`.
+Raydium uses a `public/wp-content` directory. Copy your themes, plugins, and uploads from your backup to the corresponding directories within `public/wp-content`.
 
 ## Theme and Plugin Compatibility
 

@@ -16,13 +16,13 @@ ERROR_HANDLER=oops
 WEB_ROOT_DIR=public_html
 
 # Set the content directory
-CONTENT_DIR=content
+CONTENT_DIR=wp-content
 
 # Specify the plugins directory
-PLUGIN_DIR=content/plugins
+PLUGIN_DIR=wp-content/plugins
 
 # Define the must-use plugins directory
-MU_PLUGIN_DIR=content/mu-plugins
+MU_PLUGIN_DIR=wp-content/mu-plugins
 
 # Configure SQLite database directory and file
 SQLITE_DIR=database
