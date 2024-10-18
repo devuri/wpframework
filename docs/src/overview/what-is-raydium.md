@@ -1,6 +1,6 @@
 # What is Raydium?
 
-Raydium stands at the forefront of WordPress development, merging the traditional strengths of WordPress with the efficiencies of modern development frameworks. This innovative framework is designed to streamline the development and deployment process, embedding best practices in security, scalability, and performance from the onset.
+Raydium is a [micro-infrastructure framework](../overview/why-raydium) that merges the traditional strengths of WordPress with the efficiencies of modern development frameworks. The framework is designed to streamline the development and deployment process, embedding best practices in security, scalability, and performance from the onset.
 
 ## Use Cases
 
@@ -32,4 +32,4 @@ At its core, Raydium emphasizes performance, ensuring:
 
 ## What About Traditional WordPress Development?
 
-Raydium reimagines the landscape of traditional WordPress development by offering a structured and efficient framework that incorporates modern development practices. It stands as a refined alternative to conventional development methods, focusing on the future with a keen eye on scalability, security, and performance, thereby catering to the evolving needs of developers and businesses alike.
+Raydium reimagines the landscape of traditional WordPress development by offering a structured and efficient framework that incorporates modern development practices. It stands as a refined alternative to conventional development methods, focusing on the future with an eye on scalability, security, and performance, catering to the evolving needs of developers and businesses alike.
