@@ -8,7 +8,7 @@ The Raydium Framework is a powerful micro-enhancement tool designed to elevate y
 Raydium is built as a the foundational micro-enhancement to WordPress, enhancing its core capabilities without altering its fundamental nature. Every project developed with Raydium remains a WordPress application at its core, benefiting from the extensive ecosystem, including themes, plugins, and the vast WordPress community.
 
 ### Enhanced but Familiar
-The administrative interface, theme customization options, plugin functionalities, and overall site management remain inherently WordPress. Raydium's enhancements work under the hood, providing a layer of sophistication and efficiency without distancing you from the familiar WordPress environment.
+The administrative interface, theme customization options, plugin functionalities, and overall site management remain inherently WordPress. Raydium's enhancements work under the hood, providing a layer of efficiency without distancing you from the familiar WordPress environment.
 
 ## Edge Cases and Considerations
 
