@@ -12,6 +12,7 @@
 namespace WPframework\Tests\Unit\Helpers;
 
 use PHPUnit\Framework\TestCase;
+use WPframework\Config;
 
 /**
  * @internal
@@ -27,7 +28,7 @@ class ConfigDefaultTest extends TestCase
 
     public function test_app_config_returns_expected_structure_and_values(): void
     {
-        $configs = appConfig(APP_TEST_PATH);
+        $configs = Config::siteConfig(APP_TEST_PATH);
 
         // Assert overall structure
         $this->assertIsArray($configs);

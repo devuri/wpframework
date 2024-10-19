@@ -14,10 +14,10 @@ namespace WPframework\Http;
 use Exception;
 use InvalidArgumentException;
 use Urisoft\DotAccess;
+use Urisoft\AppConfig;
 use WPframework\Env\EnvTypes;
 use WPframework\Setup;
 use WPframework\Terminate;
-use WPframework\Traits\ConstantBuilderTrait;
 use WPframework\Config;
 
 use function defined;
@@ -29,8 +29,6 @@ use function defined;
  */
 abstract class AbstractKernel implements KernelInterface
 {
-    use ConstantBuilderTrait;
-
     /**
      * The base path of the application.
      *
@@ -78,7 +76,7 @@ abstract class AbstractKernel implements KernelInterface
      *
      * @var null|Setup
      */
-    protected $app_setup;
+    protected $siteSetup;
 
     /**
      * The tenant ID, used in multi-tenant applications to isolate tenant-specific data.
@@ -102,6 +100,11 @@ abstract class AbstractKernel implements KernelInterface
     protected $env_type;
 
     protected $args;
+
+	/**
+	 * @var AppConfig
+	 */
+    protected $constManager;
 
     /**
      * Constructs the AbstractKernel object and initializes the application setup.
@@ -160,13 +163,16 @@ abstract class AbstractKernel implements KernelInterface
          * @link https://github.com/vlucas/phpdotenv/pull/394
          */
         if (\is_null($setup)) {
-            $this->app_setup = Setup::init($this->app_path);
+            $this->siteSetup = Setup::init($this->app_path);
         } else {
-            $this->app_setup = $setup;
+            $this->siteSetup = $setup;
         }
 
         // set the environment switcher.
-        $this->app_setup->setSwitcher(new Switcher());
+        $this->siteSetup->setSwitcher(new Switcher());
+
+		// get constant builder config.
+		$this->constManager = $this->siteSetup->getAppConfig();
 
         // set config override file.
         $this->configuration_overrides();
@@ -179,27 +185,27 @@ abstract class AbstractKernel implements KernelInterface
      *
      * @return void
      */
-    public function set_config_constants(): void
+    public function setKernelConstants(): void
     {
         // define app_path.
-        $this->define('APP_PATH', $this->get_app_path());
+        $this->constManager->addConstant('APP_PATH', $this->get_app_path());
 
         // set app http host.
-        $this->define('APP_HTTP_HOST', self::http()->get_http_host());
+        $this->constManager->addConstant('APP_HTTP_HOST', self::http()->get_http_host());
 
         // define public web root dir.
-        $this->define('PUBLIC_WEB_DIR', APP_PATH . '/' . $this->args->get('directory.web_root_dir'));
+        $this->constManager->addConstant('PUBLIC_WEB_DIR', APP_PATH . '/' . $this->args->get('directory.web_root_dir'));
 
         // wp dir path
-        $this->define('WP_DIR_PATH', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.wp_dir_path'));
+        $this->constManager->addConstant('WP_DIR_PATH', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.wp_dir_path'));
 
         // define assets dir.
-        $this->define('APP_ASSETS_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.asset_dir'));
+        $this->constManager->addConstant('APP_ASSETS_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.asset_dir'));
 
         // Directory PATH.
-        $this->define('APP_CONTENT_DIR', $this->args->get('directory.content_dir'));
-        $this->define('WP_CONTENT_DIR', PUBLIC_WEB_DIR . '/' . APP_CONTENT_DIR);
-        $this->define('WP_CONTENT_URL', env('WP_HOME') . '/' . APP_CONTENT_DIR);
+        $this->constManager->addConstant('APP_CONTENT_DIR', $this->args->get('directory.content_dir'));
+        $this->constManager->addConstant('WP_CONTENT_DIR', PUBLIC_WEB_DIR . '/' . APP_CONTENT_DIR);
+        $this->constManager->addConstant('WP_CONTENT_URL', env('WP_HOME') . '/' . APP_CONTENT_DIR);
 
         /*
          * Themes, prefer '/templates'
@@ -211,37 +217,37 @@ abstract class AbstractKernel implements KernelInterface
          * @link https://github.com/devuri/custom-wordpress-theme-dir
          */
         if ($this->args->get('directory.theme_dir')) {
-            $this->define('APP_THEME_DIR', $this->args->get('directory.theme_dir'));
+            $this->constManager->addConstant('APP_THEME_DIR', $this->args->get('directory.theme_dir'));
         }
 
         // Plugins.
-        $this->define('WP_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.plugin_dir'));
-        $this->define('WP_PLUGIN_URL', env('WP_HOME') . '/' . $this->args->get('directory.plugin_dir'));
+        $this->constManager->addConstant('WP_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.plugin_dir'));
+        $this->constManager->addConstant('WP_PLUGIN_URL', env('WP_HOME') . '/' . $this->args->get('directory.plugin_dir'));
 
         // Must-Use Plugins.
-        $this->define('WPMU_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.mu_plugin_dir'));
-        $this->define('WPMU_PLUGIN_URL', env('WP_HOME') . '/' . $this->args->get('directory.mu_plugin_dir'));
+        $this->constManager->addConstant('WPMU_PLUGIN_DIR', PUBLIC_WEB_DIR . '/' . $this->args->get('directory.mu_plugin_dir'));
+        $this->constManager->addConstant('WPMU_PLUGIN_URL', env('WP_HOME') . '/' . $this->args->get('directory.mu_plugin_dir'));
 
         // Disable any kind of automatic upgrade.
         // this will be handled via composer.
-        $this->define('AUTOMATIC_UPDATER_DISABLED', $this->args->get('disable_updates'));
+        $this->constManager->addConstant('AUTOMATIC_UPDATER_DISABLED', $this->args->get('disable_updates'));
 
         // Sudo admin (granted more privilages uses user ID).
-        $this->define('WP_SUDO_ADMIN', $this->args->get('sudo_admin'));
+        $this->constManager->addConstant('WP_SUDO_ADMIN', $this->args->get('sudo_admin'));
 
         // A group of users with higher administrative privileges.
-        $this->define('SUDO_ADMIN_GROUP', $this->args->get('sudo_admin_group'));
+        $this->constManager->addConstant('SUDO_ADMIN_GROUP', $this->args->get('sudo_admin_group'));
 
         /*
          * Prevent Admin users from deactivating plugins, true or false.
          *
          * @link https://gist.github.com/devuri/034ccb7c833f970192bb64317814da3b
          */
-        $this->define('CAN_DEACTIVATE_PLUGINS', $this->args->get('can_deactivate'));
+        $this->constManager->addConstant('CAN_DEACTIVATE_PLUGINS', $this->args->get('can_deactivate'));
 
         // SQLite database location and filename.
-        $this->define('DB_DIR', APP_PATH . '/' . $this->args->get('directory.sqlite_dir'));
-        $this->define('DB_FILE', $this->args->get('directory.sqlite_file'));
+        $this->constManager->addConstant('DB_DIR', APP_PATH . '/' . $this->args->get('directory.sqlite_dir'));
+        $this->constManager->addConstant('DB_FILE', $this->args->get('directory.sqlite_file'));
 
         /*
          * Slug of the default theme for this installation.
@@ -250,22 +256,22 @@ abstract class AbstractKernel implements KernelInterface
          *
          * @see WP_Theme::get_core_default_theme()
          */
-        $this->define('WP_DEFAULT_THEME', $this->args->get('default_theme'));
+        $this->constManager->addConstant('WP_DEFAULT_THEME', $this->args->get('default_theme'));
 
         // home url md5 value.
-        $this->define('COOKIEHASH', md5(env('WP_HOME')));
+        $this->constManager->addConstant('COOKIEHASH', md5(env('WP_HOME')));
 
         // Defines cookie-related override for WordPress constants.
-        $this->define('USER_COOKIE', 'wpc_user_' . COOKIEHASH);
-        $this->define('PASS_COOKIE', 'wpc_pass_' . COOKIEHASH);
-        $this->define('AUTH_COOKIE', 'wpc_' . COOKIEHASH);
-        $this->define('SECURE_AUTH_COOKIE', 'wpc_sec_' . COOKIEHASH);
-        $this->define('LOGGED_IN_COOKIE', 'wpc_logged_in_' . COOKIEHASH);
-        $this->define('TEST_COOKIE', md5('wpc_test_cookie' . env('WP_HOME')));
+        $this->constManager->addConstant('USER_COOKIE', 'wpc_user_' . COOKIEHASH);
+        $this->constManager->addConstant('PASS_COOKIE', 'wpc_pass_' . COOKIEHASH);
+        $this->constManager->addConstant('AUTH_COOKIE', 'wpc_' . COOKIEHASH);
+        $this->constManager->addConstant('SECURE_AUTH_COOKIE', 'wpc_sec_' . COOKIEHASH);
+        $this->constManager->addConstant('LOGGED_IN_COOKIE', 'wpc_logged_in_' . COOKIEHASH);
+        $this->constManager->addConstant('TEST_COOKIE', md5('wpc_test_cookie' . env('WP_HOME')));
 
         // SUCURI
-        $this->define('ENABLE_SUCURI_WAF', $this->args->get('security.sucuri_waf'));
-        // $this->define( 'SUCURI_DATA_STORAGE', ABSPATH . '../../storage/logs/sucuri' );
+        $this->constManager->addConstant('ENABLE_SUCURI_WAF', $this->args->get('security.sucuri_waf'));
+        // $this->constManager->addConstant( 'SUCURI_DATA_STORAGE', ABSPATH . '../../storage/logs/sucuri' );
 
         /*
          * Redis cache configuration for the WordPress application.
@@ -276,23 +282,23 @@ abstract class AbstractKernel implements KernelInterface
          *
          * @return void
          */
-        $this->define('WP_REDIS_DISABLED', $this->args->get('redis.disabled'));
+        $this->constManager->addConstant('WP_REDIS_DISABLED', $this->args->get('redis.disabled'));
 
-        $this->define('WP_REDIS_PREFIX', $this->args->get('redis.prefix'));
-        $this->define('WP_REDIS_DATABASE', $this->args->get('redis.database'));
-        $this->define('WP_REDIS_HOST', $this->args->get('redis.host'));
-        $this->define('WP_REDIS_PORT', $this->args->get('redis.port'));
-        $this->define('WP_REDIS_PASSWORD', $this->args->get('redis.password'));
+        $this->constManager->addConstant('WP_REDIS_PREFIX', $this->args->get('redis.prefix'));
+        $this->constManager->addConstant('WP_REDIS_DATABASE', $this->args->get('redis.database'));
+        $this->constManager->addConstant('WP_REDIS_HOST', $this->args->get('redis.host'));
+        $this->constManager->addConstant('WP_REDIS_PORT', $this->args->get('redis.port'));
+        $this->constManager->addConstant('WP_REDIS_PASSWORD', $this->args->get('redis.password'));
 
-        $this->define('WP_REDIS_DISABLE_ADMINBAR', $this->args->get('redis.adminbar'));
-        $this->define('WP_REDIS_DISABLE_METRICS', $this->args->get('redis.disable-metrics'));
-        $this->define('WP_REDIS_DISABLE_BANNERS', $this->args->get('redis.disable-banners'));
+        $this->constManager->addConstant('WP_REDIS_DISABLE_ADMINBAR', $this->args->get('redis.adminbar'));
+        $this->constManager->addConstant('WP_REDIS_DISABLE_METRICS', $this->args->get('redis.disable-metrics'));
+        $this->constManager->addConstant('WP_REDIS_DISABLE_BANNERS', $this->args->get('redis.disable-banners'));
 
-        $this->define('WP_REDIS_TIMEOUT', $this->args->get('redis.timeout'));
-        $this->define('WP_REDIS_READ_TIMEOUT', $this->args->get('redis.read-timeout'));
+        $this->constManager->addConstant('WP_REDIS_TIMEOUT', $this->args->get('redis.timeout'));
+        $this->constManager->addConstant('WP_REDIS_READ_TIMEOUT', $this->args->get('redis.read-timeout'));
 
         // web app security key
-        $this->define('WEBAPP_ENCRYPTION_KEY', $this->args->get('security.encryption_key'));
+        $this->constManager->addConstant('WEBAPP_ENCRYPTION_KEY', $this->args->get('security.encryption_key'));
     }
 
     /**
@@ -302,7 +308,7 @@ abstract class AbstractKernel implements KernelInterface
      */
     public function get_app(): ?Setup
     {
-        return $this->app_setup;
+        return $this->siteSetup;
     }
 
     /**
@@ -405,11 +411,11 @@ abstract class AbstractKernel implements KernelInterface
         }
 
         if (\is_array($this->env_type)) {
-            $this->app_setup->config(
+            $this->siteSetup->config(
                 array_merge($this->environment_args(), $this->env_type)
             );
         } else {
-            $this->app_setup->config($this->environment_args());
+            $this->siteSetup->config($this->environment_args());
         }
 
         /*
@@ -419,13 +425,13 @@ abstract class AbstractKernel implements KernelInterface
          *
          * @link https://github.com/aaemnnosttv/wp-sqlite-db/blob/master/src/db.php
          */
-        $this->define('USE_MYSQL', true);
+        $this->constManager->addConstant('USE_MYSQL', true);
 
         // make env available.
-        $this->define('HTTP_ENV_CONFIG', $this->app_setup->getEnvironment());
+        $this->constManager->addConstant('HTTP_ENV_CONFIG', $this->siteSetup->getEnvironment());
 
         if (true === $constants) {
-            $this->set_config_constants();
+            $this->setKernelConstants();
         }
 
         // maintenance mode
@@ -441,11 +447,11 @@ abstract class AbstractKernel implements KernelInterface
     /**
      * Get list of defined constants.
      *
-     * @return string[] constants in set_config_constants().
+     * @return string[] constants in setKernelConstants().
      */
     public function get_defined(): array
     {
-        return static::$constants;
+        return $this->constManager->getDefinedConstants();
     }
 
     /**
@@ -453,7 +459,7 @@ abstract class AbstractKernel implements KernelInterface
      *
      * This method retrieves the server environment variables (usually stored in $_ENV). If the application
      * is not in debug mode, it returns null. In debug mode, it collects the environment variables, obfuscates
-     * any sensitive data within them using the 'encrypt_secret' method, and returns the resulting array.
+     * any sensitive data within them using the 'hashSecret' method, and returns the resulting array.
      *
      * @return null|array An array of server environment variables with sensitive data obfuscated in debug mode,
      *                    or null if not in debug mode.
@@ -464,7 +470,7 @@ abstract class AbstractKernel implements KernelInterface
             return null;
         }
 
-        return self::encrypt_secret($_ENV, self::env_secrets());
+        return self::hashSecret($_ENV, self::envSecrets());
     }
 
     /**
@@ -472,7 +478,7 @@ abstract class AbstractKernel implements KernelInterface
      *
      * This method retrieves an array of user-defined constants. If the application is not in debug mode,
      * it returns null. In debug mode, it collects user-defined constants, obfuscates any sensitive data
-     * within them using the 'encrypt_secret' method, and returns the resulting array.
+     * within them using the 'hashSecret' method, and returns the resulting array.
      *
      * @return null|array An array of user-defined constants with sensitive data obfuscated in debug mode,
      *                    or null if not in debug mode.
@@ -485,7 +491,7 @@ abstract class AbstractKernel implements KernelInterface
 
         $user_constants = get_defined_constants(true)['user'];
 
-        return self::encrypt_secret($user_constants, self::env_secrets());
+        return self::hashSecret($user_constants, self::envSecrets());
     }
 
     /**
@@ -564,7 +570,7 @@ abstract class AbstractKernel implements KernelInterface
             APP_PATH . "/{$this->configs_dir}/.maintenance" => 'Will affect the entire tenant network.',
 
             // Affects a single tenant.
-            $this->app_setup->getAppPath() . '/.maintenance' => 'For single tenant.',
+            $this->siteSetup->getAppPath() . '/.maintenance' => 'For single tenant.',
         ];
 
         foreach ($maintenance_checks as $path => $scope) {

@@ -11,7 +11,7 @@
 
 namespace WPframework\Http;
 
-use WPframework\Traits\ConstantBuilderTrait;
+use WPframework\ConstantBuilder;
 
 /**
  * Class EnvSwitch.
@@ -23,14 +23,13 @@ use WPframework\Traits\ConstantBuilderTrait;
  */
 class Switcher implements EnvSwitcherInterface
 {
-    use ConstantBuilderTrait;
-
     /**
      * Sets the Error logs directory relative path.
      *
      * @var string
      */
     protected $error_logs_dir;
+    protected $constants;
 
     /**
      * Switches between different environments based on the value of $environment.
@@ -42,6 +41,7 @@ class Switcher implements EnvSwitcherInterface
     public function createEnvironment(string $environment, ?string $error_logs_dir): void
     {
         $this->setErrorLogsDir($error_logs_dir);
+		$this->constants = new ConstantBuilder();
 
         switch ($environment) {
             case 'production':
@@ -83,21 +83,21 @@ class Switcher implements EnvSwitcherInterface
     public function secure(): void
     {
         // Disable Plugin and Theme Editor.
-        $this->define('DISALLOW_FILE_EDIT', true);
-        $this->define('DISALLOW_FILE_MODS', true);
+        $this->constants->define('DISALLOW_FILE_EDIT', true);
+        $this->constants->define('DISALLOW_FILE_MODS', true);
 
-        $this->define('WP_DEBUG_DISPLAY', false);
-        $this->define('SCRIPT_DEBUG', false);
+        $this->constants->define('WP_DEBUG_DISPLAY', false);
+        $this->constants->define('SCRIPT_DEBUG', false);
 
-        $this->define('WP_CRON_LOCK_TIMEOUT', 120);
-        $this->define('EMPTY_TRASH_DAYS', 10);
+        $this->constants->define('WP_CRON_LOCK_TIMEOUT', 120);
+        $this->constants->define('EMPTY_TRASH_DAYS', 10);
 
         if ($this->error_logs_dir) {
-            $this->define('WP_DEBUG', true);
-            $this->define('WP_DEBUG_LOG', $this->error_logs_dir);
+            $this->constants->define('WP_DEBUG', true);
+            $this->constants->define('WP_DEBUG_LOG', $this->error_logs_dir);
         } else {
-            $this->define('WP_DEBUG', false);
-            $this->define('WP_DEBUG_LOG', false);
+            $this->constants->define('WP_DEBUG', false);
+            $this->constants->define('WP_DEBUG_LOG', false);
         }
 
         ini_set('display_errors', '0');
@@ -106,20 +106,20 @@ class Switcher implements EnvSwitcherInterface
     public function production(): void
     {
         // Disable Plugin and Theme Editor.
-        $this->define('DISALLOW_FILE_EDIT', true);
+        $this->constants->define('DISALLOW_FILE_EDIT', true);
 
-        $this->define('WP_DEBUG_DISPLAY', false);
-        $this->define('SCRIPT_DEBUG', false);
+        $this->constants->define('WP_DEBUG_DISPLAY', false);
+        $this->constants->define('SCRIPT_DEBUG', false);
 
-        $this->define('WP_CRON_LOCK_TIMEOUT', 60);
-        $this->define('EMPTY_TRASH_DAYS', 15);
+        $this->constants->define('WP_CRON_LOCK_TIMEOUT', 60);
+        $this->constants->define('EMPTY_TRASH_DAYS', 15);
 
         if ($this->error_logs_dir) {
-            $this->define('WP_DEBUG', true);
-            $this->define('WP_DEBUG_LOG', $this->error_logs_dir);
+            $this->constants->define('WP_DEBUG', true);
+            $this->constants->define('WP_DEBUG_LOG', $this->error_logs_dir);
         } else {
-            $this->define('WP_DEBUG', false);
-            $this->define('WP_DEBUG_LOG', false);
+            $this->constants->define('WP_DEBUG', false);
+            $this->constants->define('WP_DEBUG_LOG', false);
         }
 
         ini_set('display_errors', '0');
@@ -127,13 +127,13 @@ class Switcher implements EnvSwitcherInterface
 
     public function staging(): void
     {
-        $this->define('DISALLOW_FILE_EDIT', false);
+        $this->constants->define('DISALLOW_FILE_EDIT', false);
 
-        $this->define('WP_DEBUG_DISPLAY', true);
-        $this->define('SCRIPT_DEBUG', false);
-        $this->define('SAVEQUERIES', true);
+        $this->constants->define('WP_DEBUG_DISPLAY', true);
+        $this->constants->define('SCRIPT_DEBUG', false);
+        $this->constants->define('SAVEQUERIES', true);
 
-        $this->define('WP_DEBUG', true);
+        $this->constants->define('WP_DEBUG', true);
         ini_set('display_errors', '0');
 
         self::setDebugLog();
@@ -141,13 +141,13 @@ class Switcher implements EnvSwitcherInterface
 
     public function development(): void
     {
-        $this->define('WP_DEBUG', true);
-        $this->define('SAVEQUERIES', true);
+        $this->constants->define('WP_DEBUG', true);
+        $this->constants->define('SAVEQUERIES', true);
 
-        $this->define('WP_DEBUG_DISPLAY', true);
-        $this->define('WP_DISABLE_FATAL_ERROR_HANDLER', true);
+        $this->constants->define('WP_DEBUG_DISPLAY', true);
+        $this->constants->define('WP_DISABLE_FATAL_ERROR_HANDLER', true);
 
-        $this->define('SCRIPT_DEBUG', true);
+        $this->constants->define('SCRIPT_DEBUG', true);
         ini_set('display_errors', '1');
 
         self::setDebugLog();
@@ -158,12 +158,12 @@ class Switcher implements EnvSwitcherInterface
      */
     public function debug(): void
     {
-        $this->define('WP_DEBUG', true);
-        $this->define('WP_DEBUG_DISPLAY', true);
-        $this->define('CONCATENATE_SCRIPTS', false);
-        $this->define('SAVEQUERIES', true);
-        $this->define('WP_CRON_LOCK_TIMEOUT', 120);
-        $this->define('EMPTY_TRASH_DAYS', 50);
+        $this->constants->define('WP_DEBUG', true);
+        $this->constants->define('WP_DEBUG_DISPLAY', true);
+        $this->constants->define('CONCATENATE_SCRIPTS', false);
+        $this->constants->define('SAVEQUERIES', true);
+        $this->constants->define('WP_CRON_LOCK_TIMEOUT', 120);
+        $this->constants->define('EMPTY_TRASH_DAYS', 50);
 
         self::setDebugLog();
 
@@ -180,9 +180,9 @@ class Switcher implements EnvSwitcherInterface
     protected function setDebugLog(): void
     {
         if ($this->error_logs_dir) {
-            $this->define('WP_DEBUG_LOG', $this->error_logs_dir);
+            $this->constants->define('WP_DEBUG_LOG', $this->error_logs_dir);
         } else {
-            $this->define('WP_DEBUG_LOG', true);
+            $this->constants->define('WP_DEBUG_LOG', true);
         }
     }
 
@@ -200,9 +200,9 @@ class Switcher implements EnvSwitcherInterface
             return;
         }
 
-        $this->define('WP_CACHE', true);
-        $this->define('CONCATENATE_SCRIPTS', true);
-        $this->define('COMPRESS_SCRIPTS', true);
-        $this->define('COMPRESS_CSS', true);
+        $this->constants->define('WP_CACHE', true);
+        $this->constants->define('CONCATENATE_SCRIPTS', true);
+        $this->constants->define('COMPRESS_SCRIPTS', true);
+        $this->constants->define('COMPRESS_CSS', true);
     }
 }

@@ -9,30 +9,30 @@
  * file that was distributed with this source code.
  */
 
-namespace WPframework\Traits;
+namespace WPframework;
 
 use WPframework\Exceptions\ConstantAlreadyDefinedException;
 
 /**
- * Trait ConstantBuilderTrait.
+ * Class ConstantBuilder.
  *
- * This trait provides methods for defining and managing constants in your application.
+ * This class provides methods for defining and managing constants in your application.
  */
-trait ConstantBuilderTrait
+class ConstantBuilder
 {
     /**
      * List of constants defined.
      *
      * @var array
      */
-    protected static $constants = [];
+    protected $constants = [];
 
     /**
-     * list of constants defined by Setup.
+     * List of constants defined by Setup.
      *
      * @var array
      */
-    protected $constant_map = [ 'disabled' ];
+    protected $constantMap = ['disabled'];
 
     /**
      * Define a constant with a value.
@@ -44,15 +44,14 @@ trait ConstantBuilderTrait
      */
     public function define(string $const, $value): void
     {
-        if ($this->is_defined($const)) {
+        if ($this->isDefined($const)) {
             // throw new ConstantAlreadyDefinedException( "Constant: $const has already been defined" );
             //trigger_error('Constant Already Defined:' . $const);
             return;
         }
 
         \define($const, $value);
-
-        static::$constants[ $const ] = $value;
+        $this->constants[$const] = $value;
     }
 
     /**
@@ -62,7 +61,7 @@ trait ConstantBuilderTrait
      *
      * @return bool True if the constant is defined, false otherwise.
      */
-    public function is_defined(string $const): bool
+    public function isDefined(string $const): bool
     {
         return \defined($const);
     }
@@ -74,13 +73,14 @@ trait ConstantBuilderTrait
      *
      * @return null|mixed The value of the constant if defined, null otherwise.
      */
-    public function get_constant(string $key)
+    public function getConstant(string $key)
     {
-        if (isset(static::$constants[ $key ])) {
-            return static::$constants[ $key ];
-        }
+        return $this->constants[$key] ?? null;
+    }
 
-        return null;
+	public function getAllConstants()
+    {
+        return $this->constants;
     }
 
     /**
@@ -94,8 +94,13 @@ trait ConstantBuilderTrait
      */
     public function getConstantMap(): array
     {
-        return self::encrypt_secret($this->constant_map, self::env_secrets());
+        return $this->hashSecret($this->constantMap, self::envSecrets());
     }
+
+	public function setMap(): void
+	{
+		$this->setConstantMap();
+	}
 
     /**
      * Set the constant map based on environmental conditions.
@@ -105,28 +110,26 @@ trait ConstantBuilderTrait
      * If the environment type is 'development', 'debug', or 'staging', it will use the static $constants property
      * as the constant map if it's an array; otherwise, it will set the constant map to ['invalid_type_returned'].
      */
-    protected function setConstantMap(): void
+    private function setConstantMap(): void
     {
         if (! \defined('WP_DEBUG')) {
-            $this->constant_map = [ 'disabled' ];
-
+            $this->constantMap = ['disabled'];
             return;
         }
 
         if (\defined('WP_DEBUG') && false === constant('WP_DEBUG')) {
-            $this->constant_map = [ 'disabled' ];
-
+            $this->constantMap = ['disabled'];
             return;
         }
 
-        if (\in_array(env('WP_ENVIRONMENT_TYPE'), [ 'development', 'debug', 'staging' ], true)) {
-            $constant_map = static::$constants;
+        if (\in_array(env('WP_ENVIRONMENT_TYPE'), ['development', 'debug', 'staging'], true)) {
+            $constantMap = $this->constants;
 
-            if (\is_array($constant_map)) {
-                $this->constant_map = $constant_map;
+            if (\is_array($constantMap)) {
+                $this->constantMap = $constantMap;
+            } else {
+                $this->constantMap = ['invalid_type_returned'];
             }
-
-            $this->constant_map = [ 'invalid_type_returned' ];
         }
     }
 
@@ -135,41 +138,44 @@ trait ConstantBuilderTrait
      *
      * This method iterates through the provided $config array, checking each key against the list
      * of sensitive keys provided by the optional $secrets parameter. If a key is found in the sensitive list,
-     * the value is hashed using SHA-256 before being added to the resulting $encrypted_config array. Non-sensitive
+     * the value is hashed using SHA-256 before being added to the resulting $hashed array. Non-sensitive
      * values are added to the array without modification.
      *
-     * @param array $config  An associative array containing keys and their corresponding values
-     * @param array $secrets An optional array of sensitive keys that need to be hashed (defaults to null)
+     * @param array $config  An associative array containing keys and their corresponding values.
+     * @param array $secrets An optional array of sensitive keys that need to be hashed (defaults to null).
      *
-     * @return array $encrypted_config An associative array with sensitive values hashed
+     * @return array $hashed An associative array with sensitive values hashed.
      */
-    protected function encrypt_secret(array $config, array $secrets = []): array
+    public function hashSecret(array $config, array $secrets = []): array
     {
-        $encrypted = [];
+        $hashed = [];
 
         foreach ($config as $key => $value) {
             if (\in_array($key, $secrets, true)) {
-                $encrypted[ $key ] = hash('sha256', $value);
+                $hashed[$key] = hash('sha256', $value);
             } else {
-                $encrypted[ $key ] = $value;
+                $hashed[$key] = $value;
             }
         }
 
-        return $encrypted;
+        return $hashed;
     }
 
     /**
-     * List of secret values that should always be encrypted.
+     * List of secret values that should always be hashed.
      *
-     * @return (mixed|string)[]
+     * @param array $secrets Optional array to merge with the default secrets.
      *
-     * @psalm-return array{0: 'DB_USER', 1: 'DB_PASSWORD', 2: 'AUTH_KEY', 3: 'SECURE_AUTH_KEY', 4: 'LOGGED_IN_KEY', 5: 'NONCE_KEY', 6: 'AUTH_SALT', 7: 'SECURE_AUTH_SALT', 8: 'LOGGED_IN_SALT', 9: 'NONCE_SALT',...}
+     * @return array
      */
-    protected static function env_secrets(array $secrets = []): array
+    protected static function envSecrets(array $secrets = []): array
     {
         return array_merge(
             $secrets,
-            [ 'DB_USER', 'DB_PASSWORD', 'AUTH_KEY', 'SECURE_AUTH_KEY', 'LOGGED_IN_KEY', 'NONCE_KEY', 'AUTH_SALT', 'SECURE_AUTH_SALT', 'LOGGED_IN_SALT', 'NONCE_SALT' ]
+            [
+                'DB_USER', 'DB_PASSWORD', 'AUTH_KEY', 'SECURE_AUTH_KEY', 'LOGGED_IN_KEY',
+                'NONCE_KEY', 'AUTH_SALT', 'SECURE_AUTH_SALT', 'LOGGED_IN_SALT', 'NONCE_SALT'
+            ]
         );
     }
 }

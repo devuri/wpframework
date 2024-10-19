@@ -55,7 +55,7 @@ interface KernelInterface
      *
      * @return void
      */
-    public function set_config_constants(): void;
+    public function setKernelConstants(): void;
 
     /**
      * Initializes the application with environment settings.
