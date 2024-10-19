@@ -118,6 +118,6 @@ final class Config
             return require $options_file;
         }
 
-        return [];
+        return self::getDefault();
     }
 }

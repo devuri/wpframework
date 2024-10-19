@@ -18,12 +18,9 @@ use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 use WPframework\Env\EnvTypes;
 use WPframework\Http\EnvSwitcherInterface as Switcher;
-use WPframework\Traits\ConstantBuilderTrait;
 
 class Setup implements SetupInterface
 {
-    use ConstantBuilderTrait;
-
     protected $appPath;
     protected $isMultiTenant;
     protected $dotenv;
@@ -36,19 +33,22 @@ class Setup implements SetupInterface
     protected $switcher;
     protected $envTypes = [];
     protected $tenant;
+    protected $configManager;
 
     public function __construct(string $appPath, array $envFileNames = [], bool $shortCircuit = true)
     {
-        $this->tenant       = new Tenant($appPath);
-        $this->appPath      = $this->tenant->getCurrentPath();
-        $this->shortCircuit = $shortCircuit;
-        $this->envFiles     = array_merge($this->getDefaultFileNames(), $envFileNames);
+        $this->tenant        = new Tenant($appPath);
+		$constantBuilder     = new ConstantBuilder();
+        $this->configManager = new AppConfig($constantBuilder);
+        $this->appPath       = $this->tenant->getCurrentPath();
+        $this->shortCircuit  = $shortCircuit;
+        $this->envFiles      = array_merge($this->getDefaultFileNames(), $envFileNames);
 
         $this->filterExistingEnvFiles();
         $this->envTypes = EnvTypes::getAll();
         $this->initializeDotenv();
 
-        $this->setConstantMap();
+        $this->configManager->setConstantMap();
     }
 
     public function tenant(): Tenant
@@ -60,6 +60,11 @@ class Setup implements SetupInterface
     {
         return $this->appPath;
     }
+
+	public function getAppConfig(): AppConfig
+	{
+		return $this->configManager;
+	}
 
     public static function init(string $appPath): self
     {
@@ -129,21 +134,21 @@ class Setup implements SetupInterface
      */
     public function setEnvironment(): self
     {
-        $this->define('WP_DEVELOPMENT_MODE', self::wpDevelopmentMode());
+        $this->configManager->addConstant('WP_DEVELOPMENT_MODE', self::wpDevelopmentMode());
 
         if (false === $this->environment && env('WP_ENVIRONMENT_TYPE')) {
-            $this->define('WP_ENVIRONMENT_TYPE', env('WP_ENVIRONMENT_TYPE'));
+            $this->configManager->addConstant('WP_ENVIRONMENT_TYPE', env('WP_ENVIRONMENT_TYPE'));
 
             return $this;
         }
 
         if ($this->isEnvironmentNull()) {
-            $this->define('WP_ENVIRONMENT_TYPE', env('WP_ENVIRONMENT_TYPE') ?? self::getConstant('environment'));
+            $this->configManager->addConstant('WP_ENVIRONMENT_TYPE', env('WP_ENVIRONMENT_TYPE') ?? self::getConstant('environment'));
 
             return $this;
         }
 
-        $this->define('WP_ENVIRONMENT_TYPE', $this->environment);
+        $this->configManager->addConstant('WP_ENVIRONMENT_TYPE', $this->environment);
 
         return $this;
     }
@@ -233,8 +238,8 @@ class Setup implements SetupInterface
      */
     public function siteUrl(): SetupInterface
     {
-        $this->define('WP_HOME', env('WP_HOME'));
-        $this->define('WP_SITEURL', env('WP_SITEURL'));
+        $this->configManager->addConstant('WP_HOME', env('WP_HOME'));
+        $this->configManager->addConstant('WP_SITEURL', env('WP_SITEURL'));
 
         return $this;
     }
@@ -244,7 +249,7 @@ class Setup implements SetupInterface
      */
     public function assetUrl(): SetupInterface
     {
-        $this->define('ASSET_URL', env('ASSET_URL'));
+        $this->configManager->addConstant('ASSET_URL', env('ASSET_URL'));
 
         return $this;
     }
@@ -254,7 +259,7 @@ class Setup implements SetupInterface
      */
     public function optimize(): SetupInterface
     {
-        $this->define('CONCATENATE_SCRIPTS', env('CONCATENATE_SCRIPTS') ?? self::getConstant('optimize'));
+        $this->configManager->addConstant('CONCATENATE_SCRIPTS', env('CONCATENATE_SCRIPTS') ?? self::getConstant('optimize'));
 
         return $this;
     }
@@ -264,8 +269,8 @@ class Setup implements SetupInterface
      */
     public function memory(): SetupInterface
     {
-        $this->define('WP_MEMORY_LIMIT', env('MEMORY_LIMIT') ?? self::getConstant('memory'));
-        $this->define('WP_MAX_MEMORY_LIMIT', env('MAX_MEMORY_LIMIT') ?? self::getConstant('memory'));
+        $this->configManager->addConstant('WP_MEMORY_LIMIT', env('MEMORY_LIMIT') ?? self::getConstant('memory'));
+        $this->configManager->addConstant('WP_MAX_MEMORY_LIMIT', env('MAX_MEMORY_LIMIT') ?? self::getConstant('memory'));
 
         return $this;
     }
@@ -275,8 +280,8 @@ class Setup implements SetupInterface
      */
     public function forceSsl(): SetupInterface
     {
-        $this->define('FORCE_SSL_ADMIN', env('FORCE_SSL_ADMIN') ?? self::getConstant('ssl_admin'));
-        $this->define('FORCE_SSL_LOGIN', env('FORCE_SSL_LOGIN') ?? self::getConstant('ssl_login'));
+        $this->configManager->addConstant('FORCE_SSL_ADMIN', env('FORCE_SSL_ADMIN') ?? self::getConstant('ssl_admin'));
+        $this->configManager->addConstant('FORCE_SSL_LOGIN', env('FORCE_SSL_LOGIN') ?? self::getConstant('ssl_login'));
 
         return $this;
     }
@@ -286,8 +291,8 @@ class Setup implements SetupInterface
      */
     public function autosave(): SetupInterface
     {
-        $this->define('AUTOSAVE_INTERVAL', env('AUTOSAVE_INTERVAL') ?? self::getConstant('autosave'));
-        $this->define('WP_POST_REVISIONS', env('WP_POST_REVISIONS') ?? self::getConstant('revisions'));
+        $this->configManager->addConstant('AUTOSAVE_INTERVAL', env('AUTOSAVE_INTERVAL') ?? self::getConstant('autosave'));
+        $this->configManager->addConstant('WP_POST_REVISIONS', env('WP_POST_REVISIONS') ?? self::getConstant('revisions'));
 
         return $this;
     }
@@ -297,12 +302,12 @@ class Setup implements SetupInterface
      */
     public function database(): SetupInterface
     {
-        $this->define('DB_NAME', env('DB_NAME'));
-        $this->define('DB_USER', env('DB_USER'));
-        $this->define('DB_PASSWORD', env('DB_PASSWORD'));
-        $this->define('DB_HOST', env('DB_HOST') ?? self::getConstant('db_host'));
-        $this->define('DB_CHARSET', env('DB_CHARSET') ?? 'utf8mb4');
-        $this->define('DB_COLLATE', env('DB_COLLATE') ?? '');
+        $this->configManager->addConstant('DB_NAME', env('DB_NAME'));
+        $this->configManager->addConstant('DB_USER', env('DB_USER'));
+        $this->configManager->addConstant('DB_PASSWORD', env('DB_PASSWORD'));
+        $this->configManager->addConstant('DB_HOST', env('DB_HOST') ?? self::getConstant('db_host'));
+        $this->configManager->addConstant('DB_CHARSET', env('DB_CHARSET') ?? 'utf8mb4');
+        $this->configManager->addConstant('DB_COLLATE', env('DB_COLLATE') ?? '');
 
         return $this;
     }
@@ -312,16 +317,16 @@ class Setup implements SetupInterface
      */
     public function salts(): SetupInterface
     {
-        $this->define('AUTH_KEY', env('AUTH_KEY'));
-        $this->define('SECURE_AUTH_KEY', env('SECURE_AUTH_KEY'));
-        $this->define('LOGGED_IN_KEY', env('LOGGED_IN_KEY'));
-        $this->define('NONCE_KEY', env('NONCE_KEY'));
-        $this->define('AUTH_SALT', env('AUTH_SALT'));
-        $this->define('SECURE_AUTH_SALT', env('SECURE_AUTH_SALT'));
-        $this->define('LOGGED_IN_SALT', env('LOGGED_IN_SALT'));
-        $this->define('NONCE_SALT', env('NONCE_SALT'));
+        $this->configManager->addConstant('AUTH_KEY', env('AUTH_KEY'));
+        $this->configManager->addConstant('SECURE_AUTH_KEY', env('SECURE_AUTH_KEY'));
+        $this->configManager->addConstant('LOGGED_IN_KEY', env('LOGGED_IN_KEY'));
+        $this->configManager->addConstant('NONCE_KEY', env('NONCE_KEY'));
+        $this->configManager->addConstant('AUTH_SALT', env('AUTH_SALT'));
+        $this->configManager->addConstant('SECURE_AUTH_SALT', env('SECURE_AUTH_SALT'));
+        $this->configManager->addConstant('LOGGED_IN_SALT', env('LOGGED_IN_SALT'));
+        $this->configManager->addConstant('NONCE_SALT', env('NONCE_SALT'));
 
-        $this->define('DEVELOPER_ADMIN', env('DEVELOPER_ADMIN') ?? '0');
+        $this->configManager->addConstant('DEVELOPER_ADMIN', env('DEVELOPER_ADMIN') ?? '0');
 
         return $this;
     }

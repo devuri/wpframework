@@ -51,7 +51,7 @@ class KernelTest extends TestCase
 
     public function test_constants_defined(): void
     {
-        $this->http_app->set_config_constants();
+        $this->http_app->setKernelConstants();
 
         $app_test_path = APP_TEST_PATH;
 

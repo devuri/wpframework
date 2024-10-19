@@ -21,6 +21,7 @@ use Whoops\Run;
 use WPframework\Http\HttpFactory;
 use WPframework\Http\KernelInterface;
 use WPframework\Http\Tenancy;
+use WPframework\Config;
 
 /**
  * The App class serves as the main entry point for initializing the WordPress application.
@@ -96,7 +97,7 @@ class App
         if (! empty($tenant_options)) {
             $this->config = require $tenant_options;
         } else {
-            $this->config = appConfig($this->app_path);
+            $this->config = Config::siteConfig($this->app_path);
         }
 
         if (! \is_array($this->config)) {
@@ -153,6 +154,8 @@ class App
         if (! \defined('SITE_CONFIGS_DIR')) {
             \define('SITE_CONFIGS_DIR', 'configs');
         }
+
+		self::define();
 
         if (! \defined('APP_DIR_PATH')) {
             \define('APP_DIR_PATH', $app_path);
