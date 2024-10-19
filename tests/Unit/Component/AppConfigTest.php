@@ -59,7 +59,7 @@ class AppConfigTest extends TestCase
     public function testGetConstant()
     {
         $appConfig = new AppConfig($this->constantBuilder);
-		$appConfig->addConst('APP_NAME', 'MyApp');
+        $appConfig->addConst('APP_NAME', 'MyApp');
 
         $this->assertEquals('MyApp', $appConfig->getConstant('APP_NAME'));
     }
@@ -70,7 +70,7 @@ class AppConfigTest extends TestCase
     public function testIsConstantDefined()
     {
         $appConfig = new AppConfig($this->constantBuilder);
-		$appConfig->addConst('APP_NAME', 'MyApp');
+        $appConfig->addConst('APP_NAME', 'MyApp');
 
         $this->assertTrue($appConfig->isConstantDefined('APP_NAME'));
         $this->assertFalse($appConfig->isConstantDefined('NON_EXISTENT_CONSTANT'));

@@ -101,9 +101,9 @@ abstract class AbstractKernel implements KernelInterface
 
     protected $args;
 
-	/**
-	 * @var AppConfig
-	 */
+    /**
+     * @var AppConfig
+     */
     protected $constManager;
 
     /**
@@ -171,8 +171,8 @@ abstract class AbstractKernel implements KernelInterface
         // set the environment switcher.
         $this->siteSetup->setSwitcher(new Switcher());
 
-		// get constant builder config.
-		$this->constManager = $this->siteSetup->getAppConfig();
+        // get constant builder config.
+        $this->constManager = $this->siteSetup->getAppConfig();
 
         // set config override file.
         $this->configuration_overrides();
