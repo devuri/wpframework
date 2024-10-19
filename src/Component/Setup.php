@@ -38,7 +38,7 @@ class Setup implements SetupInterface
     public function __construct(string $appPath, array $envFileNames = [], bool $shortCircuit = true)
     {
         $this->tenant        = new Tenant($appPath);
-		$constantBuilder     = new ConstantBuilder();
+        $constantBuilder     = new ConstantBuilder();
         $this->configManager = new AppConfig($constantBuilder);
         $this->appPath       = $this->tenant->getCurrentPath();
         $this->shortCircuit  = $shortCircuit;
@@ -61,10 +61,10 @@ class Setup implements SetupInterface
         return $this->appPath;
     }
 
-	public function getAppConfig(): AppConfig
-	{
-		return $this->configManager;
-	}
+    public function getAppConfig(): AppConfig
+    {
+        return $this->configManager;
+    }
 
     public static function init(string $appPath): self
     {

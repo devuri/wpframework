@@ -78,7 +78,7 @@ class ConstantBuilder
         return $this->constants[$key] ?? null;
     }
 
-	public function getAllConstants()
+    public function getAllConstants()
     {
         return $this->constants;
     }
@@ -97,10 +97,10 @@ class ConstantBuilder
         return $this->hashSecret($this->constantMap, self::envSecrets());
     }
 
-	public function setMap(): void
-	{
-		$this->setConstantMap();
-	}
+    public function setMap(): void
+    {
+        $this->setConstantMap();
+    }
 
     /**
      * Set the constant map based on environmental conditions.

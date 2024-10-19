@@ -39,7 +39,7 @@ class AppConfig
         $this->constantBuilder->define($name, $value);
     }
 
-	/**
+    /**
      * Define a new constant.
      *
      * @param string $name
@@ -72,12 +72,12 @@ class AppConfig
         return $this->constantBuilder->isDefined($name);
     }
 
-	public function setConstantMap(): void
+    public function setConstantMap(): void
     {
         $this->constantBuilder->setMap();
     }
 
-	public function getDefinedConstants(): array
+    public function getDefinedConstants(): array
     {
         return $this->constantBuilder->getAllConstants();
     }

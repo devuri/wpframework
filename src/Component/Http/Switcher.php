@@ -41,7 +41,7 @@ class Switcher implements EnvSwitcherInterface
     public function createEnvironment(string $environment, ?string $error_logs_dir): void
     {
         $this->setErrorLogsDir($error_logs_dir);
-		$this->constants = new ConstantBuilder();
+        $this->constants = new ConstantBuilder();
 
         switch ($environment) {
             case 'production':
