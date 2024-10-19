@@ -20,5 +20,5 @@ interface MiddlewareInterface
      * @param callable $next The next middleware in the stack.
      * @return mixed
      */
-    public function handle(array $request, callable $next);
+    public function process(array $request, callable $next);
 }

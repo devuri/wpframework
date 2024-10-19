@@ -12,6 +12,7 @@
 namespace WPframework\Middleware;
 
 use Psr\Log\LoggerInterface;
+use Psr\Http\Server\MiddlewareInterface;
 
 class GateKeeper
 {
@@ -61,7 +62,7 @@ class GateKeeper
                 array_reverse($this->middleware),
                 function ($next, MiddlewareInterface $middleware) {
                     return function ($request) use ($middleware, $next) {
-                        return $middleware->handle($request, $next);
+                        return $middleware->process($request, $next);
                     };
                 },
                 function ($request) {
