@@ -155,8 +155,6 @@ class App
             \define('SITE_CONFIGS_DIR', 'configs');
         }
 
-        self::define();
-
         if (! \defined('APP_DIR_PATH')) {
             \define('APP_DIR_PATH', $app_path);
         }

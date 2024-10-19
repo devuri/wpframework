@@ -11,10 +11,10 @@
 
 namespace WPframework\Http\Message;
 
-use Nyholm\Psr7\Response as Psr7Response;
-use Psr\Http\Message\ResponseInterface;
+use Nyholm\Psr7\Stream as Psr7Stream;
+use Psr\Http\Message\StreamInterface;
 
-class Response extends Psr7Response implements ResponseInterface
+class Stream extends Psr7Stream implements StreamInterface
 {
     // Add any custom methods or overrides here (if needed)
 }
