@@ -26,8 +26,8 @@ class ConstantBuilderTest extends TestCase
      */
     protected function setUp(): void
     {
-        // Create a new instance of ConstantBuilder
         $this->constantBuilder = new ConstantBuilder();
+        //$this->constantBuilder->setErrorNotice();
     }
 
     /**
@@ -35,15 +35,11 @@ class ConstantBuilderTest extends TestCase
      */
     public function testDefineConstant()
     {
-        // Define a constant using ConstantBuilder
-        $this->constantBuilder->define('APP_NAME', 'MyApp');
+        $this->constantBuilder->define('FIRST_APP_NAME', 'MyFirstApp');
 
-        // Check if the constant is defined and has the correct value
-        $this->assertTrue(defined('APP_NAME'));
-        $this->assertEquals('MyApp', constant('APP_NAME'));
-
-        // Check if it's also stored in the internal array
-        $this->assertEquals('MyApp', $this->constantBuilder->getConstant('APP_NAME'));
+        $this->assertTrue(defined('FIRST_APP_NAME'));
+        $this->assertEquals('MyFirstApp', constant('FIRST_APP_NAME'));
+        $this->assertEquals('MyFirstApp', $this->constantBuilder->getConstant('FIRST_APP_NAME'));
     }
 
     /**
@@ -51,13 +47,9 @@ class ConstantBuilderTest extends TestCase
      */
     public function testDefineAlreadyDefinedConstant()
     {
-        // Define a constant
         $this->constantBuilder->define('APP_NAME', 'MyApp');
 
-        // Try defining the same constant again (shouldn't throw an error but won't redefine it)
-        $this->constantBuilder->define('APP_NAME', 'MyNewApp');
-
-        // Ensure the constant's value hasn't changed
+        $this->constantBuilder->define('APP_NAME', 'MyOtherApp');
         $this->assertEquals('MyApp', constant('APP_NAME'));
     }
 
@@ -66,13 +58,9 @@ class ConstantBuilderTest extends TestCase
      */
     public function testIsDefined()
     {
-        // Define a constant
-        $this->constantBuilder->define('APP_NAME', 'MyApp');
+        $this->constantBuilder->define('MYAPP_NAME', 'MyApp');
 
-        // Check if the constant is defined
-        $this->assertTrue($this->constantBuilder->isDefined('APP_NAME'));
-
-        // Check for a constant that hasn't been defined
+        $this->assertTrue($this->constantBuilder->isDefined('MYAPP_NAME'));
         $this->assertFalse($this->constantBuilder->isDefined('NON_EXISTENT_CONSTANT'));
     }
 
@@ -81,13 +69,9 @@ class ConstantBuilderTest extends TestCase
      */
     public function testGetConstant()
     {
-        // Define a constant
-        $this->constantBuilder->define('APP_NAME', 'MyApp');
+        $this->constantBuilder->define('SITEAPP_NAME', 'MyApp');
 
-        // Retrieve the constant's value
-        $this->assertEquals('MyApp', $this->constantBuilder->getConstant('APP_NAME'));
-
-        // Try to get a non-existent constant
+        $this->assertEquals('MyApp', $this->constantBuilder->getConstant('SITEAPP_NAME'));
         $this->assertNull($this->constantBuilder->getConstant('NON_EXISTENT_CONSTANT'));
     }
 
@@ -96,17 +80,14 @@ class ConstantBuilderTest extends TestCase
      */
     public function testGetAllConstants()
     {
-        // Define multiple constants
-        $this->constantBuilder->define('APP_NAME', 'MyApp');
-        $this->constantBuilder->define('APP_VERSION', '1.0.0');
+        $this->constantBuilder->define('SITE_NAME', 'MyApp');
+        $this->constantBuilder->define('SITE_VERSION', '1.0.3');
 
-        // Get all defined constants
         $allConstants = $this->constantBuilder->getAllConstants();
 
-        // Check that all constants are returned correctly
         $this->assertEquals([
-            'APP_NAME' => 'MyApp',
-            'APP_VERSION' => '1.0.0',
+            'SITE_NAME' => 'MyApp',
+            'SITE_VERSION' => '1.0.3',
         ], $allConstants);
     }
 
@@ -115,13 +96,11 @@ class ConstantBuilderTest extends TestCase
      */
     public function testSetConstantMap()
     {
-        // Assuming WP_DEBUG is not defined
         $this->constantBuilder->setMap();
 
         $constantMap = $this->constantBuilder->getConstantMap();
         $this->assertEquals(['disabled'], $constantMap);
 
-        // Define WP_DEBUG and check if the constant map changes accordingly
         define('WP_DEBUG', true);
         define('WP_ENVIRONMENT_TYPE', 'development');
 
@@ -129,7 +108,6 @@ class ConstantBuilderTest extends TestCase
         $this->constantBuilder->setMap();
         $constantMap = $this->constantBuilder->getConstantMap();
 
-        // Check that the constant map now includes defined constants
         $this->assertEquals(['TEST_CONSTANT' => 'value'], $constantMap);
     }
 

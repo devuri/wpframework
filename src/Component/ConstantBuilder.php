@@ -28,11 +28,14 @@ class ConstantBuilder
     protected $constants = [];
 
     /**
-     * List of constants defined by Setup.
-     *
      * @var array
      */
     protected $constantMap = ['disabled'];
+
+    /**
+     * @var bool
+     */
+    protected $errorNotice;
 
     /**
      * Define a constant with a value.
@@ -46,12 +49,21 @@ class ConstantBuilder
     {
         if ($this->isDefined($const)) {
             // throw new ConstantAlreadyDefinedException( "Constant: $const has already been defined" );
-            //trigger_error('Constant Already Defined:' . $const);
+
+            if ($this->errorNotice) {
+                trigger_error('Constant Already Defined:' . $const);
+            }
+
             return;
         }
 
         \define($const, $value);
         $this->constants[$const] = $value;
+    }
+
+    public function setErrorNotice()
+    {
+        $this->errorNotice = true;
     }
 
     /**
@@ -122,15 +134,15 @@ class ConstantBuilder
             return;
         }
 
-        if (\in_array(env('WP_ENVIRONMENT_TYPE'), ['development', 'debug', 'staging'], true)) {
-            $constantMap = $this->constants;
+        //if (\in_array(env('WP_ENVIRONMENT_TYPE'), ['development', 'debug', 'dev', 'staging'], true)) {
+        $constantMap = $this->constants;
 
-            if (\is_array($constantMap)) {
-                $this->constantMap = $constantMap;
-            } else {
-                $this->constantMap = ['invalid_type_returned'];
-            }
+        if (\is_array($constantMap)) {
+            $this->constantMap = $constantMap;
+        } else {
+            $this->constantMap = ['invalid_type_returned'];
         }
+        //}
     }
 
     /**

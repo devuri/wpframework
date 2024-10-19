@@ -11,10 +11,10 @@
 
 namespace WPframework\Http\Message;
 
-use Nyholm\Psr7\Response as Psr7Response;
-use Psr\Http\Message\ResponseInterface;
+use Nyholm\Psr7\UploadedFile as Psr7UploadedFile;
+use Psr\Http\Message\UploadedFileInterface;
 
-class Response extends Psr7Response implements ResponseInterface
+class UploadedFile extends Psr7UploadedFile implements UploadedFileInterface
 {
     // Add any custom methods or overrides here (if needed)
 }

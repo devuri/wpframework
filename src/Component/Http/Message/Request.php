@@ -11,10 +11,10 @@
 
 namespace WPframework\Http\Message;
 
-use Nyholm\Psr7\Response as Psr7Response;
-use Psr\Http\Message\ResponseInterface;
+use Nyholm\Psr7\Request as NyholmRequest;
+use Psr\Http\Message\RequestInterface;
 
-class Response extends Psr7Response implements ResponseInterface
+class Request extends NyholmRequest implements RequestInterface
 {
     // Add any custom methods or overrides here (if needed)
 }

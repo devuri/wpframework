@@ -59,9 +59,9 @@ class AppConfigTest extends TestCase
     public function testGetConstant()
     {
         $appConfig = new AppConfig($this->constantBuilder);
-        $appConfig->addConst('APP_NAME', 'MyApp');
+        $appConfig->addConst('MY_APP_NAME', 'MyApp');
 
-        $this->assertEquals('MyApp', $appConfig->getConstant('APP_NAME'));
+        $this->assertEquals('MyApp', $appConfig->getConstant('MY_APP_NAME'));
     }
 
     /**
@@ -70,9 +70,9 @@ class AppConfigTest extends TestCase
     public function testIsConstantDefined()
     {
         $appConfig = new AppConfig($this->constantBuilder);
-        $appConfig->addConst('APP_NAME', 'MyApp');
+        $appConfig->addConst('NEW_APP_NAME', 'MyNew-App');
 
-        $this->assertTrue($appConfig->isConstantDefined('APP_NAME'));
+        $this->assertTrue($appConfig->isConstantDefined('NEW_APP_NAME'));
         $this->assertFalse($appConfig->isConstantDefined('NON_EXISTENT_CONSTANT'));
     }
 
@@ -94,14 +94,14 @@ class AppConfigTest extends TestCase
     {
         $appConfig = new AppConfig($this->constantBuilder);
 
-        $appConfig->addConstant('APP_NAME', 'MyApp');
-        $appConfig->addConstant('APP_VERSION', '1.0.0');
+        $appConfig->addConstant('FINAL_APP_NAME', 'MyApp');
+        $appConfig->addConstant('FINAL_VERSION', '1.0.2');
 
         $definedConstants = $appConfig->getDefinedConstants();
 
         $this->assertEquals([
-            'APP_NAME' => 'MyApp',
-            'APP_VERSION' => '1.0.0',
+            'FINAL_APP_NAME' => 'MyApp',
+            'FINAL_VERSION' => '1.0.2',
         ], $definedConstants);
     }
 }
