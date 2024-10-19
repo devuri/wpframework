@@ -27,6 +27,7 @@ Here’s why Raydium is an ideal choice as a micro-infrastructure framework:
 ## 6. **Seamless WordPress Integration**
    - Despite adding a new layer of functionality, Raydium is designed to **seamlessly integrate** with WordPress. Developers can continue to leverage the extensive WordPress ecosystem, including plugins and themes, without sacrificing efficiency, scalability, or compatibility.
    - Raydium enhances WordPress’s capabilities without disrupting its familiar workflow or tools, offering a harmonious balance between new features and the WordPress core.
+   - Efficient, with an average execution time of approximately 0.027 seconds (27 milliseconds).
 
 ## 7. **Targeted Enhancements**
    - Raydium focuses on specific areas, such as request/response management, environment setup, and multi-tenancy. It performs these tasks **before WordPress is bootstrapped**, ensuring they don’t interfere with the core functionality of WordPress itself.
