@@ -14,7 +14,7 @@ namespace WPframework\Http;
 use Exception;
 use InvalidArgumentException;
 use Urisoft\DotAccess;
-use Urisoft\AppConfig;
+use WPframework\AppConfig;
 use WPframework\Env\EnvTypes;
 use WPframework\Setup;
 use WPframework\Terminate;

@@ -475,3 +475,15 @@ if (!function_exists('logMessage')) {
         }
     }
 }
+
+function logWithStackTrace()
+{
+    $trace = debug_backtrace();
+    //error_log('Requested URI: ' . $_SERVER['REQUEST_URI']);
+    foreach ($trace as $index => $frame) {
+        $file = isset($frame['file']) ? $frame['file'] : '[internal function]';
+        $line = isset($frame['line']) ? $frame['line'] : 'N/A';
+        $function = isset($frame['function']) ? $frame['function'] : 'N/A';
+        error_log("#{$index} {$file}({$line}): {$function}()");
+    }
+}
