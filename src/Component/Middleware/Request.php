@@ -164,7 +164,6 @@ class Request implements RequestInterface
     {
         $headers = $this->getHeaders();
 
-        // Normalize header name for case-insensitive lookup
         $normalizedName = ucwords(strtolower($name), '-');
 
         return $headers[$normalizedName] ?? $default;
