@@ -68,7 +68,7 @@ class Setup implements SetupInterface
 
     public static function init(string $appPath): self
     {
-        if (! isset(self::$instance)) {
+        if ( ! isset(self::$instance)) {
             self::$instance = new self($appPath);
         }
 
@@ -76,9 +76,9 @@ class Setup implements SetupInterface
     }
 
     /**
-     * @return static
+     * @param null|(null|false|mixed|string)[] $environment
      *
-     * @param (false|mixed|null|string)[]|null $environment
+     * @return static
      *
      * @psalm-param array{environment: 'testing'|mixed|null, error_log: string, debug: false, errors: mixed}|null $environment
      */
@@ -173,7 +173,7 @@ class Setup implements SetupInterface
      */
     public function setErrorHandler(?string $handler = null): SetupInterface
     {
-        if (! $this->enableErrorHandler()) {
+        if ( ! $this->enableErrorHandler()) {
             return $this;
         }
 
@@ -181,7 +181,7 @@ class Setup implements SetupInterface
             return $this;
         }
 
-        if (! \in_array($this->environment, [ 'debug', 'development', 'dev', 'local' ], true)) {
+        if ( ! \in_array($this->environment, [ 'debug', 'development', 'dev', 'local' ], true)) {
             return $this;
         }
 
@@ -201,9 +201,9 @@ class Setup implements SetupInterface
     }
 
     /**
-     * @return static
-     *
      * @param null|string $errorLogsDir
+     *
+     * @return static
      */
     public function debug(?string $errorLogsDir): SetupInterface
     {
@@ -215,7 +215,7 @@ class Setup implements SetupInterface
             $this->resetEnvironment(env('WP_ENVIRONMENT_TYPE'));
         }
 
-        if (! EnvTypes::isValid($this->environment)) {
+        if ( ! EnvTypes::isValid($this->environment)) {
             $this->switcher->createEnvironment('production', $this->errorLogDir);
 
             return $this;
@@ -228,7 +228,7 @@ class Setup implements SetupInterface
 
     public function required(string $name): void
     {
-        if (! \defined($name)) {
+        if ( ! \defined($name)) {
             $this->dotenv->required($name)->notEmpty();
         }
     }
@@ -336,13 +336,13 @@ class Setup implements SetupInterface
      *
      * @psalm-param array<string>|null $environment
      *
-     * @return (false|null|string)[]
+     * @return (null|false|string)[]
      *
      * @psalm-return array{environment: null|string, error_log: null|string, debug: false|null|string, errors: false|null|string,...}
      */
     protected function normalizeEnvironment(?array $environment): array
     {
-        if (! \is_array($environment)) {
+        if ( ! \is_array($environment)) {
             $environment = [ 'environment' => $environment ];
         }
 
@@ -372,8 +372,8 @@ class Setup implements SetupInterface
     protected function filterExistingEnvFiles(): void
     {
         foreach ($this->envFiles as $key => $file) {
-            if (! file_exists($this->appPath . '/' . $file)) {
-                unset($this->envFiles[ $key ]);
+            if ( ! file_exists($this->appPath . '/' . $file)) {
+                unset($this->envFiles[$key]);
             }
         }
     }
@@ -455,7 +455,7 @@ class Setup implements SetupInterface
                 'exception' => $e,
             ];
             Terminate::exit([ $e->getMessage(), 500, $debug ]);
-        }//end try
+        }// end try
     }
 
     protected static function getConstant(string $key)
@@ -470,7 +470,7 @@ class Setup implements SetupInterface
         $constant['autosave']    = 180;
         $constant['revisions']   = 10;
 
-        return $constant[ $key ] ?? null;
+        return $constant[$key] ?? null;
     }
 
     private static function wpDevelopmentMode(): string

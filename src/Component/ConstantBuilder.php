@@ -61,7 +61,7 @@ class ConstantBuilder
         $this->constants[$const] = $value;
     }
 
-    public function setErrorNotice()
+    public function setErrorNotice(): void
     {
         $this->errorNotice = true;
     }
@@ -115,37 +115,6 @@ class ConstantBuilder
     }
 
     /**
-     * Set the constant map based on environmental conditions.
-     *
-     * This method determines the constant map based on the presence of WP_DEBUG and the environment type.
-     * If WP_DEBUG is not defined or set to false, the constant map will be set to ['disabled'].
-     * If the environment type is 'development', 'debug', or 'staging', it will use the static $constants property
-     * as the constant map if it's an array; otherwise, it will set the constant map to ['invalid_type_returned'].
-     */
-    private function setConstantMap(): void
-    {
-        if (! \defined('WP_DEBUG')) {
-            $this->constantMap = ['disabled'];
-            return;
-        }
-
-        if (\defined('WP_DEBUG') && false === constant('WP_DEBUG')) {
-            $this->constantMap = ['disabled'];
-            return;
-        }
-
-        //if (\in_array(env('WP_ENVIRONMENT_TYPE'), ['development', 'debug', 'dev', 'staging'], true)) {
-        $constantMap = $this->constants;
-
-        if (\is_array($constantMap)) {
-            $this->constantMap = $constantMap;
-        } else {
-            $this->constantMap = ['invalid_type_returned'];
-        }
-        //}
-    }
-
-    /**
      * Encrypts the values of sensitive data in the given configuration array.
      *
      * This method iterates through the provided $config array, checking each key against the list
@@ -186,8 +155,41 @@ class ConstantBuilder
             $secrets,
             [
                 'DB_USER', 'DB_PASSWORD', 'AUTH_KEY', 'SECURE_AUTH_KEY', 'LOGGED_IN_KEY',
-                'NONCE_KEY', 'AUTH_SALT', 'SECURE_AUTH_SALT', 'LOGGED_IN_SALT', 'NONCE_SALT'
+                'NONCE_KEY', 'AUTH_SALT', 'SECURE_AUTH_SALT', 'LOGGED_IN_SALT', 'NONCE_SALT',
             ]
         );
+    }
+
+    /**
+     * Set the constant map based on environmental conditions.
+     *
+     * This method determines the constant map based on the presence of WP_DEBUG and the environment type.
+     * If WP_DEBUG is not defined or set to false, the constant map will be set to ['disabled'].
+     * If the environment type is 'development', 'debug', or 'staging', it will use the static $constants property
+     * as the constant map if it's an array; otherwise, it will set the constant map to ['invalid_type_returned'].
+     */
+    private function setConstantMap(): void
+    {
+        if ( ! \defined('WP_DEBUG')) {
+            $this->constantMap = ['disabled'];
+
+            return;
+        }
+
+        if (\defined('WP_DEBUG') && false === \constant('WP_DEBUG')) {
+            $this->constantMap = ['disabled'];
+
+            return;
+        }
+
+        // if (\in_array(env('WP_ENVIRONMENT_TYPE'), ['development', 'debug', 'dev', 'staging'], true)) {
+        $constantMap = $this->constants;
+
+        if (\is_array($constantMap)) {
+            $this->constantMap = $constantMap;
+        } else {
+            $this->constantMap = ['invalid_type_returned'];
+        }
+        // }
     }
 }

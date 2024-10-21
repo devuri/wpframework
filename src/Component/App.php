@@ -11,26 +11,19 @@
 
 namespace WPframework;
 
-use Dotenv\Dotenv;
-use Dotenv\Exception\InvalidPathException;
 use Exception;
+use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\ErrorHandler\Debug;
 use Urisoft\Env;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
-use WPframework\Http\HttpFactory;
-use WPframework\Http\KernelInterface;
-use WPframework\Http\Tenancy;
-use WPframework\Config;
-use Psr\Http\Message\ResponseInterface;
-use WPframework\Middleware\MiddlewareHandler;
-use WPframework\Middleware\FinalHandler;
-use WPframework\Middleware\FaviconCache;
-use WPframework\Middleware\LoggingMiddleware;
-use WPframework\Middleware\GateKeeper;
-use WPframework\Http\Message\RequestFactory;
 use WPframework\Http\Message\Foundation;
+use WPframework\Http\Message\RequestFactory;
 use WPframework\Logger\FileLogger;
+use WPframework\Middleware\FaviconCache;
+use WPframework\Middleware\FinalHandler;
+use WPframework\Middleware\LoggingMiddleware;
+use WPframework\Middleware\MiddlewareHandler;
 
 /**
  * The App class serves as the main entry point for initializing the WordPress application.
@@ -109,13 +102,13 @@ class App
          */
         $tenant_options = $this->setup->tenant()->getTenantFilePath($this->app_path, self::is_required_tenant_config());
 
-        if (! empty($tenant_options)) {
+        if ( ! empty($tenant_options)) {
             $this->config = require $tenant_options;
         } else {
             $this->config = Config::siteConfig($this->app_path);
         }
 
-        if (! \is_array($this->config)) {
+        if ( ! \is_array($this->config)) {
             throw new Exception('Options array is undefined, not array.', 1);
         }
 
@@ -134,7 +127,7 @@ class App
      */
     public function kernel(): Kernel
     {
-        if (! \is_array($this->config)) {
+        if ( ! \is_array($this->config)) {
             $debug = [
                 'class'  => static::class,
                 'object' => $this,
@@ -149,7 +142,6 @@ class App
 
     public static function responseGate(): ResponseInterface
     {
-
         $psr17Factory      = new RequestFactory();
         $requestCreator    = Foundation::create(
             $psr17Factory,
@@ -161,14 +153,13 @@ class App
         $middlewareHandler = new MiddlewareHandler(new FinalHandler());
 
         // add middleware.
-        //$middlewareHandler->addMiddleware(new FaviconCache($psr17Factory));
-        //$middlewareHandler->addMiddleware(new LoggingMiddleware(new FileLogger()));
+        // $middlewareHandler->addMiddleware(new FaviconCache($psr17Factory));
+        // $middlewareHandler->addMiddleware(new LoggingMiddleware(new FileLogger()));
 
 
         $request = $requestCreator->fromGlobals();
-        $response = $middlewareHandler->handle($request);
 
-        return $response;
+        return $middlewareHandler->handle($request);
     }
 
     /**
@@ -192,7 +183,7 @@ class App
      */
     protected function setAppErrors(): void
     {
-        if (! \in_array(env('WP_ENVIRONMENT_TYPE'), [ 'debug', 'development', 'dev', 'local' ], true)) {
+        if ( ! \in_array(env('WP_ENVIRONMENT_TYPE'), [ 'debug', 'development', 'dev', 'local' ], true)) {
             return;
         }
 
@@ -221,6 +212,6 @@ class App
 
     private static function is_required_tenant_config(): bool
     {
-        return \defined('REQUIRE_TENANT_CONFIG') && constant('REQUIRE_TENANT_CONFIG') === true;
+        return \defined('REQUIRE_TENANT_CONFIG') && true === \constant('REQUIRE_TENANT_CONFIG');
     }
 }

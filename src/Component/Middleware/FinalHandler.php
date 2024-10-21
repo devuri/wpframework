@@ -11,8 +11,8 @@
 
 namespace WPframework\Middleware;
 
-use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use WPframework\Http\Message\Response;
 
@@ -22,6 +22,7 @@ class FinalHandler implements RequestHandlerInterface
      * Process the incoming request and return a response.
      *
      * @param ServerRequestInterface $request
+     *
      * @return ResponseInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface

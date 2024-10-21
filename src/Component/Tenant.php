@@ -31,7 +31,7 @@ class Tenant implements TenantInterface
      */
     public function getHttpEnv(): ?string
     {
-        if (! \defined('HTTP_ENV_CONFIG')) {
+        if ( ! \defined('HTTP_ENV_CONFIG')) {
             return null;
         }
 
@@ -109,7 +109,7 @@ class Tenant implements TenantInterface
      */
     public function isMultitenantApp(): bool
     {
-        return \defined('ALLOW_MULTITENANT') && constant('ALLOW_MULTITENANT') === true;
+        return \defined('ALLOW_MULTITENANT') && true === \constant('ALLOW_MULTITENANT');
     }
 
     /**

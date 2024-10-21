@@ -10,19 +10,18 @@
  */
 
 use Defuse\Crypto\Key;
+use Psr\Log\InvalidArgumentException;
+use Psr\Log\LogLevel;
 use Symfony\Component\Filesystem\Filesystem;
 use Urisoft\DotAccess;
 use Urisoft\Encryption;
 use Urisoft\Env;
-use WPframework\App;
 use WPframework\EnvGenerator;
 use WPframework\Framework;
 use WPframework\Http\Asset;
-use WPframework\Terminate;
-use Psr\Log\LogLevel;
 use WPframework\Logger\FileLogger;
 use WPframework\Logger\Log;
-use Psr\Log\InvalidArgumentException;
+use WPframework\Terminate;
 
 // @codingStandardsIgnoreFile.
 
@@ -100,7 +99,7 @@ function env($name, $default = null, $encrypt = false, $strtolower = false)
  */
 function wpframeworkCore(): ?Framework
 {
-    if (! \defined('ABSPATH')) {
+    if ( ! \defined('ABSPATH')) {
         exit;
     }
 
@@ -229,7 +228,7 @@ function get_packages(string $app_path): array
     $composer_path = $app_path . DIRECTORY_SEPARATOR . 'composer.json';
 
     // Check if the composer.json file exists.
-    if (! is_file($composer_path)) {
+    if ( ! is_file($composer_path)) {
         return [];
     }
 
@@ -298,8 +297,8 @@ function _supportedEnvFiles(): array
 function _envFilesFilter(array $env_files, string $app_path): array
 {
     foreach ($env_files as $key => $file) {
-        if (! file_exists($app_path . '/' . $file)) {
-            unset($env_files[ $key ]);
+        if ( ! file_exists($app_path . '/' . $file)) {
+            unset($env_files[$key]);
         }
     }
 
@@ -317,12 +316,12 @@ function _envFilesFilter(array $env_files, string $app_path): array
  */
 function isMultitenantApp(): bool
 {
-    return \defined('ALLOW_MULTITENANT') && constant('ALLOW_MULTITENANT') === true;
+    return \defined('ALLOW_MULTITENANT') && true === \constant('ALLOW_MULTITENANT');
 }
 
 function getWpframeworkHttpEnv(): ?string
 {
-    if (! \defined('HTTP_ENV_CONFIG')) {
+    if ( ! \defined('HTTP_ENV_CONFIG')) {
         return null;
     }
 
@@ -411,7 +410,7 @@ function _frameworkCurrentThemeInfo(): array
 function tryRegenerateEnvFile(string $app_path, string $app_http_host, array $available_files = []): void
 {
     $app_main_env_file = "{$app_path}/.env";
-    if (! file_exists($app_main_env_file) && empty($available_files)) {
+    if ( ! file_exists($app_main_env_file) && empty($available_files)) {
         $generator = new EnvGenerator(new Filesystem());
         $generator->create($app_main_env_file, $app_http_host);
     }
@@ -421,20 +420,20 @@ function exitWithThemeError(array $themeInfo): void
 {
     $activeTheme = wp_get_theme();
 
-    WPframework\Terminate::exit([
+    Terminate::exit([
         $themeInfo['error_message'] . ' -> ' . $activeTheme->template,
     ]);
 }
 
 
-if (!function_exists('logMessage')) {
+if ( ! \function_exists('logMessage')) {
     /**
      * Logs a message with the specified level and an optional log file.
      *
-     * @param string $level The log level (e.g., 'info', 'error', 'debug', etc.).
-     * @param string $message The log message.
-     * @param array $context Optional context data for the log message.
-     * @param string|null $logFile Optional log file to use. If null, the default or fallback will be used.
+     * @param string      $level   The log level (e.g., 'info', 'error', 'debug', etc.).
+     * @param string      $message The log message.
+     * @param array       $context Optional context data for the log message.
+     * @param null|string $logFile Optional log file to use. If null, the default or fallback will be used.
      */
     function logMessage(string $message, string $level = 'info', array $context = [], ?string $logFile = null): void
     {
@@ -447,27 +446,35 @@ if (!function_exists('logMessage')) {
         switch ($level) {
             case LogLevel::EMERGENCY:
                 Log::emergency($message, $context);
+
                 break;
             case LogLevel::ALERT:
                 Log::alert($message, $context);
+
                 break;
             case LogLevel::CRITICAL:
                 Log::critical($message, $context);
+
                 break;
             case LogLevel::ERROR:
                 Log::error($message, $context);
+
                 break;
             case LogLevel::WARNING:
                 Log::warning($message, $context);
+
                 break;
             case LogLevel::NOTICE:
                 Log::notice($message, $context);
+
                 break;
             case LogLevel::INFO:
                 Log::info($message, $context);
+
                 break;
             case LogLevel::DEBUG:
                 Log::debug($message, $context);
+
                 break;
             default:
                 // Handle invalid log level
@@ -476,14 +483,14 @@ if (!function_exists('logMessage')) {
     }
 }
 
-function logWithStackTrace()
+function logWithStackTrace(): void
 {
     $trace = debug_backtrace();
-    //error_log('Requested URI: ' . $_SERVER['REQUEST_URI']);
+    // error_log('Requested URI: ' . $_SERVER['REQUEST_URI']);
     foreach ($trace as $index => $frame) {
-        $file = isset($frame['file']) ? $frame['file'] : '[internal function]';
-        $line = isset($frame['line']) ? $frame['line'] : 'N/A';
-        $function = isset($frame['function']) ? $frame['function'] : 'N/A';
+        $file = $frame['file'] ?? '[internal function]';
+        $line = $frame['line'] ?? 'N/A';
+        $function = $frame['function'] ?? 'N/A';
         error_log("#{$index} {$file}({$line}): {$function}()");
     }
 }

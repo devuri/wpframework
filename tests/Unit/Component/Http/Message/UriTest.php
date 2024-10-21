@@ -12,30 +12,35 @@
 namespace WPframework\Tests\Unit\Component\Http\Message;
 
 use PHPUnit\Framework\TestCase;
-use WPframework\Http\Message\Uri;
 use Psr\Http\Message\UriInterface;
+use WPframework\Http\Message\Uri;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UriTest extends TestCase
 {
-    public function testItCreatesInstanceOfUriInterface()
+    public function test_it_creates_instance_of_uri_interface(): void
     {
         $uri = new Uri('https://example.com');
         $this->assertInstanceOf(UriInterface::class, $uri);
     }
 
-    public function testItReturnsScheme()
+    public function test_it_returns_scheme(): void
     {
         $uri = new Uri('https://example.com');
         $this->assertEquals('https', $uri->getScheme());
     }
 
-    public function testItReturnsHost()
+    public function test_it_returns_host(): void
     {
         $uri = new Uri('https://example.com');
         $this->assertEquals('example.com', $uri->getHost());
     }
 
-    public function testItCanChangePath()
+    public function test_it_can_change_path(): void
     {
         $uri = new Uri('https://example.com');
         $uri = $uri->withPath('/new-path');

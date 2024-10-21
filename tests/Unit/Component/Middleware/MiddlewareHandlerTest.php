@@ -11,14 +11,15 @@
 
 namespace WPframework\Tests\Unit\Component\Middleware;
 
-use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Message\ResponseInterface;
-use Nyholm\Psr7\ServerRequest;
 use Nyholm\Psr7\Response;
-use Psr\Http\Server\RequestHandlerInterface;
+use Nyholm\Psr7\ServerRequest;
+use PHPUnit\Framework\TestCase;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Log\NullLogger;
+use RuntimeException;
 use WPframework\Middleware\MiddlewareHandler;
 
 class FinalHandler implements RequestHandlerInterface
@@ -34,6 +35,7 @@ class AddHeaderMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = $handler->handle($request);
+
         return $response->withHeader('X-Custom-Header', 'CustomValue');
     }
 }
@@ -43,6 +45,7 @@ class ModifyRequestMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $modifiedRequest = $request->withQueryParams(array_merge($request->getQueryParams(), ['added' => 'true']));
+
         return $handler->handle($modifiedRequest);
     }
 }
@@ -56,9 +59,14 @@ class ShortCircuitMiddleware implements MiddlewareInterface
     }
 }
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class MiddlewareHandlerTest extends TestCase
 {
-    public function testHandleWithoutMiddlewareDelegatesToFinalHandler(): void
+    public function test_handle_without_middleware_delegates_to_final_handler(): void
     {
         $finalHandler = new FinalHandler();
         $request = new ServerRequest('GET', '/test');
@@ -70,7 +78,7 @@ class MiddlewareHandlerTest extends TestCase
         $this->assertEquals('Final handler response', (string) $response->getBody());
     }
 
-    public function testMiddlewareAddsCustomHeader(): void
+    public function test_middleware_adds_custom_header(): void
     {
         $finalHandler = new FinalHandler();
         $request = new ServerRequest('GET', '/test');
@@ -88,7 +96,7 @@ class MiddlewareHandlerTest extends TestCase
         $this->assertEquals('CustomValue', $response->getHeaderLine('X-Custom-Header'));
     }
 
-    public function testMiddlewareModifiesRequest(): void
+    public function test_middleware_modifies_request(): void
     {
         $finalHandler = new FinalHandler();
         $request = new ServerRequest('GET', '/test', [], null, '1.1', [], [], ['initial' => 'value']);
@@ -105,11 +113,11 @@ class MiddlewareHandlerTest extends TestCase
         $this->assertEquals('Final handler response', (string) $response->getBody());
 
         // Assert that the request was modified by the middleware
-        //$this->assertArrayHasKey('added', $request->getQueryParams());
-        //$this->assertEquals('true', $request->getQueryParams()['added']);
+        // $this->assertArrayHasKey('added', $request->getQueryParams());
+        // $this->assertEquals('true', $request->getQueryParams()['added']);
     }
 
-    public function testShortCircuitMiddleware(): void
+    public function test_short_circuit_middleware(): void
     {
         $finalHandler = new FinalHandler();
         $request = new ServerRequest('GET', '/test');
@@ -127,7 +135,7 @@ class MiddlewareHandlerTest extends TestCase
         $this->assertEquals('Forbidden', (string) $response->getBody());
     }
 
-    public function testMultipleMiddlewareInSequence(): void
+    public function test_multiple_middleware_in_sequence(): void
     {
         $finalHandler = new FinalHandler();
         $request = new ServerRequest('GET', '/test');
@@ -147,26 +155,26 @@ class MiddlewareHandlerTest extends TestCase
         $this->assertEquals('CustomValue', $response->getHeaderLine('X-Custom-Header'));
 
         // Assert that the request was modified by ModifyRequestMiddleware
-        //$this->assertArrayHasKey('added', $request->getQueryParams());
-        //$this->assertEquals('true', $request->getQueryParams()['added']);
+        // $this->assertArrayHasKey('added', $request->getQueryParams());
+        // $this->assertEquals('true', $request->getQueryParams()['added']);
 
         $this->assertEquals('Final handler response', (string) $response->getBody());
     }
 
-    public function testHandleThrowsExceptionAndLogsError(): void
+    public function test_handle_throws_exception_and_logs_error(): void
     {
         $finalHandler = new FinalHandler();
         $request = new ServerRequest('GET', '/test');
         $logger = new NullLogger();
 
-        $middleware = function () {
-            throw new \RuntimeException('Test exception');
+        $middleware = function (): void {
+            throw new RuntimeException('Test exception');
         };
 
         $middlewareHandler = new MiddlewareHandler($finalHandler, $logger);
         $middlewareHandler->addMiddleware($middleware);
 
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Test exception');
 
         $middlewareHandler->handle($request);

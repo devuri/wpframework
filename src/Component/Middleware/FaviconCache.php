@@ -11,11 +11,11 @@
 
 namespace WPframework\Middleware;
 
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ResponseFactoryInterface;
 
 class FaviconCache implements MiddlewareInterface
 {
@@ -37,8 +37,9 @@ class FaviconCache implements MiddlewareInterface
     /**
      * Process an incoming server request.
      *
-     * @param ServerRequestInterface $request
+     * @param ServerRequestInterface  $request
      * @param RequestHandlerInterface $handler
+     *
      * @return ResponseInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
@@ -52,11 +53,12 @@ class FaviconCache implements MiddlewareInterface
 
     /**
      * @param ServerRequestInterface $request
+     *
      * @return bool
      */
     private function isFaviconRequest(ServerRequestInterface $request): bool
     {
-        return strpos($request->getUri()->getPath(), 'favicon.ico') !== false;
+        return false !== strpos($request->getUri()->getPath(), 'favicon.ico');
     }
 
     /**
@@ -66,14 +68,15 @@ class FaviconCache implements MiddlewareInterface
     {
         $response = $this->responseFactory->createResponse();
 
-        if (defined('FAVICON_ENABLE_CACHE') && FAVICON_ENABLE_CACHE === true) {
+        if (\defined('FAVICON_ENABLE_CACHE') && FAVICON_ENABLE_CACHE === true) {
             $response = $this->sendCacheHeaders($response);
         }
-        $responseType = defined('FAVICON_RESPONSE_TYPE') ? FAVICON_RESPONSE_TYPE : 204;
+        $responseType = \defined('FAVICON_RESPONSE_TYPE') ? FAVICON_RESPONSE_TYPE : 204;
 
-        if ($responseType == 204) {
+        if (204 == $responseType) {
             return $response->withStatus(204);
-        } elseif ($responseType == 404) {
+        }
+        if (404 == $responseType) {
             return $response->withStatus(404);
         }
 
@@ -84,11 +87,13 @@ class FaviconCache implements MiddlewareInterface
      * Send cache headers if caching is enabled.
      *
      * @param ResponseInterface $response
+     *
      * @return ResponseInterface
      */
     private function sendCacheHeaders(ResponseInterface $response): ResponseInterface
     {
-        $cacheTime = defined('FAVICON_CACHE_TIME') ? FAVICON_CACHE_TIME : 3600; // Default 1 hour cache
+        $cacheTime = \defined('FAVICON_CACHE_TIME') ? FAVICON_CACHE_TIME : 3600; // Default 1 hour cache
+
         return $response
             ->withHeader('Cache-Control', "public, max-age=$cacheTime")
             ->withHeader('Expires', gmdate('D, d M Y H:i:s', time() + $cacheTime) . ' GMT');

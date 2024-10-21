@@ -48,7 +48,7 @@ class HttpClient
         $agent_key      = $this->context->get('user_agent');
 
         if (\array_key_exists($agent_key, $this->agents)) {
-            $this->user_agent = $this->agents[ $agent_key ];
+            $this->user_agent = $this->agents[$agent_key];
         }
     }
 
@@ -84,7 +84,7 @@ class HttpClient
 
     protected function set_http_response(array $http_response_header): array
     {
-        if (! empty($http_response_header)) {
+        if ( ! empty($http_response_header)) {
             $this->http_response['referrer'] = $this->referrer;
             $this->http_response['response'] = $http_response_header;
             $this->http_response['http']     = explode(' ', $http_response_header[0], 3);
@@ -101,14 +101,14 @@ class HttpClient
         return $this->api_key ? [ 'Authorization: Bearer ' . $this->api_key ] : [];
     }
 
-    protected function set_headers(array $headers = [])
+    protected function set_headers(array $headers = []): void
     {
         $this->headers = $headers;
     }
 
     private function request(string $endpoint, string $method, array $data = [], array $headers = []): array
     {
-        if (! $this->user_agent) {
+        if ( ! $this->user_agent) {
             $this->user_agent = $this->agents['chrome'];
         }
 
@@ -156,7 +156,7 @@ class HttpClient
             }
         } catch (Exception $e) {
             // error_log( $e->getMessage() );
-            if (! isset($http_response_header)) {
+            if ( ! isset($http_response_header)) {
                 return [
                     'status'   => 0,
                     'message'  => 'unknown error',
@@ -182,7 +182,7 @@ class HttpClient
     {
         $url = $this->base_url . $endpoint;
 
-        if (! $this->is_curl_available()) {
+        if ( ! $this->is_curl_available()) {
             return [ 'error' => 'curl_init not found' ];
         }
 
@@ -230,7 +230,7 @@ class HttpClient
 
     private function parse_http_status(array $http_response_header): int
     {
-        if (! empty($http_response_header)) {
+        if ( ! empty($http_response_header)) {
             $status_line = explode(' ', $http_response_header[0], 3);
 
             return (int) $status_line[1];

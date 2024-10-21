@@ -25,7 +25,7 @@ class EnvGenerator
 
     public function create(string $file_path, string $domain, ?string $prefix = null): void
     {
-        if (! $this->filesystem->exists($file_path)) {
+        if ( ! $this->filesystem->exists($file_path)) {
             $this->filesystem->dumpFile($file_path, $this->env_file_content($domain, $prefix));
         }
     }
@@ -50,7 +50,7 @@ class EnvGenerator
         $password         = '';
 
         for ($i = 0; $i < $length; $i++) {
-            $password .= $characters[ random_int(0, $charactersLength - 1) ];
+            $password .= $characters[random_int(0, $charactersLength - 1)];
         }
 
         return $password;
@@ -163,7 +163,7 @@ class EnvGenerator
 
         if (preg_match_all($pattern, $string, $matches, PREG_SET_ORDER)) {
             foreach ($matches as $match) {
-                $result[ $match[1] ] = $match[2];
+                $result[$match[1]] = $match[2];
             }
         } else {
             throw new Exception('Failed to parse the salts string.');

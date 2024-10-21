@@ -169,7 +169,7 @@ class Terminate
 
     private function is_prod(): bool
     {
-        if (\defined('WP_ENVIRONMENT_TYPE') && \in_array(constant('WP_ENVIRONMENT_TYPE'), [ 'secure', 'sec', 'production', 'prod' ], true)) {
+        if (\defined('WP_ENVIRONMENT_TYPE') && \in_array(\constant('WP_ENVIRONMENT_TYPE'), [ 'secure', 'sec', 'production', 'prod' ], true)) {
             return true;
         }
 

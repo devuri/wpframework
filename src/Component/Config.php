@@ -39,7 +39,7 @@ final class Config
             'can_deactivate'   => env('CAN_DEACTIVATE', true),
 
             'security'         => [
-               'sucuri_waf'          => false,
+                'sucuri_waf'          => false,
                 'encryption_key'     => null,
                 'brute-force'        => true,
                 'two-factor'         => true,
@@ -112,7 +112,7 @@ final class Config
 
     public static function siteConfig(string $appPath): array
     {
-        $options_file = $appPath.'/'.siteConfigsDir().'/app.php';
+        $options_file = $appPath . '/' . siteConfigsDir() . '/app.php';
 
         if (file_exists($options_file) && \is_array(@require $options_file)) {
             return require $options_file;

@@ -70,7 +70,7 @@ class Tenancy
 
         \define($const, $value);
 
-        static::$constants[ $const ] = $value;
+        static::$constants[$const] = $value;
     }
 
     /**
@@ -93,7 +93,7 @@ class Tenancy
         $landlord = new DB('tenant', env('LANDLORD_DB_HOST'), env('LANDLORD_DB_NAME'), env('LANDLORD_DB_USER'), env('LANDLORD_DB_PASSWORD'), env('LANDLORD_DB_PREFIX'));
         $hostd    = $landlord->where('domain', $_app_http_host);
 
-        if (! $hostd) {
+        if ( ! $hostd) {
             Terminate::exit([ 'The website is not defined. Please review the URL and try again.', 403 ]);
         } else {
             $this->tenant = $hostd[0];
@@ -143,7 +143,7 @@ class Tenancy
     private function maybe_regenerate_env_file(string $tenant_id): void
     {
         $tenant_env_path = "{$this->appPath}/{$this->configs_dir}/{$tenant_id}/.env";
-        if (! file_exists($tenant_env_path)) {
+        if ( ! file_exists($tenant_env_path)) {
             $generator = new EnvGenerator(new Filesystem());
             $db_prefix = $this->get_db_prefix($tenant_id);
             $generator->create($tenant_env_path, APP_HTTP_HOST, $db_prefix);

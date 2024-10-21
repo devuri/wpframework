@@ -46,7 +46,7 @@ class HttpRequest
     protected $server = [];
 
     /**
-     * @var string|resource|null The raw body content, either a string, resource, or null.
+     * @var null|resource|string The raw body content, either a string, resource, or null.
      */
     protected $content = null;
 
@@ -59,7 +59,7 @@ class HttpRequest
      * @param array                $cookies    The COOKIE parameters.
      * @param array                $files      The FILES parameters.
      * @param array                $server     The SERVER parameters.
-     * @param string|resource|null $content    The raw body data, can be a string, a resource, or null.
+     * @param null|resource|string $content    The raw body data, can be a string, a resource, or null.
      *
      * @return void
      */
@@ -97,6 +97,7 @@ class HttpRequest
      * Set the GET parameters.
      *
      * @param array $query The GET parameters.
+     *
      * @return void
      */
     public function setQuery(array $query): void
@@ -118,6 +119,7 @@ class HttpRequest
      * Set the POST parameters.
      *
      * @param array $request The POST parameters.
+     *
      * @return void
      */
     public function setRequest(array $request): void
@@ -139,6 +141,7 @@ class HttpRequest
      * Set the request attributes.
      *
      * @param array $attributes The request attributes.
+     *
      * @return void
      */
     public function setAttributes(array $attributes): void
@@ -160,6 +163,7 @@ class HttpRequest
      * Set the COOKIE parameters.
      *
      * @param array $cookies The COOKIE parameters.
+     *
      * @return void
      */
     public function setCookies(array $cookies): void
@@ -181,6 +185,7 @@ class HttpRequest
      * Set the FILES parameters.
      *
      * @param array $files The FILES parameters.
+     *
      * @return void
      */
     public function setFiles(array $files): void
@@ -202,6 +207,7 @@ class HttpRequest
      * Set the SERVER parameters.
      *
      * @param array $server The SERVER parameters.
+     *
      * @return void
      */
     public function setServer(array $server): void
@@ -212,7 +218,7 @@ class HttpRequest
     /**
      * Get the raw body content.
      *
-     * @return string|resource|null
+     * @return null|resource|string
      */
     public function getContent()
     {
@@ -222,7 +228,8 @@ class HttpRequest
     /**
      * Set the raw body content.
      *
-     * @param string|resource|null $content The raw body content.
+     * @param null|resource|string $content The raw body content.
+     *
      * @return void
      */
     public function setContent($content): void
@@ -235,17 +242,18 @@ class HttpRequest
      * Validate the content to ensure it is either a string, resource, or null.
      *
      * @param mixed $content The content to validate.
-     * @return void
      *
      * @throws InvalidArgumentException If the content is not of the correct type.
+     *
+     * @return void
      */
     protected function validateContent($content): void
     {
-        if (!is_null($content) && !is_string($content) && !is_resource($content)) {
+        if ( ! \is_null($content) && ! \is_string($content) && ! \is_resource($content)) {
             throw new InvalidArgumentException(
-                sprintf(
+                \sprintf(
                     'Content must be a string, a resource, or null. %s given.',
-                    gettype($content)
+                    \gettype($content)
                 )
             );
         }

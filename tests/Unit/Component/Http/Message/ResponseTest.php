@@ -15,12 +15,17 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\StreamInterface;
 use WPframework\Http\Message\Response;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ResponseTest extends TestCase
 {
     /**
      * Test the constructor and default values.
      */
-    public function testConstructorSetsValues()
+    public function test_constructor_sets_values(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(200, ['Content-Type' => ['application/json']], $body, '1.1', 'OK');
@@ -35,7 +40,7 @@ class ResponseTest extends TestCase
     /**
      * Test the getProtocolVersion method.
      */
-    public function testGetProtocolVersion()
+    public function test_get_protocol_version(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(200, [], $body, '1.0');
@@ -46,7 +51,7 @@ class ResponseTest extends TestCase
     /**
      * Test the withProtocolVersion method.
      */
-    public function testWithProtocolVersion()
+    public function test_with_protocol_version(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(200, [], $body, '1.1');
@@ -59,7 +64,7 @@ class ResponseTest extends TestCase
     /**
      * Test the getHeaders method.
      */
-    public function testGetHeaders()
+    public function test_get_headers(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(200, ['X-Test' => ['TestValue']], $body);
@@ -70,7 +75,7 @@ class ResponseTest extends TestCase
     /**
      * Test the hasHeader method.
      */
-    public function testHasHeader()
+    public function test_has_header(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(200, ['X-Test' => ['TestValue']], $body);
@@ -82,7 +87,7 @@ class ResponseTest extends TestCase
     /**
      * Test the withHeader method.
      */
-    public function testWithHeader()
+    public function test_with_header(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(200, [], $body);
@@ -95,7 +100,7 @@ class ResponseTest extends TestCase
     /**
      * Test the withAddedHeader method.
      */
-    public function testWithAddedHeader()
+    public function test_with_added_header(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(200, ['X-Test' => ['Value1']], $body);
@@ -107,7 +112,7 @@ class ResponseTest extends TestCase
     /**
      * Test the withoutHeader method.
      */
-    public function testWithoutHeader()
+    public function test_without_header(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(200, ['X-Test' => ['Value']], $body);
@@ -119,7 +124,7 @@ class ResponseTest extends TestCase
     /**
      * Test the getBody method.
      */
-    public function testGetBody()
+    public function test_get_body(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(200, [], $body);
@@ -130,7 +135,7 @@ class ResponseTest extends TestCase
     /**
      * Test the withBody method.
      */
-    public function testWithBody()
+    public function test_with_body(): void
     {
         $body1 = $this->createMock(StreamInterface::class);
         $body2 = $this->createMock(StreamInterface::class);
@@ -144,7 +149,7 @@ class ResponseTest extends TestCase
     /**
      * Test the getStatusCode method.
      */
-    public function testGetStatusCode()
+    public function test_get_status_code(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(404, [], $body);
@@ -155,7 +160,7 @@ class ResponseTest extends TestCase
     /**
      * Test the withStatus method.
      */
-    public function testWithStatus()
+    public function test_with_status(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(200, [], $body);
@@ -169,7 +174,7 @@ class ResponseTest extends TestCase
     /**
      * Test the getReasonPhrase method.
      */
-    public function testGetReasonPhrase()
+    public function test_get_reason_phrase(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(200, [], $body, '1.1', 'OK');
@@ -180,7 +185,7 @@ class ResponseTest extends TestCase
     /**
      * Test status code to reason phrase mapping.
      */
-    public function testGetReasonPhraseForStatusCode()
+    public function test_get_reason_phrase_for_status_code(): void
     {
         $body = $this->createMock(StreamInterface::class);
         $response = new Response(500, [], $body);

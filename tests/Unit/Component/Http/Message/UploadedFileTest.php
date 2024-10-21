@@ -11,35 +11,40 @@
 
 namespace WPframework\Tests\Unit\Component\Http\Message;
 
-use PHPUnit\Framework\TestCase;
-use WPframework\Http\Message\UploadedFile;
 use Nyholm\Psr7\Stream;
+use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UploadedFileInterface;
+use WPframework\Http\Message\UploadedFile;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class UploadedFileTest extends TestCase
 {
-    public function testItCreatesInstanceOfUploadedFileInterface()
+    public function test_it_creates_instance_of_uploaded_file_interface(): void
     {
         $stream = Stream::create('php://memory', 'r+');
         $uploadedFile = new UploadedFile($stream, 100, UPLOAD_ERR_OK, 'test.txt', 'text/plain');
         $this->assertInstanceOf(UploadedFileInterface::class, $uploadedFile);
     }
 
-    public function testItReturnsFileSize()
+    public function test_it_returns_file_size(): void
     {
         $stream = Stream::create('php://memory', 'r+');
         $uploadedFile = new UploadedFile($stream, 100, UPLOAD_ERR_OK, 'test.txt', 'text/plain');
         $this->assertEquals(100, $uploadedFile->getSize());
     }
 
-    public function testItReturnsClientFilename()
+    public function test_it_returns_client_filename(): void
     {
         $stream = Stream::create('php://memory', 'r+');
         $uploadedFile = new UploadedFile($stream, 100, UPLOAD_ERR_OK, 'test.txt', 'text/plain');
         $this->assertEquals('test.txt', $uploadedFile->getClientFilename());
     }
 
-    public function testItCanMoveUploadedFile()
+    public function test_it_can_move_uploaded_file(): void
     {
         $stream = Stream::create('php://memory', 'r+');
         $uploadedFile = new UploadedFile($stream, 100, UPLOAD_ERR_OK, 'test.txt', 'text/plain');

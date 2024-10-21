@@ -14,8 +14,12 @@ namespace WPframework\Tests\Unit\Component\Logger;
 use PHPUnit\Framework\TestCase;
 use WPframework\Logger\FileLogger;
 use WPframework\Logger\Log;
-use Psr\Log\InvalidArgumentException;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class LogTest extends TestCase
 {
     private $logFile;
@@ -47,7 +51,7 @@ class LogTest extends TestCase
     /**
      * Test logging an emergency level message.
      */
-    public function testLogEmergency(): void
+    public function test_log_emergency(): void
     {
         Log::emergency('Emergency situation');
 
@@ -58,7 +62,7 @@ class LogTest extends TestCase
     /**
      * Test logging an alert level message.
      */
-    public function testLogAlert(): void
+    public function test_log_alert(): void
     {
         Log::alert('Alert situation');
 
@@ -69,7 +73,7 @@ class LogTest extends TestCase
     /**
      * Test logging a critical level message.
      */
-    public function testLogCritical(): void
+    public function test_log_critical(): void
     {
         Log::critical('Critical issue');
 
@@ -80,7 +84,7 @@ class LogTest extends TestCase
     /**
      * Test logging an error level message.
      */
-    public function testLogError(): void
+    public function test_log_error(): void
     {
         Log::error('An error occurred');
 
@@ -91,7 +95,7 @@ class LogTest extends TestCase
     /**
      * Test logging a warning level message.
      */
-    public function testLogWarning(): void
+    public function test_log_warning(): void
     {
         Log::warning('Warning: Check this out');
 
@@ -102,7 +106,7 @@ class LogTest extends TestCase
     /**
      * Test logging a notice level message.
      */
-    public function testLogNotice(): void
+    public function test_log_notice(): void
     {
         Log::notice('Notice: Just for information');
 
@@ -113,7 +117,7 @@ class LogTest extends TestCase
     /**
      * Test logging an info level message.
      */
-    public function testLogInfo(): void
+    public function test_log_info(): void
     {
         Log::info('Informational message');
 
@@ -124,7 +128,7 @@ class LogTest extends TestCase
     /**
      * Test logging a debug level message.
      */
-    public function testLogDebug(): void
+    public function test_log_debug(): void
     {
         Log::debug('Debugging the system');
 
@@ -135,7 +139,7 @@ class LogTest extends TestCase
     /**
      * Test fallback to error_log if no file is provided.
      */
-    public function testFallbackToErrorLog(): void
+    public function test_fallback_to_error_log(): void
     {
         Log::init(new FileLogger());
 
@@ -149,7 +153,7 @@ class LogTest extends TestCase
     /**
      * Test logging all log levels.
      */
-    public function testLogAllLevels(): void
+    public function test_log_all_levels(): void
     {
         Log::emergency('Emergency log');
         Log::alert('Alert log');

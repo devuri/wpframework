@@ -196,7 +196,7 @@ class Switcher implements EnvSwitcherInterface
 
     private function setCache(): void
     {
-        if (defined('SWITCH_OFF_CACHE') && constant('SWITCH_OFF_CACHE') === true) {
+        if (\defined('SWITCH_OFF_CACHE') && true === \constant('SWITCH_OFF_CACHE')) {
             return;
         }
 
