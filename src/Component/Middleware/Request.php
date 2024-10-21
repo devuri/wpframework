@@ -41,25 +41,27 @@ class Request implements RequestInterface
     /**
      * Get a specific value from query parameters ($_GET), with optional validation.
      *
-     * @param string    $key     The key to fetch from query parameters.
-     * @param mixed     $default The default value if the key is not found or validation fails.
-     * @param int|null  $filter  The filter to apply (e.g., FILTER_VALIDATE_INT).
-     * @param array     $options Optional filter options.
+     * @param string   $key     The key to fetch from query parameters.
+     * @param mixed    $default The default value if the key is not found or validation fails.
+     * @param null|int $filter  The filter to apply (e.g., FILTER_VALIDATE_INT).
+     * @param array    $options Optional filter options.
+     *
      * @return mixed The validated value from query parameters or the default.
      */
-    public function getQueryParam(string $key, $default = null, int $filter = null, array $options = [])
+    public function getQueryParam(string $key, $default = null, ?int $filter = null, array $options = [])
     {
         $value = $this->get[$key] ?? null;
 
-        if ($value === null) {
+        if (null === $value) {
             return $default;
         }
 
-        if ($filter !== null) {
+        if (null !== $filter) {
             $filteredValue = filter_var($value, $filter, $options);
-            if ($filteredValue === false || $filteredValue === null) {
+            if (false === $filteredValue || null === $filteredValue) {
                 return $default;
             }
+
             return $filteredValue;
         }
 
@@ -69,25 +71,27 @@ class Request implements RequestInterface
     /**
      * Get a specific value from request body ($_POST), with optional validation.
      *
-     * @param string    $key     The key to fetch from request body.
-     * @param mixed     $default The default value if the key is not found or validation fails.
-     * @param int|null  $filter  The filter to apply.
-     * @param array     $options Optional filter options.
+     * @param string   $key     The key to fetch from request body.
+     * @param mixed    $default The default value if the key is not found or validation fails.
+     * @param null|int $filter  The filter to apply.
+     * @param array    $options Optional filter options.
+     *
      * @return mixed The validated value from request body or the default.
      */
     public function getPostParam(string $key, $default = null, ?int $filter = null, array $options = [])
     {
         $value = $this->post[$key] ?? null;
 
-        if ($value === null) {
+        if (null === $value) {
             return $default;
         }
 
-        if ($filter !== null) {
+        if (null !== $filter) {
             $filteredValue = filter_var($value, $filter, $options);
-            if ($filteredValue === false || $filteredValue === null) {
+            if (false === $filteredValue || null === $filteredValue) {
                 return $default;
             }
+
             return $filteredValue;
         }
 
@@ -102,6 +106,7 @@ class Request implements RequestInterface
     public function getRequestMethod(): string
     {
         $method = $this->server['REQUEST_METHOD'] ?? 'GET';
+
         return strtoupper($method);
     }
 
@@ -115,7 +120,7 @@ class Request implements RequestInterface
         $headers = [];
 
         foreach ($this->server as $key => $value) {
-            if (strpos($key, 'HTTP_') === 0) {
+            if (0 === strpos($key, 'HTTP_')) {
                 // Convert HTTP_HEADER_NAME to Header-Name
                 $headerName = str_replace('_', '-', substr($key, 5));
                 $headerName = ucwords(strtolower($headerName), '-');
@@ -158,6 +163,7 @@ class Request implements RequestInterface
      *
      * @param string $name    The name of the header.
      * @param mixed  $default The default value if the header is not found.
+     *
      * @return mixed The header value or the default.
      */
     public function getHeader(string $name, $default = null)

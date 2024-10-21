@@ -11,8 +11,8 @@
 
 namespace WPframework\Tests\Unit;
 
-use WPframework\Tests\BaseTest;
 use Urisoft\DotAccess;
+use WPframework\Tests\BaseTest;
 
 /**
  * @internal

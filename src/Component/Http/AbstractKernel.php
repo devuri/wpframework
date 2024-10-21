@@ -11,16 +11,16 @@
 
 namespace WPframework\Http;
 
+use function defined;
+
 use Exception;
 use InvalidArgumentException;
 use Urisoft\DotAccess;
 use WPframework\AppConfig;
+use WPframework\Config;
 use WPframework\Env\EnvTypes;
 use WPframework\Setup;
 use WPframework\Terminate;
-use WPframework\Config;
-
-use function defined;
 
 /**
  * Setup common elements.
@@ -123,7 +123,7 @@ abstract class AbstractKernel implements KernelInterface
         $this->configs_dir = SITE_CONFIGS_DIR;
         $this->args        = self::getDefaultConfig();
 
-        if (! \is_array($args)) {
+        if ( ! \is_array($args)) {
             throw new InvalidArgumentException('Error: args must be of type array', 1);
         }
 
@@ -304,7 +304,7 @@ abstract class AbstractKernel implements KernelInterface
     /**
      * Retrieves the Setup object associated with the application.
      *
-     * @return Setup|null The Setup object for the application configuration and environment.
+     * @return null|Setup The Setup object for the application configuration and environment.
      */
     public function get_app(): ?Setup
     {
@@ -373,8 +373,8 @@ abstract class AbstractKernel implements KernelInterface
      */
     public function set_env_secret(string $key): void
     {
-        if (! isset($this->env_secret[ $key ])) {
-            $this->env_secret[ $key ] = $key;
+        if ( ! isset($this->env_secret[$key])) {
+            $this->env_secret[$key] = $key;
         }
     }
 
@@ -466,7 +466,7 @@ abstract class AbstractKernel implements KernelInterface
      */
     public function get_server_env(): ?array
     {
-        if (! self::is_debug_mode()) {
+        if ( ! self::is_debug_mode()) {
             return null;
         }
 
@@ -485,7 +485,7 @@ abstract class AbstractKernel implements KernelInterface
      */
     public function get_user_constants(): ?array
     {
-        if (! self::is_debug_mode()) {
+        if ( ! self::is_debug_mode()) {
             return null;
         }
 
@@ -508,7 +508,7 @@ abstract class AbstractKernel implements KernelInterface
             $config_override_file = $this->get_default_config_file();
         }
 
-        if (! empty($config_override_file)) {
+        if ( ! empty($config_override_file)) {
             require_once $config_override_file;
         }
 
@@ -605,7 +605,7 @@ abstract class AbstractKernel implements KernelInterface
      * the error log directory based on the presence of a tenant ID, allowing
      * for tenant-specific error logging.
      *
-     * @return (false|mixed|null|string)[]
+     * @return (null|false|mixed|string)[]
      *
      * @psalm-return array{environment: null, error_log: string, debug: false, errors: mixed}
      */
@@ -685,7 +685,7 @@ abstract class AbstractKernel implements KernelInterface
 
     private static function is_debug_mode(): bool
     {
-        if (! \defined('WP_DEBUG')) {
+        if ( ! \defined('WP_DEBUG')) {
             return false;
         }
 
@@ -718,7 +718,7 @@ abstract class AbstractKernel implements KernelInterface
         $merged = $array1;
 
         foreach ($array2 as $key => $value) {
-            if (isset($merged[$key]) && is_array($merged[$key]) && is_array($value)) {
+            if (isset($merged[$key]) && \is_array($merged[$key]) && \is_array($value)) {
                 $merged[$key] = self::multiMerge($merged[$key], $value);
             } else {
                 $merged[$key] = $value;

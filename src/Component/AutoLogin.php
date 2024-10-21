@@ -134,7 +134,7 @@ class AutoLogin
                 return;
             }
 
-            if (! $this->verify_signature($signature)) {
+            if ( ! $this->verify_signature($signature)) {
                 wp_safe_redirect($this->home_url);
 
                 return;
@@ -147,7 +147,7 @@ class AutoLogin
                 $user = null;
             }
 
-            if (! $this->wp_user_exists($user)) {
+            if ( ! $this->wp_user_exists($user)) {
                 wp_die('User not found.');
             }
 
@@ -222,8 +222,8 @@ class AutoLogin
      */
     protected static function get_query(string $req_input)
     {
-        if (isset($_GET[ $req_input ])) {
-            return sanitize_text_field(wp_unslash($_GET[ $req_input ]));
+        if (isset($_GET[$req_input])) {
+            return sanitize_text_field(wp_unslash($_GET[$req_input]));
         }
 
         return null;

@@ -12,18 +12,23 @@
 namespace WPframework\Tests\Unit\Component\Http\Message;
 
 use PHPUnit\Framework\TestCase;
-use WPframework\Http\Message\Stream;
 use Psr\Http\Message\StreamInterface;
+use WPframework\Http\Message\Stream;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class StreamTest extends TestCase
 {
-    public function testItCreatesInstanceOfStreamInterface()
+    public function test_it_creates_instance_of_stream_interface(): void
     {
         $stream = Stream::create('php://memory', 'r+');
         $this->assertInstanceOf(StreamInterface::class, $stream);
     }
 
-    public function testItCanWriteToStream()
+    public function test_it_can_write_to_stream(): void
     {
         $stream = Stream::create('php://memory', 'r+');
         $stream->write('Hello, World!');

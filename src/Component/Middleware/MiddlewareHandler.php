@@ -11,28 +11,37 @@
 
 namespace WPframework\Middleware;
 
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\MiddlewareInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Log\LoggerInterface;
+use RuntimeException;
+use Throwable;
 
 class MiddlewareHandler implements RequestHandlerInterface
 {
-    /** @var array */
+    /**
+     * @var array
+     */
     private array $middlewareQueue = [];
 
-    /** @var RequestHandlerInterface */
+    /**
+     * @var RequestHandlerInterface
+     */
     private RequestHandlerInterface $finalHandler;
 
-    /** @var ?LoggerInterface */
+    /**
+     * @var ?LoggerInterface
+     */
     private ?LoggerInterface $logger;
 
     /**
      * MiddlewareHandler constructor.
      *
      * @param RequestHandlerInterface $finalHandler The final handler to invoke if no middleware processes the request.
-     * @param ?LoggerInterface $logger Optional logger to log any errors in middleware.
+     * @param ?LoggerInterface        $logger       Optional logger to log any errors in middleware.
      */
     public function __construct(RequestHandlerInterface $finalHandler, ?LoggerInterface $logger = null)
     {
@@ -44,12 +53,13 @@ class MiddlewareHandler implements RequestHandlerInterface
      * Adds middleware to the queue.
      *
      * @param callable|MiddlewareInterface $middleware Middleware to add to the queue.
-     * @throws \InvalidArgumentException If the provided middleware is not callable or does not implement MiddlewareInterface.
+     *
+     * @throws InvalidArgumentException If the provided middleware is not callable or does not implement MiddlewareInterface.
      */
     public function addMiddleware($middleware): void
     {
-        if (!is_callable($middleware) && !$middleware instanceof MiddlewareInterface) {
-            throw new \InvalidArgumentException('Middleware must be callable or implement MiddlewareInterface.');
+        if ( ! \is_callable($middleware) && ! $middleware instanceof MiddlewareInterface) {
+            throw new InvalidArgumentException('Middleware must be callable or implement MiddlewareInterface.');
         }
         $this->middlewareQueue[] = $middleware;
     }
@@ -58,8 +68,10 @@ class MiddlewareHandler implements RequestHandlerInterface
      * Handles the request by processing the middleware queue.
      *
      * @param ServerRequestInterface $request The incoming server request.
+     *
+     * @throws Throwable If an exception occurs during middleware processing.
+     *
      * @return ResponseInterface The response from the middleware or final handler.
-     * @throws \Throwable If an exception occurs during middleware processing.
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
@@ -74,12 +86,12 @@ class MiddlewareHandler implements RequestHandlerInterface
                 return $middleware->process($request, $this->getNextHandler());
             }
 
-            if (is_callable($middleware)) {
+            if (\is_callable($middleware)) {
                 return $middleware($request, $this->getNextHandler());
             }
 
-            throw new \RuntimeException('Invalid middleware type.');
-        } catch (\Throwable $e) {
+            throw new RuntimeException('Invalid middleware type.');
+        } catch (Throwable $e) {
             if ($this->logger) {
                 $this->logger->error('Error in middleware: ' . $e->getMessage(), ['exception' => $e]);
             }

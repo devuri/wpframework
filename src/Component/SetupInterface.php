@@ -96,5 +96,4 @@ interface SetupInterface
      * @return self
      */
     public function assetUrl(): self;
-
 }

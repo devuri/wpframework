@@ -32,7 +32,7 @@ class Log
      * Log an emergency message.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
      */
     public static function emergency(string $message, array $context = []): void
     {
@@ -43,7 +43,7 @@ class Log
      * Log an alert message.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
      */
     public static function alert(string $message, array $context = []): void
     {
@@ -54,7 +54,7 @@ class Log
      * Log a critical message.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
      */
     public static function critical(string $message, array $context = []): void
     {
@@ -65,7 +65,7 @@ class Log
      * Log an error message.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
      */
     public static function error(string $message, array $context = []): void
     {
@@ -76,7 +76,7 @@ class Log
      * Log a warning message.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
      */
     public static function warning(string $message, array $context = []): void
     {
@@ -87,7 +87,7 @@ class Log
      * Log a notice message.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
      */
     public static function notice(string $message, array $context = []): void
     {
@@ -98,7 +98,7 @@ class Log
      * Log an informational message.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
      */
     public static function info(string $message, array $context = []): void
     {
@@ -109,7 +109,7 @@ class Log
      * Log a debug message.
      *
      * @param string $message
-     * @param array $context
+     * @param array  $context
      */
     public static function debug(string $message, array $context = []): void
     {
@@ -121,26 +121,28 @@ class Log
      * this function will create them.
      *
      * @param string $logFile The path to the log file.
-     * @return void
+     *
      * @throws RuntimeException If the file cannot be created.
+     *
+     * @return void
      */
     public static function createLogFile(string $logFile): void
     {
-        $logDir = dirname($logFile);
+        $logDir = \dirname($logFile);
 
-        if (!is_dir($logDir)) {
-            if (!mkdir($logDir, 0777, true) && !is_dir($logDir)) {
+        if ( ! is_dir($logDir)) {
+            if ( ! mkdir($logDir, 0777, true) && ! is_dir($logDir)) {
                 throw new RuntimeException("Unable to create directory: $logDir");
             }
         }
 
-        if (!file_exists($logFile)) {
-            if (file_put_contents($logFile, '') === false) {
+        if ( ! file_exists($logFile)) {
+            if (false === file_put_contents($logFile, '')) {
                 throw new RuntimeException("Unable to create log file: $logFile");
             }
         }
 
-        if (!is_writable($logFile)) {
+        if ( ! is_writable($logFile)) {
             throw new RuntimeException("Log file is not writable: $logFile");
         }
     }

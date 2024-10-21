@@ -13,9 +13,13 @@ namespace WPframework\Tests\Unit\Component\Logger;
 
 use PHPUnit\Framework\TestCase;
 use WPframework\Logger\FileLogger;
-use Psr\Log\LogLevel;
 use WPframework\Logger\Log;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class FileLoggerTest extends TestCase
 {
     private $logFile;
@@ -45,7 +49,7 @@ class FileLoggerTest extends TestCase
     /**
      * Test that logs are written to a file.
      */
-    public function testLogToFile(): void
+    public function test_log_to_file(): void
     {
         $logger = new FileLogger($this->logFile);
         $logger->info('Test log to file');
@@ -61,7 +65,7 @@ class FileLoggerTest extends TestCase
     /**
      * Test logging with context interpolation.
      */
-    public function testLogWithInterpolation(): void
+    public function test_log_with_interpolation(): void
     {
         $logger = new FileLogger($this->logFile);
         $logger->error('An error occurred: {error}', ['error' => 'File not found']);
@@ -74,7 +78,7 @@ class FileLoggerTest extends TestCase
     /**
      * Test fallback to error_log when no file is provided.
      */
-    public function testFallbackToErrorLog(): void
+    public function test_fallback_to_error_log(): void
     {
         $logger = new FileLogger();
 
@@ -87,7 +91,7 @@ class FileLoggerTest extends TestCase
     /**
      * Test invalid log level throws an exception.
      */
-    public function testInvalidLogLevelThrowsException(): void
+    public function test_invalid_log_level_throws_exception(): void
     {
         $this->expectException(\Psr\Log\InvalidArgumentException::class);
 
@@ -98,7 +102,7 @@ class FileLoggerTest extends TestCase
     /**
      * Test logging without a writable file defaults to error_log.
      */
-    public function testNonWritableFileFallsBackToErrorLog(): void
+    public function test_non_writable_file_falls_back_to_error_log(): void
     {
         $logger = new FileLogger('/invalid/path/test.log');
 
@@ -111,7 +115,7 @@ class FileLoggerTest extends TestCase
     /**
      * Test all log levels are supported.
      */
-    public function testAllLogLevels(): void
+    public function test_all_log_levels(): void
     {
         $logger = new FileLogger($this->logFile);
 

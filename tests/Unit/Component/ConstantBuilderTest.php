@@ -14,6 +14,11 @@ namespace WPframework\Tests\Unit\Component;
 use PHPUnit\Framework\TestCase;
 use WPframework\ConstantBuilder;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class ConstantBuilderTest extends TestCase
 {
     /**
@@ -27,106 +32,7 @@ class ConstantBuilderTest extends TestCase
     protected function setUp(): void
     {
         $this->constantBuilder = new ConstantBuilder();
-        //$this->constantBuilder->setErrorNotice();
-    }
-
-    /**
-     * Test defining a constant.
-     */
-    public function testDefineConstant()
-    {
-        $this->constantBuilder->define('FIRST_APP_NAME', 'MyFirstApp');
-
-        $this->assertTrue(defined('FIRST_APP_NAME'));
-        $this->assertEquals('MyFirstApp', constant('FIRST_APP_NAME'));
-        $this->assertEquals('MyFirstApp', $this->constantBuilder->getConstant('FIRST_APP_NAME'));
-    }
-
-    /**
-     * Test defining a constant that is already defined.
-     */
-    public function testDefineAlreadyDefinedConstant()
-    {
-        $this->constantBuilder->define('APP_NAME', 'MyApp');
-
-        $this->constantBuilder->define('APP_NAME', 'MyOtherApp');
-        $this->assertEquals('MyApp', constant('APP_NAME'));
-    }
-
-    /**
-     * Test checking if a constant is defined.
-     */
-    public function testIsDefined()
-    {
-        $this->constantBuilder->define('MYAPP_NAME', 'MyApp');
-
-        $this->assertTrue($this->constantBuilder->isDefined('MYAPP_NAME'));
-        $this->assertFalse($this->constantBuilder->isDefined('NON_EXISTENT_CONSTANT'));
-    }
-
-    /**
-     * Test getting a constant.
-     */
-    public function testGetConstant()
-    {
-        $this->constantBuilder->define('SITEAPP_NAME', 'MyApp');
-
-        $this->assertEquals('MyApp', $this->constantBuilder->getConstant('SITEAPP_NAME'));
-        $this->assertNull($this->constantBuilder->getConstant('NON_EXISTENT_CONSTANT'));
-    }
-
-    /**
-     * Test getting all defined constants.
-     */
-    public function testGetAllConstants()
-    {
-        $this->constantBuilder->define('SITE_NAME', 'MyApp');
-        $this->constantBuilder->define('SITE_VERSION', '1.0.3');
-
-        $allConstants = $this->constantBuilder->getAllConstants();
-
-        $this->assertEquals([
-            'SITE_NAME' => 'MyApp',
-            'SITE_VERSION' => '1.0.3',
-        ], $allConstants);
-    }
-
-    /**
-     * Test setting and getting the constant map.
-     */
-    public function testSetConstantMap()
-    {
-        $this->constantBuilder->setMap();
-
-        $constantMap = $this->constantBuilder->getConstantMap();
-        $this->assertEquals(['disabled'], $constantMap);
-
-        define('WP_DEBUG', true);
-        define('WP_ENVIRONMENT_TYPE', 'development');
-
-        $this->constantBuilder->define('TEST_CONSTANT', 'value');
-        $this->constantBuilder->setMap();
-        $constantMap = $this->constantBuilder->getConstantMap();
-
-        $this->assertEquals(['TEST_CONSTANT' => 'value'], $constantMap);
-    }
-
-    /**
-     * Test hashing sensitive keys.
-     */
-    public function testHashSecret()
-    {
-        $config = [
-            'DB_USER' => 'admin',
-            'DB_PASSWORD' => 'secret',
-            'NON_SENSITIVE_KEY' => 'publicValue',
-        ];
-
-        $hashedConfig = $this->constantBuilder->hashSecret($config, ['DB_USER', 'DB_PASSWORD']);
-
-        $this->assertNotEquals('admin', $hashedConfig['DB_USER']);
-        $this->assertNotEquals('secret', $hashedConfig['DB_PASSWORD']);
-        $this->assertEquals('publicValue', $hashedConfig['NON_SENSITIVE_KEY']);
+        // $this->constantBuilder->setErrorNotice();
     }
 
     public function test_define_constant(): void
@@ -145,15 +51,26 @@ class ConstantBuilderTest extends TestCase
         // $this->constantBuilder->define($constName, 'new_value');
     }
 
-    public function test_is_constant_defined(): void
+    /**
+     * Test defining a constant that is already defined.
+     */
+    public function test_define_already_defined_constant(): void
     {
-        $constName = 'ANOTHER_CONSTANT';
+        $this->constantBuilder->define('APP_NAME', 'MyApp');
 
-        $this->assertFalse($this->constantBuilder->isDefined($constName));
+        $this->constantBuilder->define('APP_NAME', 'MyOtherApp');
+        $this->assertEquals('MyApp', \constant('APP_NAME'));
+    }
 
-        $this->constantBuilder->define($constName, 'some_value');
+    /**
+     * Test checking if a constant is defined.
+     */
+    public function test_is_defined(): void
+    {
+        $this->constantBuilder->define('MYAPP_NAME', 'MyApp');
 
-        $this->assertTrue($this->constantBuilder->isDefined($constName));
+        $this->assertTrue($this->constantBuilder->isDefined('MYAPP_NAME'));
+        $this->assertFalse($this->constantBuilder->isDefined('NON_EXISTENT_CONSTANT'));
     }
 
     public function test_get_constant(): void
@@ -163,12 +80,80 @@ class ConstantBuilderTest extends TestCase
 
         $this->constantBuilder->define($constName, $constValue);
 
-        $result = $this->constantBuilder->getConstant($constName);
+        $result = $this->constantBuilder->getConstant('BOOLEAN_CONSTANT');
+
+        $this->constantBuilder->define('SITEAPP_NAME', 'MyApp');
+
+        $this->assertEquals('MyApp', $this->constantBuilder->getConstant('SITEAPP_NAME'));
 
         $this->assertEquals($constValue, $result);
 
-        $result = $this->constantBuilder->getConstant('UNDEFINED_CONSTANT');
-        $this->assertNull($result);
+        $this->assertNull($this->constantBuilder->getConstant('NON_EXISTENT_CONSTANT'));
+    }
+
+    /**
+     * Test getting all defined constants.
+     */
+    public function test_get_all_constants(): void
+    {
+        $this->constantBuilder->define('SITE_NAME', 'MyApp');
+        $this->constantBuilder->define('SITE_VERSION', '1.0.3');
+
+        $allConstants = $this->constantBuilder->getAllConstants();
+
+        $this->assertEquals([
+            'SITE_NAME' => 'MyApp',
+            'SITE_VERSION' => '1.0.3',
+        ], $allConstants);
+    }
+
+    /**
+     * Test setting and getting the constant map.
+     */
+    public function test_set_constant_map(): void
+    {
+        $this->constantBuilder->setMap();
+
+        $constantMap = $this->constantBuilder->getConstantMap();
+        $this->assertEquals(['disabled'], $constantMap);
+
+        \define('WP_DEBUG', true);
+        \define('WP_ENVIRONMENT_TYPE', 'development');
+
+        $this->constantBuilder->define('TEST_CONSTANT', 'value');
+        $this->constantBuilder->setMap();
+        $constantMap = $this->constantBuilder->getConstantMap();
+
+        $this->assertEquals(['TEST_CONSTANT' => 'value'], $constantMap);
+    }
+
+    /**
+     * Test hashing sensitive keys.
+     */
+    public function test_hash_secret(): void
+    {
+        $config = [
+            'DB_USER' => 'admin',
+            'DB_PASSWORD' => 'secret',
+            'NON_SENSITIVE_KEY' => 'publicValue',
+        ];
+
+        $hashedConfig = $this->constantBuilder->hashSecret($config, ['DB_USER', 'DB_PASSWORD']);
+
+        $this->assertNotEquals('admin', $hashedConfig['DB_USER']);
+        $this->assertNotEquals('secret', $hashedConfig['DB_PASSWORD']);
+        $this->assertEquals('publicValue', $hashedConfig['NON_SENSITIVE_KEY']);
+    }
+
+    public function test_is_constant_defined(): void
+    {
+        $constName = 'ANOTHER_CONSTANT';
+
+        $this->assertFalse($this->constantBuilder->isDefined($constName));
+
+        $this->constantBuilder->define($constName, 'some_value');
+
+        $this->assertTrue($this->constantBuilder->isDefined($constName));
     }
 
     public function test_get_constant_map(): void

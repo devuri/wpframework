@@ -12,10 +12,15 @@
 namespace WPframework\Tests\Unit\Helpers;
 
 use PHPUnit\Framework\TestCase;
+use Psr\Log\InvalidArgumentException;
 use WPframework\Logger\FileLogger;
 use WPframework\Logger\Log;
-use Psr\Log\InvalidArgumentException;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class LogMessageTest extends TestCase
 {
     private $logFile;
@@ -43,7 +48,63 @@ class LogMessageTest extends TestCase
         ini_restore('error_log');
     }
 
-    private function deleteTestFiles()
+    /**
+     * Test logging an info message with logMessage().
+     */
+    public function test_log_info_message(): void
+    {
+        logMessage('This is an info message', 'info', [], $this->logFile);
+
+        $this->assertFileExists($this->logFile);
+        $logContent = file_get_contents($this->logFile);
+        $this->assertStringContainsString('INFO: This is an info message', $logContent);
+    }
+
+    /**
+     * Test logging an error message with context using logMessage().
+     */
+    public function test_log_error_with_context(): void
+    {
+        logMessage('Error occurred: {error}', 'error', ['error' => 'Something went wrong'], $this->logFile);
+
+        $this->assertFileExists($this->logFile);
+        $logContent = file_get_contents($this->logFile);
+        $this->assertStringContainsString('ERROR: Error occurred: Something went wrong', $logContent);
+    }
+
+    /**
+     * Test logging to a custom file using logMessage().
+     */
+    public function test_log_to_custom_file(): void
+    {
+        logMessage('Debugging process', 'debug', [], $this->customLogFile);
+
+        $this->assertFileExists($this->customLogFile);
+        $logContent = file_get_contents($this->customLogFile);
+        $this->assertStringContainsString('DEBUG: Debugging process', $logContent);
+    }
+
+    /**
+     * Test logging fallback to error_log when no file is provided.
+     */
+    public function test_fallback_to_error_log(): void
+    {
+        logMessage('This is a warning message', 'warning');
+
+        $ErrorLogContent = file_get_contents($this->ErrorLogFile);
+        $this->assertStringContainsString('WARNING: This is a warning message', $ErrorLogContent);
+    }
+
+    /**
+     * Test logging an invalid log level throws an exception.
+     */
+    public function test_invalid_log_level_throws_exception(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        logMessage('This should fail', 'invalid_level');
+    }
+
+    private function deleteTestFiles(): void
     {
         if (file_exists($this->logFile)) {
             unlink($this->logFile);
@@ -56,61 +117,5 @@ class LogMessageTest extends TestCase
         if (file_exists($this->customLogFile)) {
             unlink($this->customLogFile);
         }
-    }
-
-    /**
-     * Test logging an info message with logMessage()
-     */
-    public function testLogInfoMessage(): void
-    {
-        logMessage('This is an info message', 'info', [], $this->logFile);
-
-        $this->assertFileExists($this->logFile);
-        $logContent = file_get_contents($this->logFile);
-        $this->assertStringContainsString('INFO: This is an info message', $logContent);
-    }
-
-    /**
-     * Test logging an error message with context using logMessage()
-     */
-    public function testLogErrorWithContext(): void
-    {
-        logMessage('Error occurred: {error}', 'error', ['error' => 'Something went wrong'], $this->logFile);
-
-        $this->assertFileExists($this->logFile);
-        $logContent = file_get_contents($this->logFile);
-        $this->assertStringContainsString('ERROR: Error occurred: Something went wrong', $logContent);
-    }
-
-    /**
-     * Test logging to a custom file using logMessage()
-     */
-    public function testLogToCustomFile(): void
-    {
-        logMessage('Debugging process', 'debug', [], $this->customLogFile);
-
-        $this->assertFileExists($this->customLogFile);
-        $logContent = file_get_contents($this->customLogFile);
-        $this->assertStringContainsString('DEBUG: Debugging process', $logContent);
-    }
-
-    /**
-     * Test logging fallback to error_log when no file is provided
-     */
-    public function testFallbackToErrorLog(): void
-    {
-        logMessage('This is a warning message', 'warning');
-
-        $ErrorLogContent = file_get_contents($this->ErrorLogFile);
-        $this->assertStringContainsString('WARNING: This is a warning message', $ErrorLogContent);
-    }
-
-    /**
-     * Test logging an invalid log level throws an exception
-     */
-    public function testInvalidLogLevelThrowsException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        logMessage('This should fail', 'invalid_level');
     }
 }

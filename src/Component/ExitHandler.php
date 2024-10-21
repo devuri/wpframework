@@ -14,6 +14,8 @@ namespace WPframework;
 class ExitHandler implements ExitInterface
 {
     /**
+     * @param mixed $status
+     *
      * @return never
      */
     public function terminate($status = 0): void

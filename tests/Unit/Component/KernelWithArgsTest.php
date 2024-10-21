@@ -11,8 +11,8 @@
 
 namespace WPframework\Tests\Unit\Component;
 
-use WPframework\Tests\BaseTest;
 use WPframework\Kernel;
+use WPframework\Tests\BaseTest;
 
 /**
  * Test the Kernel.
@@ -125,7 +125,7 @@ class KernelWithArgsTest extends BaseTest
             ],
             'publickey'         => [
                 'app-key' => 'b75b666f-ac11-4342-b001-d2546f1d3a5b',
-            ]
+            ],
         ];
 
         $actual = $app_with_args->getArgs();

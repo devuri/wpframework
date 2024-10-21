@@ -11,12 +11,12 @@
 
 namespace WPframework;
 
-use WPframework\Http\HttpFactory;
-use Dotenv\Exception\InvalidPathException;
 use Dotenv\Dotenv;
-use WPframework\Http\Tenancy;
-use Terminate;
+use Dotenv\Exception\InvalidPathException;
 use Exception;
+use Terminate;
+use WPframework\Http\HttpFactory;
+use WPframework\Http\Tenancy;
 
 trait AppInit
 {
@@ -30,7 +30,7 @@ trait AppInit
      * execution with an error message if critical configurations are missing or if
      * the tenant's domain is not recognized.
      *
-     * @param string $app_path     The base directory path of the application (e.g., __DIR__).
+     * @param string $app_path The base directory path of the application (e.g., __DIR__).
      *
      * @throws Exception If there are issues loading environment variables or initializing the App.
      * @throws Exception If required multi-tenant environment variables are missing or if the tenant's domain is not recognized.
@@ -39,30 +39,30 @@ trait AppInit
      */
     public static function init(string $app_path): Kernel
     {
-        if (! \defined('SITE_CONFIGS_DIR')) {
+        if ( ! \defined('SITE_CONFIGS_DIR')) {
             \define('SITE_CONFIGS_DIR', 'configs');
         }
 
-        if (! \defined('APP_DIR_PATH')) {
+        if ( ! \defined('APP_DIR_PATH')) {
             \define('APP_DIR_PATH', $app_path);
         }
 
-        if (! \defined('APP_HTTP_HOST')) {
+        if ( ! \defined('APP_HTTP_HOST')) {
             \define('APP_HTTP_HOST', HttpFactory::init()->get_http_host());
         }
 
-        if (! \defined('RAYDIUM_ENVIRONMENT_TYPE')) {
+        if ( ! \defined('RAYDIUM_ENVIRONMENT_TYPE')) {
             \define('RAYDIUM_ENVIRONMENT_TYPE', null);
         }
 
         // Use 204 for No Content, or 404 for Not Found
-        define('FAVICON_RESPONSE_TYPE', 404);
+        \define('FAVICON_RESPONSE_TYPE', 404);
 
         // Enable cache
-        define('FAVICON_ENABLE_CACHE', true);
+        \define('FAVICON_ENABLE_CACHE', true);
 
         // Cache time in seconds (e.g., 2 hours = 7200 seconds)
-        define('FAVICON_CACHE_TIME', 7200);
+        \define('FAVICON_CACHE_TIME', 7200);
 
         $app_options         = [];
         $supported_env_files = _supportedEnvFiles();

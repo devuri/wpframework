@@ -15,6 +15,11 @@ use PHPUnit\Framework\TestCase;
 use WPframework\AppConfig;
 use WPframework\ConstantBuilder;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 class AppConfigTest extends TestCase
 {
     /**
@@ -30,33 +35,33 @@ class AppConfigTest extends TestCase
     /**
      * Test adding a constant using the addConstant method.
      */
-    public function testAddConstant()
+    public function test_add_constant(): void
     {
         $appConfig = new AppConfig($this->constantBuilder);
 
         $appConfig->addConstant('APP_NAME', 'MyApp');
 
-        $this->assertTrue(defined('APP_NAME'));
-        $this->assertEquals('MyApp', constant('APP_NAME'));
+        $this->assertTrue(\defined('APP_NAME'));
+        $this->assertEquals('MyApp', \constant('APP_NAME'));
     }
 
     /**
      * Test adding a constant using the addConst method (alias).
      */
-    public function testAddConst()
+    public function test_add_const(): void
     {
         $appConfig = new AppConfig($this->constantBuilder);
 
         $appConfig->addConst('APP_VERSION', '1.0.0');
 
-        $this->assertTrue(defined('APP_VERSION'));
-        $this->assertEquals('1.0.0', constant('APP_VERSION'));
+        $this->assertTrue(\defined('APP_VERSION'));
+        $this->assertEquals('1.0.0', \constant('APP_VERSION'));
     }
 
     /**
      * Test retrieving a constant using the getConstant method.
      */
-    public function testGetConstant()
+    public function test_get_constant(): void
     {
         $appConfig = new AppConfig($this->constantBuilder);
         $appConfig->addConst('MY_APP_NAME', 'MyApp');
@@ -67,7 +72,7 @@ class AppConfigTest extends TestCase
     /**
      * Test checking if a constant is defined.
      */
-    public function testIsConstantDefined()
+    public function test_is_constant_defined(): void
     {
         $appConfig = new AppConfig($this->constantBuilder);
         $appConfig->addConst('NEW_APP_NAME', 'MyNew-App');
@@ -79,7 +84,7 @@ class AppConfigTest extends TestCase
     /**
      * Test setConstantMap method.
      */
-    public function testSetConstantMap()
+    public function test_set_constant_map(): void
     {
         $appConfig = new AppConfig($this->constantBuilder);
 
@@ -90,7 +95,7 @@ class AppConfigTest extends TestCase
     /**
      * Test getting all defined constants.
      */
-    public function testGetDefinedConstants()
+    public function test_get_defined_constants(): void
     {
         $appConfig = new AppConfig($this->constantBuilder);
 

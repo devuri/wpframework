@@ -34,7 +34,7 @@ class AppConfig
      * @param string $name
      * @param mixed  $value
      */
-    public function addConstant(string $name, $value)
+    public function addConstant(string $name, $value): void
     {
         $this->constantBuilder->define($name, $value);
     }
@@ -45,7 +45,7 @@ class AppConfig
      * @param string $name
      * @param mixed  $value
      */
-    public function addConst(string $name, $value)
+    public function addConst(string $name, $value): void
     {
         $this->constantBuilder->define($name, $value);
     }
@@ -54,6 +54,7 @@ class AppConfig
      * Get the value of a defined constant.
      *
      * @param string $name
+     *
      * @return mixed
      */
     public function getConstant(string $name)
@@ -65,6 +66,7 @@ class AppConfig
      * Check if a constant is defined.
      *
      * @param string $name
+     *
      * @return bool
      */
     public function isConstantDefined(string $name): bool
