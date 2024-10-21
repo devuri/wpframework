@@ -1,5 +1,60 @@
 # Changelog
 
+## [0.7.0](https://github.com/devuri/wpframework/compare/v0.6.2...v0.7.0) (2024-10-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* adds `ConstantBuilder` and removes `ConstantBuilderTrait`
+* use `wp-content` makes the framework switch much easier.
+* updates for `EnvSwitcher`
+* adds new `class Config` static class
+* composer.json upgrade `0.7.x`
+* remove autologin and ref to namespaces
+* code standards `@PSR12` updates
+
+### Features
+
+* add `Middleware` WIP ([62213f2](https://github.com/devuri/wpframework/commit/62213f2d211277712573e62a056a0b80d214791d))
+* adds `ConstantBuilder` and removes `ConstantBuilderTrait` ([4080a97](https://github.com/devuri/wpframework/commit/4080a979bf5740b01226825e63e7d25d61af7070))
+* adds `DeviceDetector` ([46d2c86](https://github.com/devuri/wpframework/commit/46d2c86e56356fd690212e6a99f096687b3079ac))
+* adds `FileLogger`, `logMessage()` with `Log::*` wrapper ([51f0933](https://github.com/devuri/wpframework/commit/51f09336a89768ac994d5010f7cf8d778dc20bf0))
+* adds `HttpRequest` class ([aaa2e4f](https://github.com/devuri/wpframework/commit/aaa2e4fd6252771b7ca44dab11417a641cbe23cb))
+* adds `MiddlewareHandler` ([e87d1e7](https://github.com/devuri/wpframework/commit/e87d1e782d46999f73920e4c835cf8274a57b5a0))
+* adds `psr/http-server-middleware` and `ResponseInterface` ([1bfe8c8](https://github.com/devuri/wpframework/commit/1bfe8c866450e928c098974ac418dc99106bed27))
+* adds new `class Config` static class ([29df306](https://github.com/devuri/wpframework/commit/29df3061ef6c7d169aa95c9a454dd2b328f4a9ba))
+* adds proper `http message` handler with `nyholm/psr7` ([1695a0c](https://github.com/devuri/wpframework/commit/1695a0cadf16a168fa5f352a2cec51323a52a959))
+* the `HttpClient` is now baked in as part of the framework ([130f21b](https://github.com/devuri/wpframework/commit/130f21b177a08cd9f037293fdf37ac6d111a22c2))
+* use `wp-content` makes the framework switch much easier. ([61e96c9](https://github.com/devuri/wpframework/commit/61e96c9578dec6dae9eb8ae7e90ce9de871ecaf6))
+
+
+### Bug Fixes
+
+* code standards `@PSR12` updates ([ab1d7ca](https://github.com/devuri/wpframework/commit/ab1d7cacf099234bbd0b9dbcd0e4c499410eef07))
+* composer.json upgrade `0.7.x` ([02026e3](https://github.com/devuri/wpframework/commit/02026e3814e61b88e4e7162616dc48211a6e5be8))
+* moved `makeLogFile()` to `Log::createLogFile()` ([cb942cb](https://github.com/devuri/wpframework/commit/cb942cb5bd7f7d4e72878eef0c555e6e5ccf511f))
+* no `trailing_comma_in_multiline` ([2e85f92](https://github.com/devuri/wpframework/commit/2e85f92a9bdca4f350e196e6e1437f9a321b727c))
+* remove autologin and ref to namespaces ([ca54f43](https://github.com/devuri/wpframework/commit/ca54f43ba320fde16fca12302106842093ad1f7d))
+* stan updates ([320b72d](https://github.com/devuri/wpframework/commit/320b72d3e938e24194ccb726d1d091fd35aef527))
+* update auto login, add `last_login_time` uer meta ([49ae3af](https://github.com/devuri/wpframework/commit/49ae3afce39917aa31209509941bf06ff2ce1698))
+* update defualts ([5a82ae6](https://github.com/devuri/wpframework/commit/5a82ae6789d46ca5cf16a726de1fc644f1bf9682))
+* update stubs ([d2cfef8](https://github.com/devuri/wpframework/commit/d2cfef88d5bdceb685e23167bacd7ed639278d00))
+* updates for `EnvSwitcher` ([bacd85e](https://github.com/devuri/wpframework/commit/bacd85e9a205a44f69fe06e01c493e6b40787cb0))
+* use interface `Psr\Log\LoggerInterface` ([381f14c](https://github.com/devuri/wpframework/commit/381f14cc208327ba9452eee96437473c7cc8a8af))
+
+
+### Miscellaneous Chores
+
+* build ([e1dfd9f](https://github.com/devuri/wpframework/commit/e1dfd9feab5fde39bb5609d7b7c34adca7681ac1))
+* build ([54046c9](https://github.com/devuri/wpframework/commit/54046c9619c90572e42ad62df17f04727a555b33))
+* build ([45c339e](https://github.com/devuri/wpframework/commit/45c339ea5cce348e23c1d035e6be0521d78ca35d))
+* codefix ([#176](https://github.com/devuri/wpframework/issues/176)) ([042384c](https://github.com/devuri/wpframework/commit/042384c9d21b23db33f6db71b6a8f6673e5f7aa4))
+* **deps-dev:** bump rollup from 4.21.3 to 4.24.0 ([3acaa69](https://github.com/devuri/wpframework/commit/3acaa69db3ae04e43d320b5df90c996ee7f2559b))
+* **deps-dev:** bump vite from 5.2.7 to 5.4.6 ([516ad9d](https://github.com/devuri/wpframework/commit/516ad9dd1bd8f8c398e8ee7fe750bc1d5dc99e5a))
+* **deps:** bump cookie and express ([bc5b316](https://github.com/devuri/wpframework/commit/bc5b3165d7830ac80a6ad7f514edd984249b7cda))
+* remove `phpbench/phpbench` ([3a4d0a9](https://github.com/devuri/wpframework/commit/3a4d0a976766cabcf01b5db7c48118d4c3b0e088))
+* updates for `php-cs-fixer` ([fe59379](https://github.com/devuri/wpframework/commit/fe5937907e30c1618ade602ca3ccec2450df3722))
+
 ## [0.6.2](https://github.com/devuri/wpframework/compare/v0.6.1...v0.6.2) (2024-09-17)
 
 
